@@ -27,8 +27,7 @@ def build_sync_subparsers(
             repository sources.
 
             Root `sync` owns only the shared machine surfaces. Pack-owned sync
-            operations live under their pack namespaces, such as
-            `watchtower-core plan sync ...`.
+            operations live under their own pack namespaces.
             """
         ).strip(),
         epilog=examples(
@@ -38,10 +37,6 @@ def build_sync_subparsers(
             "uv run watchtower-core sync route-index --write",
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core sync repository-paths --write",
-            "uv run watchtower-core plan sync all",
-            "uv run watchtower-core plan sync coordination --write",
-            "uv run watchtower-core plan sync reference-index",
-            "uv run watchtower-core plan sync github-tasks --repo owner/repo",
         ),
         formatter_class=HelpFormatter,
     )

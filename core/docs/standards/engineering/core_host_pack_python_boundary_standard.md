@@ -10,7 +10,7 @@ tags:
   - "python_boundary"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T02:45:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -24,7 +24,7 @@ This standard defines the required split between reusable core, host composition
 Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enough that new domain packs can integrate through the same contract without reintroducing direct imports, pack-flavored mirrors of core, or repository-coupled hacks.
 
 ## Scope
-- Applies to Python package code under `core/python/src/watchtower_core/`, `core/python/src/watchtower_host/`, and pack-owned package roots such as `plan/python/src/watchtower_plan/`.
+- Applies to Python package code under `core/python/src/watchtower_core/`, `core/python/src/watchtower_host/`, and pack-owned package roots such as `<pack-root>/python/src/watchtower_<pack>/`.
 - Covers dependency direction, command ownership, pack-owned runtime placement, and portability expectations.
 - Does not redefine the lower-level schema details of the pack registry or pack runtime manifest; those belong to the pack-interface contract standard.
 
@@ -47,7 +47,7 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 - `watchtower_core` owns reusable loaders, schemas, typed contracts, validators, shared query or sync helpers, rebuild helpers, routing, workflow execution, evidence, and other pack-agnostic runtime behavior.
 - `watchtower_host` owns CLI parser construction, pack discovery, pack registration, command dispatch, and other composition logic that joins reusable core with one or more hosted packs.
 - `watchtower_<pack>` owns pack-native orchestration, pack-native command registration, pack-native lifecycle behavior, pack-native rendering, and pack-native semantic validation rules.
-- `watchtower_core` must not import `watchtower_plan` or any future `watchtower_<pack>`.
+- `watchtower_core` must not import any `watchtower_<pack>` package.
 - `watchtower_<pack>` must not import `watchtower_host`.
 - The host is the only layer allowed to compose reusable core with pack runtime.
 - Packs must depend on `watchtower_core` contracts, not on host internals or repo-local `sys.path` mutation.
@@ -74,7 +74,7 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `core/python/src/watchtower_core/`; `core/python/src/watchtower_host/`; `plan/python/src/watchtower_plan/`; `core/workflows/modules/domain_pack_integration.md`; `core/workflows/modules/pack_interface_validation.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/`; `core/python/src/watchtower_host/`; `core/workflows/modules/domain_pack_integration.md`; `core/workflows/modules/pack_interface_validation.md`
 
 ## Validation
 - Reviewers should reject new `watchtower_core -> watchtower_<pack>` imports.
@@ -98,4 +98,4 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 - The stable CLI binary name may remain `watchtower-core` even when the owning Python package is `watchtower_host`.
 
 ## Updated At
-- `2026-03-21T02:45:00Z`
+- `2026-03-22T22:15:00Z`

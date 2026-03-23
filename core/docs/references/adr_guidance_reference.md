@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "adr_guidance"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -56,7 +56,7 @@ Provide a concise baseline for recording important architectural or policy decis
 - [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md)
 
 ### Why It Matters Here
-- Use this reference when building ADR templates or decision-capture standards under `plan/docs/standards/governance/**`.
+- Use this reference when building ADR templates or decision-capture standards under the owning pack standards root.
 - Treat ADRs as supporting decision history, not as the only location of active policy.
 
 ### If Local Policy Tightens
@@ -71,4 +71,4 @@ Provide a concise baseline for recording important architectural or policy decis
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-22T22:15:00Z`

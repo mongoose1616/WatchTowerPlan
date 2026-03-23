@@ -156,7 +156,7 @@ def test_instruction_layers_publish_current_core_plan_boundaries() -> None:
         ),
         REPO_ROOT / "core/control_plane/AGENTS.md": (
             "core/control_plane/**",
-            "plan/.wt/**",
+            "owning pack machine root",
             "schemas",
         ),
     }
@@ -184,10 +184,14 @@ def test_readme_layers_publish_current_core_plan_boundaries() -> None:
         REPO_ROOT / "plan/README.md": ("plan/.wt/**", "plan/python/", "machine state only"),
         REPO_ROOT / "core/control_plane/README.md": (
             "authored machine authority",
-            "plan/.wt/**",
-            "live plan machine state",
+            "<pack>/.wt/**",
+            "live pack machine state",
         ),
-        REPO_ROOT / "core/python/README.md": ("watchtower_core", "watchtower_plan", "plan/.wt/"),
+        REPO_ROOT / "core/python/README.md": (
+            "watchtower_core",
+            "watchtower_<pack>",
+            "pack workspaces",
+        ),
         REPO_ROOT / "plan/python/README.md": (
             "approved plan-owned Python boundary",
             "plan/.wt/**",
@@ -199,14 +203,14 @@ def test_readme_layers_publish_current_core_plan_boundaries() -> None:
             "plan-flavored duplicates",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/README.md": (
-            "watchtower_plan",
+            "watchtower_<pack>",
             "reusable-core",
-            "plan-owned logic",
+            "pack-owned logic",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/control_plane/README.md": (
-            "plan/.wt/**",
+            "pack workspace",
             "machine authority",
-            "repo-local plan behavior",
+            "repo-local pack behavior",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/rebuild/README.md": (
             "reusable_core",
@@ -214,12 +218,12 @@ def test_readme_layers_publish_current_core_plan_boundaries() -> None:
             "reusable rebuild primitives",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/query/README.md": (
-            "watchtower_plan.query",
-            "plan-flavored duplicates",
+            "watchtower_<pack>.query",
+            "pack-flavored duplicates",
             "generic governed-surface query helpers",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/documentation/README.md": (
-            "watchtower_plan.validation",
+            "watchtower_<pack>.validation",
             "repo-shared governed-document helpers",
             "repo-local semantic validators",
         ),
@@ -229,18 +233,18 @@ def test_readme_layers_publish_current_core_plan_boundaries() -> None:
             "validation-evidence",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/routing/README.md": (
-            "plan-flavored routing wrappers",
+            "pack-flavored routing wrappers",
             "governed route selection",
             "repo-local route narration",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/sync/README.md": (
-            "watchtower_plan.sync",
-            "plan-flavored copies",
+            "watchtower_<pack>.sync",
+            "pack-flavored copies",
             "reusable harness behavior",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/validation/README.md": (
-            "watchtower_plan.validation",
-            "plan-flavored duplicates",
+            "watchtower_<pack>.validation",
+            "pack-flavored duplicates",
             "reusable suite orchestration",
         ),
         REPO_ROOT / "core/python/src/watchtower_core/workflow_execution/README.md": (

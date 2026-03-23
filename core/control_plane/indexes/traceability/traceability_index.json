@@ -143,6 +143,45 @@
       ]
     },
     {
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "summary": "Removes non-essential plan-specific wording and examples from shared core docs, host help, and reusable-core boundaries while preserving only references required by the current repository contract.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T00:04:09Z",
+      "closed_at": "2026-03-23T00:04:09Z",
+      "closure_reason": "Removed non-essential plan references from shared core while preserving current-repo facts and required pack-owned surfaces.",
+      "source_surface_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.core_removable_plan_reference_cleanup.bootstrap_core_removable_plan_reference_cleanup",
+        "task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core",
+        "task.core_removable_plan_reference_cleanup.validate_and_close_core_removable_plan_reference_cleanup"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/indexes/",
+        "core/docs/",
+        "core/python/src/",
+        "core/python/tests/",
+        "plan/initiatives/core_removable_plan_reference_cleanup/.wt/initiative.json",
+        "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/bootstrap_core_removable_plan_reference_cleanup/task.json",
+        "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/remove_removable_plan_references_from_shared_core/task.json",
+        "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/validate_and_close_core_removable_plan_reference_cleanup/task.json",
+        "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_shared_language_deplanification",
       "title": "Core Shared Language Deplanification",
       "summary": "Removes WatchTowerPlan and plan-flavored wording from shared core standards, registries, and reusable-core READMEs so core authority stays pack-neutral.",

@@ -10,6 +10,7 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 def _run_doctor(args: argparse.Namespace) -> int:
     loader = ControlPlaneLoader()
+    pack_registry = loader.load_pack_registry()
     schema_catalog = loader.load_schema_catalog()
     validator_registry = loader.load_validator_registry()
     command_index = loader.load_command_index()
@@ -20,6 +21,21 @@ def _run_doctor(args: argparse.Namespace) -> int:
     task_index = loader.load_task_index()
     initiative_index = loader.load_initiative_index()
     traceability_index = loader.load_traceability_index()
+    recommended_baseline = [
+        "watchtower-core sync command-index --write",
+        "watchtower-core sync route-index --write",
+        "watchtower-core sync repository-paths --write",
+        "watchtower-core validate all",
+        "./.venv/bin/python -m mypy src",
+        "./.venv/bin/ruff check src tests/unit tests/integration",
+        "./.venv/bin/python -m pytest tests/unit tests/integration -q",
+    ]
+    try:
+        default_namespace = pack_registry.default_pack().command_namespace
+    except ValueError:
+        default_namespace = None
+    if default_namespace:
+        recommended_baseline.insert(3, f"watchtower-core {default_namespace} sync all --write")
     payload = {
         "command": "watchtower-core doctor",
         "workspace": "core_python",
@@ -40,16 +56,7 @@ def _run_doctor(args: argparse.Namespace) -> int:
             "tasks": len(task_index.entries),
             "traces": len(traceability_index.entries),
         },
-        "recommended_baseline": [
-            "watchtower-core sync command-index --write",
-            "watchtower-core sync route-index --write",
-            "watchtower-core sync repository-paths --write",
-            "watchtower-core plan sync all --write",
-            "watchtower-core validate all",
-            "./.venv/bin/python -m mypy src",
-            "./.venv/bin/ruff check src tests/unit tests/integration",
-            "./.venv/bin/python -m pytest tests/unit tests/integration -q",
-        ],
+        "recommended_baseline": recommended_baseline,
     }
 
     def _render_human() -> None:

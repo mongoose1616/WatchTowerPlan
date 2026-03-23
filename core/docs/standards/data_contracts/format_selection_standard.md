@@ -28,7 +28,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 - Does not define every serialization detail, schema rule, or storage configuration by itself.
 
 ## Use When
-- Adding a new artifact type under `core/docs/`, `plan/docs/`, `core/workflows/`, `plan/workflows/`, or `core/control_plane/`.
+- Adding a new artifact type under shared or pack-owned documentation and workflow roots, or under `core/control_plane/`.
 - Deciding whether a new machine-readable surface should be JSON, YAML, NDJSON, SQLite-backed, or something else.
 - Reviewing whether an existing format choice is introducing avoidable complexity.
 
@@ -67,7 +67,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 | Local embedded retrieval, indexing, or durable runtime state | SQLite | Use only when file-based documents are no longer the right shape. |
 
 ### Repository-default decisions
-- `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, and human-facing repository guidance should use Markdown.
+- Shared and pack-owned documentation and workflow roots, and other human-facing repository guidance, should use Markdown.
 - `core/control_plane/schemas/**` should use JSON.
 - `core/control_plane/contracts/**`, `manifests/**`, `registries/**`, `indexes/**`, and `records/**` should default to JSON.
 - Documentation front matter should use YAML only for the parsed metadata block, not for the document body.
@@ -93,7 +93,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 
 ## Examples
 - A new registry document under `core/control_plane/registries/` should be JSON, not YAML.
-- A new standards document under `core/docs/standards/**` or `plan/docs/standards/**` should be Markdown, not JSON or YAML.
+- A new standards document under the shared and pack-owned standards roots should be Markdown, not JSON or YAML.
 - A governed reference document may use YAML front matter for metadata while keeping the body in Markdown.
 - A future append-only validation-event log could use NDJSON if it is truly line-oriented and not canonical control-plane authority.
 - A future local retrieval index may justify SQLite if file-based indexes become too limited.

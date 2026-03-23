@@ -24,7 +24,7 @@ uv run watchtower-core query acceptance [--trace-id <trace_id>] [--source-surfac
 
 ## Arguments and Options
 - `--trace-id <trace_id>`: Exact trace filter such as `trace.governed_acceptance_example`.
-- `--source-surface-path <path>`: Exact source surface path filter such as `plan/initiatives/example/initiative_brief.md`.
+- `--source-surface-path <path>`: Exact source surface path filter such as `<pack-root>/initiatives/example/initiative_brief.md`.
 - `--acceptance-id <acceptance_id>`: Exact acceptance-ID filter such as `ac.governed_acceptance_example.001`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -50,7 +50,7 @@ uv run watchtower-core query acceptance --acceptance-id ac.governed_acceptance_e
 |---|---|
 | `watchtower-core query evidence` | Lets you inspect durable evidence that should cover the same acceptance IDs. |
 | `watchtower-core validate acceptance` | Performs semantic reconciliation across the same trace surfaces. |
-| `watchtower-core plan query trace` | Shows the joined traceability record that should mirror the same acceptance contract IDs. |
+| `watchtower-core <pack-namespace> query trace` | Shows the joined traceability record that should mirror the same acceptance contract IDs. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/query_records_family.py`

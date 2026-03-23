@@ -13,7 +13,7 @@ _SLUG_PATTERN = re.compile(r"[^a-z0-9]+")
 
 @dataclass(frozen=True, slots=True)
 class PlanInitiativeLocation:
-    """Resolved plan-workspace initiative placement for one scope root."""
+    """Resolved pack-workspace initiative placement for one scope root."""
 
     initiative_slug: str
     initiative_root_relative: str
@@ -36,7 +36,7 @@ class PlanInitiativeLocation:
 
 
 class PlanPathIdHelper:
-    """Centralized plan-workspace slug, identifier, and root-path helpers."""
+    """Centralized pack-workspace slug, identifier, and root-path helpers."""
 
     @classmethod
     def slugify(cls, value: str, *, label: str = "value") -> str:

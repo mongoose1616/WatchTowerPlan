@@ -23,7 +23,7 @@ This standard defines how workflow modules in this repository should be designed
 Keep workflow modules small, composable, and explicit so routed task execution stays predictable, reviewable, and aligned with the repository's governed operating model.
 
 ## Scope
-- Applies to workflow modules under `core/workflows/modules/**` and `plan/workflows/modules/**`.
+- Applies to workflow modules under the shared and pack-owned workflow module roots.
 - Covers workflow-module objective, structure, boundary rules, and handoff expectations.
 - Does not define routing classification logic for `ROUTING_TABLE.md` or repository-wide wrapper behavior for `AGENTS.md`.
 
@@ -39,7 +39,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - [agent_workflow_authoring_reference.md](/core/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules narrow, explicit, and efficient for LLM or agent use.
 - [workflow_template.md](/core/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md): shared workflow-routing surface that operationalizes or depends on this standard.
-- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md): plan-owned workflow-routing surface that operationalizes or depends on this standard.
+- Pack-owned workflow-routing surfaces: they operationalize this standard alongside the shared routing table.
 - [AGENTS.md](/AGENTS.md): companion repository surface this standard should stay aligned with.
 
 ## Inputs
@@ -60,12 +60,12 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - When the same concrete execution phase recurs across multiple task families, factor it into a reusable shared workflow module instead of copying it into every task-family workflow.
 - Put repository-wide wrappers and dos and don'ts in `AGENTS.md`, not inside workflow modules.
 - Put classification rules in `ROUTING_TABLE.md`, not inside workflow modules.
-- Put normative repository policy in `core/docs/standards/**` or `plan/docs/standards/**`, not inside workflow modules.
+- Put normative repository policy in the shared and pack-owned standards roots, not inside workflow modules.
 - Workflows may reference standards, templates, or canonical docs, but they should not silently replace them.
 - Workflow modules may publish `Additional Files to Load` only when extra repo-local files beyond the routing baseline materially change execution.
 - `Additional Files to Load` should point to the next files an agent or maintainer should actually open, not to generic repo-wide context that routing already guarantees.
 - `Additional Files to Load` bullets should use `source: execution implication` form and remain short enough to keep the module scan-friendly.
-- `Additional Files to Load` links should use repository-native Markdown targets such as `/core/docs/...`, `/plan/docs/...`, `/core/workflows/...`, `/plan/workflows/...`, or another repo-relative path the current checkout can resolve.
+- `Additional Files to Load` links should use repository-native Markdown targets such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another repo-relative path the current checkout can resolve.
 - Filesystem-absolute targets such as `/home/...` or other machine-local checkout paths are invalid in workflow modules because they break clone, branch, and worktree portability.
 - Steps should be ordered and concrete enough that the workflow can be followed without hidden verbal context.
 - Workflows should prefer clarify-before-execute behavior when ambiguity materially affects correctness.
@@ -108,9 +108,9 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 7. Align the new or updated workflow with the routing table and any companion standards in the same change set when needed.
 
 ## Examples
-- A code-implementation workflow belongs in `core/workflows/modules/` or `plan/workflows/modules/` because it defines execution behavior for implementing changes.
+- A code-implementation workflow belongs in the shared or owning-pack workflow module roots because it defines execution behavior for implementing changes.
 - A routing rule does not belong in a workflow module because routing classification belongs in `ROUTING_TABLE.md`.
-- A repository-wide documentation policy does not belong in a workflow module because it belongs in `core/docs/standards/**` or `plan/docs/standards/**`.
+- A repository-wide documentation policy does not belong in a workflow module because it belongs in the shared and pack-owned standards roots.
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
@@ -139,7 +139,6 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - [agent_workflow_authoring_reference.md](/core/docs/references/agent_workflow_authoring_reference.md)
 - [workflow_template.md](/core/docs/templates/workflow_template.md)
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md)
-- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md)
 - [AGENTS.md](/AGENTS.md)
 
 ## Notes

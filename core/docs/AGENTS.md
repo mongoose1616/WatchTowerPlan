@@ -13,7 +13,7 @@
 ## Routing
 - Read this file before working in `core/docs/**`.
 - Use [ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md) for documentation, reconciliation, and engineering routes.
-- Use [ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md) only when the work is plan-domain governance that happens to touch `core/docs/**`.
+- Use a pack-owned routing table only when pack-domain governance work happens to touch `core/docs/**`.
 - Do not turn this file into a second routing table.
 
 ## Local Rules
@@ -35,4 +35,4 @@
 ## Do Not
 - Do not reintroduce predecessor-repo framing into normal docs.
 - Do not turn documentation files into mixed-purpose catch-all notes.
-- Do not move plan-domain durable guidance into `core/docs/**` when `plan/docs/**` owns it.
+- Do not move pack-owned durable guidance into `core/docs/**` when an owning pack docs root owns it.

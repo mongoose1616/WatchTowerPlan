@@ -70,7 +70,7 @@ Provide a lifecycle model for penetration-testing planning, execution, and repor
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
 - The official PTES site was unreachable from this environment during the refresh, so the canonical URLs were preserved with an availability note rather than replaced with a secondary mirror.
-- If this topic becomes active repository policy later, move the enforceable rule into `core/docs/standards/**` or `plan/docs/standards/**`, or the relevant workflow module.
+- If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
 - `2026-03-09T05:03:16Z`

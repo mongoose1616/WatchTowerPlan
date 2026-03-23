@@ -39,7 +39,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-21T18:45:00Z",
+      "updated_at": "2026-03-22T23:20:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -212,7 +212,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-22T15:52:38Z",
+      "updated_at": "2026-03-22T23:20:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -250,7 +250,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-22T15:52:38Z",
+      "updated_at": "2026-03-22T23:20:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -289,7 +289,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-21T18:45:00Z",
+      "updated_at": "2026-03-22T23:20:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [

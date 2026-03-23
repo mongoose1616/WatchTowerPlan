@@ -18,5 +18,5 @@ Helpers for writing durable validation-evidence artifacts and managing pack-loca
 
 ## Notes
 - Keep reusable evidence bundle and validation-evidence helpers here.
-- Resolve pack-local evidence-bundle schema IDs from the active pack schema catalog instead of hardcoding a plan-owned schema identifier in reusable core.
+- Resolve pack-local evidence-bundle schema IDs from the active pack schema catalog instead of hardcoding a pack-owned schema identifier in reusable core.
 - Keep repo-local evidence workflow decisions outside this namespace.

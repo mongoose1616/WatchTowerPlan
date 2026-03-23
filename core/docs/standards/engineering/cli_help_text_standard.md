@@ -90,7 +90,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 ## Examples
 - `watchtower-core --help` should show a short orientation paragraph plus common examples such as `doctor`, `query commands`, and `sync repository-paths`.
 - `watchtower-core query --help` should explain the difference between `paths`, `commands`, and `trace` instead of only listing them.
-- `watchtower-core plan --help` should live in the pack-owned CLI namespace and explain how plan bootstrap, query, sync, task, and closeout commands differ.
+- `watchtower-core <pack-namespace> --help` should live in the pack-owned CLI namespace and explain how that pack's bootstrap, query, sync, task, and closeout commands differ.
 - `watchtower-core sync repository-paths --help` should state that the command is dry-run by default and that `--write` updates the canonical artifact.
 
 ## Operationalization

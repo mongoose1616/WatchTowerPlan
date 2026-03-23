@@ -8,7 +8,7 @@
 - Use `watchtower_core_route.md` when the main question is how a request maps to workflow modules.
 - Use `watchtower_core_query.md` when the main question is which shared read-only lookup surface to use.
 - Use `watchtower_core_sync.md` when the main question is which shared derived artifact to rebuild.
-- For plan-owned command groups and leaf pages, start in `plan/docs/commands/core_python/`.
+- For pack-owned command groups and leaf pages, start in the owning pack command-doc root such as `<pack-root>/docs/commands/core_python/`.
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_validate_suite.md` when the main question is how to run one pack-declared validation suite with optional `pack_settings` selection.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.

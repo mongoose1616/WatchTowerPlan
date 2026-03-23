@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_workflow"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -91,7 +91,7 @@ This standard defines repository-standard local git workflow behavior, including
 | Bounded feature slice | `feature/registry-backed-command-surface` |
 | Bug fix | `fix/task-index-trace-filter` |
 | Docs-only change | `chore/doc-root-cutover` |
-| Narrow task branch | `task/plan-python-boundary-split` |
+| Narrow task branch | `task/pack-python-boundary-split` |
 
 ## Process or Workflow
 1. Decide whether the work crosses the durable-task threshold or otherwise needs a bounded branch.
@@ -123,4 +123,4 @@ This standard defines repository-standard local git workflow behavior, including
 - [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-22T22:15:00Z`

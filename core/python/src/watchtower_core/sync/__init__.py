@@ -15,5 +15,5 @@ __all__ = ["SyncHarness", "SyncRecord", "SyncResult", "SyncTargetSpec"]
 __getattr__ = fail_closed_package_getattr(
     "watchtower_core.sync exports only the generic sync harness from the package root. "
     "Repo-shared sync services live under explicit watchtower_core.sync.* modules, and "
-    "plan-specific orchestration remains under watchtower_plan.sync."
+    "pack-local orchestration remains under the owning watchtower_<pack>.sync package."
 )

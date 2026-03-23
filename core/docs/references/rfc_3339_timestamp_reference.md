@@ -65,7 +65,7 @@ Provide a stable timestamp format baseline for logs, records, manifests, and str
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
-- If this topic becomes active repository policy later, move the enforceable rule into `core/docs/standards/**` or `plan/docs/standards/**`, or the relevant workflow module.
+- If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 - The current repository timestamp baseline is defined in [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md).
 
 ## Updated At

@@ -74,7 +74,7 @@ Provide a practical format for docstrings that need predictable sections such as
 - This reference is most useful when the repo starts to accumulate reusable Python surfaces.
 - If an engineering standard is written later, it should define when Google-style docstrings are required and when simpler docstrings are enough.
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
-- If this topic becomes active repository policy later, move the enforceable rule into `core/docs/standards/**` or `plan/docs/standards/**`, or the relevant workflow module.
+- If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
 - `2026-03-09T05:03:16Z`

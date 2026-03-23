@@ -452,7 +452,7 @@ class ArtifactFamilyRegistry:
 
 @dataclass(frozen=True, slots=True)
 class LifecycleStageEntry:
-    """One governed lifecycle-stage entry for plan-runtime work."""
+    """One governed lifecycle-stage entry for pack-runtime work."""
 
     stage_id: str
     value: str
@@ -510,7 +510,7 @@ class LifecycleStageRegistry:
 
 @dataclass(frozen=True, slots=True)
 class ReviewStatusEntry:
-    """One governed review-status entry for plan-runtime approval state."""
+    """One governed review-status entry for pack-runtime approval state."""
 
     review_status_id: str
     value: str
@@ -566,7 +566,7 @@ class ReviewStatusRegistry:
 
 @dataclass(frozen=True, slots=True)
 class SourceTypeEntry:
-    """One governed source-type entry for plan-runtime provenance."""
+    """One governed source-type entry for pack-runtime provenance."""
 
     source_type_id: str
     value: str

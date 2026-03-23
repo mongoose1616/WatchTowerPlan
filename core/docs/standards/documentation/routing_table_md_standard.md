@@ -23,7 +23,7 @@ This standard defines the structure and expected content of `ROUTING_TABLE.md` a
 Keep routing deterministic, minimal, and easy to maintain by giving the repository one compact table that maps request types to the minimum required workflow modules.
 
 ## Scope
-- Applies to the canonical routing table file at `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
+- Applies to the canonical routing table file at the shared routing table and any pack-owned routing tables.
 - Covers the table structure, row design, path conventions, and routing intent.
 - Does not define the detailed behavior of context loading beyond what is needed to structure the routing table itself.
 

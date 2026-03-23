@@ -54,7 +54,8 @@ __getattr__ = lazy_module_getattr(
         dict.fromkeys(
             _PLAN_DOMAIN_EXPORTS,
             "watchtower_core.validation exposes only reusable validation services. "
-            "Import repo-local document semantics from watchtower_plan.validation.",
+            "Import pack-local document semantics from the owning "
+            "watchtower_<pack>.validation package.",
         )
         | dict.fromkeys(
             _SUBMODULE_ONLY_EXPORTS,

@@ -19,4 +19,3 @@ Local, fail-open runtime telemetry for `watchtower-core` command execution. This
 ## Related Surfaces
 - `core/docs/standards/engineering/runtime_telemetry_standard.md`
 - `core/python/src/watchtower_host/README.md`
-- `plan/python/src/watchtower_plan/README.md`

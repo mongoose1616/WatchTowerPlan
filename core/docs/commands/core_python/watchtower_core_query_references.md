@@ -59,7 +59,7 @@ uv run watchtower-core query references --upstream-url https://docs.astral.sh/uv
 
 ```sh
 cd core/python
-uv run watchtower-core query references --applied-by-path plan/docs/standards/governance/github_collaboration_standard.md --format json
+uv run watchtower-core query references --applied-by-path <pack-root>/docs/standards/governance/github_collaboration_standard.md --format json
 ```
 
 ## Behavior and Outputs
@@ -72,7 +72,7 @@ uv run watchtower-core query references --applied-by-path plan/docs/standards/go
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core plan sync reference-index` | Rebuilds the reference index that this command reads. |
+| `watchtower-core <pack-namespace> sync reference-index` | Rebuilds the reference index that this command reads when the owning pack publishes that rebuild surface. |
 | `watchtower-core query paths` | Searches the repository path index when you know the path or surface instead of the reference topic. |
 
 ## Source Surface

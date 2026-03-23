@@ -1,7 +1,7 @@
 # `foundations`
 
 ## Description
-`This directory contains the shared WatchTowerPlan foundations corpus. core/docs/foundations/ is the authored source and plan/docs/foundations/ is the required byte-identical mirror. Update the authored copy in core and refresh the mirror in the same change set.`
+`This directory contains the shared foundations corpus for the repository. core/docs/foundations/ is the authored source and plan/docs/foundations/ is the required byte-identical mirror. Update the authored copy in core and refresh the mirror in the same change set.`
 
 ## Audience Routes
 
@@ -17,7 +17,7 @@
 | Need | Start Here | Why |
 |---|---|---|
 | Find the governing foundation document for one repo surface, citation path, or applied-reference path | `core/docs/commands/core_python/watchtower_core_query_foundations.md` | Uses the machine-readable foundation index for deterministic lookup instead of rescanning the full foundations corpus manually. |
-| Rebuild the machine-readable foundations corpus after a foundations-doc change | `plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md` | Keeps the published foundation index aligned with the human foundation documents in the same change set. |
+| Rebuild the machine-readable foundations corpus after a foundations-doc change | The owning pack `sync foundation-index` command doc | Keeps the published foundation index aligned with the human foundation documents in the same change set. |
 
 ## Authoritative Backbone
 

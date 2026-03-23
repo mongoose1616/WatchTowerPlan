@@ -1,0 +1,91 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+  "trace_id": "trace.core_removable_plan_reference_cleanup",
+  "slug": "core_removable_plan_reference_cleanup",
+  "title": "Core Removable Plan Reference Cleanup",
+  "summary": "Removes non-essential plan-specific wording and examples from shared core docs, host help, and reusable-core boundaries while preserving only references required by the current repository contract.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T23:12:27Z",
+  "updated_at": "2026-03-23T00:04:09Z",
+  "task_ids": [
+    "task.core_removable_plan_reference_cleanup.bootstrap_core_removable_plan_reference_cleanup",
+    "task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core",
+    "task.core_removable_plan_reference_cleanup.validate_and_close_core_removable_plan_reference_cleanup"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.core_removable_plan_reference_cleanup.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.core_removable_plan_reference_cleanup.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.core_removable_plan_reference_cleanup.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md",
+      "sha256": "158273c953c139c3f60b4c0c66de05ea165af23b95538b931286af15bbf98636",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T23:13:47Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md",
+      "sha256": "b0cd46a91f3a58227b9b5c7c2f0ba30b24efac924be2938028b4590e58c758b2",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T23:13:47Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
+      "sha256": "5d3f6fe487dd963b7d75874d8d3db160eea3a1c00ec32a8c0d4e4affd39ecf99",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T23:13:47Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md",
+      "sha256": "4da6c8de9fb9ed902ea9e79c35e0b98f6d12ce9d88a22160fceaf58bd687fd65",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T23:13:47Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T23:13:32Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T23:13:47Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T23:14:06Z"
+    }
+  ],
+  "closed_at": "2026-03-23T00:04:09Z",
+  "closure_reason": "Removed non-essential plan references from shared core while preserving current-repo facts and required pack-owned surfaces."
+}

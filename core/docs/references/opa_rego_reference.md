@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "opa_rego"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -55,7 +55,7 @@ Provide a policy-as-code baseline when repository controls need declarative, tes
 - Candidate reference. No active standard or workflow in this repository links this file directly yet.
 
 ### Why It Matters Here
-- Use this reference if the repository later adds policy-as-code controls under `plan/docs/standards/governance/**` or validation workflows.
+- Use this reference if the repository later adds policy-as-code controls under a pack-owned governance standards root or validation workflows.
 - Pair it with Regal when linting or style enforcement for Rego matters.
 
 ### If Local Policy Tightens
@@ -67,7 +67,7 @@ Provide a policy-as-code baseline when repository controls need declarative, tes
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
-- If this topic becomes active repository policy later, move the enforceable rule into `core/docs/standards/**` or `plan/docs/standards/**`, or the relevant workflow module.
+- If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-22T22:15:00Z`

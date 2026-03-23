@@ -3,8 +3,233 @@
   "id": "index.plan_discrepancies",
   "title": "Plan Workspace Discrepancy Index",
   "status": "active",
-  "updated_at": "2026-03-22T23:08:32Z",
+  "updated_at": "2026-03-23T00:04:09Z",
   "entries": [
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.artifact_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/artifact_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/artifact_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.closeout_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/closeout_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/closeout_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.decision_notes_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.design_record_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/core_removable_plan_reference_cleanup/design_record.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.evidence_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/evidence_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/evidence_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.guidance_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/guidance_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/guidance_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.implementation_slice_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.initiative_brief_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.initiative_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.plan_surface_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/core_removable_plan_reference_cleanup/plan.md.",
+      "source_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/plan.md"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.progress_surface_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/core_removable_plan_reference_cleanup/progress.md.",
+      "source_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/progress.md"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.promotion_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/promotion_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/promotion_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.readiness_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.review_index_index_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/review_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.core_removable_plan_reference_cleanup.summary_surface_drift",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/core_removable_plan_reference_cleanup/summary.md.",
+      "source_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/summary.md"
+      ],
+      "updated_at": "2026-03-22T23:13:51Z"
+    },
     {
       "discrepancy_id": "discrepancy.core_shared_language_deplanification.decision_notes_drift",
       "initiative_id": "initiative.core_shared_language_deplanification",

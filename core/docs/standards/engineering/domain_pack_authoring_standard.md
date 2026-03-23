@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T23:59:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,7 +23,7 @@ This standard defines how a hosted domain pack should be structured so it integr
 Keep hosted packs portable, comprehensible, and validator-friendly by standardizing owned roots, Python harness placement, pack-local docs ownership, and externalization expectations.
 
 ## Scope
-- Applies to pack roots such as `plan/` and future domain packs.
+- Applies to first-party root packs such as `<pack>/` and future domain packs.
 - Covers pack-owned docs, workflows, tracking, machine state, and Python harnesses.
 - Does not replace the lower-level pack-interface contract or the reusable-core Python boundary standard.
 
@@ -43,7 +43,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - A hosted pack owns its own machine root, durable docs root, workflow root, tracking root, and Python package root.
 - Start new packs from `watchtower-core pack scaffold` when working inside a hosted repository, or from `core/docs/templates/pack/` when you need to customize the starter before the first render.
 - Keep pack-owned Python narrow and domain-specific.
-- Put shared helpers back into `watchtower_core` instead of duplicating them to make them pack-flavored.
+- Put shared helpers back into `watchtower_core` instead of duplicating them to make them pack-specific.
 - Keep pack-owned command docs under the owning pack docs root when the command is pack-specific.
 - Publish the pack namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md` so host introspection and pack validation can resolve the command surface deterministically.
 - Keep pack-owned workflow modules under the owning pack workflow root.
@@ -81,7 +81,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`; `runtime`
-- `Operational Surfaces`: `plan/`; `plan/python/src/watchtower_plan/`; `plan/docs/`; `plan/workflows/`; `plan/.wt/`
+- `Operational Surfaces`: `core/docs/references/domain_pack_authoring_reference.md`; `core/docs/templates/pack/`; `core/python/src/watchtower_host/cli/pack_family.py`; `core/python/src/watchtower_core/pack_integration/`; `core/control_plane/registries/pack_registry.json`
 
 ## Validation
 - Reviewers should reject pack roots that mirror reusable-core package trees without a real domain need.
@@ -101,8 +101,8 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)
 
 ## Notes
-- This standard is intentionally written for future packs as well as `plan`.
+- This standard is intentionally written for future packs as well as current first-party root packs.
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-21T23:59:00Z`
+- `2026-03-22T22:15:00Z`

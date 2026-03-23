@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T16:21:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -64,7 +64,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 | `<pack>/python/**` | Pack-native Python package and tests. |
 | Optional domain roots | Pack-specific runtime surfaces such as `initiatives/`, `projects/`, `targets/`, or `reviews/`. |
 
-- Preferred first-party layout is a direct repository child such as `plan/` or `oversight/`; `packs/<slug>/` remains a supported nested convention for multi-pack or copied-repository layouts.
+- Preferred first-party layout is a direct repository child such as `<pack>/`; `packs/<slug>/` remains a supported nested convention for multi-pack or copied-repository layouts.
 - Pack discovery should key off `<pack>/.wt/manifests/pack_settings.json`, not off one required parent directory name.
 
 ### Rules or Decision Points
@@ -308,12 +308,12 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 - The command validates the hosted pack after applying the shared wiring and restores the shared files if validation fails.
 
 ### Worked Comparison
-| Concern | `plan` Pack Shape | Future `oversight`-style Pack Shape |
+| Concern | First-Party Root-Pack Shape | Nested Multi-Pack Shape |
 |---|---|---|
-| Primary domain work | Initiative, project, task, promotion, and closeout flows. | Review, assessment, oversight trace, or evidence-heavy domain flows. |
+| Primary domain work | Initiative, project, task, promotion, or closeout flows under a direct repository child pack root. | Review, assessment, evidence-heavy, or other domain flows under `packs/<slug>/`. |
 | Shared dependency | `watchtower_core` contracts, loaders, validators, and shared helpers. | Same shared dependency set. |
 | Host integration | One manifest plus one integration module loaded by the host. | Same host seam, different capabilities declared. |
-| Pack-owned docs | `plan/docs/**` and `plan/workflows/**`. | `oversight/docs/**` and `oversight/workflows/**`. |
+| Pack-owned docs | `<pack>/docs/**` and `<pack>/workflows/**` under a first-party root pack. | `packs/<slug>/docs/**` and `packs/<slug>/workflows/**`. |
 
 ### Failure Modes
 - Putting pack-native orchestration back into `watchtower_core` creates hidden coupling and blocks future pack reuse.
@@ -349,11 +349,10 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 4. Validate the pack interface and dependency direction before registering commands.
 
 ## Examples
-- [plan/README.md](/plan/README.md)
-- [plan/python/README.md](/plan/python/README.md)
+- `core/docs/templates/pack/` as the reusable starter surface for new pack roots
 - `WatchTowerOversight` as a second-pack design reference for future capabilities and docs shape
 - `core/python/tests/fixtures/python/watchtower_oversight_fixture/` as the repository’s synthetic second-pack source package for multi-pack contract tests
-- `core/python/tests/integration/test_pack_externalization.py` as the externalized proof that both the default `plan` pack and a second `oversight`-style pack can load from pack-owned `python/` roots
+- `core/python/tests/integration/test_pack_externalization.py` as the externalized proof that both a first-party root pack and a second `oversight`-style pack can load from pack-owned `python/` roots
 
 ## References
 - [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)
@@ -365,4 +364,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-22T16:21:00Z`
+- `2026-03-22T22:15:00Z`

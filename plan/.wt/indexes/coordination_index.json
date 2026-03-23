@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T23:08:32Z",
+  "updated_at": "2026-03-23T00:04:09Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T00:04:09Z",
+      "key_surface_path": "plan/initiatives/core_removable_plan_reference_cleanup/plan.md",
+      "closure_reason": "Removed non-essential plan references from shared core while preserving current-repo facts and required pack-owned surfaces."
+    },
     {
       "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
       "title": "Root Pack Schema Catalog Contract Alignment",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-22T08:52:36Z",
       "key_surface_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/plan.md",
       "closure_reason": "Reduced the Python suite from a non-finishing >28 minute baseline to a validated 19m46s full run by collapsing redundant CLI coverage, caching expensive integration baselines, and trimming repeated coordination rebuild work."
-    },
-    {
-      "trace_id": "trace.remaining_dirty_tranche_closeout",
-      "title": "Remaining Dirty Tranche Closeout",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T06:30:43Z",
-      "key_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
-      "closure_reason": "Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state."
     }
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.core_removable_plan_reference_cleanup.validate_and_close_core_removable_plan_reference_cleanup.0002_status_changed",
+  "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T00:03:58Z",
+  "summary": "Changed task.core_removable_plan_reference_cleanup.validate_and_close_core_removable_plan_reference_cleanup status from in_progress to completed.",
+  "payload": {
+    "status": "active",
+    "task_status": "completed",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/validate_and_close_core_removable_plan_reference_cleanup/task.json"
+  },
+  "task_id": "task.core_removable_plan_reference_cleanup.validate_and_close_core_removable_plan_reference_cleanup"
+}

@@ -71,7 +71,7 @@ def register_query_knowledge_commands(
         "--related-path",
         help=(
             "Exact repository-path filter such as core/python/, "
-            "core/workflows/modules/, or plan/workflows/modules/."
+            "core/workflows/modules/, or a pack-owned workflows/modules/ path."
         ),
     )
     query_foundations_parser.add_argument(
@@ -265,7 +265,7 @@ def register_query_knowledge_commands(
         "--applies-to",
         help=(
             "Exact front-matter applies_to filter such as core/python/, "
-            "core/docs/standards/engineering/, or plan/docs/standards/governance/."
+            "core/docs/standards/engineering/, or a pack-owned standards root."
         ),
     )
     query_standards_parser.add_argument(
@@ -287,7 +287,7 @@ def register_query_knowledge_commands(
         "--operationalization-path",
         help=(
             "Repository-path filter for one operationalizing surface such as "
-            "plan/python/src/watchtower_plan/validation/document_semantics.py. "
+            "core/python/src/watchtower_host/cli/parser.py. "
             "Exact file paths match directly, indexed directory paths match "
             "their concrete descendants, and indexed glob patterns match "
             "concrete files such as nested README.md or AGENTS.md surfaces."

@@ -51,7 +51,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - Treat the registry-backed CLI parser tree as the machine source for command presence, hierarchy, synopsis, and output-format metadata.
 - Treat the authored command pages under the owning command-doc root as the primary human companion surface for the derived command index.
 - Shared and reusable-core command entries must point to `core/docs/commands/**`.
-- Pack-owned command entries must point to the owning pack docs root such as `plan/docs/commands/**` or `packs/<slug>/docs/commands/**`.
+- Pack-owned command entries must point to the owning pack docs root such as `<pack-root>/docs/commands/**` or `packs/<slug>/docs/commands/**`.
 - Every entry should point to the owning implementation surface when one exists.
 - Use a stable `command_id` per command or subcommand.
 - Represent subcommands as separate entries rather than embedding them only inside parent records.

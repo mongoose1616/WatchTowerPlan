@@ -107,23 +107,19 @@ def test_root_command_prints_help(capsys) -> None:
     assert "watchtower-core" in captured.out
     assert "uv run watchtower-core doctor" in captured.out
     assert "uv run watchtower-core pack list --format json" in captured.out
+    assert "uv run watchtower-core pack describe --format json" in captured.out
+    assert "uv run watchtower-core pack validate --format json" in captured.out
+    assert (
+        "uv run watchtower-core pack scaffold --pack-slug oversight "
+        "--pack-root packs/oversight --format json" in captured.out
+    )
+    assert (
+        "uv run watchtower-core pack bootstrap --pack-settings-path "
+        "packs/oversight/.wt/manifests/pack_settings.json --write --format json"
+        in captured.out
+    )
     assert 'uv run watchtower-core route preview --request "review code and commit"' in captured.out
-    assert "uv run watchtower-core plan query coordination --format json" in captured.out
-    assert (
-        "uv run watchtower-core plan query artifacts --artifact-family "
-        "initiative_state --format json" in captured.out
-    )
-    assert (
-        "uv run watchtower-core plan query readiness --ready-for-execution true --format json"
-        in captured.out
-    )
-    assert (
-        "uv run watchtower-core plan query projects --slug watchtower --format json" in captured.out
-    )
-    assert (
-        "uv run watchtower-core plan query authority --domain planning --format json"
-        in captured.out
-    )
+    assert "uv run watchtower-core query commands --query doctor --format json" in captured.out
     assert (
         "uv run watchtower-core query standards --category governance --format json" in captured.out
     )
@@ -133,17 +129,11 @@ def test_root_command_prints_help(capsys) -> None:
     )
     assert "uv run watchtower-core query foundations --query philosophy" in captured.out
     assert "uv run watchtower-core query workflows --query validation" in captured.out
-    assert (
-        "uv run watchtower-core plan task transition --task-id task.example.001 "
-        "--task-status completed --format json" in captured.out
-    )
+    assert "uv run watchtower-core query references --query uv" in captured.out
+    assert "uv run watchtower-core sync command-index" in captured.out
+    assert "uv run watchtower-core sync command-index --write" in captured.out
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync route-index" in captured.out
-    assert "uv run watchtower-core plan sync standard-index" in captured.out
-    assert "uv run watchtower-core plan sync foundation-index" in captured.out
-    assert "uv run watchtower-core plan sync workflow-index" in captured.out
-    assert "uv run watchtower-core plan sync coordination" in captured.out
-    assert "uv run watchtower-core plan sync task-index" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert (
         "uv run watchtower-core validate document-semantics --path "
@@ -282,7 +272,7 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
     assert "route-index" in captured.out
     assert "repository-paths" in captured.out
     assert "uv run watchtower-core sync command-index --write" in captured.out
-    assert "watchtower-core plan sync" in captured.out
+    assert "watchtower-core plan sync" not in captured.out
 
 
 def test_plan_sync_group_prints_group_specific_help(capsys) -> None:

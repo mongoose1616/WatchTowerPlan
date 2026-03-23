@@ -30,7 +30,7 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 ## Use When
 - Creating a new directory README.
 - Refreshing a README after a directory's purpose, boundaries, or key contents change.
-- Reviewing whether a README is carrying content that belongs in `AGENTS.md`, `core/docs/standards/**`, `plan/docs/standards/**`, `core/workflows/**`, or `plan/workflows/**` instead.
+- Reviewing whether a README is carrying content that belongs in `AGENTS.md`, the shared and pack-owned standards roots, or the shared and pack-owned workflow roots instead.
 
 ## Related Standards and Sources
 - [agents_md_standard.md](/core/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.

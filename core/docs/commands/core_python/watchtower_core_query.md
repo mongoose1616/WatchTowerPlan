@@ -48,15 +48,15 @@ uv run watchtower-core query foundations --query philosophy
 - Every leaf command is read-only and supports `--format human` or `--format json`.
 - Use `commands` or `paths` when the main task is discovery rather than opening docs or indexes manually.
 - Use `foundations`, `standards`, `references`, and `workflows` when the main question is governed repository intent, rules, source guidance, or routed workflow behavior.
-- Use `acceptance` or `evidence` when the main question is durable traced validation contracts or recorded proof rather than live plan execution state.
+- Use `acceptance` or `evidence` when the main question is durable traced validation contracts or recorded proof rather than live pack execution state.
 - Use `references --repository-status <status>` when you need only active-support, supporting-authority, or candidate-future guidance from the governed reference corpus.
-- Live plan-workspace queries now live under `watchtower-core plan query ...`.
+- Live pack-workspace queries now live under the owning pack namespace such as `watchtower-core <pack-namespace> query ...`.
 - For exact filters and field behavior, open the leaf command page or CLI help for the selected query command.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core plan query` | Pack-owned live planning lookup surface for coordination, tasks, readiness, projects, reviews, closeouts, and retained trace-linked planning records. |
+| `watchtower-core <pack-namespace> query` | Pack-owned live lookup surface for coordination, tasks, readiness, projects, reviews, closeouts, and retained trace-linked records. |
 | `watchtower-core query commands` | Machine-readable command discovery without scanning docs manually. |
 | `watchtower-core query foundations` | Governing foundation lookup surface for repository scope and intent. |
 | `watchtower-core query standards` | Governing repository-standard lookup surface. |
@@ -70,4 +70,4 @@ uv run watchtower-core query foundations --query philosophy
 - `core/python/src/watchtower_host/cli/query_records_family.py`
 
 ## Updated At
-- `2026-03-20T21:20:00Z`
+- `2026-03-22T22:15:00Z`

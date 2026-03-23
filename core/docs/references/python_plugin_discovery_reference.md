@@ -80,7 +80,7 @@ Keep plugin-discovery decisions explicit so pack integration does not drift into
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 
 ### Why It Matters Here
-- The repository is moving from direct `watchtower_core -> watchtower_plan` imports to a reusable core plus host-composition model.
+- The repository is moving from direct reusable-core to pack imports toward a reusable core plus host-composition model.
 - This reference supports the decision to make a governed pack manifest the primary integration contract instead of relying on implicit imports or Python packaging metadata alone.
 - It also preserves a clean path to later add an entry-point adapter for copied-out packs without changing the internal contract.
 
@@ -94,8 +94,8 @@ Keep plugin-discovery decisions explicit so pack integration does not drift into
 3. Import one integration module and resolve typed hooks from that module rather than scattering direct pack imports across the host.
 
 ## Examples
-- Host-owned pack registry listing `plan` as one discovered pack and pointing to `plan/.wt/manifests/pack_runtime_manifest.json`.
-- Pack-owned runtime manifest naming one integration module such as `watchtower_plan.integration`.
+- Host-owned pack registry listing one discovered pack and pointing to that pack's runtime manifest.
+- Pack-owned runtime manifest naming one integration module such as `watchtower_<pack>.integration`.
 
 ## References
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md)

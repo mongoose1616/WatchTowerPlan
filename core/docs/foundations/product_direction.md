@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T15:52:38Z"
+updated_at: "2026-03-22T23:20:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -39,7 +39,7 @@ This document defines the intended future WatchTower product shape. For current 
 
 - `WatchTowerPlan` currently owns the governed core substrate, host-composition layer, machine-readable control plane, workflow-routing model, and the first internal plan-domain pack.
 - This repository does not yet own the first operator-facing domain-pack implementation.
-- The hosted-pack model is already partially proven here through `watchtower_plan`, hosted-pack scaffolding, and second-pack portability work; future product work should extend that contract rather than re-invent it.
+- The hosted-pack model is already partially proven here through the current internal pack, hosted-pack scaffolding, and second-pack portability work; future product work should extend that contract rather than re-invent it.
 - One supported downstream adoption mode is to copy the canonical shared `core/` tree from this repository and then carry whichever hosted packs the consuming repository actually needs. That may begin with `core/` alone during integration bring-up or with `core/` plus one or more hosted packs.
 - The future product model in this document is still relevant because it constrains how the shared core should evolve now.
 
@@ -69,7 +69,7 @@ The future product promise is not just "automation." It is a local-first environ
 
 ## Domain Packs
 
-Domain packs are the future domain-specific operator layer of the product. They are specialized for a domain so the operator experience feels seamless and domain-native instead of generic. In this repository the model is no longer purely theoretical: `watchtower_plan` is the first internal consumer, hosted-pack portability has been exercised with a second-pack proof, and future external packs should extend that same contract.
+Domain packs are the future domain-specific operator layer of the product. They are specialized for a domain so the operator experience feels seamless and domain-native instead of generic. In this repository the model is no longer purely theoretical: the current internal pack is the first consumer, hosted-pack portability has been exercised with a second-pack proof, and future external packs should extend that same contract.
 
 - Make packs the main entry point for real operator jobs.
 - Use core to help a human achieve a real domain goal efficiently, repeatably, and with clean closeout.
@@ -78,12 +78,12 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Shape how the LLM or agent assists the human in that domain instead of forcing the user to translate generic system capabilities into domain process by hand.
 - Use shared core contracts instead of reimplementing routing, validation, rule enforcement, traceability, or recovery differently for each domain.
 - Support future expansion through the same pack model instead of letting the first domain become the accidental default for all later work.
-- Treat `watchtower_plan` as the first internal consumer, treat the second-pack proof as evidence that the contract can travel, and require later external packs to follow the same load, validation, and governance model without importing mismatched domain vocabulary into core.
+- Treat the current internal pack as the first internal consumer, treat the second-pack proof as evidence that the contract can travel, and require later external packs to follow the same load, validation, and governance model without importing mismatched domain vocabulary into core.
 
 ## Product Delivery Boundary
 
 - Future external operator-facing domain-pack implementation belongs in a later product phase and likely in a consuming repository such as `/home/j/WatchTower`, even though the host-pack contract is already proven here.
-- That consuming repository may adopt the shared runtime by copying `core/` and then wiring the hosted pack set it actually owns; shared core must therefore stay donor-neutral even when this repository currently carries `watchtower_plan`.
+- That consuming repository may adopt the shared runtime by copying `core/` and then wiring the hosted pack set it actually owns; shared core must therefore stay donor-neutral even when this repository currently carries one internal proof pack.
 - This repository should prepare the reusable substrate and contracts that product work will consume.
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
 
@@ -94,4 +94,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](customer_story.md)
 
 ## Updated At
-- `2026-03-22T15:52:38Z`
+- `2026-03-22T23:20:00Z`

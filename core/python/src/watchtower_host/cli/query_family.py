@@ -32,8 +32,8 @@ def register_query_family(
             governed acceptance contracts, and `evidence` for durable validation
             proof.
 
-            Live plan-workspace queries now live under
-            `watchtower-core plan query ...`.
+            Live pack-workspace queries live under the owning pack namespace,
+            such as `watchtower-core <pack-namespace> query ...`.
             """
         ).strip(),
         epilog=examples(
@@ -47,8 +47,6 @@ def register_query_family(
             "core/docs/references/github_collaboration_reference.md",
             "uv run watchtower-core query acceptance --trace-id trace.governed_acceptance_example",
             "uv run watchtower-core query evidence --trace-id trace.governed_acceptance_example",
-            "uv run watchtower-core plan query coordination --format json",
-            "uv run watchtower-core plan query tasks --task-status planned --format json",
         ),
         formatter_class=HelpFormatter,
     )

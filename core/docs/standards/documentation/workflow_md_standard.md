@@ -23,7 +23,7 @@ This standard defines the document-level structure and boundary rules for workfl
 Keep workflow files predictable, easy to scan, and easy to route to by standardizing their required headings, ordering, and file-level scope.
 
 ## Scope
-- Applies to workflow Markdown files that define task execution behavior, especially files under `core/workflows/modules/**` and `plan/workflows/modules/**`.
+- Applies to workflow Markdown files that define task execution behavior, especially files under the shared and pack-owned workflow module roots.
 - Covers file-level structure, heading conventions, section ordering, and what belongs in the document body.
 - Does not define routing classification logic for `ROUTING_TABLE.md`.
 - Does not replace the deeper behavioral rules in the workflow design standard.
@@ -41,10 +41,10 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - [workflow_index_standard.md](/core/docs/standards/data_contracts/workflow_index_standard.md): workflow modules publish machine-readable lookup records through the derived workflow index.
 - [workflow_template.md](/core/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md): shared workflow-routing surface that operationalizes or depends on this standard.
-- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md): plan-owned workflow-routing surface that operationalizes or depends on this standard.
+- Pack-owned workflow-routing surfaces: they operationalize this standard alongside the shared routing table.
 
 ## Guidance
-- Workflow files should live under `core/workflows/modules/` or `plan/workflows/modules/` unless a narrower repository standard defines another workflow surface.
+- Workflow files should live under the shared or owning-pack workflow module roots unless a narrower repository standard defines another workflow surface.
 - Each file should define one workflow with one primary execution concern.
 - The document title should clearly name the workflow and include `Workflow`.
 - Use these exact H2 section headings in this order:
@@ -108,7 +108,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - If `Additional Files to Load` is present, each bullet should identify a concrete repo-local file and explain the execution implication of loading it.
 - Repo-local Markdown links should resolve to existing files or directories under the repository root.
 - If `Additional Files to Load` is present, it should not repeat generic routing-baseline authorities.
-- Content that belongs in `AGENTS.md`, `ROUTING_TABLE.md`, `core/docs/standards/**`, or `plan/docs/standards/**` should not be embedded as if it were workflow procedure.
+- Content that belongs in `AGENTS.md`, `ROUTING_TABLE.md`, or the shared and pack-owned standards roots should not be embedded as if it were workflow procedure.
 
 ## Change Control
 - Update this standard when the repository changes the expected file shape for workflow Markdown documents.
@@ -122,7 +122,6 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - [workflow_index_standard.md](/core/docs/standards/data_contracts/workflow_index_standard.md)
 - [workflow_template.md](/core/docs/templates/workflow_template.md)
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md)
-- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md)
 - [AGENTS.md](/AGENTS.md)
 - [documentation_semantics_standard.md](/core/docs/standards/documentation/documentation_semantics_standard.md)
 

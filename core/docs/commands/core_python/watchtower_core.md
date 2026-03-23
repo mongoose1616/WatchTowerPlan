@@ -1,7 +1,7 @@
 # `watchtower-core`
 
 ## Summary
-This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, hosted-pack inspection, planning, query, sync, and validation flows.
+This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, hosted-pack inspection, pack-owned orchestration, query, sync, and validation flows.
 
 ## Use When
 - You need the top-level command map before choosing a narrower command group.
@@ -23,7 +23,7 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to a command group such as `doctor`, `route`, `pack`, `plan`, `query`, `sync`, or `validate`.
+- `<command>`: Dispatch to a command group such as `doctor`, `route`, `pack`, `<pack-namespace>`, `query`, `sync`, or `validate`.
 - `-h`, `--help`: Show the root command help text.
 - No root-only flags exist beyond help and subcommand selection.
 
@@ -45,17 +45,17 @@ uv run watchtower-core pack list --format json
 
 ```sh
 cd core/python
-uv run watchtower-core plan query coordination --format json
+uv run watchtower-core pack describe --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core plan query artifacts --artifact-family initiative_state --format json
+uv run watchtower-core sync command-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core plan sync all --format json
+uv run watchtower-core sync repository-paths --write
 ```
 
 ```sh
@@ -76,7 +76,7 @@ uv run watchtower-core validate all --format json
 |---|---|
 | `watchtower-core route` | Advisory route preview for turning a request into workflow modules. |
 | `watchtower-core pack` | Inspects hosted-pack registry entries, runtime manifests, and pack-contract validation. |
-| `watchtower-core plan` | Pack-owned plan namespace for bootstrap, live query, task, and plan closeout flows. |
+| `watchtower-core <pack-namespace>` | Pack-owned namespace for bootstrap, live query, task, closeout, and other pack-local flows. |
 | `watchtower-core query` | Shared read-only lookup surface for commands, standards, references, foundations, workflows, and durable records. |
 | `watchtower-core sync` | Rebuilds derived governed artifacts and tracking surfaces. |
 | `watchtower-core validate` | Runs repo-wide, artifact, document, and acceptance validation flows. |

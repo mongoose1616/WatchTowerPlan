@@ -24,11 +24,11 @@ Provide a compact lookup and governance surface for repository standards and bes
 
 ## Scope
 - Applies to machine-readable standard index artifacts stored under `core/control_plane/indexes/standards/`.
-- Covers placement, entry shape, update expectations, and the relationship between the index and governed standards under `core/docs/standards/**` and `plan/docs/standards/**`.
+- Covers placement, entry shape, update expectations, and the relationship between the index and governed standards under the shared and pack-owned standards roots.
 - Does not replace the standard documents themselves as the normative authority.
 
 ## Use When
-- Adding or materially updating a standard under `core/docs/standards/**` or `plan/docs/standards/**`.
+- Adding or materially updating a standard under the shared and pack-owned standards roots.
 - Building query, retrieval, or review tooling that needs a compact view over the standards corpus.
 - Auditing whether standards use internal references, external references, and repo-local distilled references consistently.
 
@@ -46,7 +46,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Store published standard indexes under `core/control_plane/indexes/standards/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published standard-index artifact.
-- Every standard index entry must point to an existing governed standard under `core/docs/standards/` or `plan/docs/standards/`.
+- Every standard index entry must point to an existing governed standard under the shared or owning-pack standards roots.
 - Carry stable `standard_id` values from governed front matter.
 - Record the top-level standards category from the document path, such as `data_contracts`, `documentation`, `engineering`, `governance`, `metadata`, or `workflows`.
 - Capture whether the standard explicitly uses internal references or external authority.
@@ -99,7 +99,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 
 ## Validation
 - The standard index should validate against its published artifact schema.
-- Every `doc_path` should exist and point to a file under `core/docs/standards/` or `plan/docs/standards/`.
+- Every `doc_path` should exist and point to a file under the shared or owning-pack standards roots.
 - Every entry should have a stable `standard_id`.
 - Every entry should carry the authored `owner` value and, when present, the full `applies_to` list from standard front matter.
 - Path-valued `applies_to` and derived `related_paths` should preserve canonical repo-relative file-versus-directory syntax.

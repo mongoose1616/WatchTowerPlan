@@ -362,6 +362,66 @@
       ]
     },
     {
+      "task_id": "task.core_removable_plan_reference_cleanup.bootstrap_core_removable_plan_reference_cleanup",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "initiative_title": "Core Removable Plan Reference Cleanup",
+      "title": "Bootstrap Core Removable Plan Reference Cleanup",
+      "summary": "Bootstrap Core Removable Plan Reference Cleanup live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/bootstrap_core_removable_plan_reference_cleanup/task.json",
+      "updated_at": "2026-03-22T23:14:32Z"
+    },
+    {
+      "task_id": "task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "initiative_title": "Core Removable Plan Reference Cleanup",
+      "title": "Remove Removable Plan References From Shared Core",
+      "summary": "Rewrites shared core docs, host help, reusable-core boundary language, and companion tests so core no longer treats plan as the default reusable pack.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/remove_removable_plan_references_from_shared_core/task.json",
+      "updated_at": "2026-03-23T00:03:47Z",
+      "applies_to": [
+        "core/docs/",
+        "core/python/src/",
+        "core/python/tests/",
+        "core/control_plane/indexes/"
+      ]
+    },
+    {
+      "task_id": "task.core_removable_plan_reference_cleanup.validate_and_close_core_removable_plan_reference_cleanup",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "initiative_title": "Core Removable Plan Reference Cleanup",
+      "title": "Validate And Close Core Removable Plan Reference Cleanup",
+      "summary": "Runs derived-surface rebuild, validation, and regression checks; classifies the remaining necessary plan references in core; and closes the initiative.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/validate_and_close_core_removable_plan_reference_cleanup/task.json",
+      "updated_at": "2026-03-23T00:03:58Z",
+      "depends_on": [
+        "task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core"
+      ],
+      "applies_to": [
+        "core/docs/",
+        "core/control_plane/",
+        "core/python/src/",
+        "core/python/tests/"
+      ]
+    },
+    {
       "task_id": "task.core_shared_language_deplanification.bootstrap_core_shared_language_deplanification",
       "initiative_id": "initiative.core_shared_language_deplanification",
       "trace_id": "trace.core_shared_language_deplanification",

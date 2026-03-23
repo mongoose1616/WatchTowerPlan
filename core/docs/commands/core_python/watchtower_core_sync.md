@@ -7,7 +7,7 @@ This command group rebuilds reusable-core derived governed artifacts from author
 - You changed an authored command, routing, README inventory, or other shared core-governed surface and need the derived artifacts to match.
 - You need the fastest route to the correct rebuild command instead of scanning all sync leaf docs.
 - You want structured dry-run or write output for automation.
-- You need to distinguish between shared root sync commands and plan-owned `watchtower-core plan sync ...` commands.
+- You need to distinguish between shared root sync commands and pack-owned `watchtower-core <pack-namespace> sync ...` commands.
 
 ## Command
 | Field | Value |
@@ -36,7 +36,7 @@ uv run watchtower-core sync --help
 
 ```sh
 cd core/python
-uv run watchtower-core plan sync coordination --format json
+uv run watchtower-core <pack-namespace> sync coordination --format json
 ```
 
 ```sh
@@ -48,17 +48,17 @@ uv run watchtower-core sync route-index --write --format json
 - With no leaf command, the group prints help and exits successfully.
 - The group itself is routing help; the selected leaf command owns dry-run defaults, write behavior, and artifact-specific output.
 - Root `sync` owns only reusable-core shared surfaces.
-- Plan-owned sync operations now live under `watchtower-core plan sync ...`.
+- Pack-owned sync operations now live under the owning pack namespace such as `watchtower-core <pack-namespace> sync ...`.
 - Use narrower root leaf commands when one shared governed family changed and you do not need the pack-owned rebuild flows.
 - Open the specific leaf command page or CLI help when you need exact flags, dependency order, or output-file details.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core plan sync coordination` | Focused live plan rebuild slice. |
+| `watchtower-core <pack-namespace> sync coordination` | Focused live pack rebuild slice. |
 | `watchtower-core sync route-index` | Rebuilds the machine-readable routing surface from the routing table. |
-| `watchtower-core plan sync all` | Rebuilds the full deterministic plan-owned derived-artifact set. |
-| `watchtower-core plan query coordination` | Reads one of the current-state surfaces that sync commands rebuild. |
+| `watchtower-core <pack-namespace> sync all` | Rebuilds the full deterministic pack-owned derived-artifact set. |
+| `watchtower-core <pack-namespace> query coordination` | Reads one of the current-state surfaces that sync commands rebuild. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/sync_family.py`

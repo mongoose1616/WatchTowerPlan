@@ -1,7 +1,7 @@
 ---
 id: "std.documentation.standard_md"
 title: "Standard Document Standard"
-summary: "This standard defines the expected document shape for governed standard and best-practice documents stored under `core/docs/standards/` and `plan/docs/standards/`."
+summary: "This standard defines the expected document shape for governed standard and best-practice documents stored under shared and pack-owned standards roots."
 type: "standard"
 status: "active"
 tags:
@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T20:01:23Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -17,13 +17,13 @@ authority: "authoritative"
 # Standard Document Standard
 
 ## Summary
-This standard defines the expected document shape for governed standard and best-practice documents stored under `core/docs/standards/` and `plan/docs/standards/`.
+This standard defines the expected document shape for governed standard and best-practice documents stored under shared and pack-owned standards roots.
 
 ## Purpose
 Keep standards structured enough that internal and external authority is not only cited but auditable as concrete local guidance.
 
 ## Scope
-- Applies to governed standard and best-practice documents stored under `core/docs/standards/` and `plan/docs/standards/` other than short directory `README.md` files.
+- Applies to governed standard and best-practice documents stored under shared and pack-owned standards roots other than short directory `README.md` files.
 - Covers required sections, reference usage, and the difference between cited sources and applied implications.
 - Does not replace narrower content rules in individual standard families.
 
@@ -57,7 +57,7 @@ Keep standards structured enough that internal and external authority is not onl
 
 ## Operationalization
 - `Modes`: `validation`; `sync`; `query`; `documentation`
-- `Operational Surfaces`: `core/docs/standards/*/*_standard.md`; `plan/docs/standards/*/*_standard.md`; `plan/python/src/watchtower_plan/validation/document_semantics.py`; `core/python/src/watchtower_core/sync/standard_index.py`; `core/python/src/watchtower_core/query/standards.py`; `core/docs/commands/core_python/watchtower_core_query_standards.md`; `core/docs/templates/standard_document_template.md`
+- `Operational Surfaces`: `core/docs/standards/*/*_standard.md`; `core/python/src/watchtower_core/sync/standard_index.py`; `core/python/src/watchtower_core/query/standards.py`; `core/docs/commands/core_python/watchtower_core_query_standards.md`; `core/docs/templates/standard_document_template.md`
 
 ## Structure or Data Model
 ### Required sections
@@ -98,4 +98,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/core/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-13T20:01:23Z`
+- `2026-03-22T22:15:00Z`

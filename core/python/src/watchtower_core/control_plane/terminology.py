@@ -256,13 +256,13 @@ class TerminologyHelper:
         return self.source_type(source_type).source_class
 
     def surface_task_status(self, task_status: str) -> str:
-        """Return the current derived-surface spelling for one plan task status."""
+        """Return the current derived-surface spelling for one pack task status."""
 
         canonical = self.canonical_value("plan_task_status", task_status)
         return _PLAN_TASK_STATUS_SURFACE_VALUES[canonical]
 
     def task_status_order(self, task_status: str) -> int:
-        """Return the stable sort order for one plan task status."""
+        """Return the stable sort order for one pack task status."""
 
         canonical = self.canonical_value("plan_task_status", task_status)
         return _PLAN_TASK_STATUS_ORDER.get(canonical, 99)

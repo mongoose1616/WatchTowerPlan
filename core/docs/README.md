@@ -1,7 +1,7 @@
 # `core/docs`
 
 ## Description
-`This directory is the durable home for shared command docs, references, templates, shared or core-owned standards, and other human-authored material that should not live in the live plan workspace.`
+`This directory is the durable home for shared command docs, references, templates, shared or core-owned standards, and other human-authored material that should not live in a pack machine workspace.`
 
 ## Paths
 | Path | Description |
@@ -18,5 +18,5 @@
 - `requirements.md` and `decisions.md` are the authoritative contract for documentation roots and endstate behavior.
 - `core/docs/foundations/` is the authored foundations source and `plan/docs/foundations/` is the required byte-identical mirror.
 - Pack-owned command pages should live under the owning pack docs root instead of shared core docs.
-- Do not place live initiative state or plan-domain execution artifacts here.
+- Do not place live initiative state or pack-domain execution artifacts here.
 - Root `docs/` is retired; keep shared or core-owned durable documentation here instead.

@@ -9,7 +9,7 @@ tags:
   - "operations"
   - "maintenance"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -78,7 +78,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 
 ## Operationalization
 - `Modes`: `workflow`; `validation`; `documentation`
-- `Operational Surfaces`: `core/workflows/modules/repository_review.md`; `core/workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`; `plan/tracking/coordination_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/repository_review.md`; `core/workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`
 
 ## Validation
 - Maintenance work should not leave derived trackers or indexes stale after authoritative source changes.
@@ -96,4 +96,4 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [README.md](/core/docs/README.md)
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-22T22:15:00Z`

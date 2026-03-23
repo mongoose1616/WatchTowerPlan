@@ -1,10 +1,10 @@
 # `watchtower-core sync route-index`
 
 ## Summary
-This command rebuilds the governed route index from the canonical routing table under `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
+This command rebuilds the governed route index from the canonical shared routing table plus any pack-owned routing tables.
 
 ## Use When
-- You changed `AGENTS.md` routing guidance or either authoritative routing table under `core/workflows/` or `plan/workflows/` and need the machine-readable route surface to match.
+- You changed `AGENTS.md` routing guidance or an authoritative routing table under the shared or owning-pack workflow roots and need the machine-readable route surface to match.
 - You added or removed a routed task type.
 - You want to inspect the rebuilt route index in dry-run mode before writing it to the canonical control-plane path.
 
@@ -46,7 +46,7 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 ```
 
 ## Behavior and Outputs
-- The command reads `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` and rebuilds the machine-readable route index deterministically.
+- The command reads the shared routing table and any pack-owned routing tables and rebuilds the machine-readable route index deterministically.
 - The command fails closed when a route row points to a missing workflow module or omits required routing data.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many route entries were rebuilt.
@@ -58,7 +58,7 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core route preview` | Reads the route index that this command rebuilds. |
-| `watchtower-core plan sync workflow-index` | Rebuilds the companion workflow lookup surface referenced by route entries. |
+| `watchtower-core <pack-namespace> sync workflow-index` | Rebuilds the companion workflow lookup surface referenced by route entries when the owning pack publishes that rebuild surface. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/sync_family.py`

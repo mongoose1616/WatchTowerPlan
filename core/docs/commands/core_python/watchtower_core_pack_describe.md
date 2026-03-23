@@ -22,19 +22,19 @@ uv run watchtower-core pack describe [--pack <pack_slug>] [--format <human|json>
 ```
 
 ## Arguments and Options
-- `--pack <pack_slug>`: Hosted pack slug such as `plan`. Defaults to the default repository pack.
+- `--pack <pack_slug>`: Hosted pack slug. Defaults to the default repository pack.
 - `--format <human|json>`: Select human-readable or structured JSON output.
 - `-h`, `--help`: Show the command help text.
 
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core pack describe --pack plan
+uv run watchtower-core pack describe
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack describe --pack plan --format json
+uv run watchtower-core pack describe --format json
 ```
 
 ## Behavior and Outputs
@@ -53,7 +53,6 @@ uv run watchtower-core pack describe --pack plan --format json
 ## Source Surface
 - `core/python/src/watchtower_host/cli/pack_handlers.py`
 - `core/control_plane/registries/pack_registry.json`
-- `plan/.wt/manifests/pack_runtime_manifest.json`
 
 ## Updated At
 - `2026-03-20T23:58:00Z`

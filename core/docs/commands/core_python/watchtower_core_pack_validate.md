@@ -22,7 +22,7 @@ uv run watchtower-core pack validate [--pack <pack_slug>] [--pack-settings-path 
 ```
 
 ## Arguments and Options
-- `--pack <pack_slug>`: Hosted pack slug such as `plan`. Defaults to the default repository pack.
+- `--pack <pack_slug>`: Hosted pack slug. Defaults to the default repository pack.
 - `--pack-settings-path <path>`: Optional pack settings path override for a non-default hosted pack.
 - `--format <human|json>`: Select human-readable or structured JSON output.
 - `-h`, `--help`: Show the command help text.
@@ -30,12 +30,12 @@ uv run watchtower-core pack validate [--pack <pack_slug>] [--pack-settings-path 
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core pack validate --pack plan
+uv run watchtower-core pack validate
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack validate --pack plan --format json
+uv run watchtower-core pack validate --format json
 ```
 
 ```sh

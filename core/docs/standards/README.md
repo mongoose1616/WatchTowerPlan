@@ -10,7 +10,7 @@
 | `core/docs/standards/data_contracts/` | Holds standards for schemas, structured artifacts, statuses, format selection, and the shared planning-index family baseline. |
 | `core/docs/standards/documentation/` | Holds standards for repository document families and Markdown surfaces. |
 | `core/docs/standards/engineering/` | Holds standards for engineering practice and commit behavior. |
-| `plan/docs/standards/governance/` | Holds standards for long-lived governance and reference distillation behavior. |
+| `<pack-root>/docs/standards/governance/` | Holds pack-owned standards for long-lived governance and reference distillation behavior. |
 | `core/docs/standards/metadata/` | Holds standards for front matter, naming, identifiers, and terminology. |
 | `core/docs/standards/operations/` | Holds operations standards used by the repository. |
 | `core/docs/standards/validations/` | Holds validation-related standards used by the repository. |

@@ -41,7 +41,7 @@ uv run watchtower-core pack list --format json
 
 ```sh
 cd core/python
-uv run watchtower-core pack validate --pack plan --format json
+uv run watchtower-core pack validate --format json
 ```
 
 ```sh
@@ -72,7 +72,6 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 | `watchtower-core pack bootstrap` | Registers one hosted pack into shared host composition and shared workspace metadata. |
 | `watchtower-core pack validate` | Runs the pack-contract validator directly for one hosted pack. |
 | `watchtower-core validate all` | Includes pack-contract validation inside the broader repository validation pass. |
-| `watchtower-core plan` | Current hosted default pack namespace. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/pack_family.py`

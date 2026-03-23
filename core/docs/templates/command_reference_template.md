@@ -1,6 +1,6 @@
 # `<command>`
 
-> Use this template for repository-native command pages under `core/docs/commands/` or the owning pack docs root such as `plan/docs/commands/`.
+> Use this template for repository-native command pages under `core/docs/commands/` or the owning pack docs root.
 > Keep one primary command or subcommand per document.
 > Treat the page as the human-readable man page for that command.
 > Keep command pages as plain Markdown by default; command-family lookup metadata lives in the machine-readable command index rather than front matter.

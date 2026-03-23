@@ -9,14 +9,13 @@ tags:
   - "github"
   - "collaboration"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T01:05:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
   - ".github/"
   - "plan/docs/standards/governance/github_collaboration_standard.md"
   - "plan/docs/standards/governance/github_task_sync_standard.md"
-  - "plan/python/src/watchtower_plan/sync/github_tasks.py"
 aliases:
   - "github collaboration"
   - "github issue forms"
@@ -87,7 +86,6 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - [README.md](/.github/README.md)
 - [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
 - [watchtower_core_plan_sync_github_tasks.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md)
-- `plan/python/src/watchtower_plan/sync/github_tasks.py`
 
 ### Why It Matters Here
 - This reference is the repo-native lookup surface for GitHub collaboration assumptions that materially shape local standards and designs.
@@ -103,4 +101,4 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - Canonical upstream sources were rechecked on `2026-03-09` while normalizing GitHub-facing repository guidance through local references.
 
 ## Updated At
-- `2026-03-21T01:05:00Z`
+- `2026-03-22T22:15:00Z`

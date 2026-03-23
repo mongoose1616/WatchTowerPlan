@@ -1,7 +1,7 @@
 # `core/control_plane/indexes`
 
 ## Description
-`This directory holds deliberate denormalized lookup files when a concrete consumer benefits from them. Live planning indexes now live under plan/.wt/indexes/; keep the remaining core indexes derived and reviewable, and do not let them become a parallel source of truth.`
+`This directory holds deliberate denormalized lookup files when a concrete consumer benefits from them. Live pack indexes now live under the owning pack machine root such as <pack>/.wt/indexes/; keep the remaining core indexes derived and reviewable, and do not let them become a parallel source of truth.`
 
 ## Paths
 | Path | Description |
@@ -15,4 +15,4 @@
 | `core/control_plane/indexes/standards/` | Machine-readable indexes for governed standards and best-practice documents. |
 | `core/control_plane/indexes/workflows/` | Machine-readable indexes for workflow modules and their governing sources. |
 | `core/control_plane/indexes/traceability/` | Unified traceability indexes that join planning, contract, validator, and evidence surfaces. |
-| `plan/.wt/indexes/` | Canonical live plan-workspace indexes for coordination, initiatives, tasks, readiness, discrepancies, evidence, and other execution-state projections. |
+| `<pack>/.wt/indexes/` | Canonical live pack-workspace indexes for coordination, initiatives, tasks, readiness, discrepancies, evidence, and other execution-state projections. |

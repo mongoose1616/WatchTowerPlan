@@ -38,8 +38,8 @@ def register_pack_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core pack list --format json",
-            "uv run watchtower-core pack describe --pack plan --format json",
-            "uv run watchtower-core pack validate --pack plan --format json",
+            "uv run watchtower-core pack describe --format json",
+            "uv run watchtower-core pack validate --format json",
             "uv run watchtower-core pack scaffold --pack-slug oversight "
             "--pack-root packs/oversight --format json",
             "uv run watchtower-core pack bootstrap --pack-settings-path "
@@ -81,14 +81,14 @@ def register_pack_family(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core pack describe --pack plan",
-            "uv run watchtower-core pack describe --pack plan --format json",
+            "uv run watchtower-core pack describe",
+            "uv run watchtower-core pack describe --format json",
         ),
         formatter_class=HelpFormatter,
     )
     pack_describe_parser.add_argument(
         "--pack",
-        help="Hosted pack slug such as plan. Defaults to the default repository pack.",
+        help="Hosted pack slug. Defaults to the default repository pack.",
     )
     add_human_json_format_argument(pack_describe_parser)
     pack_describe_parser.set_defaults(handler=_run_pack_describe)
@@ -103,8 +103,8 @@ def register_pack_family(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core pack validate --pack plan",
-            "uv run watchtower-core pack validate --pack plan --format json",
+            "uv run watchtower-core pack validate",
+            "uv run watchtower-core pack validate --format json",
             "uv run watchtower-core pack validate --pack-settings-path "
             "packs/oversight/.wt/manifests/pack_settings.json --format json",
         ),
@@ -112,7 +112,7 @@ def register_pack_family(
     )
     pack_validate_parser.add_argument(
         "--pack",
-        help="Hosted pack slug such as plan. Defaults to the default repository pack.",
+        help="Hosted pack slug. Defaults to the default repository pack.",
     )
     pack_validate_parser.add_argument(
         "--pack-settings-path",

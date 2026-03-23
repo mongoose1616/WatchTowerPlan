@@ -13,7 +13,7 @@ _PACK_SETTINGS_DISCOVERY_PATTERNS: tuple[str, ...] = (
 def discover_pack_settings_paths(repo_root: Path) -> tuple[str, ...]:
     """Return discoverable hosted-pack settings paths in deterministic order.
 
-    Direct first-party/root packs such as `plan/` or `oversight/` are preferred
+    Direct first-party/root packs such as `<pack>/` are preferred
     ahead of nested `packs/<slug>/` layouts. The manifest path remains the real
     discovery marker; directory shape only affects fallback ordering.
     """

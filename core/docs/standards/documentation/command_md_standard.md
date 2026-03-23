@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T03:50:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -42,7 +42,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 
 ## Guidance
 - Store shared or reusable-core command docs under `core/docs/commands/`.
-- Store pack-owned command docs under the owning pack root such as `plan/docs/commands/`.
+- Store pack-owned command docs under the owning pack docs root.
 - Do not place command docs under `core/docs/references/`; they are local command pages, not external references.
 - Keep one primary command or subcommand per document.
 - Use the literal command name in the title, wrapped in backticks.
@@ -90,12 +90,12 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 ## Examples
 - A page for `watchtower-core` belongs under `core/docs/commands/core_python/watchtower_core.md`.
 - A page for `watchtower-core doctor` belongs under `core/docs/commands/core_python/watchtower_core_doctor.md`.
-- A pack-owned page for `watchtower-core plan query tasks` belongs under the plan-owned command-doc root once that command is no longer a shared-core surface.
+- A pack-owned page for `watchtower-core <pack-namespace> query tasks` belongs under the owning pack command-doc root once that command is no longer a shared-core surface.
 - A generic Python packaging guide does not belong in `core/docs/commands/`; it belongs in standards, design, or foundations depending on purpose.
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `runtime`
-- `Operational Surfaces`: `core/docs/commands/`; `plan/docs/commands/`; `core/docs/templates/command_reference_template.md`; `core/control_plane/indexes/commands/command_index.json`; `core/python/src/watchtower_host/cli/`; `core/python/src/watchtower_core/cli/`; `plan/python/src/watchtower_plan/cli/`
+- `Operational Surfaces`: `core/docs/commands/`; `core/docs/templates/command_reference_template.md`; `core/control_plane/indexes/commands/command_index.json`; `core/python/src/watchtower_host/cli/`; `core/python/src/watchtower_core/cli/`
 
 ## Validation
 - Command pages should contain the required sections in the documented order.
@@ -123,4 +123,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-21T03:50:00Z`
+- `2026-03-22T22:15:00Z`

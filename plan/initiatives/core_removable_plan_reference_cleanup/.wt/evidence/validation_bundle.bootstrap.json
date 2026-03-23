@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.core_removable_plan_reference_cleanup.bootstrap_validation_bundle",
+  "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+  "trace_id": "trace.core_removable_plan_reference_cleanup",
+  "title": "Bootstrap Validation Bundle",
+  "status": "completed",
+  "updated_at": "2026-03-23T00:04:09Z",
+  "entries": [
+    {
+      "entry_id": "entry.core_removable_plan_reference_cleanup.schema_validation",
+      "acceptance_label": "package_contracts_valid",
+      "validation_type": "schema_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/.wt/initiative.json"
+      ]
+    },
+    {
+      "entry_id": "entry.core_removable_plan_reference_cleanup.gate_validation",
+      "acceptance_label": "ready_for_execution_gate",
+      "validation_type": "readiness_gate",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/.wt/discrepancies"
+      ]
+    }
+  ]
+}

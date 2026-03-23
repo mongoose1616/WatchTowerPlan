@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/routes/README.md` | Describes the purpose of the route-index directory and its current artifact. |
-| `core/control_plane/indexes/routes/route_index.json` | Canonical machine-readable route index rebuilt from `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`. |
+| `core/control_plane/indexes/routes/route_index.json` | Canonical machine-readable route index rebuilt from the shared routing table and pack-owned routing tables. |

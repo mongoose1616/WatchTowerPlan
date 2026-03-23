@@ -1,12 +1,12 @@
 # `core/control_plane/indexes/foundations`
 
 ## Description
-`This directory holds machine-readable foundation indexes for the governed foundation corpus authored under core/docs/foundations/ and mirrored into plan/docs/foundations/. Use it for compact foundation lookup, reverse citation tracking, and alignment audits back into standards, workflows, and planning docs.`
+`This directory holds machine-readable foundation indexes for the governed foundation corpus authored under core/docs/foundations/ and mirrored into the owning pack foundations root. Use it for compact foundation lookup, reverse citation tracking, and alignment audits back into standards, workflows, and related governance docs.`
 
 ## Notes
 - Human family entrypoint: `core/docs/foundations/README.md`
 - Machine lookup entrypoint: `core/docs/commands/core_python/watchtower_core_query_foundations.md`
-- Rebuild entrypoint: `plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md`
+- Rebuild entrypoint: the owning pack's `sync foundation-index` command doc.
 
 ## Files
 | Path | Description |

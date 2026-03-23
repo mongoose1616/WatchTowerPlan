@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "standards"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T18:45:00Z"
+updated_at: "2026-03-22T23:20:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -73,7 +73,7 @@ Core standards define how shared machine-facing surfaces behave. If these rules 
 Future domain-pack standards should keep packs expressive for their domain without letting them drift away from the shared control model.
 
 - Keep packs portable and primarily declarative.
-- Keep the current internal `watchtower_plan` pack on the same manifest-governed, pack-contract-validated path that later external packs must use.
+- Keep the current internal pack on the same manifest-governed, pack-contract-validated path that later external packs must use.
 - Maintain a clear boundary between user-editable surfaces and managed pack state.
 - Do not allow pack-local hidden state to become the operator-authored source of truth.
 - Require pack workflows, templates, knowledge assets, and tool guidance to follow shared structural contracts.
@@ -89,4 +89,4 @@ Future domain-pack standards should keep packs expressive for their domain witho
 - [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-21T18:45:00Z`
+- `2026-03-22T23:20:00Z`

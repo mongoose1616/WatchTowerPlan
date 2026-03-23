@@ -77,7 +77,7 @@ Provide a practical readability baseline for Python code so naming, layout, impo
 - This reference supports future Python automation work but does not by itself make PEP 8 mandatory everywhere.
 - If a repository engineering standard is written later, it should define any local deviations explicitly.
 - Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
-- If this topic becomes active repository policy later, move the enforceable rule into `core/docs/standards/**` or `plan/docs/standards/**`, or the relevant workflow module.
+- If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
 - `2026-03-18T06:23:45Z`

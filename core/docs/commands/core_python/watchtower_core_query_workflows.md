@@ -77,7 +77,7 @@ uv run watchtower-core query workflows --reference-path core/docs/references/git
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core plan sync workflow-index` | Rebuilds the workflow index that this command reads. |
+| `watchtower-core <pack-namespace> sync workflow-index` | Rebuilds the workflow index that this command reads when the owning pack publishes that rebuild surface. |
 | `watchtower-core query standards` | Searches the standard index when you know the governing standard but not the workflow module. |
 | `watchtower-core query references` | Searches the reference index when you know the source authority topic but not the workflow module. |
 

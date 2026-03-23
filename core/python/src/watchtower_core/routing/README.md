@@ -6,7 +6,7 @@ Reusable route-selection runtime over the governed route and workflow indexes.
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: `watchtower_core.routing`
-- `Non-Goals`: CLI formatting, repo-local route handlers, workflow execution orchestration, or plan-flavored routing wrappers.
+- `Non-Goals`: CLI formatting, repo-local route handlers, workflow execution orchestration, or pack-flavored routing wrappers.
 
 ## Key Surfaces
 - `engine.py`: Stable routing engine that selects governed routes by request text or explicit task type.

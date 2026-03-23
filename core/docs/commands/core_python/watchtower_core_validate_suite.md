@@ -58,7 +58,7 @@ uv run watchtower-core validate suite --suite-id suite.example.validation_baseli
 | `watchtower-core validate` | Parent command group for governed validation operations. |
 | `watchtower-core validate all` | Runs the current repo baseline suite plus acceptance reconciliation. |
 | `watchtower-core validate artifact` | Validates one governed JSON artifact directly instead of through a declared suite. |
-| `watchtower-core plan query authority` | Helpful when you need to confirm which pack-owned surfaces are authoritative. |
+| `watchtower-core <pack-namespace> query authority` | Helpful when you need to confirm which pack-owned surfaces are authoritative. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/validate_family.py`

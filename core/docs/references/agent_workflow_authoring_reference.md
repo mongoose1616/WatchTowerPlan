@@ -70,7 +70,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 | How should extra context be surfaced? | Optional `Additional Files to Load` bullets | Makes the next files to open explicit without turning every module into a bibliography. |
 | What form should each extra-context bullet use? | `source: execution implication` | Tells the reader or agent why the file matters, not just that it exists. |
 | What should the extra-context section point to? | Repo-local files, especially standards, templates, command docs, and local references | Keeps execution deterministic and aligned with governed repository surfaces. |
-| What link form should those files use? | Repository-native links such as `/core/docs/...`, `/plan/docs/...`, `/core/workflows/...`, or `/plan/workflows/...` | Keeps the workflow portable across clones, branches, and worktrees instead of binding it to one machine path. |
+| What link form should those files use? | Repository-native links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, or `/<pack>/workflows/...` | Keeps the workflow portable across clones, branches, and worktrees instead of binding it to one machine path. |
 | What should happen when no extra files are needed? | Omit the section entirely | Avoids token-heavy filler and false precision. |
 | How should `Data Structure` and `Outputs` be written? | As terse internal workflow scaffolding | Prevents them from turning into prompts for extra low-value artifact prose. |
 

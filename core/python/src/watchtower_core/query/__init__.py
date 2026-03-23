@@ -80,7 +80,7 @@ __getattr__ = lazy_module_getattr(
     blocked_messages=dict.fromkeys(
         _PLAN_DOMAIN_EXPORTS,
         "watchtower_core.query exposes only reusable generic query services. "
-        "Import live planning or repo-local query services from "
-        "watchtower_plan.query.",
+        "Import live pack-local query services from the owning "
+        "watchtower_<pack>.query package.",
     ),
 )

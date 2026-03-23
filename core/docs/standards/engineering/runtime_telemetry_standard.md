@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "runtime_telemetry"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T17:45:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -24,14 +24,14 @@ Give the repository one deliberate runtime-observability baseline so operators a
 
 ## Scope
 - Applies to reusable-core telemetry runtime code, host-owned CLI lifecycle instrumentation, and pack-owned command or orchestration paths that emit runtime telemetry.
-- Applies to runtime telemetry storage under pack machine roots such as `plan/.wt/runtime/telemetry/`.
+- Applies to runtime telemetry storage under pack machine roots such as `<pack-root>/.wt/runtime/telemetry/`.
 - Covers enablement defaults, environment-variable control, stderr summaries, JSONL event records, and failure posture.
 - Does not define OTEL exporters, cross-process trace propagation, or durable promoted telemetry analysis.
 
 ## Use When
 - Adding or changing runtime timing or error tracing behavior.
 - Choosing where runtime telemetry files should live.
-- Instrumenting CLI, sync, validation, pack-runtime, or plan-owned orchestration code.
+- Instrumenting CLI, sync, validation, pack-runtime, or pack-owned orchestration code.
 
 ## Related Standards and Sources
 - [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md): establishes that local runtime telemetry is now an active implementation baseline while OTEL remains a later candidate.
@@ -66,7 +66,7 @@ Give the repository one deliberate runtime-observability baseline so operators a
 | Rule | Requirement |
 |---|---|
 | default sink root | `<machine_root>/runtime/telemetry/` |
-| current proof-pack path | `plan/.wt/runtime/telemetry/` |
+| example pack path | `<pack-root>/.wt/runtime/telemetry/` |
 | sink layout | dated subdirectories are allowed and preferred |
 | file format | JSONL / NDJSON |
 | file ownership | pack-local operational runtime state |
@@ -89,7 +89,7 @@ Give the repository one deliberate runtime-observability baseline so operators a
 
 ## Operationalization
 - `Modes`: `runtime`; `documentation`; `validation`
-- `Operational Surfaces`: `core/python/src/watchtower_core/`; `core/python/src/watchtower_host/cli/`; `plan/python/src/watchtower_plan/`; `plan/.wt/`; `.gitignore`
+- `Operational Surfaces`: `core/python/src/watchtower_core/telemetry/`; `core/python/src/watchtower_host/cli/`; `core/docs/references/domain_pack_authoring_reference.md`; `.gitignore`
 
 ## Validation
 - Reviewers should reject runtime telemetry changes that alter existing stdout payload contracts without an explicit separately approved command-contract change.
@@ -113,4 +113,4 @@ Give the repository one deliberate runtime-observability baseline so operators a
 - [w3c_trace_context_reference.md](/core/docs/references/w3c_trace_context_reference.md)
 
 ## Updated At
-- `2026-03-22T17:45:00Z`
+- `2026-03-22T22:15:00Z`

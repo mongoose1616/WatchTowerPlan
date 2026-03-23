@@ -5,7 +5,7 @@
 
 ## Notes
 - Shared and reusable-core command entries point to `core/docs/commands/**`.
-- Pack-owned command entries point to the owning pack docs root such as `plan/docs/commands/**`.
+- Pack-owned command entries point to the owning pack docs root such as `<pack>/docs/commands/**`.
 
 ## Files
 | Path | Description |

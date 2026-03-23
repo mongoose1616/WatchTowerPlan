@@ -12,7 +12,7 @@
 
 ## Routing
 - Read this file before creating or updating files in `core/docs/references/**`.
-- Inherit repository routing from the domain-owned routing tables under `core/workflows/` and `plan/workflows/`.
+- Inherit repository routing from the domain-owned routing tables under the shared and pack-owned workflow roots.
 - Do not turn this file into a second routing table.
 
 ## Local Rules
@@ -24,7 +24,7 @@
 ## Do
 - Keep references tied to official or otherwise authoritative published sources.
 - Explain how the external source is relevant to this repository without turning the file into a local policy document.
-- Keep normative repository rules in `core/docs/standards/**` or `plan/docs/standards/**` when they become local standards.
+- Keep normative repository rules in the shared and pack-owned standards roots when they become local standards.
 
 ## Do Not
 - Do not place repo-native standards or purely local reference notes in this directory.

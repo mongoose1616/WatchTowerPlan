@@ -68,7 +68,7 @@ Provide a high-level risk and control vocabulary when repository governance or r
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
-- If this topic becomes active repository policy later, move the enforceable rule into `core/docs/standards/**` or `plan/docs/standards/**`, or the relevant workflow module.
+- If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
 - `2026-03-09T05:03:16Z`

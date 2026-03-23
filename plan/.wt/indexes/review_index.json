@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-22T23:08:32Z",
+  "updated_at": "2026-03-23T00:04:09Z",
   "entries": [
     {
       "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -56,6 +56,24 @@
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T00:42:04Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.core_removable_plan_reference_cleanup",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "initiative_title": "Core Removable Plan Reference Cleanup",
+      "title": "Core Removable Plan Reference Cleanup",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.core_removable_plan_reference_cleanup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T00:04:09Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -412,6 +430,22 @@
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "review_subject_id": "promotion.core_removable_plan_reference_cleanup.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+      "trace_id": "trace.core_removable_plan_reference_cleanup",
+      "initiative_title": "Core Removable Plan Reference Cleanup",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.core_removable_plan_reference_cleanup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T00:04:09Z"
     },
     {
       "review_subject_id": "promotion.core_shared_language_deplanification.bootstrap_shell",

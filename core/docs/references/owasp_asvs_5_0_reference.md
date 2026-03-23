@@ -52,7 +52,7 @@ Provide a structured verification baseline for application-security controls and
 - Candidate reference. No active standard or workflow in this repository links this file directly yet.
 
 ### Why It Matters Here
-- Use this reference if application-security or validation standards are added under `core/docs/standards/**` or `plan/docs/standards/**`.
+- Use this reference if application-security or validation standards are added under the shared and pack-owned standards roots.
 - Pair it with SSDF and SAMM when broader engineering and maturity guidance is needed.
 
 ### If Local Policy Tightens
@@ -64,7 +64,7 @@ Provide a structured verification baseline for application-security controls and
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
-- If this topic becomes active repository policy later, move the enforceable rule into `core/docs/standards/**` or `plan/docs/standards/**`, or the relevant workflow module.
+- If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
 - `2026-03-09T05:03:16Z`

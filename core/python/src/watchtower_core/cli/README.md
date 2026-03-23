@@ -29,11 +29,7 @@ Reusable CLI support helpers plus the compatibility shim for stale console-scrip
 | `core/python/src/watchtower_host/cli/introspection.py` | Host-owned parser metadata for command-index rebuilds and CLI surface validation. |
 | `core/python/src/watchtower_host/cli/pack_family.py` | Registers the shared `pack` namespace for hosted-pack inspection and contract validation. |
 | `core/python/src/watchtower_host/cli/query_family.py` | Registers the shared root `query` namespace for discovery, knowledge, and durable-record lookup. |
-| `plan/python/src/watchtower_plan/cli/query.py` | Registers the pack-owned `plan query` namespace for live plan-state lookup. |
-| `plan/python/src/watchtower_plan/cli/query_rendered_handlers.py` | Handles the plan query rendered-view commands such as coordination and initiatives. |
-| `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py` | Handles the plan query lookup commands such as authority, tasks, trace, and project context. |
 
 ## Related Surfaces
-- `plan/python/src/watchtower_plan/README.md`
 - `core/python/src/watchtower_host/README.md`
 - `core/docs/commands/core_python/README.md`

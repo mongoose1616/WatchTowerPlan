@@ -127,7 +127,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^(?:core/docs|plan/docs|core/workflows|plan/workflows)/.+\\.md$"
+            "pattern": "^(?:core/docs|core/workflows|[^/]+/docs|[^/]+/workflows|packs/[^/]+/docs|packs/[^/]+/workflows)/.+\\.md$"
           }
         },
         "applied_by_paths": {
@@ -136,7 +136,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^(?:core/docs|plan/docs|core/workflows|plan/workflows)/.+\\.md$"
+            "pattern": "^(?:core/docs|core/workflows|[^/]+/docs|[^/]+/workflows|packs/[^/]+/docs|packs/[^/]+/workflows)/.+\\.md$"
           }
         },
         "related_paths": {

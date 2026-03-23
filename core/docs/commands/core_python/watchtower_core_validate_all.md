@@ -71,15 +71,15 @@ uv run watchtower-core validate all --pack-settings-path /tmp/example_pack/.wt/m
 | `watchtower-core validate document-semantics` | Validates governed Markdown documents against repo-native semantic structure rules. |
 | `watchtower-core validate artifact` | Validates one governed JSON artifact against registry-backed schema validators. |
 | `watchtower-core validate acceptance` | Validates one trace across initiative acceptance, contracts, evidence, and traceability. |
-| `watchtower-core plan sync all` | Useful after validation when you want to rebuild the full local derived state. |
+| `watchtower-core <pack-namespace> sync all` | Useful after validation when you want to rebuild the full local derived state. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/all.py`
 - `core/python/src/watchtower_core/validation/suite.py`
-- `plan/python/src/watchtower_plan/validation/targets.py`
+- `<pack-root>/python/src/watchtower_<pack>/validation/targets.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
-- `plan/python/src/watchtower_plan/validation/document_semantics.py`
+- `<pack-root>/python/src/watchtower_<pack>/validation/document_semantics.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 

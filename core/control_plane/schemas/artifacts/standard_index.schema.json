@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:standard-index:v1",
   "title": "Standard Index",
-  "description": "Machine-readable lookup index for governed standards stored under core/docs/standards/ and plan/docs/standards/.",
+  "description": "Machine-readable lookup index for governed standards stored under shared and pack-owned standards roots.",
   "type": "object",
   "required": [
     "$schema",
@@ -53,7 +53,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^(core|plan)/docs/standards/.+\\.md$"
+      "pattern": "^(?:core|[^/]+|packs/[^/]+)/docs/standards/.+\\.md$"
     },
     "referenceDocPathList": {
       "type": "array",

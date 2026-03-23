@@ -9,15 +9,15 @@
 - `Non-Goals`: This package does not own reusable loaders, validators, query helpers, sync services, or pack-native orchestration.
 
 ## Governing Foundations
-- [repository_scope.md](/home/j/WatchTowerPlan/core/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/core/docs/foundations/engineering_design_principles.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/core/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/core/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
+- [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md)
 
 ## Governing Standards
-- [core_host_pack_python_boundary_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
-- [pack_interface_contract_standard.md](/home/j/WatchTowerPlan/core/docs/standards/data_contracts/pack_interface_contract_standard.md)
-- [domain_pack_authoring_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/domain_pack_authoring_standard.md)
-- [cli_help_text_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/cli_help_text_standard.md)
+- [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
+- [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md)
+- [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md)
+- [cli_help_text_standard.md](/core/docs/standards/engineering/cli_help_text_standard.md)
 
 ## Key Surfaces
 - `cli/main.py`: Host-owned console entrypoint for the `watchtower-core` binary.
@@ -30,7 +30,6 @@
 ## Related Surfaces
 - `core/python/src/watchtower_core/README.md`
 - `core/python/src/watchtower_core/cli/README.md`
-- `plan/python/src/watchtower_plan/README.md`
 
 ## Runtime Telemetry
 - `watchtower_host.cli.main` owns top-level telemetry session creation for each `watchtower-core` invocation.

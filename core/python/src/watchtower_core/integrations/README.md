@@ -13,4 +13,3 @@ External-system integration boundary for clients that speak to hosted services f
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/integrations/github/README.md`
-- `plan/docs/standards/governance/github_collaboration_standard.md`

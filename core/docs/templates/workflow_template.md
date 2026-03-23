@@ -1,13 +1,13 @@
 # <Workflow Name> Workflow
 
-> Use this template for routed workflow modules, especially under `core/workflows/modules/` and `plan/workflows/modules/`.
+> Use this template for routed workflow modules, especially under `core/workflows/modules/` and pack-owned `workflows/modules/` roots.
 > Keep the exact section names and order below unless a narrower workflow standard explicitly requires more.
 > Scope the file to one primary execution concern and delete any placeholder text that does not help the live workflow.
 > Do not add YAML front matter unless a narrower standard or validator explicitly requires it.
-> Treat `AGENTS.md`, `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`, and `core/workflows/modules/core.md` as already-loaded routing baseline, not as per-module load hints.
+> Treat `AGENTS.md`, the shared routing table, any pack-owned routing tables, and `core/workflows/modules/core.md` as already-loaded routing baseline, not as per-module load hints.
 > Do not list generic workflow standards such as `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, or `workflow_md_standard.md` in `## Additional Files to Load`; they stay implicit in the routing baseline.
 > Use `## Additional Files to Load` only when the module truly needs extra repo-local files beyond the normal routing baseline.
-> When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links such as `/core/docs/...`, `/plan/docs/...`, `/core/workflows/...`, `/plan/workflows/...`, or another concrete repo path, and write each bullet in `source: execution implication` form.
+> When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another concrete repo path, and write each bullet in `source: execution implication` form.
 > Do not use filesystem-absolute checkout paths such as `/home/...` in workflow modules; they are not portable across clones, branches, or worktrees.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
 > Treat `## Data Structure` and `## Outputs` as terse workflow-internal scaffolding. They should not imply extra repository sections, extra summaries, or extra status records unless another governed surface explicitly requires them.
@@ -28,7 +28,7 @@ Use this workflow to <state the single execution objective clearly and concretel
 - <Repo-local file to open next>: <What this file changes or constrains in execution.>
 - <Repo-local file to open next>: <What this file changes or constrains in execution.>
 
-<Delete this section when the normal routing baseline already provides enough context. Do not list `AGENTS.md`, `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`, `core/workflows/modules/core.md`, or the generic workflow standards here.>
+<Delete this section when the normal routing baseline already provides enough context. Do not list `AGENTS.md`, the shared routing table, pack-owned routing tables, `core/workflows/modules/core.md`, or the generic workflow standards here.>
 
 ## Workflow
 1. <Write the first concrete step.>

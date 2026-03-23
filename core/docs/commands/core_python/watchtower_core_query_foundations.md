@@ -4,7 +4,7 @@
 This command searches the governed foundation index so engineers and agents can find repository intent documents by topic, authority, related surface, or downstream citation or application use.
 
 ## Use When
-- You need to know which foundation document governs a repo surface such as `core/python/`, `core/workflows/modules/`, or `plan/workflows/modules/`.
+- You need to know which foundation document governs a repo surface such as `core/python/`, `core/workflows/modules/`, or an owning pack workflow module root.
 - You want to check whether a foundation document is only cited or is explicitly applied by a standard, workflow, or planning doc.
 - You want machine-readable foundation lookup results for scripts, workflows, or agent calls.
 
@@ -28,7 +28,7 @@ uv run watchtower-core query foundations [--query <text>] [--foundation-id <foun
 - `--audience <audience>`: Exact audience filter such as `shared`.
 - `--authority <authority>`: Exact authority filter such as `authoritative` or `supporting`.
 - `--tag <tag>`: Exact tag filter.
-- `--related-path <path>`: Exact repository-path filter such as `core/python/`, `core/workflows/modules/`, or `plan/workflows/modules/`.
+- `--related-path <path>`: Exact repository-path filter such as `core/python/`, `core/workflows/modules/`, or `<pack-root>/workflows/modules/`.
 - `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/github_collaboration_reference.md`.
 - `--cited-by-path <doc_path>`: Exact doc-path filter for documents that cite the foundation doc.
 - `--applied-by-path <doc_path>`: Exact doc-path filter for documents that apply the foundation doc in an applied-reference section.
@@ -67,7 +67,7 @@ uv run watchtower-core query foundations --applied-by-path core/docs/standards/e
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core plan sync foundation-index` | Rebuilds the foundation index that this command reads. |
+| `watchtower-core <pack-namespace> sync foundation-index` | Rebuilds the foundation index that this command reads when the owning pack publishes that rebuild surface. |
 | `watchtower-core query references` | Searches the reference index when you know the source authority topic but not the governing foundation doc. |
 | `watchtower-core query standards` | Searches the standard index when you want the downstream governed rules that apply one foundation doc. |
 

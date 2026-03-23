@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_removable_plan_reference_cleanup.0014_execution_started",
+  "initiative_id": "initiative.core_removable_plan_reference_cleanup",
+  "sequence": 14,
+  "event_type": "execution_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T23:14:32Z",
+  "summary": "Execution started after task task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core entered in_progress.",
+  "payload": {
+    "task_id": "task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core",
+    "task_status": "in_progress"
+  },
+  "trace_id": "trace.core_removable_plan_reference_cleanup",
+  "related_paths": [
+    "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/remove_removable_plan_references_from_shared_core/task.json"
+  ]
+}

@@ -52,9 +52,9 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 | Canonical Term | Meaning in This Repository | Notes |
 |---|---|---|
 | `control plane` | The canonical, versioned, machine-readable authority under `core/control_plane/` | Not mutable runtime state. |
-| `workflow module` | A task-execution document under `core/workflows/modules/**` and `plan/workflows/modules/**` | Loaded through routing rather than used as a broad narrative doc. |
-| `routing table` | The canonical workflow-selection surface at `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` | Handles classification, not execution steps. |
-| `standard` | A normative repository rule under `core/docs/standards/**` or `plan/docs/standards/**` | Higher authority than references or templates. |
+| `workflow module` | A task-execution document under the shared and pack-owned workflow module roots | Loaded through routing rather than used as a broad narrative doc. |
+| `routing table` | The canonical workflow-selection surface at the shared routing table and any pack-owned routing tables | Handles classification, not execution steps. |
+| `standard` | A normative repository rule under the shared and pack-owned standards roots | Higher authority than references or templates. |
 | `reference` | A supporting lookup document, usually grounded in external source material | Not the same as local policy. |
 | `template` | An authoring scaffold for a recurring document shape | Convenience surface, not authority. |
 | `index` | A derived lookup artifact that improves retrieval or navigation | Not a source of truth. |

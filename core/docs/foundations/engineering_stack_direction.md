@@ -43,17 +43,17 @@ Today the repository has a substantial governed documentation corpus, reusable P
 
 | Technology | Current Use | Main Surfaces | Human-Relevant Notes |
 |---|---|---|---|
-| Markdown | Primary human-facing authoring format | `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
+| Markdown | Primary human-facing authoring format | Shared and pack-owned documentation and workflow roots, plus `README.md` and `AGENTS.md` | This remains the dominant human-readable surface. |
 | JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/records/**` | Used for canonical control-plane inputs and retained machine-readable records because it is explicit, diff-friendly, and easy to validate. |
 | JSON Lines | Local runtime telemetry event format | `<pack>/.wt/runtime/telemetry/**` | Used for append-friendly local command telemetry because it stays inspectable and backend-neutral. |
 | JSON Schema Draft 2020-12 | Contract and validation baseline | `core/control_plane/schemas/**` | Defines governed artifact shapes and validation boundaries. |
-| YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, and `plan/workflows/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
+| YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under shared and pack-owned documentation and workflow roots | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
 | Python 3.12 | Active runtime, validation, sync, query, and CLI baseline | `core/python/pyproject.toml` and `core/python/uv.lock`, `core/python/src/**`, `core/python/tests/**` | The Python layer is now a real part of the repo's operating model, not just early scaffolding. |
 | Hatchling | Python build backend | `core/python/pyproject.toml` | Keeps packaging minimal and standard. |
 | pytest | Test runner baseline for Python code | `core/python/pyproject.toml`, `core/python/tests/**` | Standard test surface for the consolidated Python workspace. |
 
 - Durable documentation lives under `core/docs/` and `plan/docs/` according to ownership.
-- Routed task behavior lives under `core/workflows/` and `plan/workflows/`.
+- Routed task behavior lives under the shared and pack-owned workflow roots.
 - Shared implementation assets live under `core/`.
 - `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` are the active Python runtime layers in the current architecture.
 - `core/control_plane/registries/pack_registry.json`, `plan/.wt/manifests/pack_runtime_manifest.json`, and pack-contract validation are part of the effective operating stack because they define and validate hosted-pack composition.

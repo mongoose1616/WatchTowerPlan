@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "foundation_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T01:05:00Z"
+updated_at: "2026-03-22T22:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -89,7 +89,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `documentation`; `schema`; `artifact`
-- `Operational Surfaces`: `core/python/src/watchtower_core/sync/foundation_index.py`; `core/python/src/watchtower_core/query/foundations.py`; `core/docs/commands/core_python/watchtower_core_query_foundations.md`; `plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/sync/foundation_index.py`; `core/python/src/watchtower_core/query/foundations.py`; `core/docs/commands/core_python/watchtower_core_query_foundations.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
 
 ## Validation
 - The foundation index should validate against its published artifact schema.
@@ -97,7 +97,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Every entry should have a stable `foundation_id`.
 - Every entry should preserve the governed front-matter `audience` value.
 - `reference_doc_paths` should point only to governed reference docs under `core/docs/references/`.
-- Reverse citation and application paths should point only to Markdown docs under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, or `plan/workflows/**`.
+- Reverse citation and application paths should point only to Markdown docs under shared or pack-owned documentation and workflow roots.
 - Operationalization should explicitly cover the authoritative sync/query owners and the bounded family documentation surfaces that explain how to read or rebuild the foundation index.
 - Reviewers should reject entries that omit material citation or application usage already present in the source docs.
 
@@ -113,4 +113,4 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [README.md](/core/control_plane/indexes/foundations/README.md)
 
 ## Updated At
-- `2026-03-21T01:05:00Z`
+- `2026-03-22T22:15:00Z`

@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "design_philosophy"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T18:45:00Z"
+updated_at: "2026-03-22T23:20:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -75,7 +75,7 @@ The repository only works when humans and machines can both find the right level
 Future domain packs are where the broader WatchTower product becomes useful to operators. They should remain future-state context for this repository unless and until a consuming product repo mounts them for real execution.
 
 - Make domain packs the primary future operator-facing workflow surface.
-- Keep the first internal `watchtower_plan` pack aligned with the same reusable-core and host-composition contracts that later external packs must follow.
+- Keep the first internal pack aligned with the same reusable-core and host-composition contracts that later external packs must follow.
 - Keep prompt-first, LLM-guided interaction explicit.
 - Encode domain-specific language, domain goals, and domain artifact expectations so the operator works in native terms instead of generic system abstractions.
 - Project readable outputs such as notes, findings, reports, solutions, and recaps from governed state.
@@ -92,4 +92,4 @@ Future domain packs are where the broader WatchTower product becomes useful to o
 - [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-21T18:45:00Z`
+- `2026-03-22T23:20:00Z`

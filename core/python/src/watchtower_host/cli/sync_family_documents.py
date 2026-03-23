@@ -37,7 +37,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "help": "Rebuild the route index from the canonical routing table.",
         "description": """
             Rebuild the route index from `core/workflows/ROUTING_TABLE.md`
-            and `plan/workflows/ROUTING_TABLE.md`.
+            plus any pack-owned routing tables.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.

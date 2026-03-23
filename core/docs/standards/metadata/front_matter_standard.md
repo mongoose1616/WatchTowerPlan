@@ -63,7 +63,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - When `applies_to` uses repository paths, exact files should use canonical repo-relative file paths with no trailing slash and directories should use canonical repo-relative directory paths ending in `/`.
 - `aliases` should capture important alternate phrasings, abbreviations, or synonymous terms that users and agents are likely to search for.
 - `core/docs/references/**` documents that use repository-governed reference structure should include front matter and validate against the reference profile.
-- `core/docs/standards/**` and `plan/docs/standards/**` standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
+- the shared and pack-owned standards roots standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
 - `core/docs/foundations/**` and mirrored `plan/docs/foundations/**` foundation documents should include front matter and validate against the foundation profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
 - `core/docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
 - Initiative-local authored package docs and rendered tracking surfaces such as `plan/tracking/task_tracking.md` remain plain Markdown unless a narrower future standard later governs them.
@@ -93,11 +93,11 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | Document Family | Front Matter Rule | Validation Profile |
 |---|---|---|
 | `core/docs/references/**` | Required for governed reference docs | `reference_front_matter.schema.json` |
-| `core/docs/standards/**` and `plan/docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.schema.json` |
+| the shared and pack-owned standards roots | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.schema.json` |
 | `core/docs/foundations/**` and `plan/docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.schema.json` |
 | `core/docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
 | `AGENTS.md` files | Not required by default; keep plain Markdown instruction overlays | none |
-| `core/workflows/**` and `plan/workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.schema.json` |
+| the shared and pack-owned workflow roots | Optional but approved when metadata is operationally useful | `workflow_front_matter.schema.json` |
 | `plan/initiatives/**` and `plan/projects/**` authored package docs | Not required by default; current initiative package docs remain plain Markdown inputs | none |
 | short directory `README.md` files | Not required by default | none |
 
@@ -121,7 +121,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 
 ## Examples
 - A long-lived reference under `core/docs/references/**` should use the reference front matter profile.
-- A standard under `core/docs/standards/**` or `plan/docs/standards/**` should use the standard front matter profile.
+- A standard under the shared and pack-owned standards roots should use the standard front matter profile.
 - A mirrored foundation document under `core/docs/foundations/**` and `plan/docs/foundations/**` should use the foundation front matter profile and stay byte-identical across both roots.
 - A command page under `core/docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
 - An initiative-local `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, or `decision_notes.md` should usually remain plain Markdown unless a later governed profile is introduced for that family.

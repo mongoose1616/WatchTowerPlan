@@ -8,7 +8,7 @@ handlers, root command registry, and parser metadata introspection here.
 ## Boundary
 - `Classification`: `host_composition`
 - `Supported Imports`: `watchtower_host.cli.main`, parser and registry modules, and the host-owned root `*_family.py` and `*_handlers.py` modules when changing the shared CLI tree.
-- `Non-Goals`: Reusable CLI support helpers that belong in `watchtower_core.cli`, or pack-native CLI namespaces that belong in `watchtower_plan.cli` and future `watchtower_<pack>.cli` packages.
+- `Non-Goals`: Reusable CLI support helpers that belong in `watchtower_core.cli`, or pack-native CLI namespaces that belong in `watchtower_<pack>.cli` packages.
 
 ## Key Surfaces
 - `main.py`: Console entrypoint used by the `watchtower-core` script.
@@ -22,4 +22,3 @@ handlers, root command registry, and parser metadata introspection here.
 ## Related Surfaces
 - `core/python/src/watchtower_host/README.md`
 - `core/python/src/watchtower_core/cli/README.md`
-- `plan/python/src/watchtower_plan/cli/README.md`

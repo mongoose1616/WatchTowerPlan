@@ -93,17 +93,13 @@ def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> Non
     assert (
         "core/docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
     )
-    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
-        foundations_readme
-    )
+    assert "owning pack `sync foundation-index` command doc" in foundations_readme
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in repository_scope
     assert "core/docs/foundations/README.md" in foundation_index_readme
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
         foundation_index_readme
     )
-    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
-        foundation_index_readme
-    )
+    assert "owning pack's `sync foundation-index` command doc" in foundation_index_readme
 
 
 def test_core_python_command_readme_exposes_foundations_entrypoints() -> None:
@@ -112,7 +108,7 @@ def test_core_python_command_readme_exposes_foundations_entrypoints() -> None:
     assert "core/docs/commands/core_python/watchtower_core_query.md" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
     assert "core/docs/commands/core_python/watchtower_core_sync.md" in markdown
-    assert "plan/docs/commands/core_python/" in markdown
+    assert "owning pack command-doc root" in markdown
 
 
 def test_foundation_index_standard_operationalizes_foundation_family_surfaces() -> None:
@@ -124,7 +120,8 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
     assert "core/python/src/watchtower_core/query/foundations.py" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
     assert (
-        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in markdown
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md"
+        not in markdown
     )
     assert "core/control_plane/indexes/foundations/README.md" in markdown
 
@@ -254,13 +251,12 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "Keep package boundaries explicit:" in python_code_design_standard
     assert "`control_plane/` owns reusable loaders" in python_code_design_standard
     assert (
-        "`plan/python/src/watchtower_plan/` and future `watchtower_<pack>` packages own "
+        "`watchtower_<pack>` packages under their owning pack roots own "
         "repository-local or pack-local orchestration" in python_code_design_standard
     )
-    assert "plan/python/src/watchtower_plan/query/" in workspace_standard
+    assert "<pack-root>/python/src/watchtower_<pack>/" in workspace_standard
     assert "core/python/src/watchtower_core/documentation/" in workspace_standard
     assert "core/python/src/watchtower_core/query/" in workspace_standard
-    assert "plan/python/src/watchtower_plan/sync/" in workspace_standard
     assert "core/python/src/watchtower_core/rebuild/" in workspace_standard
     assert "core/python/src/watchtower_core/routing/" in workspace_standard
     assert "core/python/src/watchtower_core/workflow_execution/" in workspace_standard
@@ -270,8 +266,10 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
         "repository-path rebuild services" in workspace_standard
     )
     assert "A reusable-core query helper" in workspace_standard
-    assert "plan/python/src/watchtower_plan/" in workspace_standard
-    assert "Approved WatchTowerPlan-specific" in workspace_standard
+    assert "plan/python/src/watchtower_plan/" not in workspace_standard
+    assert "Treat downstream repositories that copy `core/` as a supported operating mode." in (
+        workspace_standard
+    )
     assert "| `documentation/` | `reusable_core` |" in package_readme
     assert "Classification`: `reusable_core`" in query_readme
     assert "| `query/` | `reusable_core` |" in package_readme
@@ -307,12 +305,17 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     for relative_path in (
         "plan/docs/standards/governance/github_collaboration_standard.md",
         "plan/docs/standards/governance/github_task_sync_standard.md",
-        "core/docs/references/github_collaboration_reference.md",
         "plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
     ):
         markdown = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
         assert "plan/python/src/watchtower_plan/sync/github_tasks.py" in markdown
         assert "core/python/src/watchtower_core/sync/github_tasks.py" not in markdown
+
+    github_reference = (
+        REPO_ROOT / "core/docs/references/github_collaboration_reference.md"
+    ).read_text(encoding="utf-8")
+    assert "plan/python/src/watchtower_plan/sync/github_tasks.py" not in github_reference
+    assert "core/python/src/watchtower_core/sync/github_tasks.py" not in github_reference
 
 
 def test_control_plane_loader_validates_current_traceability_artifacts() -> None:

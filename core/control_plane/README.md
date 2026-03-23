@@ -23,5 +23,5 @@
 | `core/control_plane/records/` | Retained governed record families for migrations, releases, purge records, and validation evidence. |
 
 ## Notes
-- Keep authored control-plane assets here and keep live plan machine state under `plan/.wt/`.
-- Use `core/control_plane/**` for authored machine authority and `plan/.wt/**` for live plan machine state. Do not blur those roles.
+- Keep authored control-plane assets here and keep live pack machine state under the owning pack machine root such as `<pack>/.wt/`.
+- Use `core/control_plane/**` for authored machine authority and pack machine roots such as `<pack>/.wt/**` for live pack state. Do not blur those roles.

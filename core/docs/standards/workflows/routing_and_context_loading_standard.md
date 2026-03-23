@@ -39,12 +39,12 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - [route_index_standard.md](/core/docs/standards/data_contracts/route_index_standard.md): defines the derived machine-readable route surface used for advisory route preview.
 - [agent_workflow_authoring_reference.md](/core/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for separating stable routing context from task-specific extra files to load.
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md): shared routing surface that operationalizes or depends on this standard.
-- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md): plan-owned routing surface that operationalizes or depends on this standard.
+- Pack-owned routing surfaces: they operationalize this standard alongside the shared routing table.
 
 ## Guidance
 - Load `AGENTS.md` first as the repository-wide instruction wrapper.
 - Apply only the global rules from `AGENTS.md` before task routing.
-- After reading `AGENTS.md`, consult `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` to determine the minimum relevant workflow modules.
+- After reading `AGENTS.md`, consult the shared routing table and any pack-owned routing tables to determine the minimum relevant workflow modules.
 - Use `watchtower-core route preview` when a compact executable preview helps, but treat it as advisory over the authored routing surfaces rather than as a replacement authority.
 - Always include the shared core workflow module in routed task sets.
 - Load only the minimum modules required for the matched task type or task types.
@@ -78,7 +78,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 ## Process or Workflow
 1. Read `AGENTS.md`.
 2. Apply repository-wide constraints and root-level dos and don'ts.
-3. Consult `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
+3. Consult the shared routing table and any pack-owned routing tables.
 4. Match the request to the nearest task type or task types using full prompt context rather than exact keyword matching alone.
 5. Load `modules/core.md` plus the minimum additional workflow modules required by the routing result, and treat all unselected modules as available but inactive.
 6. Load any `Additional Files to Load` sections only after the route is known, and only for the modules that were actually selected.
@@ -113,7 +113,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - [agent_workflow_authoring_reference.md](/core/docs/references/agent_workflow_authoring_reference.md)
 
 ## Notes
-- This concern belongs under `core/workflows/` and `plan/workflows/` because it defines routing behavior and context-loading semantics.
+- This concern belongs under the shared and pack-owned workflow roots because it defines routing behavior and context-loading semantics.
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At

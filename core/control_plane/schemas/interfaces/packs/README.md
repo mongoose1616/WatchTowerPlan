@@ -1,7 +1,7 @@
 # `core/control_plane/schemas/interfaces/packs`
 
 ## Description
-`This directory holds generic pack-facing interface schemas for the active plan pack and any additional governed domain packs. Use these schemas for pack settings, governed surface maps, indexes, notes, and extraction outputs without storing pack-owned artifacts in core.`
+`This directory holds generic pack-facing interface schemas for first-party root packs and any additional governed domain packs. Use these schemas for pack settings, governed surface maps, indexes, notes, and extraction outputs without storing pack-owned artifacts in core.`
 
 ## Files
 | Path | Description |

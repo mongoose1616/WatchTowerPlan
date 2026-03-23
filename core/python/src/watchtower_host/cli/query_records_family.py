@@ -48,7 +48,7 @@ def register_query_record_commands(
         "--source-surface-path",
         help=(
             "Exact source surface path filter such as "
-            "plan/initiatives/example/initiative_brief.md."
+            "<pack>/initiatives/example/initiative_brief.md."
         ),
     )
     query_acceptance_parser.add_argument(

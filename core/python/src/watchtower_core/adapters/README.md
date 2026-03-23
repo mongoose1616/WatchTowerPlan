@@ -15,4 +15,3 @@ Shared helpers for parsing and normalizing governed front matter and Markdown co
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/control_plane/README.md`
-- `plan/python/src/watchtower_plan/README.md`

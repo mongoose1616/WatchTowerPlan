@@ -70,8 +70,8 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md)
 
 ### Why It Matters Here
-- `core/workflows/**` and `plan/workflows/**` primarily map to how-to guidance because they define procedural steps for planning tasks and operational flows.
-- `core/docs/standards/**` and `plan/docs/standards/**` primarily map to reference because they define structures, rules, naming, contracts, and documentation expectations.
+- the shared and pack-owned workflow roots primarily map to how-to guidance because they define procedural steps for planning tasks and operational flows.
+- the shared and pack-owned standards roots primarily map to reference because they define structures, rules, naming, contracts, and documentation expectations.
 - [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md), [product_direction.md](/core/docs/foundations/product_direction.md), and [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md) primarily map to explanation because they describe rationale, interpretation, and layered application rather than serving as strict lookup-only artifacts.
 - `core/docs/templates/**` support how-to and tutorial-style authoring depending on whether a template is being used as a scaffold, a teaching aid, or a repeatable documentation starting point.
 - `README.md` files should usually act as orientation or navigation docs and should stay concise instead of absorbing full standards, workflows, or deep explanation content.

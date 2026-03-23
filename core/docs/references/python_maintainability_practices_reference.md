@@ -75,7 +75,6 @@ Capture the parts of general Python maintainability guidance that are worth adop
 ### Current Touchpoints
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md)
-- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
 - [git_commit_standard.md](/core/docs/standards/engineering/git_commit_standard.md)
 
 ### Why It Matters Here
@@ -90,7 +89,6 @@ Capture the parts of general Python maintainability guidance that are worth adop
 ## References
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md)
-- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
 - [git_commit_standard.md](/core/docs/standards/engineering/git_commit_standard.md)
 
 ## Notes

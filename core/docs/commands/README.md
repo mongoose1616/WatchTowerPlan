@@ -14,4 +14,4 @@
 
 ## Notes
 - Keep shared and reusable-core command docs here.
-- Keep pack-owned command docs under the owning pack docs root such as `plan/docs/commands/`.
+- Keep pack-owned command docs under the owning pack docs root.

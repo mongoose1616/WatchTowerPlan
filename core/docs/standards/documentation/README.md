@@ -15,5 +15,5 @@
 | `core/docs/standards/documentation/readme_md_standard.md` | Defines the standard for README.md files. |
 | `core/docs/standards/documentation/reference_md_standard.md` | Defines the standard for reference documents. |
 | `core/docs/standards/documentation/routing_table_md_standard.md` | Defines the standard for ROUTING_TABLE.md files. |
-| `core/docs/standards/documentation/standard_md_standard.md` | Defines the standard for governed standard and best-practice documents under `core/docs/standards/` and `plan/docs/standards/`. |
+| `core/docs/standards/documentation/standard_md_standard.md` | Defines the standard for governed standard and best-practice documents under shared and pack-owned standards roots. |
 | `core/docs/standards/documentation/workflow_md_standard.md` | Defines the standard for workflow documents. |

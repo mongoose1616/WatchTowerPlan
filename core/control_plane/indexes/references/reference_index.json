@@ -10,7 +10,7 @@
       "summary": "This document provides a working reference for architecture decision records as a durable decision-capture pattern.",
       "status": "active",
       "doc_path": "core/docs/references/adr_guidance_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-22T22:15:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -102,8 +102,7 @@
       ],
       "related_paths": [
         "core/python/pyproject.toml",
-        "core/docs/commands/core_python/watchtower_core.md",
-        "plan/docs/commands/core_python/watchtower_core_plan.md"
+        "core/docs/commands/core_python/watchtower_core.md"
       ],
       "tags": [
         "reference",
@@ -288,7 +287,7 @@
       "summary": "Reference for structuring a domain pack so it integrates cleanly with reusable core and a host-owned CLI.",
       "status": "active",
       "doc_path": "core/docs/references/domain_pack_authoring_reference.md",
-      "updated_at": "2026-03-22T16:21:00Z",
+      "updated_at": "2026-03-22T22:15:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -413,7 +412,7 @@
       "summary": "This document provides a working reference for the GitHub collaboration surfaces that this repository uses for issue intake, pull request templates, project fields, issue sync, and hosted execution visibility.",
       "status": "active",
       "doc_path": "core/docs/references/github_collaboration_reference.md",
-      "updated_at": "2026-03-21T01:05:00Z",
+      "updated_at": "2026-03-22T22:15:00Z",
       "repository_status": "active_support",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -438,7 +437,6 @@
         ".github/",
         "plan/docs/standards/governance/github_collaboration_standard.md",
         "plan/docs/standards/governance/github_task_sync_standard.md",
-        "plan/python/src/watchtower_plan/sync/github_tasks.py",
         ".github/README.md",
         "plan/workflows/modules/github_task_sync.md",
         "plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md"
@@ -728,7 +726,7 @@
       "summary": "This document provides a working reference for Open Policy Agent and the Rego policy language.",
       "status": "active",
       "doc_path": "core/docs/references/opa_rego_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-22T22:15:00Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
       "uses_external_references": true,
@@ -1124,7 +1122,6 @@
       "related_paths": [
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/validations/repository_validation_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
         "core/docs/standards/engineering/git_commit_standard.md"
       ],
       "tags": [
@@ -1383,7 +1380,7 @@
       "summary": "This document provides a working reference for Semantic Versioning as a release-versioning convention.",
       "status": "active",
       "doc_path": "core/docs/references/semver_reference.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-22T22:15:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,

@@ -77,8 +77,8 @@ Provide a compact lookup and discovery surface for governed reference documents,
 | `uses_internal_references` | Required | Whether the reference document explicitly maps to local repository surfaces. |
 | `uses_external_references` | Required | Whether the reference document explicitly publishes external canonical upstream URLs. |
 | `canonical_upstream_urls` | Required | External authority URLs from the `Canonical Upstream` section. |
-| `cited_by_paths` | Optional | Governed Markdown paths under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, or `plan/workflows/**` that cite the reference doc or its canonical upstream URLs. |
-| `applied_by_paths` | Optional | Governed Markdown paths under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, or `plan/workflows/**` that apply the reference in an applied-reference section or a workflow `Additional Files to Load` section. |
+| `cited_by_paths` | Optional | Governed Markdown paths under shared or pack-owned documentation and workflow roots that cite the reference doc or its canonical upstream URLs. |
+| `applied_by_paths` | Optional | Governed Markdown paths under shared or pack-owned documentation and workflow roots that apply the reference in an applied-reference section or a workflow `Additional Files to Load` section. |
 | `related_paths` | Optional | Internal repository paths explicitly mapped from the reference document. |
 | `aliases` | Optional | Retrieval-oriented aliases from front matter or curated index data. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |

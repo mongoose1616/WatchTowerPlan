@@ -9,7 +9,7 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T15:52:38Z"
+updated_at: "2026-03-22T23:20:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -64,7 +64,7 @@ This document is authoritative for current repository ownership. It does not rep
 ## This Repository Does Not Own Yet
 
 - A separate operator-facing `WatchTower` product implementation repository.
-- External operator-facing hosted-pack runtimes or mounted execution environments beyond the current internal `watchtower_plan` pack and current portability proofs.
+- External operator-facing hosted-pack runtimes or mounted execution environments beyond the current internal pack and current portability proofs.
 - Pack-local operator content and mutable working state that belong in a future consuming repository rather than this core-plus-host-plus-pack workspace.
 - Domain-specific workflows, templates, or terminology that should live in another pack instead of the current internal plan-domain pack.
 - A claim that the current repository is already the full product rather than the governed substrate and first internal pack behind it.
@@ -100,4 +100,4 @@ This document is authoritative for current repository ownership. It does not rep
 - [product_direction.md](product_direction.md)
 
 ## Updated At
-- `2026-03-22T15:52:38Z`
+- `2026-03-22T23:20:00Z`

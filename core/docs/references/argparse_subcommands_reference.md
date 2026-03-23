@@ -20,11 +20,11 @@ authority: "reference"
 This reference captures the `argparse` behavior that matters when one host CLI needs reusable root commands plus namespaced domain-pack command families.
 
 ## Purpose
-Keep command registration and dispatch predictable while the repository moves from flat plan-centric commands to a host-plus-pack namespaced CLI.
+Keep command registration and dispatch predictable while the repository moves from flat command trees to a host-plus-pack namespaced CLI.
 
 ## Scope
 - Covers nested subparser registration, defaults-based handler dispatch, and help-structure choices.
-- Covers repository-relevant decisions for namespaced command trees such as `watchtower-core plan query ...`.
+- Covers repository-relevant decisions for namespaced command trees such as `watchtower-core <pack-namespace> query ...`.
 - Does not replace the repository's CLI architecture standards or command docs.
 
 ## Canonical Upstream
@@ -56,7 +56,7 @@ Keep command registration and dispatch predictable while the repository moves fr
 ### Decision Table
 | Question | Preferred Answer | Why |
 |---|---|---|
-| Where should `plan` be registered? | As one namespace under the host root parser. | Keeps reusable root commands separate from pack runtime. |
+| Where should one hosted pack be registered? | As one namespace under the host root parser. | Keeps reusable root commands separate from pack runtime. |
 | How should deep commands be dispatched? | Parser-bound handlers via `set_defaults(handler=...)`. | Avoids a central dispatch switch that must know every pack command. |
 | Should pack examples appear in root help? | Only sparingly. | Root help should stay readable and reusable-core first. |
 | Should inner families require a subcommand? | Yes for work-performing families. | Prevents ambiguous no-op invocations. |
@@ -74,7 +74,6 @@ Keep command registration and dispatch predictable while the repository moves fr
 ### Current Touchpoints
 - [pyproject.toml](/core/python/pyproject.toml)
 - [watchtower_core.md](/core/docs/commands/core_python/watchtower_core.md)
-- [watchtower_core_plan.md](/plan/docs/commands/core_python/watchtower_core_plan.md)
 
 ### Why It Matters Here
 - The repository is moving toward `watchtower-core <pack> ...` namespacing, which depends on nested subparsers rather than more flat command families.
@@ -91,9 +90,9 @@ Keep command registration and dispatch predictable while the repository moves fr
 4. Keep help examples local to the parser layer that owns them.
 
 ## Examples
-- `watchtower-core plan bootstrap`
-- `watchtower-core plan query initiatives --format json`
-- `watchtower-core pack validate --pack plan --format json`
+- `watchtower-core <pack-namespace> bootstrap`
+- `watchtower-core <pack-namespace> query initiatives --format json`
+- `watchtower-core pack validate --format json`
 
 ## References
 - [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)
