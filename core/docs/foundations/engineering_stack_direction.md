@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "technology_stack"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T17:45:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -16,11 +16,11 @@ applies_to:
   - "core/python/"
   - "core/python/src/watchtower_host/"
   - "core/python/src/watchtower_core/pack_integration/"
-  - "plan/python/src/watchtower_plan/"
+  - "first_internal_pack_python"
   - "core/control_plane/registries/pack_registry.json"
-  - "plan/.wt/manifests/pack_runtime_manifest.json"
+  - "hosted_pack_runtime_manifest"
   - "core/docs/standards/"
-  - "plan/docs/standards/"
+  - "pack_owned_standards"
 aliases:
   - "technology stack"
   - "stack direction"
@@ -116,4 +116,4 @@ Today the repository has a substantial governed documentation corpus, reusable P
 - [in_toto_reference.md](/core/docs/references/in_toto_reference.md)
 
 ## Updated At
-- `2026-03-22T17:45:00Z`
+- `2026-03-23T16:35:00Z`

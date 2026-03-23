@@ -249,6 +249,36 @@
       ]
     },
     {
+      "trace_id": "trace.core_pack_neutrality_followup",
+      "title": "Core Pack Neutrality Followup",
+      "summary": "Removes remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while keeping legitimate current-repo pack facts scoped to plan-owned boundaries.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T16:20:08Z",
+      "closed_at": "2026-03-23T16:20:08Z",
+      "closure_reason": "Removed remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while preserving plan-owned coverage behind the pack boundary.",
+      "source_surface_paths": [
+        "plan/initiatives/core_pack_neutrality_followup/decision_notes.md",
+        "plan/initiatives/core_pack_neutrality_followup/design_record.md",
+        "plan/initiatives/core_pack_neutrality_followup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutrality_followup/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.core_pack_neutrality_followup.bootstrap_core_pack_neutrality_followup"
+      ],
+      "related_paths": [
+        "plan/initiatives/core_pack_neutrality_followup/.wt/initiative.json",
+        "plan/initiatives/core_pack_neutrality_followup/.wt/tasks/bootstrap_core_pack_neutrality_followup/task.json",
+        "plan/initiatives/core_pack_neutrality_followup/decision_notes.md",
+        "plan/initiatives/core_pack_neutrality_followup/design_record.md",
+        "plan/initiatives/core_pack_neutrality_followup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutrality_followup/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
       "title": "Core Portability Follow-up Root Pack And Query Typing",
       "summary": "Cleans up copied-core portability debt in shared help, command docs, tests, and host query typing without changing WatchTowerPlan's current steady-state plan workspace contract.",

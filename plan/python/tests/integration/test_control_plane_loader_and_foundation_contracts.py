@@ -119,9 +119,7 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
     assert "core/python/src/watchtower_core/sync/foundation_index.py" in markdown
     assert "core/python/src/watchtower_core/query/foundations.py" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
-    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
-        markdown
-    )
+    assert "*/docs/commands/core_python/watchtower_core_*_sync_foundation_index.md" in markdown
     assert "core/control_plane/indexes/foundations/README.md" in markdown
 
 

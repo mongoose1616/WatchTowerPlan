@@ -8,19 +8,19 @@ tags:
   - "foundation"
   - "standards"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:20:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/docs/standards/"
-  - "plan/docs/standards/"
   - "core/control_plane/"
   - "core/python/src/watchtower_host/"
   - "core/control_plane/registries/pack_registry.json"
-  - "plan/.wt/manifests/pack_runtime_manifest.json"
+  - "hosted_pack_runtime_manifest"
   - "core/python/src/watchtower_core/validation/pack_contract.py"
   - "core/workflows/modules/"
-  - "plan/workflows/modules/"
+  - "pack_owned_standards"
+  - "pack_owned_workflows"
 aliases:
   - "standards"
   - "standards posture"
@@ -89,4 +89,4 @@ Future domain-pack standards should keep packs expressive for their domain witho
 - [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-22T23:20:00Z`
+- `2026-03-23T16:35:00Z`

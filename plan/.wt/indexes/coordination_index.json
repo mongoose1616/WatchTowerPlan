@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T14:55:54Z",
+  "updated_at": "2026-03-23T16:20:08Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.core_pack_neutrality_followup",
+      "title": "Core Pack Neutrality Followup",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T16:20:08Z",
+      "key_surface_path": "plan/initiatives/core_pack_neutrality_followup/plan.md",
+      "closure_reason": "Removed remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while preserving plan-owned coverage behind the pack boundary."
+    },
     {
       "trace_id": "trace.core_pack_neutral_portability_cleanup",
       "title": "Core Pack Neutral Portability Cleanup",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-22T20:50:23Z",
       "key_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md",
       "closure_reason": "Validated and benchmarked latency reductions on the final optimized tree."
-    },
-    {
-      "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
-      "title": "Runtime Telemetry And Command Observability Foundation",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T18:49:35Z",
-      "key_surface_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md",
-      "closure_reason": "Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche."
     }
   ]
 }

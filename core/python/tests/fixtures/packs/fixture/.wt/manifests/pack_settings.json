@@ -1,0 +1,47 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+  "surface_name": "pack_settings",
+  "contract_version": "v1",
+  "description": "Pack settings for the synthetic validation fixture.",
+  "updated_at": "2026-03-23T16:20:00Z",
+  "pack_id": "pack.fixture",
+  "surfaces": [
+    {
+      "surface_name": "schema_catalog",
+      "surface_kind": "schema_collection",
+      "path": "packs/fixture/.wt/registries/schema_catalog.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validator_registry",
+      "surface_kind": "registry",
+      "path": "packs/fixture/.wt/registries/validator_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validation_suite_registry",
+      "surface_kind": "registry",
+      "path": "packs/fixture/.wt/registries/validation_suite_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    }
+  ],
+  "workspace_roots": {
+    "workspace_root": "packs/fixture",
+    "machine_root": "packs/fixture/.wt",
+    "docs_root": "packs/fixture/docs",
+    "workflows_root": "packs/fixture/workflows",
+    "tracking_root": "packs/fixture/tracking",
+    "initiatives_root": "packs/fixture/initiatives",
+    "projects_root": "packs/fixture/projects",
+    "domain_roots": {
+      "initiatives": "packs/fixture/initiatives",
+      "projects": "packs/fixture/projects"
+    },
+    "overview_path": "packs/fixture/overview.md"
+  },
+  "default_validation_suite_id": "suite.fixture.validation_baseline",
+  "notes": "This fixture pack keeps the reusable-core validation surfaces minimal so tests can materialize it into temporary repos."
+}

@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "design_philosophy"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:20:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -16,11 +16,11 @@ applies_to:
   - "core/python/"
   - "core/python/src/watchtower_host/"
   - "core/python/src/watchtower_core/pack_integration/"
-  - "plan/python/src/watchtower_plan/"
   - "core/workflows/modules/"
-  - "plan/workflows/modules/"
   - "core/docs/standards/"
-  - "plan/docs/standards/"
+  - "first_internal_pack_python"
+  - "pack_owned_workflows"
+  - "pack_owned_standards"
 aliases:
   - "design philosophy"
   - "repository design philosophy"
@@ -92,4 +92,4 @@ Future domain packs are where the broader WatchTower product becomes useful to o
 - [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-22T23:20:00Z`
+- `2026-03-23T16:35:00Z`

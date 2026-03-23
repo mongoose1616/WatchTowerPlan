@@ -9,16 +9,16 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T20:10:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/python/"
   - "core/control_plane/"
   - "core/docs/"
-  - "plan/docs/"
+  - "pack_owned_docs"
   - "core/workflows/"
-  - "plan/workflows/"
+  - "pack_owned_workflows"
 aliases:
   - "repo validation baseline"
   - "validation baseline"
@@ -105,4 +105,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-23T20:10:00Z`
+- `2026-03-23T16:35:00Z`

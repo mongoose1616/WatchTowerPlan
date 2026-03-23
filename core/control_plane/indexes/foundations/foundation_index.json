@@ -12,7 +12,7 @@
       "audience": "shared",
       "authority": "supporting",
       "doc_path": "core/docs/foundations/customer_story.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -39,7 +39,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-22T23:20:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -47,10 +47,10 @@
         "core/python/",
         "core/python/src/watchtower_host/",
         "core/python/src/watchtower_core/pack_integration/",
-        "plan/python/src/watchtower_plan/",
         "core/workflows/modules/",
-        "plan/workflows/modules/",
         "core/docs/standards/",
+        "plan/python/src/watchtower_plan/",
+        "plan/workflows/modules/",
         "plan/docs/standards/"
       ],
       "cited_by_paths": [
@@ -89,7 +89,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-22T17:45:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
@@ -97,10 +97,10 @@
         "core/python/",
         "core/python/src/watchtower_host/",
         "core/python/src/watchtower_core/pack_integration/",
-        "plan/python/src/watchtower_plan/",
         "core/control_plane/registries/pack_registry.json",
-        "plan/.wt/manifests/pack_runtime_manifest.json",
         "core/docs/standards/",
+        "plan/python/src/watchtower_plan/",
+        "plan/.wt/manifests/pack_runtime_manifest.json",
         "plan/docs/standards/"
       ],
       "reference_doc_paths": [
@@ -212,16 +212,16 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-22T23:20:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
-        "plan/",
         "core/control_plane/",
         "core/python/src/watchtower_host/",
         "core/python/src/watchtower_core/pack_integration/",
-        "plan/python/src/watchtower_plan/",
         "core/workflows/modules/",
+        "plan/",
+        "plan/python/src/watchtower_plan/",
         "plan/workflows/modules/"
       ],
       "cited_by_paths": [
@@ -250,18 +250,18 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-22T23:20:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
         "core/docs/foundations/",
-        "plan/docs/foundations/",
         "core/workflows/",
-        "plan/workflows/",
-        "plan/",
         "core/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_host/",
+        "plan/docs/foundations/",
+        "plan/workflows/",
+        "plan/",
         "plan/python/src/watchtower_plan/"
       ],
       "cited_by_paths": [
@@ -289,18 +289,18 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-22T23:20:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
         "core/docs/standards/",
-        "plan/docs/standards/",
         "core/control_plane/",
         "core/python/src/watchtower_host/",
         "core/control_plane/registries/pack_registry.json",
-        "plan/.wt/manifests/pack_runtime_manifest.json",
         "core/python/src/watchtower_core/validation/pack_contract.py",
         "core/workflows/modules/",
+        "plan/docs/standards/",
+        "plan/.wt/manifests/pack_runtime_manifest.json",
         "plan/workflows/modules/"
       ],
       "cited_by_paths": [

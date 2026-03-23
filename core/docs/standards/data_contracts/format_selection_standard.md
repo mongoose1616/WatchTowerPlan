@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "format_selection"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -100,7 +100,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 
 ## Operationalization
 - `Modes`: `artifact`; `workflow`; `documentation`
-- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/registries/`; `core/workflows/`; `plan/workflows/`; `core/docs/`; `plan/docs/`
+- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/registries/`; `*/workflows/`; `*/docs/`
 
 ## Validation
 - Reviewers should challenge format choices that add complexity without a concrete benefit.
@@ -130,4 +130,4 @@ Keep format choices small, predictable, and aligned with the repository's author
 - The goal is not to ban every alternative format. The goal is to make deviations from the defaults explicit and justified.
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-23T16:35:00Z`

@@ -54,7 +54,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/command_index_standard.md",
-      "updated_at": "2026-03-21T01:05:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -66,8 +66,7 @@
         "core/control_plane/indexes/commands/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/commands/README.md",
-        "core/docs/commands/",
-        "plan/docs/commands/"
+        "*/docs/commands/"
       ],
       "internal_reference_paths": [
         "core/docs/standards/documentation/command_md_standard.md",
@@ -97,7 +96,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/format_selection_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -108,10 +107,8 @@
       "operationalization_paths": [
         "core/control_plane/",
         "core/control_plane/registries/",
-        "core/workflows/",
-        "plan/workflows/",
-        "core/docs/",
-        "plan/docs/"
+        "*/workflows/",
+        "*/docs/"
       ],
       "reference_doc_paths": [
         "core/docs/references/rfc_8259_json_reference.md",
@@ -170,7 +167,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/foundation_index_standard.md",
-      "updated_at": "2026-03-23T03:46:24Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -184,7 +181,7 @@
         "core/python/src/watchtower_core/sync/foundation_index.py",
         "core/python/src/watchtower_core/query/foundations.py",
         "core/docs/commands/core_python/watchtower_core_query_foundations.md",
-        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
+        "*/docs/commands/core_python/watchtower_core_*_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/foundations/",
         "core/control_plane/indexes/foundations/README.md"
@@ -219,7 +216,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
-      "updated_at": "2026-03-23T05:10:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -229,10 +226,10 @@
       ],
       "operationalization_paths": [
         "core/control_plane/registries/pack_registry.json",
-        "plan/.wt/manifests/pack_runtime_manifest.json",
+        "*/.wt/manifests/pack_runtime_manifest.json",
         "core/python/src/watchtower_core/pack_integration/",
         "core/python/src/watchtower_core/validation/pack_contract.py",
-        "plan/docs/commands/core_python/"
+        "*/docs/commands/core_python/"
       ],
       "reference_doc_paths": [
         "core/docs/references/python_plugin_discovery_reference.md",
@@ -373,7 +370,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/route_index_standard.md",
-      "updated_at": "2026-03-18T05:44:52Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -384,10 +381,8 @@
       "operationalization_paths": [
         "core/control_plane/indexes/routes/",
         "core/control_plane/schemas/artifacts/",
-        "core/workflows/modules/",
-        "plan/workflows/modules/",
-        "core/workflows/ROUTING_TABLE.md",
-        "plan/workflows/ROUTING_TABLE.md"
+        "*/workflows/modules/",
+        "*/workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
         "core/docs/standards/workflows/routing_and_context_loading_standard.md",
@@ -575,7 +570,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-23T03:46:24Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -587,8 +582,7 @@
         "core/control_plane/indexes/workflows/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/",
-        "core/workflows/modules/",
-        "plan/workflows/modules/"
+        "*/workflows/modules/"
       ],
       "reference_doc_paths": [
         "core/docs/references/agent_workflow_authoring_reference.md"
@@ -934,7 +928,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/routing_table_md_standard.md",
-      "updated_at": "2026-03-18T05:44:52Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -942,8 +936,7 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "core/workflows/ROUTING_TABLE.md",
-        "plan/workflows/ROUTING_TABLE.md",
+        "*/workflows/ROUTING_TABLE.md",
         "core/docs/templates/routing_table_template.md"
       ],
       "internal_reference_paths": [
@@ -970,7 +963,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-23T00:05:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -980,8 +973,7 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "core/docs/standards/*/*_standard.md",
-        "plan/docs/standards/*/*_standard.md",
+        "*/docs/standards/*/*_standard.md",
         "core/python/src/watchtower_core/sync/standard_index.py",
         "core/python/src/watchtower_core/query/standards.py",
         "core/docs/commands/core_python/watchtower_core_query_standards.md",
@@ -1018,7 +1010,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-18T05:44:52Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1026,11 +1018,9 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "core/workflows/modules/",
-        "plan/workflows/modules/",
+        "*/workflows/modules/",
         "core/workflows/modules/core.md",
-        "core/workflows/ROUTING_TABLE.md",
-        "plan/workflows/ROUTING_TABLE.md",
+        "*/workflows/ROUTING_TABLE.md",
         "core/docs/templates/workflow_template.md"
       ],
       "reference_doc_paths": [
@@ -1998,7 +1988,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/operations/repository_maintenance_loop_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2013,25 +2003,24 @@
       ],
       "applies_to": [
         "core/docs/",
-        "plan/docs/",
+        "pack_owned_docs",
         "core/workflows/",
-        "plan/workflows/",
+        "pack_owned_workflows",
         "core/control_plane/",
         "core/python/"
       ],
       "related_paths": [
         "core/docs/",
-        "plan/docs/",
         "core/workflows/",
-        "plan/workflows/",
         "core/control_plane/",
-        "core/python/"
+        "core/python/",
+        "plan/docs/",
+        "plan/workflows/"
       ],
       "internal_reference_paths": [
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/validations/repository_validation_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
         "core/workflows/modules/repository_review.md",
         "core/workflows/modules/documentation_refresh.md",
         "core/docs/README.md"
@@ -2040,7 +2029,6 @@
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/validations/repository_validation_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
         "core/workflows/modules/repository_review.md",
         "core/workflows/modules/documentation_refresh.md"
       ],
@@ -2058,7 +2046,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-23T20:10:00Z",
+      "updated_at": "2026-03-23T16:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2075,16 +2063,16 @@
         "core/python/",
         "core/control_plane/",
         "core/docs/",
-        "plan/docs/",
+        "pack_owned_docs",
         "core/workflows/",
-        "plan/workflows/"
+        "pack_owned_workflows"
       ],
       "related_paths": [
         "core/python/",
         "core/control_plane/",
         "core/docs/",
-        "plan/docs/",
         "core/workflows/",
+        "plan/docs/",
         "plan/workflows/"
       ],
       "internal_reference_paths": [

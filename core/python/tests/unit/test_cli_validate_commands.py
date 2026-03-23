@@ -9,6 +9,7 @@ from tests.pack_fixture_support import (
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_host.cli.main import main
 
 
@@ -396,12 +397,14 @@ def test_validate_all_reports_unbootstrapped_root_pack_without_crashing(
 
 
 def test_validate_suite_supports_json_output(capsys) -> None:
+    suite_id = ControlPlaneLoader(REPO_ROOT).load_pack_settings().default_validation_suite_id
+
     result = main(
         [
             "validate",
             "suite",
             "--suite-id",
-            "suite.plan.validation_baseline",
+            suite_id,
             "--format",
             "json",
         ]
@@ -412,7 +415,7 @@ def test_validate_suite_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core validate suite"
     assert payload["status"] == "ok"
-    assert payload["suite_id"] == "suite.plan.validation_baseline"
+    assert payload["suite_id"] == suite_id
     assert payload["passed"] is True
     assert any(summary["step_kind"] == "front_matter" for summary in payload["step_summaries"])
     assert any(

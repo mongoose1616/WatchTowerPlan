@@ -50,8 +50,6 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
         and "partial_update" in entry["primary_risks"]
         and "sync" in entry["trigger_tags"]
         and "workflow.task_lifecycle_management" in entry.get("companion_workflow_ids", [])
-        and "plan/docs/standards/governance/github_task_sync_standard.md"
-        in entry.get("internal_reference_paths", [])
         for entry in entries
     )
     assert any(
@@ -91,7 +89,7 @@ def test_validate_workflow_additional_load_section_accepts_task_specific_files()
     )
 
     result = validate_workflow_additional_load_section(
-        "plan/workflows/modules/initiative_brief_authoring.md",
+        "packs/example/workflows/modules/initiative_brief_authoring.md",
         section,
         repo_root=REPO_ROOT,
     )

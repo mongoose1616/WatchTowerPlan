@@ -84,7 +84,7 @@ def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
     repo_root = tmp_path / "repo"
     core_workflows_dir = repo_root / "core/workflows"
     core_modules_dir = core_workflows_dir / "modules"
-    plan_workflows_dir = repo_root / "plan/workflows"
+    pack_workflows_dir = repo_root / "packs/example/workflows"
     core_modules_dir.mkdir(parents=True)
     (core_modules_dir / "core.md").write_text("# Core\n", encoding="utf-8")
     (core_modules_dir / "task_scope_definition.md").write_text(
@@ -111,15 +111,15 @@ def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
         + "\n",
         encoding="utf-8",
     )
-    plan_workflows_dir.mkdir(parents=True)
-    (plan_workflows_dir / "ROUTING_TABLE.md").write_text(
+    pack_workflows_dir.mkdir(parents=True)
+    (pack_workflows_dir / "ROUTING_TABLE.md").write_text(
         "\n".join(
             [
-                "# Plan Workflow Routing Table",
+                "# Example Pack Workflow Routing Table",
                 "",
                 "| Task Type | Trigger Keywords (Examples) | Required Workflows |",
                 "|---|---|---|",
-                "| Plan Route | plan task | `core/workflows/modules/core.md` |",
+                "| Pack Route | pack task | `core/workflows/modules/core.md` |",
             ]
         )
         + "\n",
@@ -146,9 +146,9 @@ def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
             ],
         },
         {
-            "route_id": "route.plan_route",
-            "task_type": "Plan Route",
-            "trigger_keywords": ["plan task"],
+            "route_id": "route.pack_route",
+            "task_type": "Pack Route",
+            "trigger_keywords": ["pack task"],
             "required_workflow_ids": ["workflow.core"],
             "required_workflow_paths": [
                 "core/workflows/modules/core.md",

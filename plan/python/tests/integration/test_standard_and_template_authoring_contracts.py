@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import re
 
-from tests.integration.control_plane_artifact_helpers import FRONT_MATTER_PATTERN, REPO_ROOT
+from watchtower_plan.testing.control_plane_artifact_helpers import (
+    FRONT_MATTER_PATTERN,
+    REPO_ROOT,
+)
+
 from watchtower_core.adapters import extract_sections
 from watchtower_core.documentation.standards import parse_standard_operationalization
 
@@ -174,10 +178,7 @@ def test_document_family_standards_publish_precise_operationalization_coverage()
         ),
         (
             REPO_ROOT / "core/docs/standards/documentation/standard_md_standard.md",
-            (
-                "`core/docs/standards/*/*_standard.md`",
-                "`plan/docs/standards/*/*_standard.md`",
-            ),
+            ("`*/docs/standards/*/*_standard.md`",),
         ),
     )
 

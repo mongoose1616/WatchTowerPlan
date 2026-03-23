@@ -56,10 +56,10 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     standard_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.documentation.standard_md"
     )
-    assert {
-        "core/docs/standards/*/*_standard.md",
-        "plan/docs/standards/*/*_standard.md",
-    }.issubset(set(standard_entry.get("operationalization_paths", [])))
+    assert "*/docs/standards/*/*_standard.md" in standard_entry.get(
+        "operationalization_paths",
+        [],
+    )
 
     python_code_design_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.engineering.python_code_design"
@@ -100,7 +100,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
         foundation_entry.get("operationalization_paths", [])
     )
-    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
+    assert "*/docs/commands/core_python/watchtower_core_*_sync_foundation_index.md" in (
         foundation_entry.get("operationalization_paths", [])
     )
     assert "core/control_plane/indexes/foundations/README.md" in (

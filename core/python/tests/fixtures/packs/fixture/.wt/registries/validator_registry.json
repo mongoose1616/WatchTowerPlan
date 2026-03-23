@@ -1,46 +1,46 @@
 {
   "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
   "id": "registry.validators",
-  "title": "Plan Pack Validators",
+  "title": "Fixture Pack Validators",
   "status": "active",
   "validators": [
     {
-      "id": "validator.packs.plan_note",
-      "title": "Plan Note Validator",
-      "description": "Pack-local validator for plan note artifacts.",
+      "id": "validator.packs.fixture_note",
+      "title": "Fixture Note Validator",
+      "description": "Pack-local validator for fixture note artifacts.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "plan_note",
+      "artifact_kind": "fixture_note",
       "applies_to": [
-        "packs/plan/.wt/work_items/plan_note.json"
+        "packs/fixture/.wt/work_items/fixture_note.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:plan-note:v1"
+        "urn:watchtower:schema:interfaces:packs:fixture-note:v1"
       ]
     },
     {
       "id": "validator.packs.validation_suite_registry",
-      "title": "Plan Validation Suite Registry Validator",
+      "title": "Fixture Validation Suite Registry Validator",
       "description": "Pack-local validator for the validation suite registry artifact.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "validation_suite_registry",
       "applies_to": [
-        "packs/plan/.wt/registries/validation_suite_registry.json"
+        "packs/fixture/.wt/registries/validation_suite_registry.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1"
       ]
     },
     {
-      "id": "validator.plan.pack_runtime_manifest",
-      "title": "Plan Pack Runtime Manifest Validator",
-      "description": "Validates the plan pack runtime manifest artifact.",
+      "id": "validator.fixture.pack_runtime_manifest",
+      "title": "Fixture Pack Runtime Manifest Validator",
+      "description": "Validates the fixture pack runtime manifest artifact.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "pack_runtime_manifest",
       "applies_to": [
-        "packs/plan/.wt/manifests/pack_runtime_manifest.json"
+        "packs/fixture/.wt/manifests/pack_runtime_manifest.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1"

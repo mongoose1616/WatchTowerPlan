@@ -12,20 +12,26 @@ from watchtower_core.pack_integration.workspace_registration import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-_PLAN_FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures" / "packs" / "plan"
-_DEFAULT_FIXTURE_PACK_ROOT = "packs/plan"
-_DEFAULT_FIXTURE_WT_ROOT = "packs/plan/.wt"
+_FIXTURE_TEMPLATE_ROOT = Path(__file__).resolve().parent / "fixtures" / "packs" / "fixture"
+_DEFAULT_FIXTURE_PACK_ROOT = "packs/fixture"
+_DEFAULT_FIXTURE_WT_ROOT = "packs/fixture/.wt"
+_DEFAULT_PACK_ID = "pack.fixture"
+_DEFAULT_PACK_SLUG = "fixture"
+_DEFAULT_COMMAND_NAMESPACE = "fixture"
+_DEFAULT_PYTHON_DISTRIBUTION = "watchtower-fixture-pack"
+_DEFAULT_PYTHON_PACKAGE = "watchtower_fixture_pack"
+_DEFAULT_INTEGRATION_MODULE = "watchtower_fixture_pack.integration"
 
 
 def materialize_pack_validation_suite(
     pack_root: Path,
     *,
-    pack_id: str = "pack.fixture",
-    pack_slug: str = "fixture",
-    command_namespace: str = "fixture",
-    python_distribution: str = "watchtower-fixture-pack",
-    python_package: str = "watchtower_fixture_pack",
-    integration_module: str = "watchtower_fixture_pack.integration",
+    pack_id: str = _DEFAULT_PACK_ID,
+    pack_slug: str = _DEFAULT_PACK_SLUG,
+    command_namespace: str = _DEFAULT_COMMAND_NAMESPACE,
+    python_distribution: str = _DEFAULT_PYTHON_DISTRIBUTION,
+    python_package: str = _DEFAULT_PYTHON_PACKAGE,
+    integration_module: str = _DEFAULT_INTEGRATION_MODULE,
     default_repo_pack: bool | None = None,
     include_validation_suite_registry: bool = True,
     suite_step_validator_id: str | None = None,
@@ -36,7 +42,20 @@ def materialize_pack_validation_suite(
     register_with_core_python_workspace: bool = True,
 ) -> dict[str, str]:
     repo_root = _discover_repo_root(pack_root)
-    copytree(_PLAN_FIXTURE_ROOT, pack_root, dirs_exist_ok=True)
+    inferred_pack_slug = pack_root.name
+    if pack_slug == _DEFAULT_PACK_SLUG:
+        pack_slug = inferred_pack_slug
+    if pack_id == _DEFAULT_PACK_ID:
+        pack_id = f"pack.{pack_slug}"
+    if command_namespace == _DEFAULT_COMMAND_NAMESPACE:
+        command_namespace = pack_slug
+    if python_distribution == _DEFAULT_PYTHON_DISTRIBUTION:
+        python_distribution = f"watchtower-{pack_slug}-fixture"
+    if python_package == _DEFAULT_PYTHON_PACKAGE:
+        python_package = f"watchtower_{pack_slug}_fixture"
+    if integration_module == _DEFAULT_INTEGRATION_MODULE:
+        integration_module = f"{python_package}.integration"
+    copytree(_FIXTURE_TEMPLATE_ROOT, pack_root, dirs_exist_ok=True)
 
     actual_wt_root = f"{pack_root.relative_to(repo_root).as_posix()}/.wt"
     actual_pack_root = actual_wt_root.removesuffix("/.wt")
@@ -54,13 +73,13 @@ def materialize_pack_validation_suite(
         python_package=python_package,
     )
 
-    if note_slug != "plan_note":
-        original_artifact_path = pack_root / ".wt" / "work_items" / "plan_note.json"
+    if note_slug != "fixture_note":
+        original_artifact_path = pack_root / ".wt" / "work_items" / "fixture_note.json"
         renamed_artifact_path = pack_root / ".wt" / "work_items" / f"{note_slug}.json"
         if original_artifact_path.exists():
             original_artifact_path.rename(renamed_artifact_path)
         original_schema_path = (
-            pack_root / ".wt" / "schemas" / "interfaces" / "packs" / "plan_note.schema.json"
+            pack_root / ".wt" / "schemas" / "interfaces" / "packs" / "fixture_note.schema.json"
         )
         renamed_schema_path = (
             pack_root / ".wt" / "schemas" / "interfaces" / "packs" / f"{note_slug}.schema.json"
@@ -71,16 +90,17 @@ def materialize_pack_validation_suite(
     replacements = (
         (_DEFAULT_FIXTURE_WT_ROOT, actual_wt_root),
         (_DEFAULT_FIXTURE_PACK_ROOT, actual_pack_root),
-        ("pack.plan", pack_id),
-        ("suite.plan.validation_baseline", suite_id),
-        ("validator.packs.plan_note", validator_id),
-        ("urn:watchtower:schema:interfaces:packs:plan-note:v1", schema_id),
-        ("plan_note", note_slug),
-        ("watchtower-plan", python_distribution),
-        ("watchtower_plan", python_package),
-        ("watchtower_plan.integration", integration_module),
-        ('"pack_slug": "plan"', f'"pack_slug": "{pack_slug}"'),
-        ('"command_namespace": "plan"', f'"command_namespace": "{command_namespace}"'),
+        ("pack.fixture", pack_id),
+        ("suite.fixture.validation_baseline", suite_id),
+        ("validator.packs.fixture_note", validator_id),
+        ("validator.fixture.pack_runtime_manifest", f"validator.{pack_slug}.pack_runtime_manifest"),
+        ("urn:watchtower:schema:interfaces:packs:fixture-note:v1", schema_id),
+        ("fixture_note", note_slug),
+        ("watchtower-fixture-pack", python_distribution),
+        ("watchtower_fixture_pack", python_package),
+        ("watchtower_fixture_pack.integration", integration_module),
+        ('"pack_slug": "fixture"', f'"pack_slug": "{pack_slug}"'),
+        ('"command_namespace": "fixture"', f'"command_namespace": "{command_namespace}"'),
     )
     for path in sorted(pack_root.rglob("*.json")):
         text = path.read_text(encoding="utf-8")
@@ -122,12 +142,9 @@ def materialize_pack_validation_suite(
         command_namespace=command_namespace,
         docs_root=runtime_manifest["owned_roots"]["docs_root"],
     )
-    if integration_module == "watchtower_plan.integration":
-        command_source_surface = f"{actual_pack_root}/python/src/{python_package}/cli/namespace.py"
-    else:
-        command_source_surface = (
-            f"{actual_pack_root}/python/src/{integration_module.replace('.', '/')}.py"
-        )
+    command_source_surface = (
+        f"{actual_pack_root}/python/src/{integration_module.replace('.', '/')}.py"
+    )
     command_doc_path = repo_root / command_doc_relative_path
     command_doc_path.parent.mkdir(parents=True, exist_ok=True)
     command_doc_path.write_text(

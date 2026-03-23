@@ -8,13 +8,13 @@ tags:
   - "foundation"
   - "product_narrative"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T05:30:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
   - "core/docs/foundations/"
-  - "plan/docs/foundations/"
-  - "plan/"
+  - "foundations_mirror"
+  - "live_pack_workspace"
 aliases:
   - "customer story"
   - "product narrative brochure"
@@ -105,4 +105,4 @@ Trust in the future product should come from visible properties:
 - [engineering_design_principles.md](engineering_design_principles.md)
 
 ## Updated At
-- `2026-03-19T05:30:00Z`
+- `2026-03-23T16:35:00Z`

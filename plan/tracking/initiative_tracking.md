@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- | --- |
+| `trace.core_pack_neutrality_followup` | Core Pack Neutrality Followup | `completed` | [plan.md](/plan/initiatives/core_pack_neutrality_followup/plan.md) | `2026-03-23T16:20:08Z` | Removed remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while preserving plan-owned coverage behind the pack boundary. |
 | `trace.core_pack_neutral_portability_cleanup` | Core Pack Neutral Portability Cleanup | `completed` | [plan.md](/plan/initiatives/core_pack_neutral_portability_cleanup/plan.md) | `2026-03-23T14:55:54Z` | Completed core pack-neutral portability cleanup and validated copied-core compatibility |
 | `trace.repository_validation_repair_loop_closeout` | Repository Validation Repair Loop Closeout | `completed` | [plan.md](/plan/initiatives/repository_validation_repair_loop_closeout/plan.md) | `2026-03-23T05:52:40Z` | Repaired the surfaced typing drift and completed two consecutive clean broad validation passes. |
 | `trace.copied_core_bootstrap_and_validator_alignment` | Copied Core Bootstrap And Validator Alignment | `completed` | [plan.md](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md) | `2026-03-23T02:57:21Z` | Tolerated identical copied shared validators and taught pack bootstrap to reconcile stale donor registry and discovery surfaces during copied-core bring-up. |
@@ -33,4 +34,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-23T14:55:54Z`_
+_Updated At: `2026-03-23T16:20:08Z`_

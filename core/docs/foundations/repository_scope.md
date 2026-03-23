@@ -9,21 +9,21 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:20:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "README.md"
   - "AGENTS.md"
   - "core/docs/foundations/"
-  - "plan/docs/foundations/"
   - "core/workflows/"
-  - "plan/workflows/"
-  - "plan/"
   - "core/"
   - "core/python/src/watchtower_core/"
   - "core/python/src/watchtower_host/"
-  - "plan/python/src/watchtower_plan/"
+  - "foundations_mirror"
+  - "pack_owned_workflows"
+  - "live_pack_workspace"
+  - "first_internal_pack_python"
 aliases:
   - "repository scope"
   - "repository charter"
@@ -100,4 +100,4 @@ This document is authoritative for current repository ownership. It does not rep
 - [product_direction.md](product_direction.md)
 
 ## Updated At
-- `2026-03-22T23:20:00Z`
+- `2026-03-23T16:35:00Z`

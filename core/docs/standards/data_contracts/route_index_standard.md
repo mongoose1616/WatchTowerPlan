@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "route_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T05:44:52Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -72,7 +72,7 @@ Provide a compact machine-readable rendered surface of the routing table so rout
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/routes/`; `core/control_plane/schemas/artifacts/`; `core/workflows/modules/`; `plan/workflows/modules/`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`
+- `Operational Surfaces`: `core/control_plane/indexes/routes/`; `core/control_plane/schemas/artifacts/`; `*/workflows/modules/`; `*/workflows/ROUTING_TABLE.md`
 
 ## Validation
 - The route index should validate against its published artifact schema.
@@ -91,4 +91,4 @@ Provide a compact machine-readable rendered surface of the routing table so rout
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md)
 
 ## Updated At
-- `2026-03-18T05:44:52Z`
+- `2026-03-23T16:35:00Z`

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:packs:fixture-note:v1",
+  "title": "Fixture Note",
+  "description": "Pack-local schema for synthetic fixture note artifacts.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "kind",
+    "title"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:fixture-note:v1"
+    },
+    "kind": {
+      "const": "fixture_note"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

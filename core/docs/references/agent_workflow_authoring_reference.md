@@ -10,7 +10,7 @@ tags:
   - "agents"
   - "prompt_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T09:40:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -19,7 +19,7 @@ applies_to:
   - "core/docs/standards/workflows/routing_and_context_loading_standard.md"
   - "core/docs/templates/workflow_template.md"
   - "core/workflows/modules/"
-  - "plan/workflows/modules/"
+  - "pack_owned_workflow_modules"
 aliases:
   - "llm_workflow_authoring"
   - "agent_context_loading"
@@ -91,8 +91,8 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - Use acceptance-evidence reconciliation for one trace's acceptance coverage and evidence linkage.
 
 ### What Good Additional Load Hints Look Like
-- [github_task_sync_standard.md](/plan/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary this workflow must preserve.
-- [task_lifecycle_management.md](/plan/workflows/modules/task_lifecycle_management.md): task sync changes local task metadata and must leave the authoritative local corpus aligned afterward.
+- `pack-owned GitHub task-sync standard`: defines the local-versus-remote authority boundary this workflow must preserve.
+- `pack-owned task-lifecycle workflow`: task sync changes local task metadata and must leave the authoritative local corpus aligned afterward.
 
 ### What Poor Additional Load Hints Look Like
 - `AGENTS.md`: already part of the routing baseline, so repeating it does not tell the agent what extra file to open.
@@ -118,7 +118,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 
 ## Process or Workflow
 1. Define the workflow's single execution concern first.
-2. Assume the routing baseline already provides `AGENTS.md`, `core/workflows/ROUTING_TABLE.md`, `plan/workflows/ROUTING_TABLE.md`, and `core/workflows/modules/core.md`.
+2. Assume the routing baseline already provides `AGENTS.md`, `core/workflows/ROUTING_TABLE.md`, any active pack-owned `ROUTING_TABLE.md`, and `core/workflows/modules/core.md`.
 3. Add `Additional Files to Load` only when the module truly needs extra repo-local files beyond that baseline.
 4. Keep each additional-load bullet short and explicit in `source: execution implication` form.
 5. Prefer citing governed local reference docs when external authority materially affects the workflow.
@@ -142,7 +142,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 ## Tooling and Automation
 - `uv run watchtower-core plan sync workflow-index`
 - `uv run watchtower-core validate document-semantics --path core/workflows/modules/<module>.md`
-- `uv run watchtower-core validate document-semantics --path plan/workflows/modules/<module>.md`
+- `uv run watchtower-core validate document-semantics --path <pack-root>/workflows/modules/<module>.md`
 - `uv run watchtower-core query workflows --query <topic>`
 
 ## Notes
@@ -150,4 +150,4 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - The repository standards remain the authority; this document is the distilled working reference that informs them.
 
 ## Updated At
-- `2026-03-16T09:40:00Z`
+- `2026-03-23T16:35:00Z`

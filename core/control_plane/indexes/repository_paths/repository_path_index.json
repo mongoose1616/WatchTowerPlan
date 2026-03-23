@@ -2913,10 +2913,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/fixtures/packs/plan/",
+      "path": "core/python/tests/fixtures/packs/fixture/",
       "kind": "directory",
       "surface_kind": "python_tests",
-      "summary": "Source synthetic fixture pack used to materialize temporary hosted-pack repos for shared-core validation scenarios. The current internal pack provides the fixture content, but tests should treat this as fixture data rather than as a required live-pack import contract.",
+      "summary": "Neutral synthetic fixture pack used to materialize temporary hosted-pack repos for shared-core validation scenarios. Tests should treat this as template data rather than as a required live-pack import contract. The materializer derives pack identity from the target pack root by default, so new shared-core tests should not hard-code `plan` or any other live pack unless the behavior under test truly requires that exact pack.",
       "parent_path": "core/python/tests/fixtures/packs/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2947,16 +2947,6 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Shared JSON and front-matter helpers for the focused integration artifact suites.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Integration tests for standards, templates, and authored operationalization contract coverage.",
       "parent_path": "core/python/tests/integration/",
       "maturity": "supporting",
       "priority": "medium",

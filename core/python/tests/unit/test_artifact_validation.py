@@ -236,12 +236,37 @@ def test_artifact_validation_supports_explicit_pack_work_item_note_validator(
 
 
 def test_artifact_validation_auto_selects_benchmark_report_validator_for_initiative_evidence(
+    tmp_path: Path,
 ) -> None:
-    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
-
-    result = service.validate(
-        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/benchmark_baseline.json"
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    service = ArtifactValidationService(ControlPlaneLoader(repo_root))
+    artifact_path = (
+        repo_root / "packs" / "example" / "initiatives" / "demo" / "benchmark_fixture.json"
     )
+    write_json(
+        artifact_path,
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:benchmark-report:v1",
+            "id": "benchmark.fixture.current",
+            "title": "Benchmark Fixture",
+            "status": "active",
+            "trace_id": "trace.fixture.current",
+            "initiative_slug": "demo",
+            "benchmark_kind": "task_slice",
+            "captured_at": "2026-03-23T16:15:00Z",
+            "commands": {
+                "pack_validate": {
+                    "command": (
+                        "./core/python/.venv/bin/watchtower-core pack validate "
+                        "--pack example --format json"
+                    ),
+                    "telemetry_on_runs_ms": [12.4],
+                }
+            },
+        },
+    )
+
+    result = service.validate(artifact_path)
 
     assert result.passed is True
     assert result.validator_id == "validator.interface.benchmark_report"

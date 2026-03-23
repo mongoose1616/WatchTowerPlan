@@ -1,5 +1,0 @@
-{
-  "$schema": "urn:watchtower:schema:interfaces:domain-packs:plan-note:v1",
-  "kind": "plan_note",
-  "title": "Plan Validation Note"
-}

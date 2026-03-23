@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+  "id": "registry.validation_suites",
+  "title": "Fixture Validation Suites",
+  "status": "active",
+  "suites": [
+    {
+      "id": "suite.fixture.validation_baseline",
+      "title": "Fixture Validation Baseline",
+      "description": "Pack-contract plus schema-backed fixture note validation.",
+      "status": "active",
+      "steps": [
+        {
+          "id": "step.fixture.pack_contract",
+          "title": "Validate fixture pack contract",
+          "description": "Ensure the pack publishes the governed surfaces reusable core expects.",
+          "step_kind": "pack_contract"
+        },
+        {
+          "id": "step.fixture.artifacts",
+          "title": "Validate fixture note artifacts",
+          "description": "Validate the pack-local fixture note artifacts.",
+          "step_kind": "artifact",
+          "paths": [
+            "packs/fixture/.wt/work_items/fixture_note.json"
+          ],
+          "validator_id": "validator.packs.fixture_note"
+        }
+      ]
+    }
+  ]
+}

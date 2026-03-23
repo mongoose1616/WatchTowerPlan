@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "routing_table_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T05:44:52Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -61,7 +61,7 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`; `core/docs/templates/routing_table_template.md`
+- `Operational Surfaces`: `*/workflows/ROUTING_TABLE.md`; `core/docs/templates/routing_table_template.md`
 
 ## Validation
 - Every listed workflow must exist at the referenced path.
@@ -84,4 +84,4 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Detailed logic belongs in workflow modules, not in routing rows.
 
 ## Updated At
-- `2026-03-18T05:44:52Z`
+- `2026-03-23T16:35:00Z`

@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.core_pack_neutrality_followup.bootstrap_core_pack_neutrality_followup.0001_created",
+  "initiative_id": "initiative.core_pack_neutrality_followup",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T15:38:04Z",
+  "summary": "Created task task.core_pack_neutrality_followup.bootstrap_core_pack_neutrality_followup during initiative bootstrap.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer"
+  },
+  "task_id": "task.core_pack_neutrality_followup.bootstrap_core_pack_neutrality_followup"
+}

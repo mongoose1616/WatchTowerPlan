@@ -9,14 +9,14 @@ tags:
   - "operations"
   - "maintenance"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/docs/"
-  - "plan/docs/"
+  - "pack_owned_docs"
   - "core/workflows/"
-  - "plan/workflows/"
+  - "pack_owned_workflows"
   - "core/control_plane/"
   - "core/python/"
 aliases:
@@ -49,7 +49,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): recurring maintenance should preserve source-of-truth boundaries and synchronized updates.
 - [engineering_best_practices_standard.md](/core/docs/standards/engineering/engineering_best_practices_standard.md): maintenance should favor deterministic local behavior and same-change-set updates.
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md): maintenance work should use the baseline validation loop before closeout.
-- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): recurring upkeep should not let planning joins and derived trackers drift silently.
+- Pack-owned traceability standards: recurring upkeep should not let planning joins and derived trackers drift silently.
 - [repository_review.md](/core/workflows/modules/repository_review.md): repository-review work is the natural workflow companion for this standard.
 - [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): maintenance often includes concise doc refresh work rather than only new docs.
 
@@ -96,4 +96,4 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [README.md](/core/docs/README.md)
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-23T16:35:00Z`

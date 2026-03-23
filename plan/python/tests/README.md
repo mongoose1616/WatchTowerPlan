@@ -20,3 +20,4 @@
 ## Notes
 - Prefer `./core/python/.venv/bin/python -m pytest ../../plan/python/tests -q` from `core/python/` for the broad plan-owned Python pass.
 - Keep pack-specific test helpers under `watchtower_plan.testing` or near the tests that use them; do not move them back into `core/python/tests/`.
+- Tests that exercise reusable-core helpers against live `plan/**` rendered surfaces, initiative indexes, or validation-evidence state belong here rather than under the shared-core suite.

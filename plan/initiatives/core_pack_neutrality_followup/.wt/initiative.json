@@ -1,0 +1,84 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.core_pack_neutrality_followup",
+  "trace_id": "trace.core_pack_neutrality_followup",
+  "slug": "core_pack_neutrality_followup",
+  "title": "Core Pack Neutrality Followup",
+  "summary": "Removes remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while keeping legitimate current-repo pack facts scoped to plan-owned boundaries.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-23T15:38:04Z",
+  "updated_at": "2026-03-23T16:20:08Z",
+  "task_ids": [
+    "task.core_pack_neutrality_followup.bootstrap_core_pack_neutrality_followup"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.core_pack_neutrality_followup.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.core_pack_neutrality_followup.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.core_pack_neutrality_followup.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/core_pack_neutrality_followup/initiative_brief.md",
+      "sha256": "895de5e8aa8d76da85230870e38b077e05ff537051c3a6a821cc09231c5e413a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T15:39:58Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/core_pack_neutrality_followup/design_record.md",
+      "sha256": "1e5102c9925bbe8aee494f95b543a360931edc1fa119468b80185913cc4cb84f",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T15:39:58Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/core_pack_neutrality_followup/implementation_slice.md",
+      "sha256": "c10c07c722bfa09c741329a47b6b4b32f4a02187ae920dd00a79d2460b53b1b4",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T15:39:58Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/core_pack_neutrality_followup/decision_notes.md",
+      "sha256": "2b3da1a0430531e842be6f188de0b5b504fd56f7ae3c8ab934183106b425c091",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T15:39:58Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T15:39:58Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T15:40:10Z"
+    }
+  ],
+  "closed_at": "2026-03-23T16:20:08Z",
+  "closure_reason": "Removed remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while preserving plan-owned coverage behind the pack boundary."
+}

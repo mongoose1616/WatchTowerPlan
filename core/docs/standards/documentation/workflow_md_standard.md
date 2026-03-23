@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T05:44:52Z"
+updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -96,7 +96,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `core/workflows/modules/`; `plan/workflows/modules/`; `core/workflows/modules/core.md`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`; `core/docs/templates/workflow_template.md`
+- `Operational Surfaces`: `*/workflows/modules/`; `core/workflows/modules/core.md`; `*/workflows/ROUTING_TABLE.md`; `core/docs/templates/workflow_template.md`
 
 ## Validation
 - The file should be recognizable as a workflow module from its title and required headings alone.
@@ -130,4 +130,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-18T05:44:52Z`
+- `2026-03-23T16:35:00Z`

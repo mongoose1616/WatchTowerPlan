@@ -61,3 +61,26 @@ def test_shared_core_test_suites_do_not_depend_on_live_plan_pack_settings_path()
             )
 
     assert not violations, "\n".join(violations)
+
+
+def test_shared_core_test_suites_do_not_depend_on_live_plan_rendered_surfaces() -> None:
+    violations: list[str] = []
+    disallowed_literals = (
+        "rendered.initiative.plan",
+        "rendered.plan.overview",
+        "plan/.wt/indexes/initiative_index.json",
+    )
+
+    for path in sorted(SHARED_TEST_ROOT.rglob("*.py")):
+        if path.name in {"__init__.py", "conftest.py", "test_unit_suite_boundary.py"}:
+            continue
+        relative_path = path.relative_to(SHARED_TEST_ROOT).as_posix()
+        text = path.read_text(encoding="utf-8")
+        for literal in disallowed_literals:
+            if literal in text:
+                violations.append(
+                    f"{relative_path}: depends on live plan-only rendered or planning surface "
+                    f"{literal!r} instead of a fixture or pack-owned test root"
+                )
+
+    assert not violations, "\n".join(violations)

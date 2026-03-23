@@ -28,8 +28,8 @@ def test_reference_index_sync_builds_schema_valid_document() -> None:
     )
     assert any(
         entry["reference_id"] == "ref.github_collaboration"
-        and "plan/docs/standards/governance/github_collaboration_standard.md"
-        in entry.get("applied_by_paths", [])
+        and entry["uses_external_references"] is True
+        and ".github/" in entry.get("related_paths", [])
         for entry in entries
     )
 
@@ -178,7 +178,10 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
     loader = ControlPlaneLoader(repo_root)
     document = ReferenceIndexSyncService(loader).build_document()
 
-    entry = document["entries"][0]
+    entries = document["entries"]
+    assert isinstance(entries, list)
+    entry = entries[0]
+    assert isinstance(entry, dict)
     assert entry["reference_id"] == "ref.example"
     assert entry["repository_status"] == "supporting_authority"
     assert entry["related_paths"] == ["core/docs/README.md"]
@@ -239,7 +242,10 @@ def test_reference_index_sync_does_not_count_readme_only_backlinks_as_internal_s
     loader = ControlPlaneLoader(repo_root)
     document = ReferenceIndexSyncService(loader).build_document()
 
-    entry = document["entries"][0]
+    entries = document["entries"]
+    assert isinstance(entries, list)
+    entry = entries[0]
+    assert isinstance(entry, dict)
     assert entry["reference_id"] == "ref.example"
     assert entry["repository_status"] == "candidate_future_guidance"
     assert "related_paths" not in entry
