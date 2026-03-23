@@ -59,6 +59,34 @@
       ]
     },
     {
+      "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
+      "title": "Copied Core Bootstrap And Validator Alignment",
+      "summary": "Hardens copied-core portability by reconciling stale donor discovery surfaces during pack bootstrap and tolerating identical shared validator copies during merged validator loading.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-23T02:27:31Z",
+      "source_surface_paths": [
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment"
+      ],
+      "related_paths": [
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/initiative.json",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.copy_forward_pack_runtime_hardening",
       "title": "Copy-Forward Pack Runtime Hardening",
       "summary": "Hardens reusable core for copied-core host scenarios by discovering unbootstrapped hosted packs from manifests, structuring stale-registry failures, and keeping current shared workspace contracts explicit.",

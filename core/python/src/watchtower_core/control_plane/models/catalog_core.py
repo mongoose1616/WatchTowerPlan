@@ -187,19 +187,22 @@ class ValidatorRegistry:
 
         primary = registries[0]
         merged_validators: list[ValidatorDefinition] = []
-        seen_validator_ids: set[str] = set()
+        seen_validators: dict[str, ValidatorDefinition] = {}
         for registry in registries:
             if registry.schema_id != primary.schema_id:
                 raise ValueError("Merged validator registries must share the same $schema value.")
             if registry.artifact_id != primary.artifact_id:
                 raise ValueError("Merged validator registries must share the same artifact ID.")
             for validator in registry.validators:
-                if validator.validator_id in seen_validator_ids:
-                    raise ValueError(
-                        "Merged validator registries contain duplicate validator IDs: "
-                        f"{validator.validator_id}"
-                    )
-                seen_validator_ids.add(validator.validator_id)
+                existing_validator = seen_validators.get(validator.validator_id)
+                if existing_validator is not None:
+                    if existing_validator != validator:
+                        raise ValueError(
+                            "Merged validator registries contain conflicting duplicate "
+                            f"validator IDs: {validator.validator_id}"
+                        )
+                    continue
+                seen_validators[validator.validator_id] = validator
                 merged_validators.append(validator)
 
         return cls(

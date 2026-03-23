@@ -15,6 +15,7 @@ from watchtower_core.control_plane.models import (
     StatusRegistry,
     TaskIndex,
     ValidationSuiteRegistry,
+    ValidatorRegistry,
     WorkflowIndex,
 )
 
@@ -311,6 +312,107 @@ def test_control_plane_models_export_retention_policy_registry_types() -> None:
     assert registry.get("policy.retention.example").clean_endstate_disposition == (
         "purge_when_eligible"
     )
+
+
+def test_validator_registry_merge_deduplicates_identical_shared_entries() -> None:
+    shared_registry = ValidatorRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+            "id": "registry.validators",
+            "title": "Shared Validators",
+            "status": "active",
+            "validators": [
+                {
+                    "id": "validator.control_plane.acceptance_contract",
+                    "title": "Acceptance Contract Validator",
+                    "description": "Validates acceptance contract documents.",
+                    "status": "active",
+                    "engine": "json_schema",
+                    "artifact_kind": "acceptance_contract",
+                    "applies_to": ["core/control_plane/contracts/acceptance/"],
+                    "schema_ids": [
+                        "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1"
+                    ],
+                }
+            ],
+        }
+    )
+    copied_shared_registry = ValidatorRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+            "id": "registry.validators",
+            "title": "Copied Shared Validators",
+            "status": "active",
+            "validators": [
+                {
+                    "id": "validator.control_plane.acceptance_contract",
+                    "title": "Acceptance Contract Validator",
+                    "description": "Validates acceptance contract documents.",
+                    "status": "active",
+                    "engine": "json_schema",
+                    "artifact_kind": "acceptance_contract",
+                    "applies_to": ["core/control_plane/contracts/acceptance/"],
+                    "schema_ids": [
+                        "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1"
+                    ],
+                }
+            ],
+        }
+    )
+
+    merged = ValidatorRegistry.merge(shared_registry, copied_shared_registry)
+
+    assert len(merged.validators) == 1
+    assert merged.get("validator.control_plane.acceptance_contract").title == (
+        "Acceptance Contract Validator"
+    )
+
+
+def test_validator_registry_merge_rejects_conflicting_duplicate_entries() -> None:
+    shared_registry = ValidatorRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+            "id": "registry.validators",
+            "title": "Shared Validators",
+            "status": "active",
+            "validators": [
+                {
+                    "id": "validator.control_plane.acceptance_contract",
+                    "title": "Acceptance Contract Validator",
+                    "description": "Validates acceptance contract documents.",
+                    "status": "active",
+                    "engine": "json_schema",
+                    "artifact_kind": "acceptance_contract",
+                    "applies_to": ["core/control_plane/contracts/acceptance/"],
+                }
+            ],
+        }
+    )
+    conflicting_registry = ValidatorRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+            "id": "registry.validators",
+            "title": "Conflicting Validators",
+            "status": "active",
+            "validators": [
+                {
+                    "id": "validator.control_plane.acceptance_contract",
+                    "title": "Acceptance Contract Validator",
+                    "description": "Pack-local redefinition with conflicting applies_to.",
+                    "status": "active",
+                    "engine": "json_schema",
+                    "artifact_kind": "acceptance_contract",
+                    "applies_to": ["oversight/.wt/contracts/acceptance/"],
+                }
+            ],
+        }
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="conflicting duplicate validator IDs: validator.control_plane.acceptance_contract",
+    ):
+        ValidatorRegistry.merge(shared_registry, conflicting_registry)
 
 
 def test_retired_planning_reexport_modules_are_not_importable() -> None:

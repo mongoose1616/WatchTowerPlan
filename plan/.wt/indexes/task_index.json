@@ -159,6 +159,21 @@
       ]
     },
     {
+      "task_id": "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment",
+      "initiative_id": "initiative.copied_core_bootstrap_and_validator_alignment",
+      "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
+      "initiative_title": "Copied Core Bootstrap And Validator Alignment",
+      "title": "Bootstrap Copied Core Bootstrap And Validator Alignment",
+      "summary": "Bootstrap Copied Core Bootstrap And Validator Alignment live initiative package.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json",
+      "updated_at": "2026-03-23T02:25:39Z"
+    },
+    {
       "task_id": "task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening",
       "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
       "trace_id": "trace.copy_forward_pack_runtime_hardening",

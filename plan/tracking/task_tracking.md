@@ -1,7 +1,9 @@
 # Task Tracking
 
 ## Open Tasks
-_No open tasks._
+| Task | Status | Priority | Owner | Trace ID | Summary |
+| --- | --- | --- | --- | --- | --- |
+| [task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json) | `planned` | `high` | `repository_maintainer` | `trace.copied_core_bootstrap_and_validator_alignment` | Bootstrap Copied Core Bootstrap And Validator Alignment live initiative package. |
 
 ## Closed Task Summary
 - `completed`: 97
@@ -107,4 +109,4 @@ _No open tasks._
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-23T01:51:21Z`_
+_Updated At: `2026-03-23T02:25:39Z`_

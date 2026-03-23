@@ -3,14 +3,16 @@
 ## Current State
 | Field | Value |
 | --- | --- |
-| Mode | `ready_for_bootstrap` |
-| Summary | No active plan-workspace initiatives exist. |
-| Next | Bootstrap a new initiative package before starting execution. |
-| Open First | [plan/plan_overview.md](/plan/plan_overview.md) |
+| Mode | `active_work` |
+| Summary | Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work. |
+| Next | Promote the next planned task to ready before opening follow-up work. |
+| Open First | [plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md) |
 | Companion Views | [initiative_tracking.md](/plan/tracking/initiative_tracking.md), [task_tracking.md](/plan/tracking/task_tracking.md) |
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Next | Action |
+| --- | --- | --- | --- | --- |
+| `trace.copied_core_bootstrap_and_validator_alignment` | `capture` | repository_maintainer | [plan.md](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md) | Promote the next planned task to ready before opening follow-up work. |
 
 ## Actionable Tasks
 _No actionable tasks._
@@ -24,4 +26,4 @@ _No actionable tasks._
 | `trace.root_pack_schema_catalog_contract_alignment` | `completed` | `2026-03-22T23:08:32Z` | [plan.md](/plan/initiatives/root_pack_schema_catalog_contract_alignment/plan.md) |
 | `trace.repository_tech_debt_reduction_program` | `completed` | `2026-03-22T22:28:03Z` | [plan.md](/plan/initiatives/repository_tech_debt_reduction_program/plan.md) |
 
-_Updated At: `2026-03-23T01:51:41Z`_
+_Updated At: `2026-03-23T02:27:31Z`_

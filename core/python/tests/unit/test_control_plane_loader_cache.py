@@ -7,6 +7,10 @@ from shutil import copytree
 
 import pytest
 
+from tests.pack_fixture_support import (
+    materialize_pack_validation_suite,
+    materialize_validation_repo_subset,
+)
 from tests.unit.control_plane_loader_test_support import REPO_ROOT
 from watchtower_core.control_plane.loader import (
     ACCEPTANCE_CONTRACTS_DIRECTORY,
@@ -186,3 +190,41 @@ def test_control_plane_loader_derive_does_not_reuse_stale_typed_caches(
 
     assert original_registry.title != "Updated Validator Registry Title"
     assert refreshed_registry.title == "Updated Validator Registry Title"
+
+
+def test_control_plane_loader_allows_identical_copied_shared_validator_entries(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "oversight")
+    pack_validator_registry_path = (
+        repo_root
+        / surfaces["pack_settings_path"].rsplit("/", maxsplit=2)[0]
+        / "registries"
+        / "validator_registry.json"
+    )
+    pack_validator_registry = json.loads(pack_validator_registry_path.read_text(encoding="utf-8"))
+    core_validator_registry = json.loads(
+        (repo_root / VALIDATOR_REGISTRY_PATH).read_text(encoding="utf-8")
+    )
+    copied_shared_validator = next(
+        validator
+        for validator in core_validator_registry["validators"]
+        if validator["id"] == "validator.control_plane.acceptance_contract"
+    )
+    pack_validator_registry["validators"].insert(0, copied_shared_validator)
+    pack_validator_registry_path.write_text(
+        f"{json.dumps(pack_validator_registry, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+    merged_registry = loader.load_validator_registry()
+
+    acceptance_contract_entries = [
+        validator
+        for validator in merged_registry.validators
+        if validator.validator_id == "validator.control_plane.acceptance_contract"
+    ]
+
+    assert len(acceptance_contract_entries) == 1

@@ -75,6 +75,64 @@
       ]
     },
     {
+      "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
+      "title": "Copied Core Bootstrap And Validator Alignment",
+      "summary": "Hardens copied-core portability by reconciling stale donor discovery surfaces during pack bootstrap and tolerating identical shared validator copies during merged validator loading.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "capture",
+      "updated_at": "2026-03-23T02:27:31Z",
+      "open_task_count": 1,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md",
+      "next_action": "Promote the next planned task to ready before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md",
+      "initiative_id": "initiative.copied_core_bootstrap_and_validator_alignment",
+      "slug": "copied_core_bootstrap_and_validator_alignment",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment",
+          "title": "Bootstrap Copied Core Bootstrap And Validator Alignment",
+          "task_status": "planned",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json",
+          "is_actionable": false
+        }
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.copied_core_bootstrap_and_validator_alignment.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/initiative.json",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.copy_forward_pack_runtime_hardening",
       "title": "Copy-Forward Pack Runtime Hardening",
       "summary": "Hardens reusable core for copied-core host scenarios by discovering unbootstrapped hosted packs from manifests, structuring stale-registry failures, and keeping current shared workspace contracts explicit.",
