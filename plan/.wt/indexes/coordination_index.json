@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T23:19:12Z",
+  "updated_at": "2026-03-24T01:23:36Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -13,86 +13,5 @@
   "actionable_task_count": 0,
   "entries": [],
   "actionable_tasks": [],
-  "recent_closed_initiatives": [
-    {
-      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
-      "title": "Mandatory Pack Context Loader Bootstrap",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T23:19:12Z",
-      "key_surface_path": "plan/initiatives/mandatory_pack_context_loader_bootstrap/plan.md",
-      "closure_reason": "Implemented and validated mandatory effective-pack activation and PackContext bootstrap"
-    },
-    {
-      "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
-      "title": "Copied Core Doctor Pack Surface Neutrality",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T22:04:08Z",
-      "key_surface_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/plan.md",
-      "closure_reason": "Fixed copied-core doctor/default-pack loading and removed pack-module reload contamination from shared-plus-plan validation coverage"
-    },
-    {
-      "trace_id": "trace.copied_core_discovery_surface_reconciliation_followup",
-      "title": "Copied Core Discovery Surface Reconciliation Followup",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T18:17:30Z",
-      "key_surface_path": "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/plan.md",
-      "closure_reason": "Expanded copied-core bootstrap reconciliation, normalized routed workflow paths, and removed root-pack-only pack contract assumptions."
-    },
-    {
-      "trace_id": "trace.core_governance_reference_deplanification_followup",
-      "title": "Core Governance Reference Deplanification Followup",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T16:54:27Z",
-      "key_surface_path": "plan/initiatives/core_governance_reference_deplanification_followup/plan.md",
-      "closure_reason": "Removed remaining unnecessary plan-owned governance references from shared core docs and added pack-neutral operationalization path support for hosted-pack placeholders."
-    },
-    {
-      "trace_id": "trace.core_pack_neutrality_followup",
-      "title": "Core Pack Neutrality Followup",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T16:20:08Z",
-      "key_surface_path": "plan/initiatives/core_pack_neutrality_followup/plan.md",
-      "closure_reason": "Removed remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while preserving plan-owned coverage behind the pack boundary."
-    },
-    {
-      "trace_id": "trace.core_pack_neutral_portability_cleanup",
-      "title": "Core Pack Neutral Portability Cleanup",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T14:55:54Z",
-      "key_surface_path": "plan/initiatives/core_pack_neutral_portability_cleanup/plan.md",
-      "closure_reason": "Completed core pack-neutral portability cleanup and validated copied-core compatibility"
-    },
-    {
-      "trace_id": "trace.repository_validation_repair_loop_closeout",
-      "title": "Repository Validation Repair Loop Closeout",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T05:52:40Z",
-      "key_surface_path": "plan/initiatives/repository_validation_repair_loop_closeout/plan.md",
-      "closure_reason": "Repaired the surfaced typing drift and completed two consecutive clean broad validation passes."
-    },
-    {
-      "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
-      "title": "Copied Core Bootstrap And Validator Alignment",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T02:57:21Z",
-      "key_surface_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md",
-      "closure_reason": "Tolerated identical copied shared validators and taught pack bootstrap to reconcile stale donor registry and discovery surfaces during copied-core bring-up."
-    },
-    {
-      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
-      "title": "Core Portability Follow-up Root Pack And Query Typing",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T01:51:41Z",
-      "key_surface_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/plan.md",
-      "closure_reason": "Updated shared core to present first-party root packs as the default example topology, aligned generic portability tests with root-pack defaults, and cleared the remaining host query mypy backlog."
-    },
-    {
-      "trace_id": "trace.copy_forward_pack_runtime_hardening",
-      "title": "Copy-Forward Pack Runtime Hardening",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-23T01:24:34Z",
-      "key_surface_path": "plan/initiatives/copy_forward_pack_runtime_hardening/plan.md",
-      "closure_reason": "Implemented copied-core bootstrap-mode pack discovery and structured runtime hardening in reusable core."
-    }
-  ]
+  "recent_closed_initiatives": []
 }

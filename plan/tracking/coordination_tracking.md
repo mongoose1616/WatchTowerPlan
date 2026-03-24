@@ -16,12 +16,6 @@ _No active initiatives._
 _No actionable tasks._
 
 ## Recent Closeouts
-| Trace ID | Status | Closed At | Key |
-| --- | --- | --- | --- |
-| `trace.mandatory_pack_context_loader_bootstrap` | `completed` | `2026-03-23T23:19:12Z` | [plan.md](/plan/initiatives/mandatory_pack_context_loader_bootstrap/plan.md) |
-| `trace.copied_core_doctor_pack_surface_neutrality` | `completed` | `2026-03-23T22:04:08Z` | [plan.md](/plan/initiatives/copied_core_doctor_pack_surface_neutrality/plan.md) |
-| `trace.copied_core_discovery_surface_reconciliation_followup` | `completed` | `2026-03-23T18:17:30Z` | [plan.md](/plan/initiatives/copied_core_discovery_surface_reconciliation_followup/plan.md) |
-| `trace.core_governance_reference_deplanification_followup` | `completed` | `2026-03-23T16:54:27Z` | [plan.md](/plan/initiatives/core_governance_reference_deplanification_followup/plan.md) |
-| `trace.core_pack_neutrality_followup` | `completed` | `2026-03-23T16:20:08Z` | [plan.md](/plan/initiatives/core_pack_neutrality_followup/plan.md) |
+_No recent closeouts._
 
-_Updated At: `2026-03-23T23:19:12Z`_
+_Updated At: `2026-03-24T01:23:36Z`_
