@@ -6,7 +6,7 @@ summary: Durable reference recording current WatchTowerPlan verification of the 
 type: reference
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-24T08:00:00Z'
+updated_at: '2026-03-24T08:01:23Z'
 audience: shared
 authority: reference
 applies_to:
@@ -46,8 +46,9 @@ Use it to separate recipient-host functionality findings for
 - `watchtower-core route preview --request "verify the current project is functional and do an assessment" --format json`
   returned `selected_route_count=0` with a no-exact-match warning, which
   matches the report's routing note rather than a repository defect.
-- A repository-wide search found no `workflow.architecture_reviewer` surface in
-  WatchTowerPlan.
+- A repository-wide `rg -n 'workflow\.architecture_reviewer' .` search returned
+  only this closeout reference's explanatory mentions; no current indexed,
+  routed, or executable WatchTowerPlan workflow surface uses that ID.
 - The report-adjacent pytest slice passed for:
   - `tests/integration/test_validate_all_cli.py`
   - `tests/unit/test_cli_validate_commands.py`
@@ -61,9 +62,10 @@ Use it to separate recipient-host functionality findings for
   `2026-03-24`.
 - `2`: Not applicable in WatchTowerPlan. The reported route and workflow-catalog
   inconsistency was specific to the post-bootstrap `oversight` recipient host.
-  The referenced `workflow.architecture_reviewer` ID does not exist in this
-  repository, and the local route-preview plus workflow-execution harness tests
-  currently pass.
+  No current indexed, routed, or executable WatchTowerPlan workflow surface
+  uses `workflow.architecture_reviewer`; the only local hits are this
+  reference's explanatory mentions, and the local route-preview plus
+  workflow-execution harness tests currently pass.
 - `3`: Not applicable in WatchTowerPlan. The cited shared-core test failures do
   not reproduce here; the referenced validation CLI, route preview, and
   workflow execution tests currently pass on the live repository baseline.
