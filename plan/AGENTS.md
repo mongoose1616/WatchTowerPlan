@@ -16,7 +16,7 @@
 
 ## Local Rules
 - Treat the mirrored foundations under [plan/docs/foundations/](/plan/docs/foundations/), promoted plan standards under [plan/docs/standards/](/plan/docs/standards/), and live plan-pack machine authority under `plan/.wt/**` as the authoritative implementation directions for live `plan/**` work.
-- Use standards, references, promoted guidance, and purge history only where they remain consistent with those current authority surfaces.
+- Use standards, references, and promoted guidance only where they remain consistent with those current authority surfaces.
 - Use [README.md](/plan/README.md) as the quick reference for plan-root purpose and entrypoints before broader scans.
 - Treat `plan/.wt/` as the authoritative machine root for live plan-pack state.
 - Treat `plan/docs/**` as durable promoted guidance, not live execution state.
@@ -25,7 +25,7 @@
 - Use `plan/python/**` only for plan-specific code that should not live in reusable core.
 - Treat `plan/workflows/README.md` as the human workflow entrypoint for live plan-domain procedures.
 - Treat `.wt/` trees as machine-state roots only. Do not place Python source, workflow prose, or other hand-maintained runtime code inside them.
-- Use promoted guidance, closed initiative packages, and purge records for historical context. The legacy docs-backed planning corpus no longer exists as a working repository surface.
+- Use promoted guidance and closed initiative packages for historical context. The legacy docs-backed planning corpus no longer exists as a working repository surface.
 
 ## Do
 - Keep new live plan work under `plan/initiatives/**` or `plan/projects/**/initiatives/**` as appropriate.

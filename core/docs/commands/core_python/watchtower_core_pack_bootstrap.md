@@ -63,6 +63,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Preserves an existing pack's `default_repo_pack` and notes when the bootstrap targets a pack already in the registry.
 - Removes unusable donor registry entries when copied-core bootstrap is reconciling the current repository's active hosted pack into place.
 - `--replace-hosted-packs` is the copied-core scrub-and-reload mode: it removes the current shared hosted-pack registry entries, rewrites `core/python/pyproject.toml` to retain only the target pack's shared workspace registration, and then rebuilds the shared discovery indexes for the recipient pack.
+- The command only reconciles shared hosted-pack wiring. It does not build a curated staged export or scrub donor retained records, test trees, internal assessment docs, or other customer-release exclusions described in [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md).
 - Rebuilds the shared discovery indexes whenever the shared hosted-pack registry changes:
   - `core/control_plane/indexes/commands/command_index.json`
   - `core/control_plane/indexes/repository_paths/repository_path_index.json`
@@ -76,19 +77,23 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - When `--write` is used and the shared workspace is synced, validates the hosted pack immediately after applying the shared wiring and restores the shared files if validation fails.
 - When `--write` is used with `--no-sync-workspace`, applies the shared wiring but reports validation as deferred until the shared workspace is synced honestly.
 - Runs `uv sync` by default after writing shared workspace metadata. Use `--no-sync-workspace` only when a staged change or test fixture intentionally needs to defer that step and run explicit validation afterward.
+- The default write path requires `uv` to be installed and available on `PATH`. If the current machine does not have `uv` yet, install it first by following [uv_reference.md](/core/docs/references/uv_reference.md) or the onboarding steps in [core/python/README.md](/core/python/README.md).
 
 ## Copied-Core Rehost
 Use this start-up flow when a recipient repository copied `core/` exactly from a donor repository and now needs to replace the donor's hosted-pack wiring with its own pack.
 
-1. Author or scaffold the recipient pack root and confirm its `pack_settings.json` plus `pack_runtime_manifest.json` are valid.
-2. Run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json`.
-3. If `uv` is not available yet, add `--no-sync-workspace`, then run the reported follow-up sync and `watchtower-core pack validate --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --format json` as soon as the shared workspace can be synced honestly.
-4. Run `watchtower-core pack list --format json` and `watchtower-core validate all --format json` to confirm the recipient pack now owns the shared host wiring.
+1. Confirm `uv` is installed and available on `PATH`. If not, install it first by following [uv_reference.md](/core/docs/references/uv_reference.md) or the onboarding steps in [core/python/README.md](/core/python/README.md), then verify with `uv --version`.
+2. Author or scaffold the recipient pack root and confirm its `pack_settings.json` plus `pack_runtime_manifest.json` are valid.
+3. Run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json`.
+4. If a staged change or fixture intentionally needs to defer the honest workspace sync, add `--no-sync-workspace`, then run `uv sync` plus `watchtower-core pack validate --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --format json` as soon as the shared workspace can be synced honestly.
+5. Run `watchtower-core pack list --format json` and `watchtower-core validate all --format json` to confirm the recipient pack now owns the shared host wiring.
+6. Run `watchtower-core pack export --output-root <path> --include-pack <slug> --overwrite --format json` before treating the copied repository as a customer-safe deliverable, or `watchtower-core pack export --output-root <path> --include-pack <slug> --pack-only --overwrite --format json` when you need an additive pack bundle without shared core.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core pack` | Parent command group for hosted-pack inspection, scaffold, bootstrap, and validation flows. |
+| `watchtower-core pack export` | Builds the curated staged export that bootstrap alone does not provide. |
 | `watchtower-core pack scaffold` | Generates the pack-owned starter surfaces that bootstrap then registers. |
 | `watchtower-core pack validate` | Validates the same hosted pack contract directly. |
 | `watchtower-core validate all` | Includes pack-contract validation in the broader repository validation pass after bootstrap. |
@@ -100,4 +105,4 @@ Use this start-up flow when a recipient repository copied `core/` exactly from a
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-24T08:30:00Z`
+- `2026-03-24T21:49:49Z`

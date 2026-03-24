@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T19:05:00Z"
+updated_at: "2026-03-25T03:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -35,6 +35,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 ## Related Standards and Sources
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): defines the reusable core, host, and pack split that every hosted pack must honor.
 - [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): defines the minimum file set and extension rules contributors should satisfy before treating a pack as integrated.
+- [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md): defines the donor-neutral bootstrap and release-scrub rules a copied-out pack must satisfy.
 - [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): governs the registry, manifest, and typed integration contracts a hosted pack must publish.
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): constrains where pack-owned Python code and adjacent workspace artifacts belong.
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md): provides the worked authoring examples and pack-shape comparisons behind this standard.
@@ -56,6 +57,9 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Publish non-empty query command and sync target inventories so host inspection and pack validation can fail closed on incomplete pack wiring.
 - Use `domain_roots` to name optional pack-specific roots such as `reviews`, `assessments`, or `targets`. Only keep legacy `initiatives_root` or `projects_root` fields when a live pack runtime still depends on them.
 - A copied-out pack should require packaging, installation, and declared-path updates only. Hidden repo-local Python path tricks are not allowed.
+- Treat pack copy-out as source-owned surface transfer plus explicit release scrub. Repo-local retained records, donor project views, internal assessments, and internal-only test helpers are not part of the portable pack contract by default.
+- Treat `watchtower-core pack export --pack-only` as the canonical additive pack-bundle handoff path. A pack-only bundle is not a standalone repo; the recipient still needs compatible shared core plus `watchtower-core pack bootstrap`.
+- Keep pack-owned test trees and `watchtower_<pack>.testing` helpers internal to validation unless the consuming repository explicitly intends to carry that test harness.
 - Authoring guidance, workflow modules, and standards should be sufficient for pack creation or copy-out; reviewers should not need to reverse-engineer implementation code to determine the required pack shape.
 - Scaffold commands should create only pack-owned surfaces.
 - Shared host wiring should happen through `watchtower-core pack bootstrap`, which must update shared registry and workspace metadata together and validate the resulting pack contract before leaving the repository mutated unless `--no-sync-workspace` explicitly defers validation until the shared workspace is synced.
@@ -94,6 +98,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Reviewers should reject packs that keep their namespace command docs in shared core docs or omit the required namespace entry page from the pack-owned docs root.
 - Reviewers should reject scaffold flows that silently mutate shared host composition surfaces before the new pack package is installable.
 - Reviewers should reject bootstrap flows that update only `pack_registry.json` or only `core/python/pyproject.toml` without the companion shared workspace change.
+- Reviewers should reject pack-authoring guidance that treats a raw donor repository snapshot as the portable pack deliverable.
 
 ## Change Control
 - Update this standard when the repository changes the expected hosted-pack root shape, portability contract, or pack-owned Python guidance.
@@ -108,4 +113,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-24T19:05:00Z`
+- `2026-03-25T03:10:00Z`

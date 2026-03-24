@@ -17,6 +17,11 @@ from watchtower_core.pack_integration.bootstrap import (
     PackBootstrapRequest,
     bootstrap_hosted_pack,
 )
+from watchtower_core.pack_integration.export import (
+    PACK_BUNDLE_EXPORT_SCOPE,
+    PackExportRequest,
+    export_hosted_repository,
+)
 from watchtower_core.pack_integration.importing import import_pack_integration_module
 from watchtower_core.pack_integration.runtime import (
     load_pack_query_runtime,
@@ -371,6 +376,126 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         args,
         payload_factory=lambda: payload,
         render_human=_render_human,
+    )
+
+
+def _run_pack_export(args: argparse.Namespace) -> int:
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core pack export",
+        prefix="Pack export error",
+        operation=lambda: export_hosted_repository(
+            ControlPlaneLoader().repo_root,
+            PackExportRequest(
+                output_root=args.output_root,
+                included_pack_slugs=tuple(args.include_pack or ()),
+                overwrite=bool(args.overwrite),
+                pack_only=bool(args.pack_only),
+            ),
+        ),
+    )
+    if result is None:
+        return 1
+
+    payload = {
+        "command": "watchtower-core pack export",
+        "status": "ok",
+        "passed": result.passed,
+        "output_root": result.output_root,
+        "export_scope": result.export_scope,
+        "included_pack_slugs": list(result.included_pack_slugs),
+        "default_pack_slug": result.default_pack_slug,
+        "copied_paths": list(result.copied_paths),
+        "scrubbed_paths": list(result.scrubbed_paths),
+        "changed_paths": list(result.changed_paths),
+        "workspace_lock_removed": result.workspace_lock_removed,
+        "pack_validation_note": result.pack_validation_note,
+        "pack_validations": [
+            {
+                "pack_slug": summary.pack_slug,
+                "pack_settings_path": summary.pack_settings_path,
+                "passed": summary.passed,
+                "issue_count": summary.issue_count,
+                "issues": [
+                    {
+                        "code": issue.code,
+                        "message": issue.message,
+                        "location": issue.location,
+                        "schema_id": issue.schema_id,
+                    }
+                    for issue in summary.issues
+                ],
+            }
+            for summary in result.pack_validations
+        ],
+        "portability": {
+            "passed": result.portability_result.passed,
+            "validator_id": result.portability_result.validator_id,
+            "target_path": result.portability_result.target_path,
+            "engine": result.portability_result.engine,
+            "schema_ids": list(result.portability_result.schema_ids),
+            "issue_count": result.portability_result.issue_count,
+            "issues": [
+                {
+                    "code": issue.code,
+                    "message": issue.message,
+                    "location": issue.location,
+                    "schema_id": issue.schema_id,
+                }
+                for issue in result.portability_result.issues
+            ],
+        },
+    }
+
+    def _render_human() -> None:
+        status = "PASS" if result.passed else "FAIL"
+        selected = (
+            ", ".join(result.included_pack_slugs)
+            if result.included_pack_slugs
+            else "core-only"
+        )
+        print(f"{status} {result.output_root}")
+        print(
+            "Scope: "
+            + (
+                "pack-only bundle"
+                if result.export_scope == PACK_BUNDLE_EXPORT_SCOPE
+                else "repository bundle"
+            )
+        )
+        print(f"Included Packs: {selected}")
+        if result.default_pack_slug is not None:
+            print(f"Default Pack: {result.default_pack_slug}")
+        print("Copied Roots: " + ", ".join(result.copied_paths))
+        print(f"Scrubbed Paths: {len(result.scrubbed_paths)}")
+        if result.workspace_lock_removed:
+            print(
+                "Workspace Lock: removed core/python/uv.lock because shared "
+                "workspace wiring changed."
+            )
+        for summary in result.pack_validations:
+            status_label = "PASS" if summary.passed else "FAIL"
+            print(
+                f"{status_label} hosted-pack contract: {summary.pack_slug} "
+                f"({summary.issue_count} issues)"
+            )
+        if result.pack_validation_note is not None:
+            print("Pack Validation: " + result.pack_validation_note)
+        portability = result.portability_result
+        print(
+            ("PASS" if portability.passed else "FAIL")
+            + f" portability: {portability.issue_count} issues"
+        )
+        if not portability.passed:
+            for issue in portability.issues[:10]:
+                location = f" ({issue.location})" if issue.location else ""
+                print(f"- {issue.code}{location}: {issue.message}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+        exit_code=0 if result.passed else 1,
     )
 
 

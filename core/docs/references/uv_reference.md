@@ -1,21 +1,21 @@
 ---
 id: "ref.uv"
 title: "uv Reference"
-summary: "This document provides a working reference for `uv` as a Python packaging, environment, and dependency-management tool."
+summary: "This document provides a working reference for installing and using `uv` as a Python packaging, environment, and dependency-management tool."
 type: "reference"
 status: "active"
 tags:
   - "reference"
   - "uv"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T06:23:45Z"
+updated_at: "2026-03-24T21:49:49Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # uv Reference
 ## Summary
-This document provides a working reference for `uv` as a Python packaging, environment, and dependency-management tool.
+This document provides a working reference for installing and using `uv` as a Python packaging, environment, and dependency-management tool.
 
 ## Purpose
 Provide a baseline for deciding whether `uv` should be part of this repository's Python toolchain.
@@ -25,9 +25,11 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - Does not require this repository to adopt `uv`.
 
 ## Canonical Upstream
-- `https://docs.astral.sh/uv/` - verified 2026-03-09; uv.
-- `https://docs.astral.sh/uv/concepts/projects/layout/` - verified 2026-03-09; Structure and files.
-- `https://docs.astral.sh/uv/reference/settings/#cache-dir` - verified 2026-03-09; Settings.
+- `https://docs.astral.sh/uv/` - verified 2026-03-24; uv.
+- `https://docs.astral.sh/uv/getting-started/installation/` - verified 2026-03-24; Installation methods and shell setup.
+- `https://docs.astral.sh/uv/reference/installer/` - verified 2026-03-24; Installer options and PATH behavior.
+- `https://docs.astral.sh/uv/concepts/projects/layout/` - verified 2026-03-24; Structure and files.
+- `https://docs.astral.sh/uv/reference/settings/#cache-dir` - verified 2026-03-24; Settings.
 
 ## Related Standards and Sources
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
@@ -45,6 +47,14 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 | `uv lock` | refresh lock state when dependencies change | review diffs deliberately |
 | tool or cache settings | control auxiliary behavior | keep locations explicit when repo hygiene matters |
 
+### Install `uv`
+- macOS and Linux standalone installer: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- Windows PowerShell standalone installer: `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+- Homebrew: `brew install uv`
+- `pipx`: `pipx install uv`
+- Verify the executable after install with `uv --version`.
+- If the standalone installer updated shell profiles but the current shell still cannot resolve `uv`, restart the shell or add the executable directory to `PATH`. A common default on macOS and Linux is `export PATH="$HOME/.local/bin:$PATH"`.
+
 ### Core Rules
 - Use `uv` when fast dependency resolution, lock management, and environment tooling are part of the Python workflow.
 - Keep cache placement, lockfile ownership, and project layout explicit.
@@ -56,7 +66,7 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 
 ## Local Mapping in This Repository
 ### Current Repository Status
-- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+- Active support. The current repository workspace contract uses `uv` as the default runner and shared environment manager for `core/python/`.
 
 ### Current Touchpoints
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
@@ -68,6 +78,7 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 ### Why It Matters Here
 - Use this reference if `core/docs/standards/engineering/**` starts defining Python environment tooling.
 - Pair it with `pyproject.toml`, `src/` layout, and test/lint/type-check references when shaping a Python toolchain.
+- Use it when onboarding a new engineer or when copied-core bootstrap fails because `uv` is missing from `PATH`.
 
 ### If Local Policy Tightens
 - Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
@@ -81,8 +92,8 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - [watchtower_core_doctor.md](/core/docs/commands/core_python/watchtower_core_doctor.md)
 
 ## Notes
-- Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
+- Canonical upstream sources were rechecked on `2026-03-24` while updating shared workspace onboarding and copied-core bootstrap guidance.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-18T06:23:45Z`
+- `2026-03-24T21:49:49Z`

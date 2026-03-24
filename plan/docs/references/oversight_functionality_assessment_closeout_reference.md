@@ -29,7 +29,7 @@ tags:
 # Subject Summary
 
 This reference records how the external
-`/home/j/WatchTowerOversight/oversight/assessments/watchtoweroversight_functionality_assessment.md`
+`WatchTowerOversight/oversight/assessments/watchtoweroversight_functionality_assessment.md`
 maps to the current WatchTowerPlan repository after fresh local verification on
 `2026-03-24`.
 

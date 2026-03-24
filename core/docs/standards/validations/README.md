@@ -8,3 +8,4 @@
 |---|---|
 | `core/docs/standards/validations/README.md` | Describes the purpose of the validations standards directory and the standards stored here. |
 | `core/docs/standards/validations/repository_validation_standard.md` | Defines the baseline validation expectations for repository changes across governed docs, governed artifacts, and the Python workspace. |
+| `core/docs/standards/validations/schema_surface_validation_standard.md` | Defines how JSON artifact instances and JSON Schema definition files are validated through separate command paths. |

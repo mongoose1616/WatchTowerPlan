@@ -10,7 +10,7 @@ tags:
   - "rewrite"
   - "surface_classification"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T20:15:00Z"
+updated_at: "2026-03-24T23:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -137,13 +137,12 @@ This standard defines the four-axis classification and retention-reason model th
 
 ## Examples
 - `plan/.wt/indexes/coordination_index.json` is `active`, `canonical_machine_answer`, `active_family_location`, and `n/a`.
-- `core/control_plane/records/purges/decision_supersession_and_regression_evidence_alignment_purge_record.json` is `deprecated`, `historical_record`, `family_native_closed_or_historical_location`, and `n/a` when retained as explicit historical context.
 - `core/python/src/watchtower_core/query/` is `active`, `compatibility_surface`, `compatibility_namespace_or_marker`, and usually `supported` while the repo still publishes the namespace as a current boundary-layer import surface.
 - `core/python/tests/integration/` can remain `active`, `supporting`, `active_family_location`, and `n/a` when the focused suite family is the canonical regression surface after a hotspot split.
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/tracking/`; `plan/.wt/indexes/task_index.json`; `core/control_plane/registries/authority_map.json`; `core/control_plane/records/purges/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/tracking/`; `plan/.wt/indexes/task_index.json`; `core/control_plane/registries/authority_map.json`
 
 ## Validation
 - Rewrite reviews should reject proposals that classify a surface with fewer than four axes.
@@ -163,4 +162,4 @@ This standard defines the four-axis classification and retention-reason model th
 - [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
-- `2026-03-19T20:15:00Z`
+- `2026-03-24T23:45:00Z`

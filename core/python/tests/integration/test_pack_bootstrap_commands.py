@@ -62,6 +62,7 @@ def test_pack_bootstrap_replace_hosted_packs_scrubs_donor_wiring_in_copied_core_
     assert payload["pack_slug"] == REHOSTED_PACK_SLUG
     assert payload["replace_hosted_packs"] is True
     assert donor_pack.pack_slug in payload["scrubbed_pack_slugs"]
+    assert payload["pack_registry_entry"]["default_repo_pack"] is True
     assert payload["workspace_sync_ran"] is False
     assert payload["workspace_sync_required"] is True
     assert payload["validation_passed"] is None

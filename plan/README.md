@@ -25,9 +25,10 @@
 - `plan/AGENTS.md` is the local instruction layer for work under `plan/**`.
 - `plan/docs/foundations/` is the mirrored foundations view and must stay byte-identical with `core/docs/foundations/`.
 - `plan/python/` is the approved plan-owned Python boundary for narrow repo-local plan behavior that should not live in reusable core.
+- `plan/` is the first internal hosted pack, not a universal downstream bootstrap requirement. Include it in copied repositories or customer handoff only when the recipient intentionally carries the plan pack.
 - Use `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work.
 - `plan/plan_overview.md` and the initiative-local rendered views are derived from the live machine state and must stay current with the indexes under `plan/.wt/indexes/`.
-- `plan/.wt/registries/retention_policy_registry.json` is the live policy surface for promoted guidance, purge records, and terminal initiative retention behavior.
+- `plan/.wt/registries/retention_policy_registry.json` is the live policy surface for promoted guidance and terminal initiative retention behavior.
 - `plan/.wt/registries/promotion_policy_registry.json` governs what initiative-local outputs may be promoted into durable `plan/docs/**` guidance and when mirrored updates are required.
 - `plan/.wt/registries/relation_type_registry.json` and `plan/.wt/policies/status_transition_rules.json` are the plan-pack rule surfaces for controlled relation names and family-specific lifecycle transitions.
 - `plan/.wt/registries/artifact_family_registry.json` is the plan-pack taxonomy for artifact placement rules, allowed status subsets, renderability, and derived-index participation.
@@ -38,4 +39,5 @@
 - `plan/.wt/indexes/artifact_index.json` is the pack-level cross-family lookup surface for live plan machine artifacts, pack work-item notes, and aggregate indexes.
 - Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.
 - `plan/workflows/ROUTING_TABLE.md` is the authoritative plan-domain routing table, and its routes may reference shared reusable modules under `core/workflows/modules/` and shared workflow roles under `core/workflows/roles/`.
-- Legacy docs-backed planning has already been purged. Use `core/control_plane/records/purges/**` when you need the machine purge history.
+- Legacy docs-backed planning has already been purged. Closed trace packages may be retired after promotion without creating a retained purge-history family.
+- Customer-safe releases should exclude internal project views, retained records, and other donor plan state unless the recipient explicitly needs the internal plan pack history.

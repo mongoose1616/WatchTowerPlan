@@ -57,11 +57,9 @@ uv run watchtower-core plan query project-context --project-slug watchtower --fo
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/query.py`
-- `plan/python/src/watchtower_plan/cli/query.py`
 - `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/projects/context.py`
-- `plan/projects/<project_slug>/.wt/project.json`
-- `plan/projects/<project_slug>/.wt/project_repository_map.json`
+- `plan/python/src/watchtower_plan/projects/workspace.py`
 
 ## Updated At
-- `2026-03-19T20:15:00Z`
+- `2026-03-24T23:50:00Z`

@@ -37,11 +37,21 @@ def test_document_semantics_validation_auto_selects_standard_validator() -> None
     assert result.issue_count == 0
 
 
+def test_document_semantics_validation_auto_selects_command_validator() -> None:
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate("core/docs/commands/core_python/watchtower_core_pack_export.md")
+
+    assert result.passed is True
+    assert result.validator_id == "validator.documentation.command_semantics"
+    assert result.issue_count == 0
+
+
 def test_document_semantics_validation_rejects_unsupported_path_without_validator() -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
     with pytest.raises(ValidationSelectionError):
-        service.validate("core/docs/commands/core_python/watchtower_core.md")
+        service.validate("core/docs/templates/command_reference_template.md")
 
 
 def test_document_semantics_validation_rejects_heading_after_list_without_blank_line(

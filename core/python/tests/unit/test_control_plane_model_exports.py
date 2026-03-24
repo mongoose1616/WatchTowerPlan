@@ -302,7 +302,7 @@ def test_control_plane_models_export_retention_policy_registry_types() -> None:
                     "clarifying_rule": "Example retention rule.",
                     "surviving_authority_paths": [
                         "plan/docs/",
-                        "core/control_plane/records/purges/",
+                        "plan/.wt/registries/retention_policy_registry.json",
                     ],
                 }
             ],

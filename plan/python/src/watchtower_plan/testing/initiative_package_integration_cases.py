@@ -126,12 +126,12 @@ def _bootstrap_project(loader: ControlPlaneLoader) -> None:
             repository_links=(
                 ProjectRepositoryLinkSpec(
                     repository_role="planning",
-                    repository_locator="/home/j/WatchTowerPlan",
+                    repository_locator="repos/watchtower-plan",
                     repository_kind="planning",
                 ),
                 ProjectRepositoryLinkSpec(
                     repository_role="implementation",
-                    repository_locator="/home/j/WatchTower",
+                    repository_locator="repos/watchtower-implementation",
                     repository_kind="implementation",
                 ),
             ),

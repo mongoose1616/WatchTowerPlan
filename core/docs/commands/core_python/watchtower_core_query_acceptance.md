@@ -42,6 +42,7 @@ uv run watchtower-core query acceptance --acceptance-id ac.governed_acceptance_e
 
 ## Behavior and Outputs
 - The command reads governed acceptance contracts directly from `core/control_plane/contracts/acceptance/`.
+- Portable customer exports can legitimately return no shared acceptance contracts because export scrub removes internal generic acceptance examples with their retained evidence dependencies.
 - In `human` mode, the command prints matching contracts with their trace, source surface path, and published acceptance IDs.
 - In `json` mode, the command prints one JSON object with the matching contracts and their required validator IDs.
 
@@ -59,4 +60,4 @@ uv run watchtower-core query acceptance --acceptance-id ac.governed_acceptance_e
 - `core/control_plane/contracts/acceptance/`
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-25T02:55:00Z`

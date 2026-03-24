@@ -11,8 +11,8 @@ from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
 from watchtower_core.validation.common import (
+    artifact_pattern_match_score,
     iter_schema_validation_issues,
-    matches_applies_to,
     resolve_target_path,
 )
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
@@ -165,21 +165,33 @@ class ArtifactValidationService:
                 "for external files."
             )
 
-        candidates = [
-            validator
-            for validator in registry.validators
-            if validator.artifact_kind != "documentation_front_matter"
-            and validator.engine == "json_schema"
-            and validator.status == "active"
-            and any(
-                matches_applies_to(relative_target_path, pattern)
+        candidate_matches: list[tuple[tuple[int, int, int, int, int], ValidatorDefinition]] = []
+        for validator in registry.validators:
+            if validator.artifact_kind == "documentation_front_matter":
+                continue
+            if validator.engine != "json_schema" or validator.status != "active":
+                continue
+            scores = [
+                score
                 for pattern in validator.applies_to
-            )
-        ]
-        if not candidates:
+                if (score := artifact_pattern_match_score(relative_target_path, pattern))
+                is not None
+            ]
+            if not scores:
+                continue
+            candidate_matches.append((max(scores), validator))
+
+        if not candidate_matches:
             raise ValidationSelectionError(
                 f"No active schema-backed artifact validator applies to {relative_target_path}."
             )
+
+        best_score = max(score for score, _ in candidate_matches)
+        candidates = [
+            validator
+            for score, validator in candidate_matches
+            if score == best_score
+        ]
         if len(candidates) > 1:
             candidate_ids = ", ".join(sorted(candidate.validator_id for candidate in candidates))
             raise ValidationSelectionError(

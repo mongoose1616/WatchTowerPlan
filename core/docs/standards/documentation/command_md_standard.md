@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-24T23:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -102,12 +102,13 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - The documented command should exist in the repository’s current command surface.
 - Example invocations should be runnable or clearly marked as illustrative if the command is not yet implemented.
 - If a command advertises structured output, the documented output mode should match the actual implementation surface.
+- `watchtower-core validate document-semantics --path <command_doc>` should auto-select the command-doc validator and fail when the `Source Surface` section drifts from the command-table `Source Surface` row or from live repository paths.
 - Reviewers should reject command pages that point host-owned root commands at pack source files or pack-owned commands at shared-core helper modules.
 - Reviewers should reject command pages that mix multiple unrelated commands into one document or omit the source surface.
 
 ## Change Control
 - Update this standard when the repository changes the command-doc family shape or required sections.
-- Update the command template in the same change set when command page structure changes.
+- Update the command template, command-doc semantic validator, and validator-registry coverage in the same change set when command page structure changes materially.
 - Update command-family READMEs and the machine-readable command index in the same change set when command pages are added, renamed, or removed.
 
 ## References
@@ -123,4 +124,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-24T23:50:00Z`

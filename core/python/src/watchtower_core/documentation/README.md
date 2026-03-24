@@ -1,14 +1,15 @@
 # `watchtower_core.documentation`
 
 ## Summary
-Repo-shared helpers for governed Markdown semantics, front-matter path normalization, standard and reference parsing, and other documentation-support logic used by validation and sync services.
+Repo-shared helpers for governed Markdown semantics, command-doc semantics, front-matter path normalization, standard and reference parsing, and other documentation-support logic used by validation and sync services.
 
 ## Boundary
 - `Classification`: `reusable_core`
-- `Supported Imports`: Explicit helper modules such as `front_matter_paths`, `governed_documents`, `markdown_semantics`, `reference_semantics`, and `standards`.
+- `Supported Imports`: Explicit helper modules such as `command_semantics`, `front_matter_paths`, `governed_documents`, `markdown_semantics`, `reference_semantics`, and `standards`.
 - `Non-Goals`: Pack-local workspace orchestration, pack task lifecycle behavior, pack-specific sync coordination, or pack-local semantic validators that should stay under the owning `watchtower_<pack>.validation` package.
 
 ## Key Surfaces
+- `command_semantics.py`: Shared command-document structure and source-surface validation helpers.
 - `front_matter_paths.py`: Canonical normalization for path-valued governed front matter.
 - `governed_documents.py`: Shared governed-Markdown loading, section-order validation, metadata parsing, and reference-indicator helpers.
 - `markdown_semantics.py`: Shared Markdown spacing and heading semantics checks.

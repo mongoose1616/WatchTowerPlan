@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-03-25T02:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -49,6 +49,7 @@ This standard defines the baseline validation expectations for repository change
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): Python validation commands should run from the canonical workspace using the standard local environment.
 - [engineering_best_practices_standard.md](/core/docs/standards/engineering/engineering_best_practices_standard.md): validation should stay aligned with same-change-set updates across docs, code, and governed artifacts.
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): schema-backed surfaces should fail closed when malformed.
+- [schema_surface_validation_standard.md](/core/docs/standards/validations/schema_surface_validation_standard.md): defines the separate validation path for `*.schema.json` authoring versus artifact-instance validation.
 - Pack-owned validation-evidence standards: they should define how durable evidence is recorded when a validation flow writes governed proof.
 - [watchtower_core_validate_all.md](/core/docs/commands/core_python/watchtower_core_validate_all.md): documents the aggregate validation command that operationalizes the current baseline.
 
@@ -57,6 +58,8 @@ This standard defines the baseline validation expectations for repository change
 - Before closeout for non-trivial changes, run the broadest meaningful validation for the touched surfaces.
 - When derived trackers or indexes changed, run the active pack's broad sync-all command before the final broad validation pass.
 - Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, canonical valid example artifacts, and acceptance reconciliation.
+- Use `watchtower-core validate schema --path <schema>` when changed files include one or more `*.schema.json` documents. `validate all` does not replace direct schema-definition checks.
+- For customer or downstream bootstrap handoff, prefer `watchtower-core release check` to wrap this baseline together with dirty-worktree protection and final staged export creation.
 - Use pack-interface validation whenever hosted-pack registries, runtime manifests, or pack-owned integration hooks change materially.
 - Treat pack-interface validation as responsible for dependency-direction checks too: when the relevant source roots exist, reusable core must not import a hosted pack and hosted packs must not import `watchtower_host`.
 - When a pack-contract change touches pack-owned command docs, owned roots, shared pack registry entries, or shared `core/python` workspace registration, run `watchtower-core pack validate --pack <slug> --format json` in addition to the broad repository pass.
@@ -100,9 +103,10 @@ This standard defines the baseline validation expectations for repository change
 
 ## References
 - [watchtower_core_validate_all.md](/core/docs/commands/core_python/watchtower_core_validate_all.md)
+- [schema_surface_validation_standard.md](/core/docs/standards/validations/schema_surface_validation_standard.md)
 - [documentation_semantics_standard.md](/core/docs/standards/documentation/documentation_semantics_standard.md)
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-03-25T02:15:00Z`

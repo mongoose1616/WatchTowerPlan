@@ -664,7 +664,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/command_md_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-24T23:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -740,11 +740,11 @@
       "standard_id": "std.documentation.documentation_semantics",
       "category": "documentation",
       "title": "Documentation Semantics Standard",
-      "summary": "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow documents.",
+      "summary": "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents, workflow modules, and command documents.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/documentation_semantics_standard.md",
-      "updated_at": "2026-03-24T20:35:00Z",
+      "updated_at": "2026-03-24T23:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -755,6 +755,7 @@
       "operationalization_paths": [
         "core/python/src/watchtower_core/documentation/markdown_semantics.py",
         "core/python/src/watchtower_core/documentation/governed_documents.py",
+        "core/python/src/watchtower_core/documentation/command_semantics.py",
         "core/python/src/watchtower_core/sync/workflow_index.py",
         "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
@@ -765,6 +766,7 @@
       ],
       "internal_reference_paths": [
         "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/documentation/command_md_standard.md",
         "core/docs/standards/documentation/standard_md_standard.md",
         "core/docs/standards/documentation/workflow_md_standard.md",
         "core/docs/references/commonmark_reference.md",
@@ -773,6 +775,7 @@
       ],
       "applied_reference_paths": [
         "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/documentation/command_md_standard.md",
         "core/docs/standards/documentation/standard_md_standard.md",
         "core/docs/standards/documentation/workflow_md_standard.md",
         "core/docs/references/commonmark_reference.md"
@@ -1120,7 +1123,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-24T22:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1142,6 +1145,7 @@
       "internal_reference_paths": [
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
@@ -1152,6 +1156,7 @@
       "applied_reference_paths": [
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
@@ -1186,7 +1191,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-      "updated_at": "2026-03-24T19:05:00Z",
+      "updated_at": "2026-03-25T03:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1208,6 +1213,7 @@
       "internal_reference_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
@@ -1216,6 +1222,7 @@
       "applied_reference_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md"
@@ -1389,7 +1396,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-      "updated_at": "2026-03-23T23:20:00Z",
+      "updated_at": "2026-03-25T03:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1411,6 +1418,7 @@
       "internal_reference_paths": [
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/templates/pack/README.md"
@@ -1418,6 +1426,7 @@
       "applied_reference_paths": [
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/templates/pack/README.md"
@@ -1562,7 +1571,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-23T23:20:00Z",
+      "updated_at": "2026-03-24T22:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1596,6 +1605,7 @@
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/data_contracts/repository_path_index_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/references/src_layout_reference.md",
         "core/docs/references/pyproject_toml_reference.md",
@@ -1609,6 +1619,7 @@
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/data_contracts/repository_path_index_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/references/src_layout_reference.md",
         "core/docs/references/pyproject_toml_reference.md",
@@ -1663,6 +1674,63 @@
         "standard",
         "engineering",
         "python_workspace"
+      ]
+    },
+    {
+      "standard_id": "std.engineering.repository_portability",
+      "category": "engineering",
+      "title": "Repository Portability and Release Sanitization Standard",
+      "summary": "This standard defines how reusable core and hosted packs must be prepared for donor-neutral copy-out, release artifacts, and customer bootstrap.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/engineering/repository_portability_standard.md",
+      "updated_at": "2026-03-25T02:55:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "release",
+        "bootstrap",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/docs/foundations/repository_scope.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_pack_export.md",
+        "core/control_plane/registries/pack_registry.json",
+        "core/python/pyproject.toml"
+      ],
+      "internal_reference_paths": [
+        "core/docs/foundations/repository_scope.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_pack_export.md",
+        "core/docs/standards/operations/customer_release_and_bootstrap_standard.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/foundations/repository_scope.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_pack_export.md",
+        "core/docs/standards/operations/customer_release_and_bootstrap_standard.md"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "portability",
+        "release",
+        "domain_pack"
       ]
     },
     {
@@ -1955,6 +2023,69 @@
       ]
     },
     {
+      "standard_id": "std.operations.customer_release_and_bootstrap",
+      "category": "operations",
+      "title": "Customer Release and Bootstrap Standard",
+      "summary": "This standard defines the shared release and bootstrap checklist for customer-safe repository bundles and pack bundles.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/operations/customer_release_and_bootstrap_standard.md",
+      "updated_at": "2026-03-25T02:55:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "release",
+        "bootstrap",
+        "validation",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/docs/commands/core_python/watchtower_core_release_check.md",
+        "core/docs/commands/core_python/watchtower_core_pack_export.md",
+        "core/docs/commands/core_python/watchtower_core_validate_portability.md",
+        "core/docs/commands/core_python/watchtower_core_validate_all.md",
+        "core/docs/commands/core_python/watchtower_core_validate_schema.md"
+      ],
+      "applies_to": [
+        "core/",
+        "core/docs/",
+        "core/python/",
+        "pack_owned_docs",
+        "pack_owned_python"
+      ],
+      "related_paths": [
+        "core/",
+        "core/docs/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/engineering/repository_portability_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/validations/schema_surface_validation_standard.md",
+        "core/docs/commands/core_python/watchtower_core_release_check.md",
+        "core/docs/commands/core_python/watchtower_core_pack_export.md",
+        "core/docs/commands/core_python/watchtower_core_validate_portability.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_validate_schema.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/engineering/repository_portability_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/validations/schema_surface_validation_standard.md",
+        "core/docs/commands/core_python/watchtower_core_release_check.md",
+        "core/docs/commands/core_python/watchtower_core_pack_export.md",
+        "core/docs/commands/core_python/watchtower_core_validate_portability.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md"
+      ],
+      "tags": [
+        "standard",
+        "operations",
+        "release",
+        "bootstrap",
+        "portability"
+      ]
+    },
+    {
       "standard_id": "std.operations.repository_maintenance_loop",
       "category": "operations",
       "title": "Repository Maintenance Loop Standard",
@@ -2020,7 +2151,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-23T16:35:00Z",
+      "updated_at": "2026-03-25T02:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2054,6 +2185,7 @@
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/standards/validations/schema_surface_validation_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md"
       ],
       "applied_reference_paths": [
@@ -2061,12 +2193,66 @@
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/standards/validations/schema_surface_validation_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md"
       ],
       "tags": [
         "standard",
         "validations",
         "repository_validation"
+      ]
+    },
+    {
+      "standard_id": "std.validations.schema_surface_validation",
+      "category": "validations",
+      "title": "Schema Surface Validation Standard",
+      "summary": "This standard defines how the repository validates JSON artifact instances versus JSON Schema definition files.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/validations/schema_surface_validation_standard.md",
+      "updated_at": "2026-03-25T02:15:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "validation",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
+        "core/docs/commands/core_python/watchtower_core_validate_schema.md",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/validation/schema_definition.py"
+      ],
+      "applies_to": [
+        "core/control_plane/schemas/",
+        "core/control_plane/",
+        "pack_owned_machine_state",
+        "core/python/"
+      ],
+      "related_paths": [
+        "core/control_plane/schemas/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
+        "core/docs/commands/core_python/watchtower_core_validate_schema.md",
+        "core/docs/commands/core_python/watchtower_core_validate_all.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
+        "core/docs/commands/core_python/watchtower_core_validate_schema.md",
+        "core/docs/commands/core_python/watchtower_core_validate_all.md"
+      ],
+      "tags": [
+        "standard",
+        "validations",
+        "schema",
+        "json_schema"
       ]
     },
     {
@@ -2470,7 +2656,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/data_contracts/traceability_index_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-25T02:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3021,12 +3207,12 @@
     {
       "standard_id": "std.governance.planning_retention_and_purge",
       "category": "governance",
-      "title": "Planning Retention and Purge Standard",
-      "summary": "This standard defines the promote-then-purge retention model for closed traced planning artifacts so active policy lives in current canonical surfaces instead of accumulating indefinitely in historical trace packages.",
+      "title": "Planning Retention and Cleanup Standard",
+      "summary": "This standard defines the promote-then-delete retention model for closed traced planning artifacts so active policy lives in current canonical surfaces instead of accumulating indefinitely in historical trace packages.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-      "updated_at": "2026-03-21T03:58:00Z",
+      "updated_at": "2026-03-24T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3037,14 +3223,12 @@
       "operationalization_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/records/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/"
       ],
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/records/",
         "core/control_plane/indexes/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/"
@@ -3052,10 +3236,10 @@
       "related_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/records/",
         "core/control_plane/indexes/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/",
+        "core/control_plane/records/",
         "core/python/src/watchtower_core/cli/"
       ],
       "internal_reference_paths": [
@@ -3212,7 +3396,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/rewrite_surface_classification_standard.md",
-      "updated_at": "2026-03-19T20:15:00Z",
+      "updated_at": "2026-03-24T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3223,8 +3407,7 @@
         "plan/initiatives/",
         "plan/tracking/",
         "plan/.wt/indexes/task_index.json",
-        "core/control_plane/registries/authority_map.json",
-        "core/control_plane/records/purges/"
+        "core/control_plane/registries/authority_map.json"
       ],
       "applies_to": [
         "plan/",

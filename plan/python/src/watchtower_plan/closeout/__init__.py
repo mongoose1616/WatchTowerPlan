@@ -11,8 +11,6 @@ __all__ = [
     "InitiativePackageCloseoutHelper",
     "InitiativePackageCloseoutPlan",
     "TERMINAL_INITIATIVE_PACKAGE_STATUSES",
-    "TracePurgeResult",
-    "TracePurgeService",
 ]
 
 _EXPORT_MODULES = {
@@ -22,8 +20,6 @@ _EXPORT_MODULES = {
     "InitiativePackageCloseoutHelper": "watchtower_plan.closeout.initiative_package",
     "InitiativePackageCloseoutPlan": "watchtower_plan.closeout.initiative_package",
     "TERMINAL_INITIATIVE_PACKAGE_STATUSES": "watchtower_plan.closeout.initiative_package",
-    "TracePurgeResult": "watchtower_plan.closeout.purge_trace",
-    "TracePurgeService": "watchtower_plan.closeout.purge_trace",
 }
 
 __getattr__ = lazy_module_getattr(

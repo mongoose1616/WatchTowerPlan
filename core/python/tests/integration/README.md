@@ -8,6 +8,7 @@
 |---|---|
 | `core/python/tests/integration/README.md` | Describes the purpose of the integration-test directory. |
 | `core/python/tests/integration/control_plane_artifact_helpers.py` | Shared JSON and front-matter helpers for the focused integration artifact suites. |
+| `core/python/tests/integration/test_release_commands.py` | Integration tests for the local release-gate flow, dirty-worktree protection, and recipient bootstrap smoke coverage. |
 | `core/python/tests/integration/test_standard_and_template_authoring_contracts.py` | Integration tests for standards, templates, and authored operationalization contract coverage. |
 | `core/python/tests/integration/test_validate_all_cli.py` | CLI integration tests for the aggregate validation entrypoint. |
 | `core/python/tests/integration/test_validation_pack_commands.py` | Integration tests for pack-scoped validation suite command execution. |

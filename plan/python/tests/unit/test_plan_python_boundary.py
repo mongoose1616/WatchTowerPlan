@@ -157,8 +157,6 @@ def test_public_validation_root_fails_closed_with_plan_boundary_guidance() -> No
 def test_public_closeout_root_fails_closed_with_plan_boundary_guidance() -> None:
     with pytest.raises(AttributeError, match=r"watchtower_<pack>\.closeout"):
         _ = public_closeout.InitiativeCloseoutService
-    with pytest.raises(AttributeError, match=r"watchtower_<pack>\.closeout"):
-        _ = public_closeout.TracePurgeService
 
 
 def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> None:
@@ -206,10 +204,12 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "models.py",
         "pack_contract.py",
         "pack_targets.py",
+        "portability.py",
         "suite.py",
     ]
     assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "documentation").glob("*.py")) == [
         "__init__.py",
+        "command_semantics.py",
         "front_matter_paths.py",
         "governed_documents.py",
         "markdown_semantics.py",

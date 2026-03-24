@@ -28,4 +28,5 @@
 - Shared Python workspace start-here: `core/python/README.md`
 - Plan-owned Python boundary start-here: `plan/python/README.md`
 - Machine canonical-surface lookup: `cd core/python && ./.venv/bin/watchtower-core plan query authority --domain planning --format json`
-- Legacy docs-backed planning has been purged. Use `plan/initiatives/**`, `plan/projects/**`, `plan/tracking/**`, and `core/control_plane/records/purges/**` instead.
+- Legacy docs-backed planning has been purged. Use `plan/initiatives/**`, `plan/projects/**`, and `plan/tracking/**` as the retained working surfaces instead.
+- Portable customer bootstrap is an allowlisted export of shared `core/` plus intentionally selected pack roots. Raw repo snapshots, retained records, live plan state, tests, and local runtime outputs are internal repository material by default.

@@ -207,6 +207,26 @@ def test_artifact_validation_auto_selects_acceptance_contract_validator() -> Non
     assert result.issue_count == 0
 
 
+def test_artifact_validation_allows_empty_traceability_index_after_export_scrub(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    traceability_path = (
+        repo_root / "core" / "control_plane" / "indexes" / "traceability"
+        / "traceability_index.json"
+    )
+    document = json.loads(traceability_path.read_text(encoding="utf-8"))
+    document["entries"] = []
+    write_json(traceability_path, document)
+
+    service = ArtifactValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("core/control_plane/indexes/traceability/traceability_index.json")
+
+    assert result.passed is True
+    assert result.validator_id == "validator.control_plane.traceability_index"
+    assert result.issue_count == 0
+
+
 def test_artifact_validation_supports_explicit_pack_work_item_note_validator(
     tmp_path: Path,
 ) -> None:
@@ -271,6 +291,23 @@ def test_artifact_validation_auto_selects_benchmark_report_validator_for_initiat
     assert result.passed is True
     assert result.validator_id == "validator.interface.benchmark_report"
     assert result.issue_count == 0
+
+
+def test_artifact_validation_prefers_more_specific_pack_owned_validator() -> None:
+    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate("plan/.wt/work_items/pack_work_item_note_stage1_bootstrap.json")
+
+    assert result.passed is True
+    assert result.validator_id == "validator.plan.pack_work_item_note"
+    assert result.issue_count == 0
+
+
+def test_artifact_validation_rejects_schema_definition_without_explicit_validator() -> None:
+    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    with pytest.raises(ValidationSelectionError):
+        service.validate("core/control_plane/schemas/interfaces/packs/benchmark_report.schema.json")
 
 
 def test_artifact_validation_auto_selects_pack_settings_validator() -> None:

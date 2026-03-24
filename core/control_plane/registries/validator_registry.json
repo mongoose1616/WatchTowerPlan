@@ -117,20 +117,6 @@
       ]
     },
     {
-      "id": "validator.control_plane.trace_purge_record",
-      "title": "Trace Purge Record Validator",
-      "description": "Validates machine-readable trace-purge record artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "trace_purge_record",
-      "applies_to": [
-        "core/control_plane/records/purges/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:records:trace-purge-record:v1"
-      ]
-    },
-    {
       "id": "validator.control_plane.pack_settings",
       "title": "Pack Settings Validator",
       "description": "Validates pack settings load-root artifacts.",
@@ -395,6 +381,18 @@
         "core/control_plane/indexes/traceability/**"
       ],
       "notes": "Used by the watchtower-core validate acceptance command."
+    },
+    {
+      "id": "validator.documentation.command_semantics",
+      "title": "Command Document Semantics Validator",
+      "description": "Validates repository-native command-document structure, section order, and source-surface alignment.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "**/docs/commands/**/watchtower_core*.md"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
     {
       "id": "validator.documentation.reference_semantics",

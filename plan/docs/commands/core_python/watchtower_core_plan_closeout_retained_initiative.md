@@ -1,7 +1,7 @@
 # `watchtower-core plan closeout retained-initiative`
 
 ## Summary
-This command applies terminal closeout state to one retained trace record after the live `plan/**` initiative is already closed or purged.
+This command applies terminal closeout state to one retained trace record after the live `plan/**` initiative is already closed or otherwise retired.
 
 ## Use When
 - You need to finalize one retained trace record rather than a live initiative package.
@@ -55,7 +55,6 @@ uv run watchtower-core plan closeout retained-initiative --trace-id trace.exampl
 |---|---|
 | `watchtower-core plan closeout` | Parent command group for live and retained plan closeout operations. |
 | `watchtower-core plan closeout initiative` | Use this when the target is still a live initiative package under `plan/**`. |
-| `watchtower-core plan closeout purge-trace` | Use after retained closeout when the trace package is ready to be purged. |
 | `watchtower-core validate acceptance` | Run this first when retained closeout should still enforce trace-level acceptance reconciliation. |
 
 ## Source Surface
@@ -63,4 +62,4 @@ uv run watchtower-core plan closeout retained-initiative --trace-id trace.exampl
 - `plan/python/src/watchtower_plan/closeout/initiative.py`
 
 ## Updated At
-- `2026-03-21T00:20:00Z`
+- `2026-03-24T23:45:00Z`

@@ -121,6 +121,30 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.pack.export",
+      "command": "watchtower-core pack export",
+      "summary": "Copy a curated staged export for customer handoff. By default the command stages shared core plus the selected hosted-pack roots, reconciles shared registry and workspace metadata to the selected pack set, and validates the staged result against the hosted-pack and portability contracts.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_pack_export.md",
+      "synopsis": "uv run watchtower-core pack export [-h] --output-root OUTPUT_ROOT [--include-pack INCLUDE_PACK] [--pack-only] [--overwrite] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.pack",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "pack",
+        "export"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.pack.list",
       "command": "watchtower-core pack list",
       "summary": "List the hosted packs declared in the shared pack registry.",
@@ -261,7 +285,7 @@
     {
       "command_id": "command.watchtower_core.plan.closeout",
       "command": "watchtower-core plan closeout",
-      "summary": "Apply terminal closeout state to live plan initiative packages, close one retained trace record after live work is already promoted or purged, or purge one eligible closed trace package after validating the repository's retention and reference-safety rules.",
+      "summary": "Apply terminal closeout state to live plan initiative packages, or close one retained trace record after live work is already promoted or otherwise retired from the active workspace.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -300,32 +324,6 @@
         "plan",
         "closeout",
         "initiative"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.plan.closeout.purge_trace",
-      "command": "watchtower-core plan closeout purge-trace",
-      "summary": "Delete one closed trace-local planning package only after verifying terminal initiative state, no open tasks, clean acceptance reconciliation, and no surviving canonical references to the purgeable trace material.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "plan/docs/commands/core_python/watchtower_core_plan_closeout_purge_trace.md",
-      "synopsis": "uv run watchtower-core plan closeout purge-trace [-h] --trace-id TRACE_ID [--retained-authority-path RETAINED_AUTHORITY_PATH] [--purged-at PURGED_AT] [--write] [--format {human,json}]",
-      "implementation_path": "plan/python/src/watchtower_plan/cli/closeout.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.plan.closeout",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "plan",
-        "closeout",
-        "purge",
-        "trace"
       ]
     },
     {
@@ -1056,7 +1054,7 @@
     {
       "command_id": "command.watchtower_core.plan.sync.workflow_index",
       "command": "watchtower-core plan sync workflow-index",
-      "summary": "Rebuild the workflow index from the workflow modules under `core/workflows/modules/` and `plan/workflows/modules/`.",
+      "summary": "Rebuild the workflow index from the workflow documents under `core/workflows/modules/`, `core/workflows/roles/`, `plan/workflows/modules/`, and `plan/workflows/roles/`.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1375,7 +1373,7 @@
     {
       "command_id": "command.watchtower_core.query.workflows",
       "command": "watchtower-core query workflows",
-      "summary": "Search the governed workflow index for workflow modules and the standards, references, or canonical files that govern them.",
+      "summary": "Search the governed workflow index for workflow documents and the standards, references, canonical files, or composed modules that govern them.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1397,9 +1395,51 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.release",
+      "command": "watchtower-core release",
+      "summary": "Run local release-gate commands that combine broad repository validation, explicit schema-definition validation, dirty-worktree protection, and curated export staging.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_release.md",
+      "synopsis": "uv run watchtower-core release [-h] <release_command> ...",
+      "implementation_path": "core/python/src/watchtower_host/cli/release_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "release"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.release.check",
+      "command": "watchtower-core release check",
+      "summary": "Run the local fail-closed release gate for one intended handoff bundle.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_release_check.md",
+      "synopsis": "uv run watchtower-core release check [-h] --output-root OUTPUT_ROOT [--include-pack INCLUDE_PACK] [--pack-only] [--schema-path SCHEMA_PATH] [--allow-dirty] [--overwrite] [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/release_handlers.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.release",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "release",
+        "check"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.route",
       "command": "watchtower-core route",
-      "summary": "Preview the workflow modules that the current routing surfaces would activate for a request.",
+      "summary": "Preview the workflow documents that the current routing surfaces would activate for a request.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1417,7 +1457,7 @@
     {
       "command_id": "command.watchtower_core.route.preview",
       "command": "watchtower-core route preview",
-      "summary": "Preview the workflow-module route selected by the current routing data.",
+      "summary": "Preview the workflow-document route selected by the current routing data.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1693,6 +1733,54 @@
         "front_matter"
       ],
       "notes": "Can optionally write durable validation evidence and a synchronized traceability update when --record-evidence is used."
+    },
+    {
+      "command_id": "command.watchtower_core.validate.portability",
+      "command": "watchtower-core validate portability",
+      "summary": "Validate one repository root or staged export against the customer-release and customer-bootstrap portability contract.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_validate_portability.md",
+      "synopsis": "uv run watchtower-core validate portability [-h] [--root ROOT] [--include-pack INCLUDE_PACK] [--pack-only] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.validate",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "validate",
+        "portability"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.validate.schema",
+      "command": "watchtower-core validate schema",
+      "summary": "Validate one JSON Schema definition file against the Draft 2020-12 metaschema.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_validate_schema.md",
+      "synopsis": "uv run watchtower-core validate schema [-h] --path PATH [--format {human,json}] [--record-evidence] [--trace-id TRACE_ID] [--evidence-id EVIDENCE_ID] [--subject-id SUBJECT_ID] [--acceptance-id ACCEPTANCE_ID] [--evidence-output EVIDENCE_OUTPUT] [--traceability-output TRACEABILITY_OUTPUT]",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.validate",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "validate",
+        "schema"
+      ]
     },
     {
       "command_id": "command.watchtower_core.validate.suite",

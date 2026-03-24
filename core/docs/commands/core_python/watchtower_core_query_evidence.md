@@ -43,6 +43,7 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 
 ## Behavior and Outputs
 - The command reads governed validation-evidence records directly from `core/control_plane/records/validation_evidence/`.
+- Portable customer exports can legitimately return no shared evidence records because retained validation evidence is excluded from staged handoff bundles.
 - In `human` mode, the command prints matching evidence artifacts with their trace, recorded-at timestamp, and check count.
 - In `json` mode, the command prints one JSON object with matching evidence artifacts and the acceptance IDs they cover.
 
@@ -60,4 +61,4 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 - `core/control_plane/records/validation_evidence/`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-25T02:55:00Z`

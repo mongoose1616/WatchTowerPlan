@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T23:20:00Z"
+updated_at: "2026-03-24T22:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -37,6 +37,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [repository_path_index_standard.md](/core/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md): defines the Python module-boundary, naming, typing, docstring, and consolidation rules that fit within this workspace layout.
+- [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md): defines the donor-neutral bootstrap and customer-release scrub expectations that packaged Python artifacts must satisfy.
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [src_layout_reference.md](/core/docs/references/src_layout_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md): local reference surface for the external or canonical guidance this standard depends on.
@@ -68,6 +69,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Keep the fast default shared suite under `core/python/tests/unit/` and shared repository-aware orchestration coverage under `core/python/tests/integration/`.
 - Keep pack-owned tests under the owning pack root such as `<pack-root>/python/tests/`.
 - Do not keep tests that import `watchtower_<pack>` directly under `core/python/tests/`; those belong under the owning pack root.
+- Treat repo snapshots, sdists, and wheels as separate deliverables. Customer-facing portable artifacts should exclude committed tests, fixture packs, build residue, and pack-owned `testing/` helper modules unless the recipient explicitly needs internal validation surfaces.
+- Pack-owned `watchtower_<pack>.testing` modules are internal validation helpers by default, not portable runtime API surface.
 - When shared-core tests need pack context, use synthetic fixture packs or typed loader/runtime seams instead of direct imports of a live hosted pack package.
 - Treat effective pack activation as the first step for any pack-aware test seam. Tests that only need runtime manifest, owned roots, import resolution, or command-namespace behavior should activate the effective pack settings first and should not require a full `PackContext` unless they actually consume pack-governed surfaces.
 - Do not let the live current-repository pack workspace become an accidental shared-core test dependency. If a test only passes because the active hosted-pack workspace exists, either move it under the owning pack root or replace that dependency with synthetic fixture-pack setup.
@@ -152,6 +155,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
 - Reviewers should reject shared-workspace guidance or metadata changes that make the donor repository's hosted-pack set look like a reusable-core invariant instead of current-repository configuration.
 - Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/` and approved pack-owned boundaries.
+- Reviewers should reject package artifacts that install repo-local tests or pack-owned `testing/` helpers as default runtime surface for customer delivery.
 
 ## Change Control
 - Update this standard when the Python workspace root, package layout, or standard environment contract changes.
@@ -172,4 +176,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code plus direct pack tests under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/` and `<pack-root>/python/tests/`.
 
 ## Updated At
-- `2026-03-23T23:20:00Z`
+- `2026-03-24T22:55:00Z`

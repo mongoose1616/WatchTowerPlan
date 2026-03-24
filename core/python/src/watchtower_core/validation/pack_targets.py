@@ -7,6 +7,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidationSuiteStepDefinition
+from watchtower_core.validation.common import artifact_pattern_match_score
 from watchtower_core.validation.context import PackValidationContext
 
 _STEP_TARGET_BUILDERS: dict[
@@ -70,6 +71,8 @@ def artifact_targets(context: PackValidationContext) -> tuple[str, ...]:
                 pattern,
                 default_extension=".json",
             ):
+                if artifact_pattern_match_score(relative_path, pattern) is None:
+                    continue
                 if relative_path in seen:
                     continue
                 seen.add(relative_path)
@@ -94,6 +97,13 @@ def _paths_for_pattern(
             loader.workspace_config.logical_path_for(path)
             for path in sorted(root.rglob(f"*{extension}"))
             if path.is_file()
+        )
+    if any(token in pattern for token in "*?[]"):
+        candidate_paths = sorted(loader.repo_root.glob(pattern))
+        return tuple(
+            loader.workspace_config.logical_path_for(path)
+            for path in candidate_paths
+            if path.is_file() and (not default_extension or path.suffix == default_extension)
         )
     if pattern.endswith(".json") or pattern.endswith(".md"):
         path = loader.resolve_path(pattern)

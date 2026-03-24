@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T23:20:00Z"
+updated_at: "2026-03-25T03:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -37,6 +37,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 ## Related Standards and Sources
 - [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): defines the machine contracts and validation checks this standard summarizes for developers.
 - [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md): governs the broader pack-owned root shape and packaging expectations.
+- [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md): defines the donor-neutral bootstrap and release-scrub contract that sits above integration wiring.
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): defines the dependency direction and ownership split between reusable core, host composition, and pack-native Python.
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md): gives the practical checklist, worked file set, and extension guidance that operationalize this standard.
 - [core/docs/templates/pack/README.md](/core/docs/templates/pack/README.md): provides the starter templates that should remain aligned with this minimum contract.
@@ -98,6 +99,8 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - When new pack-local Python introduces new machine or human surfaces, update the companion manifests, command docs, workflows, tracking surfaces, domain-root declarations, and tests in the same change set.
 - Prefer `watchtower-core pack scaffold` to create pack-owned starter surfaces and `watchtower-core pack bootstrap` to update the shared registry and shared workspace registration together.
 - Treat copied-core adoption as source transfer plus explicit reconciliation. Do not copy donor `.venv`, local editable-install metadata, caches, or pack `.wt/runtime/**` outputs and expect them to be part of the hosted-pack contract.
+- Treat `pack bootstrap` as shared wiring reconciliation, not as a customer-release scrub. Donor retained records, tests, fixture packs, internal assessments, and other repo-local history still need explicit exclusion from portable output.
+- Treat `pack export --pack-only` as an additive pack-bundle flow. It intentionally omits shared core and therefore defers shared registry and shared workspace validation until the bundle is copied into a compatible core repository and bootstrapped there.
 - Expect `watchtower-core pack bootstrap --write` to reconcile the shared hosted-pack registry, shared workspace registration, and the shared command, repository-path, reference, standard, workflow, and route discovery indexes when the hosted-pack set changes.
 
 ## Structure or Data Model
@@ -129,6 +132,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Reviewers should reject new pack-local Python that mirrors generic reusable-core package families without a real domain need.
 - Reviewers should reject pack-local helper modules that fork generic standard, reference, or workflow parsing logic already exported by `watchtower_core`.
 - `watchtower-core pack validate --pack <slug>` or `--pack-settings-path <path>` should pass before a pack is treated as integrated.
+- Reviewers should reject bootstrap guidance that implies a raw donor repository snapshot is already customer-safe once shared host wiring passes.
 
 ## Change Control
 - Update this standard when the minimum hosted-pack surface set, required capabilities, or pack-extension ownership rules change materially.
@@ -141,4 +145,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-23T23:20:00Z`
+- `2026-03-25T03:10:00Z`

@@ -66,8 +66,7 @@
       "clarifying_rule": "Closed pack-wide initiative packages are purge-eligible as soon as required guidance promotion and minimal surviving machine records are complete.",
       "surviving_authority_paths": [
         "plan/docs/",
-        "plan/.wt/registries/retention_policy_registry.json",
-        "core/control_plane/records/purges/"
+        "plan/.wt/registries/retention_policy_registry.json"
       ]
     },
     {
@@ -89,30 +88,9 @@
       "clarifying_rule": "Closed project-scoped initiative packages are purge-eligible as soon as required guidance promotion and minimal surviving machine records are complete.",
       "surviving_authority_paths": [
         "plan/docs/",
-        "plan/.wt/registries/retention_policy_registry.json",
-        "core/control_plane/records/purges/"
-      ]
-    },
-    {
-      "policy_id": "policy.retention.trace_purge_records",
-      "path_pattern": "core/control_plane/records/purges",
-      "match_mode": "exact",
-      "path_kind": "purge_record_root",
-      "phase_qualifier": "always",
-      "entry_status": "active",
-      "current_disposition": "minimal_record",
-      "clean_endstate_disposition": "minimal_record",
-      "operational_visibility": "visible",
-      "purge_gate": "none",
-      "governing_surfaces": [
-        "retention_policy_registry",
-        "trace_purge_record"
-      ],
-      "clarifying_rule": "Minimal purge records remain the retained machine history after eligible legacy packages are deleted.",
-      "surviving_authority_paths": [
-        "core/control_plane/records/purges/"
+        "plan/.wt/registries/retention_policy_registry.json"
       ]
     }
   ],
-  "notes": "The registry governs the surviving live plan authority, promoted guidance, purge-eligible closed initiative packages, and the minimal purge records that remain after hard cutover cleanup."
+  "notes": "The registry governs the surviving live plan authority, promoted guidance, and purge-eligible closed initiative packages after durable policy is promoted into current canonical surfaces."
 }

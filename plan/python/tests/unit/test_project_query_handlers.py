@@ -27,7 +27,7 @@ def test_query_project_context_prints_human_summary(monkeypatch, capsys) -> None
             SimpleNamespace(
                 repository_id="repository.watchtower.planning",
                 repository_role="planning",
-                repository_locator="/home/j/WatchTowerPlan",
+                repository_locator="repos/watchtower-plan",
                 repository_kind="planning",
                 owner="repository_maintainer",
                 access="local_write",
@@ -50,7 +50,7 @@ def test_query_project_context_prints_human_summary(monkeypatch, capsys) -> None
     assert "project.watchtower: WatchTower [active]" in captured.out
     assert "Pack Context: pack.plan via plan/.wt/manifests/pack_settings.json" in captured.out
     assert "Initiative Root: plan/projects/watchtower/initiatives" in captured.out
-    assert "- planning: /home/j/WatchTowerPlan [planning, active]" in captured.out
+    assert "- planning: repos/watchtower-plan [planning, active]" in captured.out
 
 
 def test_query_project_context_supports_json_errors(monkeypatch, capsys) -> None:

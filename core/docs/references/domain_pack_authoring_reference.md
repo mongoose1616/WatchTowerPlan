@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T23:20:00Z"
+updated_at: "2026-03-25T03:10:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -102,6 +102,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Do not treat the donor repository's current internal pack as a reusable-core default just because its examples appear in shared docs.
 - Do not hard-code a donor pack into shared workspace metadata, host defaults, or pack-authoring guidance; those are consuming-repository choices.
 - Do not copy `core/python/.venv`, editable-install metadata, caches, or pack `.wt/runtime/**` outputs into the consuming repository. Copy-forward portability assumes source surfaces plus an explicit `watchtower-core pack bootstrap --write` reconciliation step, not donor environment residue.
+- Use `watchtower-core pack export --pack-only --include-pack <slug> --output-root <path>` when you need a scrubbed additive pack bundle without shared core. That bundle still needs a compatible core repository plus `watchtower-core pack bootstrap` after copy.
 
 ### Portable Pack Authoring Checklist
 1. Create the pack-owned root surfaces.
@@ -392,4 +393,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-23T23:20:00Z`
+- `2026-03-25T03:10:00Z`

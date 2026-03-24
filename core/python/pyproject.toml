@@ -34,6 +34,13 @@ watchtower-core = "watchtower_host.cli.main:main"
 [tool.hatch.build.targets.wheel]
 packages = ["src/watchtower_core", "src/watchtower_host"]
 
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "AGENTS.md",
+  "tests/**",
+  "uv.lock",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests/unit"]
 addopts = [

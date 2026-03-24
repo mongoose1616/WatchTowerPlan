@@ -5,14 +5,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from watchtower_core.adapters.markdown import (
-    extract_code_spans,
-    extract_sections,
-    load_markdown_body,
-    parse_markdown_table,
-)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CommandIndexEntry
+from watchtower_core.documentation.command_semantics import (
+    load_command_doc_source_surfaces,
+)
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_host.cli.introspection import iter_host_command_parser_specs
 
@@ -65,34 +62,6 @@ def _entry_to_document(entry: CommandIndexEntry) -> dict[str, object]:
         document["notes"] = entry.notes
     return document
 
-
-def _load_command_doc_source_surfaces(doc_path: Path) -> tuple[str, str]:
-    """Return the command-table and primary source-surface values from one command doc."""
-
-    sections = extract_sections(load_markdown_body(doc_path))
-    try:
-        command_section = sections["Command"]
-        source_surface_section = sections["Source Surface"]
-    except KeyError as exc:
-        raise ValueError(f"Command doc is missing a required section: {doc_path}") from exc
-
-    command_rows = parse_markdown_table(command_section)
-    table_source_surface = next(
-        (row["Value"] for row in command_rows if row.get("Field") == "Source Surface"),
-        None,
-    )
-    if table_source_surface is None:
-        raise ValueError(f"Command doc Command table is missing its Source Surface row: {doc_path}")
-
-    source_surfaces = extract_code_spans(source_surface_section)
-    if not source_surfaces:
-        raise ValueError(
-            f"Command doc Source Surface section is missing its primary code path: {doc_path}"
-        )
-
-    return table_source_surface, source_surfaces[0]
-
-
 class CommandIndexSyncService:
     """Build and write the command index from host-composed CLI metadata."""
 
@@ -115,7 +84,7 @@ class CommandIndexSyncService:
                     "Registry-backed CLI command is missing its companion command doc: "
                     f"{spec.command} -> {spec.doc_path}"
                 )
-            table_source_surface, primary_source_surface = _load_command_doc_source_surfaces(
+            table_source_surface, primary_source_surface = load_command_doc_source_surfaces(
                 doc_path
             )
             resolved_implementation_path = spec.implementation_path

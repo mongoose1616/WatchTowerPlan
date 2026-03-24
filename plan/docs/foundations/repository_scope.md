@@ -9,21 +9,21 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:20:00Z"
+updated_at: "2026-03-24T22:55:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "README.md"
   - "AGENTS.md"
   - "core/docs/foundations/"
-  - "plan/docs/foundations/"
   - "core/workflows/"
-  - "plan/workflows/"
-  - "plan/"
   - "core/"
   - "core/python/src/watchtower_core/"
   - "core/python/src/watchtower_host/"
-  - "plan/python/src/watchtower_plan/"
+  - "foundations_mirror"
+  - "pack_owned_workflows"
+  - "live_pack_workspace"
+  - "first_internal_pack_python"
 aliases:
   - "repository scope"
   - "repository charter"
@@ -90,6 +90,7 @@ This document is authoritative for current repository ownership. It does not rep
 - Shared core surfaces stay domain-agnostic.
 - Host composition stays in `watchtower_host`, and pack-native orchestration stays in `watchtower_<pack>` packages.
 - Shared core policy and docs must not assume that consuming repositories retain the current internal `plan/` pack or any other donor-specific pack set.
+- Portable customer/bootstrap handoff is an allowlisted source transfer, not a raw repository snapshot. Retained records, test fixtures, and donor-local plan history stay repo-local unless a release contract explicitly selects them.
 - Live plan execution state stays under `plan/**`, not under documentation roots.
 - Shared foundations are authored in `core/docs/foundations/` and mirrored into `plan/docs/foundations/`.
 - Future product narrative can guide planning, but it must not quietly redefine current repo scope.
@@ -100,4 +101,4 @@ This document is authoritative for current repository ownership. It does not rep
 - [product_direction.md](product_direction.md)
 
 ## Updated At
-- `2026-03-22T23:20:00Z`
+- `2026-03-24T22:55:00Z`

@@ -25,7 +25,6 @@ from watchtower_core.control_plane.loader_constants import (
     ROUTE_INDEX_PATH,
     STANDARD_INDEX_PATH,
     STATUS_REGISTRY_PATH,
-    TRACE_PURGE_RECORD_DIRECTORY,
     TRACEABILITY_INDEX_PATH,
     VALIDATION_EVIDENCE_DIRECTORY,
     VALIDATION_SUITE_REGISTRY_PATH,
@@ -67,7 +66,6 @@ from watchtower_core.control_plane.models import (
     TaskIndex,
     TemplateCatalog,
     TraceabilityIndex,
-    TracePurgeRecord,
     ValidationEvidenceArtifact,
     ValidationSuiteRegistry,
     ValidatorRegistry,
@@ -629,21 +627,6 @@ def load_validation_evidence_artifacts(
         loader._load_typed_directory(
             VALIDATION_EVIDENCE_DIRECTORY,
             lambda relative_path, document: ValidationEvidenceArtifact.from_document(
-                document,
-                doc_path=relative_path,
-            ),
-        ),
-    )
-
-
-def load_trace_purge_records(loader: Any) -> tuple[TracePurgeRecord, ...]:
-    """Load all governed trace-purge record artifacts."""
-
-    return cast(
-        tuple[TracePurgeRecord, ...],
-        loader._load_typed_directory(
-            TRACE_PURGE_RECORD_DIRECTORY,
-            lambda relative_path, document: TracePurgeRecord.from_document(
                 document,
                 doc_path=relative_path,
             ),

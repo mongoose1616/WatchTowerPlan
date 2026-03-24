@@ -1,11 +1,12 @@
 # `watchtower-core validate document-semantics`
 
 ## Summary
-This command validates one governed Markdown document against repo-native semantic rules such as repo-local link integrity, required sections, section order, applied-reference explanation, and family-specific guardrails.
+This command validates one governed Markdown document against repo-native semantic rules such as repo-local link integrity, required sections, section order, command-doc source-surface integrity, applied-reference explanation, and family-specific guardrails.
 
 ## Use When
 - You want to validate governed document structure beyond front matter alone.
 - You want broken repo-local Markdown links to fail before closeout.
+- You want shared or pack-owned command docs to fail closed when their published source surfaces drift from live repository paths.
 - You need a structured semantic validation result for a workflow, script, or agent.
 - You want to confirm that a workflow, standard, foundation doc, decision note, design record, or other governed guidance document still satisfies its document standard.
 
@@ -57,6 +58,7 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 - The command loads the validator registry and resolves the matching document-semantics validator automatically when the path is repository-local.
 - If `--pack-settings-path` is provided, the command resolves the active validator registry from that pack before selecting validators.
 - Repo-local Markdown links are validated fail closed when they point to missing repository targets, use filesystem-absolute checkout paths, or escape the current repository root.
+- Command pages also fail when their `Source Surface` entries drift from the command-table `Source Surface` row or from live repository paths.
 - If `--validator-id` is provided, the command validates against that explicit semantic validator instead of auto-selecting by path.
 - In `human` mode, the command prints `PASS` or `FAIL`, the selected validator, and any validation issues.
 - In `json` mode, the command prints one JSON object with the execution status, pass or fail result, selected validator, issue count, and issue records.
@@ -74,8 +76,10 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/validate_family.py`
-- `<pack-root>/python/src/watchtower_<pack>/validation/document_semantics.py`
+- `core/python/src/watchtower_host/cli/validation_handlers.py`
+- `plan/python/src/watchtower_plan/validation/document_semantics.py`
+- `core/python/src/watchtower_core/documentation/command_semantics.py`
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-16T23:10:00Z`
+- `2026-03-24T23:50:00Z`

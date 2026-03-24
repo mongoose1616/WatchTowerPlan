@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 import subprocess
+import shutil
+import sys
 from dataclasses import dataclass
 from importlib import import_module
 from pathlib import Path, PurePosixPath
@@ -121,6 +123,10 @@ def bootstrap_hosted_pack(
         invalid_pack_settings_paths=invalid_pack_settings_paths,
         replace_hosted_packs=request.replace_hosted_packs,
     )
+    effective_pack_registry_entry = _effective_pack_registry_entry(
+        updated_registry_document,
+        candidate_entry=pack_registry_entry,
+    )
     scrubbed_pack_slugs = _scrubbed_pack_slugs(
         registry_document=registry_document,
         updated_registry_document=updated_registry_document,
@@ -152,7 +158,7 @@ def bootstrap_hosted_pack(
             pack_runtime_manifest_path=pack_runtime_manifest_path,
             replace_hosted_packs=request.replace_hosted_packs,
             scrubbed_pack_slugs=scrubbed_pack_slugs,
-            pack_registry_entry=pack_registry_entry,
+            pack_registry_entry=effective_pack_registry_entry,
             core_python_workspace_registration=registration,
             pack_registry_changed=pack_registry_changed,
             core_python_pyproject_changed=core_python_pyproject_changed,
@@ -180,7 +186,7 @@ def bootstrap_hosted_pack(
         if core_python_pyproject_changed:
             pyproject_path.write_text(updated_pyproject_text, encoding="utf-8")
         if pack_registry_changed:
-            _rebuild_shared_discovery_surfaces(repo_root)
+            rebuild_shared_discovery_surfaces(repo_root)
         if request.sync_workspace and core_python_pyproject_changed:
             _run_workspace_sync(repo_root)
             workspace_sync_ran = True
@@ -207,7 +213,7 @@ def bootstrap_hosted_pack(
         pack_runtime_manifest_path=pack_runtime_manifest_path,
         replace_hosted_packs=request.replace_hosted_packs,
         scrubbed_pack_slugs=scrubbed_pack_slugs,
-        pack_registry_entry=pack_registry_entry,
+        pack_registry_entry=effective_pack_registry_entry,
         core_python_workspace_registration=registration,
         pack_registry_changed=pack_registry_changed,
         core_python_pyproject_changed=core_python_pyproject_changed,
@@ -359,6 +365,22 @@ def _scrubbed_pack_slugs(
     return tuple(scrubbed)
 
 
+def _effective_pack_registry_entry(
+    registry_document: dict[str, object],
+    *,
+    candidate_entry: dict[str, object],
+) -> dict[str, object]:
+    raw_packs = registry_document.get("packs")
+    if not isinstance(raw_packs, list):
+        return dict(candidate_entry)
+    for entry in raw_packs:
+        if not isinstance(entry, dict):
+            continue
+        if _matches_same_pack(entry, candidate_entry):
+            return dict(entry)
+    return dict(candidate_entry)
+
+
 def _retained_workspace_dependencies(
     registry_document: dict[str, object],
 ) -> tuple[str, ...]:
@@ -445,8 +467,9 @@ def _preflight_integration_module_source(
 
 def _run_workspace_sync(repo_root: Path) -> None:
     core_python_root = repo_root / "core" / "python"
+    uv_executable = _resolve_uv_executable()
     completed = subprocess.run(
-        ["uv", "sync"],
+        [uv_executable, "sync"],
         cwd=core_python_root,
         check=False,
         capture_output=True,
@@ -458,6 +481,19 @@ def _run_workspace_sync(repo_root: Path) -> None:
     stdout = completed.stdout.strip()
     detail = stderr or stdout or "uv sync failed without output."
     raise ValueError(f"Hosted-pack bootstrap could not sync the shared workspace: {detail}")
+
+
+def _resolve_uv_executable() -> str:
+    candidate = shutil.which("uv")
+    if candidate is not None:
+        return candidate
+    interpreter_sibling = Path(sys.executable).resolve().with_name("uv")
+    if interpreter_sibling.is_file():
+        return str(interpreter_sibling)
+    raise ValueError(
+        "Hosted-pack bootstrap could not find the `uv` executable needed for shared "
+        "workspace sync. Install `uv` or rerun with --no-sync-workspace."
+    )
 
 
 def _best_effort_workspace_resync(repo_root: Path) -> None:
@@ -485,7 +521,7 @@ def _restore_workspace_files(
         path.write_text(original_text, encoding="utf-8")
 
 
-def _rebuild_shared_discovery_surfaces(repo_root: Path) -> None:
+def rebuild_shared_discovery_surfaces(repo_root: Path) -> None:
     from watchtower_core.sync.reference_index import ReferenceIndexSyncService
     from watchtower_core.sync.repository_paths import RepositoryPathIndexSyncService
     from watchtower_core.sync.route_index import RouteIndexSyncService
@@ -539,4 +575,5 @@ __all__ = [
     "PackBootstrapRequest",
     "PackBootstrapResult",
     "bootstrap_hosted_pack",
+    "rebuild_shared_discovery_surfaces",
 ]

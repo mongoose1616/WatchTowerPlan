@@ -41,6 +41,7 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 ## Behavior and Outputs
 - The command resolves the trace, matching acceptance contract, validation evidence, validator references, and traceability entry for the requested trace.
 - It checks for contract-versus-traceability drift, missing source-surface links, unknown validator references, missing traceability evidence joins, and uncovered acceptance IDs.
+- Portable customer exports can legitimately omit the shared generic acceptance example because export scrub removes retained evidence and its paired internal example lineage.
 - In `human` mode, the command prints `PASS` or `FAIL`, the semantic validator ID, and any findings.
 - In `json` mode, the command prints one JSON object with the pass or fail result and structured issues.
 - The command exits with status code `0` when reconciliation passes and `1` when semantic drift is detected.
@@ -60,4 +61,4 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 - `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-25T02:55:00Z`

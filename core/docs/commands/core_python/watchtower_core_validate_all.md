@@ -1,7 +1,7 @@
 # `watchtower-core validate all`
 
 ## Summary
-This command runs the active pack's default validation baseline through the reusable-core suite runtime, then adds acceptance reconciliation and returns one aggregate summary.
+This command runs the active pack's default validation baseline through the reusable-core suite runtime, then adds acceptance reconciliation and returns one aggregate summary across front matter, document semantics, and artifact families.
 
 ## Use When
 - You want one bounded validation pass instead of running each validation family manually.
@@ -54,13 +54,16 @@ uv run watchtower-core validate all --pack-settings-path /tmp/example_pack/.wt/m
 
 ## Behavior and Outputs
 - The command is read-only and aggregates the current repo baseline validation families rather than writing evidence or mutating control-plane artifacts.
-- The current validation families are governed front matter, governed document semantics including repo-local link integrity, schema-backed governed artifacts, and acceptance reconciliation across traceability surfaces.
+- The current validation families are governed front matter, governed document semantics including repo-local link integrity and command-doc source-surface checks, schema-backed governed artifacts, and acceptance reconciliation across traceability surfaces.
 - The front-matter, document-semantics, and artifact families run through the active pack settings surface's `default_validation_suite_id`, which is declared in the validation-suite registry and resolved through the reusable-core suite runtime.
 - When no `--pack-settings-path` is supplied, the runtime uses the active selected pack when present; otherwise it discovers the repository-default pack settings surface and falls back to the shared-core pack only if no repo-local pack exists.
 - Acceptance reconciliation runs only for traces that currently publish governed acceptance state through initiative-authored inputs, contracts, evidence, or traceability.
+- Portable exports may legitimately execute with zero acceptance targets after export scrub removes internal shared acceptance/evidence example lineage.
+- Direct schema-definition validation for changed `*.schema.json` files remains an explicit follow-on check through `watchtower-core validate schema`; it is not auto-added as a separate family here.
 - Use `--skip-acceptance` when you want a structural validation pass over documents and JSON artifacts only.
 - In `json` mode, the command returns per-family summary counts plus one structured result per validation target.
 - The command exits with status code `0` when every executed target passes and `1` when any target fails.
+- Use `watchtower-core release check` when the validation result should be tied directly to a dirty-worktree guard and final staged export.
 
 ## Related Commands
 | Command | Relationship |
@@ -70,18 +73,21 @@ uv run watchtower-core validate all --pack-settings-path /tmp/example_pack/.wt/m
 | `watchtower-core validate front-matter` | Validates one governed Markdown document front-matter block. |
 | `watchtower-core validate document-semantics` | Validates governed Markdown documents against repo-native semantic structure rules. |
 | `watchtower-core validate artifact` | Validates one governed JSON artifact against registry-backed schema validators. |
+| `watchtower-core validate schema` | Validates changed schema-definition files directly when `*.schema.json` authoring changed. |
+| `watchtower-core release check` | Preferred one-shot local release gate when this validation baseline should be coupled to staged export creation. |
 | `watchtower-core validate acceptance` | Validates one trace across initiative acceptance, contracts, evidence, and traceability. |
 | `watchtower-core <pack-namespace> sync all` | Useful after validation when you want to rebuild the full local derived state. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/validate_family.py`
+- `core/python/src/watchtower_host/cli/validation_handlers.py`
 - `core/python/src/watchtower_core/validation/all.py`
 - `core/python/src/watchtower_core/validation/suite.py`
-- `<pack-root>/python/src/watchtower_<pack>/validation/targets.py`
+- `core/python/src/watchtower_core/validation/pack_targets.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
-- `<pack-root>/python/src/watchtower_<pack>/validation/document_semantics.py`
+- `plan/python/src/watchtower_plan/validation/document_semantics.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 
 ## Updated At
-- `2026-03-19T22:48:00Z`
+- `2026-03-25T02:55:00Z`

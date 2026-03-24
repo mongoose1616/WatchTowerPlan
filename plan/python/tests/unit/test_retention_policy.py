@@ -35,10 +35,6 @@ def test_retention_policy_helper_matches_live_and_retained_roots() -> None:
         ).policy_id
         == "policy.retention.plan_project_initiative_archive"
     )
-    assert (
-        helper.policy_for_path("core/control_plane/records/purges/").policy_id
-        == "policy.retention.trace_purge_records"
-    )
 
 
 def test_retention_policy_helper_exposes_current_and_clean_endstate_dispositions() -> None:

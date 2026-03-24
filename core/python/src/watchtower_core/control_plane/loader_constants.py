@@ -28,7 +28,6 @@ STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.json"
 WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
-TRACE_PURGE_RECORD_DIRECTORY = "core/control_plane/records/purges"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/records/validation_evidence"
 
 TArtifact = TypeVar("TArtifact")

@@ -22,7 +22,6 @@
 | `core/control_plane/schemas/artifacts/schema_catalog.schema.json` | Schema for the authored schema catalog registry artifact family. |
 | `core/control_plane/schemas/artifacts/standard_index.schema.json` | Schema for the machine-readable standard-index artifact family. |
 | `core/control_plane/schemas/artifacts/task_index.schema.json` | Schema for the machine-readable task-summary index artifact family. |
-| `core/control_plane/schemas/artifacts/trace_purge_record.schema.json` | Schema for the machine-readable trace-purge record artifact family. |
 | `core/control_plane/schemas/artifacts/traceability_index.schema.json` | Schema for the unified machine-readable traceability-index artifact family. |
 | `core/control_plane/schemas/artifacts/validation_evidence.schema.json` | Schema for the durable validation-evidence artifact family. |
 | `core/control_plane/schemas/artifacts/validation_suite_registry.schema.json` | Schema for the authored validation-suite registry artifact family. |
@@ -32,4 +31,4 @@
 
 ## Notes
 - `core/control_plane/schemas/interfaces/packs/` holds the pack-facing startup contracts such as `pack_settings`, `governance_surface_map`, `path_pattern_registry`, `status_registry`, `actor_registry`, and `artifact_index`.
-- This directory carries the active control-plane artifact schemas plus the current migration, purge, and evidence record schemas consumed by the current first-party hosted pack.
+- This directory carries the active control-plane artifact schemas plus the current migration, release, and evidence record schemas consumed by the current first-party hosted pack.

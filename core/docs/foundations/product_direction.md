@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-03-24T22:55:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -82,8 +82,9 @@ Domain packs are the future domain-specific operator layer of the product. They 
 
 ## Product Delivery Boundary
 
-- Future external operator-facing domain-pack implementation belongs in a later product phase and likely in a consuming repository such as `/home/j/WatchTower`, even though the host-pack contract is already proven here.
+- Future external operator-facing domain-pack implementation belongs in a later product phase and in a consuming product repository, even though the host-pack contract is already proven here.
 - That consuming repository may adopt the shared runtime by copying `core/` and then wiring the hosted pack set it actually owns; shared core must therefore stay donor-neutral even when this repository currently carries one internal proof pack.
+- Customer-safe bootstrap for that consuming repository should be a curated export of shared core plus the selected hosted pack set, not a raw donor repository snapshot.
 - This repository should prepare the reusable substrate and contracts that product work will consume.
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
 
@@ -94,4 +95,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](customer_story.md)
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-03-24T22:55:00Z`

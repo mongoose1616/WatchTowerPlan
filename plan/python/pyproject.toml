@@ -12,3 +12,10 @@ dependencies = []
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/watchtower_plan"]
+exclude = ["src/watchtower_plan/testing/**"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "src/watchtower_plan/testing/**",
+  "tests/**",
+]

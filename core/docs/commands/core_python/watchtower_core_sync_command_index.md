@@ -66,8 +66,7 @@ uv run watchtower-core sync command-index --output /tmp/command_index.json --for
 - `core/python/src/watchtower_host/cli/parser.py`
 - `core/python/src/watchtower_host/cli/introspection.py`
 - `core/python/src/watchtower_host/cli/command_index.py`
-- `core/python/src/watchtower_core/sync/command_index.py`
 - `core/control_plane/indexes/commands/command_index.json`
 
 ## Updated At
-- `2026-03-21T20:55:00Z`
+- `2026-03-24T23:50:00Z`

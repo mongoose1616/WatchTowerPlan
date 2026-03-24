@@ -10,7 +10,7 @@ tags:
   - "python_boundary"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-24T22:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,7 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 ## Related Standards and Sources
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md): provides the lower-level Python design rules that must stay consistent with this boundary split.
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): defines the workspace and package-root layout that this boundary standard specializes.
+- [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md): defines the donor-neutral bootstrap and release-sanitization contract that this layer split must preserve.
 - [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): states the minimum integrated pack surface set that should respect this ownership boundary.
 - [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md): applies this boundary model to the shape and responsibilities of an individual hosted pack.
 - [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): governs the machine contracts that connect these three layers at runtime.
@@ -98,4 +99,4 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 - The stable CLI binary name may remain `watchtower-core` even when the owning Python package is `watchtower_host`.
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-24T22:55:00Z`

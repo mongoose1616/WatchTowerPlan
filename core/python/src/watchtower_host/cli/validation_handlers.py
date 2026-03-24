@@ -20,6 +20,8 @@ from watchtower_core.validation import (
     AcceptanceReconciliationService,
     ArtifactValidationService,
     FrontMatterValidationService,
+    PortabilityValidationService,
+    SchemaDefinitionValidationService,
     ValidationExecutionError,
     ValidationResult,
     ValidationSelectionError,
@@ -27,6 +29,10 @@ from watchtower_core.validation import (
     ValidationSuiteService,
 )
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
+from watchtower_core.validation.portability import (
+    PACK_BUNDLE_EXPORT_SCOPE,
+    REPOSITORY_EXPORT_SCOPE,
+)
 from watchtower_core.validation.suite import DocumentSemanticsValidationService
 
 ValidationServiceFactory = Callable[
@@ -133,6 +139,69 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
             result,
             evidence_write=evidence_write,
             success_message="Artifact validated successfully.",
+        ),
+        exit_code=0 if result.passed else 1,
+    )
+
+
+def _run_validate_schema(args: argparse.Namespace) -> int:
+    command_name = "watchtower-core validate schema"
+    message = _validate_evidence_arguments(args)
+    if message is not None:
+        return _emit_command_error(args, command_name, message)
+
+    loader = ControlPlaneLoader()
+    service = SchemaDefinitionValidationService(loader)
+    try:
+        with telemetry_operation(
+            "validation",
+            "schema_validate",
+            attributes={"target_path": str(args.path)},
+        ) as operation:
+            result = service.validate(args.path)
+            if operation is not None:
+                operation.set_result(
+                    status="ok" if result.passed else "failed",
+                    issue_count=result.issue_count,
+                    passed=result.passed,
+                    target_path=result.target_path,
+                    validator_id=result.validator_id,
+                )
+    except ValidationExecutionError as exc:
+        return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+
+    evidence_write = None
+    if args.record_evidence:
+        recorder = ValidationEvidenceRecorder(loader)
+        evidence_write = _run_value_error_operation(
+            args,
+            command_name=command_name,
+            prefix="Validation error",
+            operation=lambda: recorder.record(
+                result,
+                trace_id=args.trace_id,
+                evidence_id=args.evidence_id,
+                subject_ids=tuple(args.subject_id),
+                acceptance_ids=tuple(args.acceptance_id),
+                evidence_output=_resolve_output_path(args.evidence_output),
+                traceability_output=_resolve_output_path(args.traceability_output),
+            ),
+        )
+        if evidence_write is None:
+            return 1
+
+    payload = _build_validation_payload(
+        command_name=command_name,
+        result=result,
+        evidence_write=evidence_write,
+    )
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=lambda: _print_validation_summary(
+            result,
+            evidence_write=evidence_write,
+            success_message="Schema definition validated successfully.",
         ),
         exit_code=0 if result.passed else 1,
     )
@@ -299,6 +368,47 @@ def _run_validate_all(args: argparse.Namespace) -> int:
         payload_factory=lambda: payload,
         render_human=_render_human,
         exit_code=exit_code,
+    )
+
+
+def _run_validate_portability(args: argparse.Namespace) -> int:
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core validate portability",
+        prefix="Validation error",
+        operation=lambda: PortabilityValidationService().validate(
+            args.root,
+            included_pack_slugs=tuple(args.include_pack or ()),
+            scope=(
+                PACK_BUNDLE_EXPORT_SCOPE
+                if bool(getattr(args, "pack_only", False))
+                else REPOSITORY_EXPORT_SCOPE
+            ),
+        ),
+    )
+    if result is None:
+        return 1
+
+    payload = _build_validation_payload(
+        command_name="watchtower-core validate portability",
+        result=result,
+        evidence_write=None,
+    )
+    payload["included_pack_slugs"] = list(args.include_pack or ())
+    payload["scope"] = (
+        PACK_BUNDLE_EXPORT_SCOPE
+        if bool(getattr(args, "pack_only", False))
+        else REPOSITORY_EXPORT_SCOPE
+    )
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=lambda: _print_validation_summary(
+            result,
+            evidence_write=None,
+            success_message="Portability scan passed.",
+        ),
+        exit_code=0 if result.passed else 1,
     )
 
 

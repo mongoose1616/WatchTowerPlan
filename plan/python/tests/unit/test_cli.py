@@ -118,6 +118,14 @@ def test_root_command_prints_help(capsys) -> None:
         "oversight/.wt/manifests/pack_settings.json --write --format json"
         in captured.out
     )
+    assert (
+        "uv run watchtower-core pack export --output-root /tmp/customer_export "
+        "--include-pack plan --overwrite --format json" in captured.out
+    )
+    assert (
+        "uv run watchtower-core pack export --output-root /tmp/customer_plan_pack "
+        "--include-pack plan --pack-only --overwrite --format json" in captured.out
+    )
     assert 'uv run watchtower-core route preview --request "review code and commit"' in captured.out
     assert "uv run watchtower-core query commands --query doctor --format json" in captured.out
     assert (
@@ -135,6 +143,14 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync route-index" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
+    assert (
+        "uv run watchtower-core validate portability --include-pack plan --format json"
+        in captured.out
+    )
+    assert (
+        "uv run watchtower-core validate portability --root /tmp/customer_plan_pack "
+        "--include-pack plan --pack-only --format json" in captured.out
+    )
     assert (
         "uv run watchtower-core validate document-semantics --path "
         "core/docs/standards/documentation/workflow_md_standard.md" in captured.out
@@ -308,10 +324,15 @@ def test_validate_group_prints_group_specific_help(capsys) -> None:
     assert "artifact" in captured.out
     assert "document-semantics" in captured.out
     assert "front-matter" in captured.out
+    assert "portability" in captured.out
     assert "suite" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert "uv run watchtower-core validate suite --suite-id" in captured.out
     assert "uv run watchtower-core validate artifact" in captured.out
+    assert (
+        "uv run watchtower-core validate portability --include-pack plan --format json"
+        in captured.out
+    )
 
 
 def test_plan_closeout_group_prints_group_specific_help(capsys) -> None:
@@ -322,9 +343,7 @@ def test_plan_closeout_group_prints_group_specific_help(capsys) -> None:
     assert "Apply terminal closeout state to live plan initiative packages" in captured.out
     assert "initiative" in captured.out
     assert "retained-initiative" in captured.out
-    assert "purge-trace" in captured.out
     assert (
         "uv run watchtower-core plan closeout retained-initiative --trace-id trace.example"
         in captured.out
     )
-    assert "uv run watchtower-core plan closeout purge-trace" in captured.out

@@ -97,7 +97,6 @@ from watchtower_core.control_plane.models.validation import (
     AcceptanceContractItem,
     EvidenceBundleArtifact,
     EvidenceBundleEntry,
-    TracePurgeRecord,
     ValidationEvidenceArtifact,
     ValidationEvidenceCheck,
 )
@@ -178,7 +177,6 @@ __all__ = [
     "TemplateCatalogEntry",
     "TemplateGuidance",
     "TemplateSectionCardinalityRule",
-    "TracePurgeRecord",
     "TraceabilityEntry",
     "TraceabilityIndex",
     "ValidationEvidenceArtifact",

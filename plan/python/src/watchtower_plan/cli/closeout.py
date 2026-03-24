@@ -18,7 +18,7 @@ from watchtower_core.cli.handler_common import (
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import telemetry_operation
 from watchtower_plan import InitiativePackageService
-from watchtower_plan.closeout import InitiativeCloseoutService, TracePurgeService
+from watchtower_plan.closeout import InitiativeCloseoutService
 
 IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/closeout.py"
 
@@ -30,14 +30,12 @@ def register_plan_closeout_commands(
 
     closeout_parser = plan_subparsers.add_parser(
         "closeout",
-        help="Close live initiatives, retained trace records, or purge eligible closed traces.",
+        help="Close live initiatives or retained trace records.",
         description=dedent(
             """
             Apply terminal closeout state to live plan initiative packages,
-            close one retained trace record after live work is already
-            promoted or purged, or purge one eligible closed trace package
-            after validating the repository's retention and reference-safety
-            rules.
+            or close one retained trace record after live work is already
+            promoted or otherwise retired from the active workspace.
             """
         ).strip(),
         epilog=examples(
@@ -47,8 +45,6 @@ def register_plan_closeout_commands(
             "uv run watchtower-core plan closeout retained-initiative --trace-id "
             "trace.example --initiative-status completed --closure-reason "
             '"Closed the retained trace record" --write',
-            "uv run watchtower-core plan closeout purge-trace --trace-id trace.example "
-            "--retained-authority-path plan/docs/standards/governance/example.md --write",
         ),
         formatter_class=HelpFormatter,
     )
@@ -185,53 +181,6 @@ def register_plan_closeout_commands(
     )
     add_human_json_format_argument(retained_initiative_parser)
     retained_initiative_parser.set_defaults(handler=_run_closeout_retained_initiative)
-
-    purge_parser = closeout_subparsers.add_parser(
-        "purge-trace",
-        help="Purge one eligible closed trace package and write the purge record.",
-        description=dedent(
-            """
-            Delete one closed trace-local planning package only after verifying
-            terminal initiative state, no open tasks, clean acceptance
-            reconciliation, and no surviving canonical references to the
-            purgeable trace material.
-            """
-        ).strip(),
-        epilog=examples(
-            "uv run watchtower-core plan closeout purge-trace --trace-id trace.example "
-            "--retained-authority-path plan/docs/standards/governance/example.md",
-            "uv run watchtower-core plan closeout purge-trace --trace-id trace.example "
-            "--retained-authority-path plan/python/src/watchtower_plan/example.py "
-            "--write --format json",
-        ),
-        formatter_class=HelpFormatter,
-    )
-    purge_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
-    purge_parser.add_argument(
-        "--trace-id",
-        required=True,
-        help="Stable trace identifier such as trace.governed_acceptance_example.",
-    )
-    purge_parser.add_argument(
-        "--retained-authority-path",
-        action="append",
-        default=[],
-        help=(
-            "Repository-relative canonical path that remains authoritative after purge. "
-            "Repeat to record more than one surviving path."
-        ),
-    )
-    purge_parser.add_argument(
-        "--purged-at",
-        help="Explicit RFC 3339 UTC purge timestamp. Defaults to the current UTC time.",
-    )
-    purge_parser.add_argument(
-        "--write",
-        action="store_true",
-        help="Delete the trace package, write the purge record, and refresh derived surfaces.",
-    )
-    add_human_json_format_argument(purge_parser)
-    purge_parser.set_defaults(handler=_run_closeout_purge_trace)
 
 
 def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
@@ -404,81 +353,6 @@ def _run_closeout_retained_initiative(args: argparse.Namespace) -> int:
             )
         else:
             print("Dry-run only. Use --write to persist the closeout state.")
-
-    return _emit_detail_result(
-        args,
-        payload_factory=lambda: payload,
-        render_human=_render_human,
-    )
-
-
-def _run_closeout_purge_trace(args: argparse.Namespace) -> int:
-    service = TracePurgeService(ControlPlaneLoader())
-    with telemetry_operation(
-        "plan_closeout",
-        "plan_closeout_purge_trace",
-        attributes={
-            "trace_id": args.trace_id,
-            "retained_authority_path_count": len(tuple(args.retained_authority_path or ())),
-            "write": args.write,
-        },
-    ) as operation:
-        result = _run_value_error_operation(
-            args,
-            command_name="watchtower-core plan closeout purge-trace",
-            prefix="Purge error",
-            operation=lambda: service.purge(
-                trace_id=args.trace_id,
-                retained_authority_paths=tuple(args.retained_authority_path or ()),
-                purged_at=args.purged_at,
-                write=args.write,
-            ),
-        )
-        if result is None:
-            if operation is not None:
-                operation.set_result(status="value_error")
-            return 1
-        if operation is not None:
-            operation.set_result(
-                status="ok",
-                trace_id=result.trace_id,
-                wrote=result.wrote,
-                removed_path_count=len(result.removed_paths),
-                refreshed_target_count=len(result.refreshed_targets),
-                purge_record_relative_path=result.purge_record_relative_path,
-            )
-    if result is None:
-        return 1
-
-    payload = {
-        "command": "watchtower-core plan closeout purge-trace",
-        "status": "ok",
-        "trace_id": result.trace_id,
-        "title": result.title,
-        "initiative_status": result.initiative_status,
-        "closed_at": result.closed_at,
-        "closure_reason": result.closure_reason,
-        "purged_at": result.purged_at,
-        "removed_paths": list(result.removed_paths),
-        "retained_authority_paths": list(result.retained_authority_paths),
-        "purge_record_relative_path": result.purge_record_relative_path,
-        "purge_record_output_path": result.purge_record_output_path,
-        "refreshed_targets": list(result.refreshed_targets),
-        "wrote": result.wrote,
-    }
-
-    def _render_human() -> None:
-        print(f"Prepared purge for {result.trace_id}.")
-        print(f"Purged At: {result.purged_at}")
-        print(f"Removed Paths: {len(result.removed_paths)}")
-        print(f"Purge Record: {result.purge_record_relative_path}")
-        print("Retained Authority Paths: " + ", ".join(result.retained_authority_paths))
-        if result.wrote:
-            print("Trace package was deleted and derived surfaces were refreshed.")
-        else:
-            print(
-                "Dry-run only. Use --write to delete the trace package and write the purge record."
-            )
 
     return _emit_detail_result(
         args,

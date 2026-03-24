@@ -18,6 +18,7 @@ from watchtower_core.control_plane.models import ValidatorDefinition
 from watchtower_core.documentation.front_matter_paths import (
     normalize_front_matter_applies_to,
 )
+from watchtower_core.documentation.command_semantics import validate_command_document
 from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
@@ -195,6 +196,13 @@ class DocumentSemanticsValidationService:
                 self._loader,
                 relative_target_path,
                 context=self._workflow_validation_context(),
+            )
+            return
+        if validator_id == "validator.documentation.command_semantics":
+            validate_command_document(
+                relative_path=relative_target_path,
+                resolved_path=resolved_path,
+                repo_root=self._loader.repo_root,
             )
             return
 

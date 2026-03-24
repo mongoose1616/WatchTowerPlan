@@ -45,7 +45,6 @@ from watchtower_core.control_plane.loader_constants import (
     ROUTE_INDEX_PATH,
     STANDARD_INDEX_PATH,
     STATUS_REGISTRY_PATH,
-    TRACE_PURGE_RECORD_DIRECTORY,
     TRACEABILITY_INDEX_PATH,
     VALIDATION_EVIDENCE_DIRECTORY,
     VALIDATION_SUITE_REGISTRY_PATH,
@@ -198,9 +197,6 @@ from watchtower_core.control_plane.loader_surfaces import (
     load_template_catalog as _load_template_catalog_method,
 )
 from watchtower_core.control_plane.loader_surfaces import (
-    load_trace_purge_records as _load_trace_purge_records_method,
-)
-from watchtower_core.control_plane.loader_surfaces import (
     load_traceability_index as _load_traceability_index_method,
 )
 from watchtower_core.control_plane.loader_surfaces import (
@@ -265,7 +261,6 @@ __all__ = [
     "STANDARD_INDEX_PATH",
     "STATUS_REGISTRY_PATH",
     "TRACEABILITY_INDEX_PATH",
-    "TRACE_PURGE_RECORD_DIRECTORY",
     "VALIDATION_EVIDENCE_DIRECTORY",
     "VALIDATION_SUITE_REGISTRY_PATH",
     "VALIDATOR_REGISTRY_PATH",
@@ -400,7 +395,6 @@ class ControlPlaneLoader:
     load_traceability_index = _load_traceability_index_method
     load_acceptance_contracts = _load_acceptance_contracts_method
     load_validation_evidence_artifacts = _load_validation_evidence_artifacts_method
-    load_trace_purge_records = _load_trace_purge_records_method
     load_active_pack_context = _load_active_pack_context_method
     load_pack_context = _load_pack_context_method
     load_declared_surface = _load_declared_surface_method

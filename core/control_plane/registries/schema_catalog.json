@@ -212,20 +212,6 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:records:trace-purge-record:v1",
-      "title": "Trace Purge Record",
-      "description": "Schema for machine-readable trace-purge record artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "trace_purge_record",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/trace_purge_record.schema.json",
-      "aliases": [
-        "trace purge record schema",
-        "planning retention purge schema"
-      ]
-    },
-    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:task-summary-index:v1",
       "title": "Plan Task Summary Index",
       "description": "Schema for the plan-workspace task summary index.",

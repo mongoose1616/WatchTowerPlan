@@ -135,6 +135,48 @@ def render_core_python_workspace_pyproject(
     return updated_text, updated_text != pyproject_text
 
 
+def reconcile_core_python_workspace_pyproject(
+    pyproject_text: str,
+    *,
+    retained_registrations: tuple[CorePythonWorkspaceRegistration, ...] = (),
+) -> tuple[str, bool]:
+    """Return pyproject text with hosted-pack wiring reconciled to one exact set."""
+
+    state = parse_core_python_workspace_state(pyproject_text)
+    retained_map = {
+        registration.dependency: {
+            "path": registration.uv_source_path,
+            "editable": registration.editable,
+        }
+        for registration in retained_registrations
+    }
+    pack_dependency_names = {
+        name
+        for name, path, _editable in state.uv_sources
+        if name.startswith("watchtower-") and path.startswith("..")
+    }
+    dev_dependencies = tuple(
+        sorted(
+            {
+                dependency
+                for dependency in state.dev_dependencies
+                if dependency not in pack_dependency_names
+            }
+            | set(retained_map),
+            key=str.casefold,
+        )
+    )
+    uv_sources = {
+        name: source
+        for name, source in state.uv_source_map().items()
+        if name not in pack_dependency_names
+    }
+    uv_sources.update(retained_map)
+    updated_text = _rewrite_dev_dependencies(pyproject_text, dev_dependencies)
+    updated_text = _rewrite_uv_sources(updated_text, uv_sources)
+    return updated_text, updated_text != pyproject_text
+
+
 def ensure_core_python_workspace_registration(
     pyproject_path: Path,
     registration: CorePythonWorkspaceRegistration,
@@ -226,5 +268,6 @@ __all__ = [
     "ensure_core_python_workspace_registration",
     "load_core_python_workspace_state",
     "parse_core_python_workspace_state",
+    "reconcile_core_python_workspace_pyproject",
     "render_core_python_workspace_pyproject",
 ]

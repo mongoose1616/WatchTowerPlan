@@ -77,6 +77,12 @@ def _register_pack_family(subparsers: argparse._SubParsersAction) -> None:
     register_pack_family(subparsers)
 
 
+def _register_release_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.release_family import register_release_family
+
+    register_release_family(subparsers)
+
+
 def _register_sync_family(subparsers: argparse._SubParsersAction) -> None:
     from watchtower_host.cli.sync_family import register_sync_family
 
@@ -129,6 +135,15 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
             ("describe", PACK_FAMILY_HANDLERS_PATH),
             ("validate", PACK_FAMILY_HANDLERS_PATH),
             ("scaffold", PACK_FAMILY_HANDLERS_PATH),
+        ),
+    ),
+    CommandGroupSpec(
+        name="release",
+        registrar=_register_release_family,
+        doc_root="core/docs/commands/core_python",
+        implementation_path="core/python/src/watchtower_host/cli/release_family.py",
+        subcommand_implementation_paths=(
+            ("check", "core/python/src/watchtower_host/cli/release_handlers.py"),
         ),
     ),
     CommandGroupSpec(

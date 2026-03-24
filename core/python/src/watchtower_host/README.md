@@ -24,7 +24,7 @@
 - `cli/parser.py`: Registry-backed parser construction for the current host command tree.
 - `cli/registry.py`: Root command-family registry metadata for the current host command tree.
 - `cli/introspection.py`: Parser-backed command metadata used by command-index rebuilds and CLI surface validation.
-- `cli/*_family.py`: Host-owned root command-family registration for `doctor`, `route`, `query`, `pack`, `sync`, and `validate`.
+- `cli/*_family.py`: Host-owned root command-family registration for `doctor`, `route`, `query`, `pack`, `release`, `sync`, and `validate`.
 - `cli/*_handlers.py`: Host-owned root command handlers that delegate into reusable-core services.
 
 ## Related Surfaces

@@ -11,21 +11,21 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `Machine-State Boundary`: Keep live plan machine state in `plan/.wt/**`, not in this package tree.
 
 ## Governing Foundations
-- [repository_scope.md](/home/j/WatchTowerPlan/core/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/core/docs/foundations/engineering_design_principles.md)
-- [product_direction.md](/home/j/WatchTowerPlan/core/docs/foundations/product_direction.md)
+- [repository_scope.md](/core/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/core/docs/foundations/product_direction.md)
 
 ## Governing Standards
-- [python_code_design_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/python_code_design_standard.md)
-- [core_host_pack_python_boundary_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
-- [domain_pack_authoring_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/domain_pack_authoring_standard.md)
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/planning_retention_and_purge_standard.md)
+- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
+- [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
+- [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md)
+- [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Responsibilities
 - Feature-owned lifecycle orchestration: `initiatives/`, `projects/`, and `tasks/` own live `plan/**` bootstrap, project-container state, task mutation, and readiness-gate behavior that depends on plan-local workspace rules.
 - Workspace aggregation: `workspace/` owns pack-wide derived surfaces, rendered views, overview shaping, and artifact-index generation across live `plan/**` initiative state.
 - Pack-local aggregate services: `promotion/` and `rendering/` still coordinate durable guidance promotion and rendered initiative payload shaping that remain specific to the current pack.
-- Plan-domain closeout: `closeout/` owns retained trace closeout, initiative-package terminal closeout helpers, and guarded purge orchestration because those flows depend on live plan workspace state and repo-local purge policy.
+- Plan-domain closeout: `closeout/` owns retained trace closeout and initiative-package terminal closeout helpers because those flows depend on live plan workspace state and repo-local retention policy.
 - Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the pack-local integrations behind reusable-core boundaries, but generic governed-surface rebuild, validation, and documentation helpers should move back into `watchtower_core`.
 
 ## Key Surfaces
@@ -35,7 +35,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `workspace/`: Pack-wide orchestration over live initiative state, rendered views, artifact indexes, and derived-surface drift checks.
 - `promotion/`: Governed initiative-to-guidance promotion flow with an explicit extraction stage before durable `plan/docs/**` outputs and initiative-local promotion records.
 - `rendering/`: Shared serializers for compact and human-facing initiative payloads that support CLI, query, and rendered-surface output.
-- `closeout/`: Plan-domain closeout services for retained traces, live initiative packages, and guarded trace purges.
+- `closeout/`: Plan-domain closeout services for retained traces and live initiative packages.
 - `query/`, `sync/`, and `validation/`: Pack-local planning integrations behind the reusable-core query, sync, validation, and documentation boundaries, with generic governed-index or document-semantics helpers expected to live back under `watchtower_core`.
 
 ## Shrink Rules

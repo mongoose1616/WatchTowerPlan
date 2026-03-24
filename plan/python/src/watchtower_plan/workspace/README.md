@@ -9,15 +9,15 @@ Feature-owned pack workspace services for live `plan/**` aggregation. This packa
 - `Non-Goals`: generic rebuild/query helpers that already belong in `watchtower_core`, or new infra-family mirrors under `watchtower_plan`.
 
 ## Governing Foundations
-- [repository_scope.md](/home/j/WatchTowerPlan/core/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/core/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/core/docs/foundations/repository_standards_posture.md)
+- [repository_scope.md](/core/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md)
 
 ## Governing Standards
-- [python_code_design_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/python_code_design_standard.md)
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/engineering_best_practices_standard.md)
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/data_contracts/planning_index_family_standard.md)
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/coordination_tracking_standard.md)
+- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
+- [engineering_best_practices_standard.md](/core/docs/standards/engineering/engineering_best_practices_standard.md)
+- [planning_index_family_standard.md](/plan/docs/standards/data_contracts/planning_index_family_standard.md)
+- [coordination_tracking_standard.md](/plan/docs/standards/governance/coordination_tracking_standard.md)
 
 ## Key Modules
 - `service.py`: `PlanWorkspaceService` orchestration façade and compatibility re-exports for existing callers.

@@ -193,7 +193,7 @@
       "path": "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
       "kind": "file",
       "surface_kind": "control_plane_contract",
-      "summary": "Durable generic acceptance-contract example used by command docs, standards, and validation tests.",
+      "summary": "Durable generic acceptance-contract example used by command docs, standards, and validation tests in the engineering repository; portable exports intentionally scrub it.",
       "parent_path": "core/control_plane/contracts/acceptance/",
       "maturity": "authoritative",
       "priority": "high",
@@ -458,7 +458,7 @@
       "path": "core/control_plane/indexes/traceability/traceability_index.json",
       "kind": "file",
       "surface_kind": "control_plane_index",
-      "summary": "Unified machine-readable traceability index for current traced initiatives.",
+      "summary": "Unified machine-readable traceability index for current traced initiatives; portable exports may legitimately carry an empty `entries` array.",
       "parent_path": "core/control_plane/indexes/traceability/",
       "maturity": "authoritative",
       "priority": "high",
@@ -528,7 +528,7 @@
       "path": "core/control_plane/records/",
       "kind": "directory",
       "surface_kind": "control_plane_records",
-      "summary": "Retained governed record families for migrations, releases, purge records, and validation evidence.",
+      "summary": "Retained governed record families for migrations, releases, and validation evidence.",
       "parent_path": "core/control_plane/",
       "maturity": "supporting",
       "priority": "medium",
@@ -714,36 +714,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/records/purges/",
-      "kind": "directory",
-      "surface_kind": "control_plane_records",
-      "summary": "Minimal surviving history for traced planning packages that were explicitly purged.",
-      "parent_path": "core/control_plane/records/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/purges/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Describes the purpose of the trace-purge record directory and its current contents.",
-      "parent_path": "core/control_plane/records/purges/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/purges/planning_projection_pipeline_modularity_hardening_purge_record.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Purge record for the retired planning-projection modularity hardening trace package.",
-      "parent_path": "core/control_plane/records/purges/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/records/releases/",
       "kind": "directory",
       "surface_kind": "control_plane_records",
@@ -809,7 +779,7 @@
       "path": "core/control_plane/records/validation_evidence/governed_acceptance_example_validation_baseline.json",
       "kind": "file",
       "surface_kind": "control_plane_record",
-      "summary": "Durable generic validation-evidence example paired with the governed acceptance contract example.",
+      "summary": "Durable generic validation-evidence example paired with the governed acceptance contract example in the engineering repository; portable exports intentionally scrub it.",
       "parent_path": "core/control_plane/records/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -1128,16 +1098,6 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable task-summary index artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/trace_purge_record.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable trace-purge record artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1636,6 +1596,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/core_python/watchtower_core_release.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for the local release-gate command family.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_release_check.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Runs the local release gate and stages one final export.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/commands/core_python/watchtower_core_route.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1660,6 +1640,16 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Entry page for validation commands across artifacts, semantics, and repo-wide checks.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_validate_schema.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Validates one JSON Schema definition file against the Draft 2020-12 metaschema.",
       "parent_path": "core/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2092,6 +2082,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the required split between reusable core, host composition, and pack-native Python ownership.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the pack-owned root shape and authoring rules for hosted packs.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/standards/engineering/engineering_best_practices_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -2122,6 +2132,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the minimum shared and pack-owned surfaces a hosted pack must satisfy before integration.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/standards/engineering/python_code_design_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -2136,6 +2156,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard Python workspace layout, environment, and onboarding contract under core/python.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/repository_portability_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines how shared core and hosted packs must be scrubbed for donor-neutral bootstrap and customer-safe release.",
       "parent_path": "core/docs/standards/engineering/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2232,6 +2262,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/standards/operations/customer_release_and_bootstrap_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the shared release and bootstrap checklist for customer-safe repository and pack handoff.",
+      "parent_path": "core/docs/standards/operations/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/standards/operations/repository_maintenance_loop_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -2266,6 +2306,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the baseline validation expectations for repository changes across governed docs, governed artifacts, and the Python workspace.",
+      "parent_path": "core/docs/standards/validations/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/validations/schema_surface_validation_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines how JSON artifact instances and JSON Schema definition files are validated through separate command paths.",
       "parent_path": "core/docs/standards/validations/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2947,6 +2997,16 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Shared JSON and front-matter helpers for the focused integration artifact suites.",
+      "parent_path": "core/python/tests/integration/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/integration/test_release_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Integration tests for the local release-gate flow, dirty-worktree protection, and recipient bootstrap smoke coverage.",
       "parent_path": "core/python/tests/integration/",
       "maturity": "supporting",
       "priority": "medium",

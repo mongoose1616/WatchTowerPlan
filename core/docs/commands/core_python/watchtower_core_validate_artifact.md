@@ -78,6 +78,9 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 ## Behavior and Outputs
 - The command loads the validator registry and resolves the matching schema-backed validator automatically when the path is repository-local.
 - If `--pack-settings-path` is provided, the command resolves the active schema catalog and validator registry from that pack before selecting validators.
+- When multiple active validators overlap the same repository-local artifact, auto-selection prefers the most specific matching validator rather than a broader generic interface pattern.
+- Generic artifact validator patterns do not auto-select against JSON Schema definition files such as `*.schema.json`. Use `--schema-id` or an explicit validator when you intend to validate a schema surface directly.
+- Use `watchtower-core validate schema` when the target itself is a schema-definition file and you want Draft 2020-12 metaschema validation for that `*.schema.json` document.
 - If `--validator-id` is provided, the command validates against that explicit artifact validator instead of auto-selecting by path.
 - If `--schema-id` is provided, the command validates directly against that schema ID and does not require a validator-registry entry.
 - External files may also validate directly when the document declares `$schema` and any required schema definitions are supplied through `--supplemental-schema-path`.
@@ -93,6 +96,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 |---|---|
 | `watchtower-core validate` | Parent command group for governed validation operations. |
 | `watchtower-core validate front-matter` | Validates governed Markdown front matter rather than JSON artifacts. |
+| `watchtower-core validate schema` | Validates JSON Schema definition files instead of JSON artifact instances. |
 | `watchtower-core <pack-namespace> query trace` | Useful after validation when you need the related source-surface, task, acceptance, or evidence context. |
 
 ## Source Surface
@@ -104,4 +108,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-19T22:48:00Z`
+- `2026-03-25T00:40:00Z`

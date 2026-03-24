@@ -37,6 +37,37 @@ def matches_applies_to(relative_path: str, pattern: str) -> bool:
     return PurePosixPath(relative_path).match(pattern)
 
 
+def is_schema_definition_path(relative_path: str) -> bool:
+    """Return whether a repository-relative path names a JSON Schema definition file."""
+
+    return PurePosixPath(relative_path).name.endswith(".schema.json")
+
+
+def artifact_pattern_match_score(
+    relative_path: str,
+    pattern: str,
+) -> tuple[int, int, int, int, int] | None:
+    """Return a specificity score for one matching artifact validator pattern."""
+
+    if not matches_applies_to(relative_path, pattern):
+        return None
+    if is_schema_definition_path(relative_path) and ".schema.json" not in pattern:
+        return None
+
+    wildcard_count = sum(pattern.count(token) for token in "*?[")
+    literal_length = len("".join(ch for ch in pattern if ch not in "*?[]"))
+    path_depth = len(PurePosixPath(pattern).parts)
+    exact_match = int(not any(token in pattern for token in "*?[]"))
+    schema_explicit = int(".schema.json" in pattern)
+    return (
+        exact_match,
+        schema_explicit,
+        literal_length,
+        path_depth,
+        -wildcard_count,
+    )
+
+
 def resolve_target_path(
     loader: ControlPlaneLoader,
     path: str | Path,

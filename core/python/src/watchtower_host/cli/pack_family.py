@@ -20,6 +20,7 @@ def register_pack_family(
     from watchtower_host.cli.pack_handlers import (
         _run_pack_bootstrap,
         _run_pack_describe,
+        _run_pack_export,
         _run_pack_list,
         _run_pack_scaffold,
         _run_pack_validate,
@@ -47,6 +48,8 @@ def register_pack_family(
             "uv run watchtower-core pack bootstrap --pack-settings-path "
             "oversight/.wt/manifests/pack_settings.json --replace-hosted-packs "
             "--write --format json",
+            "uv run watchtower-core pack export --output-root /tmp/customer_export "
+            "--include-pack plan --overwrite --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -175,6 +178,64 @@ def register_pack_family(
     )
     add_human_json_format_argument(pack_bootstrap_parser)
     pack_bootstrap_parser.set_defaults(handler=_run_pack_bootstrap)
+
+    pack_export_parser = pack_subparsers.add_parser(
+        "export",
+        help="Stage a portability-clean repository bundle or pack-only bundle.",
+        description=dedent(
+            """
+            Copy a curated staged export for customer handoff. By default the
+            command stages shared core plus the selected hosted-pack roots,
+            reconciles shared registry and workspace metadata to the selected
+            pack set, and validates the staged result against the hosted-pack
+            and portability contracts.
+
+            Use --pack-only to stage one or more scrubbed pack roots without
+            shared core. Pack-only exports are additive bundles for a compatible
+            core repository, not standalone runtime repositories.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core pack export --output-root /tmp/customer_core "
+            "--overwrite --format json",
+            "uv run watchtower-core pack export --output-root /tmp/customer_plan "
+            "--include-pack plan --overwrite --format json",
+            "uv run watchtower-core pack export --output-root /tmp/customer_plan_pack "
+            "--include-pack plan --pack-only --overwrite --format json",
+            "uv run watchtower-core pack export --output-root /tmp/customer_bundle "
+            "--include-pack plan --include-pack oversight --overwrite --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    pack_export_parser.add_argument(
+        "--output-root",
+        required=True,
+        help="Filesystem path where the staged export should be written.",
+    )
+    pack_export_parser.add_argument(
+        "--include-pack",
+        action="append",
+        default=[],
+        help=(
+            "Hosted pack slug to include in the staged export. Repeat for multiple "
+            "packs. Omit for core-only bootstrap export. Required with --pack-only."
+        ),
+    )
+    pack_export_parser.add_argument(
+        "--pack-only",
+        action="store_true",
+        help=(
+            "Stage only the selected hosted-pack roots without shared core. Use this "
+            "to export additive pack bundles for a compatible core repository."
+        ),
+    )
+    pack_export_parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Replace an existing staged export directory.",
+    )
+    add_human_json_format_argument(pack_export_parser)
+    pack_export_parser.set_defaults(handler=_run_pack_export)
 
     pack_scaffold_parser = pack_subparsers.add_parser(
         "scaffold",

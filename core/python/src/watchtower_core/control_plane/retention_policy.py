@@ -95,7 +95,6 @@ class RetentionPolicyHelper:
         roots: set[str] = {
             self._workspace_paths.machine_root,
             self._workspace_paths.docs_root,
-            "core/control_plane/records/purges",
         }
         initiatives_root = repo_root / self._workspace_paths.initiatives_root
         if initiatives_root.exists():

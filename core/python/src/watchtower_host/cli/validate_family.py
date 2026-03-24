@@ -25,6 +25,8 @@ def register_validate_family(
         _run_validate_artifact,
         _run_validate_document_semantics,
         _run_validate_front_matter,
+        _run_validate_portability,
+        _run_validate_schema,
         _run_validate_suite,
     )
 
@@ -41,7 +43,8 @@ def register_validate_family(
             Markdown metadata, `document-semantics` for governed
             document-shape and applied-reference rules, `artifact` for
             schema-backed JSON contracts, indexes, records, and similar
-            machine-readable artifacts, and `acceptance` for semantic
+            machine-readable artifacts, `schema` for Draft 2020-12
+            schema-definition files, and `acceptance` for semantic
             reconciliation across initiative-authored inputs, acceptance
             contracts, validation evidence, and traceability.
             """
@@ -62,8 +65,12 @@ def register_validate_family(
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/indexes/traceability/traceability_index.json "
             "--format json",
+            "uv run watchtower-core validate schema --path "
+            "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json "
+            "--format json",
             "uv run watchtower-core validate acceptance --trace-id "
             "trace.governed_acceptance_example --format json",
+            "uv run watchtower-core validate portability --include-pack plan --format json",
             "uv run watchtower-core validate front-matter --path "
             "core/docs/standards/metadata/front_matter_standard.md --format json",
         ),
@@ -155,6 +162,64 @@ def register_validate_family(
     add_pack_settings_argument(validate_suite_parser)
     add_human_json_format_argument(validate_suite_parser)
     validate_suite_parser.set_defaults(handler=_run_validate_suite)
+
+    validate_portability_parser = validate_subparsers.add_parser(
+        "portability",
+        help=(
+            "Validate a repo root or staged export against the release/bootstrap "
+            "portability contract."
+        ),
+        description=dedent(
+            """
+            Validate one repository root or staged export against the
+            customer-release and customer-bootstrap portability contract.
+
+            The command scans for retained governed history, developer-machine
+            residue, pack-local runtime outputs, pack-owned test helpers,
+            unselected hosted packs, and filesystem-absolute donor paths.
+
+            Use --pack-only when the target root is an additive pack bundle
+            without shared core.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core validate portability",
+            "uv run watchtower-core validate portability --include-pack plan --format json",
+            "uv run watchtower-core validate portability --root /tmp/customer_plan_pack "
+            "--include-pack plan --pack-only --format json",
+            "uv run watchtower-core validate portability --root /tmp/customer_export "
+            "--include-pack plan --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    validate_portability_parser.add_argument(
+        "--root",
+        default=".",
+        help=(
+            "Repository root or staged export root to validate. Defaults to the "
+            "current directory."
+        ),
+    )
+    validate_portability_parser.add_argument(
+        "--include-pack",
+        action="append",
+        default=[],
+        help=(
+            "Hosted pack slug allowed in the target root. Repeat to validate a "
+            "core-plus-selected-pack export. Omit for core-only bootstrap validation. "
+            "Required with --pack-only."
+        ),
+    )
+    validate_portability_parser.add_argument(
+        "--pack-only",
+        action="store_true",
+        help=(
+            "Validate the target as a pack-only bundle that intentionally omits shared "
+            "core surfaces."
+        ),
+    )
+    add_human_json_format_argument(validate_portability_parser)
+    validate_portability_parser.set_defaults(handler=_run_validate_portability)
 
     validate_front_matter_parser = validate_subparsers.add_parser(
         "front-matter",
@@ -306,6 +371,35 @@ def register_validate_family(
     add_pack_settings_argument(validate_artifact_parser)
     add_common_validation_arguments(validate_artifact_parser)
     validate_artifact_parser.set_defaults(handler=_run_validate_artifact)
+
+    validate_schema_parser = validate_subparsers.add_parser(
+        "schema",
+        help="Validate one JSON Schema definition against the Draft 2020-12 metaschema.",
+        description=dedent(
+            """
+            Validate one JSON Schema definition file against the Draft 2020-12
+            metaschema.
+
+            Use this for `*.schema.json` authoring work. This command is
+            distinct from `validate artifact`, which validates JSON artifact
+            instances and does not auto-select schema definition files.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core validate schema --path "
+            "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json",
+            "uv run watchtower-core validate schema --path "
+            "/tmp/example.schema.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    validate_schema_parser.add_argument(
+        "--path",
+        required=True,
+        help="Repository-relative or absolute path to the JSON Schema file to validate.",
+    )
+    add_common_validation_arguments(validate_schema_parser)
+    validate_schema_parser.set_defaults(handler=_run_validate_schema)
 
     validate_acceptance_parser = validate_subparsers.add_parser(
         "acceptance",

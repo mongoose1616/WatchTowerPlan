@@ -13,6 +13,11 @@ if TYPE_CHECKING:
         PackBootstrapRequest,
         PackBootstrapResult,
     )
+    from watchtower_core.pack_integration.export import (
+        PackExportRequest,
+        PackExportResult,
+        PackExportValidationSummary,
+    )
     from watchtower_core.pack_integration.scaffold import (
         PackScaffoldRequest,
         PackScaffoldResult,
@@ -21,6 +26,7 @@ if TYPE_CHECKING:
         CORE_PYPROJECT_RELATIVE_PATH,
         CORE_UV_LOCK_RELATIVE_PATH,
         CorePythonWorkspaceRegistration,
+        reconcile_core_python_workspace_pyproject,
     )
     from watchtower_core.validation.suite import (
         DocumentSemanticsValidationService,
@@ -152,6 +158,18 @@ _EXPORTS: dict[str, tuple[str, str]] = {
         "watchtower_core.pack_integration.bootstrap",
         "PackBootstrapResult",
     ),
+    "PackExportRequest": (
+        "watchtower_core.pack_integration.export",
+        "PackExportRequest",
+    ),
+    "PackExportResult": (
+        "watchtower_core.pack_integration.export",
+        "PackExportResult",
+    ),
+    "PackExportValidationSummary": (
+        "watchtower_core.pack_integration.export",
+        "PackExportValidationSummary",
+    ),
     "PackScaffoldRequest": (
         "watchtower_core.pack_integration.scaffold",
         "PackScaffoldRequest",
@@ -163,6 +181,10 @@ _EXPORTS: dict[str, tuple[str, str]] = {
     "bootstrap_hosted_pack": (
         "watchtower_core.pack_integration.bootstrap",
         "bootstrap_hosted_pack",
+    ),
+    "export_hosted_repository": (
+        "watchtower_core.pack_integration.export",
+        "export_hosted_repository",
     ),
     "core_python_workspace_registration": (
         "watchtower_core.pack_integration.workspace_registration",
@@ -188,6 +210,10 @@ _EXPORTS: dict[str, tuple[str, str]] = {
         "watchtower_core.pack_integration.workspace_registration",
         "parse_core_python_workspace_state",
     ),
+    "reconcile_core_python_workspace_pyproject": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "reconcile_core_python_workspace_pyproject",
+    ),
     "render_core_python_workspace_pyproject": (
         "watchtower_core.pack_integration.workspace_registration",
         "render_core_python_workspace_pyproject",
@@ -206,6 +232,9 @@ __all__ = [
     "CorePythonWorkspaceRegistration",
     "PackBootstrapRequest",
     "PackBootstrapResult",
+    "PackExportRequest",
+    "PackExportResult",
+    "PackExportValidationSummary",
     "PackCommandRegistrar",
     "PackDocumentSemanticsFactory",
     "PackIntegration",
@@ -221,12 +250,14 @@ __all__ = [
     "REQUIRED_PACK_CAPABILITIES",
     "SUPPORTED_PACK_CAPABILITIES",
     "bootstrap_hosted_pack",
+    "export_hosted_repository",
     "core_python_workspace_registration",
     "ensure_core_python_workspace_registration",
     "load_core_python_workspace_state",
     "pack_command_docs_root",
     "pack_command_entry_doc_path",
     "parse_core_python_workspace_state",
+    "reconcile_core_python_workspace_pyproject",
     "render_core_python_workspace_pyproject",
     "scaffold_hosted_pack",
 ]

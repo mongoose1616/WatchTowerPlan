@@ -71,7 +71,6 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.plan.bootstrap" in spec_by_id
     assert "command.watchtower_core.plan.closeout" in spec_by_id
     assert "command.watchtower_core.plan.closeout.initiative" in spec_by_id
-    assert "command.watchtower_core.plan.closeout.purge_trace" in spec_by_id
     assert "command.watchtower_core.plan.confirm_inputs" in spec_by_id
     assert "command.watchtower_core.plan.query" in spec_by_id
     assert "command.watchtower_core.plan.query.artifacts" in spec_by_id
@@ -123,10 +122,6 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     )
     assert (
         spec_by_id["command.watchtower_core.plan.closeout.initiative"].implementation_path
-        == "plan/python/src/watchtower_plan/cli/closeout.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.plan.closeout.purge_trace"].implementation_path
         == "plan/python/src/watchtower_plan/cli/closeout.py"
     )
     assert (

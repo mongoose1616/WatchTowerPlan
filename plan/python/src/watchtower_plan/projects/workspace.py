@@ -618,8 +618,8 @@ class ProjectWorkspaceService:
                             ),
                             "key_references_or_docs": (
                                 "## Key References or Docs",
-                                f"- [repositories.md](/{self._project_root(project_slug)}/repositories.md)",
-                                f"- [summary.md](/{self._project_root(project_slug)}/summary.md)",
+                                f"- [repositories.md](/{self._project_path(project_slug, 'repositories.md')})",
+                                f"- [summary.md](/{self._project_path(project_slug, 'summary.md')})",
                             ),
                         },
                     ),

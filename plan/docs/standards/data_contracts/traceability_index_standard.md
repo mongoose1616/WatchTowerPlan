@@ -10,7 +10,7 @@ tags:
   - "traceability_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-25T02:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -58,6 +58,7 @@ This standard defines the unified machine-readable traceability index stored und
   - key related paths and an `updated_at` RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`
 - Keep one traceability entry per shared `trace_id`.
 - Update the traceability index in the same change set when a traced artifact is added, renamed, removed, or materially retargeted.
+- The root `entries` array may be empty when the current target root has no live trace lineage, including portable staged exports that intentionally scrub internal shared acceptance and retained-evidence examples.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -67,7 +68,7 @@ This standard defines the unified machine-readable traceability index stored und
 | `id` | Required | Stable identifier for the traceability index artifact. |
 | `title` | Required | Human-readable title. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
-| `entries` | Required | Array of per-trace join records. |
+| `entries` | Required | Array of per-trace join records. It may be empty when the current target root has no live trace lineage. |
 
 ### Trace entry fields
 | Field | Requirement | Notes |
@@ -129,4 +130,4 @@ This standard defines the unified machine-readable traceability index stored und
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-25T02:55:00Z`
