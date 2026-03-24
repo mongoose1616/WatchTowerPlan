@@ -7,6 +7,9 @@ from textwrap import dedent
 
 import pytest
 
+from tests.unit.control_plane_loader_test_support import (
+    materialize_pack_validation_surfaces,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.operationalization_paths import (
     operationalization_path_matches,
@@ -14,6 +17,18 @@ from watchtower_core.control_plane.operationalization_paths import (
 from watchtower_core.sync.standard_index import StandardIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+
+
+def _default_pack_tracking_root(loader: ControlPlaneLoader) -> str:
+    return loader.load_pack_settings().workspace_roots.tracking_root
+
+
+def _default_pack_docs_root(loader: ControlPlaneLoader) -> str:
+    return loader.load_pack_settings().workspace_roots.docs_root
+
+
+def _default_pack_namespace(loader: ControlPlaneLoader) -> str:
+    return loader.load_pack_registry().default_pack().command_namespace
 
 
 def test_standard_index_sync_builds_schema_valid_document() -> None:
@@ -175,20 +190,51 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
 
 
 def test_pack_placeholder_operationalization_paths_match_live_pack_paths() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    tracking_root = _default_pack_tracking_root(loader)
+    docs_root = _default_pack_docs_root(loader)
+    command_namespace = _default_pack_namespace(loader)
+
     assert operationalization_path_matches(
-        "plan/tracking/task_tracking.md",
+        f"{tracking_root}/task_tracking.md",
         "<pack>/tracking/task_tracking.md",
         REPO_ROOT,
     )
     assert operationalization_path_matches(
-        "plan/tracking/task_tracking.md",
+        f"{tracking_root}/task_tracking.md",
         "<pack>/tracking/",
         REPO_ROOT,
     )
     assert operationalization_path_matches(
-        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
+        (
+            f"{docs_root}/commands/core_python/"
+            f"watchtower_core_{command_namespace}_sync_foundation_index.md"
+        ),
         "*/docs/commands/core_python/",
         REPO_ROOT,
+    )
+
+
+def test_pack_placeholder_operationalization_paths_match_externalized_pack_paths(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    materialize_pack_validation_surfaces(repo_root / "packs" / "oversight")
+
+    assert operationalization_path_matches(
+        "packs/oversight/tracking/task_tracking.md",
+        "<pack>/tracking/task_tracking.md",
+        repo_root,
+    )
+    assert operationalization_path_matches(
+        "packs/oversight/tracking/task_tracking.md",
+        "<pack>/tracking/",
+        repo_root,
+    )
+    assert operationalization_path_matches(
+        "packs/oversight/docs/commands/core_python/watchtower_core_oversight_sync_foundation_index.md",
+        "*/docs/commands/core_python/",
+        repo_root,
     )
 
 
@@ -508,5 +554,8 @@ def test_standard_index_sync_allows_pack_placeholder_operationalization_without_
 
     document = StandardIndexSyncService(loader).build_document()
 
-    entry = document["entries"][0]
+    entries = document["entries"]
+    assert isinstance(entries, list)
+    entry = entries[0]
+    assert isinstance(entry, dict)
     assert entry["operationalization_paths"] == ["<pack>/tracking/task_tracking.md"]
