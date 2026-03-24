@@ -11,6 +11,11 @@ from tests.pack_fixture_support import (
 )
 from watchtower_host.cli.main import main
 
+REHOSTED_PACK_SLUG = "rehosted"
+REHOSTED_PYTHON_DISTRIBUTION = "watchtower-rehosted-fixture"
+REHOSTED_PYTHON_PACKAGE = "watchtower_rehosted_fixture"
+REHOSTED_INTEGRATION_MODULE = "watchtower_rehosted_fixture.integration"
+
 
 def test_doctor_succeeds_for_copied_core_repo_without_plan_owned_live_indexes(
     tmp_path,
@@ -28,9 +33,9 @@ def test_doctor_succeeds_for_copied_core_repo_without_plan_owned_live_indexes(
             "pack",
             "scaffold",
             "--pack-slug",
-            "oversight",
+            REHOSTED_PACK_SLUG,
             "--pack-root",
-            "oversight",
+            REHOSTED_PACK_SLUG,
             "--domain-root",
             "reviews",
             "--format",
@@ -41,9 +46,9 @@ def test_doctor_succeeds_for_copied_core_repo_without_plan_owned_live_indexes(
     capsys.readouterr()
 
     materialize_externalized_fixture_python(
-        repo_root / "oversight" / "python",
-        python_distribution="watchtower-oversight",
-        python_package="watchtower_oversight",
+        repo_root / REHOSTED_PACK_SLUG / "python",
+        python_distribution=REHOSTED_PYTHON_DISTRIBUTION,
+        python_package=REHOSTED_PYTHON_PACKAGE,
         source_package_root=(
             REPO_ROOT
             / "core"
@@ -51,9 +56,9 @@ def test_doctor_succeeds_for_copied_core_repo_without_plan_owned_live_indexes(
             / "tests"
             / "fixtures"
             / "python"
-            / "watchtower_oversight_fixture"
+                / "watchtower_oversight_fixture"
         ),
-        description="Synthetic oversight runtime package used to prove copied-core discovery.",
+        description="Synthetic rehosted runtime package used to prove copied-core discovery.",
     )
 
     bootstrap_result = main(
@@ -61,7 +66,7 @@ def test_doctor_succeeds_for_copied_core_repo_without_plan_owned_live_indexes(
             "pack",
             "bootstrap",
             "--pack-settings-path",
-            "oversight/.wt/manifests/pack_settings.json",
+            f"{REHOSTED_PACK_SLUG}/.wt/manifests/pack_settings.json",
             "--write",
             "--no-sync-workspace",
             "--format",
@@ -78,7 +83,9 @@ def test_doctor_succeeds_for_copied_core_repo_without_plan_owned_live_indexes(
     assert payload["status"] == "ok"
     assert payload["counts"]["tasks"] == 0
     assert payload["counts"]["initiatives"] == 0
-    assert "watchtower-core oversight sync all --write" in payload["recommended_baseline"]
+    assert f"watchtower-core {REHOSTED_PACK_SLUG} sync all --write" in payload[
+        "recommended_baseline"
+    ]
 
 
 def test_doctor_uses_discovered_pack_runtime_and_pack_local_task_schema_in_copied_core_repo(
@@ -91,17 +98,20 @@ def test_doctor_uses_discovered_pack_runtime_and_pack_local_task_schema_in_copie
         include_shared_discovery_sources=True,
     )
     materialize_pack_validation_suite(
-        repo_root / "oversight",
-        pack_id="pack.oversight",
-        pack_slug="oversight",
-        command_namespace="oversight",
-        python_distribution="watchtower-oversight",
-        python_package="watchtower_oversight",
-        integration_module="watchtower_oversight.integration",
+        repo_root / REHOSTED_PACK_SLUG,
+        pack_id=f"pack.{REHOSTED_PACK_SLUG}",
+        pack_slug=REHOSTED_PACK_SLUG,
+        command_namespace=REHOSTED_PACK_SLUG,
+        python_distribution=REHOSTED_PYTHON_DISTRIBUTION,
+        python_package=REHOSTED_PYTHON_PACKAGE,
+        integration_module=REHOSTED_INTEGRATION_MODULE,
         register_with_host_registry=False,
         register_with_core_python_workspace=False,
     )
-    materialize_pack_task_index_surface(repo_root / "oversight", pack_slug="oversight")
+    materialize_pack_task_index_surface(
+        repo_root / REHOSTED_PACK_SLUG,
+        pack_slug=REHOSTED_PACK_SLUG,
+    )
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(["doctor", "--format", "json"])
@@ -110,4 +120,6 @@ def test_doctor_uses_discovered_pack_runtime_and_pack_local_task_schema_in_copie
     assert result == 0
     assert payload["status"] == "ok"
     assert payload["counts"]["tasks"] == 1
-    assert "watchtower-core oversight sync all --write" in payload["recommended_baseline"]
+    assert f"watchtower-core {REHOSTED_PACK_SLUG} sync all --write" in payload[
+        "recommended_baseline"
+    ]

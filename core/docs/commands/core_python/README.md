@@ -11,6 +11,7 @@
 - For pack-owned command groups and leaf pages, start in the owning pack command-doc root such as `<pack-root>/docs/commands/core_python/`.
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_validate_suite.md` when the main question is how to run one pack-declared validation suite with optional `pack_settings` selection.
+- Use `watchtower_core_pack_bootstrap.md` when the main question is copied-core startup, donor-pack scrub and reload, or the shared hosted-pack registry and workspace wiring flow.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
 
 ## Files

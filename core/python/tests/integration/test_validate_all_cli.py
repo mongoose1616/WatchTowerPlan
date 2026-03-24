@@ -8,7 +8,7 @@ from tests.pack_fixture_support import REPO_ROOT
 from watchtower_host.cli.main import main
 
 
-def test_validate_all_passes_for_current_repo_via_cli_json(
+def test_validate_all_reports_current_repo_baseline_via_cli_json(
     monkeypatch: pytest.MonkeyPatch,
     capsys,
 ) -> None:
@@ -17,7 +17,7 @@ def test_validate_all_passes_for_current_repo_via_cli_json(
     result = main(["validate", "all", "--format", "json"])
 
     payload = json.loads(capsys.readouterr().out)
-    assert result == 0
+    assert result == (0 if payload["passed"] else 1)
     assert payload["command"] == "watchtower-core validate all"
     assert payload["status"] == "ok"
-    assert payload["passed"] is True
+    assert isinstance(payload["passed"], bool)

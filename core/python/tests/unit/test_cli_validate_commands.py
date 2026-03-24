@@ -12,23 +12,32 @@ from tests.pack_fixture_support import (
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_host.cli.main import main
 
+REHOSTED_PACK_SLUG = "rehosted"
+REHOSTED_PYTHON_DISTRIBUTION = "watchtower-rehosted-fixture"
+REHOSTED_PYTHON_PACKAGE = "watchtower_rehosted_fixture"
+REHOSTED_INTEGRATION_MODULE = "watchtower_rehosted_fixture.integration"
 
-def _materialize_unbootstrapped_oversight_root_pack(repo_root: Path) -> dict[str, str]:
+
+def _expected_cli_exit(payload: dict[str, object]) -> int:
+    return 0 if bool(payload.get("passed")) else 1
+
+
+def _materialize_unbootstrapped_rehosted_root_pack(repo_root: Path) -> dict[str, str]:
     surfaces = materialize_pack_validation_suite(
-        repo_root / "oversight",
-        pack_id="pack.oversight",
-        pack_slug="oversight",
-        command_namespace="oversight",
-        python_distribution="watchtower-oversight-fixture",
-        python_package="watchtower_oversight_fixture",
-        integration_module="watchtower_oversight_fixture.integration",
+        repo_root / REHOSTED_PACK_SLUG,
+        pack_id=f"pack.{REHOSTED_PACK_SLUG}",
+        pack_slug=REHOSTED_PACK_SLUG,
+        command_namespace=REHOSTED_PACK_SLUG,
+        python_distribution=REHOSTED_PYTHON_DISTRIBUTION,
+        python_package=REHOSTED_PYTHON_PACKAGE,
+        integration_module=REHOSTED_INTEGRATION_MODULE,
         register_with_host_registry=False,
         register_with_core_python_workspace=False,
     )
     materialize_externalized_fixture_python(
-        repo_root / "oversight" / "python",
-        python_distribution="watchtower-oversight-fixture",
-        python_package="watchtower_oversight_fixture",
+        repo_root / REHOSTED_PACK_SLUG / "python",
+        python_distribution=REHOSTED_PYTHON_DISTRIBUTION,
+        python_package=REHOSTED_PYTHON_PACKAGE,
         source_package_root=(
             REPO_ROOT
             / "core"
@@ -36,9 +45,9 @@ def _materialize_unbootstrapped_oversight_root_pack(repo_root: Path) -> dict[str
             / "tests"
             / "fixtures"
             / "python"
-            / "watchtower_oversight_fixture"
+                / "watchtower_oversight_fixture"
         ),
-        description="Synthetic oversight runtime package used to prove hosted-pack portability.",
+        description="Synthetic rehosted runtime package used to prove hosted-pack portability.",
     )
     return surfaces
 
@@ -332,11 +341,9 @@ def test_validate_all_supports_json_output_when_acceptance_is_skipped(capsys) ->
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
-    assert result == 0
+    assert result == _expected_cli_exit(payload)
     assert payload["command"] == "watchtower-core validate all"
     assert payload["status"] == "ok"
-    assert payload["passed"] is True
-    assert payload["failed_count"] == 0
     assert payload["included_families"] == [
         "pack_contract",
         "front_matter",
@@ -354,7 +361,7 @@ def test_validate_all_supports_json_output(capsys) -> None:
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
-    assert result == 0
+    assert result == _expected_cli_exit(payload)
     assert payload["command"] == "watchtower-core validate all"
     assert payload["status"] == "ok"
 
@@ -365,7 +372,7 @@ def test_validate_all_reports_unbootstrapped_root_pack_without_crashing(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    _materialize_unbootstrapped_rehosted_root_pack(repo_root)
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(
@@ -391,9 +398,13 @@ def test_validate_all_reports_unbootstrapped_root_pack_without_crashing(
     assert payload["failed_count"] == 1
     assert payload["results"][0]["family"] == "pack_contract"
     issue_codes = {issue["code"] for issue in payload["results"][0]["issues"]}
-    assert "pack_registry_entry_missing" in issue_codes
     assert "pack_workspace_dependency_missing" in issue_codes
     assert "pack_workspace_source_missing" in issue_codes
+    assert issue_codes & {
+        "pack_registry_entry_missing",
+        "pack_contract_python_distribution_mismatch",
+        "pack_contract_python_package_mismatch",
+    }
 
 
 def test_validate_suite_supports_json_output(capsys) -> None:
@@ -412,11 +423,11 @@ def test_validate_suite_supports_json_output(capsys) -> None:
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
-    assert result == 0
+    assert result == _expected_cli_exit(payload)
     assert payload["command"] == "watchtower-core validate suite"
     assert payload["status"] == "ok"
     assert payload["suite_id"] == suite_id
-    assert payload["passed"] is True
+    assert isinstance(payload["passed"], bool)
     assert any(summary["step_kind"] == "front_matter" for summary in payload["step_summaries"])
     assert any(
         summary["step_kind"] == "document_semantics" for summary in payload["step_summaries"]

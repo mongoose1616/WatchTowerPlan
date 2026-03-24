@@ -579,6 +579,11 @@ def _materialize_synthetic_pack_python(
         f'command_namespace="{command_namespace}"',
     )
     integration_text = integration_text.replace(
+        '        "oversight",',
+        f'        "{command_namespace}",',
+        1,
+    )
+    integration_text = integration_text.replace(
         'python_package="watchtower_oversight_fixture"',
         f'python_package="{python_package}"',
     )

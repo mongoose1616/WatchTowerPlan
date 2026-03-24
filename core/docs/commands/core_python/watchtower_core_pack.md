@@ -54,12 +54,17 @@ cd core/python
 uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --format json
 ```
 
+```sh
+cd core/python
+uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json
+```
+
 ## Behavior and Outputs
 - With no leaf command, the group prints pack-specific help and exits successfully.
 - `list` reports the effective hosted-pack runtime view. In steady state that matches the shared registry; during copied-core bring-up it may also include runtime-only packs discovered from valid local manifests.
 - `describe` combines the effective runtime entry plus the pack-owned runtime manifest for one hosted pack.
 - `scaffold` renders the pack-owned starter files for one new hosted pack without mutating shared host surfaces.
-- `bootstrap` applies the shared hosted-pack registry and `core/python` workspace wiring for one pack, then validates the resulting steady-state contract.
+- `bootstrap` applies the shared hosted-pack registry and `core/python` workspace wiring for one pack, then validates the resulting steady-state contract. In copied-core rehost flows, `--replace-hosted-packs` scrubs donor hosted-pack wiring before reloading the recipient pack.
 - `validate` runs the pack-contract validator directly for one hosted pack, including pack-owned command-doc, owned-root, and shared workspace registration checks. Runtime-only discovered packs validate as structured failures until bootstrap persists the shared wiring they are missing.
 - First-party root packs such as `oversight/` and nested multi-pack roots such as `packs/oversight/` are both supported. Shared help and examples use the first-party root-pack shape by default unless the externalized topology itself is what you are testing.
 - Use `validate all` when you want pack-interface validation included in the broader repository pass.
@@ -80,4 +85,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - `core/control_plane/registries/pack_registry.json`
 
 ## Updated At
-- `2026-03-23T01:55:00Z`
+- `2026-03-24T08:30:00Z`

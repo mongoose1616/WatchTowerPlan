@@ -34,6 +34,9 @@ def build_parser(
             "--pack-root oversight --format json",
             "uv run watchtower-core pack bootstrap --pack-settings-path "
             "oversight/.wt/manifests/pack_settings.json --write --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "oversight/.wt/manifests/pack_settings.json --replace-hosted-packs "
+            "--write --format json",
             'uv run watchtower-core route preview --request "review code and commit"',
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query foundations --query philosophy",

@@ -44,6 +44,9 @@ def register_pack_family(
             "--pack-root oversight --format json",
             "uv run watchtower-core pack bootstrap --pack-settings-path "
             "oversight/.wt/manifests/pack_settings.json --write --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "oversight/.wt/manifests/pack_settings.json --replace-hosted-packs "
+            "--write --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -128,7 +131,9 @@ def register_pack_family(
             """
             Register one hosted pack into the shared pack registry and the
             shared core/python workspace so the host can load it through the
-            normal pack contract.
+            normal pack contract. Use replace-hosted-packs mode when a copied
+            core/ snapshot still carries donor hosted-pack wiring that should
+            be scrubbed before the recipient pack is reloaded.
             """
         ).strip(),
         epilog=examples(
@@ -139,6 +144,9 @@ def register_pack_family(
             "uv run watchtower-core pack bootstrap --pack-settings-path "
             "oversight/.wt/manifests/pack_settings.json --write "
             "--no-sync-workspace --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "oversight/.wt/manifests/pack_settings.json --replace-hosted-packs "
+            "--write --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -156,6 +164,14 @@ def register_pack_family(
         "--no-sync-workspace",
         action="store_true",
         help="Skip uv sync after writing shared workspace metadata.",
+    )
+    pack_bootstrap_parser.add_argument(
+        "--replace-hosted-packs",
+        action="store_true",
+        help=(
+            "Scrub existing shared hosted-pack registrations and workspace wiring "
+            "before reloading the target pack as the new default repository pack."
+        ),
     )
     add_human_json_format_argument(pack_bootstrap_parser)
     pack_bootstrap_parser.set_defaults(handler=_run_pack_bootstrap)

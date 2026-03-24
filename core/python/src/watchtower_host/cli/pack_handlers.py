@@ -282,6 +282,7 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
                 pack_settings_path=args.pack_settings_path,
                 write=bool(args.write),
                 sync_workspace=not bool(args.no_sync_workspace),
+                replace_hosted_packs=bool(args.replace_hosted_packs),
             ),
         ),
     )
@@ -309,6 +310,8 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         "pack_slug": result.pack_slug,
         "pack_settings_path": result.pack_settings_path,
         "pack_runtime_manifest_path": result.pack_runtime_manifest_path,
+        "replace_hosted_packs": result.replace_hosted_packs,
+        "scrubbed_pack_slugs": list(result.scrubbed_pack_slugs),
         "pack_registry_entry": result.pack_registry_entry,
         "core_python_workspace_registration": {
             "dependency": result.core_python_workspace_registration.dependency,
@@ -331,6 +334,9 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         print(f"Bootstrapped pack: {result.pack_slug}")
         print(f"Pack Settings: {result.pack_settings_path}")
         print(f"Runtime Manifest: {result.pack_runtime_manifest_path}")
+        print("Replace Hosted Packs: " + ("yes" if result.replace_hosted_packs else "no"))
+        if result.scrubbed_pack_slugs:
+            print("Scrubbed Packs: " + ", ".join(result.scrubbed_pack_slugs))
         print("Shared Registry Entry:")
         print(json.dumps(result.pack_registry_entry, indent=2, sort_keys=True))
         print("Core Python Workspace Registration:")

@@ -46,6 +46,7 @@ class PackBootstrapRequest:
     pack_settings_path: str
     write: bool = False
     sync_workspace: bool = True
+    replace_hosted_packs: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -55,6 +56,8 @@ class PackBootstrapResult:
     pack_slug: str
     pack_settings_path: str
     pack_runtime_manifest_path: str
+    replace_hosted_packs: bool
+    scrubbed_pack_slugs: tuple[str, ...]
     pack_registry_entry: dict[str, object]
     core_python_workspace_registration: CorePythonWorkspaceRegistration
     pack_registry_changed: bool
@@ -116,6 +119,12 @@ def bootstrap_hosted_pack(
         registry_document,
         pack_registry_entry,
         invalid_pack_settings_paths=invalid_pack_settings_paths,
+        replace_hosted_packs=request.replace_hosted_packs,
+    )
+    scrubbed_pack_slugs = _scrubbed_pack_slugs(
+        registry_document=registry_document,
+        updated_registry_document=updated_registry_document,
+        candidate_entry=pack_registry_entry,
     )
     retained_workspace_dependencies = _retained_workspace_dependencies(
         updated_registry_document,
@@ -141,6 +150,8 @@ def bootstrap_hosted_pack(
             pack_slug=runtime_manifest.pack_slug,
             pack_settings_path=pack_settings_path,
             pack_runtime_manifest_path=pack_runtime_manifest_path,
+            replace_hosted_packs=request.replace_hosted_packs,
+            scrubbed_pack_slugs=scrubbed_pack_slugs,
             pack_registry_entry=pack_registry_entry,
             core_python_workspace_registration=registration,
             pack_registry_changed=pack_registry_changed,
@@ -194,6 +205,8 @@ def bootstrap_hosted_pack(
         pack_slug=runtime_manifest.pack_slug,
         pack_settings_path=pack_settings_path,
         pack_runtime_manifest_path=pack_runtime_manifest_path,
+        replace_hosted_packs=request.replace_hosted_packs,
+        scrubbed_pack_slugs=scrubbed_pack_slugs,
         pack_registry_entry=pack_registry_entry,
         core_python_workspace_registration=registration,
         pack_registry_changed=pack_registry_changed,
@@ -246,6 +259,7 @@ def _updated_pack_registry_document(
     candidate_entry: dict[str, object],
     *,
     invalid_pack_settings_paths: set[str],
+    replace_hosted_packs: bool = False,
 ) -> tuple[dict[str, object], bool]:
     raw_packs = registry_document.get("packs")
     if not isinstance(raw_packs, list):
@@ -270,6 +284,9 @@ def _updated_pack_registry_document(
         if entry.get("pack_settings_path") in invalid_pack_settings_paths:
             changed = True
             continue
+        if replace_hosted_packs:
+            changed = True
+            continue
         _raise_conflict_if_present(entry, candidate_entry)
         updated_packs.append(entry)
 
@@ -277,15 +294,20 @@ def _updated_pack_registry_document(
         updated_packs.append(candidate_entry)
         changed = True
 
-    if not any(bool(entry.get("default_repo_pack", False)) for entry in updated_packs):
-        updated_packs = [
+    normalized_packs = updated_packs
+    if replace_hosted_packs or not any(
+        bool(entry.get("default_repo_pack", False)) for entry in updated_packs
+    ):
+        normalized_packs = [
             {
                 **entry,
                 "default_repo_pack": _matches_same_pack(entry, candidate_entry),
             }
             for entry in updated_packs
         ]
+    if normalized_packs != updated_packs:
         changed = True
+        updated_packs = normalized_packs
 
     sorted_packs = sorted(
         updated_packs,
@@ -296,6 +318,45 @@ def _updated_pack_registry_document(
     )
     updated_document = {**registry_document, "packs": sorted_packs}
     return updated_document, changed
+
+
+def _scrubbed_pack_slugs(
+    *,
+    registry_document: dict[str, object],
+    updated_registry_document: dict[str, object],
+    candidate_entry: dict[str, object],
+) -> tuple[str, ...]:
+    original_packs = registry_document.get("packs")
+    updated_packs = updated_registry_document.get("packs")
+    if not isinstance(original_packs, list) or not isinstance(updated_packs, list):
+        return ()
+
+    updated_keys = {
+        (
+            entry.get("pack_id"),
+            entry.get("pack_slug"),
+            entry.get("pack_settings_path"),
+            entry.get("pack_runtime_manifest_path"),
+        )
+        for entry in updated_packs
+        if isinstance(entry, dict)
+    }
+    scrubbed: list[str] = []
+    for entry in original_packs:
+        if not isinstance(entry, dict):
+            continue
+        entry_key = (
+            entry.get("pack_id"),
+            entry.get("pack_slug"),
+            entry.get("pack_settings_path"),
+            entry.get("pack_runtime_manifest_path"),
+        )
+        if entry_key in updated_keys or _matches_same_pack(entry, candidate_entry):
+            continue
+        scrubbed.append(
+            str(entry.get("pack_slug", entry.get("pack_id", "<unknown-pack>")))
+        )
+    return tuple(scrubbed)
 
 
 def _retained_workspace_dependencies(

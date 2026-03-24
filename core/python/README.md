@@ -36,6 +36,7 @@
 - Keep the test split explicit: `core/python/tests/` is the shared pack-neutral suite, while pack-owned tests live under the owning pack root such as `<pack-root>/python/tests/`.
 - Keep the shared-core suite live-pack-neutral: if a test needs a real `watchtower_<pack>` import or depends on the live current-repository pack workspace being present, move it under the owning pack root or replace it with synthetic fixture-pack setup.
 - During copied-core bring-up, `watchtower-core pack list`, `pack describe`, `pack validate`, selected pack namespaces, and `validate all` can discover a valid local pack from `<pack>/.wt/manifests/pack_settings.json` plus `<pack>/python/src` even before shared workspace wiring is persisted. Treat that as temporary bootstrap compatibility: `watchtower-core pack bootstrap --write` is the step that reconciles the shared hosted-pack registry, shared workspace metadata, and the shared command, repository-path, reference, standard, workflow, and route discovery surfaces for the copied repository.
+- When a recipient repository copied `core/` exactly from a donor repository and needs to replace the donor hosted-pack wiring, run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json`. That scrub-and-reload mode removes donor pack registrations plus donor `core/python` workspace pack wiring before loading the recipient pack as the new default repository pack.
 - When copying `core/` into another repo, copy source-owned files only. Do not carry over `core/python/.venv`, editable-install metadata from an existing environment, local caches, or pack `.wt/runtime/**` outputs.
 - `watchtower-core pack scaffold` now emits a starter pack-owned `workflow_metadata_registry` and wires the starter validator and validation-suite surfaces to it. Replace the starter workflow entry with the pack's real workflow IDs before relying on workflow indexing or route preview for the new pack.
 - Interactive shell path: run `./tools/dev_shell.sh` when you want a shell with `.venv` activated for repeated local commands.
@@ -67,6 +68,7 @@
 - `uv run watchtower-core pack validate --format json`
 - `uv run watchtower-core pack scaffold --pack-slug oversight --pack-root oversight --format json`
 - `uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --format json`
+- `uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json`
 - `uv run watchtower-core sync command-index`
 - `uv run watchtower-core sync route-index`
 - `uv run watchtower-core sync repository-paths`
