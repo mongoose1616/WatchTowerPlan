@@ -74,7 +74,7 @@
           "review_required": true
         }
       ],
-      "notes": "Encodes the strict initiative lifecycle selected in decisions.md."
+      "notes": "Encodes the canonical initiative lifecycle for live plan packages."
     },
     {
       "rule_id": "rule.status_transition.task_lifecycle",
@@ -145,7 +145,7 @@
           "review_required": false
         }
       ],
-      "notes": "Encodes the task lifecycle selected in decisions.md."
+      "notes": "Encodes the canonical live task lifecycle for initiative-local task state."
     },
     {
       "rule_id": "rule.status_transition.validation_bundle",
@@ -281,5 +281,5 @@
       ]
     }
   ],
-  "notes": "These rules publish the family-specific lifecycle policy required by requirements.md and decisions.md. Runtime enforcement can tighten over time, but the transition contract is now machine-readable instead of living only in code paths and prose."
+  "notes": "These rules publish the family-specific lifecycle policy for live plan state. Runtime enforcement can tighten over time, but the transition contract is now machine-readable instead of living only in code paths and prose."
 }

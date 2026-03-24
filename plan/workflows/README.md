@@ -8,10 +8,12 @@
 |---|---|
 | `plan/workflows/README.md` | Describes the purpose of the plan workflow entrypoint and its owned workflow surfaces. |
 | `plan/workflows/AGENTS.md` | Defines local instructions for plan-domain workflow guidance surfaces. |
-| `plan/workflows/ROUTING_TABLE.md` | Defines plan-domain task routes and the required workflow modules for those routes. |
+| `plan/workflows/ROUTING_TABLE.md` | Defines plan-domain task routes and the required workflow documents for those routes. |
 | `plan/workflows/modules/README.md` | Explains the authoritative plan-owned workflow-module set. |
+| `plan/workflows/roles/README.md` | Explains the authoritative plan-owned workflow-role set. |
 
 ## Notes
 - Start here when the main question is how live plan work should be routed or narrated for humans.
 - Shared reusable workflow modules remain under `core/workflows/modules/`.
-- Plan-specific routing and workflow modules are authoritative here.
+- Shared reusable workflow roles remain under `core/workflows/roles/`.
+- Plan-specific routing, workflow modules, and workflow roles are authoritative here.

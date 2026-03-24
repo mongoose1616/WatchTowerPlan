@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "reference_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T03:46:24Z"
+updated_at: "2026-03-24T20:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -96,7 +96,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Every entry should publish one approved `repository_status` value derived from the governed reference document.
 - The internal and external reference flags should reflect the actual reference document sections rather than inferred prose.
 - `related_paths` should point only to explicit current touchpoints or governed `applies_to` mappings, not to incidental navigation backlinks.
-- Reverse citation paths should point only to real governed documents or workflow modules that cite or apply the reference.
+- Reverse citation paths should point only to real governed documents or workflow documents that cite or apply the reference.
 
 ## Change Control
 - Update this standard when the repository changes how references are indexed or queried.
@@ -109,4 +109,4 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [repository_path_index_standard.md](/core/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-23T03:46:24Z`
+- `2026-03-24T20:35:00Z`

@@ -1,7 +1,7 @@
 ---
 id: "std.documentation.documentation_semantics"
 title: "Documentation Semantics Standard"
-summary: "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow modules."
+summary: "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow documents."
 type: "standard"
 status: "active"
 tags:
@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "documentation_semantics"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-24T20:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -17,13 +17,13 @@ authority: "authoritative"
 # Documentation Semantics Standard
 
 ## Summary
-This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow modules.
+This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow documents.
 
 ## Purpose
 Keep document-level validation fail closed on the small set of semantic rules that should hold across document families rather than only inside one template or one reviewer habit.
 
 ## Scope
-- Applies to governed Markdown documents and workflow modules validated by `watchtower-core validate document-semantics`.
+- Applies to governed Markdown documents and workflow documents validated by `watchtower-core validate document-semantics`.
 - Covers repo-local Markdown link integrity and other shared Markdown-semantic guardrails.
 - Does not replace family-specific front matter, required section, or section-order standards.
 
@@ -35,7 +35,7 @@ Keep document-level validation fail closed on the small set of semantic rules th
 ## Related Standards and Sources
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md): aggregate repository validation should fail closed when cross-family document semantics break.
 - [standard_md_standard.md](/core/docs/standards/documentation/standard_md_standard.md): governed standards inherit these semantic guardrails in addition to their family-specific structure rules.
-- [workflow_md_standard.md](/core/docs/standards/documentation/workflow_md_standard.md): workflow modules inherit these same guardrails in addition to workflow-specific section rules.
+- [workflow_md_standard.md](/core/docs/standards/documentation/workflow_md_standard.md): workflow documents inherit these same guardrails in addition to workflow-specific section rules.
 - [commonmark_reference.md](/core/docs/references/commonmark_reference.md): Markdown link interpretation should stay aligned with a stable local reference instead of ad hoc parsing assumptions.
 
 ## Guidance
@@ -63,7 +63,7 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - `watchtower-core validate all` should include document-semantics validation by default.
 
 ## Change Control
-- Update this standard when the repository changes the shared Markdown-semantic guardrails for governed documents or workflow modules.
+- Update this standard when the repository changes the shared Markdown-semantic guardrails for governed documents or workflow documents.
 - Update the document-semantics validator, affected templates, and relevant command docs in the same change set when this standard changes materially.
 
 ## References
@@ -72,4 +72,4 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - [commonmark_reference.md](/core/docs/references/commonmark_reference.md)
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-24T20:35:00Z`

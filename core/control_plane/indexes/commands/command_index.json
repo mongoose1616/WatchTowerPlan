@@ -1380,7 +1380,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_workflows.md",
-      "synopsis": "uv run watchtower-core query workflows [-h] [--query QUERY] [--workflow-id WORKFLOW_ID] [--phase-type PHASE_TYPE] [--task-family TASK_FAMILY] [--trigger-tag TRIGGER_TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--limit LIMIT] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core query workflows [-h] [--query QUERY] [--workflow-id WORKFLOW_ID] [--workflow-kind {module,role}] [--phase-type PHASE_TYPE] [--task-family TASK_FAMILY] [--trigger-tag TRIGGER_TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--limit LIMIT] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_host/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",

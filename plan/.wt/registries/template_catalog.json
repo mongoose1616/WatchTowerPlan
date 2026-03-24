@@ -131,7 +131,7 @@
       ],
       "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:workflow-module-section-spec:v1",
       "llm_guidance": {
-        "authoring_goal": "Capture a reusable workflow module with explicit task boundaries and outputs.",
+        "authoring_goal": "Capture a governed workflow module or workflow role with explicit task boundaries and outputs.",
         "hard_requirements": [
           "Write imperative workflow steps that can be executed in order.",
           "State what the module is done when instead of relying on implied completion."
@@ -143,7 +143,8 @@
       },
       "llm_guidance_mode": "advisory",
       "allowed_roots": [
-        "plan/workflows/modules"
+        "plan/workflows/modules",
+        "plan/workflows/roles"
       ]
     },
     {

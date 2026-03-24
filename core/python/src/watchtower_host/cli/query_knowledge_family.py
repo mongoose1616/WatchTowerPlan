@@ -98,15 +98,17 @@ def register_query_knowledge_commands(
         help="Search the workflow index.",
         description=dedent(
             """
-            Search the governed workflow index for workflow modules and the
-            standards, references, or canonical files that govern them.
+            Search the governed workflow index for workflow documents and the
+            standards, references, canonical files, or composed modules that
+            govern them.
 
             Use this when you know the behavior or governing surface you need,
-            but not yet the exact workflow module name.
+            but not yet the exact workflow document name.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query workflows --query validation",
+            "uv run watchtower-core query workflows --workflow-kind role",
             "uv run watchtower-core query workflows --phase-type reconciliation",
             "uv run watchtower-core query workflows --reference-path "
             "core/docs/references/github_collaboration_reference.md --format json",
@@ -123,6 +125,11 @@ def register_query_knowledge_commands(
     query_workflows_parser.add_argument(
         "--workflow-id",
         help="Exact workflow identifier such as workflow.code_validation.",
+    )
+    query_workflows_parser.add_argument(
+        "--workflow-kind",
+        choices=("module", "role"),
+        help="Exact workflow kind filter.",
     )
     query_workflows_parser.add_argument(
         "--phase-type",

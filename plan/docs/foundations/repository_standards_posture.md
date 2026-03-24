@@ -20,7 +20,9 @@ applies_to:
   - "plan/.wt/manifests/pack_runtime_manifest.json"
   - "core/python/src/watchtower_core/validation/pack_contract.py"
   - "core/workflows/modules/"
+  - "core/workflows/roles/"
   - "plan/workflows/modules/"
+  - "plan/workflows/roles/"
 aliases:
   - "standards"
   - "standards posture"

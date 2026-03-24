@@ -6,7 +6,7 @@ summary: Durable reference recording current WatchTowerPlan verification of the 
 type: reference
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-24T05:20:00Z'
+updated_at: '2026-03-24T16:42:24Z'
 audience: shared
 authority: reference
 applies_to:
@@ -130,9 +130,13 @@ actual source-repository work in `WatchTowerPlan`.
   `core/python/pyproject.toml` from `plan` to `oversight` in this repository
   would be incorrect.
 - The repository-level reasons are explicit in current local authority:
-  - `requirements.md` defines live planning authority under `plan/**`.
-  - `decisions.md` locks `plan/python/src/watchtower_plan/` as the approved
-    plan-owned Python boundary for this repository.
+  - `plan/README.md` and
+    `core/docs/foundations/repository_scope.md` define live planning authority
+    under `plan/**`.
+  - `plan/python/README.md` and
+    `core/docs/standards/engineering/core_host_pack_python_boundary_standard.md`
+    keep `plan/python/src/watchtower_plan/` as the approved plan-owned Python
+    boundary for this repository.
 - The report's literal `plan/` path findings remain intentional here when they
   describe the active WatchTowerPlan host shape rather than a pack-neutral copy
   contract.

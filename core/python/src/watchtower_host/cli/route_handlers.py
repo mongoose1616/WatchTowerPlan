@@ -32,10 +32,12 @@ def _run_route_preview(args: argparse.Namespace) -> int:
         "selected_workflows": [
             {
                 "workflow_id": workflow.workflow_id,
+                "workflow_kind": workflow.workflow_kind,
                 "title": workflow.title,
                 "doc_path": workflow.doc_path,
                 "phase_type": workflow.phase_type,
                 "task_family": workflow.task_family,
+                "composes_module_paths": list(workflow.composes_module_paths),
             }
             for workflow in result.selected_workflows
         ],
@@ -56,10 +58,11 @@ def _run_route_preview(args: argparse.Namespace) -> int:
             matched = ", ".join(match.matched_keywords) if match.matched_keywords else "explicit"
             print(f"- {match.task_type} [{match.route_id}] score={match.score} matched={matched}")
 
-        print("Active workflow modules:")
+        print("Active workflows:")
         for workflow in result.selected_workflows:
             print(
-                f"- {workflow.workflow_id} [{workflow.phase_type}, {workflow.task_family}] "
+                f"- {workflow.workflow_id} "
+                f"[{workflow.workflow_kind}, {workflow.phase_type}, {workflow.task_family}] "
                 f"{workflow.doc_path}"
             )
 

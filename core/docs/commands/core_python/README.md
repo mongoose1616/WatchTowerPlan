@@ -5,7 +5,7 @@
 
 ## Notes
 - Start with `watchtower_core.md` for the root command and shared options.
-- Use `watchtower_core_route.md` when the main question is how a request maps to workflow modules.
+- Use `watchtower_core_route.md` when the main question is how a request maps to workflow documents.
 - Use `watchtower_core_query.md` when the main question is which shared read-only lookup surface to use.
 - Use `watchtower_core_sync.md` when the main question is which shared derived artifact to rebuild.
 - For pack-owned command groups and leaf pages, start in the owning pack command-doc root such as `<pack-root>/docs/commands/core_python/`.

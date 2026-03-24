@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:route-index:v1",
   "title": "Route Index",
-  "description": "Machine-readable lookup index for routed task types and their required workflow modules.",
+  "description": "Machine-readable lookup index for routed task types and their required workflow documents.",
   "type": "object",
   "required": [
     "$schema",
@@ -63,7 +63,7 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^(?:core|[^/]+|packs/[^/]+)/workflows/modules/.+\\.md$"
+        "pattern": "^(?:core|[^/]+|packs/[^/]+)/workflows/(?:modules|roles)/.+\\.md$"
       }
     },
     "routeEntry": {

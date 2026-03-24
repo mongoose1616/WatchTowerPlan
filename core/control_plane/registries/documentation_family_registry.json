@@ -34,7 +34,7 @@
     {
       "family_id": "workflow",
       "entry_status": "active",
-      "summary": "Human-authored workflow modules published under core/workflows.",
+      "summary": "Human-authored workflow modules and workflow roles published under core/workflows.",
       "front_matter_base_schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
       "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1",
       "template_ids": [
@@ -42,13 +42,14 @@
       ],
       "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-module-section-spec:v1",
       "allowed_roots": [
-        "core/workflows/modules"
+        "core/workflows/modules",
+        "core/workflows/roles"
       ],
       "authorship_mode": "authored",
       "required_index_ids": [
         "index.workflows"
       ],
-      "notes": "Shared workflow guidance lives under core/workflows; pack-owned workflow guidance lives under pack workflow roots such as plan/workflows."
+      "notes": "Shared reusable workflow modules live under core/workflows/modules and shared workflow roles live under core/workflows/roles; pack-owned workflow guidance lives under the owning pack workflow roots such as plan/workflows."
     }
   ],
   "notes": "This registry governs the reusable-core documentation families that already exist or are intentionally mirrored into current hosted pack roots."

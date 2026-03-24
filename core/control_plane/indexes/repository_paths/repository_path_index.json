@@ -3123,6 +3123,16 @@
       "audience_hint": "automation"
     },
     {
+      "path": "core/workflows/roles/README.md",
+      "kind": "file",
+      "surface_kind": "workflow_role",
+      "summary": "Describes the shared workflow-role root and its current reserved status.",
+      "parent_path": "core/workflows/roles/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "automation"
+    },
+    {
       "path": "plan/",
       "kind": "directory",
       "surface_kind": "pack_workspace",
@@ -3636,7 +3646,7 @@
       "path": "plan/workflows/",
       "kind": "directory",
       "surface_kind": "pack_workspace",
-      "summary": "Holds the plan-domain workflow routing tables and plan-owned workflow modules.",
+      "summary": "Holds the plan-domain workflow routing tables, plan-owned workflow modules, and plan-owned workflow roles.",
       "parent_path": "plan/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3666,7 +3676,7 @@
       "path": "plan/workflows/ROUTING_TABLE.md",
       "kind": "file",
       "surface_kind": "routing_table",
-      "summary": "Defines plan-domain task routes and the required workflow modules for those routes.",
+      "summary": "Defines plan-domain task routes and the required workflow documents for those routes.",
       "parent_path": "plan/workflows/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3678,6 +3688,16 @@
       "surface_kind": "workflow_module",
       "summary": "Explains the authoritative plan-owned workflow-module set.",
       "parent_path": "plan/workflows/modules/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "automation"
+    },
+    {
+      "path": "plan/workflows/roles/README.md",
+      "kind": "file",
+      "surface_kind": "workflow_role",
+      "summary": "Explains the authoritative plan-owned workflow-role set.",
+      "parent_path": "plan/workflows/roles/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "automation"

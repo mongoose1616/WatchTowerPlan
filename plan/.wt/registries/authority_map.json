@@ -262,7 +262,7 @@
     {
       "question_id": "authority.governance.workflow_routing",
       "domain": "governance",
-      "question": "Which workflow modules are canonical for this request type?",
+      "question": "Which workflow documents are canonical for this request type?",
       "status": "active",
       "artifact_kind": "route_index",
       "canonical_path": "core/control_plane/indexes/routes/route_index.json",
@@ -271,15 +271,18 @@
       "fallback_paths": [
         "plan/workflows/ROUTING_TABLE.md",
         "core/workflows/modules/",
+        "core/workflows/roles/",
         "plan/workflows/modules/",
+        "plan/workflows/roles/",
         "core/docs/commands/core_python/watchtower_core_route_preview.md"
       ],
       "aliases": [
         "workflow route",
         "task type routing",
-        "module selection"
+        "module selection",
+        "role selection"
       ],
-      "notes": "Use this when you need the canonical routed workflow set for a request rather than browsing compatibility workflow copies ad hoc."
+      "notes": "Use this when you need the canonical routed workflow set for a request rather than browsing workflow modules or roles ad hoc."
     },
     {
       "question_id": "authority.governance.standards_lookup",

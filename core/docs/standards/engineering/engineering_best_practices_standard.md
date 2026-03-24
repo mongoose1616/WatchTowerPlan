@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T23:55:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -87,7 +87,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `<pack>/`; `core/docs/`; `<pack>/docs/`; `core/workflows/modules/core.md`
+- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `core/docs/`; `core/docs/references/domain_pack_authoring_reference.md`; `core/docs/templates/pack/README.md`; `core/workflows/modules/core.md`
 
 ## Validation
 - Code changes should run the narrowest meaningful automated checks for the touched surfaces, such as targeted `pytest`, schema validation, command smoke tests, or index validation.
@@ -114,4 +114,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-23T23:55:00Z`
+- `2026-03-24T22:30:00Z`

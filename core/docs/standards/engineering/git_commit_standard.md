@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:50:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -167,7 +167,7 @@ workflow.
 
 ## Operationalization
 - `Modes`: `workflow`
-- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `<pack>/tracking/task_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `core/docs/references/conventional_commits_reference.md`; `core/docs/references/github_collaboration_reference.md`
 
 ## Validation
 - One logical change per commit. Refactors, fixes, and docs should be separate when practical.
@@ -265,4 +265,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-23T16:50:00Z`
+- `2026-03-24T22:30:00Z`

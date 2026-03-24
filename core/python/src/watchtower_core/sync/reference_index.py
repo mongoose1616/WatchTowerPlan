@@ -36,6 +36,7 @@ from watchtower_core.documentation.reference_semantics import (
 from watchtower_core.pack_integration.roots import (
     pack_standard_doc_roots,
     pack_workflow_module_roots,
+    pack_workflow_role_roots,
 )
 
 REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.json"
@@ -303,6 +304,12 @@ def iter_citation_audit_documents(
             ("Additional Files to Load",),
             ("Additional Files to Load",),
         ),
+        (
+            "core/workflows/roles",
+            {"README.md"},
+            ("Additional Files to Load",),
+            ("Additional Files to Load",),
+        ),
         *(
             (
                 relative_directory,
@@ -311,6 +318,15 @@ def iter_citation_audit_documents(
                 ("Additional Files to Load",),
             )
             for relative_directory in pack_workflow_module_roots(repo_root)
+        ),
+        *(
+            (
+                relative_directory,
+                {"README.md"},
+                ("Additional Files to Load",),
+                ("Additional Files to Load",),
+            )
+            for relative_directory in pack_workflow_role_roots(repo_root)
         ),
     )
     for (

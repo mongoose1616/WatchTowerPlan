@@ -17,7 +17,7 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the controlling contract for promotion targets, durable plan guidance, and endstate document boundaries.
+- Treat the mirrored foundations under [plan/docs/foundations/](/plan/docs/foundations/), promoted plan standards under [plan/docs/standards/](/plan/docs/standards/), and [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json) as the controlling contract for promotion targets, durable plan guidance, and endstate document boundaries.
 - `plan/docs/**` holds approved durable guidance, not live initiative state.
 - Use current initiative-package terminology and current repository paths.
 - Keep each document focused on one durable plan-domain guidance concern.

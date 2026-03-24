@@ -31,11 +31,13 @@ from watchtower_core.documentation.markdown_semantics import (
 from watchtower_core.pack_integration.roots import (
     pack_routing_table_paths,
     pack_workflow_module_roots,
+    pack_workflow_role_roots,
 )
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
 WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
-CORE_WORKFLOW_DOC_ROOT = "core/workflows/modules"
+CORE_WORKFLOW_MODULE_ROOT = "core/workflows/modules"
+CORE_WORKFLOW_ROLE_ROOT = "core/workflows/roles"
 WORKFLOW_EXCLUDED_NAMES = {"README.md"}
 WORKFLOW_REQUIRED_SECTIONS = (
     "Purpose",
@@ -46,7 +48,18 @@ WORKFLOW_REQUIRED_SECTIONS = (
     "Outputs",
     "Done When",
 )
+WORKFLOW_ROLE_REQUIRED_SECTIONS = (
+    "Purpose",
+    "Use When",
+    "Inputs",
+    "Composes Modules",
+    "Workflow",
+    "Data Structure",
+    "Outputs",
+    "Done When",
+)
 WORKFLOW_ADDITIONAL_LOAD_SECTION = "Additional Files to Load"
+WORKFLOW_COMPOSES_MODULES_SECTION = "Composes Modules"
 WORKFLOW_MAX_ADDITIONAL_LOAD_BULLETS = 5
 WORKFLOW_STATIC_DISALLOWED_ADDITIONAL_LOAD_PATHS = {
     "AGENTS.md",
@@ -74,13 +87,17 @@ WORKFLOW_TRIGGER_TAG_STOPWORDS = {
     "when",
     "workflow",
 }
+WORKFLOW_REFERENCE_DOC_PATH_PATTERN = re.compile(
+    r"^(?:core|[^/]+|packs/[^/]+)/docs/references/.+\.md$"
+)
 
 
 @dataclass(frozen=True, slots=True)
 class WorkflowDocument:
-    """Parsed and validated workflow module used for indexing and validation."""
+    """Parsed and validated workflow document used for indexing and validation."""
 
     workflow_id: str
+    workflow_kind: str
     title: str
     summary: str
     relative_path: str
@@ -91,6 +108,7 @@ class WorkflowDocument:
     primary_risks: tuple[str, ...]
     trigger_tags: tuple[str, ...]
     companion_workflow_ids: tuple[str, ...]
+    composes_module_paths: tuple[str, ...]
     related_paths: tuple[str, ...]
     reference_doc_paths: tuple[str, ...]
     internal_reference_paths: tuple[str, ...]
@@ -103,6 +121,26 @@ class WorkflowDocumentContext:
 
     metadata_by_workflow_id: dict[str, WorkflowMetadataDefinition]
     reference_urls_by_path: dict[str, tuple[str, ...]]
+
+
+def _workflow_kind_for_path(relative_path: str) -> str:
+    if "/workflows/modules/" in relative_path:
+        return "module"
+    if "/workflows/roles/" in relative_path:
+        return "role"
+    raise ValueError(f"{relative_path} is not under a governed workflow root.")
+
+
+def _workflow_title_suffix(workflow_kind: str) -> str:
+    if workflow_kind == "module":
+        return " Workflow"
+    if workflow_kind == "role":
+        return " Role"
+    raise ValueError(f"Unsupported workflow kind: {workflow_kind}")
+
+
+def _is_reference_doc_path(path: str) -> bool:
+    return bool(WORKFLOW_REFERENCE_DOC_PATH_PATTERN.match(path))
 
 
 def _derive_trigger_tags(
@@ -189,16 +227,34 @@ def validate_workflow_additional_load_section(
 def validate_workflow_section_order(
     relative_path: str,
     sections: dict[str, str],
+    workflow_kind: str,
 ) -> None:
     """Validate required workflow section order plus optional additional-load placement."""
-    validate_required_section_order(relative_path, sections, WORKFLOW_REQUIRED_SECTIONS)
+    if workflow_kind == "role":
+        validate_required_section_order(relative_path, sections, WORKFLOW_ROLE_REQUIRED_SECTIONS)
+    else:
+        validate_required_section_order(relative_path, sections, WORKFLOW_REQUIRED_SECTIONS)
+        if WORKFLOW_COMPOSES_MODULES_SECTION in sections:
+            raise ValueError(
+                f"{relative_path} must not define section "
+                f"{WORKFLOW_COMPOSES_MODULES_SECTION!r} outside workflow role roots."
+            )
     if WORKFLOW_ADDITIONAL_LOAD_SECTION not in sections:
         return
 
     section_order = list(sections.keys())
     additional_index = section_order.index(WORKFLOW_ADDITIONAL_LOAD_SECTION)
-    inputs_index = section_order.index("Inputs")
     workflow_index = section_order.index("Workflow")
+    if workflow_kind == "role":
+        composition_index = section_order.index(WORKFLOW_COMPOSES_MODULES_SECTION)
+        if not composition_index < additional_index < workflow_index:
+            raise ValueError(
+                f"{relative_path} places optional section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} "
+                "outside the allowed position between 'Composes Modules' and 'Workflow'."
+            )
+        return
+
+    inputs_index = section_order.index("Inputs")
     if not inputs_index < additional_index < workflow_index:
         raise ValueError(
             f"{relative_path} places optional section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} "
@@ -206,12 +262,81 @@ def validate_workflow_section_order(
         )
 
 
+def validate_workflow_composes_modules_section(
+    relative_path: str,
+    section: str | None,
+    *,
+    workflow_kind: str,
+    loader: ControlPlaneLoader,
+    source_path: Path | None = None,
+) -> tuple[str, ...]:
+    """Validate and return explicit role-to-module composition links."""
+    if workflow_kind != "role":
+        if section is not None:
+            raise ValueError(
+                f"{relative_path} must not define section "
+                f"{WORKFLOW_COMPOSES_MODULES_SECTION!r} outside workflow role roots."
+            )
+        return ()
+
+    validate_explained_bullet_section(relative_path, WORKFLOW_COMPOSES_MODULES_SECTION, section)
+    if extract_external_urls(section or ""):
+        raise ValueError(
+            f"{relative_path} section {WORKFLOW_COMPOSES_MODULES_SECTION!r} must point to "
+            "repo-local workflow modules, not raw external URLs."
+        )
+
+    bullets = [
+        line.strip()
+        for line in (section or "").splitlines()
+        if line.strip().startswith("- ")
+    ]
+    resolved_paths: list[str] = []
+    for bullet in bullets:
+        module_paths = extract_repo_path_references(
+            bullet,
+            loader.repo_root,
+            source_path=source_path,
+        )
+        if len(module_paths) != 1:
+            raise ValueError(
+                f"{relative_path} section {WORKFLOW_COMPOSES_MODULES_SECTION!r} must give "
+                "exactly one workflow-module path per bullet."
+            )
+        resolved_paths.extend(module_paths)
+
+    composed_module_paths = ordered_unique(tuple(resolved_paths))
+    if len(composed_module_paths) != len(resolved_paths):
+        raise ValueError(
+            f"{relative_path} section {WORKFLOW_COMPOSES_MODULES_SECTION!r} must not repeat "
+            "the same workflow-module path in multiple bullets."
+        )
+
+    module_roots = (
+        CORE_WORKFLOW_MODULE_ROOT,
+        *pack_workflow_module_roots(loader.repo_root, loader=loader),
+    )
+    invalid_paths = [
+        path
+        for path in composed_module_paths
+        if not any(path == root or path.startswith(f"{root}/") for root in module_roots)
+        or path.endswith("/README.md")
+    ]
+    if invalid_paths:
+        joined = ", ".join(invalid_paths)
+        raise ValueError(
+            f"{relative_path} section {WORKFLOW_COMPOSES_MODULES_SECTION!r} must cite only "
+            f"workflow-module documents under governed module roots: {joined}"
+        )
+    return composed_module_paths
+
+
 def build_workflow_document_context(
     loader: ControlPlaneLoader,
     *,
     reference_urls_by_path: dict[str, tuple[str, ...]] | None = None,
 ) -> WorkflowDocumentContext:
-    """Build the reusable context needed to load workflow modules."""
+    """Build the reusable context needed to load workflow documents."""
 
     metadata_registry = loader.load_workflow_metadata_registry()
     return WorkflowDocumentContext(
@@ -230,7 +355,7 @@ def load_workflow_document(
     *,
     context: WorkflowDocumentContext | None = None,
 ) -> WorkflowDocument:
-    """Load and validate one workflow module from its repository-relative path."""
+    """Load and validate one workflow document from its repository-relative path."""
     workflow_context = context or build_workflow_document_context(loader)
     return load_workflow_document_with_reference_map(
         loader,
@@ -247,32 +372,49 @@ def load_workflow_document_with_reference_map(
     metadata_by_workflow_id: dict[str, WorkflowMetadataDefinition],
     reference_urls_by_path: dict[str, tuple[str, ...]],
 ) -> WorkflowDocument:
-    """Load and validate one workflow module using a prebuilt reference-url map."""
+    """Load and validate one workflow document using a prebuilt reference-url map."""
     path = loader.repo_root / relative_path
     markdown = load_markdown_body(path)
     validate_blank_line_before_heading_after_list(relative_path, markdown)
     title = extract_title(markdown)
     sections = extract_sections(markdown)
+    workflow_kind = _workflow_kind_for_path(relative_path)
 
     missing_sections = [
-        section for section in WORKFLOW_REQUIRED_SECTIONS if section not in sections
+        section
+        for section in (
+            WORKFLOW_ROLE_REQUIRED_SECTIONS
+            if workflow_kind == "role"
+            else WORKFLOW_REQUIRED_SECTIONS
+        )
+        if section not in sections
     ]
     if missing_sections:
         joined = ", ".join(missing_sections)
         raise ValueError(f"{relative_path} is missing required sections: {joined}")
-    validate_workflow_section_order(relative_path, sections)
+    validate_workflow_section_order(relative_path, sections, workflow_kind)
+    composes_module_paths = validate_workflow_composes_modules_section(
+        relative_path,
+        sections.get(WORKFLOW_COMPOSES_MODULES_SECTION),
+        workflow_kind=workflow_kind,
+        loader=loader,
+        source_path=path,
+    )
     internal_reference_paths = validate_workflow_additional_load_section(
         relative_path,
         sections.get(WORKFLOW_ADDITIONAL_LOAD_SECTION),
         repo_root=loader.repo_root,
         source_path=path,
     )
-    if not title.endswith(" Workflow"):
-        raise ValueError(f"{relative_path} workflow title must end with ' Workflow'.")
+    title_suffix = _workflow_title_suffix(workflow_kind)
+    if not title.endswith(title_suffix):
+        raise ValueError(
+            f"{relative_path} {workflow_kind} title must end with {title_suffix!r}."
+        )
 
     summary = extract_first_paragraph(sections["Purpose"])
     reference_doc_paths = tuple(
-        value for value in internal_reference_paths if value.startswith("core/docs/references/")
+        value for value in internal_reference_paths if _is_reference_doc_path(value)
     )
 
     direct_external_urls: tuple[str, ...] = ()
@@ -288,6 +430,7 @@ def load_workflow_document_with_reference_map(
 
     return WorkflowDocument(
         workflow_id=workflow_id,
+        workflow_kind=workflow_kind,
         title=title,
         summary=summary,
         relative_path=relative_path,
@@ -305,6 +448,7 @@ def load_workflow_document_with_reference_map(
             retrieval_metadata.extra_trigger_tags,
         ),
         companion_workflow_ids=retrieval_metadata.companion_workflow_ids,
+        composes_module_paths=composes_module_paths,
         related_paths=internal_reference_paths,
         reference_doc_paths=reference_doc_paths,
         internal_reference_paths=internal_reference_paths,
@@ -333,7 +477,7 @@ def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, An
 
 
 class WorkflowIndexSyncService:
-    """Build and write the workflow index from workflow modules."""
+    """Build and write the workflow index from workflow documents."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
@@ -362,15 +506,17 @@ class WorkflowIndexSyncService:
 
         seen_workflow_ids: set[str] = set()
         workflow_roots = (
-            CORE_WORKFLOW_DOC_ROOT,
+            CORE_WORKFLOW_MODULE_ROOT,
+            CORE_WORKFLOW_ROLE_ROOT,
             *pack_workflow_module_roots(self._repo_root, loader=self._loader),
+            *pack_workflow_role_roots(self._repo_root, loader=self._loader),
         )
         for workflow_root_relative in workflow_roots:
             workflow_root = self._repo_root / workflow_root_relative
             if not workflow_root.exists():
                 continue
 
-            for path in sorted(workflow_root.glob("*.md")):
+            for path in sorted(workflow_root.rglob("*.md")):
                 if path.name in WORKFLOW_EXCLUDED_NAMES:
                     continue
 
@@ -395,6 +541,7 @@ class WorkflowIndexSyncService:
 
                 entry: dict[str, object] = {
                     "workflow_id": workflow.workflow_id,
+                    "workflow_kind": workflow.workflow_kind,
                     "title": workflow.title,
                     "summary": workflow.summary,
                     "status": "active",
@@ -408,6 +555,8 @@ class WorkflowIndexSyncService:
                 }
                 if workflow.companion_workflow_ids:
                     entry["companion_workflow_ids"] = list(workflow.companion_workflow_ids)
+                if workflow.composes_module_paths:
+                    entry["composes_module_paths"] = list(workflow.composes_module_paths)
                 if workflow.related_paths:
                     entry["related_paths"] = list(workflow.related_paths)
                 if workflow.reference_doc_paths:
@@ -425,7 +574,7 @@ class WorkflowIndexSyncService:
 
                 entries.append(entry)
 
-        self._validate_companion_links(entries)
+        self._validate_workflow_links(entries)
 
         artifact: dict[str, object] = {
             "$schema": "urn:watchtower:schema:artifacts:indexes:workflow-index:v1",
@@ -443,24 +592,46 @@ class WorkflowIndexSyncService:
         target.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
         return target
 
-    def _validate_companion_links(self, entries: list[dict[str, object]]) -> None:
+    def _validate_workflow_links(self, entries: list[dict[str, object]]) -> None:
         known_ids = {
             entry["workflow_id"] for entry in entries if isinstance(entry.get("workflow_id"), str)
+        }
+        workflow_kind_by_path = {
+            entry["doc_path"]: entry.get("workflow_kind")
+            for entry in entries
+            if isinstance(entry.get("doc_path"), str)
         }
         for entry in entries:
             workflow_id = entry.get("workflow_id")
             companions = entry.get("companion_workflow_ids", ())
             if not isinstance(workflow_id, str) or not isinstance(companions, list):
+                if not isinstance(workflow_id, str):
+                    continue
+            if isinstance(companions, list):
+                missing = sorted(
+                    companion
+                    for companion in companions
+                    if isinstance(companion, str) and companion not in known_ids
+                )
+                if missing:
+                    joined = ", ".join(missing)
+                    raise ValueError(
+                        f"Workflow {workflow_id} points to missing companion workflows: {joined}"
+                    )
+            composes_module_paths = entry.get("composes_module_paths", ())
+            if not isinstance(composes_module_paths, list):
                 continue
-            missing = sorted(
-                companion
-                for companion in companions
-                if isinstance(companion, str) and companion not in known_ids
+            invalid_module_paths = sorted(
+                module_path
+                for module_path in composes_module_paths
+                if isinstance(module_path, str)
+                and workflow_kind_by_path.get(module_path) != "module"
             )
-            if missing:
-                joined = ", ".join(missing)
+            if invalid_module_paths:
+                joined = ", ".join(invalid_module_paths)
                 raise ValueError(
-                    f"Workflow {workflow_id} points to missing companion workflows: {joined}"
+                    f"Workflow {workflow_id} points to missing or non-module composed "
+                    f"workflow documents: {joined}"
                 )
 
 

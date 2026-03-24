@@ -98,6 +98,8 @@ def _surface_kind(
         return "routing_table"
     if relative_path.startswith("core/workflows/modules/"):
         return "workflow_module" if kind == "file" else "workflow_family"
+    if relative_path.startswith("core/workflows/roles/"):
+        return "workflow_role" if kind == "file" else "workflow_family"
     if relative_path.startswith("core/docs/commands/"):
         return "command_doc" if kind == "file" else "command_docs"
     if relative_path.startswith("core/docs/references/"):
@@ -135,6 +137,8 @@ def _surface_kind(
             return "routing_table"
         if _path_matches_root(relative_path, f"{roots.workflows_root}/modules"):
             return "workflow_module" if kind == "file" else "workflow_family"
+        if _path_matches_root(relative_path, f"{roots.workflows_root}/roles"):
+            return "workflow_role" if kind == "file" else "workflow_family"
         if _path_matches_root(relative_path, pack_command_docs_root(docs_root=roots.docs_root)):
             return "command_doc" if kind == "file" else "command_docs"
         if _path_matches_root(relative_path, f"{roots.docs_root}/standards"):
@@ -165,6 +169,7 @@ def _maturity_for_surface_kind(surface_kind: str) -> str:
     if surface_kind in {
         "routing_table",
         "workflow_module",
+        "workflow_role",
         "command_doc",
         "reference_doc",
         "standard_doc",
@@ -191,7 +196,7 @@ def _priority_for_maturity(maturity: str) -> str:
 
 
 def _audience_hint(relative_path: str, surface_kind: str) -> str:
-    if surface_kind in {"instruction", "routing_table", "workflow_module"}:
+    if surface_kind in {"instruction", "routing_table", "workflow_module", "workflow_role"}:
         return "automation"
     if relative_path.startswith("core/python/src/") or relative_path.startswith(
         "core/python/tests/"

@@ -59,7 +59,9 @@ This repository also treats copy-forward adoption as a supported operating mode:
 | `<pack>/.wt/**` | Live pack machine state and pack-owned manifests. |
 | `<pack>/.wt/runtime/**` | Optional pack-local operational runtime outputs such as telemetry sinks. |
 | `<pack>/docs/**` | Durable pack-local guidance and command docs. |
-| `<pack>/workflows/**` | Pack-local workflow modules and routing. |
+| `<pack>/workflows/modules/**` | Pack-local reusable workflow modules. |
+| `<pack>/workflows/roles/**` | Pack-local workflow roles and persona-oriented orchestration docs. |
+| `<pack>/workflows/ROUTING_TABLE.md` | Pack-local workflow routing. |
 | `<pack>/tracking/**` | Human-facing pack tracking views when the pack owns them. |
 | `<pack>/python/**` | Pack-native Python package and tests. |
 | Optional domain roots | Pack-specific runtime surfaces such as `initiatives/`, `projects/`, `targets/`, or `reviews/`. |
@@ -81,7 +83,8 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Treat effective pack activation as Phase 0 for any pack-aware runtime path. Host and reusable-core runtime helpers should resolve the effective pack settings path before reading runtime manifests, owned roots, or default-pack machine outputs.
 - Build the full typed `PackContext` only when the caller needs declared pack-governed surfaces such as schema catalogs, validator registries, validation suites, policy registries, or other declared governance helpers. Minimal runtime-only pack fixtures may intentionally stop short of that full surface set.
 - Keep pack-local validator registries limited to pack-owned validators. Do not copy shared core validator entries into a pack-local validator registry unless the entry is intentionally identical and temporary copied-core residue.
-- When the pack owns workflow modules whose `workflow.*` IDs are not already described by the shared core workflow metadata registry, publish a pack-owned `workflow_metadata_registry` and keep it limited to pack-owned entries. The loader merges that registry with the shared core workflow metadata surface and rejects conflicting duplicates.
+- When the pack owns workflow documents whose `workflow.*` IDs are not already described by the shared core workflow metadata registry, publish a pack-owned `workflow_metadata_registry` and keep it limited to pack-owned entries. The loader merges that registry with the shared core workflow metadata surface and rejects conflicting duplicates.
+- When the pack owns workflow roles, require each role doc to include a `Composes Modules` section that lists the reusable workflow-module docs the role directly orchestrates.
 - Treat pack-owned live indexes such as `task_index` and `initiative_index` as optional capabilities. Generic host commands should read them only when the active pack declares those surfaces.
 - Keep pack-local semantic validation thin. Import shared helpers such as `watchtower_core.documentation.standards`, `watchtower_core.documentation.reference_semantics`, and `watchtower_core.sync.workflow_index` instead of forking donor copies into modules like `watchtower_<pack>.standards`.
 - Publish the pack namespace command entry page inside the pack-owned docs root so host introspection and pack-interface validation can find it without special cases.
@@ -153,7 +156,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 | `core/docs/templates/pack/pack_integration_module_template.py` | Seed `<pack>/python/src/watchtower_<pack>/integration.py`. |
 | `core/docs/templates/pack/pack_namespace_command_reference_template.md` | Seed `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`. |
 | `core/docs/templates/readme_template.md` | Seed pack-local README.md files where the starter set does not include a pack-specific doc scaffold. |
-| `core/docs/templates/workflow_template.md` and `core/docs/templates/routing_table_template.md` | Seed pack-local workflow modules and routing tables when the new pack owns its own workflow root. |
+| `core/docs/templates/workflow_template.md` and `core/docs/templates/routing_table_template.md` | Seed pack-local workflow modules, workflow roles, and routing tables when the new pack owns its own workflow roots. |
 
 ### Minimum Portable Pack File Set
 | File | Why It Exists |

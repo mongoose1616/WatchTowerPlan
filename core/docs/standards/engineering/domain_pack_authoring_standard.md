@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-24T19:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,7 +46,8 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Put shared helpers back into `watchtower_core` instead of duplicating them to make them pack-specific.
 - Keep pack-owned command docs under the owning pack docs root when the command is pack-specific.
 - Publish the pack namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md` so host introspection and pack validation can resolve the command surface deterministically.
-- Keep pack-owned workflow modules under the owning pack workflow root.
+- Keep pack-owned workflow modules under the owning pack workflow-module root and pack-owned workflow roles under the owning pack workflow-role root.
+- Pack-owned workflow roles must include explicit `Composes Modules` sections and keep those links aligned with the derived workflow index in the same change set.
 - Keep `.wt/` reserved for machine state, manifests, registries, policies, and indexes. Do not put Python source or hand-maintained prose there.
 - Build pack-native Python around features and domain flows, not mirrored copies of reusable-core package taxonomy.
 - Keep pack contract paths repository-relative and portable. Absolute paths and parent traversal in pack manifests or settings are invalid.
@@ -65,7 +66,9 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 |---|---|
 | `<pack>/.wt/**` | Pack machine state and manifests |
 | `<pack>/docs/**` | Durable pack-local guidance and command docs |
-| `<pack>/workflows/**` | Pack-local workflow modules and routing |
+| `<pack>/workflows/modules/**` | Pack-local reusable workflow modules |
+| `<pack>/workflows/roles/**` | Pack-local workflow roles and persona-oriented orchestration docs |
+| `<pack>/workflows/ROUTING_TABLE.md` | Pack-local workflow routing |
 | `<pack>/tracking/**` | Human-facing rendered tracking surfaces |
 | `<pack>/python/**` | Pack-native Python package root |
 | Optional domain roots | Initiative, project, review, or other pack-specific state containers |
@@ -105,4 +108,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-24T19:05:00Z`

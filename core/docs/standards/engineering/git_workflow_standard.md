@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_workflow"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:50:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -100,7 +100,7 @@ This standard defines repository-standard local git workflow behavior, including
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `<pack>/tracking/task_tracking.md`; `<pack>/tracking/coordination_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `core/docs/references/github_collaboration_reference.md`; `core/docs/references/conventional_commits_reference.md`
 
 ## Validation
 - Reviewers should reject branch names that do not follow `<kind>/<slug>` or that encode mutable status or owner metadata.
@@ -118,4 +118,4 @@ This standard defines repository-standard local git workflow behavior, including
 - Pack-owned collaboration, task-threshold, and traceability standards under `<pack>/docs/standards/governance/`
 
 ## Updated At
-- `2026-03-23T16:50:00Z`
+- `2026-03-24T22:30:00Z`

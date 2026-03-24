@@ -34,6 +34,7 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
     assert isinstance(entries, list)
     assert any(
         entry["workflow_id"] == "workflow.documentation_review"
+        and entry["workflow_kind"] == "module"
         and entry["phase_type"] == "review"
         and entry["task_family"] == "documentation_review"
         and "review" in entry["trigger_tags"]
@@ -44,6 +45,7 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
     )
     assert any(
         entry["workflow_id"] == "workflow.github_task_sync"
+        and entry["workflow_kind"] == "module"
         and entry["phase_type"] == "execution"
         and entry["task_family"] == "github_integration"
         and entry["uses_internal_references"] is True
@@ -185,3 +187,256 @@ def test_workflow_index_sync_rejects_heading_after_list_without_blank_line(
 
     with pytest.raises(ValueError, match="separated from the preceding list by a blank line"):
         service.build_document()
+
+
+def test_workflow_index_sync_includes_role_root_documents(tmp_path: Path) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    module_path = repo_root / "core/workflows/modules/review_execution_baseline.md"
+    role_path = repo_root / "core/workflows/roles/architecture_reviewer.md"
+    module_path.parent.mkdir(parents=True, exist_ok=True)
+    role_path.parent.mkdir(parents=True, exist_ok=True)
+    module_path.write_text(
+        dedent(
+            """\
+            # Review Execution Baseline Workflow
+
+            ## Purpose
+            Use this workflow to provide one reusable review baseline.
+
+            ## Use When
+            - Running one substantive review.
+
+            ## Inputs
+            - One scoped review request.
+
+            ## Workflow
+            1. Execute the shared baseline review procedure.
+
+            ## Data Structure
+            - One baseline review plan.
+
+            ## Outputs
+            - One reusable review baseline result.
+
+            ## Done When
+            - The shared review baseline has been applied.
+            """
+        ),
+        encoding="utf-8",
+    )
+    role_path.write_text(
+        dedent(
+            """\
+            # Architecture Reviewer Role
+
+            ## Purpose
+            Use this role to apply one architecture-focused review lens.
+
+            ## Use When
+            - Reviewing architecture boundaries for one target.
+
+            ## Inputs
+            - One scoped review request.
+
+            ## Composes Modules
+            - [review_execution_baseline.md](../modules/review_execution_baseline.md): baseline.
+              Applies it under an architecture-specific lens.
+
+            ## Workflow
+            1. Reuse the shared review baseline and inspect the relevant design surfaces.
+
+            ## Data Structure
+            - One set of architecture-focused findings.
+
+            ## Outputs
+            - One architecture review result.
+
+            ## Done When
+            - The architecture review posture has been applied to the scoped target.
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    metadata_path = repo_root / "core/control_plane/registries/workflow_metadata_registry.json"
+    metadata_document = json.loads(metadata_path.read_text(encoding="utf-8"))
+    metadata_document["entries"].append(
+        {
+            "workflow_id": "workflow.review_execution_baseline",
+            "phase_type": "review",
+            "task_family": "review_execution",
+            "primary_risks": ["review_gap"],
+            "extra_trigger_tags": ["review", "baseline"],
+        }
+    )
+    metadata_document["entries"].append(
+        {
+            "workflow_id": "workflow.architecture_reviewer",
+            "phase_type": "review",
+            "task_family": "architecture_review",
+            "primary_risks": ["architecture_blind_spot"],
+            "extra_trigger_tags": ["architecture", "review"],
+        }
+    )
+    metadata_path.write_text(f"{json.dumps(metadata_document, indent=2)}\n", encoding="utf-8")
+
+    loader = ControlPlaneLoader(repo_root)
+    document = WorkflowIndexSyncService(loader).build_document()
+    entries = document["entries"]
+    assert any(
+        entry["workflow_id"] == "workflow.architecture_reviewer"
+        and entry["workflow_kind"] == "role"
+        and entry["composes_module_paths"] == [
+            "core/workflows/modules/review_execution_baseline.md"
+        ]
+        for entry in entries
+    )
+
+
+def test_workflow_index_sync_rejects_role_without_composes_modules(tmp_path: Path) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    role_path = repo_root / "core/workflows/roles/architecture_reviewer.md"
+    role_path.parent.mkdir(parents=True, exist_ok=True)
+    role_path.write_text(
+        dedent(
+            """\
+            # Architecture Reviewer Role
+
+            ## Purpose
+            Use this role to apply one architecture-focused review lens.
+
+            ## Use When
+            - Reviewing architecture boundaries for one target.
+
+            ## Inputs
+            - One scoped review request.
+
+            ## Workflow
+            1. Reuse the shared review baseline and inspect the relevant design surfaces.
+
+            ## Data Structure
+            - One set of architecture-focused findings.
+
+            ## Outputs
+            - One architecture review result.
+
+            ## Done When
+            - The architecture review posture has been applied to the scoped target.
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    metadata_path = repo_root / "core/control_plane/registries/workflow_metadata_registry.json"
+    metadata_document = json.loads(metadata_path.read_text(encoding="utf-8"))
+    metadata_document["entries"].append(
+        {
+            "workflow_id": "workflow.architecture_reviewer",
+            "phase_type": "review",
+            "task_family": "architecture_review",
+            "primary_risks": ["architecture_blind_spot"],
+            "extra_trigger_tags": ["architecture", "review"],
+        }
+    )
+    metadata_path.write_text(f"{json.dumps(metadata_document, indent=2)}\n", encoding="utf-8")
+
+    loader = ControlPlaneLoader(repo_root)
+    with pytest.raises(ValueError, match="is missing required sections: Composes Modules"):
+        WorkflowIndexSyncService(loader).build_document()
+
+
+def test_workflow_index_sync_rejects_composes_modules_on_module_files(tmp_path: Path) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    module_path = repo_root / "core/workflows/modules/review_execution_baseline.md"
+    module_path.parent.mkdir(parents=True, exist_ok=True)
+    module_path.write_text(
+        dedent(
+            """\
+            # Review Execution Baseline Workflow
+
+            ## Purpose
+            Use this workflow to provide one reusable review baseline.
+
+            ## Use When
+            - Running one substantive review.
+
+            ## Inputs
+            - One scoped review request.
+
+            ## Composes Modules
+            - [core.md](./core.md): this should be invalid on workflow modules.
+
+            ## Workflow
+            1. Execute the shared baseline review procedure.
+
+            ## Data Structure
+            - One baseline review plan.
+
+            ## Outputs
+            - One reusable review baseline result.
+
+            ## Done When
+            - The shared review baseline has been applied.
+            """
+        ),
+        encoding="utf-8",
+    )
+    core_module_path = repo_root / "core/workflows/modules/core.md"
+    core_module_path.write_text(
+        dedent(
+            """\
+            # Core Workflow
+
+            ## Purpose
+            Use this workflow to provide one shared routed baseline.
+
+            ## Use When
+            - Running one routed task.
+
+            ## Inputs
+            - One routed task request.
+
+            ## Workflow
+            1. Load the routed baseline.
+
+            ## Data Structure
+            - One baseline context record.
+
+            ## Outputs
+            - One routed baseline.
+
+            ## Done When
+            - The routed baseline is active.
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    metadata_path = repo_root / "core/control_plane/registries/workflow_metadata_registry.json"
+    metadata_document = json.loads(metadata_path.read_text(encoding="utf-8"))
+    metadata_document["entries"].extend(
+        [
+            {
+                "workflow_id": "workflow.review_execution_baseline",
+                "phase_type": "review",
+                "task_family": "review_execution",
+                "primary_risks": ["review_gap"],
+                "extra_trigger_tags": ["review", "baseline"],
+            },
+            {
+                "workflow_id": "workflow.core",
+                "phase_type": "shared",
+                "task_family": "routing_baseline",
+                "primary_risks": ["context_gap"],
+                "extra_trigger_tags": ["core", "baseline"],
+            },
+        ]
+    )
+    metadata_path.write_text(f"{json.dumps(metadata_document, indent=2)}\n", encoding="utf-8")
+
+    loader = ControlPlaneLoader(repo_root)
+    with pytest.raises(
+        ValueError,
+        match="must not define section 'Composes Modules' outside workflow role roots",
+    ):
+        WorkflowIndexSyncService(loader).build_document()

@@ -108,7 +108,7 @@
     {
       "family_id": "workflow",
       "entry_status": "active",
-      "summary": "Human-authored workflow modules used by routing and execution guidance.",
+      "summary": "Human-authored workflow modules and workflow roles used by routing and execution guidance.",
       "front_matter_base_schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
       "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1",
       "template_ids": [
@@ -116,13 +116,14 @@
       ],
       "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:workflow-module-section-spec:v1",
       "allowed_roots": [
-        "plan/workflows/modules"
+        "plan/workflows/modules",
+        "plan/workflows/roles"
       ],
       "authorship_mode": "authored",
       "required_index_ids": [
         "index.workflows"
       ],
-      "notes": "Plan-domain workflow modules now live under plan/workflows/modules while shared reusable workflow modules live under core/workflows/modules."
+      "notes": "Plan-domain reusable workflows live under plan/workflows/modules and plan-domain workflow roles live under plan/workflows/roles while shared reusable workflow docs stay under core/workflows/."
     }
   ],
   "notes": "This registry governs the durable authored documentation families that the live plan workspace already depends on or will promote into during the remaining migration."

@@ -68,7 +68,8 @@
             "actor_registry",
             "workflow_catalog",
             "routing_table",
-            "workflow_module_root"
+            "workflow_module_root",
+            "workflow_role_root"
           ]
         },
         "path": {

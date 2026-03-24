@@ -250,6 +250,7 @@ class WorkflowIndexEntry:
     """Workflow-index entry."""
 
     workflow_id: str
+    workflow_kind: str
     title: str
     summary: str
     status: str
@@ -261,6 +262,7 @@ class WorkflowIndexEntry:
     primary_risks: tuple[str, ...] = ()
     trigger_tags: tuple[str, ...] = ()
     companion_workflow_ids: tuple[str, ...] = ()
+    composes_module_paths: tuple[str, ...] = ()
     related_paths: tuple[str, ...] = ()
     reference_doc_paths: tuple[str, ...] = ()
     internal_reference_paths: tuple[str, ...] = ()
@@ -273,6 +275,7 @@ class WorkflowIndexEntry:
     def from_document(cls, document: dict[str, Any]) -> WorkflowIndexEntry:
         return cls(
             workflow_id=document["workflow_id"],
+            workflow_kind=document.get("workflow_kind", "module"),
             title=document["title"],
             summary=document["summary"],
             status=document["status"],
@@ -284,6 +287,7 @@ class WorkflowIndexEntry:
             primary_risks=tuple_field(document, "primary_risks"),
             trigger_tags=tuple_field(document, "trigger_tags"),
             companion_workflow_ids=tuple_field(document, "companion_workflow_ids"),
+            composes_module_paths=tuple_field(document, "composes_module_paths"),
             related_paths=tuple_field(document, "related_paths"),
             reference_doc_paths=tuple_field(document, "reference_doc_paths"),
             internal_reference_paths=tuple_field(document, "internal_reference_paths"),

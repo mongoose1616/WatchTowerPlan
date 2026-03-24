@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "routing_table_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-03-24T19:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the structure and expected content of `ROUTING_TABLE.md` as the canonical task-to-workflow routing surface for the repository.
 
 ## Purpose
-Keep routing deterministic, minimal, and easy to maintain by giving the repository one compact table that maps request types to the minimum required workflow modules.
+Keep routing deterministic, minimal, and easy to maintain by giving the repository one compact table that maps request types to the minimum required workflow documents.
 
 ## Scope
 - Applies to the canonical routing table file at the shared routing table and any pack-owned routing tables.
@@ -29,7 +29,7 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 
 ## Use When
 - Creating the repository routing table.
-- Adding a new task type or workflow module.
+- Adding a new task type, workflow module, or workflow role.
 - Reviewing whether routing entries are too broad, duplicated, or ambiguous.
 
 ## Related Standards and Sources
@@ -43,9 +43,9 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Each row should represent one task type with one clear routing outcome.
 - Trigger keywords should be broad enough to be useful but specific enough to avoid frequent false matches.
 - Trigger keywords are examples, not the only allowed routing surface. Routing may infer the nearest task type from the full prompt context.
-- Required workflows should list only the minimum modules needed for the task type.
+- Required workflows should list only the minimum workflow documents needed for the task type.
 - The routing table should always include the shared core workflow module in routed task sets.
-- Workflow modules that are not selected by routing remain available but inactive.
+- Workflow documents that are not selected by routing remain available but inactive.
 - If a task spans multiple task types, routing should union only the minimum relevant module sets.
 - The short instruction block may include compact merge rules for common compound cases such as commit intent, documentation gaps, or reconciliation routes, as long as the file stays table-first.
 - If a task type cannot be routed clearly in one row, it should usually be split into smaller task types.
@@ -57,21 +57,22 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
   - `Trigger Keywords (Examples)`
   - `Required Workflows`
 - Workflow paths should be written relative to the routing table location.
-- For this repo, workflow module entries should use `modules/<name>.md`.
+- For this repo, reusable procedure entries should use `modules/<name>.md`.
+- Role or persona entries should use `roles/<name>.md`.
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
 - `Operational Surfaces`: `*/workflows/ROUTING_TABLE.md`; `core/docs/templates/routing_table_template.md`
 
 ## Validation
-- Every listed workflow must exist at the referenced path.
-- New workflow modules that are intended for routing should be represented in the table.
+- Every listed workflow document must exist at the referenced path.
+- New workflow documents that are intended for routing should be represented in the table.
 - Rows should not route to a larger set of modules than the task actually needs.
 - Task types with overlapping triggers should still produce clear routing behavior.
 - Common compound requests such as `implement and commit` or `refresh docs and commit` should have an unambiguous merge outcome without requiring one custom row per combination.
 
 ## Change Control
-- Update the routing table whenever a routed workflow module is added, renamed, removed, or materially re-scoped.
+- Update the routing table whenever a routed workflow document is added, renamed, removed, or materially re-scoped.
 - Update this standard and the routing behavior standard together if routing semantics change.
 
 ## References
@@ -81,7 +82,7 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 
 ## Notes
 - The routing table should answer "what should be loaded?" and not "how should the task be executed?"
-- Detailed logic belongs in workflow modules, not in routing rows.
+- Detailed logic belongs in workflow documents, not in routing rows.
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-03-24T19:05:00Z`

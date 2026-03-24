@@ -19,13 +19,13 @@ def register_route_family(subparsers: argparse._SubParsersAction) -> None:
 
     route_parser = subparsers.add_parser(
         "route",
-        help="Preview the workflow-module route for a request or explicit task type.",
+        help="Preview the workflow-document route for a request or explicit task type.",
         description=dedent(
             """
-            Preview the workflow modules that the current routing surfaces would
+            Preview the workflow documents that the current routing surfaces would
             activate for a request.
 
-            This command is deterministic and advisory. Workflow modules and the
+            This command is deterministic and advisory. Workflow documents and the
             routing table remain the procedural authority.
             """
         ).strip(),
@@ -47,7 +47,7 @@ def register_route_family(subparsers: argparse._SubParsersAction) -> None:
         help="Preview the route for a request or explicit task type.",
         description=dedent(
             """
-            Preview the workflow-module route selected by the current routing
+            Preview the workflow-document route selected by the current routing
             data.
 
             Provide either free-form request text or one exact task type.

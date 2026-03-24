@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-03-24T22:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,13 +23,13 @@ This standard defines the document-level structure and boundary rules for workfl
 Keep workflow files predictable, easy to scan, and easy to route to by standardizing their required headings, ordering, and file-level scope.
 
 ## Scope
-- Applies to workflow Markdown files that define task execution behavior, especially files under the shared and pack-owned workflow module roots.
+- Applies to workflow Markdown files that define task execution behavior, especially files under the shared and pack-owned workflow module and workflow role roots.
 - Covers file-level structure, heading conventions, section ordering, and what belongs in the document body.
 - Does not define routing classification logic for `ROUTING_TABLE.md`.
 - Does not replace the deeper behavioral rules in the workflow design standard.
 
 ## Use When
-- Creating a new workflow module.
+- Creating a new workflow module or workflow role.
 - Revising an existing workflow Markdown file.
 - Reviewing whether a workflow file is structurally consistent with the repository model.
 
@@ -44,10 +44,11 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Pack-owned workflow-routing surfaces: they operationalize this standard alongside the shared routing table.
 
 ## Guidance
-- Workflow files should live under the shared or owning-pack workflow module roots unless a narrower repository standard defines another workflow surface.
+- Workflow files should live under the shared or owning-pack workflow module or workflow role roots unless a narrower repository standard defines another workflow surface.
 - Each file should define one workflow with one primary execution concern.
-- The document title should clearly name the workflow and include `Workflow`.
-- Use these exact H2 section headings in this order:
+- Files under `*/workflows/modules/` should clearly name the workflow and include `Workflow`.
+- Files under `*/workflows/roles/` should clearly name the role, include `Role`, and publish a `Composes Modules` section.
+- Use these exact H2 section headings in this order for module-root files:
   - `Purpose`
   - `Use When`
   - `Inputs`
@@ -55,10 +56,21 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
   - `Data Structure`
   - `Outputs`
   - `Done When`
-- `Additional Files to Load` is optional and may appear only between `Inputs` and `Workflow`.
+- Use these exact H2 section headings in this order for role-root files:
+  - `Purpose`
+  - `Use When`
+  - `Inputs`
+  - `Composes Modules`
+  - `Workflow`
+  - `Data Structure`
+  - `Outputs`
+  - `Done When`
+- `Additional Files to Load` is optional. It may appear only between `Inputs` and `Workflow` for module-root files, or between `Composes Modules` and `Workflow` for role-root files.
 - Keep the required section names stable so routed use and review stay predictable.
 - `Workflow` should be written as an ordered sequence when step order matters.
 - `Inputs`, `Data Structure`, `Outputs`, and `Done When` should stay compact and task-oriented rather than turning into long narrative sections.
+- `Composes Modules` is required for role-root files and must cite only governed workflow-module documents using repo-local links plus short orchestration implications.
+- `Composes Modules` makes role-to-module orchestration explicit for audit and query surfaces; it does not replace the routing table as the active workflow-selection authority.
 - `Data Structure` should describe internal working state or tracked fields, not a shadow outline for the final repository artifact.
 - `Outputs` should name the actual resulting surfaces. When the changed document, tracker, code change, or validation result is itself the output, do not pad the workflow with extra record-keeping deliverables.
 - Prefer `1` to `5` bullets in `Inputs`, `Data Structure`, and `Outputs` unless the task genuinely needs more structure.
@@ -72,18 +84,18 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
   `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, and
   `workflow_md_standard.md`.
 - Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
-- Workflow modules should stay structured enough that the derived workflow index can capture their title, purpose summary, and task-specific additional files without manual curation.
+- Workflow documents should stay structured enough that the derived workflow index can capture their kind, title, purpose summary, and task-specific additional files without manual curation.
 - `Data Structure` and `Outputs` may remain brief when the workflow does not define a stable working structure or durable deliverable, but the headings should still be present.
 - Use repository-native Markdown links when `Additional Files to Load` is present so the files can be captured and queried deterministically.
 - Prefer governed local reference docs under `core/docs/references/**` instead of raw external URLs when outside authority materially affects the workflow.
-- Do not add front matter to workflow modules unless a narrower standard or validator explicitly requires it.
+- Do not add front matter to workflow documents unless a narrower standard or validator explicitly requires it.
 - Do not put routing-table row logic in a workflow file.
 - Do not put repository-wide wrapper rules in a workflow file when they belong in `AGENTS.md`.
 - Do not turn a workflow file into a standards document, design note, or broad explainer.
 
 ## Structure or Data Model
-- Title in the form `# <Workflow Name> Workflow`
-- Required H2 sections in this order:
+- Title in the form `# <Workflow Name> Workflow` for module-root files or `# <Role Name> Role` for role-root files
+- Required H2 sections in this order for module-root files:
   - `Purpose`
   - `Use When`
   - `Inputs`
@@ -91,16 +103,26 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
   - `Data Structure`
   - `Outputs`
   - `Done When`
-- Optional `Additional Files to Load` may appear between `Inputs` and `Workflow`.
+- Required H2 sections in this order for role-root files:
+  - `Purpose`
+  - `Use When`
+  - `Inputs`
+  - `Composes Modules`
+  - `Workflow`
+  - `Data Structure`
+  - `Outputs`
+  - `Done When`
+- Optional `Additional Files to Load` may appear between `Inputs` and `Workflow` for module-root files, or between `Composes Modules` and `Workflow` for role-root files.
 - Optional supporting sections may appear after `Done When` only when they materially improve local usability and do not obscure the core workflow shape.
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `*/workflows/modules/`; `core/workflows/modules/core.md`; `*/workflows/ROUTING_TABLE.md`; `core/docs/templates/workflow_template.md`
+- `Operational Surfaces`: `*/workflows/modules/`; `*/workflows/roles/`; `core/workflows/modules/core.md`; `*/workflows/ROUTING_TABLE.md`; `core/docs/templates/workflow_template.md`
 
 ## Validation
-- The file should be recognizable as a workflow module from its title and required headings alone.
+- The file should be recognizable as a workflow module or workflow role from its title and required headings alone.
 - The required sections should appear in the standard order with the standard names.
+- Role-root files should include a materially useful `Composes Modules` section instead of leaving module orchestration implicit.
 - The file should stay focused on one execution concern rather than mixing multiple unrelated procedures.
 - The workflow body should be actionable and sequence-aware rather than only descriptive.
 - `Data Structure` and `Outputs` should remain brief and should not require standalone meta deliverables unless another governed surface explicitly requires them.
@@ -113,7 +135,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 ## Change Control
 - Update this standard when the repository changes the expected file shape for workflow Markdown documents.
 - Update the workflow template and workflow index surfaces in the same change set when the required heading set, order, or optional additional-load model changes.
-- Update affected workflow modules in the same change set when structural expectations change.
+- Update affected workflow documents in the same change set when structural expectations change.
 
 ## References
 - [workflow_design_standard.md](/core/docs/standards/workflows/workflow_design_standard.md)
@@ -130,4 +152,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-03-24T22:05:00Z`

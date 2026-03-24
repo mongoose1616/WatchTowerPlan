@@ -27,4 +27,4 @@
 - `watchtower_host` may compose `watchtower_plan` into the shared `watchtower-core` CLI, but reusable-core logic in `watchtower_core` must stay pack-agnostic.
 - Repo-shared governed-document helpers now live under `core/python/src/watchtower_core/documentation/`; do not duplicate them back into `watchtower_plan`.
 - `watchtower_plan` is not a plan-flavored mirror of `watchtower_core`; keep only repo-local plan behavior here.
-- Keep plan-domain Python aligned with `requirements.md`, `decisions.md`, and the plan-root guidance under `plan/**`.
+- Keep plan-domain Python aligned with the current plan-root guidance under `plan/**`, the shared Python standards, and active plan-pack machine authority.

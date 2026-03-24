@@ -20,8 +20,8 @@ Export-safe generic query services over governed pack surfaces, command and work
 - `foundations.py`, `references.py`, `standards.py`, and `repository.py`: Structured query services over governed knowledge and repository-discovery indexes.
 
 ## Related Surfaces
-- `requirements.md`
-- `decisions.md`
+- `core/control_plane/registries/authority_map.json`
+- `core/control_plane/registries/governance_surface_map.json`
 
 ## Notes
 - Keep generic governed-surface query helpers here.

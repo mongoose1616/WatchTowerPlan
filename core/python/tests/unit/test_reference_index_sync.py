@@ -250,3 +250,95 @@ def test_reference_index_sync_does_not_count_readme_only_backlinks_as_internal_s
     assert entry["repository_status"] == "candidate_future_guidance"
     assert "related_paths" not in entry
     assert entry["uses_internal_references"] is False
+
+
+def test_reference_index_sync_tracks_role_workflow_citations(tmp_path: Path) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    _write_repo_file(repo_root / "core/docs/README.md")
+    reference_path = repo_root / "core/docs/references/example_reference.md"
+    reference_path.parent.mkdir(parents=True, exist_ok=True)
+    reference_path.write_text(
+        dedent(
+            """\
+            ---
+            id: "ref.example"
+            title: "Example Reference"
+            summary: "Exercises workflow-role citation extraction in the reference index."
+            type: "reference"
+            status: "active"
+            tags:
+              - "reference"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-24T20:00:00Z"
+            audience: "shared"
+            authority: "supporting"
+            ---
+
+            # Example Reference
+
+            ## Canonical Upstream
+            - [Example upstream](https://example.com/reference)
+
+            ## Quick Reference or Distilled Reference
+            One compact reference fixture.
+
+            ## Local Mapping in This Repository
+            ### Current Repository Status
+            - Supporting authority for workflow-role citation extraction.
+
+            ### Why It Matters Here
+            - Keep one explicit workflow-role citation target in scope.
+
+            ## References
+            - [README.md](../README.md)
+
+            ## Updated At
+            - `2026-03-24T20:00:00Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    role_path = repo_root / "core/workflows/roles/architecture_reviewer.md"
+    role_path.parent.mkdir(parents=True, exist_ok=True)
+    role_path.write_text(
+        dedent(
+            """\
+            # Architecture Reviewer Role
+
+            ## Purpose
+            Use this role to apply one architecture review lens.
+
+            ## Use When
+            - Reviewing architecture posture with one supporting reference.
+
+            ## Inputs
+            - One scoped architecture review target.
+
+            ## Additional Files to Load
+            - [example_reference.md](../../docs/references/example_reference.md):
+              grounds the review lens in one governed local reference.
+
+            ## Workflow
+            1. Apply the architecture review lens using the loaded reference.
+
+            ## Data Structure
+            - One architecture-focused finding set.
+
+            ## Outputs
+            - One architecture-focused review result.
+
+            ## Done When
+            - The role has applied the scoped architecture lens.
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+    document = ReferenceIndexSyncService(loader).build_document()
+
+    entry = next(item for item in document["entries"] if item["reference_id"] == "ref.example")
+    assert entry["cited_by_paths"] == ["core/workflows/roles/architecture_reviewer.md"]
+    assert entry["applied_by_paths"] == ["core/workflows/roles/architecture_reviewer.md"]

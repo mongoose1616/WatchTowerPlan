@@ -1,10 +1,12 @@
 # <Workflow Name> Workflow
 
-> Use this template for routed workflow modules, especially under `core/workflows/modules/` and pack-owned `workflows/modules/` roots.
+> Use this template for routed workflow documents, especially under `core/workflows/modules/`, `core/workflows/roles/`, and pack-owned workflow roots.
+> For role-root files, rename the H1 to `# <Role Name> Role` and keep the `## Composes Modules` section. For module-root files, delete `## Composes Modules`.
 > Keep the exact section names and order below unless a narrower workflow standard explicitly requires more.
 > Scope the file to one primary execution concern and delete any placeholder text that does not help the live workflow.
 > Do not add YAML front matter unless a narrower standard or validator explicitly requires it.
 > Treat `AGENTS.md`, the shared routing table, any pack-owned routing tables, and `core/workflows/modules/core.md` as already-loaded routing baseline, not as per-module load hints.
+> Treat the routing table as the authority for which workflow documents become active. `## Composes Modules` in a role documents explicit role-to-module orchestration; it does not replace routed activation.
 > Do not list generic workflow standards such as `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, or `workflow_md_standard.md` in `## Additional Files to Load`; they stay implicit in the routing baseline.
 > Use `## Additional Files to Load` only when the module truly needs extra repo-local files beyond the normal routing baseline.
 > When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another concrete repo path, and write each bullet in `source: execution implication` form.
@@ -24,11 +26,17 @@ Use this workflow to <state the single execution objective clearly and concretel
 - <List the request, artifacts, standards, or canonical docs this workflow expects.>
 - <Include companion standards or repository surfaces only when they materially govern execution.>
 
+## Composes Modules
+- <Repo-local workflow module path>: <How this role directly orchestrates or specializes that reusable module.>
+- <Repo-local workflow module path>: <How this role directly orchestrates or specializes that reusable module.>
+
+<Delete this section for module-root workflow files. Keep it for role-root workflow files and list only the reusable modules that are materially part of the role's direct orchestration contract.>
+
 ## Additional Files to Load
 - <Repo-local file to open next>: <What this file changes or constrains in execution.>
 - <Repo-local file to open next>: <What this file changes or constrains in execution.>
 
-<Delete this section when the normal routing baseline already provides enough context. Do not list `AGENTS.md`, the shared routing table, pack-owned routing tables, `core/workflows/modules/core.md`, or the generic workflow standards here.>
+<Delete this section when the normal routing baseline already provides enough context. Do not list `AGENTS.md`, the shared routing table, pack-owned routing tables, `core/workflows/modules/core.md`, or the generic workflow standards here. For role-root files, keep `## Composes Modules` separate from these extra context hints.>
 
 ## Workflow
 1. <Write the first concrete step.>

@@ -210,7 +210,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
-      "updated_at": "2026-03-23T20:35:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -220,10 +220,10 @@
       ],
       "operationalization_paths": [
         "core/control_plane/registries/pack_registry.json",
-        "<pack>/.wt/manifests/pack_runtime_manifest.json",
+        "core/docs/templates/pack/pack_runtime_manifest_template.json",
         "core/python/src/watchtower_core/pack_integration/",
         "core/python/src/watchtower_core/validation/pack_contract.py",
-        "<pack>/docs/commands/core_python/"
+        "core/docs/templates/pack/pack_namespace_command_reference_template.md"
       ],
       "reference_doc_paths": [
         "core/docs/references/python_plugin_discovery_reference.md",
@@ -278,7 +278,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/reference_index_standard.md",
-      "updated_at": "2026-03-23T03:46:24Z",
+      "updated_at": "2026-03-24T20:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -364,7 +364,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/route_index_standard.md",
-      "updated_at": "2026-03-23T16:35:00Z",
+      "updated_at": "2026-03-24T19:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -376,6 +376,7 @@
         "core/control_plane/indexes/routes/",
         "core/control_plane/schemas/artifacts/",
         "*/workflows/modules/",
+        "*/workflows/roles/",
         "*/workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
@@ -564,7 +565,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-23T16:35:00Z",
+      "updated_at": "2026-03-24T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -576,7 +577,8 @@
         "core/control_plane/indexes/workflows/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/",
-        "*/workflows/modules/"
+        "*/workflows/modules/",
+        "*/workflows/roles/"
       ],
       "reference_doc_paths": [
         "core/docs/references/agent_workflow_authoring_reference.md"
@@ -625,7 +627,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/agents_md_standard.md",
-      "updated_at": "2026-03-12T01:02:00Z",
+      "updated_at": "2026-03-24T20:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -707,7 +709,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/compact_document_authoring_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -716,9 +718,8 @@
       "operationalization_paths": [
         "core/docs/templates/",
         "core/docs/templates/README.md",
-        "<pack>/tracking/",
-        "<pack>/initiatives/",
-        "<pack>/projects/"
+        "core/docs/templates/pack/README.md",
+        "core/docs/references/domain_pack_authoring_reference.md"
       ],
       "internal_reference_paths": [
         "core/docs/standards/metadata/front_matter_standard.md",
@@ -739,11 +740,11 @@
       "standard_id": "std.documentation.documentation_semantics",
       "category": "documentation",
       "title": "Documentation Semantics Standard",
-      "summary": "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow modules.",
+      "summary": "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow documents.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/documentation_semantics_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-24T20:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -918,7 +919,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/routing_table_md_standard.md",
-      "updated_at": "2026-03-23T16:35:00Z",
+      "updated_at": "2026-03-24T19:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1000,7 +1001,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-23T16:35:00Z",
+      "updated_at": "2026-03-24T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1009,6 +1010,7 @@
       ],
       "operationalization_paths": [
         "*/workflows/modules/",
+        "*/workflows/roles/",
         "core/workflows/modules/core.md",
         "*/workflows/ROUTING_TABLE.md",
         "core/docs/templates/workflow_template.md"
@@ -1184,7 +1186,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-24T19:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1244,7 +1246,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-23T23:55:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1255,9 +1257,9 @@
       "operationalization_paths": [
         "core/python/",
         "core/control_plane/",
-        "<pack>/",
         "core/docs/",
-        "<pack>/docs/",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/templates/pack/README.md",
         "core/workflows/modules/core.md"
       ],
       "internal_reference_paths": [
@@ -1292,7 +1294,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/git_commit_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1300,7 +1302,8 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/commit_closeout.md",
-        "<pack>/tracking/task_tracking.md"
+        "core/docs/references/conventional_commits_reference.md",
+        "core/docs/references/github_collaboration_reference.md"
       ],
       "reference_doc_paths": [
         "core/docs/references/git_commit_message_guidance_reference.md",
@@ -1343,7 +1346,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/git_workflow_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1352,8 +1355,8 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/commit_closeout.md",
-        "<pack>/tracking/task_tracking.md",
-        "<pack>/tracking/coordination_tracking.md"
+        "core/docs/references/github_collaboration_reference.md",
+        "core/docs/references/conventional_commits_reference.md"
       ],
       "applies_to": [
         "core/docs/standards/engineering/git_commit_standard.md",
@@ -1757,7 +1760,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/front_matter_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1767,8 +1770,9 @@
       "operationalization_paths": [
         "core/control_plane/schemas/interfaces/README.md",
         "core/control_plane/schemas/interfaces/documentation/",
-        "core/docs/standards/metadata/front_matter_standard.md",
-        "<pack>/tracking/task_tracking.md"
+        "core/docs/foundations/",
+        "core/docs/references/",
+        "core/docs/standards/metadata/front_matter_standard.md"
       ],
       "reference_doc_paths": [
         "core/docs/references/front_matter_reference.md"
@@ -1813,7 +1817,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/naming_and_ids_standard.md",
-      "updated_at": "2026-03-23T16:55:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1825,7 +1829,7 @@
         "core/control_plane/schemas/",
         "core/control_plane/indexes/",
         "core/control_plane/contracts/",
-        "<pack>/"
+        "core/docs/templates/pack/"
       ],
       "reference_doc_paths": [
         "core/docs/references/rfc_9562_uuid_reference.md",
@@ -1869,7 +1873,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/terminology_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-24T22:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1879,7 +1883,7 @@
       "operationalization_paths": [
         "core/control_plane/",
         "core/workflows/ROUTING_TABLE.md",
-        "<pack>/workflows/ROUTING_TABLE.md"
+        "core/docs/templates/routing_table_template.md"
       ],
       "internal_reference_paths": [
         "core/docs/foundations/engineering_design_principles.md",
@@ -2069,11 +2073,11 @@
       "standard_id": "std.workflows.routing_and_context_loading",
       "category": "workflows",
       "title": "Routing and Context Loading Standard",
-      "summary": "This standard defines how repository instructions, routing surfaces, and workflow modules are loaded so task execution starts with the minimum correct context.",
+      "summary": "This standard defines how repository instructions, routing surfaces, and workflow documents are loaded so task execution starts with the minimum correct context.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/routing_and_context_loading_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-24T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2128,11 +2132,11 @@
       "standard_id": "std.workflows.workflow_design",
       "category": "workflows",
       "title": "Workflow Design Standard",
-      "summary": "This standard defines how workflow modules in this repository should be designed, structured, and bounded.",
+      "summary": "This standard defines how workflow documents in this repository should be designed, structured, and bounded.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-24T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2141,7 +2145,9 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/",
+        "core/workflows/roles/",
         "<pack>/workflows/modules/",
+        "<pack>/workflows/roles/",
         "core/workflows/ROUTING_TABLE.md",
         "<pack>/workflows/ROUTING_TABLE.md",
         "core/docs/templates/workflow_template.md",
@@ -2656,7 +2662,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/decision_capture_standard.md",
-      "updated_at": "2026-03-15T15:30:00Z",
+      "updated_at": "2026-03-24T16:42:24Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2669,7 +2675,7 @@
         "core/workflows/modules/documentation_generation.md",
         "plan/initiatives/",
         "plan/projects/",
-        "decisions.md"
+        "plan/docs/decisions/"
       ],
       "reference_doc_paths": [
         "core/docs/references/adr_guidance_reference.md"

@@ -32,6 +32,7 @@ def test_documentation_family_helper_validates_allowed_roots() -> None:
     helper = _helper()
 
     assert helper.allowed_in_root("workflow", "plan/workflows/modules") is True
+    assert helper.allowed_in_root("workflow", "plan/workflows/roles") is True
     assert helper.allowed_in_root("workflow", "workflows/modules") is False
 
     issues = helper.validate_root("reference", "plan/docs/foundations")
@@ -55,4 +56,7 @@ def test_core_documentation_family_registry_loads_by_explicit_path() -> None:
         "core/docs/foundations",
         "plan/docs/foundations",
     )
-    assert workflow.allowed_roots == ("core/workflows/modules",)
+    assert workflow.allowed_roots == (
+        "core/workflows/modules",
+        "core/workflows/roles",
+    )

@@ -18,8 +18,8 @@ Repo-shared helpers for governed Markdown semantics, front-matter path normaliza
 ## Related Surfaces
 - `core/python/src/watchtower_core/validation/README.md`
 - `core/python/src/watchtower_core/sync/README.md`
-- `requirements.md`
-- `decisions.md`
+- `core/docs/standards/documentation/documentation_semantics_standard.md`
+- `core/docs/standards/metadata/front_matter_standard.md`
 
 ## Notes
 - Keep repo-shared governed-document helpers here.

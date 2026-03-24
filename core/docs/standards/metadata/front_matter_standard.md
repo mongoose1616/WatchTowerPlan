@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:50:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -130,7 +130,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 
 ## Operationalization
 - `Modes`: `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/interfaces/README.md`; `core/control_plane/schemas/interfaces/documentation/`; `core/docs/standards/metadata/front_matter_standard.md`; `<pack>/tracking/task_tracking.md`
+- `Operational Surfaces`: `core/control_plane/schemas/interfaces/README.md`; `core/control_plane/schemas/interfaces/documentation/`; `core/docs/foundations/`; `core/docs/references/`; `core/docs/standards/metadata/front_matter_standard.md`
 
 ## Validation
 - Front matter should parse cleanly as YAML.
@@ -160,4 +160,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `core/docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-23T16:50:00Z`
+- `2026-03-24T22:30:00Z`

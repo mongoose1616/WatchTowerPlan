@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "decision_capture"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T15:30:00Z"
+updated_at: "2026-03-24T16:42:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -29,7 +29,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - Applies to durable repository decisions such as architecture choices, governance decisions, standards decisions, workflow-policy decisions, and major planning or design tradeoffs.
 - Covers decision boundaries, statuses, rationale, options, evidence, consequences, and synchronization with canonical repository artifacts.
 - Applies whether the record is expressed as an initiative-local `decision_notes.md`, an ADR-style note, or another durable decision artifact.
-- Uses initiative-local `decision_notes.md` during capture and promotes durable accepted policy into `requirements.md`, `decisions.md`, standards, workflow docs, or `plan/docs/**` as appropriate.
+- Uses initiative-local `decision_notes.md` during capture and promotes durable accepted policy into current foundations, standards, workflow docs, `plan/docs/**`, or machine-readable authority surfaces as appropriate.
 - Does not replace initiative briefs, implementation slices, standards, or references that should hold the active repository guidance after a decision is accepted.
 
 ## Use When
@@ -101,7 +101,7 @@ This standard defines how durable repository decisions should be recorded so rat
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `plan/workflows/modules/decision_capture.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `plan/initiatives/`; `plan/projects/`; `decisions.md`
+- `Operational Surfaces`: `plan/workflows/modules/decision_capture.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `plan/initiatives/`; `plan/projects/`; `plan/docs/decisions/`
 
 ## Validation
 - The record captures one decision cleanly.
@@ -133,4 +133,4 @@ This standard defines how durable repository decisions should be recorded so rat
 - Not every local implementation choice needs durable decision capture. Use it when the rationale, alternatives, or downstream consequences are important enough to matter later.
 
 ## Updated At
-- `2026-03-15T15:30:00Z`
+- `2026-03-24T16:42:24Z`

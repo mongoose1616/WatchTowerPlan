@@ -6,3 +6,4 @@
 ## Notes
 - Shared reusable workflow modules still live under `core/workflows/modules/`.
 - Repo-root workflow modules were removed during the hard cutover; authoritative plan-owned modules live here under `plan/workflows/modules/`.
+- Keep reusable, repeatable plan procedures here. Persona- or lens-oriented workflow docs belong under `plan/workflows/roles/`.

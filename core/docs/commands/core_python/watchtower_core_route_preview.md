@@ -1,10 +1,10 @@
 # `watchtower-core route preview`
 
 ## Summary
-This command previews the routed workflow modules for either free-form request text or one explicit task type using the governed route and workflow indexes.
+This command previews the routed workflow documents for either free-form request text or one explicit task type using the governed route and workflow indexes.
 
 ## Use When
-- You want to see which workflow modules a request is likely to activate before executing the task.
+- You want to see which workflow documents a request is likely to activate before executing the task.
 - You already know the routed task type and want the exact required workflow set.
 - You need structured JSON output for agent or workflow orchestration.
 
@@ -77,8 +77,9 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - Exactly one route selector is required: either `--request` or `--task-type`.
-- In `human` mode, the command prints the selected routed task types, matched trigger keywords, and the merged active workflow-module set.
+- In `human` mode, the command prints the selected routed task types, matched trigger keywords, and the merged active workflow-document set.
 - In `json` mode, the command prints one JSON object with the command name, selected routes, selected workflows, and any advisory warnings.
+- Selected workflow-role records in the JSON payload include `composes_module_paths` so explicit role-to-module orchestration remains auditable alongside the routed workflow set.
 - Free-form request matching is deterministic and advisory. It scores exact phrases first, then falls back to canonicalized trigger-keyword coverage so realistic maintenance requests and adjacent-route prompts do not require verbatim routing-table phrasing.
 - When one route is materially stronger than the others, the preview keeps only the dominant route plus any materially strong secondary matches instead of leaking in low-signal single-word matches. Successor-task handoff prompts stay on `Task Phase Transition` even though that workflow later opens the lifecycle rules as supporting context.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of falling through to no match or a broad repository review.
@@ -89,6 +90,7 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
   - Use `Traceability Reconciliation` for traced planning links, trackers, and family-index drift.
   - Use `Task Lifecycle Management` for creating or editing task records; use `Task Phase Transition` when the main action is a handoff or successor-task boundary, including creating successor tasks for the next phase.
 - The authored routing surfaces remain authoritative when a human or agent executes the task.
+- Workflow-role `composes_module_paths` describe explicit role composition, but they do not activate workflow modules outside the routed workflow set.
 - If no route matches the request text strongly enough, the command exits successfully with an empty selection plus a warning to refine the request or use `--task-type`.
 
 ## Related Commands
@@ -96,7 +98,7 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 |---|---|
 | `watchtower-core route` | Parent command group for route preview operations. |
 | `watchtower-core sync route-index` | Rebuilds the route index this command reads. |
-| `watchtower-core query workflows` | Searches the companion workflow index for the selected modules. |
+| `watchtower-core query workflows` | Searches the companion workflow index for the selected workflow documents. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/route_family.py`
@@ -105,4 +107,4 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - `core/control_plane/indexes/routes/route_index.json`
 
 ## Updated At
-- `2026-03-13T21:40:13Z`
+- `2026-03-24T22:05:00Z`

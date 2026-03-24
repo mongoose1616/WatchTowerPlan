@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:workflow-index:v1",
   "title": "Workflow Index",
-  "description": "Machine-readable lookup index for governed workflow modules and any task-specific extra files they require beyond the routing baseline.",
+  "description": "Machine-readable lookup index for governed workflow modules, workflow roles, and any task-specific extra files they require beyond the routing baseline.",
   "type": "object",
   "required": [
     "$schema",
@@ -50,7 +50,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^(?:core|[^/]+|packs/[^/]+)/workflows/modules/.+\\.md$"
+      "pattern": "^(?:core|[^/]+|packs/[^/]+)/workflows/(?:modules|roles)/.+\\.md$"
     },
     "referenceDocPathList": {
       "type": "array",
@@ -83,6 +83,7 @@
       "type": "object",
       "required": [
         "workflow_id",
+        "workflow_kind",
         "title",
         "summary",
         "status",
@@ -97,6 +98,13 @@
       "properties": {
         "workflow_id": {
           "$ref": "#/$defs/idPattern"
+        },
+        "workflow_kind": {
+          "type": "string",
+          "enum": [
+            "module",
+            "role"
+          ]
         },
         "title": {
           "type": "string",
@@ -151,6 +159,15 @@
             "$ref": "#/$defs/idPattern"
           }
         },
+        "composes_module_paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(?:core|[^/]+|packs/[^/]+)/workflows/modules/.+\\.md$"
+          }
+        },
         "related_paths": {
           "$ref": "#/$defs/stringList"
         },
@@ -188,6 +205,42 @@
             "required": [
               "external_reference_urls"
             ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "workflow_kind": {
+                "const": "role"
+              }
+            },
+            "required": [
+              "workflow_kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "composes_module_paths"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "workflow_kind": {
+                "const": "module"
+              }
+            },
+            "required": [
+              "workflow_kind"
+            ]
+          },
+          "then": {
+            "not": {
+              "required": [
+                "composes_module_paths"
+              ]
+            }
           }
         }
       ]

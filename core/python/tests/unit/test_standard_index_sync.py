@@ -173,17 +173,23 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         for entry in entries
         if entry["standard_id"] == "std.documentation.compact_document_authoring"
     )
-    assert "<pack>/tracking/" in compact_entry.get("operationalization_paths", [])
-    assert "<pack>/initiatives/" in compact_entry.get("operationalization_paths", [])
+    assert "core/docs/templates/pack/README.md" in compact_entry.get(
+        "operationalization_paths",
+        [],
+    )
+    assert "core/docs/references/domain_pack_authoring_reference.md" in compact_entry.get(
+        "operationalization_paths",
+        [],
+    )
 
     git_workflow_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.engineering.git_workflow"
     )
-    assert "<pack>/tracking/task_tracking.md" in git_workflow_entry.get(
+    assert "core/docs/references/github_collaboration_reference.md" in git_workflow_entry.get(
         "operationalization_paths",
         [],
     )
-    assert "<pack>/tracking/coordination_tracking.md" in git_workflow_entry.get(
+    assert "core/docs/references/conventional_commits_reference.md" in git_workflow_entry.get(
         "operationalization_paths",
         [],
     )

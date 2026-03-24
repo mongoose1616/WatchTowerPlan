@@ -417,5 +417,5 @@
       ]
     }
   ],
-  "notes": "This slice governs the roots explicitly named by requirements.md and seeds the currently required router surfaces without treating legacy docs-backed planning as authority."
+  "notes": "This slice governs the current human-facing roots and seeds the required router surfaces without treating legacy docs-backed planning as authority."
 }

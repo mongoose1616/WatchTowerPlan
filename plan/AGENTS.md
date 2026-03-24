@@ -15,8 +15,8 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions for live `plan/**` work.
-- Use standards, references, promoted guidance, and purge history only where they support or conform to those two files.
+- Treat the mirrored foundations under [plan/docs/foundations/](/plan/docs/foundations/), promoted plan standards under [plan/docs/standards/](/plan/docs/standards/), and live plan-pack machine authority under `plan/.wt/**` as the authoritative implementation directions for live `plan/**` work.
+- Use standards, references, promoted guidance, and purge history only where they remain consistent with those current authority surfaces.
 - Use [README.md](/plan/README.md) as the quick reference for plan-root purpose and entrypoints before broader scans.
 - Treat `plan/.wt/` as the authoritative machine root for live plan-pack state.
 - Treat `plan/docs/**` as durable promoted guidance, not live execution state.

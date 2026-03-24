@@ -214,7 +214,7 @@ def test_route_group_prints_group_specific_help(capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Preview the workflow modules that the current routing surfaces would" in captured.out
+    assert "Preview the workflow documents that the current routing surfaces would" in captured.out
     assert "preview" in captured.out
     assert "uv run watchtower-core route preview --request" in captured.out
 

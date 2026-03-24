@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "compact_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:50:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,7 +53,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 
 ## Operationalization
 - `Modes`: `documentation`
-- `Operational Surfaces`: `core/docs/templates/`; `core/docs/templates/README.md`; `<pack>/tracking/`; `<pack>/initiatives/`; `<pack>/projects/`
+- `Operational Surfaces`: `core/docs/templates/`; `core/docs/templates/README.md`; `core/docs/templates/pack/README.md`; `core/docs/references/domain_pack_authoring_reference.md`
 
 ## Validation
 - Reviewers should reject templates that normalize low-value optional sections into every new document.
@@ -70,4 +70,4 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - Pack-owned tracking standards under `<pack>/docs/standards/governance/`
 
 ## Updated At
-- `2026-03-23T16:50:00Z`
+- `2026-03-24T22:30:00Z`

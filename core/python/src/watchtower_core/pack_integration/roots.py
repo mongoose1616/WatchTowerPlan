@@ -102,6 +102,24 @@ def pack_workflow_module_roots(
     )
 
 
+def pack_workflow_role_roots(
+    repo_root: Path,
+    *,
+    loader: ControlPlaneLoader | None = None,
+) -> tuple[str, ...]:
+    """Return hosted-pack workflow-role roots, excluding reusable core."""
+
+    declared_roots = tuple(
+        f"{roots.workflows_root}/roles"
+        for roots in discover_pack_workspace_roots(repo_root, loader=loader)
+    )
+    return _ordered_existing_paths(
+        repo_root,
+        (*declared_roots, *_conventional_relative_paths(repo_root, "workflows/roles")),
+        exclude={"core/workflows/roles"},
+    )
+
+
 def pack_routing_table_paths(
     repo_root: Path,
     *,
@@ -121,6 +139,7 @@ def pack_routing_table_paths(
         ),
         exclude={"core/workflows/ROUTING_TABLE.md"},
     )
+
 
 def _conventional_relative_paths(repo_root: Path, suffix: str) -> tuple[str, ...]:
     matches: list[str] = []
@@ -154,4 +173,5 @@ __all__ = [
     "pack_routing_table_paths",
     "pack_standard_doc_roots",
     "pack_workflow_module_roots",
+    "pack_workflow_role_roots",
 ]

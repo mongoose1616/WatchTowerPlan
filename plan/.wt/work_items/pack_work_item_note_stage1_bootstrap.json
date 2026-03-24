@@ -9,7 +9,7 @@
   "work_item_type": "bootstrap_record",
   "lifecycle_stage": "active",
   "trace_id": "trace.capture_first_plan_workspace_bootstrap",
-  "updated_at": "2026-03-17T04:18:29Z",
+  "updated_at": "2026-03-24T16:42:24Z",
   "tags": [
     "plan_workspace",
     "stage1",
@@ -17,9 +17,9 @@
     "watchtower_target"
   ],
   "source_paths": [
-    "requirements.md",
-    "decisions.md",
+    "core/docs/foundations/repository_scope.md",
     "plan/.wt/manifests/pack_settings.json",
+    "plan/.wt/registries/human_surface_policy_registry.json",
     "plan/README.md",
     "plan/plan_overview.md"
   ],

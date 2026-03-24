@@ -60,6 +60,7 @@ def _run_query_workflows(args: argparse.Namespace) -> int:
         WorkflowSearchParams(
             query=args.query,
             workflow_id=args.workflow_id,
+            workflow_kind=args.workflow_kind,
             phase_type=args.phase_type,
             task_family=args.task_family,
             trigger_tag=args.trigger_tag,
@@ -168,6 +169,7 @@ def _print_foundation_entry(entry: FoundationIndexEntry) -> None:
 def _workflow_entry_payload(entry: WorkflowIndexEntry) -> dict[str, object]:
     return {
         "workflow_id": entry.workflow_id,
+        "workflow_kind": entry.workflow_kind,
         "title": entry.title,
         "summary": entry.summary,
         "status": entry.status,
@@ -179,6 +181,7 @@ def _workflow_entry_payload(entry: WorkflowIndexEntry) -> dict[str, object]:
         "primary_risks": list(entry.primary_risks),
         "trigger_tags": list(entry.trigger_tags),
         "companion_workflow_ids": list(entry.companion_workflow_ids),
+        "composes_module_paths": list(entry.composes_module_paths),
         "related_paths": list(entry.related_paths),
         "reference_doc_paths": list(entry.reference_doc_paths),
         "internal_reference_paths": list(entry.internal_reference_paths),
@@ -190,7 +193,10 @@ def _workflow_entry_payload(entry: WorkflowIndexEntry) -> dict[str, object]:
 
 def _print_workflow_entry(entry: WorkflowIndexEntry) -> None:
     _print_reference_usage_summary(
-        header=f"- {entry.workflow_id} [{entry.status}, {entry.phase_type}, {entry.task_family}]",
+        header=(
+            f"- {entry.workflow_id} "
+            f"[{entry.workflow_kind}, {entry.status}, {entry.phase_type}, {entry.task_family}]"
+        ),
         title=entry.title,
         summary=entry.summary,
         uses_internal_references=entry.uses_internal_references,

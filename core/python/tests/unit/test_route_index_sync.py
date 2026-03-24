@@ -205,6 +205,56 @@ def test_route_index_sync_normalizes_root_relative_workflow_paths(tmp_path: Path
     ]
 
 
+def test_route_index_sync_accepts_role_root_workflow_paths(tmp_path: Path) -> None:
+    repo_root = tmp_path / "repo"
+    core_workflows_dir = repo_root / "core/workflows"
+    core_modules_dir = core_workflows_dir / "modules"
+    core_roles_dir = core_workflows_dir / "roles"
+    core_modules_dir.mkdir(parents=True)
+    core_roles_dir.mkdir(parents=True)
+    (core_modules_dir / "core.md").write_text("# Core\n", encoding="utf-8")
+    (core_roles_dir / "architecture_reviewer.md").write_text(
+        "# Architecture Reviewer Role\n",
+        encoding="utf-8",
+    )
+    (core_workflows_dir / "ROUTING_TABLE.md").write_text(
+        "\n".join(
+            [
+                "# Core Workflow Routing Table",
+                "",
+                "| Task Type | Trigger Keywords (Examples) | Required Workflows |",
+                "|---|---|---|",
+                "| Architecture Review | architecture review | "
+                "`/core/workflows/modules/core.md`, "
+                "`/core/workflows/roles/architecture_reviewer.md` |",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    service = RouteIndexSyncService(ControlPlaneLoader(REPO_ROOT))
+    service._repo_root = repo_root
+
+    document = service.build_document()
+
+    assert document["entries"] == [
+        {
+            "route_id": "route.architecture_review",
+            "task_type": "Architecture Review",
+            "trigger_keywords": ["architecture review"],
+            "required_workflow_ids": [
+                "workflow.core",
+                "workflow.architecture_reviewer",
+            ],
+            "required_workflow_paths": [
+                "core/workflows/modules/core.md",
+                "core/workflows/roles/architecture_reviewer.md",
+            ],
+        }
+    ]
+
+
 def test_route_preview_service_scores_request_text() -> None:
     service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
 

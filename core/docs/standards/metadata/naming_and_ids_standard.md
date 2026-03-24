@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "naming_and_ids"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:55:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -137,7 +137,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/indexes/`; `core/control_plane/contracts/`; `<pack>/`
+- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/indexes/`; `core/control_plane/contracts/`; `core/docs/templates/pack/`
 
 ## Validation
 - Reviewers should reject identifier changes that do not reflect a real identity or compatibility change.
@@ -164,4 +164,4 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Future standards may define narrower rules for specific artifact families, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-23T16:55:00Z`
+- `2026-03-24T22:30:00Z`

@@ -11,8 +11,8 @@
 - This file adds Python-workspace execution rules and must not weaken repository-wide safety or documentation rules.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation contract for workspace, routing, and plan-pack runtime behavior.
-- Use existing standards, references, and helper docs only where they stay consistent with [requirements.md](/requirements.md) and [decisions.md](/decisions.md).
+- Treat the current foundations, shared Python standards, and active control-plane pack and runtime surfaces as the authoritative implementation contract for workspace, routing, and plan-pack runtime behavior.
+- Use existing standards, references, and helper docs only where they stay consistent with those current authority surfaces.
 - Treat [core/python](/core/python) as the canonical shared Python tooling, tests, and local virtual-environment workspace in this repository. The approved plan-owned source boundary now lives under `plan/python/**`.
 - Treat `watchtower_core/**` as the reusable-core Python namespace. Keep plan-specific orchestration and initiative-package behavior in `watchtower_plan/**` when that behavior is truly repo-local.
 - Run Python package commands from `core/python/` unless a narrower subpath is explicitly required.
@@ -33,6 +33,6 @@
 
 ## Do Not
 - Do not install Python packages globally for repository work when the workspace can manage them locally.
-- Do not add ad hoc parallel Python roots such as `core/src/`, `core/tests/`, or top-level CLI source trees outside `core/python/src/watchtower_core/`. The approved plan-domain exception is `plan/python/src/watchtower_plan/`; any additional Python root still requires explicit approval plus companion updates to [requirements.md](/requirements.md), [decisions.md](/decisions.md), workspace READMEs, validation coverage, and routing or command guidance.
+- Do not add ad hoc parallel Python roots such as `core/src/`, `core/tests/`, or top-level CLI source trees outside `core/python/src/watchtower_core/`. The approved plan-domain exception is `plan/python/src/watchtower_plan/`; any additional Python root still requires explicit approval plus companion updates to the current foundations or standards, workspace READMEs, validation coverage, and routing or command guidance.
 - Do not pull repo-local plan behavior into `watchtower_core/**` just to keep nearby callers in one package.
 - Do not commit `.venv`, caches, wheels, or build outputs.

@@ -13,7 +13,7 @@
 ## Role
 - This file applies to `<scope>`.
 - Describe what this scope governs and what instructions always apply here.
-- Put detailed task behavior in workflow modules, standards, or companion docs instead of expanding this file.
+- Put detailed task behavior in workflow documents, standards, or companion docs instead of expanding this file.
 
 ## Scope
 - Applies to `<directory>/**`.
@@ -22,7 +22,7 @@
 
 ## Routing
 - Read this file before working in this scope.
-- Use `<path/to/ROUTING_TABLE.md>` to select the minimum workflow modules required for the task.
+- Use `<path/to/ROUTING_TABLE.md>` to select the minimum workflow documents required for the task.
 - If this scope does not own a routing table, inherit routing from `<parent routing surface>`.
 - Do not turn this file into a second routing table.
 

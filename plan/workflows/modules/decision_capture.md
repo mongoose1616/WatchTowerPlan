@@ -20,8 +20,8 @@ Use this workflow to analyze viable options and record a durable repository deci
 
 ## Additional Files to Load
 - [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md): defines what belongs in a durable repository decision and when this workflow should create one.
-- [requirements.md](/requirements.md): defines the active package boundary and the durable guidance surfaces that decisions must eventually promote into.
-- [decisions.md](/decisions.md): records the locked capture-first workspace decisions that should not be contradicted by new decision work.
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): defines the trace links and affected-artifact references durable decision work should preserve.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): explains why accepted decisions must update canonical standards, workflows, or machine-readable surfaces instead of living only as history.
 
 ## Workflow
 1. Define the viable options and tradeoffs.

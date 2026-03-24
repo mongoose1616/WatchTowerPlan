@@ -3,7 +3,7 @@
   "surface_name": "path_pattern_registry",
   "contract_version": "v1",
   "description": "Canonical path patterns for shared-core surfaces without pack-specific workspace roots.",
-  "updated_at": "2026-03-22T15:02:49Z",
+  "updated_at": "2026-03-24T19:05:00Z",
   "patterns": [
     {
       "family_name": "pack_settings",
@@ -41,6 +41,14 @@
       "family_name": "workflow_module",
       "path_kind": "user_visible",
       "path_pattern": "core/workflows/modules/*.md",
+      "entity_shape": "file",
+      "visibility": "user",
+      "authoritative": true
+    },
+    {
+      "family_name": "workflow_role",
+      "path_kind": "user_visible",
+      "path_pattern": "core/workflows/roles/*.md",
       "entity_shape": "file",
       "visibility": "user",
       "authoritative": true

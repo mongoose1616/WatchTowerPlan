@@ -74,7 +74,7 @@ uv run watchtower-core validate all --format json
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core route` | Advisory route preview for turning a request into workflow modules. |
+| `watchtower-core route` | Advisory route preview for turning a request into workflow documents. |
 | `watchtower-core pack` | Inspects hosted-pack registry entries, runtime manifests, and pack-contract validation. |
 | `watchtower-core <pack-namespace>` | Pack-owned namespace for bootstrap, live query, task, closeout, and other pack-local flows. |
 | `watchtower-core query` | Shared read-only lookup surface for commands, standards, references, foundations, workflows, and durable records. |
@@ -87,4 +87,4 @@ uv run watchtower-core validate all --format json
 - `core/python/src/watchtower_host/cli/registry.py`
 
 ## Updated At
-- `2026-03-22T18:35:00Z`
+- `2026-03-24T20:35:00Z`

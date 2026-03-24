@@ -1,12 +1,12 @@
 # `watchtower-core route`
 
 ## Summary
-This command group previews the workflow-module route that the current authored routing surfaces would activate for a request or explicit task type.
+This command group previews the workflow-document route that the current authored routing surfaces would activate for a request or explicit task type.
 
 ## Use When
 - You want a deterministic advisory route preview without manually reading `AGENTS.md` plus the authoritative routing tables line by line.
 - You need machine-readable route lookup for higher-level workflows or agent calls.
-- You want to confirm which workflow modules a routed task type currently activates.
+- You want to confirm which workflow documents a routed task type currently activates.
 
 ## Command
 | Field | Value |
@@ -53,7 +53,7 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review" 
 | Command | Relationship |
 |---|---|
 | `watchtower-core route preview` | Returns the actual route preview for a request or task type. |
-| `watchtower-core query workflows` | Searches the companion workflow index used to describe the selected workflow modules. |
+| `watchtower-core query workflows` | Searches the companion workflow index used to describe the selected workflow documents. |
 | `watchtower-core sync route-index` | Rebuilds the route index that this command group reads. |
 | `watchtower-core` | Root command that dispatches to this command group. |
 
@@ -63,4 +63,4 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review" 
 - `core/python/src/watchtower_core/query/routes.py`
 
 ## Updated At
-- `2026-03-12T03:32:00Z`
+- `2026-03-24T20:35:00Z`

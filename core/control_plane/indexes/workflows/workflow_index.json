@@ -6,6 +6,7 @@
   "entries": [
     {
       "workflow_id": "workflow.clarification",
+      "workflow_kind": "module",
       "title": "Clarification Workflow",
       "summary": "Use this workflow to reduce the specific ambiguity, conflict, or missing input that is materially blocking the active task.",
       "status": "active",
@@ -41,6 +42,7 @@
     },
     {
       "workflow_id": "workflow.code_implementation",
+      "workflow_kind": "module",
       "title": "Code Implementation Workflow",
       "summary": "Use this workflow to define the implementation approach and apply the requested code change while keeping the affected repository surfaces coherent.",
       "status": "active",
@@ -79,6 +81,7 @@
     },
     {
       "workflow_id": "workflow.code_review",
+      "workflow_kind": "module",
       "title": "Code Review Workflow",
       "summary": "Use this workflow to evaluate a code change for correctness, regression risk, maintainability, standards alignment, and review completeness, then summarize evidence-backed findings clearly.",
       "status": "active",
@@ -118,6 +121,7 @@
     },
     {
       "workflow_id": "workflow.code_validation",
+      "workflow_kind": "module",
       "title": "Code Validation Workflow",
       "summary": "Use this workflow to define, execute, and assess the validation needed for a code change or target surface.",
       "status": "active",
@@ -152,6 +156,7 @@
     },
     {
       "workflow_id": "workflow.commit_closeout",
+      "workflow_kind": "module",
       "title": "Commit Closeout Workflow",
       "summary": "Use this workflow to evaluate commit readiness, prepare a repository-compliant commit message, and create the Git commit when requested.",
       "status": "active",
@@ -206,6 +211,7 @@
     },
     {
       "workflow_id": "workflow.core",
+      "workflow_kind": "module",
       "title": "Core Workflow",
       "summary": "Use this workflow to load the minimum shared standards and instructions that apply across all routed workflow modules.",
       "status": "active",
@@ -237,6 +243,7 @@
     },
     {
       "workflow_id": "workflow.current_state_inspection",
+      "workflow_kind": "module",
       "title": "Current-State Inspection Workflow",
       "summary": "Use this workflow to inspect the current repository, codebase, document set, or architecture surfaces relevant to the active task before recommendations, edits, or judgments are made.",
       "status": "active",
@@ -278,6 +285,7 @@
     },
     {
       "workflow_id": "workflow.documentation_generation",
+      "workflow_kind": "module",
       "title": "Documentation Generation Workflow",
       "summary": "Use this workflow to author a new repository document that is accurate, well-structured, correctly classified, and scoped to one succinct standard, topic, or area.",
       "status": "active",
@@ -319,6 +327,7 @@
     },
     {
       "workflow_id": "workflow.documentation_implementation_reconciliation",
+      "workflow_kind": "module",
       "title": "Documentation-Implementation Reconciliation Workflow",
       "summary": "Use this workflow to compare current CLI or implementation behavior against companion documentation and machine-readable lookup surfaces so drift is found, classified, and resolved explicitly.",
       "status": "active",
@@ -362,6 +371,7 @@
     },
     {
       "workflow_id": "workflow.documentation_refresh",
+      "workflow_kind": "module",
       "title": "Documentation Refresh Workflow",
       "summary": "Use this workflow to refresh and reconcile existing repository documentation or standards after the active scope and drift findings are known.",
       "status": "active",
@@ -398,6 +408,7 @@
     },
     {
       "workflow_id": "workflow.documentation_review",
+      "workflow_kind": "module",
       "title": "Documentation Review Workflow",
       "summary": "Use this workflow to evaluate documentation or standards for accuracy, structure, operationalization, and cross-surface coherence, then summarize evidence-backed findings clearly.",
       "status": "active",
@@ -439,6 +450,7 @@
     },
     {
       "workflow_id": "workflow.domain_pack_integration",
+      "workflow_kind": "module",
       "title": "Domain Pack Integration Workflow",
       "summary": "Use this workflow to implement or refactor the reusable-core, host-runtime, and pack-runtime boundary so hosted packs integrate through explicit contracts instead of direct imports or hidden repository coupling.",
       "status": "active",
@@ -510,6 +522,7 @@
     },
     {
       "workflow_id": "workflow.external_guidance_research",
+      "workflow_kind": "module",
       "title": "External Guidance Research Workflow",
       "summary": "Use this workflow to consult authoritative external guidance only when internal repository guidance is incomplete or the active task depends on version-sensitive, domain-specific, regulatory, standards-driven, or vendor-controlled behavior.",
       "status": "active",
@@ -565,6 +578,7 @@
     },
     {
       "workflow_id": "workflow.foundations_context_review",
+      "workflow_kind": "module",
       "title": "Foundations Context Review Workflow",
       "summary": "Use this workflow to load the repository foundation documents that materially shape planning, design, or foundations-aware review work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.",
       "status": "active",
@@ -632,6 +646,7 @@
     },
     {
       "workflow_id": "workflow.governed_artifact_reconciliation",
+      "workflow_kind": "module",
       "title": "Governed Artifact Reconciliation Workflow",
       "summary": "Use this workflow to reconcile schema-backed governed artifacts with their companion schemas, examples, registries, indexes, loaders, validators, and lookup surfaces so artifact families stay internally coherent.",
       "status": "active",
@@ -694,6 +709,7 @@
     },
     {
       "workflow_id": "workflow.internal_context_review",
+      "workflow_kind": "module",
       "title": "Internal Context Review Workflow",
       "summary": "Use this workflow to identify the repository-specific standards, templates, workflows, ADRs, and canonical documents that should govern the active task before new local behavior is inferred.",
       "status": "active",
@@ -747,6 +763,7 @@
     },
     {
       "workflow_id": "workflow.pack_interface_validation",
+      "workflow_kind": "module",
       "title": "Pack Interface Validation Workflow",
       "summary": "Use this workflow to validate that a hosted pack publishes the required machine contracts, Python hooks, owned roots, and portability guarantees expected by reusable core and host composition.",
       "status": "active",
@@ -792,6 +809,7 @@
     },
     {
       "workflow_id": "workflow.reference_distillation",
+      "workflow_kind": "module",
       "title": "Reference Distillation Workflow",
       "summary": "Use this workflow to extract durable local guidance from external source material and map it cleanly to repository needs.",
       "status": "active",
@@ -841,6 +859,7 @@
     },
     {
       "workflow_id": "workflow.repository_assessment",
+      "workflow_kind": "module",
       "title": "Repository Assessment Workflow",
       "summary": "Use this workflow to assess an inventoried repository for coherence, authority alignment, freshness, maintainability, validation coverage, operational risk, and developer experience.",
       "status": "active",
@@ -880,6 +899,7 @@
     },
     {
       "workflow_id": "workflow.repository_inventory_review",
+      "workflow_kind": "module",
       "title": "Repository Inventory Review Workflow",
       "summary": "Use this workflow to inventory the repository's major surfaces, authority boundaries, execution paths, and review hotspots before deeper repository assessment begins.",
       "status": "active",
@@ -918,6 +938,7 @@
     },
     {
       "workflow_id": "workflow.repository_review",
+      "workflow_kind": "module",
       "title": "Repository Review Workflow",
       "summary": "Use this workflow to synthesize an existing repository review into evidence-backed findings, remediation guidance, and explicit stop-condition evidence.",
       "status": "active",
@@ -953,6 +974,7 @@
     },
     {
       "workflow_id": "workflow.task_handoff_review",
+      "workflow_kind": "module",
       "title": "Task Handoff Review Workflow",
       "summary": "Use this workflow to confirm that the active task output is coherent, handoff-ready, and accompanied by any needed related-surface updates, follow-up notes, or commit-closeout escalation.",
       "status": "active",
@@ -991,6 +1013,7 @@
     },
     {
       "workflow_id": "workflow.task_scope_definition",
+      "workflow_kind": "module",
       "title": "Task Scope Definition Workflow",
       "summary": "Use this workflow to define the task objective, scope boundary, and success conditions clearly enough that downstream workflow modules can execute without guessing.",
       "status": "active",
@@ -1030,6 +1053,7 @@
     },
     {
       "workflow_id": "workflow.acceptance_evidence_reconciliation",
+      "workflow_kind": "module",
       "title": "Acceptance and Evidence Reconciliation Workflow",
       "summary": "Use this workflow to reconcile initiative-local acceptance IDs, acceptance contracts, validation evidence, validator references, and the traceability layer for one traced initiative.",
       "status": "active",
@@ -1088,6 +1112,7 @@
     },
     {
       "workflow_id": "workflow.decision_capture",
+      "workflow_kind": "module",
       "title": "Decision Capture Workflow",
       "summary": "Use this workflow to analyze viable options and record a durable repository decision with rationale, status, and downstream impacts.",
       "status": "active",
@@ -1119,8 +1144,10 @@
         "standards",
         "governance",
         "standard",
-        "requirements",
-        "decisions",
+        "traceability",
+        "core",
+        "foundations",
+        "posture",
         "adr",
         "tradeoff"
       ],
@@ -1130,17 +1157,18 @@
       ],
       "related_paths": [
         "plan/docs/standards/governance/decision_capture_standard.md",
-        "requirements.md",
-        "decisions.md"
+        "plan/docs/standards/governance/traceability_standard.md",
+        "core/docs/foundations/repository_standards_posture.md"
       ],
       "internal_reference_paths": [
         "plan/docs/standards/governance/decision_capture_standard.md",
-        "requirements.md",
-        "decisions.md"
+        "plan/docs/standards/governance/traceability_standard.md",
+        "core/docs/foundations/repository_standards_posture.md"
       ]
     },
     {
       "workflow_id": "workflow.design_record_planning",
+      "workflow_kind": "module",
       "title": "Design Record Planning Workflow",
       "summary": "Use this workflow to define design options, recommend a technical design, and capture the guardrails that `design_record.md` must hand off to `implementation_slice.md`.",
       "status": "active",
@@ -1169,14 +1197,15 @@
         "off",
         "implementation",
         "slice",
-        "requirements",
-        "decisions",
         "plan",
         "docs",
         "standards",
         "governance",
-        "decision",
+        "initiative",
+        "tracking",
         "standard",
+        "traceability",
+        "decision",
         "architecture",
         "solution"
       ],
@@ -1185,18 +1214,19 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "requirements.md",
-        "decisions.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/decision_capture_standard.md"
       ],
       "internal_reference_paths": [
-        "requirements.md",
-        "decisions.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/decision_capture_standard.md"
       ]
     },
     {
       "workflow_id": "workflow.github_task_sync",
+      "workflow_kind": "module",
       "title": "GitHub Task Sync Workflow",
       "summary": "Use this workflow to publish initiative-local live task records to GitHub issues and optional project items while preserving live plan task state as the authoritative source of truth.",
       "status": "active",
@@ -1278,6 +1308,7 @@
     },
     {
       "workflow_id": "workflow.implementation_slice_planning",
+      "workflow_kind": "module",
       "title": "Implementation Slice Planning Workflow",
       "summary": "Use this workflow to turn approved initiative inputs into an actionable `implementation_slice.md` with a work breakdown, validation strategy, and delivery sequence.",
       "status": "active",
@@ -1306,15 +1337,14 @@
         "strategy",
         "delivery",
         "sequence",
-        "requirements",
-        "decisions",
         "plan",
         "docs",
         "standards",
         "governance",
-        "task",
         "tracking",
         "standard",
+        "task",
+        "traceability",
         "execution"
       ],
       "companion_workflow_ids": [
@@ -1322,18 +1352,19 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "requirements.md",
-        "decisions.md",
-        "plan/docs/standards/governance/task_tracking_standard.md"
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md"
       ],
       "internal_reference_paths": [
-        "requirements.md",
-        "decisions.md",
-        "plan/docs/standards/governance/task_tracking_standard.md"
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md"
       ]
     },
     {
       "workflow_id": "workflow.initiative_brief_authoring",
+      "workflow_kind": "module",
       "title": "Initiative Brief Authoring Workflow",
       "summary": "Use this workflow to turn a scoped planning request into a review-ready `initiative_brief.md` that defines the package before design and execution begin.",
       "status": "active",
@@ -1363,10 +1394,13 @@
         "design",
         "execution",
         "begin",
-        "requirements",
-        "decisions",
         "plan",
         "docs",
+        "standards",
+        "governance",
+        "tracking",
+        "standard",
+        "traceability",
         "foundations",
         "readme",
         "capture"
@@ -1375,18 +1409,19 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "requirements.md",
-        "decisions.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/foundations/README.md"
       ],
       "internal_reference_paths": [
-        "requirements.md",
-        "decisions.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/foundations/README.md"
       ]
     },
     {
       "workflow_id": "workflow.initiative_closeout",
+      "workflow_kind": "module",
       "title": "Initiative Closeout Workflow",
       "summary": "Use this workflow to mark one traced initiative as completed, superseded, cancelled, or abandoned while keeping the traceability index, initiative coordination view, and mirrored family trackers aligned.",
       "status": "active",
@@ -1452,6 +1487,7 @@
     },
     {
       "workflow_id": "workflow.task_lifecycle_management",
+      "workflow_kind": "module",
       "title": "Task Lifecycle Management Workflow",
       "summary": "Use this workflow to create, update, split, unblock, or close initiative-local live task records while keeping the live task index, initiative coordination view, and human companion trackers aligned.",
       "status": "active",
@@ -1517,6 +1553,7 @@
     },
     {
       "workflow_id": "workflow.task_phase_transition",
+      "workflow_kind": "module",
       "title": "Task Phase Transition Workflow",
       "summary": "Use this workflow to hand a task from one owner, phase, or execution stage to the next, including explicit successor tasks, without losing context, dependencies, or trace links.",
       "status": "active",
@@ -1585,6 +1622,7 @@
     },
     {
       "workflow_id": "workflow.traceability_reconciliation",
+      "workflow_kind": "module",
       "title": "Traceability Reconciliation Workflow",
       "summary": "Use this workflow to reconcile traced planning and governance artifacts with their companion human trackers, initiative coordination views, family-specific indexes, and unified traceability joins so durable links do not drift silently.",
       "status": "active",

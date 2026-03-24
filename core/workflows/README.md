@@ -1,7 +1,7 @@
 # `core/workflows`
 
 ## Description
-`This directory is the authoritative reusable-core workflow root. It holds shared routing guidance and reusable workflow modules for core implementation, review, validation, documentation, and repository-governance work.`
+`This directory is the authoritative reusable-core workflow root. It holds shared routing guidance, reusable workflow modules, and any future shared workflow roles for core implementation, review, validation, documentation, and repository-governance work.`
 
 ## Paths
 | Path | Description |
@@ -10,8 +10,10 @@
 | `core/workflows/AGENTS.md` | Defines local instructions for core-owned workflow guidance. |
 | `core/workflows/ROUTING_TABLE.md` | Defines the reusable-core task routes and shared workflow-module selection rules. |
 | `core/workflows/modules/README.md` | Explains the authoritative core workflow-module set. |
+| `core/workflows/roles/README.md` | Describes the shared workflow-role root and its current reserved status. |
 
 ## Notes
-- `requirements.md` and `decisions.md` remain authoritative for the remaining workflow split details.
+- Workflow-root boundaries and routing behavior are governed by `core/docs/foundations/repository_scope.md`, `core/docs/standards/workflows/routing_and_context_loading_standard.md`, and the authoritative routing tables.
 - Shared reusable workflow modules live under `core/workflows/modules/`.
+- Shared reusable workflow roles, when they exist, live under `core/workflows/roles/`.
 - Plan-domain routing lives under `plan/workflows/` and may reference shared modules from this root.

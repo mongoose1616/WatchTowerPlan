@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "workflow_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-03-24T22:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,16 +20,16 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable workflow indexes stored under `core/control_plane/indexes/workflows/`.
 
 ## Purpose
-Provide a compact lookup and governance surface for workflow modules and their task-specific extra context without forcing tools to rescan the shared and pack-owned workflow module roots directly for every query, routing, or review task.
+Provide a compact lookup and governance surface for workflow modules, workflow roles, their explicit role-to-module composition links, and their task-specific extra context without forcing tools to rescan the shared and pack-owned workflow roots directly for every query, routing, or review task.
 
 ## Scope
 - Applies to machine-readable workflow index artifacts stored under `core/control_plane/indexes/workflows/`.
 - Covers placement, entry shape, and how workflow-specific extra files to load should be published for query and review tooling.
-- Does not replace the workflow modules themselves as the procedural authority.
+- Does not replace the workflow documents themselves as the procedural authority.
 
 ## Use When
-- Adding or materially updating a workflow module under the shared and pack-owned workflow module roots.
-- Building query or routing tooling that needs a compact view over workflow modules and their extra files to load.
+- Adding or materially updating a workflow document under the shared and pack-owned workflow module or workflow role roots.
+- Building query or routing tooling that needs a compact view over workflow documents and their extra files to load.
 - Auditing whether workflows publish only the task-specific extra files that materially change execution.
 
 ## Related Standards and Sources
@@ -47,8 +47,12 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Author workflow retrieval metadata under `core/control_plane/registries/` instead of hardcoding it in Python.
 - Use JSON for the published workflow-index artifact.
-- Every workflow index entry must point to an existing workflow module under the shared or owning-pack workflow module roots.
+- Every workflow index entry must point to an existing workflow document under the shared or owning-pack workflow module or workflow role roots.
 - Carry stable `workflow_id` values derived from the workflow module filename in the form `workflow.<module_name>`.
+- Publish `workflow_kind` so tooling can distinguish reusable modules from role-oriented orchestration docs.
+- Derive `composes_module_paths` from the role-only `Composes Modules` section rather than inferring role composition only from prose or routed workflow stacks.
+- Treat `composes_module_paths` as auditable role-composition metadata. The routing table remains the authority for which workflow documents activate for one request.
+- Do not reuse the same filename under both `workflows/modules/` and `workflows/roles/`; that would collide on `workflow_id`.
 - Publish retrieval metadata that helps routing and query tooling distinguish workflow phase, task family, common trigger terms, and companion workflows.
 - Capture whether the workflow explicitly publishes extra repo-local files to load and whether those files carry external authority transitively through governed local reference docs.
 - Capture local governed reference-doc paths separately from broader internal path references.
@@ -72,6 +76,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 | Field | Requirement | Notes |
 |---|---|---|
 | `workflow_id` | Required | Stable workflow identifier derived from the workflow module filename. |
+| `workflow_kind` | Required | Controlled kind label such as `module` or `role`. |
 | `title` | Required | Human-readable workflow title from the document H1. |
 | `summary` | Required | Concise description derived from the workflow `Purpose` section. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
@@ -83,6 +88,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 | `primary_risks` | Required | Short controlled list of the main failure modes this workflow is meant to manage. |
 | `trigger_tags` | Required | Retrieval-oriented trigger terms used for workflow lookup. |
 | `companion_workflow_ids` | Optional | Stable workflow identifiers that are commonly paired with this workflow. |
+| `composes_module_paths` | Required for role entries | Repository-relative workflow-module paths explicitly composed by the role. |
 | `related_paths` | Optional | Internal repository paths explicitly related to the workflow entry, including task-specific extra load files. |
 | `reference_doc_paths` | Optional | Governed reference-doc paths cited in `Additional Files to Load`. |
 | `internal_reference_paths` | Optional | Internal repository paths cited in `Additional Files to Load`. |
@@ -93,20 +99,23 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `*/workflows/modules/`
+- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `*/workflows/modules/`; `*/workflows/roles/`
 
 ## Validation
 - The workflow index should validate against its published artifact schema.
 - The companion workflow metadata registry should validate against its published artifact schema before rebuilding the workflow index.
-- Every `doc_path` should exist and point to a file under the shared or owning-pack workflow module roots.
+- Every `doc_path` should exist and point to a file under the shared or owning-pack workflow module or workflow role roots.
 - Every entry should have a stable `workflow_id`.
+- Every entry should publish the correct `workflow_kind` for its root path.
+- Role entries should publish `composes_module_paths`, and every listed path should resolve to another workflow-index entry whose `workflow_kind` is `module`.
 - `phase_type`, `task_family`, and `trigger_tags` should stay retrieval-oriented and should not duplicate whole workflow prose blocks.
 - `reference_doc_paths` should point only to governed reference docs under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - `internal_reference_paths` and `reference_doc_paths` should resolve from repo-native workflow links rather than machine-local filesystem roots.
 - `companion_workflow_ids`, when present, should resolve to other entries in the same workflow index artifact.
 - Workflows that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
 - Generic routing-baseline files should not appear as workflow additional-load paths.
-- Reviewers should reject entries that omit material task-specific additional files already present in the source workflow module.
+- Reviewers should reject entries that omit material task-specific additional files already present in the source workflow document.
+- Reviewers should reject duplicate workflow filenames across workflow-module and workflow-role roots because those collisions break stable workflow lookup.
 
 ## Change Control
 - Update this standard when the repository changes how workflows are indexed, queried, or audited.
@@ -120,4 +129,4 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - [repository_path_index_standard.md](/core/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-03-24T22:05:00Z`

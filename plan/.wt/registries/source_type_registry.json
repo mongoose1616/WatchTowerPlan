@@ -106,5 +106,5 @@
       ]
     }
   ],
-  "notes": "The first-tranche provenance vocabulary covers the categories explicitly called out in requirements.md while leaving room for later refinement."
+  "notes": "The current provenance vocabulary covers the source categories used by the live plan workspace while leaving room for later refinement."
 }

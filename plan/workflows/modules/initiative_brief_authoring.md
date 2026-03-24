@@ -23,8 +23,8 @@ Use this workflow to turn a scoped planning request into a review-ready `initiat
 - Open questions
 
 ## Additional Files to Load
-- [requirements.md](/requirements.md): defines the hard-cutover capture-first package model and the required initiative-local intake surfaces.
-- [decisions.md](/decisions.md): locks the initiative package shape, readiness gate, and hard-cutover authority boundaries.
+- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md): defines the live initiative package model and keeps new briefs aligned with the current plan roots and downstream phase boundaries.
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): defines the shared trace IDs and artifact-link expectations that the brief should seed.
 - [README.md](/plan/docs/foundations/README.md): routes the author to the mirrored foundations corpus that should shape the brief.
 
 ## Workflow

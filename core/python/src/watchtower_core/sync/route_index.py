@@ -12,6 +12,7 @@ from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.pack_integration.roots import (
     pack_routing_table_paths,
     pack_workflow_module_roots,
+    pack_workflow_role_roots,
 )
 
 CORE_ROUTING_TABLE_DOCUMENT_PATH = "core/workflows/ROUTING_TABLE.md"
@@ -27,14 +28,14 @@ def _route_id(task_type: str) -> str:
 def _workflow_path(
     path: str,
     *,
-    workflow_module_roots: tuple[str, ...],
+    workflow_roots: tuple[str, ...],
 ) -> str:
     candidate = path.strip().strip("`")
     if candidate.startswith("/"):
         candidate = candidate[1:]
     if not candidate.endswith(".md"):
         raise ValueError(f"Route index found unexpected workflow path entry: {path}")
-    if any(candidate.startswith(f"{root}/") for root in workflow_module_roots):
+    if any(candidate.startswith(f"{root}/") for root in workflow_roots):
         return candidate
     raise ValueError(f"Route index found unexpected workflow path entry: {path}")
 
@@ -83,9 +84,11 @@ class RouteIndexSyncService:
             CORE_ROUTING_TABLE_DOCUMENT_PATH,
             *pack_routing_table_paths(self._repo_root, loader=self._loader),
         )
-        workflow_module_roots = (
+        workflow_roots = (
             "core/workflows/modules",
+            "core/workflows/roles",
             *pack_workflow_module_roots(self._repo_root, loader=self._loader),
+            *pack_workflow_role_roots(self._repo_root, loader=self._loader),
         )
 
         for routing_table_path in routing_table_paths:
@@ -101,7 +104,7 @@ class RouteIndexSyncService:
                     if keyword.strip()
                 )
                 required_workflow_paths = tuple(
-                    _workflow_path(item, workflow_module_roots=workflow_module_roots)
+                    _workflow_path(item, workflow_roots=workflow_roots)
                     for item in row["Required Workflows"].split(",")
                     if item.strip()
                 )
@@ -124,7 +127,7 @@ class RouteIndexSyncService:
                 for workflow_path in required_workflow_paths:
                     if not (self._repo_root / workflow_path).exists():
                         raise ValueError(
-                            f"Route row points to a missing workflow module: {task_type} -> "
+                            f"Route row points to a missing workflow document: {task_type} -> "
                             f"{workflow_path}"
                         )
 

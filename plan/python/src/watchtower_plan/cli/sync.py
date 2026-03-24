@@ -90,10 +90,11 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
     {
         "name": "workflow-index",
         "handler": "workflow_index",
-        "help": "Rebuild the workflow index from governed workflow modules.",
+        "help": "Rebuild the workflow index from governed workflow documents.",
         "description": """
-            Rebuild the workflow index from the workflow modules under
-            `core/workflows/modules/` and `plan/workflows/modules/`.
+            Rebuild the workflow index from the workflow documents under
+            `core/workflows/modules/`, `core/workflows/roles/`,
+            `plan/workflows/modules/`, and `plan/workflows/roles/`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.
@@ -461,7 +462,10 @@ def _register_materialized_sync_commands(
         {
             "name": "all",
             "handler": "all",
-            "help": "Rebuild all plan-owned local derived indexes and trackers in dependency order.",
+            "help": (
+                "Rebuild all plan-owned local derived indexes and trackers in "
+                "dependency order."
+            ),
             "description": """
                 Rebuild all plan-owned local deterministic sync surfaces in one
                 run.
@@ -472,7 +476,8 @@ def _register_materialized_sync_commands(
             "examples": (
                 "uv run watchtower-core plan sync all",
                 "uv run watchtower-core plan sync all --write",
-                "uv run watchtower-core plan sync all --output-dir /tmp/watchtower_plan_sync --format json",
+                "uv run watchtower-core plan sync all --output-dir "
+                "/tmp/watchtower_plan_sync --format json",
             ),
         },
         {
@@ -557,7 +562,10 @@ def _register_github_task_sync(sync_subparsers: argparse._SubParsersAction) -> N
     )
     parser.add_argument(
         "--repo",
-        help="GitHub repository in owner/name form. Falls back to task metadata or GITHUB_REPOSITORY.",
+        help=(
+            "GitHub repository in owner/name form. Falls back to task "
+            "metadata or GITHUB_REPOSITORY."
+        ),
     )
     parser.add_argument(
         "--task-id",

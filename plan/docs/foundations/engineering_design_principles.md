@@ -18,7 +18,9 @@ applies_to:
   - "core/python/src/watchtower_core/pack_integration/"
   - "plan/python/src/watchtower_plan/"
   - "core/workflows/modules/"
+  - "core/workflows/roles/"
   - "plan/workflows/modules/"
+  - "plan/workflows/roles/"
   - "core/docs/standards/"
   - "plan/docs/standards/"
 aliases:

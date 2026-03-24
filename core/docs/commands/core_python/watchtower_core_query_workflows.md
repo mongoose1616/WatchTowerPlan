@@ -1,11 +1,11 @@
 # `watchtower-core query workflows`
 
 ## Summary
-This command searches the governed workflow index so engineers and agents can find workflow modules by behavior, task-specific extra files to load, or related repository path.
+This command searches the governed workflow index so engineers and agents can find workflow documents by behavior, kind, explicit role-to-module composition, task-specific extra files to load, or related repository path.
 
 ## Use When
-- You know the behavior or task-specific file you need, but not yet the exact workflow module name.
-- You want to confirm which workflow module tells an agent to open a specific standard, template, reference doc, or canonical file next.
+- You know the behavior or task-specific file you need, but not yet the exact workflow document name.
+- You want to confirm which workflow document tells an agent to open a specific standard, template, reference doc, or canonical file next.
 - You want machine-readable workflow lookup results for scripts, workflows, or agent calls.
 
 ## Command
@@ -19,12 +19,13 @@ This command searches the governed workflow index so engineers and agents can fi
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query workflows [--query <text>] [--workflow-id <workflow_id>] [--phase-type <phase>] [--task-family <family>] [--trigger-tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core query workflows [--query <text>] [--workflow-id <workflow_id>] [--workflow-kind <module|role>] [--phase-type <phase>] [--task-family <family>] [--trigger-tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--query <text>`: Free-text query over indexed workflow fields such as workflow ID, title, summary, extra load paths, and reference docs.
 - `--workflow-id <workflow_id>`: Exact workflow identifier such as `workflow.code_validation`.
+- `--workflow-kind <module|role>`: Filter to reusable workflow modules or role-oriented workflow documents.
 - `--phase-type <phase>`: Exact workflow phase filter such as `execution`, `validation`, or `reconciliation`.
 - `--task-family <family>`: Exact workflow task-family filter such as `engineering_validation` or `traceability`.
 - `--trigger-tag <tag>`: Exact trigger-tag filter such as `validation`, `github`, or `scope`.
@@ -67,9 +68,10 @@ uv run watchtower-core query workflows --reference-path core/docs/references/git
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints matching workflow IDs, retrieval metadata, summaries, and any indexed task-specific files to load.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and workflow lookup fields such as `phase_type`, `task_family`, `trigger_tags`, `reference_doc_paths`, `internal_reference_paths`, and `external_reference_urls`.
+- In `human` mode, the command prints matching workflow IDs, workflow kinds, retrieval metadata, summaries, and any indexed task-specific files to load.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and workflow lookup fields such as `workflow_kind`, `phase_type`, `task_family`, `trigger_tags`, `composes_module_paths`, `reference_doc_paths`, `internal_reference_paths`, and `external_reference_urls`.
 - Trigger terms come from workflow titles, purpose summaries, retrieval metadata, and task-specific additional-load files, so adjacent route lookups such as `current cli behavior` and `successor tasks` can resolve without exact module names.
+- Workflow-role results publish `composes_module_paths` so role-to-module orchestration is explicit without turning the query surface into a second routing table.
 - Use workflow lookup to distinguish adjacent boundaries before opening the raw module docs: behavior docs versus implementation drift, schema-family coherence, traced planning drift, task-record lifecycle work, and task-phase handoff work.
 - If no entries match the requested filters, the command exits successfully and reports that no workflow entries matched.
 
@@ -78,8 +80,8 @@ uv run watchtower-core query workflows --reference-path core/docs/references/git
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
 | `watchtower-core <pack-namespace> sync workflow-index` | Rebuilds the workflow index that this command reads when the owning pack publishes that rebuild surface. |
-| `watchtower-core query standards` | Searches the standard index when you know the governing standard but not the workflow module. |
-| `watchtower-core query references` | Searches the reference index when you know the source authority topic but not the workflow module. |
+| `watchtower-core query standards` | Searches the standard index when you know the governing standard but not the workflow document. |
+| `watchtower-core query references` | Searches the reference index when you know the source authority topic but not the workflow document. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/query_knowledge_family.py`
@@ -88,4 +90,4 @@ uv run watchtower-core query workflows --reference-path core/docs/references/git
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At
-- `2026-03-19T20:15:00Z`
+- `2026-03-24T22:05:00Z`

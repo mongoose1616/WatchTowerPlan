@@ -13,12 +13,12 @@
 | `plan/docs/` | Holds durable promoted plan guidance plus the mirrored foundations family. |
 | `plan/initiatives/` | Holds pack-wide initiative containers for live work. |
 | `plan/projects/` | Holds project containers and project-scoped initiative roots. |
-| `plan/workflows/` | Holds the plan-domain workflow routing tables and plan-owned workflow modules. |
+| `plan/workflows/` | Holds the plan-domain workflow routing tables, plan-owned workflow modules, and plan-owned workflow roles. |
 
 ## Notes
 - Human start-here: `plan/README.md`, then `plan/plan_overview.md`.
-- Authoritative implementation contract: `requirements.md` and `decisions.md`.
-- Use local standards and references only where they conform to that contract.
+- Current implementation contract: mirrored foundations under `plan/docs/foundations/`, promoted plan standards under `plan/docs/standards/`, and live plan-pack machine authority under `plan/.wt/**`.
+- Use local references and helper docs only where they remain consistent with those current authority surfaces.
 - Human workflow start-here: `plan/workflows/README.md`.
 - `plan/.wt/` is the authoritative machine root for new live plan-pack state.
 - `plan/.wt/**` is machine state only; keep Python source, workflow prose, and hand-maintained implementation logic out of that tree.
@@ -37,5 +37,5 @@
 - `plan/.wt/indexes/promotion_index.json` and `plan/.wt/indexes/guidance_index.json` are the pack-level lookup surfaces for initiative-local promotion records and approved plan guidance.
 - `plan/.wt/indexes/artifact_index.json` is the pack-level cross-family lookup surface for live plan machine artifacts, pack work-item notes, and aggregate indexes.
 - Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.
-- `plan/workflows/ROUTING_TABLE.md` is the authoritative plan-domain routing table, and its routes may reference shared reusable modules under `core/workflows/modules/`.
+- `plan/workflows/ROUTING_TABLE.md` is the authoritative plan-domain routing table, and its routes may reference shared reusable modules under `core/workflows/modules/` and shared workflow roles under `core/workflows/roles/`.
 - Legacy docs-backed planning has already been purged. Use `core/control_plane/records/purges/**` when you need the machine purge history.

@@ -15,9 +15,8 @@
 | `core/` | Holds shared implementation assets and the authored control-plane tree. |
 
 ## Notes
-- Current repository scope: `core/docs/foundations/repository_scope.md`
-- Authoritative implementation contract: `requirements.md` and `decisions.md`.
-- Treat standards, references, and older supporting docs as secondary guidance that must conform to those two files.
+- Current repository contract: `core/docs/foundations/repository_scope.md`, `core/docs/foundations/repository_standards_posture.md`, shared standards under `core/docs/standards/`, plan-domain standards under `plan/docs/standards/`, and authored machine authority under `core/control_plane/` plus `plan/.wt/`.
+- Treat supporting references and helper docs as secondary guidance that must stay consistent with those current authority surfaces.
 - Human current-state start-here: `plan/README.md`, then `plan/plan_overview.md`
 - Shared workflow start-here: `core/workflows/README.md`
 - Human plan workflow start-here: `plan/workflows/README.md`

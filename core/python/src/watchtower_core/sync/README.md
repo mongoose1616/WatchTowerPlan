@@ -19,8 +19,8 @@ Sync namespace for the reusable generic harness plus repo-shared governed-index 
 - `rendered_tracking.py`: Shared rendered-tracker bootstrap, write helpers, and initiative-status summary shaping used by hosted packs.
 
 ## Related Surfaces
-- `requirements.md`
-- `decisions.md`
+- `core/control_plane/indexes/references/reference_index.json`
+- `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Notes
 - Keep reusable harness behavior, dependency ordering, shared reference-resolution helpers, and repo-shared rebuild targets here.

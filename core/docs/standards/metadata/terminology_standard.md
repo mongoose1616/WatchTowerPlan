@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "terminology"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:50:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -52,7 +52,8 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 | Canonical Term | Meaning in This Repository | Notes |
 |---|---|---|
 | `control plane` | The canonical, versioned, machine-readable authority under `core/control_plane/` | Not mutable runtime state. |
-| `workflow module` | A task-execution document under the shared and pack-owned workflow module roots | Loaded through routing rather than used as a broad narrative doc. |
+| `workflow module` | A reusable task-execution document under the shared and pack-owned workflow module roots | Loaded through routing rather than used as a broad narrative doc. |
+| `workflow role` | A role-oriented workflow document under the shared and pack-owned workflow role roots | Applies a persona, review lens, or orchestration posture while publishing explicit `Composes Modules` links to the reusable modules it directly orchestrates. |
 | `routing table` | The canonical workflow-selection surface at the shared routing table and any pack-owned routing tables | Handles classification, not execution steps. |
 | `standard` | A normative repository rule under the shared and pack-owned standards roots | Higher authority than references or templates. |
 | `reference` | A supporting lookup document, usually grounded in external source material | Not the same as local policy. |
@@ -71,7 +72,7 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 
 ## Operationalization
 - `Modes`: `artifact`; `workflow`
-- `Operational Surfaces`: `core/control_plane/`; `core/workflows/ROUTING_TABLE.md`; `<pack>/workflows/ROUTING_TABLE.md`
+- `Operational Surfaces`: `core/control_plane/`; `core/workflows/ROUTING_TABLE.md`; `core/docs/templates/routing_table_template.md`
 
 ## Validation
 - Durable docs and governed artifacts should not use competing terms as if they were equal canonical names.
@@ -96,4 +97,4 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - When a term is unstable or contested, resolve it in a standard or decision artifact before letting it spread through many documents.
 
 ## Updated At
-- `2026-03-23T16:50:00Z`
+- `2026-03-24T22:30:00Z`

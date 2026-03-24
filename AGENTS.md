@@ -34,8 +34,8 @@
 - `plan/tracking/` and `plan/plan_overview.md` are derived human planning surfaces, not manual authority.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions and details.
-- Use existing standards, references, and helper docs only where they support or conform to [requirements.md](/requirements.md) and [decisions.md](/decisions.md); do not let them materially change what those two files decided.
+- Treat the authored foundations under [core/docs/foundations/](/core/docs/foundations/), repository-wide standards under [core/docs/standards/](/core/docs/standards/), plan-domain standards under [plan/docs/standards/](/plan/docs/standards/), and authored machine-readable authority under [core/control_plane](/core/control_plane/README.md) plus `plan/.wt/**` as the current repository contract.
+- When guidance disagrees, prefer this precedence order: current machine-readable authority for deterministic state and rules, then current foundations and standards, then supporting references and helper docs.
 - If work is happening under [core/docs](/core/docs), also apply [core/docs/AGENTS.md](/core/docs/AGENTS.md).
 - If work is happening under [plan/docs](/plan/docs), also apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md).
 - If work is happening under [plan](/plan), also apply [plan/AGENTS.md](/plan/AGENTS.md).
@@ -57,7 +57,7 @@
 
 ## Do
 - Follow the routed workflow modules for task execution.
-- Keep implementation choices aligned to [requirements.md](/requirements.md) and [decisions.md](/decisions.md) when companion guidance disagrees or is incomplete.
+- Keep implementation choices aligned to the current foundations, standards, and machine-readable authority surfaces when companion guidance disagrees or is incomplete.
 - Use the nearest applicable [README.md](/README.md) as the quick reference before broader scans.
 - Apply [core/docs/AGENTS.md](/core/docs/AGENTS.md) when work falls under `core/docs/**`.
 - Apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md) when work falls under `plan/docs/**`.
@@ -69,7 +69,7 @@
 
 ## Do Not
 - Do not bypass the domain-owned routing tables under [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md) and [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md) when selecting workflow modules.
-- Do not treat older supporting standards, references, or legacy planning docs as authority when they conflict materially with [requirements.md](/requirements.md) or [decisions.md](/decisions.md).
+- Do not treat retained history, supporting references, or older planning docs as authority when current foundations, standards, or machine-readable control-plane surfaces already publish the living rule.
 - Do not place durable documentation outside `core/docs/` and `plan/docs/`, or workflow procedures outside `core/workflows/` and `plan/workflows/`.
 - Do not store mutable runtime state, caches, or transient event streams under `core/control_plane/`.
 - Do not add unapproved parallel Python package roots or alternate virtual-environment conventions outside `core/python/`. The approved exception is the plan-domain package root under `plan/python/**`.

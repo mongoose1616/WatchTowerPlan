@@ -101,6 +101,15 @@ def _write_json(repo_root: Path, relative_path: str, document: dict[str, object]
 def _seed_historical_lookup_indexes(repo_root: Path) -> None:
     initiative_index = _load_json(repo_root, PLAN_INITIATIVE_INDEX_PATH)
     entries = initiative_index.get("entries")
+    if not isinstance(entries, list) or not entries:
+        bootstrap_packwide_initiative(
+            repo_root,
+            trace_id="trace.example_template",
+            title="Example Template Initiative",
+            summary="Seeds one baseline initiative entry for historical lookup fixture setup.",
+        )
+        initiative_index = _load_json(repo_root, PLAN_INITIATIVE_INDEX_PATH)
+        entries = initiative_index.get("entries")
     assert isinstance(entries, list) and entries
     template = dict(entries[0])
 

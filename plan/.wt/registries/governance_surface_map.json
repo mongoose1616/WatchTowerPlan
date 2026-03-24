@@ -3,7 +3,7 @@
   "surface_name": "governance_surface_map",
   "contract_version": "v1",
   "description": "Governed non-artifact surfaces for the active plan pack.",
-  "updated_at": "2026-03-16T05:15:00Z",
+  "updated_at": "2026-03-24T19:05:00Z",
   "surfaces": [
     {
       "surface_name": "pack_settings",
@@ -62,9 +62,23 @@
       "visibility": "user"
     },
     {
+      "surface_name": "workflow_role_root",
+      "surface_kind": "workflow_role_root",
+      "path": "core/workflows/roles/",
+      "authority": "authoritative",
+      "visibility": "user"
+    },
+    {
       "surface_name": "plan_workflow_module_root",
       "surface_kind": "workflow_module_root",
       "path": "plan/workflows/modules/",
+      "authority": "authoritative",
+      "visibility": "user"
+    },
+    {
+      "surface_name": "plan_workflow_role_root",
+      "surface_kind": "workflow_role_root",
+      "path": "plan/workflows/roles/",
       "authority": "authoritative",
       "visibility": "user"
     }

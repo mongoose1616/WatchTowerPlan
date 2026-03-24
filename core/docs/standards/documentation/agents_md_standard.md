@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "agents_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:02:00Z"
+updated_at: "2026-03-24T20:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -24,13 +24,13 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 
 ## Scope
 - Applies to root and nested `AGENTS.md` files in this repository.
-- Covers what belongs in `AGENTS.md`, how nested files inherit from parent files, and how `AGENTS.md` should relate to `README.md`, routing tables, workflow modules, standards, and templates.
+- Covers what belongs in `AGENTS.md`, how nested files inherit from parent files, and how `AGENTS.md` should relate to `README.md`, routing tables, workflow documents, standards, and templates.
 - Does not define task-specific workflow behavior in detail.
 
 ## Use When
 - Creating a new root or nested `AGENTS.md`.
 - Updating the structure or local rules of an existing `AGENTS.md`.
-- Reviewing whether instructions belong in `AGENTS.md`, a `README.md`, a routing table, a workflow module, or a standard.
+- Reviewing whether instructions belong in `AGENTS.md`, a `README.md`, a routing table, a workflow document, or a standard.
 
 ## Related Standards and Sources
 - [readme_md_standard.md](/core/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -47,7 +47,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - Nested `AGENTS.md` files inherit parent `AGENTS.md` files and must not weaken parent safety, governance, or framing rules.
 - `AGENTS.md` should point to the relevant routing surface rather than embedding full routing logic.
 - Use the nearest applicable `README.md` as the quick reference for directory purpose and file inventory.
-- Put detailed task behavior in routed workflow modules rather than in `AGENTS.md`.
+- Put detailed task behavior in routed workflow documents rather than in `AGENTS.md`.
 - Put durable reference material, standards catalogs, templates, or long procedural content in the appropriate companion docs rather than in `AGENTS.md`.
 - Keep `AGENTS.md` as plain Markdown by default. Do not add YAML front matter unless a narrower future rule explicitly introduces a governed `AGENTS.md` metadata profile.
 - Delete any section from an instantiated `AGENTS.md` file if it does not help the current scope.
@@ -89,4 +89,4 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - The best `AGENTS.md` files are short, scoped, and obviously tied to the directory they govern.
 
 ## Updated At
-- `2026-03-12T01:02:00Z`
+- `2026-03-24T20:35:00Z`

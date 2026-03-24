@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T20:35:00Z"
+updated_at: "2026-03-24T22:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -113,7 +113,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 
 ## Operationalization
 - `Modes`: `artifact`; `validation`; `runtime`
-- `Operational Surfaces`: `core/control_plane/registries/pack_registry.json`; `<pack>/.wt/manifests/pack_runtime_manifest.json`; `core/python/src/watchtower_core/pack_integration/`; `core/python/src/watchtower_core/validation/pack_contract.py`; `<pack>/docs/commands/core_python/`
+- `Operational Surfaces`: `core/control_plane/registries/pack_registry.json`; `core/docs/templates/pack/pack_runtime_manifest_template.json`; `core/python/src/watchtower_core/pack_integration/`; `core/python/src/watchtower_core/validation/pack_contract.py`; `core/docs/templates/pack/pack_namespace_command_reference_template.md`
 
 ## Validation
 - `watchtower-core validate all` should fail closed on pack-interface contract drift.
@@ -145,4 +145,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-23T20:35:00Z`
+- `2026-03-24T22:30:00Z`

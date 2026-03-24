@@ -464,5 +464,5 @@
       "visibility": "mixed"
     }
   ],
-  "notes": "This registry publishes the live plan-pack artifact family taxonomy required by requirements.md so placement, status semantics, renderability, and derived-index participation stop living only in path conventions and scattered runtime code."
+  "notes": "This registry publishes the live plan-pack artifact family taxonomy so placement, status semantics, renderability, and derived-index participation stop living only in path conventions and scattered runtime code."
 }

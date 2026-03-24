@@ -15,6 +15,7 @@ class WorkflowSearchParams:
 
     query: str | None = None
     workflow_id: str | None = None
+    workflow_kind: str | None = None
     phase_type: str | None = None
     task_family: str | None = None
     trigger_tag: str | None = None
@@ -34,6 +35,9 @@ class WorkflowQueryService:
 
         index = self._loader.load_workflow_index()
         workflow_id = params.workflow_id.casefold() if params.workflow_id is not None else None
+        workflow_kind = (
+            params.workflow_kind.casefold() if params.workflow_kind is not None else None
+        )
         phase_type = params.phase_type.casefold() if params.phase_type is not None else None
         task_family = params.task_family.casefold() if params.task_family is not None else None
         trigger_tag = params.trigger_tag.casefold() if params.trigger_tag is not None else None
@@ -45,6 +49,8 @@ class WorkflowQueryService:
         matches: list[tuple[int, WorkflowIndexEntry]] = []
         for entry in index.entries:
             if workflow_id is not None and entry.workflow_id.casefold() != workflow_id:
+                continue
+            if workflow_kind is not None and entry.workflow_kind.casefold() != workflow_kind:
                 continue
             if phase_type is not None and entry.phase_type.casefold() != phase_type:
                 continue
@@ -67,6 +73,7 @@ class WorkflowQueryService:
                 params.query,
                 (
                     entry.workflow_id,
+                    entry.workflow_kind,
                     entry.title,
                     entry.summary,
                     entry.phase_type,
@@ -74,6 +81,7 @@ class WorkflowQueryService:
                     *entry.primary_risks,
                     *entry.trigger_tags,
                     *entry.companion_workflow_ids,
+                    *entry.composes_module_paths,
                     *entry.related_paths,
                     *entry.reference_doc_paths,
                     *entry.internal_reference_paths,

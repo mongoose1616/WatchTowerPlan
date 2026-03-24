@@ -44,10 +44,12 @@ def test_route_preview_supports_human_route_output(monkeypatch, capsys) -> None:
                 selected_workflows=(
                     SimpleNamespace(
                         workflow_id="workflow.repository_review",
+                        workflow_kind="module",
                         title="Repository Review",
                         doc_path="core/workflows/modules/repository_review.md",
                         phase_type="assessment",
                         task_family="review",
+                        composes_module_paths=(),
                     ),
                 ),
                 warnings=("Prefer a bounded scope.",),

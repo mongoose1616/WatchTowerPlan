@@ -47,7 +47,7 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 
 ## Behavior and Outputs
 - The command reads the shared routing table and any pack-owned routing tables and rebuilds the machine-readable route index deterministically.
-- The command fails closed when a route row points to a missing workflow module or omits required routing data.
+- The command fails closed when a route row points to a missing workflow document or omits required routing data.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many route entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
@@ -68,4 +68,4 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 - `core/control_plane/indexes/routes/route_index.json`
 
 ## Updated At
-- `2026-03-10T22:45:00Z`
+- `2026-03-24T20:35:00Z`

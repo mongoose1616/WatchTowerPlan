@@ -15,7 +15,7 @@
 | `core/docs/templates/` | Holds reusable templates for governed human-authored documents. |
 
 ## Notes
-- `requirements.md` and `decisions.md` are the authoritative contract for documentation roots and endstate behavior.
+- Documentation roots and endstate behavior are governed by the authored foundations under `core/docs/foundations/` and the current standards under `core/docs/standards/`.
 - `core/docs/foundations/` is the authored foundations source and `plan/docs/foundations/` is the required byte-identical mirror.
 - Pack-owned command pages should live under the owning pack docs root instead of shared core docs.
 - Do not place live initiative state or pack-domain execution artifacts here.
