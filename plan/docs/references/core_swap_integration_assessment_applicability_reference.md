@@ -6,7 +6,7 @@ summary: Durable reference for interpreting the external WatchTowerPlan core-swa
 type: reference
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-24T00:40:00Z'
+updated_at: '2026-03-24T01:56:23Z'
 audience: shared
 authority: reference
 applies_to:
@@ -41,7 +41,9 @@ the source repository.
   default repository pack.
 - `watchtower-core pack describe --pack plan --format json` succeeded.
 - `watchtower-core plan --help` succeeded.
-- `watchtower-core validate all --format json` passed with `433/433` checks.
+- `pytest core/python/tests/unit/test_standard_index_sync.py -q` passed with
+  `7/7` tests.
+- `watchtower-core validate all --format json` passed with `464/464` checks.
 
 ## Applicability Matrix
 
@@ -98,14 +100,28 @@ the source repository.
   `ControlPlaneLoader` and also checks an externalized pack root under
   `packs/oversight/`.
 
+## Recommendation And Contract Applicability
+
+- The report's rehost/bootstrap procedure, normative rehost contract,
+  acceptance criteria, and fix-order sections are recipient-repository
+  guidance for a copied-core consumer whose hosted pack is `oversight`.
+- Those sections are not remediation steps for WatchTowerPlan. This repository
+  is the authored source host for `pack.plan`, so rewriting
+  `core/control_plane/registries/pack_registry.json` or
+  `core/python/pyproject.toml` to `oversight` here would be incorrect.
+- The only report item that translated into a source-repository shared-core fix
+  was item `23`, and the current `pytest core/python/tests/unit/test_standard_index_sync.py -q`
+  pass confirms that host-aware placeholder coverage still holds.
+
 ## Additional Review Items
 
 - Shared docs that mention literal `plan/` paths remain intentional when they
   are describing the current WatchTowerPlan repository rather than defining a
   pack-neutral portability contract.
 - Remaining `<pack>` placeholders stay valid where they are deliberate
-  pack-neutral authoring tokens and no active validator flags them in the
-  current repository.
+  pack-neutral authoring tokens, the report's placeholder sweep was aimed at a
+  different recipient host, and no active validator flags them in the current
+  repository.
 
 ## Related Surfaces
 
