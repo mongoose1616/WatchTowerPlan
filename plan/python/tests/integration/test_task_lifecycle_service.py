@@ -38,7 +38,9 @@ def _copy_repo_subset(tmp_path: Path) -> Path:
     return repo_root
 
 
-def test_task_create_write_refreshes_task_and_initiative_surfaces(tmp_path: Path) -> None:
+def test_task_create_write_refreshes_task_and_initiative_surfaces(
+    tmp_path: Path,
+) -> None:
     repo_root = _copy_repo_subset(tmp_path)
     trace_id = "trace.workflow_system_operationalization"
     task_id = "task.workflow_system_operationalization.validate_task_lifecycle_slice"
@@ -69,7 +71,8 @@ def test_task_create_write_refreshes_task_and_initiative_surfaces(tmp_path: Path
 
     assert result.wrote is True
     assert (
-        result.doc_path == "plan/initiatives/workflow_system_operationalization/.wt/tasks/"
+        result.doc_path
+        == "plan/initiatives/workflow_system_operationalization/.wt/tasks/"
         "validate_the_task_lifecycle_slice/task.json"
     )
     assert (repo_root / result.doc_path).exists()
@@ -79,16 +82,30 @@ def test_task_create_write_refreshes_task_and_initiative_surfaces(tmp_path: Path
     assert task_entry.doc_path == result.doc_path
     assert task_entry.status == "active"
     assert task_entry.task_status == "planned"
+    assert task_entry.governing_document_paths == (
+        "plan/initiatives/workflow_system_operationalization/initiative_brief.md",
+        "plan/initiatives/workflow_system_operationalization/design_record.md",
+        "plan/initiatives/workflow_system_operationalization/implementation_slice.md",
+    )
 
     initiative_entry = InitiativeQueryService(loader).get(trace_id)
     assert task_id in initiative_entry.active_task_ids
     assert initiative_entry.open_task_count >= 2
+    assert initiative_entry.governing_document_paths == (
+        "plan/initiatives/workflow_system_operationalization/initiative_brief.md",
+        "plan/initiatives/workflow_system_operationalization/design_record.md",
+        "plan/initiatives/workflow_system_operationalization/implementation_slice.md",
+    )
 
 
-def test_task_update_write_keeps_terminal_task_at_stable_live_path(tmp_path: Path) -> None:
+def test_task_update_write_keeps_terminal_task_at_stable_live_path(
+    tmp_path: Path,
+) -> None:
     repo_root = _copy_repo_subset(tmp_path)
     trace_id = "trace.workflow_system_operationalization_terminal"
-    task_id = "task.workflow_system_operationalization_terminal.finish_task_lifecycle_slice"
+    task_id = (
+        "task.workflow_system_operationalization_terminal.finish_task_lifecycle_slice"
+    )
     bootstrap_packwide_initiative(
         repo_root,
         trace_id=trace_id,
@@ -117,8 +134,12 @@ def test_task_update_write_keeps_terminal_task_at_stable_live_path(tmp_path: Pat
             task_id=task_id,
             task_status="completed",
             owner="validation_engineer",
-            scope_items=("Close the lifecycle slice without moving the live task path.",),
-            done_when_items=("The live task remains at its initiative-local JSON path.",),
+            scope_items=(
+                "Close the lifecycle slice without moving the live task path.",
+            ),
+            done_when_items=(
+                "The live task remains at its initiative-local JSON path.",
+            ),
         ),
         write=True,
     )
@@ -225,9 +246,7 @@ def test_task_update_write_preserves_governed_companion_paths_when_task_status_c
         write=True,
     )
 
-    contract_relative_path = (
-        "core/control_plane/contracts/acceptance/task_lifecycle_service_path_repair_acceptance.json"
-    )
+    contract_relative_path = "core/control_plane/contracts/acceptance/task_lifecycle_service_path_repair_acceptance.json"
     evidence_relative_path = (
         "core/control_plane/records/validation_evidence/"
         "task_lifecycle_service_path_repair_planning_baseline.json"
@@ -294,12 +313,16 @@ def test_task_update_write_preserves_governed_companion_paths_when_task_status_c
 
     assert result.doc_path == created.doc_path
 
-    contract = json.loads((repo_root / contract_relative_path).read_text(encoding="utf-8"))
+    contract = json.loads(
+        (repo_root / contract_relative_path).read_text(encoding="utf-8")
+    )
     targets = contract["entries"][0]["validation_targets"]
     assert targets == [created.doc_path]
     assert contract["entries"][0]["related_paths"] == [created.doc_path]
 
-    evidence = json.loads((repo_root / evidence_relative_path).read_text(encoding="utf-8"))
+    evidence = json.loads(
+        (repo_root / evidence_relative_path).read_text(encoding="utf-8")
+    )
     assert evidence["related_paths"] == [created.doc_path]
     assert evidence["checks"][0]["subject_paths"] == [created.doc_path]
 

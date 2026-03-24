@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T14:00:00Z"
+updated_at: "2026-03-23T23:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -66,6 +66,7 @@ This standard defines the repository's live initiative tracking model so one tra
 - Use `plan/.wt/indexes/coordination_index.json` as the live machine start-here path for repo-level planning state.
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
 - Use the live task index and task records as the authoritative source for active owners, open tasks, blockers, and execution status.
+- Keep the initiative package's effective governing-document set explicit so the initiative view can show which authored docs, standards, or references govern current implementation and validation work.
 - Publish one initiative entry per shared `trace_id`.
 - Every initiative entry must make these questions easy to answer:
   - what this initiative is
@@ -86,6 +87,7 @@ This standard defines the repository's live initiative tracking model so one tra
 |---|---|
 | Traceability index | Authoritative machine join for trace-linked artifact IDs and initiative closeout status |
 | Live task records and task index | Authoritative source for active ownership, blockers, and execution state |
+| Initiative state `governing_document_paths` | Authoritative initiative-level governing-document set for inherited task guidance and rendered initiative views |
 | Initiative index | Derived machine-readable live initiative-family surface |
 | `initiative_tracking.md` | Derived human-readable initiative board with browseable active and terminal tables |
 
@@ -104,6 +106,7 @@ This standard defines the repository's live initiative tracking model so one tra
 - Every initiative entry should correspond to one current traceability entry.
 - Every initiative entry should publish `current_phase`, `next_action`, and `next_surface_path`.
 - Active initiative owner and active-task detail should agree with the current live task corpus whenever non-terminal tasks exist.
+- Initiative entries should also surface the effective governing-document set so later contributors can reopen the same reviewed standards and design inputs without reparsing the full initiative package first.
 - Initiative closeout state should agree with the traceability index rather than competing with it.
 - Reviewers should reject initiative views that hide ambiguity by inventing owners, tasks, or progress that the source surfaces do not publish.
 - Reviewers should also reject initiative views that collapse terminal history into count-only summaries when the generated tracker can show the underlying rows directly.
@@ -121,4 +124,4 @@ This standard defines the repository's live initiative tracking model so one tra
 - [README.md](/plan/tracking/README.md)
 
 ## Updated At
-- `2026-03-18T14:00:00Z`
+- `2026-03-23T23:45:00Z`

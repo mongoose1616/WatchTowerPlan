@@ -20,6 +20,7 @@ def _plan_args(**overrides: object) -> argparse.Namespace:
         "updated_at": "2026-03-10T23:59:59Z",
         "write": False,
         "include_decision": False,
+        "governing_doc": [],
         "task_id": None,
         "task_owner": None,
         "task_kind": "governance",
@@ -45,6 +46,8 @@ def _task_args(**overrides: object) -> argparse.Namespace:
         "done_when": ["It is done."],
         "applies_to": [],
         "clear_applies_to": False,
+        "governing_doc": [],
+        "clear_governing_docs": False,
         "related_id": [],
         "clear_related_ids": False,
         "depends_on": [],
@@ -284,7 +287,9 @@ def test_task_transition_prints_move_and_closeout_guidance(monkeypatch, capsys) 
     monkeypatch.setattr(task_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(task_handlers, "TaskLifecycleService", FakeService)
 
-    result = task_handlers._run_task_transition(_task_args(task_status="completed", write=True))
+    result = task_handlers._run_task_transition(
+        _task_args(task_status="completed", write=True)
+    )
 
     captured = capsys.readouterr()
     assert result == 0
@@ -338,7 +343,9 @@ def test_task_transition_supports_json_error_output(monkeypatch, capsys) -> None
     monkeypatch.setattr(task_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(task_handlers, "TaskLifecycleService", FakeService)
 
-    result = task_handlers._run_task_transition(_task_args(task_status="completed", format="json"))
+    result = task_handlers._run_task_transition(
+        _task_args(task_status="completed", format="json")
+    )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)

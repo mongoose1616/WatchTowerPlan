@@ -516,6 +516,9 @@ def _task_entry_payload(
         "updated_at": entry.updated_at,
         "blocked_by": list(getattr(entry, "blocked_by", ())),
         "depends_on": list(getattr(entry, "depends_on", ())),
+        "governing_document_paths": list(
+            getattr(entry, "governing_document_paths", ())
+        ),
         "related_ids": list(getattr(entry, "related_ids", ())),
     }
     if include_dependency_details:
@@ -544,6 +547,8 @@ def _print_task_entry(
     print(f"- {entry.task_id} [{task_status}, {entry.priority}]")
     print(f"  {entry.title}")
     print(f"  {entry.summary}")
+    if entry.governing_document_paths:
+        print("  Governing docs: " + ", ".join(entry.governing_document_paths))
     if include_dependency_details:
         if entry.blocked_by:
             print(f"  Blocked by: {', '.join(entry.blocked_by)}")

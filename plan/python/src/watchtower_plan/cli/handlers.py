@@ -44,6 +44,7 @@ def _run_plan_bootstrap(args: argparse.Namespace) -> int:
                         summary=args.summary,
                         initiative_slug=args.initiative_slug,
                         owner=args.owner,
+                        governing_document_paths=tuple(args.governing_doc),
                         task_specs=(
                             InitiativeTaskSpec(
                                 task_id=args.task_id,
@@ -67,6 +68,7 @@ def _run_plan_bootstrap(args: argparse.Namespace) -> int:
                         summary=args.summary,
                         initiative_slug=args.initiative_slug,
                         owner=args.owner,
+                        governing_document_paths=tuple(args.governing_doc),
                         task_specs=(
                             InitiativeTaskSpec(
                                 task_id=args.task_id,

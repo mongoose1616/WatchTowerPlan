@@ -9,6 +9,10 @@ from watchtower_core.documentation.front_matter_paths import (
 )
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_plan.sync.coordination import CoordinationSyncService
+from watchtower_plan.governing_documents import (
+    effective_initiative_governing_document_paths,
+    normalize_governing_document_paths,
+)
 from watchtower_plan.tasks.models import (
     TaskCreateParams,
     TaskMutationResult,
@@ -121,6 +125,18 @@ class TaskLifecycleService:
         related_ids = tuple(
             value.strip() for value in params.related_ids if value.strip()
         )
+        governing_document_paths = (
+            normalize_governing_document_paths(
+                params.governing_document_paths,
+                origin=f"task create {task_id} governing_document_paths",
+                repo_root=self._loader.repo_root,
+            )
+            if params.governing_document_paths
+            else effective_initiative_governing_document_paths(
+                initiative.document,
+                repo_root=self._loader.repo_root,
+            )
+        )
         depends_on = tuple(
             value.strip() for value in params.depends_on if value.strip()
         )
@@ -155,6 +171,7 @@ class TaskLifecycleService:
             blocked_by=blocked_by,
             related_ids=related_ids,
             applies_to=applies_to,
+            governing_document_paths=governing_document_paths,
             scope_items=scope_items,
             done_when_items=done_when_items,
         )
@@ -320,6 +337,21 @@ class TaskLifecycleService:
             "applies_to",
             values=applies_to,
             clear=params.clear_applies_to,
+        )
+        governing_document_paths = (
+            normalize_governing_document_paths(
+                params.governing_document_paths,
+                origin=f"task update {document.task_id} governing_document_paths",
+                repo_root=self._loader.repo_root,
+            )
+            if params.governing_document_paths is not None
+            else None
+        )
+        changed |= apply_optional_list_field(
+            task_state,
+            "governing_document_paths",
+            values=governing_document_paths,
+            clear=params.clear_governing_document_paths,
         )
         changed |= apply_optional_list_field(
             task_state,

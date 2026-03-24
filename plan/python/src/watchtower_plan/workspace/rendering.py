@@ -10,6 +10,9 @@ from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.rebuild import RenderedViewBuilder, RenderedViewSpec
 
+from watchtower_plan.governing_documents import (
+    effective_initiative_governing_document_paths,
+)
 from watchtower_plan.workspace.constants import (
     INITIATIVE_PLAN_SURFACE_ID,
     INITIATIVE_PROGRESS_SURFACE_ID,
@@ -488,15 +491,16 @@ def initiative_linked_output_lines(
 ) -> tuple[str, ...]:
     initiative = snapshot.initiative_document
     lines: list[str] = []
-    for authored_input in initiative.get("authored_inputs", ()):
-        if not isinstance(authored_input, dict):
-            continue
-        path = authored_input.get("path")
-        if not isinstance(path, str) or not path:
-            continue
-        lines.append(
-            f"- Authored input: {render_repo_link(path, label=Path(path).name)}"
+    authored_input_paths = {
+        str(record.get("path"))
+        for record in initiative.get("authored_inputs", ())
+        if isinstance(record, dict) and isinstance(record.get("path"), str)
+    }
+    for path in effective_initiative_governing_document_paths(initiative):
+        label = (
+            "Authored input" if path in authored_input_paths else "Governing document"
         )
+        lines.append(f"- {label}: {render_repo_link(path, label=Path(path).name)}")
     lines.extend(
         (
             f"- Rendered plan: {render_repo_link(f'{snapshot.initiative_root}/plan.md', label='plan.md')}",

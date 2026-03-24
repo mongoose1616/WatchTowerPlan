@@ -75,6 +75,7 @@ def task_document(
     blocked_by: tuple[str, ...],
     related_ids: tuple[str, ...],
     applies_to: tuple[str, ...],
+    governing_document_paths: tuple[str, ...],
     scope_items: tuple[str, ...],
     done_when_items: tuple[str, ...],
 ) -> dict[str, object]:
@@ -101,6 +102,8 @@ def task_document(
         document["related_ids"] = list(related_ids)
     if applies_to:
         document["applies_to"] = list(applies_to)
+    if governing_document_paths:
+        document["governing_document_paths"] = list(governing_document_paths)
     if scope_items:
         document["scope_items"] = list(scope_items)
     if done_when_items:

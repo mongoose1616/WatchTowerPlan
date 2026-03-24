@@ -27,6 +27,10 @@ from watchtower_plan.workspace.constants import (
     PRIORITY_ORDER,
     TERMINAL_TASK_STATUSES,
 )
+from watchtower_plan.governing_documents import (
+    effective_initiative_governing_document_paths,
+    effective_task_governing_document_paths,
+)
 from watchtower_plan.workspace.models import (
     PlanCloseoutIndexEntry,
     PlanDiscrepancyIndexEntry,
@@ -570,6 +574,10 @@ class PlanWorkspaceDocumentBuilder:
                 if traceability_entry is not None
                 else ()
             ),
+            governing_document_paths=effective_initiative_governing_document_paths(
+                initiative,
+                repo_root=self._loader.repo_root,
+            ),
             task_ids=tuple(initiative["task_ids"]),
             acceptance_ids=(
                 traceability_entry.acceptance_ids
@@ -659,6 +667,11 @@ class PlanWorkspaceDocumentBuilder:
                 depends_on=tuple(task.get("dependency_task_ids", ())),
                 related_ids=tuple(task.get("related_ids", ())),
                 applies_to=tuple(task.get("applies_to", ())),
+                governing_document_paths=effective_task_governing_document_paths(
+                    task,
+                    initiative_document=initiative,
+                    repo_root=self._loader.repo_root,
+                ),
                 github_repository=(
                     str(task["github_repository"])
                     if task.get("github_repository") is not None
@@ -1246,6 +1259,8 @@ class PlanWorkspaceDocumentBuilder:
             payload["related_ids"] = list(entry.related_ids)
         if entry.applies_to:
             payload["applies_to"] = list(entry.applies_to)
+        if entry.governing_document_paths:
+            payload["governing_document_paths"] = list(entry.governing_document_paths)
         if entry.github_repository is not None:
             payload["github_repository"] = entry.github_repository
         if entry.github_issue_number is not None:

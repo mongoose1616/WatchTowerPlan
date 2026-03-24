@@ -24,6 +24,7 @@ from watchtower_plan.promotion import (
 from watchtower_plan.tasks.support import slugify_file_stem
 from watchtower_plan.workspace.constants import PLAN_PACK_SETTINGS_PATH
 
+from watchtower_plan.governing_documents import normalize_governing_document_paths
 from watchtower_plan.initiatives.discrepancies import InitiativeDiscrepancyCoordinator
 from watchtower_plan.initiatives.locations import (
     InitiativeLocation,
@@ -113,10 +114,18 @@ class InitiativeBootstrapCoordinator:
             authored_documents=authored_documents,
             updated_at=updated_at,
         )
+        governing_document_paths = normalize_governing_document_paths(
+            (*authored_documents, *params.governing_document_paths),
+            origin=f"{location.initiative_root_relative} governing_document_paths",
+            repo_root=self._context.pack_loader().repo_root,
+            allowed_missing_paths=tuple(authored_documents),
+        )
         task_documents = self.build_task_documents(
             location=location,
             initiative_id=initiative_id,
             task_specs=task_specs,
+            initiative_governing_document_paths=governing_document_paths,
+            authored_document_paths=tuple(authored_documents),
             updated_at=updated_at,
         )
         deferred_documents = self.build_deferred_documents(
@@ -155,6 +164,7 @@ class InitiativeBootstrapCoordinator:
             task_documents=task_documents,
             deferred_documents=deferred_documents,
             authored_input_records=authored_input_records,
+            governing_document_paths=governing_document_paths,
             evidence_id=str(evidence_document["id"]),
             closeout_id=str(closeout_document["id"]),
             promotion_id=str(promotion_document["id"]),
@@ -166,7 +176,7 @@ class InitiativeBootstrapCoordinator:
             trace_id=params.trace_id,
             task_documents=task_documents,
             updated_at=updated_at,
-            related_paths=tuple(authored_documents),
+            related_paths=governing_document_paths,
         )
 
         if not write:
@@ -368,6 +378,8 @@ class InitiativeBootstrapCoordinator:
         location: InitiativeLocation,
         initiative_id: str,
         task_specs: tuple[InitiativeTaskSpec, ...],
+        initiative_governing_document_paths: tuple[str, ...],
+        authored_document_paths: tuple[str, ...],
         updated_at: str,
     ) -> dict[str, dict[str, Any]]:
         initiative_slug = location.initiative_slug
@@ -382,6 +394,16 @@ class InitiativeBootstrapCoordinator:
             task_path = self._context.initiative_path(
                 location,
                 f".wt/tasks/{task_slug}/task.json",
+            )
+            governing_document_paths = (
+                normalize_governing_document_paths(
+                    spec.governing_document_paths,
+                    origin=f"{task_id} governing_document_paths",
+                    repo_root=self._context.pack_loader().repo_root,
+                    allowed_missing_paths=authored_document_paths,
+                )
+                if spec.governing_document_paths
+                else initiative_governing_document_paths
             )
             documents[task_path] = {
                 "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
@@ -400,6 +422,7 @@ class InitiativeBootstrapCoordinator:
                 "dependency_task_ids": list(spec.depends_on),
                 "blocker_task_ids": list(spec.blocked_by),
                 "related_ids": list(spec.related_ids),
+                "governing_document_paths": list(governing_document_paths),
             }
             task_event_descriptor = EventStreamDescriptor.task(
                 relative_dir=self._context.initiative_path(
@@ -633,6 +656,7 @@ class InitiativeBootstrapCoordinator:
         task_documents: dict[str, dict[str, Any]],
         deferred_documents: dict[str, dict[str, Any]],
         authored_input_records: list[dict[str, Any]],
+        governing_document_paths: tuple[str, ...],
         evidence_id: str,
         closeout_id: str,
         promotion_id: str,
@@ -673,6 +697,7 @@ class InitiativeBootstrapCoordinator:
             "promotion_ids": [promotion_id],
             "closeout_ids": [closeout_id],
             "authored_inputs": authored_input_records,
+            "governing_document_paths": list(governing_document_paths),
             "gate_state": {
                 "capture_complete": False,
                 "machine_valid": False,

@@ -77,6 +77,12 @@ def serialize_initiative_entry(
         entry.source_surface_paths,
         compact=compact,
     )
+    _assign_sequence(
+        payload,
+        "governing_document_paths",
+        entry.governing_document_paths,
+        compact=compact,
+    )
     _assign_sequence(payload, "task_ids", entry.task_ids, compact=compact)
     _assign_sequence(payload, "acceptance_ids", entry.acceptance_ids, compact=compact)
     _assign_sequence(

@@ -30,6 +30,12 @@
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
+      ],
       "task_ids": [
         "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
         "task.command_latency_reduction_using_runtime_telemetry.bootstrap_command_latency_reduction_using_runtime_telemetry",
@@ -100,6 +106,12 @@
         "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
         "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md"
+      ],
       "task_ids": [
         "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment"
       ],
@@ -145,6 +157,12 @@
         "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/design_record.md",
         "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/implementation_slice.md",
         "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/initiative_brief.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/design_record.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/implementation_slice.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/decision_notes.md"
       ],
       "task_ids": [
         "task.copied_core_discovery_surface_reconciliation_followup.bootstrap_copied_core_discovery_surface_reconciliation_followup"
@@ -192,6 +210,12 @@
         "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
         "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/design_record.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/decision_notes.md"
+      ],
       "task_ids": [
         "task.copied_core_doctor_pack_surface_neutrality.bootstrap_copied_core_doctor_pack_surface_neutrality"
       ],
@@ -237,6 +261,12 @@
         "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
         "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
         "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
       ],
       "task_ids": [
         "task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening",
@@ -299,6 +329,11 @@
         "plan/initiatives/core_copy_forward_operating_mode_documentation/implementation_slice.md",
         "plan/initiatives/core_copy_forward_operating_mode_documentation/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/initiative_brief.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/design_record.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/implementation_slice.md"
+      ],
       "task_ids": [
         "task.core_copy_forward_operating_mode_documentation.bootstrap_core_copy_forward_operating_mode_documentation"
       ],
@@ -343,6 +378,12 @@
         "plan/initiatives/core_governance_reference_deplanification_followup/design_record.md",
         "plan/initiatives/core_governance_reference_deplanification_followup/implementation_slice.md",
         "plan/initiatives/core_governance_reference_deplanification_followup/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_governance_reference_deplanification_followup/initiative_brief.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/design_record.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/implementation_slice.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/decision_notes.md"
       ],
       "task_ids": [
         "task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup"
@@ -389,6 +430,12 @@
         "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
         "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
         "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ],
       "task_ids": [
         "task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover",
@@ -462,6 +509,12 @@
         "plan/initiatives/core_pack_neutral_portability_cleanup/implementation_slice.md",
         "plan/initiatives/core_pack_neutral_portability_cleanup/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/core_pack_neutral_portability_cleanup/initiative_brief.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/design_record.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/decision_notes.md"
+      ],
       "task_ids": [
         "task.core_pack_neutral_portability_cleanup.bootstrap_core_pack_neutral_portability_cleanup"
       ],
@@ -508,6 +561,12 @@
         "plan/initiatives/core_pack_neutrality_followup/implementation_slice.md",
         "plan/initiatives/core_pack_neutrality_followup/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/core_pack_neutrality_followup/initiative_brief.md",
+        "plan/initiatives/core_pack_neutrality_followup/design_record.md",
+        "plan/initiatives/core_pack_neutrality_followup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutrality_followup/decision_notes.md"
+      ],
       "task_ids": [
         "task.core_pack_neutrality_followup.bootstrap_core_pack_neutrality_followup"
       ],
@@ -553,6 +612,12 @@
         "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
         "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
         "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md"
       ],
       "task_ids": [
         "task.core_portability_followup_root_pack_and_query_typing.align_shared_core_tests_with_root_pack_defaults",
@@ -611,6 +676,12 @@
         "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
         "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md"
+      ],
       "task_ids": [
         "task.core_removable_plan_reference_cleanup.bootstrap_core_removable_plan_reference_cleanup",
         "task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core",
@@ -665,6 +736,12 @@
         "plan/initiatives/core_shared_language_deplanification/design_record.md",
         "plan/initiatives/core_shared_language_deplanification/implementation_slice.md",
         "plan/initiatives/core_shared_language_deplanification/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_shared_language_deplanification/initiative_brief.md",
+        "plan/initiatives/core_shared_language_deplanification/design_record.md",
+        "plan/initiatives/core_shared_language_deplanification/implementation_slice.md",
+        "plan/initiatives/core_shared_language_deplanification/decision_notes.md"
       ],
       "task_ids": [
         "task.core_shared_language_deplanification.bootstrap_core_shared_language_deplanification",
@@ -723,6 +800,12 @@
         "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
         "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
         "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md"
       ],
       "task_ids": [
         "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs",
@@ -786,6 +869,11 @@
         "plan/initiatives/first_party_root_pack_roots/implementation_slice.md",
         "plan/initiatives/first_party_root_pack_roots/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/first_party_root_pack_roots/initiative_brief.md",
+        "plan/initiatives/first_party_root_pack_roots/design_record.md",
+        "plan/initiatives/first_party_root_pack_roots/implementation_slice.md"
+      ],
       "task_ids": [
         "task.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots"
       ],
@@ -830,6 +918,12 @@
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md"
       ],
       "task_ids": [
         "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
@@ -891,6 +985,12 @@
         "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
         "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md",
+        "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+        "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+        "plan/initiatives/ledger_retirement_contract_change/decision_notes.md"
+      ],
       "task_ids": [
         "task.ledger_retirement_contract_change.bootstrap_ledger_retirement_contract_change"
       ],
@@ -936,6 +1036,12 @@
         "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md",
         "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md",
         "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md"
       ],
       "task_ids": [
         "task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap"
@@ -983,6 +1089,12 @@
         "plan/initiatives/pack_bootstrap_installation_contract/implementation_slice.md",
         "plan/initiatives/pack_bootstrap_installation_contract/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_bootstrap_installation_contract/initiative_brief.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/design_record.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/implementation_slice.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/decision_notes.md"
+      ],
       "task_ids": [
         "task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract"
       ],
@@ -1027,6 +1139,11 @@
         "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
         "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md",
         "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md"
       ],
       "task_ids": [
         "task.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening",
@@ -1077,6 +1194,12 @@
         "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
         "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
         "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ],
       "task_ids": [
         "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
@@ -1149,6 +1272,12 @@
         "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
         "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md"
+      ],
       "task_ids": [
         "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract",
         "task.pack_starter_templates_and_oversight_alignment.bootstrap_pack_starter_templates_and_oversight_alignment",
@@ -1205,6 +1334,12 @@
         "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
         "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
         "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md"
       ],
       "task_ids": [
         "task.plan_python_package_dependency_cleanup.bootstrap",
@@ -1264,6 +1399,12 @@
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ],
       "task_ids": [
         "task.plan_requirements_decisions_adherence_remediation.bootstrap",
@@ -1342,6 +1483,11 @@
         "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md",
         "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/design_record.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md"
+      ],
       "task_ids": [
         "task.plan_task_tracking_sync_performance.bootstrap_plan_task_tracking_sync_performance"
       ],
@@ -1386,6 +1532,12 @@
         "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
         "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
         "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md"
       ],
       "task_ids": [
         "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
@@ -1444,6 +1596,12 @@
         "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
         "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
         "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
       ],
       "task_ids": [
         "task.repository_tech_debt_reduction_program.bootstrap_repository_tech_debt_reduction_program",
@@ -1510,6 +1668,12 @@
         "plan/initiatives/repository_validation_repair_loop_closeout/implementation_slice.md",
         "plan/initiatives/repository_validation_repair_loop_closeout/initiative_brief.md"
       ],
+      "governing_document_paths": [
+        "plan/initiatives/repository_validation_repair_loop_closeout/initiative_brief.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/design_record.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/implementation_slice.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/decision_notes.md"
+      ],
       "task_ids": [
         "task.repository_validation_repair_loop_closeout.bootstrap_repository_validation_repair_loop_closeout"
       ],
@@ -1555,6 +1719,12 @@
         "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
         "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
         "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md"
       ],
       "task_ids": [
         "task.root_pack_schema_catalog_contract_alignment.bootstrap_root_pack_schema_catalog_contract_alignment",
@@ -1609,6 +1779,12 @@
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ],
       "task_ids": [
         "task.runtime_telemetry_and_command_observability_foundation.bootstrap_runtime_telemetry_and_command_observability_foundation",
@@ -1684,6 +1860,12 @@
         "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
         "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
         "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md"
       ],
       "task_ids": [
         "task.test_suite_efficiency_and_redundancy_reduction.bootstrap_test_suite_efficiency_and_redundancy_reduction",

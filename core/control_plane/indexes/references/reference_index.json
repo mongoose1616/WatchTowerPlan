@@ -305,13 +305,15 @@
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-        "core/docs/standards/engineering/runtime_telemetry_standard.md"
+        "core/docs/standards/engineering/runtime_telemetry_standard.md",
+        "core/workflows/modules/domain_pack_integration.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-        "core/docs/standards/engineering/runtime_telemetry_standard.md"
+        "core/docs/standards/engineering/runtime_telemetry_standard.md",
+        "core/workflows/modules/domain_pack_integration.md"
       ],
       "related_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",

@@ -445,8 +445,8 @@
       "doc_path": "core/workflows/modules/domain_pack_integration.md",
       "phase_type": "execution",
       "task_family": "architecture",
-      "uses_internal_references": false,
-      "uses_external_references": false,
+      "uses_internal_references": true,
+      "uses_external_references": true,
       "primary_risks": [
         "hidden_coupling",
         "boundary_regression"
@@ -473,13 +473,39 @@
         "imports",
         "hidden",
         "repository",
-        "coupling"
+        "coupling",
+        "docs",
+        "standards",
+        "engineering",
+        "authoring",
+        "standard",
+        "references",
+        "reference"
       ],
       "companion_workflow_ids": [
         "workflow.pack_interface_validation",
         "workflow.documentation_refresh",
         "workflow.governed_artifact_reconciliation",
         "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "reference_doc_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html"
       ]
     },
     {

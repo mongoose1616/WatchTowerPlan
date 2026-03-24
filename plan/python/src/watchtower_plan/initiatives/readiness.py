@@ -9,6 +9,9 @@ from watchtower_core.validation import ArtifactValidationService, ValidationResu
 from watchtower_plan.projects import ProjectWorkspaceService
 from watchtower_plan.workspace.service import PlanWorkspaceService
 
+from watchtower_plan.governing_documents import (
+    effective_initiative_governing_document_paths,
+)
 from watchtower_plan.initiatives.discrepancies import InitiativeDiscrepancyCoordinator
 from watchtower_plan.initiatives.locations import (
     InitiativeLocation,
@@ -276,6 +279,12 @@ class InitiativeReadinessCoordinator:
                 "approved_at": updated_at,
             }
         )
+        initiative_document["governing_document_paths"] = list(
+            effective_initiative_governing_document_paths(
+                initiative_document,
+                repo_root=self._context.pack_loader().repo_root,
+            )
+        )
         initiative_document["updated_at"] = updated_at
         if write:
             self._context.pack_loader().artifact_store.write_json_object(
@@ -496,6 +505,12 @@ class InitiativeReadinessCoordinator:
             and lifecycle_stage not in {"capture_incomplete", "ready_for_review"}
         )
         reconciled["gate_state"] = gate_state
+        reconciled["governing_document_paths"] = list(
+            effective_initiative_governing_document_paths(
+                reconciled,
+                repo_root=self._context.pack_loader().repo_root,
+            )
+        )
         if approval_status == "approved":
             reconciled["review_status"] = "approved"
         return cast(dict[str, Any], reconciled)

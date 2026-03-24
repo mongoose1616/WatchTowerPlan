@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T20:35:00Z"
+updated_at: "2026-03-23T23:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -83,6 +83,8 @@ This standard defines the repository's hard-cutover live task tracking model so 
 - Treat the initiative package as the authority for `trace_id`, initiative identity, and task root placement.
 - Do not start real execution from task state until the initiative package is reviewed, approved, and marked `ready_for_execution`.
 - Prefer linking tasks to durable planning artifacts with `related_ids` when those sources exist.
+- Carry `governing_document_paths` on live task records when the task needs explicit links back to the governing standards, references, authored design docs, or other reviewed Markdown guidance that shaped the work.
+- When a task-specific list is omitted, derive the effective governing-document set from the initiative package and surface that same effective list through the task index and query views.
 - Use `blocked_by` and `depends_on` to express task-to-task coordination explicitly instead of burying blockers in prose.
 - Treat `plan/.wt/indexes/task_index.json` as the canonical machine-readable task lookup surface.
 - Treat `plan/tracking/task_tracking.md` as a derived human companion, not as the task source of truth.
@@ -98,10 +100,16 @@ This standard defines the repository's hard-cutover live task tracking model so 
 | `plan/.wt/indexes/task_index.json` | Derived machine-readable lookup surface |
 | `plan/tracking/task_tracking.md` | Derived human-readable task board |
 
+### Required guidance linkage
+| Field | Role |
+|---|---|
+| `related_ids` | Links the task to stable initiative, design, decision, or governance identifiers. |
+| `governing_document_paths` | Links the task to the reviewed Markdown documents that govern implementation and validation expectations for that work item. |
+
 ## Process or Workflow
 1. Create or update one live task record under the correct initiative root.
 2. Confirm the initiative package is already `ready_for_execution` before setting any task to an execution-starting status such as `in_progress`, `in_review`, or `completed`.
-3. Keep owner, status, blockers, dependencies, and related IDs explicit in the live task record.
+3. Keep owner, status, blockers, dependencies, related IDs, and governing document paths explicit in the live task record.
 4. Rebuild the live plan indexes and rendered views in the same change set after task mutations.
 5. Refresh the human task tracker from the live task index in the same change set.
 6. Rebuild traceability and initiative-family companions when traced task state changes materially.
@@ -120,6 +128,7 @@ This standard defines the repository's hard-cutover live task tracking model so 
 - `plan/tracking/task_tracking.md` and `plan/.wt/indexes/task_index.json` should agree with current live task state.
 - Every live task `doc_path` in the task index should point to `plan/**/.wt/tasks/**/task.json`.
 - Task IDs referenced by `blocked_by` or `depends_on` should exist in the current live task corpus.
+- Reviewed work items should keep their effective governing-document set queryable through the live task record or inherited initiative state instead of forcing later contributors to reconstruct that set from prose.
 - Execution-starting task statuses should fail closed unless the linked initiative package is approved and `ready_for_execution`.
 - No active workflow, standard, or command doc should require a docs-backed task artifact outside initiative-local `task.json`.
 
@@ -136,4 +145,4 @@ This standard defines the repository's hard-cutover live task tracking model so 
 - [README.md](/plan/tracking/README.md)
 
 ## Updated At
-- `2026-03-18T20:35:00Z`
+- `2026-03-23T23:45:00Z`

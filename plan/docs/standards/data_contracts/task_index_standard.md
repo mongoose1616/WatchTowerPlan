@@ -10,7 +10,7 @@ tags:
   - "task_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T14:00:00Z"
+updated_at: "2026-03-23T23:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -81,6 +81,7 @@ Provide one machine-readable lookup surface for live initiative-local task state
 | `blocked_by` | Optional | Task IDs that block the current task. |
 | `depends_on` | Optional | Task IDs the current task depends on. |
 | `related_ids` | Optional | Stable IDs for initiative artifacts, decisions, design records, implementation slices, or other governed surfaces. |
+| `governing_document_paths` | Optional | Effective Markdown doc paths for the standards, references, or authored design docs that govern the task. |
 
 ## Process or Workflow
 1. Create or update one or more initiative-local live task records.
@@ -103,6 +104,7 @@ Provide one machine-readable lookup surface for live initiative-local task state
 - Every `doc_path` should exist and point to a live initiative-local `task.json`.
 - Every entry `task_status` should use the canonical live task vocabulary.
 - `blocked_by` and `depends_on` references should point to existing task IDs in the current index.
+- When present, `governing_document_paths` should use canonical repo-relative Markdown paths and should match the effective task guidance set carried by live task state or inherited initiative state.
 
 ## Change Control
 - In addition to the shared planning-index-family change-control contract:
@@ -114,4 +116,4 @@ Provide one machine-readable lookup surface for live initiative-local task state
 - [README.md](/plan/tracking/README.md)
 
 ## Updated At
-- `2026-03-18T14:00:00Z`
+- `2026-03-23T23:45:00Z`

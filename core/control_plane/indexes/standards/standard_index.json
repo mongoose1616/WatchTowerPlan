@@ -1244,7 +1244,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-23T23:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2284,7 +2284,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2417,7 +2417,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/data_contracts/task_index_standard.md",
-      "updated_at": "2026-03-18T14:00:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2919,7 +2919,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-18T14:00:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3329,7 +3329,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/task_tracking_standard.md",
-      "updated_at": "2026-03-18T20:35:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3384,7 +3384,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/traceability_standard.md",
-      "updated_at": "2026-03-20T23:55:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

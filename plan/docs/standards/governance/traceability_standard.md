@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:55:00Z"
+updated_at: "2026-03-23T23:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -84,7 +84,8 @@ This standard defines the repository's baseline traceability model so initiative
 - Design records and implementation slices should preserve their upstream links rather than forcing later readers to infer them from prose.
 - Acceptance contracts should preserve source `acceptance_id` values from the initiative acceptance source rather than inventing alternate identifiers.
 - Validation-evidence artifacts should publish the validators, acceptance items, and subject surfaces they cover when those are known.
-- Task records should publish `trace_id` when they belong to a traced initiative and should preserve task-to-task dependencies explicitly.
+- Initiative packages should publish their reviewed governing-document set when standards, references, or authored design docs materially govern downstream work.
+- Task records should publish `trace_id` when they belong to a traced initiative, should preserve task-to-task dependencies explicitly, and should carry task-level governing document paths when the task narrows or supplements the initiative-level set.
 - Active traced initiatives should not remain active without linked task records.
 - Machine-readable indexes for initiative packages, task records, acceptance contracts, validation evidence, and traceability joins should carry `trace_id` explicitly so tooling can join related artifacts without parsing prose.
 - Add UUIDs only when an external integration requires them as external identifiers; do not treat them as the default local join key when `trace_id` already exists.
@@ -107,11 +108,11 @@ This standard defines the repository's baseline traceability model so initiative
 ### Required baseline trace links
 | Artifact Family | Minimum Trace Links |
 |---|---|
-| Initiative package | `trace_id` plus linked decisions, design records, or implementation slices when they exist |
+| Initiative package | `trace_id` plus linked decisions, design records, implementation slices, and governing document paths when they exist |
 | Decision note | `trace_id` plus linked initiative briefs, design records, implementation slices, or affected paths when they exist |
 | Design record | `trace_id`, source request, and linked implementation slices when they exist |
 | Implementation slice | `trace_id` plus source design records, initiative briefs, or decisions that justify the slice |
-| Task record | `trace_id` for traced initiatives, explicit task `id`, and linked planning IDs or task dependencies when they exist |
+| Task record | `trace_id` for traced initiatives, explicit task `id`, linked planning IDs or task dependencies when they exist, and governing document paths when reviewed guidance must stay explicit |
 | Acceptance contract | `trace_id`, source initiative identity, and preserved `acceptance_id` values |
 | Validation evidence | `trace_id`, covered validators or check methods, and covered acceptance or artifact surfaces |
 | Unified traceability index | `trace_id` plus joined upstream and downstream artifact identifiers |
@@ -142,6 +143,7 @@ This standard defines the repository's baseline traceability model so initiative
 - A reviewer should be able to walk upstream and downstream links without relying on verbal context.
 - Trace links should be updated when a planning artifact is renamed or materially retargeted.
 - Active trace entries should carry linked task IDs instead of relying on implied execution state.
+- Reviewed task and initiative artifacts should keep their governing-document links explicit enough that a reviewer can reopen the standards and design inputs that governed implementation.
 - Terminal trace entries should not leave `updated_at` earlier than `closed_at`.
 - Family trackers should not default to exhaustive terminal-trace tables when the repository already provides explicit history query surfaces.
 - Canonical standards, README entrypoints, and trackers should not rely on purgeable trace-local paths as the enduring source of current policy.
@@ -157,4 +159,4 @@ This standard defines the repository's baseline traceability model so initiative
 - [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
-- `2026-03-20T23:55:00Z`
+- `2026-03-23T23:45:00Z`

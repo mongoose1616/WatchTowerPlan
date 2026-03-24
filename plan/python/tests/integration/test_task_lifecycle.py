@@ -7,6 +7,7 @@ from types import SimpleNamespace
 
 import pytest
 from watchtower_plan.initiatives import InitiativePackageService
+from watchtower_plan.query import TaskQueryService
 from watchtower_plan.tasks import (
     TaskCreateParams,
     TaskLifecycleService,
@@ -33,7 +34,9 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
-    (repo_root / "core" / "python" / "tests" / "unit").mkdir(parents=True, exist_ok=True)
+    (repo_root / "core" / "python" / "tests" / "unit").mkdir(
+        parents=True, exist_ok=True
+    )
     materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
     loader = ControlPlaneLoader(repo_root)
@@ -44,11 +47,15 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
 
 @pytest.fixture(scope="module")
 def task_lifecycle_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    return _build_fixture_repo(tmp_path_factory.mktemp("task_lifecycle_fixture_baseline"))
+    return _build_fixture_repo(
+        tmp_path_factory.mktemp("task_lifecycle_fixture_baseline")
+    )
 
 
 @pytest.fixture
-def task_lifecycle_fixture_repo(tmp_path: Path, task_lifecycle_fixture_baseline: Path) -> Path:
+def task_lifecycle_fixture_repo(
+    tmp_path: Path, task_lifecycle_fixture_baseline: Path
+) -> Path:
     repo_root = tmp_path / "repo"
     copytree(task_lifecycle_fixture_baseline, repo_root)
     return repo_root
@@ -58,7 +65,9 @@ def task_lifecycle_fixture_repo(tmp_path: Path, task_lifecycle_fixture_baseline:
 def task_lifecycle_capture_baseline(
     tmp_path_factory: pytest.TempPathFactory,
 ) -> Path:
-    repo_root = _build_fixture_repo(tmp_path_factory.mktemp("task_lifecycle_capture_baseline"))
+    repo_root = _build_fixture_repo(
+        tmp_path_factory.mktemp("task_lifecycle_capture_baseline")
+    )
     _bootstrap_trace(repo_root, CAPTURE_TRACE_ID)
     return repo_root
 
@@ -67,13 +76,17 @@ def task_lifecycle_capture_baseline(
 def task_lifecycle_approved_baseline(
     tmp_path_factory: pytest.TempPathFactory,
 ) -> Path:
-    repo_root = _build_fixture_repo(tmp_path_factory.mktemp("task_lifecycle_approved_baseline"))
+    repo_root = _build_fixture_repo(
+        tmp_path_factory.mktemp("task_lifecycle_approved_baseline")
+    )
     _bootstrap_trace(repo_root, APPROVED_TRACE_ID, approve=True)
     return repo_root
 
 
 @pytest.fixture
-def task_lifecycle_capture_repo(tmp_path: Path, task_lifecycle_capture_baseline: Path) -> Path:
+def task_lifecycle_capture_repo(
+    tmp_path: Path, task_lifecycle_capture_baseline: Path
+) -> Path:
     repo_root = tmp_path / "repo"
     copytree(task_lifecycle_capture_baseline, repo_root)
     return repo_root
@@ -90,7 +103,9 @@ def task_lifecycle_approved_repo(
 
 
 @pytest.fixture
-def disable_expensive_task_sync(monkeypatch: pytest.MonkeyPatch) -> list[tuple[str, bool]]:
+def disable_expensive_task_sync(
+    monkeypatch: pytest.MonkeyPatch,
+) -> list[tuple[str, bool]]:
     calls: list[tuple[str, bool]] = []
 
     class _FakePlanWorkspaceService:
@@ -122,7 +137,9 @@ def disable_expensive_task_sync(monkeypatch: pytest.MonkeyPatch) -> list[tuple[s
             calls.append(("coordination_follow_up", write))
             return SimpleNamespace(records=(), wrote=write, output_dir=output_dir)
 
-    monkeypatch.setattr(task_lifecycle_module, "PlanWorkspaceService", _FakePlanWorkspaceService)
+    monkeypatch.setattr(
+        task_lifecycle_module, "PlanWorkspaceService", _FakePlanWorkspaceService
+    )
     monkeypatch.setattr(
         task_lifecycle_module,
         "CoordinationSyncService",
@@ -148,6 +165,15 @@ def _task_path(repo_root: Path, trace_id: str, slug: str) -> str:
         .relative_to(repo_root)
         .as_posix()
     )
+
+
+def _initiative_governing_docs(trace_id: str) -> list[str]:
+    slug = trace_id.removeprefix("trace.")
+    return [
+        f"plan/initiatives/{slug}/initiative_brief.md",
+        f"plan/initiatives/{slug}/design_record.md",
+        f"plan/initiatives/{slug}/implementation_slice.md",
+    ]
 
 
 def _complete_seed_task(repo_root: Path, trace_id: str) -> None:
@@ -224,8 +250,13 @@ def test_task_create_canonicalizes_directory_applies_to_paths(
         ("workspace", True),
         ("coordination_follow_up", True),
     ]
-    written_document = json.loads((repo_root / result.doc_path).read_text(encoding="utf-8"))
+    written_document = json.loads(
+        (repo_root / result.doc_path).read_text(encoding="utf-8")
+    )
     assert written_document["applies_to"] == ["core/python/tests/unit/"]
+    assert written_document["governing_document_paths"] == _initiative_governing_docs(
+        trace_id
+    )
 
 
 def test_task_update_writes_in_place_and_clears_optional_fields(
@@ -248,6 +279,9 @@ def test_task_update_writes_in_place_and_clears_optional_fields(
             scope_items=("Create the task.",),
             done_when_items=("The task exists.",),
             applies_to=("core/python/tests/unit",),
+            governing_document_paths=(
+                f"plan/initiatives/{trace_id.removeprefix('trace.')}/initiative_brief.md",
+            ),
             related_ids=("initiative.unit_test_hardening_and_rebalancing",),
             file_stem="lifecycle_task",
             updated_at="2026-03-10T23:59:59Z",
@@ -262,6 +296,7 @@ def test_task_update_writes_in_place_and_clears_optional_fields(
             summary="The task is now complete.",
             task_status="completed",
             clear_applies_to=True,
+            clear_governing_document_paths=True,
             clear_related_ids=True,
             scope_items=("Confirm the final state.",),
             done_when_items=("The task is completed in place.",),
@@ -276,8 +311,11 @@ def test_task_update_writes_in_place_and_clears_optional_fields(
     assert result.previous_doc_path is None
     assert result.doc_path == created.doc_path
 
-    written_document = json.loads((repo_root / result.doc_path).read_text(encoding="utf-8"))
+    written_document = json.loads(
+        (repo_root / result.doc_path).read_text(encoding="utf-8")
+    )
     assert "applies_to" not in written_document
+    assert "governing_document_paths" not in written_document
     assert "related_ids" not in written_document
     assert written_document["title"] == "Lifecycle task complete"
     assert written_document["summary"] == "The task is now complete."
@@ -285,6 +323,10 @@ def test_task_update_writes_in_place_and_clears_optional_fields(
     assert written_document["task_status"] == "completed"
     assert written_document["scope_items"] == ["Confirm the final state."]
     assert written_document["done_when_items"] == ["The task is completed in place."]
+    task_entry = TaskQueryService(loader).get(created.task_id)
+    assert task_entry.governing_document_paths == tuple(
+        _initiative_governing_docs(trace_id)
+    )
 
     coordination_index_path = repo_root / "plan/.wt/indexes/coordination_index.json"
     coordination_index = json.loads(coordination_index_path.read_text(encoding="utf-8"))
@@ -462,13 +504,17 @@ def test_task_create_reloads_initiative_state_before_execution_write(
             owner="repository_maintainer",
             task_status="in_progress",
             scope_items=("Start execution after approval.",),
-            done_when_items=("Execution has started without clobbering approval state.",),
+            done_when_items=(
+                "Execution has started without clobbering approval state.",
+            ),
             updated_at="2026-03-19T21:15:00Z",
         ),
         write=True,
     )
 
-    state_path = packwide_initiative_root(repo_root, trace_id) / ".wt" / "initiative.json"
+    state_path = (
+        packwide_initiative_root(repo_root, trace_id) / ".wt" / "initiative.json"
+    )
     initiative_state = json.loads(state_path.read_text(encoding="utf-8"))
 
     assert result.wrote is True
@@ -483,7 +529,9 @@ def test_task_create_reloads_initiative_state_before_execution_write(
     )
 
 
-def test_task_update_rejects_conflicting_clear_flags(task_lifecycle_fixture_repo: Path) -> None:
+def test_task_update_rejects_conflicting_clear_flags(
+    task_lifecycle_fixture_repo: Path,
+) -> None:
     repo_root = task_lifecycle_fixture_repo
     service = TaskLifecycleService(ControlPlaneLoader(repo_root))
 

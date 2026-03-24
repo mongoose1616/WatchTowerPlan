@@ -97,6 +97,9 @@
     "applies_to": {
       "$ref": "#/$defs/stringList"
     },
+    "governing_document_paths": {
+      "$ref": "#/$defs/documentPathList"
+    },
     "scope_items": {
       "$ref": "#/$defs/stringList"
     },
@@ -159,6 +162,15 @@
       "items": {
         "type": "string",
         "minLength": 1
+      }
+    },
+    "documentPathList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/).+\\.md$"
       }
     }
   }

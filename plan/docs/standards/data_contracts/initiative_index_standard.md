@@ -10,7 +10,7 @@ tags:
   - "initiative_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-23T23:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -89,6 +89,7 @@ This standard defines the role, structure, and boundary rules for the machine-re
 | `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `closeout`, including task title, status, priority, owner, doc path, and actionability. |
 | `blocked_by_task_ids` | Optional | Blocking task IDs referenced by current active tasks when present. |
 | `source_surface_paths` | Optional | Linked initiative-authored or promoted source surface paths for the initiative. |
+| `governing_document_paths` | Optional | Effective Markdown doc paths for the standards, references, or authored initiative docs that govern current work. |
 | `task_ids` | Conditionally required | All linked task IDs for the initiative; active initiatives should not omit this field. |
 | `acceptance_ids` | Optional | Linked acceptance IDs for the initiative. |
 | `acceptance_contract_ids` | Optional | Linked acceptance-contract IDs for the initiative. |
@@ -112,6 +113,7 @@ This standard defines the role, structure, and boundary rules for the machine-re
 - Active initiatives outside `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` and `active_task_summaries` aligned with the current non-terminal task corpus.
 - Active `closeout` entries may have only historical `task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
 - Terminal initiative entries should also publish the required closeout fields.
+- When present, `governing_document_paths` should use canonical repo-relative Markdown paths and should reflect the effective initiative-level governing-document set.
 - Entry payloads should use `artifact_status` rather than a generic `status` field so initiative outcome and artifact lifecycle remain distinct.
 
 ## Change Control
@@ -126,4 +128,4 @@ This standard defines the role, structure, and boundary rules for the machine-re
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-23T23:45:00Z`

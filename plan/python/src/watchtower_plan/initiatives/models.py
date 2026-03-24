@@ -21,6 +21,7 @@ class InitiativeTaskSpec:
     depends_on: tuple[str, ...] = ()
     blocked_by: tuple[str, ...] = ()
     related_ids: tuple[str, ...] = ()
+    governing_document_paths: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -51,6 +52,7 @@ class InitiativeBootstrapParams:
     owner: str = "repository_maintainer"
     deferred_items: tuple[DeferredItemSpec, ...] = ()
     include_decision_notes: bool = False
+    governing_document_paths: tuple[str, ...] = ()
     updated_at: str | None = None
 
 

@@ -11,6 +11,10 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
 
+from watchtower_plan.governing_documents import (
+    effective_task_governing_document_paths,
+)
+
 TASK_STATE_SCHEMA_ID = "urn:watchtower:schema:artifacts:plan:task-state:v1"
 
 
@@ -39,6 +43,7 @@ class PlanTaskStateDocument:
     blocked_by: tuple[str, ...] = ()
     related_ids: tuple[str, ...] = ()
     applies_to: tuple[str, ...] = ()
+    governing_document_paths: tuple[str, ...] = ()
     scope_items: tuple[str, ...] = ()
     done_when_items: tuple[str, ...] = ()
     github_repository: str | None = None
@@ -85,6 +90,10 @@ class PlanTaskStateDocument:
             blocked_by=_tuple_of_strings(task_document.get("blocker_task_ids")),
             related_ids=_tuple_of_strings(task_document.get("related_ids")),
             applies_to=_tuple_of_strings(task_document.get("applies_to")),
+            governing_document_paths=effective_task_governing_document_paths(
+                task_document,
+                initiative_document=initiative_document,
+            ),
             scope_items=_tuple_of_strings(task_document.get("scope_items")),
             done_when_items=_tuple_of_strings(task_document.get("done_when_items")),
             github_repository=_optional_str(task_document.get("github_repository")),
@@ -330,7 +339,9 @@ def _initiative_for_task_path(
     try:
         initiative_document = loader.load_validated_document(initiative_relative_path)
     except ArtifactLoadError as exc:
-        raise ValueError(f"Unknown initiative root for task path: {relative_path}") from exc
+        raise ValueError(
+            f"Unknown initiative root for task path: {relative_path}"
+        ) from exc
     return PlanInitiativeState(
         relative_root=prefix,
         document=initiative_document,

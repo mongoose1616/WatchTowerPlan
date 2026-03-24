@@ -23,6 +23,7 @@ class TaskCreateParams:
     related_ids: tuple[str, ...] = ()
     depends_on: tuple[str, ...] = ()
     blocked_by: tuple[str, ...] = ()
+    governing_document_paths: tuple[str, ...] = ()
     file_stem: str | None = None
     updated_at: str | None = None
 
@@ -44,6 +45,8 @@ class TaskUpdateParams:
     done_when_items: tuple[str, ...] | None = None
     applies_to: tuple[str, ...] | None = None
     clear_applies_to: bool = False
+    governing_document_paths: tuple[str, ...] | None = None
+    clear_governing_document_paths: bool = False
     related_ids: tuple[str, ...] | None = None
     clear_related_ids: bool = False
     depends_on: tuple[str, ...] | None = None

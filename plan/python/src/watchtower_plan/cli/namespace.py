@@ -120,6 +120,12 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         help="Also create `decision_notes.md` in the initial package.",
     )
     bootstrap_parser.add_argument(
+        "--governing-doc",
+        action="append",
+        default=[],
+        help="Additional governing Markdown document path. Repeat for multiple values.",
+    )
+    bootstrap_parser.add_argument(
         "--task-id",
         help="Optional explicit bootstrap task ID. Defaults to task.<trace_suffix>.bootstrap.001.",
     )

@@ -109,6 +109,7 @@ class TaskQueryService:
                     entry.priority,
                     entry.owner,
                     entry.task_kind,
+                    *entry.governing_document_paths,
                     *entry.related_ids,
                 ),
             )

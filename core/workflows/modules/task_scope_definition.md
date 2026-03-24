@@ -11,6 +11,7 @@ Use this workflow to define the task objective, scope boundary, and success cond
 ## Inputs
 - User request or triggering task
 - Known artifacts, surfaces, or outputs in scope
+- Known governing standards, references, design docs, or implementation guidance already linked to the request
 - Current ambiguity, constraints, or assumptions
 - Any acceptance criteria, target outcome, or handoff expectation already provided
 - Existing `trace_id`, current initiative phase, or current initiative owner when the work belongs to an already-tracked initiative
@@ -23,10 +24,13 @@ Use this workflow to define the task objective, scope boundary, and success cond
    - Identify what is in scope for the active task.
    - Identify adjacent concerns that should stay out of scope for this task.
    - Name the repository surfaces most likely to be touched or inspected.
+   - Name the governing standards, references, or design docs that must be reviewed before implementation or validation begins.
    - When the task belongs to an existing initiative, record the `trace_id` and current initiative phase explicitly so downstream workflows do not have to re-derive them.
+   - Note whether the scoped task, initiative artifact, or final handoff should carry explicit links or references to those governing documents.
    - Decide whether the task-handling threshold implies a durable task record or an explicit no-task outcome before deeper work begins.
 3. Capture success conditions and blockers.
    - Record what must be true for the task to count as complete.
+   - Treat missing governing guidance or unresolved conflicts between governing documents as blockers when they materially affect correctness, maintainability, or reviewability.
    - Surface missing inputs, assumptions, conflicts, or ambiguity that may still block progress.
    - If the task cannot proceed safely, note that clarification is required before deeper execution continues.
 
@@ -34,7 +38,9 @@ Use this workflow to define the task objective, scope boundary, and success cond
 - Task objective
 - Scope boundary
 - In-scope surfaces
+- Governing standards, references, or design docs to review
 - Existing initiative context when present
+- Expected task or handoff links to governing documents when applicable
 - Task-handling outcome when the work is non-trivial
 - Out-of-scope concerns
 - Success conditions
@@ -42,9 +48,11 @@ Use this workflow to define the task objective, scope boundary, and success cond
 
 ## Outputs
 - A scoped task brief that downstream workflow modules can use
+- Governing-document expectations that downstream implementation, validation, and handoff work must preserve
 - Blocking ambiguity called out only when it materially affects execution
 
 ## Done When
 - The task objective and scope boundary are explicit.
+- Governing-document expectations are explicit enough that downstream workflows do not need to rediscover them from scratch.
 - Downstream workflow modules can proceed without re-deriving the basic task frame.
 - Any blocking ambiguity has been surfaced clearly enough to continue or reroute deliberately.

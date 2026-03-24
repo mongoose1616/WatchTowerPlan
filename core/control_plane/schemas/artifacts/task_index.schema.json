@@ -59,6 +59,15 @@
         "minLength": 1
       }
     },
+    "documentPathList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/).+\\.md$"
+      }
+    },
     "priority": {
       "type": "string",
       "enum": ["critical", "high", "medium", "low"]
@@ -156,6 +165,9 @@
         },
         "applies_to": {
           "$ref": "#/$defs/stringList"
+        },
+        "governing_document_paths": {
+          "$ref": "#/$defs/documentPathList"
         },
         "github_repository": {
           "$ref": "#/$defs/githubRepository"

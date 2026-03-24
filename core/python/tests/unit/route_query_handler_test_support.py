@@ -73,6 +73,7 @@ def task_entry(**overrides: object) -> SimpleNamespace:
         "depends_on": ("task.depends.001",),
         "related_ids": (),
         "applies_to": (),
+        "governing_document_paths": (),
         "github_repository": None,
         "github_issue_number": None,
         "github_issue_node_id": None,
@@ -162,6 +163,11 @@ def initiative_entry(**overrides: object) -> SimpleNamespace:
         "active_task_summaries": (active_task_summary(),),
         "blocked_by_task_ids": (),
         "source_surface_paths": (
+            "plan/initiatives/example/initiative_brief.md",
+            "plan/initiatives/example/design_record.md",
+            "plan/initiatives/example/implementation_slice.md",
+        ),
+        "governing_document_paths": (
             "plan/initiatives/example/initiative_brief.md",
             "plan/initiatives/example/design_record.md",
             "plan/initiatives/example/implementation_slice.md",

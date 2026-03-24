@@ -159,6 +159,11 @@ def validate_update_flags(params: TaskUpdateParams) -> None:
         key="applies_to",
     )
     reject_conflicting_clear(
+        params.governing_document_paths is not None,
+        params.clear_governing_document_paths,
+        key="governing_document_paths",
+    )
+    reject_conflicting_clear(
         params.related_ids is not None,
         params.clear_related_ids,
         key="related_ids",

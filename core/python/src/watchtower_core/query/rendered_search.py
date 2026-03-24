@@ -151,6 +151,7 @@ def initiative_rendered_query_terms(entry: InitiativeIndexEntry) -> tuple[str, .
         *(blocker for task in entry.active_task_summaries for blocker in task.blocked_by),
         *(dependency for task in entry.active_task_summaries for dependency in task.depends_on),
         *entry.source_surface_paths,
+        *entry.governing_document_paths,
         *entry.acceptance_ids,
         *entry.acceptance_contract_ids,
         *entry.evidence_ids,

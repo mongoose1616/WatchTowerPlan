@@ -51,6 +51,7 @@ class PlanTaskIndexEntry:
     depends_on: tuple[str, ...] = ()
     related_ids: tuple[str, ...] = ()
     applies_to: tuple[str, ...] = ()
+    governing_document_paths: tuple[str, ...] = ()
     github_repository: str | None = None
     github_issue_number: int | None = None
     github_issue_node_id: str | None = None
@@ -85,6 +86,9 @@ class PlanTaskIndexEntry:
             depends_on=_string_tuple(document.get("depends_on")),
             related_ids=_string_tuple(document.get("related_ids")),
             applies_to=_string_tuple(document.get("applies_to")),
+            governing_document_paths=_string_tuple(
+                document.get("governing_document_paths")
+            ),
             github_repository=(
                 str(document["github_repository"])
                 if document.get("github_repository") is not None
@@ -288,7 +292,9 @@ class PlanCloseoutIndexEntry:
             evidence_ids=_string_tuple(document.get("evidence_ids")),
             follow_up_handling=str(document["follow_up_handling"]),
             promotion_review_required=bool(document["promotion_review_required"]),
-            terminal_state_options=_string_tuple(document.get("terminal_state_options")),
+            terminal_state_options=_string_tuple(
+                document.get("terminal_state_options")
+            ),
             terminal_state=(
                 str(document["terminal_state"])
                 if document.get("terminal_state") is not None

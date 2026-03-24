@@ -27,6 +27,12 @@
         "core/python/tests/",
         "plan/python/src/watchtower_plan/",
         "core/python/src/watchtower_core/telemetry/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
       ]
     },
     {
@@ -42,7 +48,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/bootstrap_command_latency_reduction_using_runtime_telemetry/task.json",
-      "updated_at": "2026-03-22T18:57:43Z"
+      "updated_at": "2026-03-22T18:57:43Z",
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory",
@@ -62,6 +74,12 @@
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/",
         "plan/python/src/watchtower_plan/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
       ]
     },
     {
@@ -85,6 +103,12 @@
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/pack_integration/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
       ]
     },
     {
@@ -108,6 +132,12 @@
         "plan/python/src/watchtower_plan/",
         "plan/.wt/indexes/",
         "plan/tracking/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
       ]
     },
     {
@@ -131,6 +161,12 @@
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/sync/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
       ]
     },
     {
@@ -156,6 +192,12 @@
       "applies_to": [
         "core/python/tests/",
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md"
       ]
     },
     {
@@ -171,7 +213,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json",
-      "updated_at": "2026-03-23T02:57:08Z"
+      "updated_at": "2026-03-23T02:57:08Z",
+      "governing_document_paths": [
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
+        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.copied_core_discovery_surface_reconciliation_followup.bootstrap_copied_core_discovery_surface_reconciliation_followup",
@@ -186,7 +234,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/.wt/tasks/bootstrap_copied_core_discovery_surface_reconciliation_followup/task.json",
-      "updated_at": "2026-03-23T18:17:18Z"
+      "updated_at": "2026-03-23T18:17:18Z",
+      "governing_document_paths": [
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/initiative_brief.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/design_record.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/implementation_slice.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.copied_core_doctor_pack_surface_neutrality.bootstrap_copied_core_doctor_pack_surface_neutrality",
@@ -201,7 +255,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/.wt/tasks/bootstrap_copied_core_doctor_pack_surface_neutrality/task.json",
-      "updated_at": "2026-03-23T22:03:58Z"
+      "updated_at": "2026-03-23T22:03:58Z",
+      "governing_document_paths": [
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/design_record.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening",
@@ -216,7 +276,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/bootstrap_copy_forward_pack_runtime_hardening/task.json",
-      "updated_at": "2026-03-23T01:24:13Z"
+      "updated_at": "2026-03-23T01:24:13Z",
+      "governing_document_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.copy_forward_pack_runtime_hardening.cover_copy_forward_bootstrap_mode",
@@ -241,6 +307,12 @@
       "applies_to": [
         "core/python/tests/unit/",
         "core/python/tests/integration/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
       ]
     },
     {
@@ -267,6 +339,12 @@
       "applies_to": [
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/pack_integration/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
       ]
     },
     {
@@ -290,6 +368,12 @@
       "applies_to": [
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/pack_integration/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
       ]
     },
     {
@@ -316,6 +400,12 @@
         "core/docs/",
         "core/python/README.md",
         "plan/initiatives/copy_forward_pack_runtime_hardening/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
       ]
     },
     {
@@ -331,7 +421,12 @@
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_copy_forward_operating_mode_documentation/.wt/tasks/bootstrap_core_copy_forward_operating_mode_documentation/task.json",
-      "updated_at": "2026-03-22T16:12:58Z"
+      "updated_at": "2026-03-22T16:12:58Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/initiative_brief.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/design_record.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/implementation_slice.md"
+      ]
     },
     {
       "task_id": "task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup",
@@ -346,7 +441,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_governance_reference_deplanification_followup/.wt/tasks/bootstrap_core_governance_reference_deplanification_followup/task.json",
-      "updated_at": "2026-03-23T16:54:10Z"
+      "updated_at": "2026-03-23T16:54:10Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_governance_reference_deplanification_followup/initiative_brief.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/design_record.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/implementation_slice.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover",
@@ -361,7 +462,13 @@
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json",
-      "updated_at": "2026-03-20T23:47:06Z"
+      "updated_at": "2026-03-20T23:47:06Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006",
@@ -384,6 +491,12 @@
       ],
       "related_ids": [
         "initiative.core_host_pack_architecture_hard_cutover"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ]
     },
     {
@@ -405,6 +518,12 @@
       ],
       "related_ids": [
         "initiative.core_host_pack_architecture_hard_cutover"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ]
     },
     {
@@ -432,6 +551,12 @@
         "core/workflows/",
         "plan/docs/",
         "plan/workflows/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ]
     },
     {
@@ -457,6 +582,12 @@
       "applies_to": [
         "core/python/src/watchtower_core/cli/",
         "core/python/pyproject.toml"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ]
     },
     {
@@ -480,6 +611,12 @@
         "core/control_plane/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/validation/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ]
     },
     {
@@ -507,6 +644,12 @@
         "core/python/tests/",
         "core/control_plane/",
         "core/python/src/watchtower_core/validation/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ]
     },
     {
@@ -534,6 +677,12 @@
         "plan/python/src/watchtower_plan/",
         "plan/.wt/",
         "plan/docs/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
       ]
     },
     {
@@ -549,7 +698,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_pack_neutral_portability_cleanup/.wt/tasks/bootstrap_core_pack_neutral_portability_cleanup/task.json",
-      "updated_at": "2026-03-23T14:55:43Z"
+      "updated_at": "2026-03-23T14:55:43Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_pack_neutral_portability_cleanup/initiative_brief.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/design_record.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.core_pack_neutrality_followup.bootstrap_core_pack_neutrality_followup",
@@ -564,7 +719,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_pack_neutrality_followup/.wt/tasks/bootstrap_core_pack_neutrality_followup/task.json",
-      "updated_at": "2026-03-23T16:19:58Z"
+      "updated_at": "2026-03-23T16:19:58Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_pack_neutrality_followup/initiative_brief.md",
+        "plan/initiatives/core_pack_neutrality_followup/design_record.md",
+        "plan/initiatives/core_pack_neutrality_followup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutrality_followup/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.core_portability_followup_root_pack_and_query_typing.align_shared_core_tests_with_root_pack_defaults",
@@ -582,6 +743,12 @@
       "updated_at": "2026-03-23T01:51:21Z",
       "applies_to": [
         "core/python/tests/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md"
       ]
     },
     {
@@ -597,7 +764,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/bootstrap_core_portability_follow_up_root_pack_and_query_typing/task.json",
-      "updated_at": "2026-03-23T01:51:21Z"
+      "updated_at": "2026-03-23T01:51:21Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.core_portability_followup_root_pack_and_query_typing.clear_host_query_type_backlog_and_validate",
@@ -616,6 +789,12 @@
       "applies_to": [
         "core/python/src/watchtower_host/cli/",
         "core/python/tests/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md"
       ]
     },
     {
@@ -637,6 +816,12 @@
         "core/python/README.md",
         "core/docs/commands/core_python/",
         "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md"
       ]
     },
     {
@@ -652,7 +837,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_removable_plan_reference_cleanup/.wt/tasks/bootstrap_core_removable_plan_reference_cleanup/task.json",
-      "updated_at": "2026-03-22T23:14:32Z"
+      "updated_at": "2026-03-22T23:14:32Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.core_removable_plan_reference_cleanup.remove_removable_plan_references_from_shared_core",
@@ -673,6 +864,12 @@
         "core/python/src/",
         "core/python/tests/",
         "core/control_plane/indexes/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md"
       ]
     },
     {
@@ -697,6 +894,12 @@
         "core/control_plane/",
         "core/python/src/",
         "core/python/tests/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_removable_plan_reference_cleanup/initiative_brief.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/design_record.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/implementation_slice.md",
+        "plan/initiatives/core_removable_plan_reference_cleanup/decision_notes.md"
       ]
     },
     {
@@ -712,7 +915,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_shared_language_deplanification/.wt/tasks/bootstrap_core_shared_language_deplanification/task.json",
-      "updated_at": "2026-03-22T15:14:01Z"
+      "updated_at": "2026-03-22T15:14:01Z",
+      "governing_document_paths": [
+        "plan/initiatives/core_shared_language_deplanification/initiative_brief.md",
+        "plan/initiatives/core_shared_language_deplanification/design_record.md",
+        "plan/initiatives/core_shared_language_deplanification/implementation_slice.md",
+        "plan/initiatives/core_shared_language_deplanification/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.core_shared_language_deplanification.normalize_shared_core_language",
@@ -735,6 +944,12 @@
         "core/python/src/watchtower_core/",
         "core/control_plane/registries/documentation_family_registry.json",
         "core/control_plane/registries/path_pattern_registry.json"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_shared_language_deplanification/initiative_brief.md",
+        "plan/initiatives/core_shared_language_deplanification/design_record.md",
+        "plan/initiatives/core_shared_language_deplanification/implementation_slice.md",
+        "plan/initiatives/core_shared_language_deplanification/decision_notes.md"
       ]
     },
     {
@@ -754,6 +969,12 @@
       "applies_to": [
         "core/control_plane/indexes/standards/standard_index.json",
         "plan/initiatives/core_shared_language_deplanification/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/core_shared_language_deplanification/initiative_brief.md",
+        "plan/initiatives/core_shared_language_deplanification/design_record.md",
+        "plan/initiatives/core_shared_language_deplanification/implementation_slice.md",
+        "plan/initiatives/core_shared_language_deplanification/decision_notes.md"
       ]
     },
     {
@@ -776,6 +997,12 @@
       "applies_to": [
         "core/python/tests/",
         "core/control_plane/registries/pack_registry.json"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md"
       ]
     },
     {
@@ -791,7 +1018,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/bootstrap_domain_pack_externalization_and_portability_proof/task.json",
-      "updated_at": "2026-03-21T00:49:36Z"
+      "updated_at": "2026-03-21T00:49:36Z",
+      "governing_document_paths": [
+        "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract",
@@ -811,6 +1044,12 @@
         "core/control_plane/",
         "core/python/src/watchtower_core/validation/",
         "plan/.wt/manifests/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md"
       ]
     },
     {
@@ -833,6 +1072,12 @@
       "applies_to": [
         "plan/python/",
         "core/python/pyproject.toml"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md"
       ]
     },
     {
@@ -856,6 +1101,12 @@
       "applies_to": [
         "core/docs/",
         "core/workflows/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+        "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md"
       ]
     },
     {
@@ -871,7 +1122,12 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/first_party_root_pack_roots/.wt/tasks/bootstrap_first_party_root_pack_roots/task.json",
-      "updated_at": "2026-03-22T16:28:48Z"
+      "updated_at": "2026-03-22T16:28:48Z",
+      "governing_document_paths": [
+        "plan/initiatives/first_party_root_pack_roots/initiative_brief.md",
+        "plan/initiatives/first_party_root_pack_roots/design_record.md",
+        "plan/initiatives/first_party_root_pack_roots/implementation_slice.md"
+      ]
     },
     {
       "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
@@ -889,6 +1145,12 @@
       "updated_at": "2026-03-21T03:38:59Z",
       "applies_to": [
         "core/python/src/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md"
       ]
     },
     {
@@ -904,7 +1166,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening/task.json",
-      "updated_at": "2026-03-21T03:03:08Z"
+      "updated_at": "2026-03-21T03:03:08Z",
+      "governing_document_paths": [
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules",
@@ -923,6 +1191,12 @@
       "applies_to": [
         "plan/python/src/watchtower_plan/",
         "core/python/src/watchtower_core/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md"
       ]
     },
     {
@@ -942,6 +1216,12 @@
       "applies_to": [
         "core/docs/templates/",
         "core/python/src/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md"
       ]
     },
     {
@@ -966,6 +1246,12 @@
       "applies_to": [
         "core/python/tests/",
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md"
       ]
     },
     {
@@ -981,7 +1267,13 @@
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/ledger_retirement_contract_change/.wt/tasks/bootstrap_ledger_retirement_contract_change/task.json",
-      "updated_at": "2026-03-21T22:52:41Z"
+      "updated_at": "2026-03-21T22:52:41Z",
+      "governing_document_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md",
+        "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+        "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+        "plan/initiatives/ledger_retirement_contract_change/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap",
@@ -996,7 +1288,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/mandatory_pack_context_loader_bootstrap/.wt/tasks/bootstrap_mandatory_pack_context_loader_bootstrap/task.json",
-      "updated_at": "2026-03-23T23:18:56Z"
+      "updated_at": "2026-03-23T23:18:56Z",
+      "governing_document_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract",
@@ -1011,7 +1309,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_bootstrap_installation_contract/.wt/tasks/bootstrap_pack_bootstrap_installation_contract/task.json",
-      "updated_at": "2026-03-21T05:15:11Z"
+      "updated_at": "2026-03-21T05:15:11Z",
+      "governing_document_paths": [
+        "plan/initiatives/pack_bootstrap_installation_contract/initiative_brief.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/design_record.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/implementation_slice.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening",
@@ -1026,7 +1330,12 @@
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/bootstrap_pack_cli_fault_isolation_hardening/task.json",
-      "updated_at": "2026-03-21T23:00:16Z"
+      "updated_at": "2026-03-21T23:00:16Z",
+      "governing_document_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md"
+      ]
     },
     {
       "task_id": "task.pack_cli_fault_isolation_hardening.harden_pack_cli_fault_isolation",
@@ -1046,6 +1355,11 @@
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_host/cli/",
         "core/python/tests/unit/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md"
       ]
     },
     {
@@ -1061,7 +1375,13 @@
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/bootstrap_pack_domain_hardcoding_remediation/task.json",
-      "updated_at": "2026-03-19T21:50:30Z"
+      "updated_at": "2026-03-19T21:50:30Z",
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.pack_domain_hardcoding_remediation.pack_drive_runtime_roots_and_validation",
@@ -1083,6 +1403,12 @@
       "applies_to": [
         "core/python/src/watchtower_core/",
         "core/control_plane/manifests/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ]
     },
     {
@@ -1105,6 +1431,12 @@
       "applies_to": [
         "core/control_plane/",
         "plan/.wt/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ]
     },
     {
@@ -1128,6 +1460,12 @@
         "core/docs/",
         "plan/docs/",
         "plan/tracking/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ]
     },
     {
@@ -1150,6 +1488,12 @@
       "applies_to": [
         "core/",
         "plan/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ]
     },
     {
@@ -1172,6 +1516,12 @@
       "applies_to": [
         "core/",
         "plan/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ]
     },
     {
@@ -1195,6 +1545,12 @@
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
         "plan/python/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ]
     },
     {
@@ -1218,6 +1574,12 @@
         "core/python/src/watchtower_core/",
         "core/control_plane/",
         "plan/.wt/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
       ]
     },
     {
@@ -1236,6 +1598,12 @@
       "updated_at": "2026-03-21T02:23:18Z",
       "depends_on": [
         "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md"
       ]
     },
     {
@@ -1251,7 +1619,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/bootstrap_pack_starter_templates_and_oversight_alignment/task.json",
-      "updated_at": "2026-03-21T01:54:51Z"
+      "updated_at": "2026-03-21T01:54:51Z",
+      "governing_document_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
@@ -1272,6 +1646,12 @@
         "core/docs/references/",
         "core/docs/standards/",
         "core/workflows/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md"
       ]
     },
     {
@@ -1294,6 +1674,12 @@
       ],
       "applies_to": [
         "core/python/tests/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md"
       ]
     },
     {
@@ -1312,6 +1698,12 @@
       "updated_at": "2026-03-20T01:40:44Z",
       "applies_to": [
         "plan/initiatives/plan_python_package_dependency_cleanup/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md"
       ]
     },
     {
@@ -1335,6 +1727,12 @@
         "core/python/pyproject.toml",
         "core/python/uv.lock",
         "plan/python/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md"
       ]
     },
     {
@@ -1357,6 +1755,12 @@
       "applies_to": [
         "core/python/src/watchtower_core/",
         "plan/python/src/watchtower_plan/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md"
       ]
     },
     {
@@ -1379,6 +1783,12 @@
       "applies_to": [
         "core/python/",
         "plan/python/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md"
       ]
     },
     {
@@ -1394,7 +1804,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/bootstrap_requirements_and_decisions_adherence_remediation/task.json",
-      "updated_at": "2026-03-19T16:03:31Z"
+      "updated_at": "2026-03-19T16:03:31Z",
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.plan_requirements_decisions_adherence_remediation.enforce_plan_overview_contract",
@@ -1414,6 +1830,12 @@
         "plan/.wt/templates/pack/plan_overview.md",
         "core/control_plane/",
         "core/python/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1434,6 +1856,12 @@
         "plan/workflows/",
         "core/control_plane/",
         "core/python/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1454,6 +1882,12 @@
         "core/python/tests/",
         "core/control_plane/",
         ".github/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1474,6 +1908,12 @@
         "core/docs/",
         "core/control_plane/",
         "core/python/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1494,6 +1934,12 @@
         "plan/docs/",
         "AGENTS.md",
         "README.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1513,6 +1959,12 @@
       "applies_to": [
         "core/python/src/watchtower_core/plan_runtime/",
         "core/python/src/watchtower_core/validation/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1533,6 +1985,12 @@
         "plan/tracking/",
         "core/docs/",
         "plan/docs/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1553,6 +2011,12 @@
         "core/",
         "plan/",
         ".github/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1573,6 +2037,12 @@
         "core/",
         "plan/",
         ".github/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
       ]
     },
     {
@@ -1588,7 +2058,12 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/plan_task_tracking_sync_performance/.wt/tasks/bootstrap_plan_task_tracking_sync_performance/task.json",
-      "updated_at": "2026-03-22T16:52:46Z"
+      "updated_at": "2026-03-22T16:52:46Z",
+      "governing_document_paths": [
+        "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/design_record.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md"
+      ]
     },
     {
       "task_id": "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
@@ -1603,7 +2078,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json",
-      "updated_at": "2026-03-22T05:29:02Z"
+      "updated_at": "2026-03-22T05:29:02Z",
+      "governing_document_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
@@ -1628,6 +2109,12 @@
         "plan/initiatives/",
         "core/control_plane/indexes/",
         "plan/.wt/indexes/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md"
       ]
     },
     {
@@ -1651,6 +2138,12 @@
         "core/control_plane/",
         "core/python/src/watchtower_core/",
         "plan/python/src/watchtower_plan/closeout/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md"
       ]
     },
     {
@@ -1666,7 +2159,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/bootstrap_repository_tech_debt_reduction_program/task.json",
-      "updated_at": "2026-03-22T21:22:26Z"
+      "updated_at": "2026-03-22T21:22:26Z",
+      "governing_document_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt",
@@ -1690,6 +2189,12 @@
         "core/python/src/watchtower_core/",
         "plan/python/src/watchtower_plan/",
         "plan/.wt/registries/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
       ]
     },
     {
@@ -1716,6 +2221,12 @@
         "core/control_plane/registries/",
         "core/control_plane/schemas/",
         "plan/.wt/registries/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
       ]
     },
     {
@@ -1741,6 +2252,12 @@
       "applies_to": [
         "core/python/tests/integration/",
         "core/python/tests/unit/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
       ]
     },
     {
@@ -1767,6 +2284,12 @@
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_host/",
         "plan/python/src/watchtower_plan/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
       ]
     },
     {
@@ -1793,6 +2316,12 @@
       ],
       "applies_to": [
         "plan/initiatives/repository_tech_debt_reduction_program/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
       ]
     },
     {
@@ -1808,7 +2337,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/repository_validation_repair_loop_closeout/.wt/tasks/bootstrap_repository_validation_repair_loop_closeout/task.json",
-      "updated_at": "2026-03-23T05:52:23Z"
+      "updated_at": "2026-03-23T05:52:23Z",
+      "governing_document_paths": [
+        "plan/initiatives/repository_validation_repair_loop_closeout/initiative_brief.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/design_record.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/implementation_slice.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.root_pack_schema_catalog_contract_alignment.bootstrap_root_pack_schema_catalog_contract_alignment",
@@ -1823,7 +2358,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/tasks/bootstrap_root_pack_schema_catalog_contract_alignment/task.json",
-      "updated_at": "2026-03-22T23:00:32Z"
+      "updated_at": "2026-03-22T23:00:32Z",
+      "governing_document_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.root_pack_schema_catalog_contract_alignment.validate_and_close",
@@ -1845,6 +2386,12 @@
       "applies_to": [
         "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
         "plan/initiatives/root_pack_schema_catalog_contract_alignment/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md"
       ]
     },
     {
@@ -1865,6 +2412,12 @@
         "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
         "core/python/tests/",
         "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md"
       ]
     },
     {
@@ -1880,7 +2433,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/bootstrap_runtime_telemetry_and_command_observability_foundation/task.json",
-      "updated_at": "2026-03-22T17:41:17Z"
+      "updated_at": "2026-03-22T17:41:17Z",
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime",
@@ -1904,6 +2463,12 @@
       ],
       "applies_to": [
         "core/python/src/watchtower_core/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ]
     },
     {
@@ -1931,6 +2496,12 @@
         "core/docs/foundations/engineering_stack_direction.md",
         "core/docs/references/domain_pack_authoring_reference.md",
         ".gitignore"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ]
     },
     {
@@ -1956,6 +2527,12 @@
       "applies_to": [
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ]
     },
     {
@@ -1981,6 +2558,12 @@
       ],
       "applies_to": [
         "plan/python/src/watchtower_plan/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ]
     },
     {
@@ -2007,6 +2590,12 @@
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/pack_integration/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ]
     },
     {
@@ -2035,6 +2624,12 @@
         "core/python/README.md",
         "core/docs/commands/core_python/",
         "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ]
     },
     {
@@ -2060,6 +2655,12 @@
       "applies_to": [
         "core/python/tests/",
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
       ]
     },
     {
@@ -2075,7 +2676,13 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/bootstrap_test_suite_efficiency_and_redundancy_reduction/task.json",
-      "updated_at": "2026-03-22T07:16:30Z"
+      "updated_at": "2026-03-22T07:16:30Z",
+      "governing_document_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md"
+      ]
     },
     {
       "task_id": "task.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots",
@@ -2094,6 +2701,12 @@
       "applies_to": [
         "core/python/tests/integration/test_cli_sync_commands.py",
         "core/python/tests/integration/test_all_sync.py"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md"
       ]
     },
     {
@@ -2114,6 +2727,12 @@
         "core/python/tests/integration/test_task_lifecycle.py",
         "core/python/tests/integration/test_cli_planning_query_commands.py",
         "core/python/tests/integration/test_initiative_closeout.py"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md"
       ]
     },
     {
@@ -2133,6 +2752,12 @@
       "applies_to": [
         "core/python/tests/",
         "core/python/README.md"
+      ],
+      "governing_document_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md"
       ]
     }
   ]

@@ -148,6 +148,12 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
         help="Optional path or concept the task applies to. Repeat for multiple values.",
     )
     create_parser.add_argument(
+        "--governing-doc",
+        action="append",
+        default=[],
+        help="Optional governing Markdown document path. Repeat for multiple values.",
+    )
+    create_parser.add_argument(
         "--related-id",
         action="append",
         default=[],
@@ -247,6 +253,17 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
         "--clear-applies-to",
         action="store_true",
         help="Remove the current applies-to list.",
+    )
+    update_parser.add_argument(
+        "--governing-doc",
+        action="append",
+        default=None,
+        help="Replacement governing Markdown document path. Repeat for multiple values.",
+    )
+    update_parser.add_argument(
+        "--clear-governing-docs",
+        action="store_true",
+        help="Remove the current task-specific governing-document list and inherit initiative guidance.",
     )
     update_parser.add_argument(
         "--related-id",
@@ -388,6 +405,7 @@ def _run_task_create(args: argparse.Namespace) -> int:
                     scope_items=tuple(args.scope),
                     done_when_items=tuple(args.done_when),
                     applies_to=tuple(args.applies_to),
+                    governing_document_paths=tuple(args.governing_doc),
                     related_ids=tuple(args.related_id),
                     depends_on=tuple(args.depends_on),
                     blocked_by=tuple(args.blocked_by),
@@ -446,13 +464,27 @@ def _run_task_update(args: argparse.Namespace) -> int:
                     done_when_items=None
                     if args.done_when is None
                     else tuple(args.done_when),
-                    applies_to=None if args.applies_to is None else tuple(args.applies_to),
+                    applies_to=None
+                    if args.applies_to is None
+                    else tuple(args.applies_to),
                     clear_applies_to=args.clear_applies_to,
-                    related_ids=None if args.related_id is None else tuple(args.related_id),
+                    governing_document_paths=(
+                        None
+                        if args.governing_doc is None
+                        else tuple(args.governing_doc)
+                    ),
+                    clear_governing_document_paths=args.clear_governing_docs,
+                    related_ids=None
+                    if args.related_id is None
+                    else tuple(args.related_id),
                     clear_related_ids=args.clear_related_ids,
-                    depends_on=None if args.depends_on is None else tuple(args.depends_on),
+                    depends_on=None
+                    if args.depends_on is None
+                    else tuple(args.depends_on),
                     clear_depends_on=args.clear_depends_on,
-                    blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
+                    blocked_by=None
+                    if args.blocked_by is None
+                    else tuple(args.blocked_by),
                     clear_blocked_by=args.clear_blocked_by,
                     updated_at=args.updated_at,
                 ),
@@ -500,9 +532,13 @@ def _run_task_transition(args: argparse.Namespace) -> int:
                     task_id=args.task_id,
                     task_status=args.task_status,
                     next_owner=args.next_owner,
-                    depends_on=None if args.depends_on is None else tuple(args.depends_on),
+                    depends_on=None
+                    if args.depends_on is None
+                    else tuple(args.depends_on),
                     clear_depends_on=args.clear_depends_on,
-                    blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
+                    blocked_by=None
+                    if args.blocked_by is None
+                    else tuple(args.blocked_by),
                     clear_blocked_by=args.clear_blocked_by,
                     updated_at=args.updated_at,
                 ),

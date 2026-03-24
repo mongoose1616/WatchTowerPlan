@@ -61,6 +61,7 @@ class InitiativeIndexEntry:
     active_task_summaries: tuple[InitiativeActiveTaskSummary, ...] = ()
     blocked_by_task_ids: tuple[str, ...] = ()
     source_surface_paths: tuple[str, ...] = ()
+    governing_document_paths: tuple[str, ...] = ()
     task_ids: tuple[str, ...] = ()
     acceptance_ids: tuple[str, ...] = ()
     acceptance_contract_ids: tuple[str, ...] = ()
@@ -100,6 +101,7 @@ class InitiativeIndexEntry:
             ),
             blocked_by_task_ids=tuple(document.get("blocked_by_task_ids", ())),
             source_surface_paths=tuple(document.get("source_surface_paths", ())),
+            governing_document_paths=tuple(document.get("governing_document_paths", ())),
             task_ids=tuple(document.get("task_ids", ())),
             acceptance_ids=tuple(document.get("acceptance_ids", ())),
             acceptance_contract_ids=tuple(document.get("acceptance_contract_ids", ())),
@@ -164,6 +166,7 @@ class TaskIndexEntry:
     depends_on: tuple[str, ...] = ()
     related_ids: tuple[str, ...] = ()
     applies_to: tuple[str, ...] = ()
+    governing_document_paths: tuple[str, ...] = ()
     github_repository: str | None = None
     github_issue_number: int | None = None
     github_issue_node_id: str | None = None
@@ -196,6 +199,7 @@ class TaskIndexEntry:
             depends_on=tuple(document.get("depends_on", ())),
             related_ids=tuple(document.get("related_ids", ())),
             applies_to=tuple(document.get("applies_to", ())),
+            governing_document_paths=tuple(document.get("governing_document_paths", ())),
             github_repository=document.get("github_repository"),
             github_issue_number=document.get("github_issue_number"),
             github_issue_node_id=document.get("github_issue_node_id"),
