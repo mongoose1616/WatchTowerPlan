@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.watchtower_ctf_implementation_package_preservation.0015_ready_for_execution_marked",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "sequence": 15,
+  "event_type": "ready_for_execution_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-27T13:58:00Z",
+  "summary": "The initiative package entered ready_for_execution after approval.",
+  "payload": {},
+  "trace_id": "trace.watchtower_ctf_implementation_package_preservation"
+}
