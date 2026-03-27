@@ -141,7 +141,7 @@
 - Runtime telemetry is default-on for `watchtower-core` commands. The default sink is `<machine_root>/runtime/telemetry/`.
 - Use `WATCHTOWER_TELEMETRY=off` to disable runtime telemetry, `WATCHTOWER_TELEMETRY_STDERR=off` to suppress the one-line stderr summary, and `WATCHTOWER_TELEMETRY_DIR=<path>` to redirect the JSONL sink.
 - Command payloads and exit codes remain unchanged on stdout; telemetry emits only operational JSONL files plus one concise stderr summary per invocation.
-- Repo-root `./core/python/.venv/bin/mypy ...` commands are supported through the root [mypy.ini](/mypy.ini) when you do not want to `cd core/python` first.
+- Repo-root `./core/python/.venv/bin/mypy core/python/src` commands resolve configuration from [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml) when you do not want to `cd core/python` first.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad shared-core Python validation pass when a change touches reusable-core, host composition, synthetic pack fixtures, or multi-surface CLI behavior.
 - Use `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` when the change touches one hosted pack directly.

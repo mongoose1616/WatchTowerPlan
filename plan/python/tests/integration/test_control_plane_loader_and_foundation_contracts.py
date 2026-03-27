@@ -197,14 +197,18 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
     )
     reusable_core_sync_docs = {
         "watchtower_core_sync.md",
-        "watchtower_core_sync_command_index.md",
         "watchtower_core_sync_repository_paths.md",
         "watchtower_core_sync_route_index.md",
+    }
+    host_cli_sync_docs = {
+        "watchtower_core_sync_command_index.md",
     }
     for path in sync_docs:
         markdown = path.read_text(encoding="utf-8")
         if path.name in reusable_core_sync_docs:
             assert "core/python/src/watchtower_core/sync/" in markdown, path
+        elif path.name in host_cli_sync_docs:
+            assert "core/python/src/watchtower_host/cli/" in markdown, path
         else:
             assert "core/python/src/watchtower_core/sync/" not in markdown, path
 

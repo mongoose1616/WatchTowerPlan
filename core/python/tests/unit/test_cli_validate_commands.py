@@ -594,6 +594,11 @@ def test_validate_portability_reports_release_exclusions(
     tmp_path: Path,
     capsys,
 ) -> None:
+    omitted_pack_slug = "recipient"
+    omitted_pack_settings_path = (
+        f"packs/{omitted_pack_slug}/.wt/manifests/pack_settings.json"
+    )
+    omitted_pack_distribution = "watchtower-recipient"
     (tmp_path / "core/control_plane/records/releases").mkdir(parents=True)
     (tmp_path / "core/control_plane/records/README.md").write_text(
         "# Records\n",
@@ -645,16 +650,21 @@ def test_validate_portability_reports_release_exclusions(
         json.dumps(
             {
                 "packs": [
-                    {
-                        "pack_slug": "plan",
-                        "pack_settings_path": "plan/.wt/manifests/pack_settings.json",
-                        "python_distribution": "watchtower-plan",
-                    }
-                ]
-            }
-        ),
-        encoding="utf-8",
-    )
+                        {
+                            "pack_slug": omitted_pack_slug,
+                            "pack_settings_path": omitted_pack_settings_path,
+                            "python_distribution": omitted_pack_distribution,
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+    (tmp_path / "packs" / omitted_pack_slug / ".wt" / "manifests").mkdir(parents=True)
+    (
+        tmp_path / "packs" / omitted_pack_slug / ".wt" / "manifests" / "pack_settings.json"
+    ).write_text("{}\n", encoding="utf-8")
+    (tmp_path / "packs" / omitted_pack_slug / "python").mkdir(parents=True)
     (tmp_path / "core/python").mkdir(parents=True)
     (tmp_path / "core/python/pyproject.toml").write_text(
         "\n".join(
@@ -662,9 +672,12 @@ def test_validate_portability_reports_release_exclusions(
                 "[project]",
                 'name = "watchtower-core"',
                 "[project.optional-dependencies]",
-                'dev = ["watchtower-plan"]',
+                f'dev = ["{omitted_pack_distribution}"]',
                 "[tool.uv.sources]",
-                'watchtower-plan = { path = "../../plan/python", editable = true }',
+                (
+                    f'{omitted_pack_distribution} = '
+                    '{ path = "../../packs/recipient/python", editable = true }'
+                ),
             )
         )
         + "\n",

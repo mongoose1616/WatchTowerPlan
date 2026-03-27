@@ -161,6 +161,11 @@ def test_root_docs_and_domain_packs_paths_are_gone() -> None:
     assert not (REPO_ROOT / "domain_packs").exists()
 
 
+def test_root_markdown_surfaces_stay_minimal() -> None:
+    root_markdown = {path.name for path in REPO_ROOT.glob("*.md")}
+    assert root_markdown == {"AGENTS.md", "README.md"}
+
+
 def test_removed_repo_fixture_helpers_and_repo_aware_unit_paths_stay_gone() -> None:
     violations = [
         path.relative_to(REPO_ROOT).as_posix() for path in REMOVED_TEST_PATHS if path.exists()

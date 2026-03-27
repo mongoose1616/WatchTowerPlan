@@ -22,7 +22,7 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 - Open questions
 
 ## Additional Files to Load
-- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md): defines the current plan-workspace structure and initiative package split that implementation planning must respect.
+- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md): defines the current plan-workspace structure and initiative package split that implementation-slice planning must respect.
 - [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): defines the live task authority that implementation-slice planning must hand off into.
 - [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): defines the required upstream links from implementation slices into the traced planning chain.
 

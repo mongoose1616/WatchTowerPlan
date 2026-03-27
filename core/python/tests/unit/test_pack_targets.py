@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+from pathlib import Path
+
+from tests.pack_fixture_support import (
+    materialize_pack_validation_suite,
+    materialize_validation_repo_subset,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.pack_targets import (
@@ -9,16 +15,36 @@ from watchtower_core.validation.pack_targets import (
 )
 
 
-def _plan_validation_context() -> PackValidationContext:
-    loader = ControlPlaneLoader(active_pack_settings_path="plan/.wt/manifests/pack_settings.json")
-    return PackValidationContext.from_loader(
-        loader,
-        pack_settings_path="plan/.wt/manifests/pack_settings.json",
+def _pack_validation_context(
+    tmp_path: Path,
+) -> tuple[PackValidationContext, dict[str, str]]:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "targets",
+        pack_slug="targets",
+        registry_mode="replace_default",
+        default_repo_pack=True,
+    )
+    pack_settings_path = str(surfaces["pack_settings_path"])
+    loader = ControlPlaneLoader(
+        repo_root=repo_root,
+        active_pack_settings_path=pack_settings_path,
+    )
+    return (
+        PackValidationContext.from_loader(
+            loader,
+            pack_settings_path=pack_settings_path,
+        ),
+        surfaces,
     )
 
 
-def test_front_matter_targets_include_governed_markdown_docs() -> None:
-    targets = front_matter_targets(_plan_validation_context())
+def test_front_matter_targets_include_governed_markdown_docs(tmp_path: Path) -> None:
+    context, _ = _pack_validation_context(tmp_path)
+    targets = front_matter_targets(context)
 
     assert "core/docs/references/commonmark_reference.md" in targets
     assert "core/docs/foundations/product_direction.md" in targets
@@ -27,17 +53,21 @@ def test_front_matter_targets_include_governed_markdown_docs() -> None:
     assert "core/docs/commands/core_python/watchtower_core_pack_export.md" not in targets
 
 
-def test_document_semantics_targets_include_command_docs() -> None:
-    targets = document_semantics_targets(_plan_validation_context())
+def test_document_semantics_targets_include_command_docs(tmp_path: Path) -> None:
+    context, _ = _pack_validation_context(tmp_path)
+    targets = document_semantics_targets(context)
 
     assert "core/docs/commands/core_python/watchtower_core_pack_export.md" in targets
     assert "core/docs/commands/core_python/watchtower_core_validate_portability.md" in targets
 
 
-def test_artifact_targets_exclude_schema_definitions_and_keep_artifacts() -> None:
-    targets = artifact_targets(_plan_validation_context())
+def test_artifact_targets_exclude_schema_definitions_and_keep_artifacts(
+    tmp_path: Path,
+) -> None:
+    context, surfaces = _pack_validation_context(tmp_path)
+    targets = artifact_targets(context)
 
-    assert "plan/.wt/work_items/pack_work_item_note_stage1_bootstrap.json" in targets
+    assert str(surfaces["artifact_relative_path"]) in targets
     assert "core/control_plane/schemas/interfaces/packs/benchmark_report.schema.json" not in targets
     assert (
         "core/control_plane/schemas/interfaces/packs/pack_work_item_note.schema.json"

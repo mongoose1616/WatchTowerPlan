@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections.abc import Callable
+from typing import Any
 
 from watchtower_core.cli.handler_common import (
     _emit_command_error,
@@ -33,11 +34,12 @@ from watchtower_core.validation.portability import (
     PACK_BUNDLE_EXPORT_SCOPE,
     REPOSITORY_EXPORT_SCOPE,
 )
-from watchtower_core.validation.suite import DocumentSemanticsValidationService
 
-ValidationServiceFactory = Callable[
-    [ControlPlaneLoader],
-    FrontMatterValidationService | ArtifactValidationService | DocumentSemanticsValidationService,
+ValidationServiceFactory = Callable[[ControlPlaneLoader], Any]
+ValidationRunner = Callable[[Any, argparse.Namespace], ValidationResult]
+ValidationLoaderFactory = Callable[[argparse.Namespace], ControlPlaneLoader]
+ValidationTelemetryAttributesFactory = Callable[
+    [argparse.Namespace], dict[str, object | None]
 ]
 
 
@@ -63,147 +65,44 @@ def _run_validate_document_semantics(args: argparse.Namespace) -> int:
 
 
 def _run_validate_artifact(args: argparse.Namespace) -> int:
-    command_name = "watchtower-core validate artifact"
-    message = _validate_evidence_arguments(args)
-    if message is not None:
-        return _emit_command_error(args, command_name, message)
-
-    try:
-        loader = ControlPlaneLoader(
-            supplemental_schema_paths=tuple(args.supplemental_schema_path),
-            active_pack_settings_path=getattr(args, "pack_settings_path", None),
-        )
-    except SchemaResolutionError as exc:
-        return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
-
-    service = ArtifactValidationService(loader)
-    try:
-        with telemetry_operation(
-            "validation",
-            "artifact_validate",
-            attributes={
-                "target_path": str(args.path),
-                "validator_id": args.validator_id,
-                "schema_id": args.schema_id,
-            },
-        ) as operation:
-            result = service.validate(
-                args.path,
-                validator_id=args.validator_id,
-                schema_id=args.schema_id,
-            )
-            if operation is not None:
-                operation.set_result(
-                    status="ok" if result.passed else "failed",
-                    issue_count=result.issue_count,
-                    passed=result.passed,
-                    target_path=result.target_path,
-                    validator_id=result.validator_id,
-                )
-    except (
-        SchemaResolutionError,
-        ValidationExecutionError,
-        ValidationSelectionError,
-    ) as exc:
-        return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
-
-    evidence_write = None
-    if args.record_evidence:
-        recorder = ValidationEvidenceRecorder(loader)
-        evidence_write = _run_value_error_operation(
-            args,
-            command_name=command_name,
-            prefix="Validation error",
-            operation=lambda: recorder.record(
-                result,
-                trace_id=args.trace_id,
-                evidence_id=args.evidence_id,
-                subject_ids=tuple(args.subject_id),
-                acceptance_ids=tuple(args.acceptance_id),
-                evidence_output=_resolve_output_path(args.evidence_output),
-                traceability_output=_resolve_output_path(args.traceability_output),
-            ),
-        )
-        if evidence_write is None:
-            return 1
-
-    result_payload = _build_validation_payload(
-        command_name=command_name,
-        result=result,
-        evidence_write=evidence_write,
-    )
-    return _emit_detail_result(
+    return _run_validation_command(
         args,
-        payload_factory=lambda: result_payload,
-        render_human=lambda: _print_validation_summary(
-            result,
-            evidence_write=evidence_write,
-            success_message="Artifact validated successfully.",
+        command_name="watchtower-core validate artifact",
+        success_message="Artifact validated successfully.",
+        service_factory=ArtifactValidationService,
+        run_validation=lambda service, namespace: service.validate(
+            namespace.path,
+            validator_id=namespace.validator_id,
+            schema_id=namespace.schema_id,
         ),
-        exit_code=0 if result.passed else 1,
+        loader_factory=lambda namespace: ControlPlaneLoader(
+            supplemental_schema_paths=tuple(namespace.supplemental_schema_path),
+            active_pack_settings_path=getattr(namespace, "pack_settings_path", None),
+        ),
+        handled_exceptions=(
+            SchemaResolutionError,
+            ValidationExecutionError,
+            ValidationSelectionError,
+        ),
+        telemetry_attributes_factory=lambda namespace: {
+            "target_path": str(namespace.path),
+            "validator_id": namespace.validator_id,
+            "schema_id": namespace.schema_id,
+        },
     )
 
 
 def _run_validate_schema(args: argparse.Namespace) -> int:
-    command_name = "watchtower-core validate schema"
-    message = _validate_evidence_arguments(args)
-    if message is not None:
-        return _emit_command_error(args, command_name, message)
-
-    loader = ControlPlaneLoader()
-    service = SchemaDefinitionValidationService(loader)
-    try:
-        with telemetry_operation(
-            "validation",
-            "schema_validate",
-            attributes={"target_path": str(args.path)},
-        ) as operation:
-            result = service.validate(args.path)
-            if operation is not None:
-                operation.set_result(
-                    status="ok" if result.passed else "failed",
-                    issue_count=result.issue_count,
-                    passed=result.passed,
-                    target_path=result.target_path,
-                    validator_id=result.validator_id,
-                )
-    except ValidationExecutionError as exc:
-        return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
-
-    evidence_write = None
-    if args.record_evidence:
-        recorder = ValidationEvidenceRecorder(loader)
-        evidence_write = _run_value_error_operation(
-            args,
-            command_name=command_name,
-            prefix="Validation error",
-            operation=lambda: recorder.record(
-                result,
-                trace_id=args.trace_id,
-                evidence_id=args.evidence_id,
-                subject_ids=tuple(args.subject_id),
-                acceptance_ids=tuple(args.acceptance_id),
-                evidence_output=_resolve_output_path(args.evidence_output),
-                traceability_output=_resolve_output_path(args.traceability_output),
-            ),
-        )
-        if evidence_write is None:
-            return 1
-
-    payload = _build_validation_payload(
-        command_name=command_name,
-        result=result,
-        evidence_write=evidence_write,
-    )
-    return _emit_detail_result(
+    return _run_validation_command(
         args,
-        payload_factory=lambda: payload,
-        render_human=lambda: _print_validation_summary(
-            result,
-            evidence_write=evidence_write,
-            success_message="Schema definition validated successfully.",
-        ),
-        exit_code=0 if result.passed else 1,
+        command_name="watchtower-core validate schema",
+        success_message="Schema definition validated successfully.",
+        service_factory=SchemaDefinitionValidationService,
+        run_validation=lambda service, namespace: service.validate(namespace.path),
+        handled_exceptions=(ValidationExecutionError,),
+        telemetry_attributes_factory=lambda namespace: {
+            "target_path": str(namespace.path),
+        },
     )
 
 
@@ -451,24 +350,39 @@ def _run_validation_command(
     command_name: str,
     success_message: str,
     service_factory: ValidationServiceFactory,
+    run_validation: ValidationRunner | None = None,
+    loader_factory: ValidationLoaderFactory | None = None,
+    handled_exceptions: tuple[type[Exception], ...] = (
+        ValidationExecutionError,
+        ValidationSelectionError,
+    ),
+    telemetry_attributes_factory: ValidationTelemetryAttributesFactory | None = None,
 ) -> int:
     message = _validate_evidence_arguments(args)
     if message is not None:
         return _emit_command_error(args, command_name, message)
 
-    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
-    service = service_factory(loader)
+    execute_validation = run_validation or (
+        lambda service, namespace: service.validate(
+            namespace.path,
+            validator_id=namespace.validator_id,
+        )
+    )
+    build_loader = loader_factory or _default_validation_loader_factory
+    telemetry_attributes = (
+        telemetry_attributes_factory(args)
+        if telemetry_attributes_factory is not None
+        else _default_validation_telemetry_attributes(args)
+    )
     try:
+        loader = build_loader(args)
+        service = service_factory(loader)
         with telemetry_operation(
             "validation",
             command_name.replace("watchtower-core validate ", "").replace("-", "_"),
-            attributes={
-                "target_path": str(args.path),
-                "validator_id": args.validator_id,
-                "pack_settings_path": getattr(args, "pack_settings_path", None),
-            },
+            attributes=telemetry_attributes,
         ) as operation:
-            result = service.validate(args.path, validator_id=args.validator_id)
+            result = execute_validation(service, args)
             if operation is not None:
                 operation.set_result(
                     status="ok" if result.passed else "failed",
@@ -477,7 +391,7 @@ def _run_validation_command(
                     target_path=result.target_path,
                     validator_id=result.validator_id,
                 )
-    except (ValidationExecutionError, ValidationSelectionError) as exc:
+    except handled_exceptions as exc:
         return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
 
     evidence_write = None
@@ -515,6 +429,20 @@ def _run_validation_command(
         ),
         exit_code=0 if result.passed else 1,
     )
+
+
+def _default_validation_loader_factory(args: argparse.Namespace) -> ControlPlaneLoader:
+    return ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+
+
+def _default_validation_telemetry_attributes(
+    args: argparse.Namespace,
+) -> dict[str, object | None]:
+    return {
+        "target_path": str(args.path),
+        "validator_id": getattr(args, "validator_id", None),
+        "pack_settings_path": getattr(args, "pack_settings_path", None),
+    }
 
 
 def _validate_evidence_arguments(args: argparse.Namespace) -> str | None:

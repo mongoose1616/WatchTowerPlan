@@ -30,7 +30,6 @@ _PORTABLE_ROOT_FILES = (
     "README.md",
     "AGENTS.md",
     ".gitignore",
-    "mypy.ini",
     "LICENSE",
     "LICENSE.md",
     "LICENSE.txt",
