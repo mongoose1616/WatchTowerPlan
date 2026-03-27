@@ -1,0 +1,32 @@
+{
+  "package_id": "planning.watchtower_ctf",
+  "title": "WatchTower CTF Planning Package",
+  "root_path": "/home/j/mvp_reference/CTF_implementation",
+  "generated_on": "2026-03-26",
+  "source_precedence": [
+    "STEP1_FINAL_v3.md",
+    "STEP1_FINAL_v2.md",
+    "STEP1_FINAL.md",
+    "STEP1.md",
+    "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+  ],
+  "phase_ids": [
+    "phase.0",
+    "phase.1",
+    "phase.2",
+    "phase.3",
+    "phase.4",
+    "phase.5",
+    "phase.6",
+    "phase.7"
+  ],
+  "index_paths": [
+    "indexes/phases.json",
+    "indexes/artifacts.json",
+    "indexes/research_items.json",
+    "indexes/open_decisions.json",
+    "indexes/step1_traceability.json",
+    "indexes/step1_source_audit.json",
+    "indexes/capability_map.json"
+  ]
+}

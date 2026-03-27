@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-23T23:19:12Z",
+  "updated_at": "2026-03-27T05:31:58Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -68,7 +68,9 @@
         "core/python/src/watchtower_core/pack_integration/",
         "plan/python/src/watchtower_plan/",
         "core/workflows/modules/",
+        "core/workflows/roles/",
         "plan/workflows/modules/",
+        "plan/workflows/roles/",
         "core/docs/standards/",
         "plan/docs/standards/"
       ]
@@ -108,7 +110,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-22T23:20:00Z",
+      "updated_at": "2026-03-24T22:55:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -116,13 +118,13 @@
         "product"
       ],
       "applies_to": [
-        "plan/",
         "core/control_plane/",
         "core/python/src/watchtower_host/",
         "core/python/src/watchtower_core/pack_integration/",
-        "plan/python/src/watchtower_plan/",
+        "first_internal_pack_python",
         "core/workflows/modules/",
-        "plan/workflows/modules/"
+        "pack_owned_workflows",
+        "live_pack_workspace"
       ]
     },
     {
@@ -133,7 +135,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-22T23:20:00Z",
+      "updated_at": "2026-03-24T22:55:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -145,14 +147,14 @@
         "README.md",
         "AGENTS.md",
         "core/docs/foundations/",
-        "plan/docs/foundations/",
         "core/workflows/",
-        "plan/workflows/",
-        "plan/",
         "core/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_host/",
-        "plan/python/src/watchtower_plan/"
+        "foundations_mirror",
+        "pack_owned_workflows",
+        "live_pack_workspace",
+        "first_internal_pack_python"
       ]
     },
     {
@@ -179,7 +181,9 @@
         "plan/.wt/manifests/pack_runtime_manifest.json",
         "core/python/src/watchtower_core/validation/pack_contract.py",
         "core/workflows/modules/",
-        "plan/workflows/modules/"
+        "core/workflows/roles/",
+        "plan/workflows/modules/",
+        "plan/workflows/roles/"
       ]
     },
     {
@@ -200,6 +204,66 @@
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
+      ]
+    },
+    {
+      "guidance_id": "reference.core_swap_integration_assessment_closeout",
+      "title": "Core Swap Integration Assessment Closeout",
+      "summary": "Durable reference recording current WatchTowerPlan verification of the external oversight-host core-swap integration assessment and the resulting local applicability decisions.",
+      "guidance_family": "reference",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+      "updated_at": "2026-03-24T16:42:24Z",
+      "trace_id": "trace.reference.core_swap_integration_assessment_closeout",
+      "audience": "shared",
+      "authority": "reference",
+      "tags": [
+        "reference",
+        "assessment",
+        "closeout",
+        "pack_integration",
+        "portability"
+      ],
+      "applies_to": [
+        "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+        "core/control_plane/registries/pack_registry.json",
+        "core/python/pyproject.toml",
+        "plan/.wt/manifests/pack_settings.json",
+        "core/python/tests/unit/test_control_plane_loader_surfaces.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_cli_validate_commands.py",
+        "core/python/tests/integration/test_validate_all_cli.py"
+      ]
+    },
+    {
+      "guidance_id": "reference.oversight_functionality_assessment_closeout",
+      "title": "Oversight Functionality Assessment Closeout",
+      "summary": "Durable reference recording current WatchTowerPlan verification of the external WatchTowerOversight functionality assessment and the resulting local applicability decisions.",
+      "guidance_family": "reference",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/references/oversight_functionality_assessment_closeout_reference.md",
+      "updated_at": "2026-03-24T08:01:23Z",
+      "trace_id": "trace.reference.oversight_functionality_assessment_closeout",
+      "audience": "shared",
+      "authority": "reference",
+      "tags": [
+        "reference",
+        "assessment",
+        "closeout",
+        "routing",
+        "validation"
+      ],
+      "applies_to": [
+        "plan/docs/references/oversight_functionality_assessment_closeout_reference.md",
+        "core/control_plane/indexes/routes/route_index.json",
+        "core/control_plane/indexes/workflows/workflow_index.json",
+        "core/python/tests/integration/test_validate_all_cli.py",
+        "core/python/tests/unit/test_cli_validate_commands.py",
+        "core/python/tests/unit/test_cli_route_and_path_commands.py",
+        "core/python/tests/unit/test_workflow_execution_harness.py",
+        "plan/.wt/manifests/pack_settings.json"
       ]
     },
     {
@@ -271,7 +335,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -323,7 +387,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/data_contracts/task_index_standard.md",
-      "updated_at": "2026-03-18T14:00:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -344,7 +408,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/data_contracts/traceability_index_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-25T02:55:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -425,7 +489,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/decision_capture_standard.md",
-      "updated_at": "2026-03-15T15:30:00Z",
+      "updated_at": "2026-03-24T16:42:24Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -511,7 +575,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-18T14:00:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -546,13 +610,13 @@
     },
     {
       "guidance_id": "std.governance.planning_retention_and_purge",
-      "title": "Planning Retention and Purge Standard",
-      "summary": "This standard defines the promote-then-purge retention model for closed traced planning artifacts so active policy lives in current canonical surfaces instead of accumulating indefinitely in historical trace packages.",
+      "title": "Planning Retention and Cleanup Standard",
+      "summary": "This standard defines the promote-then-delete retention model for closed traced planning artifacts so active policy lives in current canonical surfaces instead of accumulating indefinitely in historical trace packages.",
       "guidance_family": "standard",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-      "updated_at": "2026-03-21T03:58:00Z",
+      "updated_at": "2026-03-24T23:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -564,7 +628,6 @@
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/records/",
         "core/control_plane/indexes/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/"
@@ -621,7 +684,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/rewrite_surface_classification_standard.md",
-      "updated_at": "2026-03-19T20:15:00Z",
+      "updated_at": "2026-03-24T23:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -671,7 +734,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/task_tracking_standard.md",
-      "updated_at": "2026-03-18T20:35:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -694,7 +757,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/traceability_standard.md",
-      "updated_at": "2026-03-20T23:55:00Z",
+      "updated_at": "2026-03-23T23:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [

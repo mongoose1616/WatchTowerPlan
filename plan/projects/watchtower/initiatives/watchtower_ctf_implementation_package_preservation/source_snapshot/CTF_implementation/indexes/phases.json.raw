@@ -1,0 +1,100 @@
+[
+  {
+    "phase_id": "phase.0",
+    "name": "Shared Contract Adoption",
+    "doc_path": "02_phases/phase_0_shared_contract_adoption.md",
+    "depends_on": [],
+    "acceptance": "identity baseline, source precedence, live delta log, target repo state",
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "phase_id": "phase.1",
+    "name": "Scaffold And Integrate The Pack",
+    "doc_path": "02_phases/phase_1_scaffold_and_integrate.md",
+    "depends_on": [
+      "phase.0"
+    ],
+    "acceptance": "verified scaffold baseline, starter replacement plan, bootstrap path",
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "phase_id": "phase.2",
+    "name": "Author The Pack Machine Contract",
+    "doc_path": "02_phases/phase_2_pack_machine_contract.md",
+    "depends_on": [
+      "phase.1"
+    ],
+    "acceptance": "full schema/registry/validation plan and shared governance surface adoption",
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "phase_id": "phase.3",
+    "name": "Build The CTF Runtime",
+    "doc_path": "02_phases/phase_3_ctf_runtime.md",
+    "depends_on": [
+      "phase.2"
+    ],
+    "acceptance": "integration, query, sync, workflow, and doc-semantics runtime seam defined",
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "phase_id": "phase.4",
+    "name": "Build The Domain Artifacts",
+    "doc_path": "02_phases/phase_4_domain_artifacts.md",
+    "depends_on": [
+      "phase.3"
+    ],
+    "acceptance": "challenge artifacts, ledgers, and closeout surfaces defined",
+    "source_refs": [
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "phase_id": "phase.5",
+    "name": "Build Knowledge, Promotion, And Retrieval",
+    "doc_path": "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+    "depends_on": [
+      "phase.4"
+    ],
+    "acceptance": "knowledge families, promotion flow, and retrieval model defined",
+    "source_refs": [
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "phase_id": "phase.6",
+    "name": "Build Environment Adapters And Safety Controls",
+    "doc_path": "02_phases/phase_6_environment_adapters_and_safety.md",
+    "depends_on": [
+      "phase.5"
+    ],
+    "acceptance": "environment adapters, modes, safety, and provenance rules defined",
+    "source_refs": [
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "phase_id": "phase.7",
+    "name": "Release And Portability Proof",
+    "doc_path": "02_phases/phase_7_release_and_portability_proof.md",
+    "depends_on": [
+      "phase.6"
+    ],
+    "acceptance": "target bootstrap, validation, export, and portability proof path defined",
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  }
+]

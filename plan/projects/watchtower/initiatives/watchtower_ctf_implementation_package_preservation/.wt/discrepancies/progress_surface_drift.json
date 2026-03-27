@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.progress_surface_drift",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "category": "stale_rendered_surface",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Rendered surface drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/progress.md.",
+  "source_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/progress.md"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-27T05:17:25Z",
+  "updated_at": "2026-03-27T05:31:15Z"
+}

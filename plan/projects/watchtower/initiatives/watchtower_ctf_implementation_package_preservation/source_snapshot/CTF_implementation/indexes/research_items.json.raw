@@ -1,0 +1,86 @@
+[
+  {
+    "research_id": "research.attack.enterprise_tactics",
+    "title": "MITRE ATT&CK Enterprise Tactics",
+    "url": "https://attack.mitre.org/tactics/enterprise/",
+    "authority_level": "primary",
+    "accessed_on": "2026-03-25",
+    "why_it_matters": "tactic taxonomy and pinned offensive-security vocabulary; cite as ATT&CK v18 where used",
+    "distilled_into": [
+      "05_research/distilled_references.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ]
+  },
+  {
+    "research_id": "research.attack.updates",
+    "title": "ATT&CK Updates",
+    "url": "https://attack.mitre.org/resources/updates/",
+    "authority_level": "primary",
+    "accessed_on": "2026-03-25",
+    "why_it_matters": "live ATT&CK version changes, including the October 28, 2025 v18 release and its defensive-model changes",
+    "distilled_into": [
+      "05_research/research_register.md",
+      "05_research/distilled_references.md"
+    ]
+  },
+  {
+    "research_id": "research.owasp.wstg",
+    "title": "OWASP Web Security Testing Guide",
+    "url": "https://owasp.org/www-project-web-security-testing-guide/",
+    "authority_level": "canonical_community",
+    "accessed_on": "2026-03-25",
+    "why_it_matters": "web testing workflow and versioned testing taxonomy; prefer pinned WSTG v4.2 section references",
+    "distilled_into": [
+      "05_research/distilled_references.md",
+      "07_guides/operator_workflow_guide.md"
+    ]
+  },
+  {
+    "research_id": "research.nist.800_115",
+    "title": "NIST SP 800-115, Technical Guide to Information Security Testing and Assessment",
+    "url": "https://csrc.nist.gov/pubs/sp/800/115/final",
+    "authority_level": "primary",
+    "accessed_on": "2026-03-25",
+    "why_it_matters": "engagement structure, planning, execution, and reporting",
+    "distilled_into": [
+      "05_research/distilled_references.md",
+      "07_guides/operator_workflow_guide.md"
+    ]
+  },
+  {
+    "research_id": "research.nist.800_86",
+    "title": "NIST SP 800-86, Guide to Integrating Forensic Techniques into Incident Response",
+    "url": "https://csrc.nist.gov/pubs/sp/800/86/final",
+    "authority_level": "primary",
+    "accessed_on": "2026-03-25",
+    "why_it_matters": "evidence capture, forensic handling, provenance discipline",
+    "distilled_into": [
+      "05_research/distilled_references.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ]
+  },
+  {
+    "research_id": "research.nist.800_92r1_ipd",
+    "title": "NIST SP 800-92 Rev.1 IPD, Guide to Security Log Management",
+    "url": "https://csrc.nist.gov/pubs/sp/800/92/r1/ipd",
+    "authority_level": "informative_draft",
+    "accessed_on": "2026-03-25",
+    "why_it_matters": "updated logging and event-management guidance",
+    "distilled_into": [
+      "05_research/distilled_references.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ]
+  },
+  {
+    "research_id": "research.diataxis",
+    "title": "Di\u00e1taxis",
+    "url": "https://diataxis.fr/",
+    "authority_level": "informative",
+    "accessed_on": "2026-03-25",
+    "why_it_matters": "documentation type separation for guides, references, and explanations",
+    "distilled_into": [
+      "05_research/distilled_references.md",
+      "06_standards/documentation_and_templates_standard.md"
+    ]
+  }
+]

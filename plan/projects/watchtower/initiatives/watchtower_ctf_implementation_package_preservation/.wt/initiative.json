@@ -1,0 +1,89 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
+  "slug": "watchtower_ctf_implementation_package_preservation",
+  "title": "WatchTower CTF Implementation Package Preservation",
+  "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
+  "scope_type": "project_scoped",
+  "project_id": "project.watchtower",
+  "status": "active",
+  "lifecycle_stage": "ready_for_execution",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-27T05:17:18Z",
+  "updated_at": "2026-03-27T05:31:58Z",
+  "task_ids": [
+    "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.watchtower_ctf_implementation_package_preservation.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+      "sha256": "866e289d35b73abda5dca78b44121e658cb759a9a9a2d4348066d42052d36986",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-27T05:31:03Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+      "sha256": "95288fc5c9d205edfb51599bff0c6ba2dd77d6eff9df5eb0c752fc54bfeab7d8",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-27T05:31:03Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+      "sha256": "ff5b602dd5c49968eab798fcbf70ff91be2558bc81f1987f2fea9fc1c14cab38",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-27T05:31:03Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+      "sha256": "fe12b04246b2b589510b62d5d91e08755338ab8f04c235352c069e581c79d594",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-27T05:31:03Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "governing_document_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": true,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-27T05:31:03Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-27T05:31:58Z"
+    }
+  ]
+}

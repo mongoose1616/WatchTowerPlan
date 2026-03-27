@@ -1,0 +1,963 @@
+[
+  {
+    "decision_id": "decision.query_human_output_contract",
+    "area": "query_runtime",
+    "default": "curated queries support --format human|json|both with JSON as the default posture; human output is table-first plus one-line summaries where helpful, uses shared compact/standard/verbose presets, command-specific default row limits capped at roughly twenty, command-specific visible columns capped at six before expansion, explicit truncation and zero-result guidance, compact material trust/provenance cues, and treats status as the main operator-context command alongside a shared human structure for status, challenges, and sessions",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.curated_relation_expansion_contract",
+    "area": "query_runtime",
+    "default": "curated family queries may expand relations only through one shared --expand-relations surface with one-hop default unless depth is explicit, separate expansion limits, a default per-root cap of five targets, shared relation/family/trust/review filter flags aligned with graph query, graph suggestions only on truncation, focus support limited to knowledge/artifacts/events/discrepancies, and one shared --sort contract with clear failures on unsupported fields",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.graph_human_output_contract",
+    "area": "graph_query",
+    "default": "public graph query is core for agents but advanced for humans; human graph output defaults to depth-two capped traversal, root-summary plus relation-group presentation, repeated-node dedupe, inline provenance markers, root-plus-immediate-neighbor summaries, and named operator/provenance/retrieval/review modes as alias bundles over shared flags",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.knowledge_human_output_contract",
+    "area": "knowledge_retrieval",
+    "default": "knowledge human output always labels result families, groups only when multiple families appear, uses the fixed human family order tactics/playbooks/tools/commands/references then everything else, keeps JSON ranking pure, distinguishes tactics strongly, exposes parent/support/tool cues for playbooks/commands/references, leaves filtered commands and references flatter by default with conditional subgrouping only when mixed-tool or mixed-target result sets appear, and reuses the same material-only why-this-matched explanation pattern across knowledge, commands, and references while clearly signaling included or excluded candidate material",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.runtime_rollout_sequence",
+    "area": "implementation_rollout",
+    "default": "start runtime implementation with workflow metadata/docs plus the first machine-record bundle together, prove a thin real-CLI vertical slice on the actual pack root through challenge_intake -> challenge_metadata + notes_metadata + event_stream + artifact_index + query challenges + query artifacts using real schemas and validators, add unit tests plus CLI smoke tests immediately, then prove status, then blockers, then knowledge, ship graph after knowledge, run a short packaging/UX consolidation pass, and use a deliberately small/simple target for the first real challenge run; after consolidation choose the next capability by highest operator pain point with agent leverage as the secondary tie-break",
+    "status": "locked_in_package",
+    "upstream_dependency": "target_repo_integration",
+    "affected_phases": [
+      "phase.1",
+      "phase.2",
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.routing_contract",
+    "area": "workflow_routing",
+    "default": "treat ROUTING_TABLE.md and workflow_metadata_registry.json as co-equal authoritative routing surfaces; validate both together and fail immediately if they disagree",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.1",
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.slug_id_generation",
+    "area": "identity_and_paths",
+    "default": "normalize platform, event, challenge, and knowledge slugs to lowercase snake_case ASCII; derive challenge_id as challenge.<platform_slug>.<event_slug>.<challenge_slug>; derive knowledge_id as knowledge.<family>.<knowledge_slug> or knowledge.<family>.<context_slug>.<knowledge_slug> when the family naturally nests under a stable parent; keep path and id suffixes aligned when collisions require numeric disambiguation",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.1",
+      "phase.2",
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.challenge_path_fallback_policy",
+    "area": "identity_and_paths",
+    "default": "keep the current-compatible canonical challenge root as offensive_security/ctf/<platform>/<event>/<challenge>/ in v1; use stable placeholder segments such as unknown_platform and unknown_event when source data is missing; when better metadata becomes available, run a governed rename that rewrites known refs, indexes, rendered links, and machine records atomically; defer optional-segment collapse beyond v1",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.1",
+      "phase.2",
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.challenge_lifecycle_statuses",
+    "area": "lifecycle_model",
+    "default": "use the current-compatible shared-status subset active, blocked, in_review, needs_review, completed, and closed for challenge artifacts; carry solved or unresolved semantics in closeout_record.outcome rather than as pack-only status values",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.session_lifecycle_statuses",
+    "area": "lifecycle_model",
+    "default": "use the current-compatible shared-status subset active, blocked, in_review, needs_review, completed, closed, and cancelled for session artifacts; represent pause and handoff through explicit session-state fields such as pause_reason and handoff_ready; allow only one active session per challenge",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.lifecycle_transition_policy",
+    "area": "lifecycle_policy",
+    "default": "publish pack-local status_transition_rules for challenge_state, session_state, knowledge_state, closeout_record, and extraction_output instead of encoding lifecycle behavior only in code",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.status_transition_rules_contract",
+    "area": "lifecycle_policy",
+    "default": "use one pack-local status_transition_rules policy artifact with entries keyed by lifecycle family and transitions keyed by from_state, to_state, and review_required, following the donor-pack oversight pattern; lock starter entries for challenge_state, session_state, knowledge_state, closeout_record, and extraction_output with explicit reopen and review-gated edges where required",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.event_stream_contract",
+    "area": "event_stream",
+    "default": "use one stable event_stream envelope with required event_id, event_type, timestamp_utc, actor, session_id, and challenge_id fields; keep event-type-specific detail in payload and add only the locked conditional top-level refs such as mode, route, artifact refs, status transitions, and reason when relevant",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.event_type_registry_contract",
+    "area": "event_stream",
+    "default": "publish a pack-local event_type_registry with the locked starter taxonomy from the state/index contract, including lifecycle, command, workflow, review, blocker, transfer, session, discrepancy, and sync or rebuild event classes",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.3",
+      "phase.4",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.artifact_index_contract",
+    "area": "artifact_index",
+    "default": "require artifact_id, artifact_family, path, pack, status, authoritative, hidden, derived, created_at_utc, and updated_at_utc on every artifact_index entry, then allow the locked conditional challenge, source, review, trust, discrepancy, and rendered-view fields as family-specific extensions",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.environment_context_contract",
+    "area": "environment_context",
+    "default": "use one governed root record with nested environment_context; require environment_context.summary and environment_context.type, keep the locked starter type, constraint, and capability vocabularies, and flatten the standard environment_* fields into pack indexes",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.challenge_metadata_contract",
+    "area": "challenge_metadata",
+    "default": "store ctf_challenge_metadata at .wt_local/challenge_metadata.json with required challenge_id, challenge_slug, canonical_path, challenge_path, notes_path, nested source, status, created_at_utc, and updated_at_utc fields; allow conditional platform/event slugs, display title, review cues, current session, blocker/discrepancy counts, last activity, rendered_view_path, and latest_closeout_ref; do not duplicate challenge.md body prose into JSON",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.notes_metadata_contract",
+    "area": "notes_metadata",
+    "default": "store ctf_notes_metadata at .wt_local/notes_metadata.json with required challenge_id, notes_path, reconciliation_state, updated_at_utc, unresolved_blocker_count, and unresolved_discrepancy_count fields; allow conditional checksum, edit timestamps, reconciliation timestamp, current session, last editor actor, and summary-presence cues; keep notes.md authoritative for working narrative",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.session_state_contract",
+    "area": "session_state",
+    "default": "store ctf_session_state at .wt_local/session_state.json with required session_id, challenge_id, status, requested_mode, effective_mode, interaction_mode, environment_context_ref, started_at_utc, and last_activity_at_utc fields; allow conditional workflow/route refs, summaries, recent command/evidence refs, blocker ref, pause_reason, handoff_ready, handoff_notes, resume linkage, close fields, and review notes",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.source_trust_model",
+    "area": "provenance",
+    "default": "use one nested authoritative source object with required source.summary and optional source.platform, source.event, source.url, source.ref, and source.type; publish source_type values derived_challenge_knowledge, curated_reference, local_taxonomy, challenge_page, challenge_prompt, event_material, official_standard, official_docs, vendor_docs, high_quality_reference, community_reference, internal_observation, local_file, and paste; publish trust_state values unknown, unverified, source_attested, partially_verified, and verified; publish verification_status values not_reviewed, inspected, integrity_checked, manually_confirmed, and reproduced; allow per-family subsets",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.5",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.validation_suite_layout",
+    "area": "validation",
+    "default": "keep one suite.offensivesecurity.validation_baseline with pack_contract, front_matter, document_semantics, artifact, graph_index, authority_map, query_contracts, and lifecycle_policy steps, then add later suites only if offsec-specific gates truly need separate execution",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_validation_hooks_available",
+    "affected_phases": [
+      "phase.2",
+      "phase.3",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.pack_control_registries",
+    "area": "control_plane_surfaces",
+    "default": "include artifact_family_registry, documentation_family_registry, template_catalog, human_surface_policy_registry, authority_map, rendered_surface_registry, query_family_registry, event_type_registry, discrepancy_type_registry, severity_registry, discrepancy_resolution_registry, and governance_limit_registry in v1, then add source_type_registry, trust_state_registry, verification_status_registry, relation_type_registry, review_status_registry, and promotion_policy_registry as the relevant phases land",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.3",
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.controlled_registry_shape",
+    "area": "control_plane_surfaces",
+    "default": "keep one authoritative JSON artifact per registry with current-compatible root fields such as $schema, id, title, and status; use entries[] for entry registries, surfaces[] for rendered registries, and values[] for controlled-value registries; for controlled values use value, entry_status, description, and optional aliases, replacement, notes, and examples; generate human-readable registry companions from authoritative JSON rather than hand-authoring them",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_registry_patterns_available",
+    "affected_phases": [
+      "phase.2",
+      "phase.3",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.template_catalog_contract",
+    "area": "control_plane_surfaces",
+    "default": "lock template_catalog entries to template_id, entry_status, authorship_mode, template_path, required_section_ids, optional_section_ids, section_order, and allowed_roots, with conditional surface_id, family_id, front_matter_schema_id, and section_spec_schema_id fields plus structured llm_guidance",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.documentation_family_registry_contract",
+    "area": "control_plane_surfaces",
+    "default": "lock documentation_family_registry entries to family_id, entry_status, summary, allowed_roots, authorship_mode, and required_index_ids, with conditional front_matter schema, template, section spec, and mirror fields",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.human_surface_policy_registry_contract",
+    "area": "control_plane_surfaces",
+    "default": "lock human_surface_policy_registry entries to policy_id, path_pattern, match_mode, root_kind, entry_status, governing_surfaces, clarifying_rule, and surfaces[], with each surface declaring relative_path, entity_shape, surface_role, mode, and authorship_mode",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.rendered_surface_registry_contract",
+    "area": "rendered_surfaces",
+    "default": "lock rendered_surface_registry to surface_id, title, output_path, and sections[] with allowed section kinds table, bullet_summary, lines, and updated_at, plus stable column formatter contracts for table sections",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.authority_question_set",
+    "area": "authority_routing",
+    "default": "publish v1 authority questions for current pack state, challenge lookup, blocker/discrepancy state, knowledge lookup, session/environment context, workflow routing, command lookup, and safety posture; each entry declares canonical machine path, preferred command, preferred human path, and fallback paths",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.3",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.query_output_contracts",
+    "area": "query_runtime",
+    "default": "keep one shared output baseline across offsec queries with stable id, status, summary, path, and updated_at_utc columns where meaningful; expose curated query families plus generic family-query fallback for stable derived indexes and stable raw governed records; add a public graph query surface; when status output is used for authority.offsec.safety_posture it must also expose effective_mode, interaction_mode, environment_type, safety_posture_summary, confirmation_summary, refusal_summary, and policy_refs",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.challenge_index_row_contract",
+    "area": "query_runtime",
+    "default": "use rich challenge_index rows with baseline challenge_id, status, summary, canonical_path, and last_activity_at_utc plus standard platform, event, challenge_slug, challenge_title, current_workflow_id, current_session_id, blocker_count, unresolved_discrepancy_count, active_governance_limits, latest_closeout_ref, closeout_outcome, evidence_count, knowledge_candidate_count, and rendered_view_path fields where meaningful",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.blocker_index_row_contract",
+    "area": "query_runtime",
+    "default": "use rich blocker_index rows with baseline blocker_id, challenge_id, status, severity, and summary plus blocker_type, discrepancy_id, active_governance_limits, requires_review, resolution_status, opened_at_utc, last_updated_at_utc, canonical_path, rendered_view_path, source_artifact_ref, and owner_role fields where meaningful",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.session_index_row_contract",
+    "area": "query_runtime",
+    "default": "use rich session_index rows with baseline session_id, challenge_id, status, requested_mode, effective_mode, environment_type, started_at_utc, last_activity_at_utc, and canonical_path plus interaction_mode, current_workflow_id, environment_summary, handoff_ready, operator_actor_ref, reviewer_actor_ref, active_governance_limits, recent_evidence_count, and last_command_summary fields where meaningful",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.knowledge_index_row_contract",
+    "area": "query_runtime",
+    "default": "use rich knowledge_index rows with baseline knowledge_id, family, title, status, review_status, trust_state, verification_status, canonical_path, and updated_at_utc plus summary, tactic_refs, source_count, evidence_count, relation_count, parent_refs, freshness_bucket, and rendered_view_path fields where meaningful",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.route_preview_output_contract",
+    "area": "workflow_routing",
+    "default": "keep route preview aligned to the live shared-core contract: JSON includes command, status, request, task_type, selected_route_count, selected_routes, selected_workflows, and warnings; selected_routes use route_id, task_type, score, matched_keywords, required_workflow_ids, and required_workflow_paths; selected_workflows use workflow_id, workflow_kind, title, doc_path, phase_type, task_family, and composes_module_paths",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_route_preview_available",
+    "affected_phases": [
+      "phase.1",
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.workflow_metadata_contract",
+    "area": "workflow_routing",
+    "default": "use the live shared-core workflow_metadata_registry schema as the v1 pack-facing authority, with required workflow_id, phase_type, task_family, and primary_risks fields and only the shared optional fields such as extra_trigger_tags and companion_workflow_ids",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_workflow_metadata_schema_available",
+    "affected_phases": [
+      "phase.1",
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.route_index_contract",
+    "area": "workflow_routing",
+    "default": "treat the shared route_index.json as the only derived machine route surface in v1, with route_id, task_type, trigger_keywords, required_workflow_ids, and required_workflow_paths as the locked entry fields generated from authored routing tables",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_route_index_available",
+    "affected_phases": [
+      "phase.1",
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.shared_query_helper_contract",
+    "area": "query_runtime",
+    "default": "compose offsec query helpers on top of the shared pack-agnostic query surface, keeping format as a presentation choice rather than a different retrieval operation and assuming shared lookup, filtered listing, provenance traversal, route or workflow lookup, registry lookup, and search-style filtering",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_query_runtime_available",
+    "affected_phases": [
+      "phase.3",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.route_workflow_query_alias_policy",
+    "area": "query_runtime",
+    "default": "do not add pack-specific aliases for shared route or workflow query surfaces in v1; use shared route and workflow lookup directly and keep offsec-specific queries focused on offsec-owned artifacts and rendered views",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_query_runtime_available",
+    "affected_phases": [
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.sync_target_outputs",
+    "area": "sync_runtime",
+    "default": "challenge-index rebuilds challenge indexes; knowledge-index rebuilds knowledge indexes and relation views; rendered-views rebuilds markdown companions; all runs the full set",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_sync_primitives_available",
+    "affected_phases": [
+      "phase.3",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.sync_surface_granularity",
+    "area": "sync_runtime",
+    "default": "keep the namespace minimal with challenge-index, knowledge-index, graph-index, rendered-views, and all; rely on generic shared sync surfaces for route, workflow, foundation, and reference indexes unless later operator evidence proves otherwise",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_sync_primitives_available",
+    "affected_phases": [
+      "phase.3",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.rendered_visibility_surfaces",
+    "area": "rendered_surfaces",
+    "default": "treat rendered visibility as first-class and require a pack-root overview plus rendered tracking summaries for challenges, knowledge, blockers, and sessions governed by rendered_surface_registry and human_surface_policy_registry",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.4",
+      "phase.5",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.template_contracts",
+    "area": "document_templates",
+    "default": "drive challenge.md, notes.md, and recap.md through a template_catalog; require challenge.md sections Source, Objective, Constraints, and Environment; require notes.md sections Working Summary, Hypotheses, Commands, Evidence, Blockers, and Next Steps; require recap.md sections Outcome, Path, Failures, and Reusable Lessons",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.notes_template_profile_model",
+    "area": "document_templates",
+    "default": "use one canonical notes template with optional sections and mode-specific rendering overlays rather than multiple unrelated base templates",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.markdown_reconciliation_policy",
+    "area": "markdown_authority",
+    "default": "keep challenge.md body source-faithful and locked; allow required front matter to be added at the next workflow opportunity; keep notes.md directly editable; require append-preserving agent edits; allow ad hoc user sections during active work and normalize or flag them only before closeout; hidden machine records remain authoritative for governed fields",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4"
+    ]
+  },
+  {
+    "decision_id": "decision.closeout_gate",
+    "area": "closeout",
+    "default": "require challenge.md, notes.md, closeout_record, extraction_output, passing closeout validation, and no active discrepancy carrying no_closeout; require solution and recap.md when outcome is solved, require recap.md but not solution when outcome is blocked_closeout or unresolved, and allow omission of both only for closed_without_attempt",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.extraction_trigger_policy",
+    "area": "knowledge_capture",
+    "default": "allow explicit extraction at any time, run automatic extraction at closeout, and do not run periodic active-phase extraction by default; paused sessions may update metadata but do not trigger extraction unless explicitly requested",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.retention_cleanup_policy",
+    "area": "retention_and_cleanup",
+    "default": "keep solved or closed challenges at their canonical path in v1, treat archived as a logical lifecycle state rather than immediate path relocation, do not support destructive challenge deletion in v1, and require a cleanup or transfer ledger whenever retained artifacts are pruned, redacted, or moved after closeout",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.6",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.artifact_payload_primitives",
+    "area": "artifact_contracts",
+    "default": "require contract_version, RFC 3339 UTC whole-second timestamps, pack-relative POSIX paths, and structured checksum objects across governed JSON artifact families",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.closeout_record_contract",
+    "area": "closeout",
+    "default": "use one shared closeout_record envelope with the Step 1 required and conditional fields, with outcome carrying solved or unresolved semantics instead of a separate solved boolean",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.evidence_storage_layout",
+    "area": "evidence_capture",
+    "default": "keep raw supporting captures under offensive_security/ctf/<platform>/<event>/<challenge>/artifacts/ and store the authoritative governed evidence inventory in offensive_security/ctf/<platform>/<event>/<challenge>/.wt_local/evidence/artifacts.json as one entries[] collection keyed by artifact_id",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.evidence_artifact_contract",
+    "area": "evidence_capture",
+    "default": "use one shared evidence_artifact envelope with the Step 1 required and conditional fields, pack-relative stored paths, transfer provenance fields, and shared trust or verification vocabularies",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.extraction_output_contract",
+    "area": "knowledge_capture",
+    "default": "use one shared extraction_output envelope with the Step 1 required and conditional fields, artifact-id refs instead of raw paths, and status values active, archived, and superseded",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.discrepancy_record_contract",
+    "area": "discrepancy_governance",
+    "default": "use the locked discrepancy record contract with required discrepancy_id, artifact_family, discrepancy_type, severity, detected_at, detected_by, status, source_artifact_ref, and summary fields, plus the locked conditional fields for challenge or session refs, compared values, related refs, review force, resolution, and governance limits",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.discrepancy_policy",
+    "area": "discrepancy_governance",
+    "default": "use discrepancy status open, in_review, resolved, and dismissed; use severity informational, low, medium, high, and critical; use forces_needs_review for escalation; and use governance_limits for enforced restrictions instead of special severity names such as policy_block",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.discrepancy_registry_contract",
+    "area": "discrepancy_governance",
+    "default": "publish discrepancy_type_registry, severity_registry, discrepancy_resolution_registry, and governance_limit_registry; starter discrepancy types are sync_conflict, validation_error, unknown_value, invalid_transition, status_mismatch, review_state_mismatch, provenance_gap, trust_mismatch, verification_gap, missing_required_field, invalid_relation, registry_violation, route_drift, workflow_metadata_drift, and preview_contract_drift; starter severities are informational, low, medium, high, and critical; starter resolutions are resolved, dismissed, and exceptioned",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.5",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.discrepancy_exception_limits_contract",
+    "area": "discrepancy_governance",
+    "default": "lock the starter governance_limit values to read_only_only, no_remote_execution, no_closeout, review_required, no_promotion, no_full_auto, and no_transfer, and require validators plus workflow gates to enforce active limits rather than treating them as advisory notes",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.5",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.command_capture_redaction",
+    "area": "evidence_capture",
+    "default": "always capture proposed or executed command metadata and summaries; keep raw or large stdout or stderr in artifact captures instead of inline notes or event payloads; redact clearly player-owned material from routine machine-visible surfaces while allowing challenge-issued ephemeral values to remain when operationally useful; use artifact refs for bulky or sensitive outputs",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.knowledge_relation_model",
+    "area": "knowledge_graph",
+    "default": "publish a relation_type_registry and keep authoritative typed relations[] on the source artifact with starter relation types derived_from, supports, related_to, supersedes, belongs_to_tactic, uses_tool, uses_protocol, references, evidenced_by, produced_by_command, captured_in_event, and imported_via_transfer; keep related_artifact_ids derived-only in indexes",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.promotion_policy_registry",
+    "area": "knowledge_promotion",
+    "default": "add a promotion_policy_registry with one starter entry per target family; each entry declares allowed source artifact kinds, required review workflow workflow.offensivesecurity.ctf_reviewer, required provenance fields challenge_id closeout_id extraction_id source_artifact_refs and evidence_refs, mirror_mode, and auto_promotion_allowed; runtime auto-promotion stays off by default and only reference and tool_profile are eligible if a narrow allowlist is later enabled",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.promotion_state_machine",
+    "area": "knowledge_promotion",
+    "default": "use candidate, accepted, deprecated, and archived as the reusable-knowledge lifecycle baseline, with review_required and review_status carrying review progress separately and promotion expressed as the governed candidate-to-accepted transition",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.retrieval_ranking_contract",
+    "area": "knowledge_retrieval",
+    "default": "default retrieval uses accepted artifacts only and ranks by scope match, exact tool or protocol match over general tactics, reusability, freshness, evidence quality, breadth of applicability, teacher-mode explanation boost when active, then deterministic knowledge_id tie-break",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.review_status_registry",
+    "area": "review_governance",
+    "default": "keep review_required separate from lifecycle status and publish a review_status registry with not_required, pending_review, in_review, approved, rejected, and approved_with_exception, allowing per-family subsets for knowledge, closeout, discrepancy, and workflow-review surfaces",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.source_clarification_policy",
+    "area": "provenance",
+    "default": "allow targeted minimal clarification only when source, classification, environment, trust, verification, path, or id metadata materially affects indexing, review, promotion, closeout, safety, or canonical record creation; in assistant, teacher, and note_taker modes ask before governed record creation when the missing metadata is material; in full_auto use provisional values and trigger needs_review or discrepancy handling instead of fabricating certainty",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.5",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.external_references_schema",
+    "area": "knowledge_provenance",
+    "default": "use one shared external_references entry shape across knowledge families with required url and reference_kind, strongly recommended label, and optional is_primary and quality_notes; keep reference_kind separate from source.type and start with official, official_standard, vendor, high_quality_reference, community, and archive",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.candidate_knowledge_representation",
+    "area": "knowledge_promotion",
+    "default": "create extracted knowledge artifacts directly in their target family at the canonical final path, start with status candidate, and promote in place to status accepted rather than creating a separate candidate family or duplicate accepted artifact",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.shared_knowledge_envelope",
+    "area": "knowledge_contracts",
+    "default": "use one shared reusable-knowledge envelope across command, tool_profile, protocol, reference, tactic, and playbook families before adding family-specific payload fields",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.command_payload_contract",
+    "area": "knowledge_contracts",
+    "default": "lock the command family to command_template, placeholders, required_binary, supported_environment_types, shell_assumptions, safety_class, when_to_use, and when_not_to_use, with compact optional execution details layered on top",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.tool_profile_payload_contract",
+    "area": "knowledge_contracts",
+    "default": "lock the tool_profile family to tool_binary, supported_environment_types, when_to_use, when_not_to_use, applicability_boundaries, strengths, limitations, and prerequisites, with optional operational notes layered on top",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.protocol_payload_contract",
+    "area": "knowledge_contracts",
+    "default": "lock the protocol family to default_ports, transport, service_identity, when_to_use, when_not_to_use, operator_relevance, authentication_notes, enumeration_notes, and attack_relevance, with optional misconfiguration and verification fields layered on top",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.reference_payload_contract",
+    "area": "knowledge_contracts",
+    "default": "lock the reference family to source_kind, source_author_or_publisher, publication_context, key_takeaways, operator_relevance, when_to_use, when_not_to_use, and not_normative_for, with optional quality and trust notes layered on top",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.tactic_payload_contract",
+    "area": "knowledge_contracts",
+    "default": "lock the tactic family to the Step 1 orienting payload fields and canonical path offensive_security/knowledge/tactics/<tactic_slug>/overview.md, keeping tactics coarse and navigation-oriented",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.playbook_payload_contract",
+    "area": "knowledge_contracts",
+    "default": "lock the playbook family to the Step 1 procedure-first payload fields and canonical path offensive_security/knowledge/tactics/<tactic_slug>/playbooks/<playbook_slug>.md, keeping playbooks structured and reproducible",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.glossary_term_registry_contract",
+    "area": "vocabulary_governance",
+    "default": "ship one canonical human-readable glossary standard, one pack-facing glossary surface, and one machine-readable term registry with deprecation and replacement fields; default implementation paths are offensive_security/docs/standards/metadata/offsec_glossary_standard.md, offensive_security/docs/references/offsec_glossary.md, and offensive_security/.wt/registries/term_registry.json",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.2",
+      "phase.5"
+    ]
+  },
+  {
+    "decision_id": "decision.environment_adapter_protocol",
+    "area": "environment_adapters",
+    "default": "local, vpn_reachable, ssh, and airgapped adapters expose describe_context, check_capability, execute_command, capture_artifact, stage_transfer, and record_provenance; local and remote adapters stay guidance-only by default until stronger autonomy is explicitly enabled, and airgapped omits live execution",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.safety_confirmation_matrix",
+    "area": "safety_policy",
+    "default": "classify actions as read_only, state_changing, sensitive, or destructive; require confirmation for every mode or autonomy change, credential use, privilege escalation, remote state-changing actions, long-running automation, external transfer, and destructive cleanup; refuse destructive unattended full_auto and other actions blocked by scope ambiguity, insufficient environment context, provenance gaps, repeated failures, or stale state",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.safety_confirmation_matrix_contract",
+    "area": "safety_policy",
+    "default": "use one pack-local safety_confirmation_matrix policy artifact with entries keyed by rule_id and explicit selector/enforcement fields such as action_classification, confirmation_required, applies_to, interaction_modes, environment_types, remote execution, privilege escalation, credential, transfer, and refusal metadata",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.mode_state_projection",
+    "area": "mode_and_session_state",
+    "default": "record both requested_mode and effective_mode in session_state and the event_stream; mirror effective mode, autonomy level, and recent transition summary into visible session surfaces only on meaningful changes",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.4",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.full_auto_observability_contract",
+    "area": "mode_and_observability",
+    "default": "full-auto must show planned commands before execution, concise results after execution, grouped checkpoints, and a live journal, while pausing at risk or scope boundaries and allowing the operator to choose the detail level",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.3",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.airgapped_transfer_contract",
+    "area": "airgapped_workflow",
+    "default": "require transfer_id, direction, operator, source_system, destination_system, timestamp_utc, purpose, and artifact_refs for every manual transfer at offensive_security/.wt/ledgers/transfers/<transfer_id>.json; capture sha256 when practical; quarantine imported or pasted claims-bearing material at lower trust until manually verified or reproduced; require re-paste before machine-state updates when structured pasted output is malformed or partial; and index claims-bearing transferred artifacts",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_pack_owned",
+    "affected_phases": [
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.actor_ref_requirement",
+    "area": "actor_validation",
+    "default": "require actor refs on mode changes, confirmations and overrides, promotion approvals, closeout approvals or finalization, delegated or remote execution, airgapped imports and exports, and destructive or retention actions; allow omission only on low-risk note-only updates and purely derived refresh work; unresolved required refs are validation errors after bootstrap",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_actor_registry_available_pack_policy_pending",
+    "affected_phases": [
+      "phase.2",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.workflow_catalog",
+    "area": "workflow_governance",
+    "default": "defer richer workflow_catalog beyond routing-table plus workflow-metadata baseline; when revisited, add titles, summaries, inputs, outputs, owner, version, workflow-surface links, composition/dependency metadata, and a generated human explorer over a machine-primary catalog",
+    "status": "locked_in_package",
+    "upstream_dependency": "none_required_for_v1",
+    "affected_phases": [
+      "phase.3"
+    ]
+  },
+  {
+    "decision_id": "decision.actor_bootstrap_day_one",
+    "area": "actor_validation",
+    "default": "reuse shared actor_registry surface and defer actor bootstrap unless strict actor-ref validation is required immediately",
+    "status": "locked_in_package",
+    "upstream_dependency": "pack implementation need",
+    "affected_phases": [
+      "phase.2",
+      "phase.6"
+    ]
+  },
+  {
+    "decision_id": "decision.public_rebuild_cli",
+    "area": "sync_rebuild_contract",
+    "default": "keep public operator guidance aligned to sync",
+    "status": "locked_in_package",
+    "upstream_dependency": "shared_cli_evolution",
+    "affected_phases": [
+      "phase.3",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.saved_query_views",
+    "area": "post_v1_operator_ux",
+    "default": "defer saved query views beyond v1; when added, ship pack-owned defaults first, user-local customization later, and keep user-local saved views outside the governed pack root in user-local config",
+    "status": "locked_in_package",
+    "upstream_dependency": "real_usage_signal",
+    "affected_phases": [
+      "phase.3",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.provenance_review_impact_surface",
+    "area": "post_v1_governance",
+    "default": "defer richer provenance/trust workflows beyond v1; when added, prefer provenance-triggered re-review, downstream impact analysis, and a reviewer-facing affected-downstream view while flagging accepted knowledge for review rather than auto-invalidating it",
+    "status": "locked_in_package",
+    "upstream_dependency": "real_provenance_usage",
+    "affected_phases": [
+      "phase.5",
+      "phase.6",
+      "phase.7"
+    ]
+  },
+  {
+    "decision_id": "decision.pentest_pack_split",
+    "area": "future_pack_topology",
+    "default": "start with one offensive_security hosted pack and revisit later",
+    "status": "locked_in_package",
+    "upstream_dependency": "future_product_scope",
+    "affected_phases": [
+      "phase.0",
+      "phase.5"
+    ]
+  }
+]

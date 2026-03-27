@@ -1,0 +1,93 @@
+[
+  {
+    "capability_id": "capability.pack_lifecycle",
+    "classification": "supported_now",
+    "current_contract_source": "shared pack commands and standards",
+    "planned_owner": "watchtower_core + watchtower_host",
+    "package_paths": [
+      "00_context/current_contract_baseline.md",
+      "04_contracts/scaffold_and_bootstrap_baseline.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ]
+  },
+  {
+    "capability_id": "capability.ctf_workspace_model",
+    "classification": "adaptable_now",
+    "current_contract_source": "hosted pack topology plus domain_roots contract",
+    "planned_owner": "watchtower_offensivesecurity",
+    "package_paths": [
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ]
+  },
+  {
+    "capability_id": "capability.shared_governance_surfaces",
+    "classification": "supported_now",
+    "current_contract_source": "shared control_plane registries and pack_context loading",
+    "planned_owner": "shared core adopted by pack settings",
+    "package_paths": [
+      "00_context/current_contract_baseline.md",
+      "02_phases/phase_2_pack_machine_contract.md"
+    ]
+  },
+  {
+    "capability_id": "capability.ctf_machine_contract",
+    "classification": "adaptable_now",
+    "current_contract_source": "shared schema and validator patterns",
+    "planned_owner": "watchtower_offensivesecurity",
+    "package_paths": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ]
+  },
+  {
+    "capability_id": "capability.ctf_runtime",
+    "classification": "must_develop",
+    "current_contract_source": "integration hook points only",
+    "planned_owner": "watchtower_offensivesecurity",
+    "package_paths": [
+      "02_phases/phase_3_ctf_runtime.md",
+      "03_workflows/workflow_inventory.md"
+    ]
+  },
+  {
+    "capability_id": "capability.domain_artifacts",
+    "classification": "must_develop",
+    "current_contract_source": "none beyond generic markdown and validation helpers",
+    "planned_owner": "watchtower_offensivesecurity",
+    "package_paths": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "06_standards/documentation_and_templates_standard.md"
+    ]
+  },
+  {
+    "capability_id": "capability.knowledge_promotion",
+    "classification": "must_develop",
+    "current_contract_source": "shared query/render helpers only",
+    "planned_owner": "watchtower_offensivesecurity",
+    "package_paths": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ]
+  },
+  {
+    "capability_id": "capability.environment_safety",
+    "classification": "must_develop",
+    "current_contract_source": "pack-owned by boundary",
+    "planned_owner": "watchtower_offensivesecurity",
+    "package_paths": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ]
+  },
+  {
+    "capability_id": "capability.workflow_catalog",
+    "classification": "conflict_or_extension",
+    "current_contract_source": "not required by live contract",
+    "planned_owner": "locked_post_v1_deferral",
+    "package_paths": [
+      "03_workflows/routing_and_metadata_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ]
+  }
+]

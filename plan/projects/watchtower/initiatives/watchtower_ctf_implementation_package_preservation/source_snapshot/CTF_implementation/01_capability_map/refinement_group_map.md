@@ -1,0 +1,9 @@
+# Refinement Group Map
+
+| Refinement Group | Coverage In Package |
+|---|---|
+| `R01-R17` | layout, routing, metadata, status/source registries, event-stream, workflow metadata, and safety-matrix shape decisions are consolidated in `04_contracts/state_and_index_contracts_plan.md`, `04_contracts/routing_and_runtime_contracts_plan.md`, `04_contracts/lifecycle_and_safety_policy_contracts_plan.md`, `04_contracts/schemas_registries_ledgers_validation_plan.md`, and `03_workflows/routing_and_metadata_plan.md` |
+| `R18-R37` | closeout, evidence, extraction, discrepancy, and workflow-governance details are consolidated in `04_contracts/artifact_payload_contracts_plan.md`, `04_contracts/state_and_index_contracts_plan.md`, `02_phases/phase_4_domain_artifacts.md`, and `04_contracts/schemas_registries_ledgers_validation_plan.md` |
+| `R38-R68` | knowledge payloads, relations, serialization, query, identity, storage, and control-plane registry details are consolidated in `02_phases/phase_2_pack_machine_contract.md`, `02_phases/phase_5_knowledge_promotion_and_retrieval.md`, `04_contracts/control_plane_registry_contracts_plan.md`, `04_contracts/rendered_surface_contracts_plan.md`, and `06_standards/knowledge_taxonomy_and_promotion_standard.md` |
+| `R69-R72` | explicitly absent from the source set; recorded as `not_present_in_source_set` in the traceability matrix and JSON index |
+| `R73-R90` | sync/rebuild split, discrepancy limits, external references, actor registry, governance surface map, and actor-bootstrap deferrals are consolidated in `04_contracts/state_and_index_contracts_plan.md`, `04_contracts/routing_and_runtime_contracts_plan.md`, `04_contracts/query_sync_rendered_views_docs_plan.md`, `04_contracts/schemas_registries_ledgers_validation_plan.md`, and `08_tracking/deferred_review_register.md` |

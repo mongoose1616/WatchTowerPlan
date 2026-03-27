@@ -45,6 +45,34 @@
         "traceability"
       ],
       "notes": "Durable generic example evidence for acceptance, validation, and traceability guidance."
+    },
+    {
+      "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
+      "title": "WatchTower CTF Implementation Package Preservation",
+      "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-27T05:31:58Z",
+      "source_surface_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/bootstrap_watchtower_ctf_implementation_package_preservation/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
     }
   ]
 }

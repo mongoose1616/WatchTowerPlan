@@ -1,0 +1,2318 @@
+[
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q01",
+    "design_area": "A. Product Boundary And Authority Model",
+    "extracted_detail": "What is the authoritative operator surface for active CTF work?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "00_context/current_contract_baseline.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q02",
+    "design_area": "A. Product Boundary And Authority Model",
+    "extracted_detail": "What should be the authoritative source for challenge lifecycle state?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "00_context/current_contract_baseline.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q03",
+    "design_area": "A. Product Boundary And Authority Model",
+    "extracted_detail": "Which CTF workspace path model should be canonical?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract and resolves the later optional-segment conflict in favor of the scaffold-compatible v1 path baseline.",
+    "kept_in": [
+      "00_context/current_contract_baseline.md",
+      "04_contracts/path_and_id_generation_plan.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.domain_packs.retired; delta.challenge_path.v1_placeholder_segments"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q04",
+    "design_area": "A. Product Boundary And Authority Model",
+    "extracted_detail": "Where should hidden machine-managed state live for CTF?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "00_context/current_contract_baseline.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.domain_packs.retired"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q05",
+    "design_area": "A. Product Boundary And Authority Model",
+    "extracted_detail": "What is the minimum required CTF closeout artifact set for v1?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "00_context/current_contract_baseline.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q06",
+    "design_area": "A. Product Boundary And Authority Model",
+    "extracted_detail": "What reusable-knowledge scope should CTF v1 include?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "00_context/current_contract_baseline.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q07",
+    "design_area": "A. Product Boundary And Authority Model",
+    "extracted_detail": "How should CTF and pentest relate in the first-pass domain model?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "00_context/current_contract_baseline.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q08",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "Which execution environments must be supported in v1? `multi-select`",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q09",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "In local terminal-accessible mode, what command autonomy should the agent have?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q10",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "In SSH or VPN-accessible mode, what should the execution model be?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q11",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "In airgapped mode, what is the minimum supported interaction pattern?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q12",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "Which operating modes should exist in v1? `multi-select`",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q13",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "How should command autonomy vary by operating mode?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q14",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "What should teaching mode optimize for?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q15",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "What should note-taker mode be allowed to produce?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q16",
+    "design_area": "B. Environment Context And Operating Modes",
+    "extracted_detail": "What confirmation model should govern session-level mode changes?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q17",
+    "design_area": "C. Internal Supporting LLM Or Agent Workflows",
+    "extracted_detail": "What should trigger workflow routing internally?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_topology_and_roles.md",
+      "03_workflows/routing_and_metadata_plan.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q18",
+    "design_area": "C. Internal Supporting LLM Or Agent Workflows",
+    "extracted_detail": "When should internal retrieval of reusable knowledge run?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_topology_and_roles.md",
+      "03_workflows/routing_and_metadata_plan.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q19",
+    "design_area": "C. Internal Supporting LLM Or Agent Workflows",
+    "extracted_detail": "How should command capture work internally?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_topology_and_roles.md",
+      "03_workflows/routing_and_metadata_plan.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q20",
+    "design_area": "C. Internal Supporting LLM Or Agent Workflows",
+    "extracted_detail": "How should evidence capture work internally?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_topology_and_roles.md",
+      "03_workflows/routing_and_metadata_plan.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q21",
+    "design_area": "C. Internal Supporting LLM Or Agent Workflows",
+    "extracted_detail": "What should trigger structured extraction into candidate reusable knowledge?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_topology_and_roles.md",
+      "03_workflows/routing_and_metadata_plan.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q22",
+    "design_area": "C. Internal Supporting LLM Or Agent Workflows",
+    "extracted_detail": "What review model should govern promotion from extraction output to reusable knowledge?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_topology_and_roles.md",
+      "03_workflows/routing_and_metadata_plan.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q23",
+    "design_area": "C. Internal Supporting LLM Or Agent Workflows",
+    "extracted_detail": "What session-resume model should internal workflows support?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_topology_and_roles.md",
+      "03_workflows/routing_and_metadata_plan.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q24",
+    "design_area": "D. User-Facing LLM Or Agent Workflows",
+    "extracted_detail": "What should be the primary user-facing entrypoint for a new challenge?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_inventory.md",
+      "07_guides/operator_workflow_guide.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q25",
+    "design_area": "D. User-Facing LLM Or Agent Workflows",
+    "extracted_detail": "What should the default active-execution loop look like for the user?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_inventory.md",
+      "07_guides/operator_workflow_guide.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q26",
+    "design_area": "D. User-Facing LLM Or Agent Workflows",
+    "extracted_detail": "How should blocker handling work in the user experience?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_inventory.md",
+      "07_guides/operator_workflow_guide.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q27",
+    "design_area": "D. User-Facing LLM Or Agent Workflows",
+    "extracted_detail": "How should solution capture be performed?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_inventory.md",
+      "07_guides/operator_workflow_guide.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q28",
+    "design_area": "D. User-Facing LLM Or Agent Workflows",
+    "extracted_detail": "How should recap or closeout work for the user?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_inventory.md",
+      "07_guides/operator_workflow_guide.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q29",
+    "design_area": "D. User-Facing LLM Or Agent Workflows",
+    "extracted_detail": "When should the system proactively offer reusable knowledge or tool guidance?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_inventory.md",
+      "07_guides/operator_workflow_guide.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q30",
+    "design_area": "D. User-Facing LLM Or Agent Workflows",
+    "extracted_detail": "What should \"user watches and learns\" full-auto behavior look like?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "03_workflows/workflow_inventory.md",
+      "07_guides/operator_workflow_guide.md",
+      "02_phases/phase_3_ctf_runtime.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q31",
+    "design_area": "E. Internal Database, Index, Registry, And Ledger Surfaces",
+    "extracted_detail": "Which machine artifact families should be canonical for v1? `multi-select`",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q32",
+    "design_area": "E. Internal Database, Index, Registry, And Ledger Surfaces",
+    "extracted_detail": "Which pack-owned machine surfaces should be rebuildable rather than authoritative?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q33",
+    "design_area": "E. Internal Database, Index, Registry, And Ledger Surfaces",
+    "extracted_detail": "What append-only ledgers or streams should exist in v1? `multi-select`",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q34",
+    "design_area": "E. Internal Database, Index, Registry, And Ledger Surfaces",
+    "extracted_detail": "What should be the authority for slug and id generation?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract and now publishes the v1 snake_case path and typed-id rules explicitly.",
+    "kept_in": [
+      "04_contracts/path_and_id_generation_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q35",
+    "design_area": "E. Internal Database, Index, Registry, And Ledger Surfaces",
+    "extracted_detail": "What should the v1 index surface include?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q36",
+    "design_area": "E. Internal Database, Index, Registry, And Ledger Surfaces",
+    "extracted_detail": "Should vocabulary or terminology itself have a machine-usable surface?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q37",
+    "design_area": "E. Internal Database, Index, Registry, And Ledger Surfaces",
+    "extracted_detail": "Should environment context and session state be explicit machine records?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q38",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "What should be the top-level reusable corpus model?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q39",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "How strict should tactic taxonomy be?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q40",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "How should tool knowledge be modeled?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q41",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "What role should commands play in the reusable knowledge model?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q42",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "How should protocols and references be separated?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q43",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "How should reusable artifacts be cross-linked?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q44",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "What should promotion criteria require before something becomes canonical reusable knowledge?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q45",
+    "design_area": "F. User-Facing Knowledge Management And Taxonomy",
+    "extracted_detail": "What retrieval ranking factors should be canonical?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q46",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "How many `notes.md` template profiles should exist in v1?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q47",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "What should be required in `challenge.md`?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q48",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "What should be required in `notes.md`?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q49",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "What should be the canonical solution output shape?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q50",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "What should be the canonical recap output shape?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q51",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "How strict should reusable-knowledge templates be?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q52",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "How much machine-managed metadata should be visible in user-facing markdown?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q53",
+    "design_area": "G. Templates For `notes.md` And Other Knowledge Surfaces",
+    "extracted_detail": "How should templates relate to rendered views and direct authoring?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/documentation_and_templates_standard.md",
+      "02_phases/phase_4_domain_artifacts.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q54",
+    "design_area": "H. Required Python Contracts, Shapes, Integrations, And Core Support",
+    "extracted_detail": "How far should shared core responsibility go for pack support?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_3_ctf_runtime.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q55",
+    "design_area": "H. Required Python Contracts, Shapes, Integrations, And Core Support",
+    "extracted_detail": "What level of pack-specific semantic validation should exist beyond raw schema checks?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_3_ctf_runtime.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q56",
+    "design_area": "H. Required Python Contracts, Shapes, Integrations, And Core Support",
+    "extracted_detail": "What query surface should shared core provide for packs?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_3_ctf_runtime.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q57",
+    "design_area": "H. Required Python Contracts, Shapes, Integrations, And Core Support",
+    "extracted_detail": "What rebuild or sync behavior should shared core provide?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_3_ctf_runtime.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q58",
+    "design_area": "H. Required Python Contracts, Shapes, Integrations, And Core Support",
+    "extracted_detail": "Who should own environment adapters for local shell, SSH, and airgapped workflows?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_3_ctf_runtime.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q59",
+    "design_area": "H. Required Python Contracts, Shapes, Integrations, And Core Support",
+    "extracted_detail": "What orchestration or plugin model should be assumed for pack workflows?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_3_ctf_runtime.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q60",
+    "design_area": "H. Required Python Contracts, Shapes, Integrations, And Core Support",
+    "extracted_detail": "Who should own path normalization, id generation, and rendered-view helpers?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_2_pack_machine_contract.md",
+      "02_phases/phase_3_ctf_runtime.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q61",
+    "design_area": "I. Vocabulary And Definitions",
+    "extracted_detail": "Where should the canonical offensive-security glossary live?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "07_guides/follow_on_agent_execution_guide.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q62",
+    "design_area": "I. Vocabulary And Definitions",
+    "extracted_detail": "What naming style should be canonical for domain artifacts?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "07_guides/follow_on_agent_execution_guide.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q63",
+    "design_area": "I. Vocabulary And Definitions",
+    "extracted_detail": "Which prior-system terms do you want to explicitly retire? `narrative`",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "07_guides/follow_on_agent_execution_guide.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q64",
+    "design_area": "I. Vocabulary And Definitions",
+    "extracted_detail": "Which terms are non-negotiable and must remain canonical? `narrative`",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "07_guides/follow_on_agent_execution_guide.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q65",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What command safety taxonomy should be canonical?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q66",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What confirmation gates should be mandatory?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q67",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should out-of-scope or prohibited actions be handled?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q68",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What provenance requirements should apply to airgapped or manually transferred outputs?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q69",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Under what conditions should full-auto mode refuse to continue?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "Q70",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What is the minimum audit trail required across all supported modes?",
+    "disposition": "kept",
+    "rationale": "The domain intent remains valid under the current hosted-pack contract and is carried forward directly.",
+    "kept_in": [
+      "02_phases/phase_6_environment_adapters_and_safety.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/evidence_provenance_and_audit_standard.md"
+    ],
+    "capability_classification": "must_develop",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R01",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical tactic-overview layout?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R02",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial browser-browsable wiki publication model for WatchTower knowledge?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R03",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial global `status_registry` value set?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R04",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical `source` schema shape?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/routing_and_runtime_contracts_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R05",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should the initial `artifact_family_registry` include?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/routing_and_runtime_contracts_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R06",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the minimum canonical `event_stream` payload shape?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/routing_and_runtime_contracts_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R07",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial safety enforcement matrix shape?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/lifecycle_and_safety_policy_contracts_plan.md",
+      "06_standards/operator_modes_and_safety_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R08",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical extraction-artifact lifecycle after closeout?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R09",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical per-mode audit delta on top of the shared audit baseline?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R10",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What legacy standard names and section terms should be renamed for consistency?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R11",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should `promotion` be represented in the final model?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R12",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for `artifact_index` entries?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R13",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for `environment_context`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R14",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should new controlled values be introduced across governed surfaces?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R15",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for `workflow_module` metadata?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R16",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for `routing_table` entries?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R17",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical output contract for `route preview`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "03_workflows/routing_and_metadata_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R18",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for `closeout_record`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R19",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for `evidence_artifact`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R20",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for `extraction_output`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R21",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should candidate-stage reusable knowledge be represented?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R22",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical shared required fields for reusable knowledge artifacts across families?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R23",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical shared cross-link and relation model?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R24",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical serialization format by surface?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R25",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Which markdown artifact families should require YAML front matter, and what kind of metadata belongs there?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R26",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact shared front-matter baseline for markdown artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R27",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `relation_type_registry` and per-family allowed relation subsets?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/lifecycle_and_safety_policy_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R28",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `event_type_registry` for `event_stream`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R29",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `interaction_mode_registry` semantics and constraints?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R30",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact `status` transition rules per family?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R31",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the sync and reconciliation rules between markdown front matter and hidden machine JSON?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R32",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical discrepancy surface and workflow?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R33",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `discrepancy_type` and `severity` registries?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R34",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the controlled discrepancy resolution actions, and which discrepancy types allow user-accepted exceptions?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R35",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Should WatchTower build a governed workflow catalog of workflow modules that need to exist?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R36",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required fields for the workflow catalog?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R37",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should the `workflow_catalog` exist as both human-facing and machine-facing surfaces?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "02_phases/phase_4_domain_artifacts.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R38",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `review_status` registry and review semantics?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R39",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required payload fields for `command` knowledge artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R40",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required payload fields for `tool_profile` knowledge artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R41",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required payload fields for `protocol` knowledge artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R42",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required payload fields for `reference` knowledge artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R43",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required payload fields for `tactic` knowledge artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R44",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical required payload fields for `playbook` knowledge artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "04_contracts/artifact_payload_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R45",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `source.type` registry?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/routing_and_runtime_contracts_plan.md",
+      "04_contracts/query_sync_rendered_views_docs_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R46",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "When may the LLM or agent ask the user for clarification about source and other governed fields?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/query_sync_rendered_views_docs_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R47",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `trust_state` and `verification_status` registries?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R48",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical path-pattern registry by artifact family?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/control_plane_registry_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R49",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact common registry JSON shape?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/control_plane_registry_contracts_plan.md",
+      "04_contracts/rendered_surface_contracts_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R50",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Should rendered registry markdown views be generated automatically from registry JSON, and what should they include?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/control_plane_registry_contracts_plan.md",
+      "06_standards/documentation_and_templates_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R51",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical shape of a `template_standard`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/control_plane_registry_contracts_plan.md",
+      "04_contracts/rendered_surface_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R52",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical `workflow_catalog` status registry?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R53",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the canonical shared query-helper contract over pack surfaces?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R54",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should core resolve pack context and load pack settings or schemas for queries?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R55",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Should `PackContext` have a governed conceptual shape, or remain only an implementation detail?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R56",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Should `artifact_index` have a rendered human-readable view, and what should it include?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R57",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Should `workflow_catalog` have a rendered human-readable view, and what should it include?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R58",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Should `template_standard` and registry artifacts appear in `artifact_index` as indexed artifacts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R59",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final governed-surface taxonomy and artifact-family registry?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R60",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final markdown authority and shadow-state model?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R61",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final workflow governance model across `workflow_module`, `workflow_catalog`, and `workflow_surface`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R62",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final lifecycle and registry-common schema model?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R63",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final relation and routing-link model across artifacts, payloads, events, and indexes?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R64",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final `artifact_index` contract?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R65",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final storage, load, and path-pattern model for governed surfaces?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R66",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final shared identity model for artifacts, refs, and actors?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R67",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final shared-sub-schema policy and priority candidates?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R68",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What remaining controlled vocabularies and admissibility policies need to be formalized?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R69",
+    "design_area": "Post-Workbook Refinements",
+    "extracted_detail": "`not_present_in_source_set`: no section exists for this refinement identifier in the Step 1 source set.",
+    "disposition": "deferred",
+    "rationale": "No matching refinement section exists in the Step 1 source chain; tracked explicitly as `not_present_in_source_set` to prevent accidental omission.",
+    "kept_in": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R70",
+    "design_area": "Post-Workbook Refinements",
+    "extracted_detail": "`not_present_in_source_set`: no section exists for this refinement identifier in the Step 1 source set.",
+    "disposition": "deferred",
+    "rationale": "No matching refinement section exists in the Step 1 source chain; tracked explicitly as `not_present_in_source_set` to prevent accidental omission.",
+    "kept_in": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R71",
+    "design_area": "Post-Workbook Refinements",
+    "extracted_detail": "`not_present_in_source_set`: no section exists for this refinement identifier in the Step 1 source set.",
+    "disposition": "deferred",
+    "rationale": "No matching refinement section exists in the Step 1 source chain; tracked explicitly as `not_present_in_source_set` to prevent accidental omission.",
+    "kept_in": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R72",
+    "design_area": "Post-Workbook Refinements",
+    "extracted_detail": "`not_present_in_source_set`: no section exists for this refinement identifier in the Step 1 source set.",
+    "disposition": "deferred",
+    "rationale": "No matching refinement section exists in the Step 1 source chain; tracked explicitly as `not_present_in_source_set` to prevent accidental omission.",
+    "kept_in": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R73",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the final `sync` vs `rebuild` contract?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": "delta.workflow_catalog.not_required"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R74",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should discrepancy exceptions and exception-imposed limits be represented and enforced?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R75",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What helper surfaces beyond `query` need explicit shared CLI and Python contracts?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R76",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What shared artifact-level compatibility and serialization primitives should be standardized?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R77",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact shared `external_references` sub-schema?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R78",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact shared actor-identity schema?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/state_and_index_contracts_plan.md",
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": ""
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R79",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact shared ref and link object schema?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R80",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact governed schema for `governance_surface_map` and pack-settings surface declarations?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R81",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact `event_stream` additions for `sync` and `rebuild`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R82",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should `actor_registry` be classified, stored, and exposed?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R83",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should `reference_kind` be governed?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R84",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "How should the initial `actor_registry` query and validation helpers look?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R85",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact canonical JSON shape for `actor_registry`?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R86",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial `actor_type` governance model?",
+    "disposition": "adapted",
+    "rationale": "The source decision is retained, but the package aligns it to the live hosted-pack topology and shared-core contract.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "adaptable_now",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R87",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact validation behavior for actor refs in artifacts and events?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R88",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the initial bootstrap model for `actor_registry` and actor-ref validation?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R89",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "Should `actor_registry` and actor bootstrap be reflected in `workflow_catalog` and `governance_surface_map`?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": "delta.actor_registry.present"
+  },
+  {
+    "source_document": "STEP1_FINAL_v2.md",
+    "source_item_id": "R90",
+    "design_area": "J. Safety, Policy, And Trust Boundaries",
+    "extracted_detail": "What should be the exact initial workflow shape for `actor_bootstrap`?",
+    "disposition": "deferred",
+    "rationale": "The source idea remains visible but is held as a locked post-v1 deferral or later extension rather than baseline implementation.",
+    "kept_in": [
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "capability_classification": "conflict_or_extension",
+    "live_contract_delta": "delta.actor_registry.present"
+  }
+]

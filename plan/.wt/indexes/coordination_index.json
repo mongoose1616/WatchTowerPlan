@@ -3,15 +3,81 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-24T17:49:12Z",
-  "coordination_mode": "ready_for_bootstrap",
-  "summary": "No active plan-workspace initiatives exist.",
-  "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
-  "recommended_surface_path": "plan/plan_overview.md",
-  "active_initiative_count": 0,
+  "updated_at": "2026-03-27T05:31:58Z",
+  "coordination_mode": "active_work",
+  "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
+  "recommended_next_action": "Promote the next planned task to ready before opening follow-up work.",
+  "recommended_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
+  "active_initiative_count": 1,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
-  "entries": [],
+  "entries": [
+    {
+      "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
+      "title": "WatchTower CTF Implementation Package Preservation",
+      "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "capture",
+      "updated_at": "2026-03-27T05:31:58Z",
+      "open_task_count": 1,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
+      "next_action": "Promote the next planned task to ready before opening follow-up work.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
+      "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+      "slug": "watchtower_ctf_implementation_package_preservation",
+      "scope_type": "project_scoped",
+      "project_id": "project.watchtower",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation",
+          "title": "Bootstrap WatchTower CTF Implementation Package Preservation",
+          "task_status": "planned",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/bootstrap_watchtower_ctf_implementation_package_preservation/task.json",
+          "is_actionable": false
+        }
+      ],
+      "source_surface_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md"
+      ],
+      "governing_document_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+      ],
+      "task_ids": [
+        "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_ctf_implementation_package_preservation.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/bootstrap_watchtower_ctf_implementation_package_preservation/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    }
+  ],
   "actionable_tasks": [],
   "recent_closed_initiatives": []
 }

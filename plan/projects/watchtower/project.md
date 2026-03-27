@@ -12,12 +12,12 @@ Operator-facing implementation target governed through the plan workspace.
 
 ## Current State
 - `repository_count`: `2`
-- `active_initiative_count`: `0`
+- `active_initiative_count`: `1`
 - `blocked_initiative_count`: `0`
-- `updated_at`: `2026-03-19T10:25:00Z`
+- `updated_at`: `2026-03-27T05:31:58Z`
 
 ## Linked Initiatives
-- No active child initiatives.
+- `initiative.watchtower_ctf_implementation_package_preservation`: `ready_for_execution` / `approved`
 
 ## Linked Repositories
 - `planning`: `repos/watchtower-plan`

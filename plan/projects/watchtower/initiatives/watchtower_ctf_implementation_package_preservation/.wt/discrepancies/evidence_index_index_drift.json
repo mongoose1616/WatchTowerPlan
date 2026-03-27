@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.evidence_index_index_drift",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "category": "stale_aggregate_index",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Aggregate index drift detected for plan/.wt/indexes/evidence_index.json.",
+  "source_paths": [
+    "plan/.wt/indexes/evidence_index.json"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-27T05:17:25Z",
+  "updated_at": "2026-03-27T05:31:15Z"
+}

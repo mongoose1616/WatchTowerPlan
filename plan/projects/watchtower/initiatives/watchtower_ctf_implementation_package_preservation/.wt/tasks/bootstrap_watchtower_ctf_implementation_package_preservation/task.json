@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation",
+  "slug": "bootstrap_watchtower_ctf_implementation_package_preservation",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "title": "Bootstrap WatchTower CTF Implementation Package Preservation",
+  "summary": "Bootstrap WatchTower CTF Implementation Package Preservation live initiative package.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-27T05:17:18Z",
+  "updated_at": "2026-03-27T05:17:18Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "governing_document_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+  ]
+}

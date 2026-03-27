@@ -1,0 +1,745 @@
+[
+  {
+    "artifact_id": "root.readme",
+    "kind": "doc",
+    "path": "README.md",
+    "phase_refs": [],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "context.executive_summary",
+    "kind": "doc",
+    "path": "00_context/executive_summary.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "artifact_id": "context.current_contract_baseline",
+    "kind": "doc",
+    "path": "00_context/current_contract_baseline.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "context.step1_source_map",
+    "kind": "doc",
+    "path": "00_context/step1_source_map.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md",
+      "STEP1.md"
+    ]
+  },
+  {
+    "artifact_id": "context.step1_line_audit",
+    "kind": "doc",
+    "path": "00_context/step1_line_by_line_deconfliction_audit.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1.md",
+      "STEP1_FINAL.md",
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "context.source_of_truth_contract_map",
+    "kind": "doc",
+    "path": "00_context/source_of_truth_contract_map.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "context.decision_contract_trace_checklist",
+    "kind": "doc",
+    "path": "00_context/decision_to_contract_trace_checklist.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "interactive_decision_workshop_2026-03-26",
+      "package_normalization_2026-03-26"
+    ]
+  },
+  {
+    "artifact_id": "context.reference_implementation_map",
+    "kind": "doc",
+    "path": "00_context/reference_implementation_map.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "context.reference_pack_precedents",
+    "kind": "doc",
+    "path": "00_context/reference_pack_precedent_review.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "context.live_contract_delta_log",
+    "kind": "doc",
+    "path": "00_context/live_contract_delta_log.md",
+    "phase_refs": [
+      "phase.0",
+      "phase.2"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "context.step1_traceability_matrix",
+    "kind": "doc",
+    "path": "00_context/step1_traceability_matrix.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "capability.crosswalk",
+    "kind": "doc",
+    "path": "01_capability_map/capability_crosswalk.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "capability.workbook_section_map",
+    "kind": "doc",
+    "path": "01_capability_map/workbook_section_map.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1.md",
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "artifact_id": "capability.refinement_group_map",
+    "kind": "doc",
+    "path": "01_capability_map/refinement_group_map.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.0",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_0_shared_contract_adoption.md",
+    "phase_refs": [
+      "phase.0"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.1",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_1_scaffold_and_integrate.md",
+    "phase_refs": [
+      "phase.1"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.2",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_2_pack_machine_contract.md",
+    "phase_refs": [
+      "phase.2"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.3",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_3_ctf_runtime.md",
+    "phase_refs": [
+      "phase.3"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.4",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_4_domain_artifacts.md",
+    "phase_refs": [
+      "phase.4"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.5",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_5_knowledge_promotion_and_retrieval.md",
+    "phase_refs": [
+      "phase.5"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.6",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_6_environment_adapters_and_safety.md",
+    "phase_refs": [
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md"
+    ]
+  },
+  {
+    "artifact_id": "phase.7",
+    "kind": "phase_doc",
+    "path": "02_phases/phase_7_release_and_portability_proof.md",
+    "phase_refs": [
+      "phase.7"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "workflow.topology",
+    "kind": "doc",
+    "path": "03_workflows/workflow_topology_and_roles.md",
+    "phase_refs": [
+      "phase.3"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "workflow.inventory",
+    "kind": "doc",
+    "path": "03_workflows/workflow_inventory.md",
+    "phase_refs": [
+      "phase.3"
+    ],
+    "source_refs": [
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "workflow.routing",
+    "kind": "doc",
+    "path": "03_workflows/routing_and_metadata_plan.md",
+    "phase_refs": [
+      "phase.3"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "contract.scaffold_baseline",
+    "kind": "doc",
+    "path": "04_contracts/scaffold_and_bootstrap_baseline.md",
+    "phase_refs": [
+      "phase.1"
+    ],
+    "source_refs": [
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "contract.path_and_id_generation",
+    "kind": "doc",
+    "path": "04_contracts/path_and_id_generation_plan.md",
+    "phase_refs": [
+      "phase.1",
+      "phase.2",
+      "phase.4"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md",
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.schemas_registries_validation",
+    "kind": "doc",
+    "path": "04_contracts/schemas_registries_ledgers_validation_plan.md",
+    "phase_refs": [
+      "phase.2",
+      "phase.4",
+      "phase.5"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "contract.artifact_payloads",
+    "kind": "doc",
+    "path": "04_contracts/artifact_payload_contracts_plan.md",
+    "phase_refs": [
+      "phase.2",
+      "phase.4",
+      "phase.5"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.state_index_reconciliation",
+    "kind": "doc",
+    "path": "04_contracts/state_and_index_contracts_plan.md",
+    "phase_refs": [
+      "phase.2",
+      "phase.3",
+      "phase.4",
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md",
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "contract.routing_runtime",
+    "kind": "doc",
+    "path": "04_contracts/routing_and_runtime_contracts_plan.md",
+    "phase_refs": [
+      "phase.1",
+      "phase.3",
+      "phase.5"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL_v3.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.control_plane_registries",
+    "kind": "doc",
+    "path": "04_contracts/control_plane_registry_contracts_plan.md",
+    "phase_refs": [
+      "phase.2",
+      "phase.3",
+      "phase.4",
+      "phase.5"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL_v3.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.rendered_surfaces",
+    "kind": "doc",
+    "path": "04_contracts/rendered_surface_contracts_plan.md",
+    "phase_refs": [
+      "phase.2",
+      "phase.3"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL_v3.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.lifecycle_safety_policy",
+    "kind": "doc",
+    "path": "04_contracts/lifecycle_and_safety_policy_contracts_plan.md",
+    "phase_refs": [
+      "phase.2",
+      "phase.4",
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL_v3.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.knowledge_governance_retrieval",
+    "kind": "doc",
+    "path": "04_contracts/knowledge_governance_and_retrieval_plan.md",
+    "phase_refs": [
+      "phase.5"
+    ],
+    "source_refs": [
+      "STEP1_FINAL.md",
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.environment_safety_execution",
+    "kind": "doc",
+    "path": "04_contracts/environment_and_safety_execution_plan.md",
+    "phase_refs": [
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL.md",
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "contract.query_sync_docs",
+    "kind": "doc",
+    "path": "04_contracts/query_sync_rendered_views_docs_plan.md",
+    "phase_refs": [
+      "phase.3",
+      "phase.7"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "contract.authority_lookup",
+    "kind": "doc",
+    "path": "04_contracts/authority_map_and_lookup_plan.md",
+    "phase_refs": [
+      "phase.2",
+      "phase.3",
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "contract.retention_cleanup",
+    "kind": "doc",
+    "path": "04_contracts/retention_and_cleanup_policy_plan.md",
+    "phase_refs": [
+      "phase.4",
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md",
+      "STEP1_FINAL.md"
+    ]
+  },
+  {
+    "artifact_id": "contract.core_export_bootstrap",
+    "kind": "doc",
+    "path": "04_contracts/core_export_and_target_bootstrap_plan.md",
+    "phase_refs": [
+      "phase.7"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "research.register",
+    "kind": "doc",
+    "path": "05_research/research_register.md",
+    "phase_refs": [
+      "phase.5",
+      "phase.6"
+    ],
+    "source_refs": [
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "research.distilled_references",
+    "kind": "doc",
+    "path": "05_research/distilled_references.md",
+    "phase_refs": [
+      "phase.5",
+      "phase.6"
+    ],
+    "source_refs": [
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "standard.docs_templates",
+    "kind": "standard",
+    "path": "06_standards/documentation_and_templates_standard.md",
+    "phase_refs": [
+      "phase.4"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "standard.knowledge_promotion",
+    "kind": "standard",
+    "path": "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+    "phase_refs": [
+      "phase.5"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "standard.evidence_provenance_audit",
+    "kind": "standard",
+    "path": "06_standards/evidence_provenance_and_audit_standard.md",
+    "phase_refs": [
+      "phase.4",
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "standard.operator_modes_safety",
+    "kind": "standard",
+    "path": "06_standards/operator_modes_and_safety_standard.md",
+    "phase_refs": [
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "guide.operator_workflow",
+    "kind": "guide",
+    "path": "07_guides/operator_workflow_guide.md",
+    "phase_refs": [
+      "phase.3",
+      "phase.4",
+      "phase.6"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "guide.follow_on_agent",
+    "kind": "guide",
+    "path": "07_guides/follow_on_agent_execution_guide.md",
+    "phase_refs": [
+      "phase.0",
+      "phase.7"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "guide.target_repo_bootstrap",
+    "kind": "guide",
+    "path": "07_guides/target_repo_bootstrap_guide.md",
+    "phase_refs": [
+      "phase.7"
+    ],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_PACK_SCAFFOLD_SPEC_v1.md"
+    ]
+  },
+  {
+    "artifact_id": "tracking.backlog",
+    "kind": "tracking",
+    "path": "08_tracking/backlog.md",
+    "phase_refs": [],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "tracking.dependencies",
+    "kind": "tracking",
+    "path": "08_tracking/dependency_register.md",
+    "phase_refs": [],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "tracking.risks",
+    "kind": "tracking",
+    "path": "08_tracking/risk_register.md",
+    "phase_refs": [],
+    "source_refs": [
+      "STEP1_FINAL_v3.md"
+    ]
+  },
+  {
+    "artifact_id": "tracking.implementation_gap_audit",
+    "kind": "tracking",
+    "path": "08_tracking/implementation_gap_audit.md",
+    "phase_refs": [],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md",
+      "external"
+    ]
+  },
+  {
+    "artifact_id": "tracking.deferred_review_register",
+    "kind": "tracking",
+    "path": "08_tracking/deferred_review_register.md",
+    "phase_refs": [],
+    "source_refs": [
+      "STEP1_FINAL_v3.md",
+      "STEP1_FINAL_v2.md"
+    ]
+  },
+  {
+    "artifact_id": "index.package_manifest",
+    "kind": "index",
+    "path": "indexes/package_manifest.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  },
+  {
+    "artifact_id": "index.phases",
+    "kind": "index",
+    "path": "indexes/phases.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  },
+  {
+    "artifact_id": "index.artifacts",
+    "kind": "index",
+    "path": "indexes/artifacts.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  },
+  {
+    "artifact_id": "index.research_items",
+    "kind": "index",
+    "path": "indexes/research_items.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  },
+  {
+    "artifact_id": "index.open_decisions",
+    "kind": "index",
+    "path": "indexes/open_decisions.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  },
+  {
+    "artifact_id": "index.step1_traceability",
+    "kind": "index",
+    "path": "indexes/step1_traceability.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  },
+  {
+    "artifact_id": "index.step1_source_audit",
+    "kind": "index",
+    "path": "indexes/step1_source_audit.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  },
+  {
+    "artifact_id": "index.capability_map",
+    "kind": "index",
+    "path": "indexes/capability_map.json",
+    "phase_refs": [],
+    "source_refs": [
+      "generated"
+    ]
+  }
+]

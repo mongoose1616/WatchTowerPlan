@@ -1,0 +1,358 @@
+[
+  {
+    "audit_id": "audit.step1.01",
+    "source_document": "STEP1.md",
+    "line_start": 39,
+    "line_end": 61,
+    "heading": "Current Baseline That Looks Stable",
+    "coverage_outcome": "captured the stable substrate split, promotion boundary, and pack-owned runtime framing",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/current_contract_baseline.md",
+      "01_capability_map/capability_crosswalk.md",
+      "02_phases/phase_0_shared_contract_adoption.md"
+    ],
+    "decision_ids": [],
+    "notes": "Retained to prevent the package from re-deriving generic core capabilities as if nothing already existed."
+  },
+  {
+    "audit_id": "audit.step1.02",
+    "source_document": "STEP1.md",
+    "line_start": 63,
+    "line_end": 127,
+    "heading": "Major Tensions To Resolve Early",
+    "coverage_outcome": "converted early tensions into locked defaults or explicit decisions",
+    "disposition": "adapted",
+    "package_targets": [
+      "08_tracking/implementation_gap_audit.md",
+      "indexes/open_decisions.json",
+      "04_contracts/authority_map_and_lookup_plan.md",
+      "04_contracts/retention_and_cleanup_policy_plan.md"
+    ],
+    "decision_ids": [
+      "decision.markdown_reconciliation_policy",
+      "decision.mode_state_projection",
+      "decision.glossary_term_registry_contract"
+    ],
+    "notes": "No early tension from this range remains undocumented."
+  },
+  {
+    "audit_id": "audit.step1.03",
+    "source_document": "STEP1.md",
+    "line_start": 129,
+    "line_end": 412,
+    "heading": "Step 1 Roadmap Of Areas To Cover",
+    "coverage_outcome": "used as the section-coverage spine for package layout and workbook mapping",
+    "disposition": "kept",
+    "package_targets": [
+      "01_capability_map/workbook_section_map.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "02_phases/phase_6_environment_adapters_and_safety.md"
+    ],
+    "decision_ids": [],
+    "notes": "Earlier A-J framing remains compatible with later workbook structure."
+  },
+  {
+    "audit_id": "audit.step1.04",
+    "source_document": "STEP1.md",
+    "line_start": 413,
+    "line_end": 477,
+    "heading": "Recommended Sequence For The Next Passes / Questions For You Before Step 2",
+    "coverage_outcome": "superseded as a question list but retained as rationale for phase ordering and review sequencing",
+    "disposition": "superseded",
+    "package_targets": [
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "decision_ids": [],
+    "notes": "Each question in this range is now either resolved in-package or represented by an explicit decision entry."
+  },
+  {
+    "audit_id": "audit.step1.05",
+    "source_document": "STEP1_FINAL.md",
+    "line_start": 34,
+    "line_end": 289,
+    "heading": "Decision Log And Carry-Forward Constraints / Resolved Decisions",
+    "coverage_outcome": "retained as a major source for authority, closeout, mode, and knowledge defaults",
+    "disposition": "adapted",
+    "package_targets": [
+      "04_contracts/authority_map_and_lookup_plan.md",
+      "04_contracts/retention_and_cleanup_policy_plan.md",
+      "06_standards/documentation_and_templates_standard.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md"
+    ],
+    "decision_ids": [
+      "decision.markdown_reconciliation_policy",
+      "decision.mode_state_projection",
+      "decision.extraction_trigger_policy"
+    ],
+    "notes": "Older topology assumptions in the same range were superseded by v3 and the scaffold proof."
+  },
+  {
+    "audit_id": "audit.step1.06",
+    "source_document": "STEP1_FINAL.md",
+    "line_start": 290,
+    "line_end": 391,
+    "heading": "Carry-Forward Constraints",
+    "coverage_outcome": "expanded into concrete package standards and locked decisions",
+    "disposition": "adapted",
+    "package_targets": [
+      "06_standards/documentation_and_templates_standard.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "02_phases/phase_4_domain_artifacts.md",
+      "02_phases/phase_6_environment_adapters_and_safety.md"
+    ],
+    "decision_ids": [
+      "decision.notes_template_profile_model",
+      "decision.full_auto_observability_contract",
+      "decision.glossary_term_registry_contract"
+    ],
+    "notes": "This range was under-expressed in the earlier package and drove most of the current audit expansion."
+  },
+  {
+    "audit_id": "audit.step1.07",
+    "source_document": "STEP1_FINAL.md",
+    "line_start": 418,
+    "line_end": 3195,
+    "heading": "Q01-Q70",
+    "coverage_outcome": "fully covered item-by-item by the workbook traceability surfaces",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "decision_ids": [],
+    "notes": "Final remains a contributing rationale source even where v2 is the denser row source."
+  },
+  {
+    "audit_id": "audit.step1.08",
+    "source_document": "STEP1_FINAL.md",
+    "line_start": 3234,
+    "line_end": 5586,
+    "heading": "R01-R68",
+    "coverage_outcome": "fully covered item-by-item by the workbook traceability surfaces",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "decision_ids": [],
+    "notes": "Several refinement details from this range also informed package standards during the audit."
+  },
+  {
+    "audit_id": "audit.step1.09",
+    "source_document": "STEP1_FINAL.md",
+    "line_start": 5612,
+    "line_end": 6151,
+    "heading": "Upstream Core Alignment Review / Current Status / Completion Check",
+    "coverage_outcome": "used as rationale for live-contract deltas, export-based transfer, and explicit locked deferrals",
+    "disposition": "adapted",
+    "package_targets": [
+      "00_context/live_contract_delta_log.md",
+      "04_contracts/core_export_and_target_bootstrap_plan.md",
+      "08_tracking/deferred_review_register.md"
+    ],
+    "decision_ids": [
+      "decision.workflow_catalog",
+      "decision.public_rebuild_cli"
+    ],
+    "notes": "Live March 25, 2026 repo proof supersedes outdated upstream assumptions from this range."
+  },
+  {
+    "audit_id": "audit.step1.10",
+    "source_document": "STEP1_FINAL_v2.md",
+    "line_start": 41,
+    "line_end": 296,
+    "heading": "Decision Log And Carry-Forward Constraints / Resolved Decisions",
+    "coverage_outcome": "remains the main itemized resolved-answer source",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json",
+      "06_standards/documentation_and_templates_standard.md"
+    ],
+    "decision_ids": [],
+    "notes": "Still the densest source for specific resolved answers."
+  },
+  {
+    "audit_id": "audit.step1.11",
+    "source_document": "STEP1_FINAL_v2.md",
+    "line_start": 297,
+    "line_end": 398,
+    "heading": "Carry-Forward Constraints",
+    "coverage_outcome": "used to strengthen standards, phase docs, and locked defaults",
+    "disposition": "adapted",
+    "package_targets": [
+      "06_standards/documentation_and_templates_standard.md",
+      "06_standards/operator_modes_and_safety_standard.md",
+      "06_standards/knowledge_taxonomy_and_promotion_standard.md",
+      "02_phases/phase_4_domain_artifacts.md",
+      "02_phases/phase_6_environment_adapters_and_safety.md"
+    ],
+    "decision_ids": [
+      "decision.markdown_reconciliation_policy",
+      "decision.mode_state_projection",
+      "decision.extraction_trigger_policy",
+      "decision.full_auto_observability_contract",
+      "decision.glossary_term_registry_contract"
+    ],
+    "notes": "This range justified converting several package assumptions into explicit locked decisions."
+  },
+  {
+    "audit_id": "audit.step1.12",
+    "source_document": "STEP1_FINAL_v2.md",
+    "line_start": 425,
+    "line_end": 3478,
+    "heading": "Q01-Q70",
+    "coverage_outcome": "fully covered item-by-item by the workbook traceability surfaces",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "decision_ids": [],
+    "notes": "This is the canonical machine-readable row source used by the current traceability index."
+  },
+  {
+    "audit_id": "audit.step1.13",
+    "source_document": "STEP1_FINAL_v2.md",
+    "line_start": 3521,
+    "line_end": 6141,
+    "heading": "R01-R68",
+    "coverage_outcome": "fully covered item-by-item by the workbook traceability surfaces",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/step1_traceability_matrix.md",
+      "indexes/step1_traceability.json"
+    ],
+    "decision_ids": [],
+    "notes": "No refinement group from this range remains unaccounted for."
+  },
+  {
+    "audit_id": "audit.step1.14",
+    "source_document": "STEP1_FINAL_v2.md",
+    "line_start": 6171,
+    "line_end": 6782,
+    "heading": "Upstream Core Alignment Review / Current Status / Completion Check",
+    "coverage_outcome": "partially superseded by v3 and live repo proof, but retained for rationale on sync, actor, and helper-surface deferred items",
+    "disposition": "adapted",
+    "package_targets": [
+      "00_context/live_contract_delta_log.md",
+      "08_tracking/implementation_gap_audit.md",
+      "indexes/open_decisions.json"
+    ],
+    "decision_ids": [
+      "decision.actor_bootstrap_day_one",
+      "decision.public_rebuild_cli"
+    ],
+    "notes": "Actor registry availability is now a live delta rather than a hypothetical extension."
+  },
+  {
+    "audit_id": "audit.step1.15",
+    "source_document": "STEP1_FINAL_v3.md",
+    "line_start": 67,
+    "line_end": 81,
+    "heading": "Global Replacements From v2",
+    "coverage_outcome": "fully adopted as the live supersession map for retired assumptions",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/current_contract_baseline.md",
+      "00_context/live_contract_delta_log.md",
+      "00_context/source_of_truth_contract_map.md"
+    ],
+    "decision_ids": [],
+    "notes": "This range is the basis for excluding retired `/docs/**` and `domain_packs/**` assumptions."
+  },
+  {
+    "audit_id": "audit.step1.16",
+    "source_document": "STEP1_FINAL_v3.md",
+    "line_start": 82,
+    "line_end": 151,
+    "heading": "Observed Platform Facts / Executive Summary / Recommended Pack Baseline",
+    "coverage_outcome": "translated into the live delta log, scaffold-proof baseline, and capability crosswalk",
+    "disposition": "adapted",
+    "package_targets": [
+      "00_context/live_contract_delta_log.md",
+      "00_context/executive_summary.md",
+      "01_capability_map/capability_crosswalk.md",
+      "04_contracts/scaffold_and_bootstrap_baseline.md"
+    ],
+    "decision_ids": [],
+    "notes": "The underscore-safe slug recommendation is superseded by the runnable March 25, 2026 scaffold proof."
+  },
+  {
+    "audit_id": "audit.step1.17",
+    "source_document": "STEP1_FINAL_v3.md",
+    "line_start": 153,
+    "line_end": 203,
+    "heading": "Conflict And Decision Section",
+    "coverage_outcome": "converted into explicit locked deferrals and live-contract deltas",
+    "disposition": "adapted",
+    "package_targets": [
+      "00_context/live_contract_delta_log.md",
+      "08_tracking/implementation_gap_audit.md",
+      "indexes/open_decisions.json"
+    ],
+    "decision_ids": [
+      "decision.workflow_catalog",
+      "decision.actor_bootstrap_day_one",
+      "decision.public_rebuild_cli",
+      "decision.pentest_pack_split"
+    ],
+    "notes": "All five v3 review points are now visible in package tracking."
+  },
+  {
+    "audit_id": "audit.step1.18",
+    "source_document": "STEP1_FINAL_v3.md",
+    "line_start": 204,
+    "line_end": 634,
+    "heading": "Current Shared Capability Inventory / Updated Workbook Decisions / Post-Workbook Refinement Alignment",
+    "coverage_outcome": "used as the current-compatible lens over sections A-J and refinement groups",
+    "disposition": "kept",
+    "package_targets": [
+      "01_capability_map/capability_crosswalk.md",
+      "01_capability_map/refinement_group_map.md",
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "04_contracts/query_sync_rendered_views_docs_plan.md"
+    ],
+    "decision_ids": [],
+    "notes": "This is the primary source for supported_now/adaptable_now/must_develop classification."
+  },
+  {
+    "audit_id": "audit.step1.19",
+    "source_document": "STEP1_FINAL_v3.md",
+    "line_start": 635,
+    "line_end": 742,
+    "heading": "Implementation Sequence / Capability Mapping Matrix / Final Implementation Judgment",
+    "coverage_outcome": "adopted as the package phase order and execution discipline",
+    "disposition": "kept",
+    "package_targets": [
+      "02_phases/phase_0_shared_contract_adoption.md",
+      "indexes/phases.json",
+      "07_guides/follow_on_agent_execution_guide.md"
+    ],
+    "decision_ids": [],
+    "notes": "No phase reordering or capability-classification drift was introduced."
+  },
+  {
+    "audit_id": "audit.step1.20",
+    "source_document": "STEP1_PACK_SCAFFOLD_SPEC_v1.md",
+    "line_start": 37,
+    "line_end": 546,
+    "heading": "Identity, Scaffold, Manifests, Workflows, Schemas, Proof, Immediate Next Slice",
+    "coverage_outcome": "used as the runnable scaffold and bootstrap baseline, starter replacement plan, and immediate next slice",
+    "disposition": "kept",
+    "package_targets": [
+      "00_context/current_contract_baseline.md",
+      "04_contracts/scaffold_and_bootstrap_baseline.md",
+      "03_workflows/workflow_inventory.md",
+      "04_contracts/schemas_registries_ledgers_validation_plan.md",
+      "04_contracts/query_sync_rendered_views_docs_plan.md",
+      "02_phases/phase_1_scaffold_and_integrate.md"
+    ],
+    "decision_ids": [],
+    "notes": "Future-normalized identity remains a backlog item; current-compatible proof remains the implementation baseline."
+  }
+]
