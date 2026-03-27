@@ -3493,6 +3493,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the minimum support-doc kit and template posture for engineer-facing initiative packages.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "plan/docs/standards/governance/initiative_tracking_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",

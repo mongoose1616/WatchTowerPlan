@@ -3108,6 +3108,61 @@
       ]
     },
     {
+      "standard_id": "std.governance.initiative_engineer_handoff_support",
+      "category": "governance",
+      "title": "Initiative Engineer Handoff Support Standard",
+      "summary": "Defines the minimum support-doc kit and template posture for engineer-facing initiative packages that are meant to be executed directly.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+      "updated_at": "2026-03-27T22:15:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+        "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/",
+        "plan/docs/standards/governance/initiative_tracking_standard.md"
+      ],
+      "related_paths": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/",
+        "plan/docs/standards/governance/initiative_tracking_standard.md"
+      ],
+      "internal_reference_paths": [
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "plan/.wt/templates/initiatives/README.md",
+        "plan/.wt/templates/initiatives/cold_start_runbook.md"
+      ],
+      "applied_reference_paths": [
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "plan/.wt/templates/initiatives/README.md",
+        "plan/.wt/templates/initiatives/cold_start_runbook.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "initiative_handoff"
+      ]
+    },
+    {
       "standard_id": "std.governance.initiative_tracking",
       "category": "governance",
       "title": "Initiative Tracking Standard",
@@ -3115,7 +3170,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-23T23:45:00Z",
+      "updated_at": "2026-03-27T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3139,6 +3194,7 @@
         "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/docs/standards/governance/coordination_tracking_standard.md",
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
         "plan/docs/standards/governance/task_tracking_standard.md",
         "plan/docs/standards/data_contracts/initiative_index_standard.md",
         "plan/tracking/README.md"
@@ -3147,6 +3203,7 @@
         "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/docs/standards/governance/coordination_tracking_standard.md",
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
         "plan/docs/standards/governance/task_tracking_standard.md",
         "plan/docs/standards/data_contracts/initiative_index_standard.md",
         "plan/tracking/README.md"

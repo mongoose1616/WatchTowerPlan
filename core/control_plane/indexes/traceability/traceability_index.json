@@ -52,8 +52,10 @@
       "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-27T21:50:28Z",
+      "updated_at": "2026-03-27T22:21:04Z",
       "source_surface_paths": [
+        "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
@@ -93,7 +95,9 @@
         "req.watchtower_ctf_package_preservation.019",
         "req.watchtower_ctf_package_preservation.020",
         "req.watchtower_ctf_package_preservation.021",
-        "req.watchtower_ctf_package_preservation.022"
+        "req.watchtower_ctf_package_preservation.022",
+        "req.watchtower_ctf_package_preservation.023",
+        "req.watchtower_ctf_package_preservation.024"
       ],
       "acceptance_ids": [
         "ac.watchtower_ctf_package_preservation.001",
@@ -116,7 +120,9 @@
         "ac.watchtower_ctf_package_preservation.018",
         "ac.watchtower_ctf_package_preservation.019",
         "ac.watchtower_ctf_package_preservation.020",
-        "ac.watchtower_ctf_package_preservation.021"
+        "ac.watchtower_ctf_package_preservation.021",
+        "ac.watchtower_ctf_package_preservation.022",
+        "ac.watchtower_ctf_package_preservation.023"
       ],
       "acceptance_contract_ids": [
         "contract.acceptance.watchtower_ctf_package_preservation"
@@ -156,8 +162,14 @@
         "plan/.wt/registries/documentation_family_registry.json",
         "plan/.wt/registries/human_surface_policy_registry.json",
         "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/README.md",
+        "plan/.wt/templates/initiatives/cold_start_runbook.md",
+        "plan/.wt/templates/initiatives/phase_closeout_checklists.md",
+        "plan/.wt/templates/initiatives/phase_output_manifest.md",
         "plan/.wt/templates/roots/AGENTS.md",
         "plan/.wt/templates/roots/README.md",
+        "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/evidence/validation_bundle.handoff_readiness.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
@@ -172,6 +184,7 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/cold_start_runbook.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",

@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-27T21:49:38Z",
+  "updated_at": "2026-03-27T22:21:04Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -184,6 +184,26 @@
         "core/workflows/roles/",
         "plan/workflows/modules/",
         "plan/workflows/roles/"
+      ]
+    },
+    {
+      "guidance_id": "pattern.initiative_engineer_handoff_support",
+      "title": "Initiative Engineer Handoff Support Pattern",
+      "summary": "Reusable pattern for turning a large initiative package into a cold-start-friendly engineer handoff without creating a second authority layer.",
+      "guidance_family": "pattern",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
+      "updated_at": "2026-03-27T22:17:34Z",
+      "trace_id": "trace.pattern.initiative_engineer_handoff_support",
+      "audience": "shared",
+      "authority": "authoritative",
+      "applies_to": [
+        "plan/projects/",
+        "plan/initiatives/",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/",
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md"
       ]
     },
     {
@@ -568,6 +588,30 @@
       ]
     },
     {
+      "guidance_id": "std.governance.initiative_engineer_handoff_support",
+      "title": "Initiative Engineer Handoff Support Standard",
+      "summary": "Defines the minimum support-doc kit and template posture for engineer-facing initiative packages that are meant to be executed directly.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+      "updated_at": "2026-03-27T22:15:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "initiative_handoff"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/",
+        "plan/docs/standards/governance/initiative_tracking_standard.md"
+      ]
+    },
+    {
       "guidance_id": "std.governance.initiative_tracking",
       "title": "Initiative Tracking Standard",
       "summary": "This standard defines the repository's live initiative tracking model over plan/.wt indexes with richer human companion trackers.",
@@ -575,7 +619,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-23T23:45:00Z",
+      "updated_at": "2026-03-27T22:05:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [

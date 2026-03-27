@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-27T21:49:38Z",
+  "updated_at": "2026-03-27T22:21:04Z",
   "entries": [
     {
       "evidence_id": "evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle",
@@ -13,9 +13,10 @@
       "title": "Engineer Handoff Validation Bundle",
       "status": "active",
       "initiative_root": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation",
-      "entry_count": 3,
+      "entry_count": 4,
       "acceptance_labels": [
         "execution_task_chain_complete",
+        "reusable_handoff_support_promotion",
         "starter_surface_registry_and_handoff_support_coverage",
         "trace_chain_complete"
       ],
@@ -37,9 +38,17 @@
         "plan/.wt/indexes/coordination_index.json",
         "plan/.wt/indexes/initiative_index.json",
         "plan/.wt/indexes/task_index.json",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/README.md",
+        "plan/.wt/templates/initiatives/cold_start_runbook.md",
+        "plan/.wt/templates/initiatives/phase_closeout_checklists.md",
+        "plan/.wt/templates/initiatives/phase_output_manifest.md",
+        "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/cold_start_runbook.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
@@ -56,7 +65,7 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md"
       ],
-      "updated_at": "2026-03-27T21:21:55Z",
+      "updated_at": "2026-03-27T22:17:34Z",
       "project_id": "project.watchtower"
     }
   ]

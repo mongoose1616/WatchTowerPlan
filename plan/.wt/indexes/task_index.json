@@ -43,7 +43,7 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json",
-      "updated_at": "2026-03-27T21:44:35Z",
+      "updated_at": "2026-03-27T22:17:34Z",
       "project_id": "project.watchtower",
       "related_ids": [
         "initiative.watchtower_ctf_implementation_package_preservation",
@@ -54,11 +54,15 @@
         "req.watchtower_ctf_package_preservation.017",
         "req.watchtower_ctf_package_preservation.021",
         "req.watchtower_ctf_package_preservation.007",
+        "req.watchtower_ctf_package_preservation.023",
+        "req.watchtower_ctf_package_preservation.024",
         "ac.watchtower_ctf_package_preservation.006",
         "ac.watchtower_ctf_package_preservation.014",
         "ac.watchtower_ctf_package_preservation.015",
         "ac.watchtower_ctf_package_preservation.016",
-        "ac.watchtower_ctf_package_preservation.020"
+        "ac.watchtower_ctf_package_preservation.020",
+        "ac.watchtower_ctf_package_preservation.022",
+        "ac.watchtower_ctf_package_preservation.023"
       ],
       "applies_to": [
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/",
@@ -66,6 +70,7 @@
       ],
       "governing_document_paths": [
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/cold_start_runbook.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
@@ -74,7 +79,9 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/engineer_ambiguity_kill_sheet.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
-        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+        "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md"
       ]
     },
     {
