@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-27T18:33:46Z",
+  "updated_at": "2026-03-27T21:21:55Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Start the highest-priority ready task from the initiative package.",
@@ -19,7 +19,7 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "capture",
-      "updated_at": "2026-03-27T18:33:46Z",
+      "updated_at": "2026-03-27T21:21:55Z",
       "open_task_count": 8,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
@@ -173,7 +173,12 @@
         "ac.watchtower_ctf_package_preservation.008",
         "ac.watchtower_ctf_package_preservation.009",
         "ac.watchtower_ctf_package_preservation.010",
-        "ac.watchtower_ctf_package_preservation.011"
+        "ac.watchtower_ctf_package_preservation.011",
+        "ac.watchtower_ctf_package_preservation.012",
+        "ac.watchtower_ctf_package_preservation.013",
+        "ac.watchtower_ctf_package_preservation.014",
+        "ac.watchtower_ctf_package_preservation.015",
+        "ac.watchtower_ctf_package_preservation.016"
       ],
       "acceptance_contract_ids": [
         "contract.acceptance.watchtower_ctf_package_preservation"
@@ -220,7 +225,10 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_6_environment_adapters_and_safety/task.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_capture_notes.md",
@@ -228,12 +236,17 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_original_inventory.txt",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_sha256.tsv",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/02_phases/phase_3_ctf_runtime.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/query_sync_rendered_views_docs_plan.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/state_and_index_contracts_plan.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/07_guides/follow_on_agent_execution_guide.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/07_guides/target_repo_bootstrap_guide.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/indexes/open_decisions.json.raw",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_stored_inventory.txt",
-        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md"
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md"
       ],
       "tags": [
         "traceability"

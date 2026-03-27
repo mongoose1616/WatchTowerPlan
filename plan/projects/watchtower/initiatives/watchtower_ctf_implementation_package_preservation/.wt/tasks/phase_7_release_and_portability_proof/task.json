@@ -11,15 +11,17 @@
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:41:17Z",
-  "updated_at": "2026-03-27T16:41:17Z",
+  "updated_at": "2026-03-27T21:16:46Z",
   "dependency_task_ids": [
     "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety"
   ],
   "related_ids": [
     "initiative.watchtower_ctf_implementation_package_preservation",
     "trace.watchtower_ctf_implementation_package_preservation",
+    "req.watchtower_ctf_package_preservation.015",
     "ac.watchtower_ctf_package_preservation.005",
-    "ac.watchtower_ctf_package_preservation.007"
+    "ac.watchtower_ctf_package_preservation.007",
+    "ac.watchtower_ctf_package_preservation.014"
   ],
   "applies_to": [
     "recipient_repo_watchtower",
@@ -30,7 +32,8 @@
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
-    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md"
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md"
   ],
   "scope_items": [
     "Run staged export, target bootstrap, pack validation, validate all, and changed-schema validation for the finished pack.",
@@ -38,6 +41,6 @@
   ],
   "done_when_items": [
     "The offsec pack has an explicit staged-export portability proof into the recipient repo.",
-    "Release and validation guidance no longer depend on unstated donor-repo assumptions."
+    "Release and validation guidance no longer depend on unstated donor-repo assumptions, and the Phase 7 checklist passes."
   ]
 }

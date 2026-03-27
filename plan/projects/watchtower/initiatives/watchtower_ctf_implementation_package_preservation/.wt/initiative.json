@@ -12,7 +12,7 @@
   "review_status": "approved",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T05:17:18Z",
-  "updated_at": "2026-03-27T18:33:46Z",
+  "updated_at": "2026-03-27T21:21:13Z",
   "task_ids": [
     "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation",
     "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment",
@@ -39,33 +39,33 @@
     {
       "doc_kind": "initiative_brief",
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
-      "sha256": "cebdd8b31984185f1c73ea6fbcd34ff8fbfdb52078b8947101ab4f3ddbe3d82a",
+      "sha256": "b9e7d4be516cbe44cafa018830961b7e2a7995ae908b4980fff2c530be2290b3",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T18:32:57Z",
+      "last_confirmed_at": "2026-03-27T21:20:27Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
       "doc_kind": "design_record",
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
-      "sha256": "83496024e4915ae1ef1b871c2773ee438423f5df970aac48b749de283e232147",
+      "sha256": "a04b1eb89e6cecff1e75307efc719c852338283e97f68a3eaf0359c2f9bfd2c4",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T18:32:57Z",
+      "last_confirmed_at": "2026-03-27T21:20:27Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
       "doc_kind": "implementation_slice",
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
-      "sha256": "7ae925a5a23e858e49eb54341157a4e02b74995f594c7c1e097f871abfc8f0b6",
+      "sha256": "5f55342863d30e4783848e95e9cd3d33ba401eb44370895455f74c2c766251b6",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T18:32:57Z",
+      "last_confirmed_at": "2026-03-27T21:20:27Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
       "doc_kind": "decision_notes",
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
-      "sha256": "19dcbc3e59808ebfefadafdeac8c49dd7cdae281b1d938cfee0e6bebb9939b5c",
+      "sha256": "268294965df0123cc0c2db0f57e971a5ba63307f1b142589f14bac6b47579b69",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T18:32:57Z",
+      "last_confirmed_at": "2026-03-27T21:20:27Z",
       "last_confirmed_by": "actor.repository_maintainer"
     }
   ],
@@ -142,6 +142,16 @@
       "approval_kind": "ready_for_execution",
       "actor_id": "actor.repository_maintainer",
       "approved_at": "2026-03-27T18:33:46Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-27T21:20:27Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-27T21:21:13Z"
     }
   ]
 }

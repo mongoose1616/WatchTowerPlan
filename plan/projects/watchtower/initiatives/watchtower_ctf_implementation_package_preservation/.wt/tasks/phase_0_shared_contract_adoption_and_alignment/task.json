@@ -11,30 +11,39 @@
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:39:58Z",
-  "updated_at": "2026-03-27T16:39:58Z",
+  "updated_at": "2026-03-27T21:16:46Z",
   "related_ids": [
     "initiative.watchtower_ctf_implementation_package_preservation",
     "trace.watchtower_ctf_implementation_package_preservation",
     "req.watchtower_ctf_package_preservation.003",
+    "req.watchtower_ctf_package_preservation.015",
+    "req.watchtower_ctf_package_preservation.016",
+    "req.watchtower_ctf_package_preservation.017",
     "req.watchtower_ctf_package_preservation.007",
-    "ac.watchtower_ctf_package_preservation.006"
+    "ac.watchtower_ctf_package_preservation.006",
+    "ac.watchtower_ctf_package_preservation.014",
+    "ac.watchtower_ctf_package_preservation.015",
+    "ac.watchtower_ctf_package_preservation.016"
   ],
   "applies_to": [
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/",
     "recipient_repo_watchtower"
   ],
   "governing_document_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
-    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md"
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
   ],
   "scope_items": [
     "Recheck the current-compatible identity and source-of-truth order against current repo truth.",
     "Confirm no new live-contract delta is needed before recipient repo changes begin.",
-    "Keep the phase manifest and conditional revisit queue aligned with the same current baseline."
+    "Keep the README, phase manifest, contradiction ledger, and conditional revisit queue aligned with the same current baseline."
   ],
   "done_when_items": [
     "The current-compatible baseline, donor or recipient split, and read-first order are revalidated.",

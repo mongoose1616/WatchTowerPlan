@@ -11,7 +11,7 @@
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:41:00Z",
-  "updated_at": "2026-03-27T16:41:00Z",
+  "updated_at": "2026-03-27T21:16:46Z",
   "dependency_task_ids": [
     "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment"
   ],
@@ -19,7 +19,9 @@
     "initiative.watchtower_ctf_implementation_package_preservation",
     "trace.watchtower_ctf_implementation_package_preservation",
     "req.watchtower_ctf_package_preservation.006",
-    "ac.watchtower_ctf_package_preservation.007"
+    "req.watchtower_ctf_package_preservation.015",
+    "ac.watchtower_ctf_package_preservation.007",
+    "ac.watchtower_ctf_package_preservation.014"
   ],
   "applies_to": [
     "recipient_repo_watchtower",
@@ -31,6 +33,7 @@
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md"
   ],
   "scope_items": [
@@ -40,6 +43,6 @@
   ],
   "done_when_items": [
     "The scaffolded offsec pack validates cleanly in the recipient repo.",
-    "The pack has a real command-doc entrypoint and no starter workflow metadata remains."
+    "The pack has a real command-doc entrypoint, no starter workflow metadata remains, and the Phase 1 checklist passes."
   ]
 }

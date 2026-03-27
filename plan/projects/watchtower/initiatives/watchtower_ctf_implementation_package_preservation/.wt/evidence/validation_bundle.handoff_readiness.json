@@ -5,7 +5,7 @@
   "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
   "title": "Engineer Handoff Validation Bundle",
   "status": "active",
-  "updated_at": "2026-03-27T18:23:33Z",
+  "updated_at": "2026-03-27T21:21:55Z",
   "entries": [
     {
       "entry_id": "entry.watchtower_ctf_implementation_package_preservation.handoff_acceptance_contracts",
@@ -34,7 +34,7 @@
     },
     {
       "entry_id": "entry.watchtower_ctf_implementation_package_preservation.handoff_docs_and_templates",
-      "acceptance_label": "starter_surface_and_handoff_support_coverage",
+      "acceptance_label": "starter_surface_registry_and_handoff_support_coverage",
       "validation_type": "documentation_reconciliation",
       "owner": "repository_maintainer",
       "target_phase": "readiness",
@@ -43,9 +43,14 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
-        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md"
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
       ]
     }
   ]
