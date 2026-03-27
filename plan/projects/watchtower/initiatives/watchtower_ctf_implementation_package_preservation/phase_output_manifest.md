@@ -7,11 +7,12 @@ This support surface translates the preserved phase plan into bounded engineer o
 ## How To Use This Manifest
 
 1. Read `README.md`, `initiative_brief.md`, `design_record.md`, `decision_notes.md`, and `implementation_slice.md` first.
-2. Open the matching live task record under `.wt/tasks/**/task.json`.
-3. Use this manifest to confirm primary outputs, command anchors, validation proof, and closeout evidence before changing `/home/j/WatchTower`.
-4. Use `phase_closeout_checklists.md` as the last short pass before calling a phase done.
-5. Use `phase_test_matrix.md` when deciding which validators, smoke tests, and proof artifacts must exist for the current phase.
-6. Update this file in the same change set whenever a phase output, validation expectation, or evidence requirement changes materially.
+2. Open `cold_start_runbook.md` before the first ready task so the initial read order and record locations are explicit.
+3. Open the matching live task record under `.wt/tasks/**/task.json`.
+4. Use this manifest to confirm primary outputs, command anchors, validation proof, and closeout evidence before changing `/home/j/WatchTower`.
+5. Use `phase_closeout_checklists.md` as the last short pass before calling a phase done.
+6. Use `phase_test_matrix.md` when deciding which validators, smoke tests, and proof artifacts must exist for the current phase.
+7. Update this file in the same change set whenever a phase output, validation expectation, or evidence requirement changes materially.
 
 ## `phase.0` Shared Contract Adoption And Alignment
 
@@ -19,11 +20,12 @@ This support surface translates the preserved phase plan into bounded engineer o
 - Primary outputs:
   - revalidated baseline identity, donor or recipient split, and current-compatible delta set in the canonical docs;
   - no unresolved ambiguity in read-first order, target-repo assumptions, or source-of-truth precedence; and
-  - current support docs `README.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, `starter_surface_blueprint.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md`.
+  - current support docs `README.md`, `cold_start_runbook.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, `starter_surface_blueprint.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md`.
 - Current command and query anchors:
   - `cd /home/j/WatchTowerPlan/core/python`
   - `uv run watchtower-core validate acceptance --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
   - `uv run watchtower-core plan query trace --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
+  - `uv run watchtower-core plan query readiness --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
   - `uv run watchtower-core plan query coordination --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
 - Mandatory evidence:
   - current acceptance contract and durable handoff-readiness evidence still validate;

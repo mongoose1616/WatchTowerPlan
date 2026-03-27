@@ -40,6 +40,7 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 ### 4. Engineer Support Layer
 
 - `README.md` gives the larger initiative root one stable start-here surface instead of forcing engineers to infer intent from a wide file tree.
+- `cold_start_runbook.md` gives the first ready task one explicit cold-start entry path instead of forcing engineers to reconstruct read order and record locations from several docs.
 - `phase_output_manifest.md` turns the preserved phase plan into bounded outputs, command anchors, validation proof, and closeout evidence.
 - `phase_closeout_checklists.md` turns the per-phase output contract into a fast final closeout pass.
 - `starter_surface_blueprint.md` turns the preserved README / AGENTS and registry posture into copy-ready starter guidance.
@@ -52,6 +53,7 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 - `promotion_extraction_map.md` turns the Phase 4 to Phase 5 knowledge pipeline into one concrete source-to-candidate-to-accepted map.
 - `conditional_revisit_queue.md` records non-blocking later decisions with explicit reopen triggers and keep-default behavior.
 - `contradiction_sweep_ledger.md` records the already-reconciled tensions that engineers should not silently reopen.
+- The reusable subset of this engineer-support layer is promoted into `plan/docs/**` and `plan/.wt/templates/initiatives/` so later initiatives can reuse the validated handoff pattern without copying this full package.
 - These files are ordinary initiative-root support material rather than `authored_inputs`; they distill execution ergonomics from the canonical docs without becoming a second source of planning authority.
 
 ### 5. Live Machine State Layer

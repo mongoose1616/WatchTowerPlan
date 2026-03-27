@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T23:45:00Z"
+updated_at: "2026-03-27T22:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -47,6 +47,7 @@ This standard defines the repository's live initiative tracking model so one tra
 - [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): defines the trace spine and joined artifact expectations that initiative tracking projects from.
 - [initiative_closeout_standard.md](/plan/docs/standards/governance/initiative_closeout_standard.md): defines initiative-level closeout status and terminal-state requirements that the initiative view must mirror.
 - [coordination_tracking_standard.md](/plan/docs/standards/governance/coordination_tracking_standard.md): defines the repo-level human start-here tracker that now sits above this family view.
+- [initiative_engineer_handoff_support_standard.md](/plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md): defines the minimum support-doc kit and cold-start posture for engineer-facing initiative packages.
 - [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): defines the authoritative live task layer that initiative owner and active-task detail must read from.
 - [initiative_index_standard.md](/plan/docs/standards/data_contracts/initiative_index_standard.md): defines the machine-readable initiative rendered-surface contract.
 - [README.md](/plan/tracking/README.md): family entrypoint and inventory surface this standard should stay aligned with.
@@ -67,6 +68,7 @@ This standard defines the repository's live initiative tracking model so one tra
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
 - Use the live task index and task records as the authoritative source for active owners, open tasks, blockers, and execution status.
 - Keep the initiative package's effective governing-document set explicit so the initiative view can show which authored docs, standards, or references govern current implementation and validation work.
+- When an initiative is execution-facing and engineers are expected to start from the package directly, publish the support kit required by `initiative_engineer_handoff_support_standard.md` so the first reader does not have to infer the first-ready-task path from scattered docs.
 - Publish one initiative entry per shared `trace_id`.
 - Every initiative entry must make these questions easy to answer:
   - what this initiative is
@@ -124,4 +126,4 @@ This standard defines the repository's live initiative tracking model so one tra
 - [README.md](/plan/tracking/README.md)
 
 ## Updated At
-- `2026-03-23T23:45:00Z`
+- `2026-03-27T22:05:00Z`

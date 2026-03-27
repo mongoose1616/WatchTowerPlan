@@ -7,7 +7,7 @@ Each row accounts for one source file from `/home/j/mvp_reference/CTF_implementa
 - `canonicalized_and_mirrored`: Source content is preserved verbatim in the mirror and absorbed into at least one canonical initiative document.
 - `mirror_only_with_reference`: Source content is preserved verbatim in the mirror and referenced from canonical docs or support manifests without being fully restated.
 
-Engineer-facing support docs added during the hardening pass, such as `phase_output_manifest.md`, `starter_surface_blueprint.md`, and `conditional_revisit_queue.md`, are initiative-authored enhancements. They do not change the source-file counts or the source coverage accounting below.
+Engineer-facing support docs added during the hardening pass, such as `cold_start_runbook.md`, `phase_output_manifest.md`, `starter_surface_blueprint.md`, and `conditional_revisit_queue.md`, are initiative-authored enhancements. They do not change the source-file counts or the source coverage accounting below.
 
 | original_path | stored_path | canonical_targets | status | notes |
 |---|---|---|---|---|

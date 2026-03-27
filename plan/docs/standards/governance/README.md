@@ -13,6 +13,7 @@
 | `plan/docs/standards/governance/github_collaboration_standard.md` | Defines the hosted GitHub issue, pull request, label, and project-field collaboration layer. |
 | `plan/docs/standards/governance/github_task_sync_standard.md` | Defines the first push-only GitHub sync contract for local-first task records. |
 | `plan/docs/standards/governance/initiative_closeout_standard.md` | Defines initiative-level closeout state and its human and machine mirror surfaces. |
+| `plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md` | Defines the minimum support-doc kit and template posture for engineer-facing initiative packages. |
 | `plan/docs/standards/governance/initiative_tracking_standard.md` | Defines the cross-family initiative coordination view and phase model built on top of traceability and task data. |
 | `plan/docs/standards/governance/planning_retention_and_purge_standard.md` | Defines the promote-then-purge retention model for closed traced planning artifacts. |
 | `plan/docs/standards/governance/reference_distillation_standard.md` | Defines how external source material should be distilled into local references. |

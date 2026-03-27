@@ -6,6 +6,7 @@
 | What this initiative is preserving and why it exists | `initiative_brief.md` |
 | Why the package is split into mirror, canonical docs, and live task state | `design_record.md` |
 | The engineer-facing phase plan, dependencies, and execution gates | `implementation_slice.md` |
+| The exact cold-start path for the first ready task and what to record | `cold_start_runbook.md` |
 | Locked defaults, live deltas, and explicit later revisits | `decision_notes.md`, `conditional_revisit_queue.md` |
 | The quickest map of outputs, handoff aids, and phase closeout proof | `phase_output_manifest.md`, `phase_closeout_checklists.md` |
 | Copy-ready starter docs and registry posture for `/home/j/WatchTower` | `starter_surface_blueprint.md`, `starter_registry_exemplars.md` |
@@ -21,6 +22,7 @@
 | Area | Role | Use It When |
 |---|---|---|
 | `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, `decision_notes.md` | Canonical authored authority | You need the actual preserved implementation contract. |
+| `cold_start_runbook.md` | First-ready-task start surface | You are opening the package cold and need the exact Phase 0 read order, review questions, and outcome-recording path. |
 | `phase_output_manifest.md` | Phase-by-phase output and evidence companion | You are preparing to start or close one phase. |
 | `phase_closeout_checklists.md` | Short phase completion checks | You want a fast final pass before marking a phase done. |
 | `starter_surface_blueprint.md`, `starter_registry_exemplars.md` | Copy-ready human-surface and registry starter kit | You are bootstrapping the first `offensive_security/` root in `/home/j/WatchTower`. |
@@ -35,6 +37,6 @@
 
 ## Notes
 - This initiative is the engineer handoff package for the WatchTower offsec implementation, but it does not mutate `/home/j/WatchTower` by itself.
-- Start with this `README.md`, then move to the four canonical docs. Use the support docs as execution aids, not as a second authority layer.
+- Start with this `README.md`, then open `cold_start_runbook.md` if you are entering at the first ready task. Use the support docs as execution aids, not as a second authority layer.
 - The transformed mirror under `source_snapshot/CTF_implementation/` is frozen provenance. Update canonical docs or recapture explicitly; do not silently edit mirrored meaning in place.
 - The real next engineer action is published by live task state, not by this `README.md`. Use `plan/.wt/indexes/coordination_index.json` and the ready Phase 0 task when checking current execution posture.

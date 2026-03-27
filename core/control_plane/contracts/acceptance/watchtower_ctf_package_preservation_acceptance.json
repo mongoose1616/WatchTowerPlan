@@ -391,6 +391,46 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/knowledge_governance_and_retrieval_plan.md"
       ],
       "notes": "The promotion map should remove ambiguity between closeout artifacts, extraction candidates, and accepted reusable knowledge."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.022",
+      "summary": "The initiative ships a cold-start runbook that makes the first-ready-task read order, review questions, command anchors, and outcome-recording path explicit.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.023"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/cold_start_runbook.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json"
+      ],
+      "notes": "The cold-start runbook should remove first-ready-task guesswork without creating a second authority layer."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.023",
+      "summary": "The reusable engineer-handoff support posture is promoted into a durable plan standard, a reusable pattern, and initiative templates for the core support kit.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.024"
+      ],
+      "validation_targets": [
+        "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+        "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/templates/initiatives/README.md",
+        "plan/.wt/templates/initiatives/phase_output_manifest.md",
+        "plan/.wt/templates/initiatives/phase_closeout_checklists.md",
+        "plan/.wt/templates/initiatives/cold_start_runbook.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/cold_start_runbook.md"
+      ],
+      "notes": "Future execution-facing initiatives should be able to adopt the core support kit from governed plan guidance and reusable templates rather than reverse-engineering this package."
     }
   ]
 }

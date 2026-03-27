@@ -13,7 +13,7 @@ These checklists are the short final pass for each preserved phase. They do not 
 ## `phase.0` Shared Contract Adoption And Alignment
 
 - The current-compatible identity, donor or recipient split, and source-of-truth order are still consistent across the canonical docs.
-- `README.md`, `phase_output_manifest.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` agree on the current handoff posture.
+- `README.md`, `cold_start_runbook.md`, `phase_output_manifest.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` agree on the current handoff posture.
 - No hidden blocker remains before `/home/j/WatchTower` mutation begins.
 - Coordination still points at the same real next engineer action.
 

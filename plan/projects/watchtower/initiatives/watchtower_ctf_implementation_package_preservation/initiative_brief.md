@@ -114,6 +114,7 @@ The preserved package now carries the starter human-surface and authoring postur
 The initiative now carries a larger support-doc set beside the four canonical authored docs. These files do not replace canonical authority or live task state, but they make a large preserved package substantially easier to navigate and execute.
 
 - `README.md`: initiative-root navigation surface for the larger handoff package.
+- `cold_start_runbook.md`: explicit first-ready-task read order, review questions, command anchors, and outcome-recording path for cold-start engineers.
 - `phase_output_manifest.md`: per-phase outputs, command anchors, validation proof, and required evidence for the first WatchTower implementation pass.
 - `phase_closeout_checklists.md`: short final-pass closeout checks for each preserved phase.
 - `starter_surface_blueprint.md`: copy-ready README / AGENTS posture, required starter roots, and initial registry expectations derived from `plan` and `oversight`.
@@ -126,6 +127,8 @@ The initiative now carries a larger support-doc set beside the four canonical au
 - `promotion_extraction_map.md`: the closeout-to-candidate-to-accepted knowledge flow for Phase 4 and Phase 5 work.
 - `conditional_revisit_queue.md`: trigger-based later decisions that stay explicitly deferred unless execution evidence forces them back open.
 - `contradiction_sweep_ledger.md`: resolved wording, contract, and state tensions that engineers should not reopen casually.
+
+The reusable parts of this support kit are also promoted into durable plan guidance and initiative templates so future execution-facing initiatives can adopt the same cold-start posture by default rather than rebuilding it from initiative-local precedent.
 
 ## Durable Requirements
 
@@ -151,6 +154,8 @@ The initiative now carries a larger support-doc set beside the four canonical au
 - `req.watchtower_ctf_package_preservation.020`: publish a machine-surface specimen index so engineers can see the first expected `.wt/` and `.wt_local/` surfaces, their authority class, and their first owning phase in one place.
 - `req.watchtower_ctf_package_preservation.021`: publish an engineer ambiguity kill sheet so the most likely implementation questions already have default answers before `/home/j/WatchTower` mutation starts.
 - `req.watchtower_ctf_package_preservation.022`: publish a promotion and extraction map so Phase 5 knowledge work has an explicit path from closeout outputs to candidate and accepted reusable knowledge.
+- `req.watchtower_ctf_package_preservation.023`: publish a cold-start runbook so the first ready task has an explicit read order, review question set, command proof path, and outcome-recording path.
+- `req.watchtower_ctf_package_preservation.024`: promote the reusable engineer-handoff support pattern into plan-level standard, pattern, and initiative templates so future initiatives can adopt the same core support kit by default.
 
 ## Acceptance Criteria
 
@@ -175,6 +180,8 @@ The initiative now carries a larger support-doc set beside the four canonical au
 - `ac.watchtower_ctf_package_preservation.019`: `machine_surface_specimen_index.md` lists the first expected `.wt/` and `.wt_local/` surfaces with authority class, first owning phase, and specimen or contract anchors.
 - `ac.watchtower_ctf_package_preservation.020`: `engineer_ambiguity_kill_sheet.md` gives compact default answers for the most likely implementation ambiguities and escalation conditions.
 - `ac.watchtower_ctf_package_preservation.021`: `promotion_extraction_map.md` maps closeout outputs to extraction candidates, review gates, and accepted reusable knowledge targets with mandatory provenance.
+- `ac.watchtower_ctf_package_preservation.022`: `cold_start_runbook.md` makes the first-ready-task read order, review questions, command anchors, and outcome-recording path explicit, and records any remaining cold-start guesswork.
+- `ac.watchtower_ctf_package_preservation.023`: the reusable handoff-support posture is promoted into a durable plan standard, a reusable pattern, and initiative template-catalog entries plus templates for `README.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, and `cold_start_runbook.md`.
 
 ## Risks And Dependencies
 

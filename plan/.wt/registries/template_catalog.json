@@ -101,6 +101,141 @@
       ]
     },
     {
+      "template_id": "template.plan.initiative.readme",
+      "surface_id": "surface.initiative.readme",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/initiatives/README.md",
+      "required_section_ids": [
+        "start_here",
+        "workspace_map",
+        "notes"
+      ],
+      "optional_section_ids": [],
+      "section_order": [
+        "start_here",
+        "workspace_map",
+        "notes"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create a thin initiative-root navigation surface for a large execution-facing initiative package.",
+        "hard_requirements": [
+          "Point readers to the first ready task and the canonical authored docs.",
+          "Keep the README navigational rather than turning it into a second implementation slice."
+        ],
+        "advisory_notes": [
+          "Use this when an initiative root is large enough that cold-start engineers need a stable start-here surface."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for initiative-root README.md files when the initiative package is meant to hand engineers directly into execution.",
+      "allowed_roots": [
+        "plan/initiatives",
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.initiative.phase_output_manifest",
+      "surface_id": "surface.initiative.phase_output_manifest",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/initiatives/phase_output_manifest.md",
+      "required_section_ids": [
+        "summary",
+        "how_to_use_this_manifest",
+        "example_phase_template"
+      ],
+      "optional_section_ids": [],
+      "section_order": [
+        "summary",
+        "how_to_use_this_manifest",
+        "example_phase_template"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create a compact phase-output companion that makes outputs, proof, and closeout evidence explicit.",
+        "hard_requirements": [
+          "Keep the manifest execution-facing and bounded by phase outputs and proof.",
+          "Do not use the manifest as a replacement for the implementation slice."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for initiative-local phase output manifests when engineers need an execution companion beside the implementation slice.",
+      "allowed_roots": [
+        "plan/initiatives",
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.initiative.phase_closeout_checklists",
+      "surface_id": "surface.initiative.phase_closeout_checklists",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/initiatives/phase_closeout_checklists.md",
+      "required_section_ids": [
+        "summary",
+        "global_rules",
+        "example_phase_checklist"
+      ],
+      "optional_section_ids": [],
+      "section_order": [
+        "summary",
+        "global_rules",
+        "example_phase_checklist"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create concise phase closeout checks that are fast to run before a phase is marked done.",
+        "hard_requirements": [
+          "Keep the checklists short and phase-facing.",
+          "Keep canonical docs and machine surfaces aligned when checklist expectations change."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for initiative-local phase closeout checklist surfaces.",
+      "allowed_roots": [
+        "plan/initiatives",
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.initiative.cold_start_runbook",
+      "surface_id": "surface.initiative.cold_start_runbook",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/initiatives/cold_start_runbook.md",
+      "required_section_ids": [
+        "summary",
+        "first_pass_findings",
+        "read_order",
+        "questions_to_answer",
+        "command_anchors",
+        "where_to_record_outcomes",
+        "done_when"
+      ],
+      "optional_section_ids": [],
+      "section_order": [
+        "summary",
+        "first_pass_findings",
+        "read_order",
+        "questions_to_answer",
+        "command_anchors",
+        "where_to_record_outcomes",
+        "done_when"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create a first-ready-task start surface that removes cold-start guesswork from a large initiative package.",
+        "hard_requirements": [
+          "Make the first-ready-task read order explicit.",
+          "State where a delta or no-change conclusion should be recorded."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for initiative-local cold-start runbooks when the first engineer would otherwise need to reconstruct the entry path from multiple docs.",
+      "allowed_roots": [
+        "plan/initiatives",
+        "plan/projects"
+      ]
+    },
+    {
       "template_id": "template.plan.workflow.module",
       "family_id": "workflow",
       "entry_status": "active",

@@ -16,18 +16,19 @@ This initiative’s execution scope is preservation and normalization, not Watch
 The preserved package’s required read-first order is now canonicalized for follow-on engineers.
 
 1. Read `README.md` first to map the larger initiative root and find the canonical versus support surfaces quickly.
-2. Read `initiative_brief.md`, `design_record.md`, and `decision_notes.md` to lock the current-compatible baseline, preserved deltas, reconciled tensions, and known deferrals.
-3. Read `implementation_slice.md` front to back before touching `/home/j/WatchTower`; it now restates the phase dependencies, gates, exit criteria, starter human-surface rules, and first ready task.
-4. Use `phase_output_manifest.md` and `phase_closeout_checklists.md` as the execution companions for the active phase.
-5. Use `starter_surface_blueprint.md` and `starter_registry_exemplars.md` during Phase 1 and Phase 2 so starter docs and starter registries are copy-ready instead of inferred.
-6. Use `artifact_specimens.md` and `machine_surface_specimen_index.md` during Phase 2 and Phase 3 so the first machine-record bundle and first indexes do not need to be derived from narrative prose alone.
-7. Use `vertical_slice_proof_spec.md` during Phase 3 to prove the first runtime seam exactly once and avoid a vague "runtime works" claim.
-8. Use `phase_test_matrix.md` before calling any phase complete; it is the compact validator and smoke-test companion to the phase manifest.
-9. Use `promotion_extraction_map.md` during Phase 4 and Phase 5 so candidate extraction and accepted knowledge promotion follow one explicit path.
-10. Check `engineer_ambiguity_kill_sheet.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` when something feels ambiguous; do not silently reopen a resolved baseline or deferral.
-11. Reopen the mirrored source docs in `04_contracts/` before authoring manifests, schemas, validators, query or sync runtimes, lifecycle policy, or bootstrap behavior.
-12. Reopen the mirrored `03_workflows/` docs before authoring workflow docs, roles, routing, or workflow metadata.
-13. Keep mirrored `indexes/` companions, canonical docs, and later pack-owned machine surfaces aligned in the same change set whenever a governed contract changes.
+2. Read `cold_start_runbook.md` before the first ready task so the Phase 0 read order, command anchors, and outcome-recording path are explicit from the start.
+3. Read `initiative_brief.md`, `design_record.md`, and `decision_notes.md` to lock the current-compatible baseline, preserved deltas, reconciled tensions, and known deferrals.
+4. Read `implementation_slice.md` front to back before touching `/home/j/WatchTower`; it now restates the phase dependencies, gates, exit criteria, starter human-surface rules, and first ready task.
+5. Use `phase_output_manifest.md` and `phase_closeout_checklists.md` as the execution companions for the active phase.
+6. Use `starter_surface_blueprint.md` and `starter_registry_exemplars.md` during Phase 1 and Phase 2 so starter docs and starter registries are copy-ready instead of inferred.
+7. Use `artifact_specimens.md` and `machine_surface_specimen_index.md` during Phase 2 and Phase 3 so the first machine-record bundle and first indexes do not need to be derived from narrative prose alone.
+8. Use `vertical_slice_proof_spec.md` during Phase 3 to prove the first runtime seam exactly once and avoid a vague "runtime works" claim.
+9. Use `phase_test_matrix.md` before calling any phase complete; it is the compact validator and smoke-test companion to the phase manifest.
+10. Use `promotion_extraction_map.md` during Phase 4 and Phase 5 so candidate extraction and accepted knowledge promotion follow one explicit path.
+11. Check `engineer_ambiguity_kill_sheet.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` when something feels ambiguous; do not silently reopen a resolved baseline or deferral.
+12. Reopen the mirrored source docs in `04_contracts/` before authoring manifests, schemas, validators, query or sync runtimes, lifecycle policy, or bootstrap behavior.
+13. Reopen the mirrored `03_workflows/` docs before authoring workflow docs, roles, routing, or workflow metadata.
+14. Keep mirrored `indexes/` companions, canonical docs, and later pack-owned machine surfaces aligned in the same change set whenever a governed contract changes.
 
 Required discipline carried forward from the source execution guide:
 
@@ -42,6 +43,7 @@ Required discipline carried forward from the source execution guide:
 These support docs make the package more executable without creating a second authority layer.
 
 - `README.md` is the initiative-root navigation surface for the larger preserved package.
+- `cold_start_runbook.md` is the first-ready-task start surface for cold-start engineers.
 - `phase_output_manifest.md` is the per-phase execution companion for outputs, command anchors, validation proof, and closeout evidence.
 - `phase_closeout_checklists.md` is the short final-pass closeout companion for each preserved phase.
 - `starter_surface_blueprint.md` is the copy-ready README / AGENTS and registry posture companion for the first offsec root.
@@ -114,7 +116,7 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - all live-contract deltas are explicit;
   - the current-compatible identity baseline is consistent across canonical docs;
   - target repo state remains recorded as of `2026-03-26`; and
-  - `README.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, `starter_surface_blueprint.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` reflect the same current baseline; and
+  - `README.md`, `cold_start_runbook.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, `starter_surface_blueprint.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` reflect the same current baseline; and
   - donor shared core and working reference packs are separated clearly.
 - Exit criteria:
   - one unambiguous current baseline exists for identity, topology, authority, and destination.

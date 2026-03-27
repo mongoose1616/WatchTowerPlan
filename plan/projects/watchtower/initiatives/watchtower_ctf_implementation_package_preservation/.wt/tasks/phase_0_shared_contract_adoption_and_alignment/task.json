@@ -11,7 +11,7 @@
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:39:58Z",
-  "updated_at": "2026-03-27T21:44:35Z",
+  "updated_at": "2026-03-27T22:17:34Z",
   "related_ids": [
     "initiative.watchtower_ctf_implementation_package_preservation",
     "trace.watchtower_ctf_implementation_package_preservation",
@@ -21,11 +21,15 @@
     "req.watchtower_ctf_package_preservation.017",
     "req.watchtower_ctf_package_preservation.021",
     "req.watchtower_ctf_package_preservation.007",
+    "req.watchtower_ctf_package_preservation.023",
+    "req.watchtower_ctf_package_preservation.024",
     "ac.watchtower_ctf_package_preservation.006",
     "ac.watchtower_ctf_package_preservation.014",
     "ac.watchtower_ctf_package_preservation.015",
     "ac.watchtower_ctf_package_preservation.016",
-    "ac.watchtower_ctf_package_preservation.020"
+    "ac.watchtower_ctf_package_preservation.020",
+    "ac.watchtower_ctf_package_preservation.022",
+    "ac.watchtower_ctf_package_preservation.023"
   ],
   "applies_to": [
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/",
@@ -33,6 +37,7 @@
   ],
   "governing_document_paths": [
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/cold_start_runbook.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
@@ -41,16 +46,20 @@
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/engineer_ambiguity_kill_sheet.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
-    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
+    "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+    "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md"
   ],
   "scope_items": [
     "Recheck the current-compatible identity and source-of-truth order against current repo truth.",
     "Confirm no new live-contract delta is needed before recipient repo changes begin.",
-    "Keep the README, phase manifest, ambiguity sheet, contradiction ledger, and conditional revisit queue aligned with the same current baseline."
+    "Keep the README, cold-start runbook, phase manifest, ambiguity sheet, contradiction ledger, and conditional revisit queue aligned with the same current baseline.",
+    "Promote the reusable support-kit subset into plan-level standard, pattern, and initiative templates without changing the authority order."
   ],
   "done_when_items": [
     "The current-compatible baseline, donor or recipient split, and read-first order are revalidated.",
     "Phase 1 can start without unresolved baseline ambiguity.",
-    "Phase support docs do not leave hidden judgment calls before target-repo mutation."
+    "Phase support docs do not leave hidden judgment calls before target-repo mutation, including where a no-change conclusion or a delta should be recorded.",
+    "The reusable engineer-handoff support kit is captured as durable plan guidance and reusable initiative templates for future initiatives."
   ]
 }
