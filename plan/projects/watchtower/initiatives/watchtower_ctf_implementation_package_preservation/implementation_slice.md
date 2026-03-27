@@ -29,6 +29,16 @@ Required discipline carried forward from the source execution guide:
 - record any new live-contract delta before changing a phase or contract boundary; and
 - prefer shared-core reuse before pack-local duplication when generic helpers already exist.
 
+## Engineer Handoff Support Surfaces
+
+These support docs make the package more executable without creating a second authority layer.
+
+- `phase_output_manifest.md` is the per-phase execution companion for outputs, command anchors, validation proof, and closeout evidence.
+- `starter_surface_blueprint.md` is the copy-ready README / AGENTS and registry posture companion for the first offsec root.
+- `conditional_revisit_queue.md` names the later decisions that remain explicitly deferred until execution evidence forces them back open.
+
+The four canonical docs and live task state remain authoritative. Update these support docs in the same change set whenever canonical phase, starter-surface, or deferred-decision meaning changes materially.
+
 ## Phase Plan Preserved From The Source Package
 
 | Phase | Focus | Live Task | Exit Intent |
@@ -86,9 +96,11 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - all live-contract deltas are explicit;
   - the current-compatible identity baseline is consistent across canonical docs;
   - target repo state remains recorded as of `2026-03-26`; and
+  - `phase_output_manifest.md`, `starter_surface_blueprint.md`, and `conditional_revisit_queue.md` reflect the same current baseline; and
   - donor shared core and working reference packs are separated clearly.
 - Exit criteria:
   - one unambiguous current baseline exists for identity, topology, authority, and destination.
+  - phase support docs no longer leave hidden judgment calls before target-repo mutation begins.
 - Parallel-safe boundary:
   - none; no downstream authoring begins until the baseline is locked.
 
@@ -500,6 +512,7 @@ The source package locks the first executable proof path and this initiative pre
 ### Human Surface, Template, And Best-Practice Carryover
 
 - The pack machine-contract baseline must require pack-local `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` surfaces before the offsec pack is considered documentation-complete.
+- Use `starter_surface_blueprint.md` as the engineer-facing starter contract for the first `README.md` and `AGENTS.md` surfaces. If the carried-over posture changes later, update the blueprint and the governing registries in the same change set.
 - Required starter `README.md` roots are `offensive_security/`, `offensive_security/docs/`, `offensive_security/workflows/`, `offensive_security/docs/commands/core_python/`, `offensive_security/tracking/`, and `offensive_security/python/`.
 - Required starter `AGENTS.md` roots are `offensive_security/`, `offensive_security/workflows/`, and `offensive_security/python/`.
 - `offensive_security/docs/AGENTS.md` remains optional unless the docs subtree later needs local behavior that materially differs from the pack root rules.

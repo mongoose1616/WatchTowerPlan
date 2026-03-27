@@ -173,6 +173,62 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md"
       ],
       "notes": "This acceptance item preserves the README, AGENTS, and same-change-set posture engineers should apply when the offsec pack is created."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.009",
+      "summary": "The initiative ships a phase output manifest that covers every preserved phase with primary outputs, current command anchors, validation proof, evidence capture, and ready-to-close signals.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.010"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/07_guides/target_repo_bootstrap_guide.md",
+        "core/docs/commands/core_python/watchtower_core_pack_export.md",
+        "core/docs/commands/core_python/watchtower_core_pack_scaffold.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_pack_validate.md",
+        "core/docs/commands/core_python/watchtower_core_validate_all.md",
+        "core/docs/commands/core_python/watchtower_core_release_check.md"
+      ],
+      "notes": "The support manifest should make phase execution and closeout expectations more executable than the preserved phase narrative alone."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.010",
+      "summary": "The initiative ships a starter-surface blueprint that covers the required README and AGENTS roots, donor template posture, and initial registry expectations for governing those human surfaces.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.011"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md"
+      ],
+      "related_paths": [
+        "plan/.wt/templates/roots/README.md",
+        "plan/.wt/templates/roots/AGENTS.md",
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/registries/documentation_family_registry.json",
+        "plan/.wt/registries/human_surface_policy_registry.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+      ],
+      "notes": "The blueprint should make the carried-over plan and oversight posture copy-ready before the first offsec root is scaffolded."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.011",
+      "summary": "The initiative ships a conditional revisit queue that lists each remaining non-blocking conditional decision with its current default, reopen trigger, owning phase, and keep-default behavior.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.012"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+      ],
+      "notes": "Trigger-based later revisits must stay explicit so engineers do not silently reopen locked defaults."
     }
   ]
 }

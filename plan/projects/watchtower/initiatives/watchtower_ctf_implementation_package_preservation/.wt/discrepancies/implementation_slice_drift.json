@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.implementation_slice_drift",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "category": "authored_input_drift",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Authored input drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md; machine confirmation is required.",
+  "source_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-27T18:33:01Z",
+  "updated_at": "2026-03-27T18:33:02Z"
+}

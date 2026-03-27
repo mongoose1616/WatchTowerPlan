@@ -37,7 +37,14 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 - `implementation_slice.md` carries phases, workflow topology, contract bundles, research posture, standards, tracking surfaces, and the first post-approval execution slice.
 - `decision_notes.md` carries the locked default set, live deltas, post-v1 deferrals, and the source normalization rule for the decision register.
 
-### 4. Live Machine State Layer
+### 4. Engineer Support Layer
+
+- `phase_output_manifest.md` turns the preserved phase plan into bounded outputs, command anchors, validation proof, and closeout evidence.
+- `starter_surface_blueprint.md` turns the preserved README / AGENTS and registry posture into copy-ready starter guidance.
+- `conditional_revisit_queue.md` records non-blocking later decisions with explicit reopen triggers and keep-default behavior.
+- These files are ordinary initiative-root support material rather than `authored_inputs`; they distill execution ergonomics from the canonical docs without becoming a second source of planning authority.
+
+### 5. Live Machine State Layer
 
 - `.wt/**` remains the authoritative machine state for the initiative.
 - Support files remain ordinary initiative-root material and are referenced by the canonical docs, but are not inserted into `authored_inputs` because the initiative-state schema only accepts the four canonical doc kinds.
@@ -122,6 +129,7 @@ The source package already pointed at `plan` and `oversight` as the implementati
 - carry the `AGENTS.md` root pattern forward as a narrow subtree-local behavior overlay that never restates repository-wide safety or workflow rules wholesale;
 - require pack-local `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` surfaces so README / AGENTS / rendered-view expectations are machine-readable rather than convention-only;
 - require the offsec pack to name its critical README and AGENTS roots up front, matching the current `plan` / `oversight` posture of root plus critical subroots instead of every possible subtree; and
+- keep the starter posture executable through `starter_surface_blueprint.md` rather than forcing engineers to reconstruct the donor pattern from scattered donor-pack files; and
 - preserve same-change-set discipline for docs, indexes, registries, rendered views, and retained evidence whenever one depends on the other.
 
 ## Failure Modes And Mitigations

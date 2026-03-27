@@ -27,14 +27,18 @@
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
-    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md"
   ],
   "scope_items": [
     "Recheck the current-compatible identity and source-of-truth order against current repo truth.",
-    "Confirm no new live-contract delta is needed before recipient repo changes begin."
+    "Confirm no new live-contract delta is needed before recipient repo changes begin.",
+    "Keep the phase manifest and conditional revisit queue aligned with the same current baseline."
   ],
   "done_when_items": [
     "The current-compatible baseline, donor or recipient split, and read-first order are revalidated.",
-    "Phase 1 can start without unresolved baseline ambiguity."
+    "Phase 1 can start without unresolved baseline ambiguity.",
+    "Phase support docs do not leave hidden judgment calls before target-repo mutation."
   ]
 }

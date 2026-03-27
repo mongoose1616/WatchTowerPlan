@@ -2,7 +2,7 @@
 
 ## Summary
 
-The imported package no longer carries open phase-gated implementation decisions. All `86` rows in the preserved decision register are `locked_in_package`, and this initiative preserves that outcome as the canonical basis for follow-on WatchTower implementation through the exact row-by-row appendix below. The full raw register remains mirrored at `source_snapshot/CTF_implementation/indexes/open_decisions.json.raw`.
+The imported package no longer carries open phase-gated implementation decisions. All `86` rows in the preserved decision register are `locked_in_package`, and this initiative preserves that outcome as the canonical basis for follow-on WatchTower implementation through the exact row-by-row appendix below. The full raw register remains mirrored at `source_snapshot/CTF_implementation/indexes/open_decisions.json.raw`, while trigger-based later revisits are captured separately in `conditional_revisit_queue.md`.
 
 ## Preservation Decisions Locked By This Initiative
 
@@ -148,6 +148,14 @@ This section is a scan-friendly summary of deferrals already present in the exac
 - `decision.pentest_pack_split`: keep one `offensive_security` hosted pack for v1.
 - `decision.saved_query_views`: defer saved query views beyond v1, with pack-owned defaults first and user-local views outside the governed pack root later.
 - `decision.provenance_review_impact_surface`: defer richer provenance-triggered downstream review tooling beyond v1.
+
+## Conditional Revisit Queue
+
+The initiative now carries `conditional_revisit_queue.md` as the operator-facing companion for these non-blocking later decisions.
+
+- It does not reopen any locked default by itself.
+- It records the trigger that must fire before a later implementation change is allowed to override the preserved baseline.
+- If a trigger fires, record a new live-contract delta first, then update the affected canonical docs, live task state, and machine-readable acceptance or evidence surfaces in the same change set.
 
 ## Propagation Rule
 

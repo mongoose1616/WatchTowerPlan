@@ -27,6 +27,7 @@ This initiative absorbs `/home/j/mvp_reference/CTF_implementation` into the gove
 - Normalize the source package into repo-native initiative surfaces so follow-on implementation can begin from this initiative alone.
 - Keep the initiative approval and readiness path compatible with the current `plan/.wt` validation contract.
 - Turn the preserved package into an engineer-ready same-initiative handoff surface with explicit trace, evidence, task, and human-surface starter expectations.
+- Publish concrete engineer-support surfaces that make phase outputs, starter human surfaces, and trigger-based later decisions explicit before `/home/j/WatchTower` execution starts.
 
 ## Non-Goals
 
@@ -108,6 +109,14 @@ The preserved package now carries the starter human-surface and authoring postur
   - reuse shared core before duplicating generic behavior into the pack; and
   - keep domain workflows, templates, terminology, and guidance pack-owned when they are not reusable-core concerns.
 
+## Engineer Handoff Support Surfaces
+
+The initiative now carries three support docs beside the four canonical authored docs. They do not replace canonical authority or live task state, but they make engineer handoff more executable.
+
+- `phase_output_manifest.md`: per-phase outputs, command anchors, validation proof, and required evidence for the first WatchTower implementation pass.
+- `starter_surface_blueprint.md`: copy-ready README / AGENTS posture, required starter roots, and initial registry expectations derived from `plan` and `oversight`.
+- `conditional_revisit_queue.md`: trigger-based later decisions that stay explicitly deferred unless execution evidence forces them back open.
+
 ## Durable Requirements
 
 - `req.watchtower_ctf_package_preservation.001`: preserve all `62` source files inside this initiative with deterministic stored paths and reversible JSON restoration.
@@ -119,6 +128,9 @@ The preserved package now carries the starter human-surface and authoring postur
 - `req.watchtower_ctf_package_preservation.007`: publish a complete machine-readable handoff trace chain for this initiative through stable requirement IDs, acceptance IDs, an acceptance contract, durable validation evidence, and traceability joins.
 - `req.watchtower_ctf_package_preservation.008`: replace the bootstrap-only placeholder task posture with a phase-aligned same-initiative execution task chain that exposes the real next engineer action and its dependencies.
 - `req.watchtower_ctf_package_preservation.009`: carry the current `plan` / `oversight` README, AGENTS, template-governance, and same-change-set best-practice posture into the preserved offsec implementation contract.
+- `req.watchtower_ctf_package_preservation.010`: publish a phase execution manifest that maps every preserved phase to concrete outputs, command anchors, validation proof, and closeout evidence for `/home/j/WatchTower` implementation.
+- `req.watchtower_ctf_package_preservation.011`: publish a starter surface blueprint that turns the required offsec README / AGENTS roots and registry expectations into copy-ready execution guidance.
+- `req.watchtower_ctf_package_preservation.012`: publish a conditional revisit queue so non-blocking future decisions remain explicit, defaulted, and trigger-based rather than becoming hidden ambiguity during implementation.
 
 ## Acceptance Criteria
 
@@ -130,6 +142,9 @@ The preserved package now carries the starter human-surface and authoring postur
 - `ac.watchtower_ctf_package_preservation.006`: the traceability layer, acceptance contract, durable validation evidence, and validator references agree on this initiative’s requirement IDs, acceptance IDs, acceptance-contract IDs, evidence IDs, and applicable validators.
 - `ac.watchtower_ctf_package_preservation.007`: the active same-initiative task graph exposes one explicit phase-aligned execution chain with the first executable task `ready`, later tasks `planned`, and explicit dependencies, related IDs, and governing docs for every task.
 - `ac.watchtower_ctf_package_preservation.008`: the canonical docs restate the required offsec README / AGENTS starter roots plus the adapted template-governance and best-practice posture needed to bootstrap the pack without inheriting ambiguity from the donor repositories.
+- `ac.watchtower_ctf_package_preservation.009`: `phase_output_manifest.md` covers every preserved phase with primary outputs, current command anchors, validation proof, evidence capture, and ready-to-close signals.
+- `ac.watchtower_ctf_package_preservation.010`: `starter_surface_blueprint.md` covers every required README / AGENTS starter root, the donor template posture, and the minimum registry baseline that should govern those human surfaces.
+- `ac.watchtower_ctf_package_preservation.011`: `conditional_revisit_queue.md` lists each remaining non-blocking conditional decision with its current default, reopen trigger, owning phase, and keep-default behavior when the trigger does not fire.
 
 ## Risks And Dependencies
 

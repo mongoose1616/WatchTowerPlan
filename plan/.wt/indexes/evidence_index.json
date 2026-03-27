@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-27T16:43:11Z",
+  "updated_at": "2026-03-27T18:33:46Z",
   "entries": [
     {
       "evidence_id": "evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle",
@@ -16,7 +16,7 @@
       "entry_count": 3,
       "acceptance_labels": [
         "execution_task_chain_complete",
-        "starter_surface_and_best_practice_coverage",
+        "starter_surface_and_handoff_support_coverage",
         "trace_chain_complete"
       ],
       "validation_types": [
@@ -38,12 +38,15 @@
         "plan/.wt/indexes/initiative_index.json",
         "plan/.wt/indexes/task_index.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
-        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md"
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md"
       ],
-      "updated_at": "2026-03-27T16:34:41Z",
+      "updated_at": "2026-03-27T18:23:33Z",
       "project_id": "project.watchtower"
     }
   ]

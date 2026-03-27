@@ -29,11 +29,14 @@
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
-    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md"
   ],
   "scope_items": [
     "Export, copy, scaffold, bootstrap, and validate the first offsec pack root in the recipient repo.",
-    "Replace starter workflow metadata before routing or discovery surfaces are trusted."
+    "Replace starter workflow metadata before routing or discovery surfaces are trusted.",
+    "Land the required starter README and AGENTS surfaces before declaring the pack root ready for Phase 2."
   ],
   "done_when_items": [
     "The scaffolded offsec pack validates cleanly in the recipient repo.",
