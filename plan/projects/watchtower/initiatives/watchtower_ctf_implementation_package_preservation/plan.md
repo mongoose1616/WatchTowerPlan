@@ -8,7 +8,7 @@
 - `owner`: `repository_maintainer`
 - `lifecycle_stage`: `ready_for_execution`
 - `review_status`: `approved`
-- `updated_at`: `2026-03-27T14:19:02Z`
+- `updated_at`: `2026-03-27T15:11:23Z`
 
 ## Scope and Non-Goals
 Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.
@@ -28,6 +28,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.artifact_index_project_drift`: `high` `stale_aggregate_index` / `resolved`. Project aggregate index drift detected for plan/.wt/indexes/artifact_index.json.
 - Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.closeout_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/closeout_index.json.
 - Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.coordination_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.
+- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.decision_notes_drift`: `high` `authored_input_drift` / `resolved`. Authored input drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md; machine confirmation is required.
 - Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.discrepancy_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/discrepancy_index.json.
 - Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.evidence_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/evidence_index.json.
 - Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.guidance_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/guidance_index.json.

@@ -12,7 +12,7 @@
   "review_status": "approved",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T05:17:18Z",
-  "updated_at": "2026-03-27T14:19:02Z",
+  "updated_at": "2026-03-27T15:11:23Z",
   "task_ids": [
     "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation"
   ],
@@ -33,7 +33,7 @@
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
       "sha256": "dc1910ae2cf265d59f8668ba3a7cd0ecc65ffcd4e74e14b2ac08414a34457112",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T14:18:26Z",
+      "last_confirmed_at": "2026-03-27T15:10:35Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
@@ -41,7 +41,7 @@
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
       "sha256": "fe0aeea04605bdb11d352c98ffc48e675f2cebb2d4a7f290b2e47eb7dee11cf4",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T14:18:26Z",
+      "last_confirmed_at": "2026-03-27T15:10:35Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
@@ -49,15 +49,15 @@
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
       "sha256": "eeda29cbb864217e3cb7f3f6a5cd68942c20f2c813113685cdc3ee56a00e71db",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T14:18:26Z",
+      "last_confirmed_at": "2026-03-27T15:10:35Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
       "doc_kind": "decision_notes",
       "path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
-      "sha256": "933a784dcd221025006758fd2fe9468ea667daa408ef5a5535c3b9f2898250e8",
+      "sha256": "3c29c9c4d8c9e32bb72456939478dd8cc13321f95e4f93b2e99ffaeb1d598ccb",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-27T14:18:26Z",
+      "last_confirmed_at": "2026-03-27T15:10:35Z",
       "last_confirmed_by": "actor.repository_maintainer"
     }
   ],
@@ -104,6 +104,16 @@
       "approval_kind": "ready_for_execution",
       "actor_id": "actor.repository_maintainer",
       "approved_at": "2026-03-27T14:19:02Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-27T15:10:35Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-27T15:11:23Z"
     }
   ]
 }

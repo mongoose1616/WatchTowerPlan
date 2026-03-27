@@ -52,7 +52,7 @@
       "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-27T14:19:02Z",
+      "updated_at": "2026-03-27T15:11:23Z",
       "source_surface_paths": [
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",

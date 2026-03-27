@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-27T14:19:02Z",
+  "updated_at": "2026-03-27T15:11:23Z",
   "entries": [
     {
       "review_subject_id": "initiative.watchtower_ctf_implementation_package_preservation",
@@ -19,7 +19,7 @@
       "evidence_refs": [
         "evidence.watchtower_ctf_implementation_package_preservation.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-27T14:19:02Z",
+      "updated_at": "2026-03-27T15:11:23Z",
       "project_id": "project.watchtower",
       "lifecycle_stage": "ready_for_execution",
       "ready_for_execution": true
