@@ -83,6 +83,7 @@ The design preserves the package’s explicit delta handling so future implement
 - Keep the scaffold-proof identity baseline: `pack_slug = offensivesecurity`, `pack_id = pack.offensivesecurity`, `command_namespace = offsec`.
 - Adopt live shared-core surfaces now present upstream: `actor_registry`, `governance_surface_map`, `path_pattern_registry`, and `status_registry`.
 - Adapt challenge and session lifecycle subsets to shared status vocabulary rather than inventing pack-only lifecycle statuses such as `solved` or `unresolved`.
+- Reconcile the preserved `decision.event_stream_contract` shorthand against the field-level state contract: the canonical v1 envelope requires `event_id`, `event_type`, `timestamp_utc`, and `challenge_id`, treats `session_id` and `actor_ref` as conditional, and preserves the raw decision-register wording with `actor` plus required `session_id` as historical source evidence rather than the implementation-facing schema.
 - Reject retired `domain_packs/**` topology and retired docs-root authority assumptions.
 - Keep the fixed-root challenge path with placeholder segments in v1 and defer optional-segment collapse beyond v1.
 - Treat the empty recipient repo as a real implementation constraint rather than assuming existing WatchTower content.

@@ -102,7 +102,7 @@ The package acceptance standard retained by this initiative requires:
 - `ac.watchtower_ctf_package_preservation.001`: the initiative mirror contains exactly `62` stored files corresponding to the `62` source files.
 - `ac.watchtower_ctf_package_preservation.002`: the transformed mirror preserves source bytes exactly, as proven by `source_sha256.tsv` and restore proof for mirrored JSON files.
 - `ac.watchtower_ctf_package_preservation.003`: every source file appears in `source_coverage_matrix.md` with a canonical target and explicit status.
-- `ac.watchtower_ctf_package_preservation.004`: the canonical initiative docs absorb the package purpose, baseline, phase plan, contracts, research posture, standards, tracking surfaces, and locked decision set.
+- `ac.watchtower_ctf_package_preservation.004`: the canonical initiative docs absorb the package purpose, baseline, phase plan, exact workflow metadata rules, implementation-critical query/state/safety/citation rules, and the full locked decision register, with explicit reconciliation notes where preserved source surfaces use conflicting schema shorthand, while any remaining donor-package narrative detail is explicitly preserved as mirrored reference.
 - `ac.watchtower_ctf_package_preservation.005`: after sync, confirm-inputs, and approval, the initiative reaches `ready_for_execution=true`.
 
 ## Risks And Dependencies
