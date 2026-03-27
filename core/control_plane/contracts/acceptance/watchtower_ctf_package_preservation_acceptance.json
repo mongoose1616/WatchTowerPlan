@@ -314,6 +314,83 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json"
       ],
       "notes": "The README is a navigation aid for a large initiative root and does not supersede canonical or machine authority."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.017",
+      "summary": "The initiative ships example-filled artifact specimens for the first challenge-local governed records, artifact index, and minimal authority/query-family registry surfaces.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.018"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/state_and_index_contracts_plan.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/query_sync_rendered_views_docs_plan.md"
+      ],
+      "notes": "The specimen surface should remove record-shape ambiguity for the first real offsec artifact slice."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.018",
+      "summary": "The initiative ships a phase test matrix that maps every preserved phase to explicit validators, smoke tests, and proof artifacts.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.019"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_test_matrix.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md"
+      ],
+      "notes": "The matrix should keep validator, smoke-proof, and evidence expectations explicit for every phase."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.019",
+      "summary": "The initiative ships a machine-surface specimen index that lists the first expected .wt and .wt_local surfaces with authority class, first owning phase, and specimen or contract anchors.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.020"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/machine_surface_specimen_index.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+      ],
+      "notes": "The surface index should make the first authoritative, derived, and rendered offsec machine surfaces easy to see in one place."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.020",
+      "summary": "The initiative ships an engineer ambiguity kill sheet that gives compact default answers and escalation conditions for the most likely implementation ambiguities.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.021"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/engineer_ambiguity_kill_sheet.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+      ],
+      "notes": "The ambiguity sheet should help engineers answer common questions without silently changing preserved baselines."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.021",
+      "summary": "The initiative ships a promotion and extraction map that connects closeout outputs to candidate extraction, review gates, and accepted reusable knowledge with mandatory provenance.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.022"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/promotion_extraction_map.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/knowledge_governance_and_retrieval_plan.md"
+      ],
+      "notes": "The promotion map should remove ambiguity between closeout artifacts, extraction candidates, and accepted reusable knowledge."
     }
   ]
 }

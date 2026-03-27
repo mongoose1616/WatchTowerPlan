@@ -11,7 +11,7 @@
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:41:06Z",
-  "updated_at": "2026-03-27T21:16:46Z",
+  "updated_at": "2026-03-27T21:44:35Z",
   "dependency_task_ids": [
     "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract"
   ],
@@ -21,9 +21,15 @@
     "ac.watchtower_ctf_package_preservation.004",
     "req.watchtower_ctf_package_preservation.014",
     "req.watchtower_ctf_package_preservation.015",
+    "req.watchtower_ctf_package_preservation.018",
+    "req.watchtower_ctf_package_preservation.019",
+    "req.watchtower_ctf_package_preservation.020",
     "ac.watchtower_ctf_package_preservation.007",
     "ac.watchtower_ctf_package_preservation.013",
-    "ac.watchtower_ctf_package_preservation.014"
+    "ac.watchtower_ctf_package_preservation.014",
+    "ac.watchtower_ctf_package_preservation.017",
+    "ac.watchtower_ctf_package_preservation.018",
+    "ac.watchtower_ctf_package_preservation.019"
   ],
   "applies_to": [
     "offsec_python_runtime",
@@ -36,12 +42,16 @@
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_test_matrix.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/machine_surface_specimen_index.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md"
   ],
   "scope_items": [
     "Author the runtime integration, curated queries, sync registry, workflow docs, and route metadata.",
     "Prove the first thin CLI vertical slice on the real pack root with real schemas and validators.",
-    "Use the vertical slice proof spec as the exact minimum proof boundary rather than a loose runtime milestone."
+    "Use the vertical slice proof spec as the exact minimum proof boundary rather than a loose runtime milestone.",
+    "Keep the first runtime slice aligned with the artifact specimens, machine-surface specimen index, and phase test matrix."
   ],
   "done_when_items": [
     "The runtime seam is concrete from host namespace through pack query, sync, workflow, and rendered views.",

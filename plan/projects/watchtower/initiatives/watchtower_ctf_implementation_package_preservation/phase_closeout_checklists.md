@@ -29,6 +29,7 @@ These checklists are the short final pass for each preserved phase. They do not 
 - The required schemas, registries, policies, and baseline validation suite exist and validate.
 - `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` are real artifacts, not only design prose.
 - The authored registries still align with `starter_registry_exemplars.md` or document the intentional divergence.
+- The first governed record shapes and first machine surfaces still align with `artifact_specimens.md` and `machine_surface_specimen_index.md`.
 - No Phase 3 runtime work still depends on re-deriving field meaning from donor prose.
 
 ## `phase.3` Runtime, Query, Sync, And Workflow Seam
@@ -36,6 +37,7 @@ These checklists are the short final pass for each preserved phase. They do not 
 - The first vertical slice passes the exact proof boundary in `vertical_slice_proof_spec.md`.
 - Workflow docs, workflow metadata, routing, command docs, queries, and sync targets agree.
 - Query and sync claims are backed by real pack outputs rather than placeholders.
+- The Phase 3 validator and smoke-test expectations in `phase_test_matrix.md` are satisfied explicitly.
 - The first unit tests and CLI smoke tests exist immediately after the slice proof, not as a later undefined follow-up.
 
 ## `phase.4` Challenge Artifacts And Closeout
@@ -50,6 +52,7 @@ These checklists are the short final pass for each preserved phase. They do not 
 - Challenge-specific detail is stripped or explicitly quarantined before promotion.
 - Typed relations remain authoritative on source artifacts, not only in derived indexes.
 - Promotion and `review_status` stay distinct in both docs and implemented artifacts.
+- The implemented candidate-to-accepted flow still matches `promotion_extraction_map.md`.
 - Retrieval ranking and match explanations are proven against real promoted or candidate knowledge.
 
 ## `phase.6` Environment Adapters And Safety

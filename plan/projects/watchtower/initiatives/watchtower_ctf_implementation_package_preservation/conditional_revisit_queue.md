@@ -30,6 +30,11 @@ The preserved package does not currently have blocking open decisions. This queu
 - `initiative_brief.md`
 - `phase_output_manifest.md`
 - `phase_closeout_checklists.md`
+- `artifact_specimens.md`
+- `phase_test_matrix.md`
+- `machine_surface_specimen_index.md`
+- `engineer_ambiguity_kill_sheet.md`
+- `promotion_extraction_map.md`
 - `starter_surface_blueprint.md` when starter-surface posture changes
 - `starter_registry_exemplars.md` when starter-registry posture changes
 - `contradiction_sweep_ledger.md` when a resolved tension must be reopened or superseded

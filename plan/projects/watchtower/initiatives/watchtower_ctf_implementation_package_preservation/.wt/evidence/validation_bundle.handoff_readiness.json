@@ -5,7 +5,7 @@
   "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
   "title": "Engineer Handoff Validation Bundle",
   "status": "active",
-  "updated_at": "2026-03-27T21:21:55Z",
+  "updated_at": "2026-03-27T21:50:28Z",
   "entries": [
     {
       "entry_id": "entry.watchtower_ctf_implementation_package_preservation.handoff_acceptance_contracts",
@@ -49,6 +49,11 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_test_matrix.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/machine_surface_specimen_index.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/engineer_ambiguity_kill_sheet.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/promotion_extraction_map.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
       ]

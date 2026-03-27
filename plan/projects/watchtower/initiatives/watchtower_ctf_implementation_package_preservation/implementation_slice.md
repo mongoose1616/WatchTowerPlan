@@ -20,11 +20,14 @@ The preserved package’s required read-first order is now canonicalized for fol
 3. Read `implementation_slice.md` front to back before touching `/home/j/WatchTower`; it now restates the phase dependencies, gates, exit criteria, starter human-surface rules, and first ready task.
 4. Use `phase_output_manifest.md` and `phase_closeout_checklists.md` as the execution companions for the active phase.
 5. Use `starter_surface_blueprint.md` and `starter_registry_exemplars.md` during Phase 1 and Phase 2 so starter docs and starter registries are copy-ready instead of inferred.
-6. Use `vertical_slice_proof_spec.md` during Phase 3 to prove the first runtime seam exactly once and avoid a vague "runtime works" claim.
-7. Check `conditional_revisit_queue.md` and `contradiction_sweep_ledger.md` when something feels ambiguous; do not silently reopen a resolved baseline or deferral.
-8. Reopen the mirrored source docs in `04_contracts/` before authoring manifests, schemas, validators, query or sync runtimes, lifecycle policy, or bootstrap behavior.
-9. Reopen the mirrored `03_workflows/` docs before authoring workflow docs, roles, routing, or workflow metadata.
-10. Keep mirrored `indexes/` companions, canonical docs, and later pack-owned machine surfaces aligned in the same change set whenever a governed contract changes.
+6. Use `artifact_specimens.md` and `machine_surface_specimen_index.md` during Phase 2 and Phase 3 so the first machine-record bundle and first indexes do not need to be derived from narrative prose alone.
+7. Use `vertical_slice_proof_spec.md` during Phase 3 to prove the first runtime seam exactly once and avoid a vague "runtime works" claim.
+8. Use `phase_test_matrix.md` before calling any phase complete; it is the compact validator and smoke-test companion to the phase manifest.
+9. Use `promotion_extraction_map.md` during Phase 4 and Phase 5 so candidate extraction and accepted knowledge promotion follow one explicit path.
+10. Check `engineer_ambiguity_kill_sheet.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` when something feels ambiguous; do not silently reopen a resolved baseline or deferral.
+11. Reopen the mirrored source docs in `04_contracts/` before authoring manifests, schemas, validators, query or sync runtimes, lifecycle policy, or bootstrap behavior.
+12. Reopen the mirrored `03_workflows/` docs before authoring workflow docs, roles, routing, or workflow metadata.
+13. Keep mirrored `indexes/` companions, canonical docs, and later pack-owned machine surfaces aligned in the same change set whenever a governed contract changes.
 
 Required discipline carried forward from the source execution guide:
 
@@ -44,6 +47,11 @@ These support docs make the package more executable without creating a second au
 - `starter_surface_blueprint.md` is the copy-ready README / AGENTS and registry posture companion for the first offsec root.
 - `starter_registry_exemplars.md` is the copy-ready machine-registry companion for the first offsec control registries.
 - `vertical_slice_proof_spec.md` is the exact proof boundary for the first real Phase 3 runtime slice.
+- `artifact_specimens.md` is the example-filled companion for the first governed challenge-local records, `artifact_index`, and minimal lookup registries.
+- `phase_test_matrix.md` is the compact validator and smoke-test companion for every preserved phase.
+- `machine_surface_specimen_index.md` is the first machine-surface inventory across `.wt/` and `.wt_local/`.
+- `engineer_ambiguity_kill_sheet.md` is the compact default-answer companion for likely implementation ambiguities.
+- `promotion_extraction_map.md` is the Phase 4 and Phase 5 companion for candidate extraction, review, and accepted knowledge publication.
 - `conditional_revisit_queue.md` names the later decisions that remain explicitly deferred until execution evidence forces them back open.
 - `contradiction_sweep_ledger.md` records the already-reconciled tensions across source wording, canonical docs, and live task state.
 
@@ -146,6 +154,7 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - `source.type`, `trust_state`, and `verification_status` vocabularies are locked;
   - template, documentation-family, human-surface-policy, rendered-surface, and lifecycle-policy registry entry shapes are explicit;
   - the first template, documentation-family, human-surface, rendered-surface, and authority-map artifacts align with `starter_registry_exemplars.md`; and
+  - the first governed challenge-local records and first derived indexes are representable without guesswork through `artifact_specimens.md` and `machine_surface_specimen_index.md`; and
   - the baseline validation suite covers `pack_contract`, `front_matter`, `document_semantics`, `artifact`, `graph_index`, `authority_map`, `query_contracts`, and `lifecycle_policy`.
 - Exit criteria:
   - the package provides a complete schema, registry, and validation plan for the first real challenge flow.
@@ -164,7 +173,8 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - initial routing-table task types map only to authored workflow modules or roles in the same slice;
   - query, graph, sync-target, rendered-view, and document-semantics behavior aligns with the preserved contract docs;
   - `status` explicitly carries the safety-posture summary and confirmation-gate fields; and
-  - the authority map points to real query outputs, rendered views, and shared command or route surfaces; and
+  - the authority map points to real query outputs, rendered views, and shared command or route surfaces;
+  - phase-specific proof remains aligned with `phase_test_matrix.md`; and
   - the first runtime proof satisfies `vertical_slice_proof_spec.md` exactly, including the mandatory surface set, validation proof, and failure exclusions.
 - Exit criteria:
   - the package describes a complete runtime seam from host namespace to pack validation, query, sync, and workflow behavior.
@@ -204,7 +214,8 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - promotion and `review_status` remain distinct governed concepts;
   - typed relations are authoritative on source artifacts and `related_artifact_ids` remain derived-only;
   - promotion policy, glossary governance, external references, and deterministic retrieval ranking stay explicit; and
-  - challenge-specific detail is stripped or quarantined before promotion.
+  - challenge-specific detail is stripped or quarantined before promotion; and
+  - `promotion_extraction_map.md` stays aligned with the implemented candidate-to-accepted flow.
 - Exit criteria:
   - the package provides a full reusable-knowledge and promotion plan from candidate extraction to canonical retrieval.
 - Parallel-safe boundary:

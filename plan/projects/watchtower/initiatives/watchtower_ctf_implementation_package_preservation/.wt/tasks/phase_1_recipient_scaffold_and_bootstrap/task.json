@@ -11,7 +11,7 @@
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:41:00Z",
-  "updated_at": "2026-03-27T21:16:46Z",
+  "updated_at": "2026-03-27T21:44:35Z",
   "dependency_task_ids": [
     "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment"
   ],
@@ -20,8 +20,10 @@
     "trace.watchtower_ctf_implementation_package_preservation",
     "req.watchtower_ctf_package_preservation.006",
     "req.watchtower_ctf_package_preservation.015",
+    "req.watchtower_ctf_package_preservation.019",
     "ac.watchtower_ctf_package_preservation.007",
-    "ac.watchtower_ctf_package_preservation.014"
+    "ac.watchtower_ctf_package_preservation.014",
+    "ac.watchtower_ctf_package_preservation.018"
   ],
   "applies_to": [
     "recipient_repo_watchtower",
@@ -34,6 +36,7 @@
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_test_matrix.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md"
   ],
   "scope_items": [

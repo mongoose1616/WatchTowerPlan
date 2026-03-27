@@ -27,7 +27,7 @@ This initiative absorbs `/home/j/mvp_reference/CTF_implementation` into the gove
 - Normalize the source package into repo-native initiative surfaces so follow-on implementation can begin from this initiative alone.
 - Keep the initiative approval and readiness path compatible with the current `plan/.wt` validation contract.
 - Turn the preserved package into an engineer-ready same-initiative handoff surface with explicit trace, evidence, task, and human-surface starter expectations.
-- Publish concrete engineer-support surfaces that make initiative navigation, phase outputs, starter human surfaces, starter registries, the first runtime proof path, and trigger-based later decisions explicit before `/home/j/WatchTower` execution starts.
+- Publish concrete engineer-support surfaces that make initiative navigation, phase outputs, starter human surfaces, starter registries, example machine artifacts, the first runtime proof path, promotion flow, and trigger-based later decisions explicit before `/home/j/WatchTower` execution starts.
 
 ## Non-Goals
 
@@ -119,6 +119,11 @@ The initiative now carries a larger support-doc set beside the four canonical au
 - `starter_surface_blueprint.md`: copy-ready README / AGENTS posture, required starter roots, and initial registry expectations derived from `plan` and `oversight`.
 - `starter_registry_exemplars.md`: copy-ready machine-registry exemplars for the first offsec template, documentation-family, human-surface, rendered-surface, and authority-map artifacts.
 - `vertical_slice_proof_spec.md`: the exact first Phase 3 runtime proof boundary, required surfaces, validation proof, and failure conditions.
+- `artifact_specimens.md`: example-filled specimen records for the first challenge-local artifacts, `artifact_index`, and minimal authority/query-family registry artifacts.
+- `phase_test_matrix.md`: a phase-to-validator, smoke-test, and proof-artifact matrix for the first implementation pass.
+- `machine_surface_specimen_index.md`: the first expected `.wt/` and `.wt_local/` machine-surface inventory, with authority posture and specimen references.
+- `engineer_ambiguity_kill_sheet.md`: a compact default-answer sheet for the most likely implementation ambiguities.
+- `promotion_extraction_map.md`: the closeout-to-candidate-to-accepted knowledge flow for Phase 4 and Phase 5 work.
 - `conditional_revisit_queue.md`: trigger-based later decisions that stay explicitly deferred unless execution evidence forces them back open.
 - `contradiction_sweep_ledger.md`: resolved wording, contract, and state tensions that engineers should not reopen casually.
 
@@ -141,6 +146,11 @@ The initiative now carries a larger support-doc set beside the four canonical au
 - `req.watchtower_ctf_package_preservation.015`: publish per-phase closeout checklists so engineers can confirm completion and evidence expectations quickly before task closeout.
 - `req.watchtower_ctf_package_preservation.016`: publish a contradiction-sweep ledger so already reconciled tensions stay explicit and do not drift back into implementation ambiguity.
 - `req.watchtower_ctf_package_preservation.017`: publish an initiative-root `README.md` so this larger preserved initiative has a stable human navigation surface instead of forcing readers to infer structure from the file tree alone.
+- `req.watchtower_ctf_package_preservation.018`: publish example-filled artifact specimens for the first governed challenge-local records plus minimal authority-map and query-family registry specimens.
+- `req.watchtower_ctf_package_preservation.019`: publish a phase-to-test matrix so every phase has explicit validators, smoke proofs, and required proof artifacts.
+- `req.watchtower_ctf_package_preservation.020`: publish a machine-surface specimen index so engineers can see the first expected `.wt/` and `.wt_local/` surfaces, their authority class, and their first owning phase in one place.
+- `req.watchtower_ctf_package_preservation.021`: publish an engineer ambiguity kill sheet so the most likely implementation questions already have default answers before `/home/j/WatchTower` mutation starts.
+- `req.watchtower_ctf_package_preservation.022`: publish a promotion and extraction map so Phase 5 knowledge work has an explicit path from closeout outputs to candidate and accepted reusable knowledge.
 
 ## Acceptance Criteria
 
@@ -160,6 +170,11 @@ The initiative now carries a larger support-doc set beside the four canonical au
 - `ac.watchtower_ctf_package_preservation.014`: `phase_closeout_checklists.md` gives each preserved phase a concise closeout checklist that aligns with the task graph and phase output manifest.
 - `ac.watchtower_ctf_package_preservation.015`: `contradiction_sweep_ledger.md` records the major resolved tensions across source mirror, canonical docs, and live task state with their current governing surfaces.
 - `ac.watchtower_ctf_package_preservation.016`: the initiative root `README.md` provides a stable navigation surface for the larger preserved package and routes engineers to the canonical docs, support docs, provenance surfaces, and live machine state.
+- `ac.watchtower_ctf_package_preservation.017`: `artifact_specimens.md` provides example-filled specimens for the first governed challenge-local records, `artifact_index`, and minimal authority/query-family registry surfaces.
+- `ac.watchtower_ctf_package_preservation.018`: `phase_test_matrix.md` maps every preserved phase to explicit validators, smoke tests, and proof artifacts.
+- `ac.watchtower_ctf_package_preservation.019`: `machine_surface_specimen_index.md` lists the first expected `.wt/` and `.wt_local/` surfaces with authority class, first owning phase, and specimen or contract anchors.
+- `ac.watchtower_ctf_package_preservation.020`: `engineer_ambiguity_kill_sheet.md` gives compact default answers for the most likely implementation ambiguities and escalation conditions.
+- `ac.watchtower_ctf_package_preservation.021`: `promotion_extraction_map.md` maps closeout outputs to extraction candidates, review gates, and accepted reusable knowledge targets with mandatory provenance.
 
 ## Risks And Dependencies
 

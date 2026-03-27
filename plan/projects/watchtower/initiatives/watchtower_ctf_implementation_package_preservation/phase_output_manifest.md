@@ -10,7 +10,8 @@ This support surface translates the preserved phase plan into bounded engineer o
 2. Open the matching live task record under `.wt/tasks/**/task.json`.
 3. Use this manifest to confirm primary outputs, command anchors, validation proof, and closeout evidence before changing `/home/j/WatchTower`.
 4. Use `phase_closeout_checklists.md` as the last short pass before calling a phase done.
-5. Update this file in the same change set whenever a phase output, validation expectation, or evidence requirement changes materially.
+5. Use `phase_test_matrix.md` when deciding which validators, smoke tests, and proof artifacts must exist for the current phase.
+6. Update this file in the same change set whenever a phase output, validation expectation, or evidence requirement changes materially.
 
 ## `phase.0` Shared Contract Adoption And Alignment
 
@@ -71,7 +72,8 @@ This support surface translates the preserved phase plan into bounded engineer o
 - Mandatory evidence:
   - every new schema and registry file has an explicit validation pass;
   - `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` are present before claiming documentation completeness; and
-  - field-level contracts for `event_stream`, `artifact_index`, `challenge_metadata`, `notes_metadata`, `session_state`, and `environment_context` are recorded in code and reflected in docs; and
+  - field-level contracts for `event_stream`, `artifact_index`, `challenge_metadata`, `notes_metadata`, `session_state`, and `environment_context` are recorded in code and reflected in docs;
+  - the first machine surfaces are identifiable in `machine_surface_specimen_index.md`; and
   - the first registry set is materially aligned with `starter_registry_exemplars.md` or any intentional divergence is explained explicitly in docs and evidence.
 - Ready-to-close signal:
   - Phase 3 can build runtime behavior without re-deriving schema or registry meaning from prose.
@@ -91,7 +93,8 @@ This support surface translates the preserved phase plan into bounded engineer o
 - Mandatory evidence:
   - route preview, workflow metadata, and authored workflow docs agree;
   - the first vertical slice proves the exact proof boundary, surface set, and failure exclusions in `vertical_slice_proof_spec.md`; and
-  - command-doc entrypoints under `offensive_security/docs/commands/core_python/` resolve to the implemented namespace surfaces.
+  - command-doc entrypoints under `offensive_security/docs/commands/core_python/` resolve to the implemented namespace surfaces; and
+  - the required tests and smoke proof in `phase_test_matrix.md` exist immediately after the slice works.
 - Ready-to-close signal:
   - the pack has a real runtime seam with no placeholder-only query or workflow surfaces.
 
@@ -129,7 +132,8 @@ This support surface translates the preserved phase plan into bounded engineer o
 - Mandatory evidence:
   - promoted knowledge keeps challenge-specific detail stripped or explicitly quarantined;
   - typed relations remain authoritative on source artifacts, not only in derived indexes; and
-  - retrieval ordering and review semantics are proven against at least one real extraction set.
+  - retrieval ordering and review semantics are proven against at least one real extraction set; and
+  - promotion flow matches `promotion_extraction_map.md` or the divergence is explained explicitly.
 - Ready-to-close signal:
   - the pack can move from challenge closeout to reusable knowledge without weakening provenance, review, or retrieval determinism, and the Phase 5 checklist passes cleanly.
 

@@ -45,6 +45,11 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 - `starter_surface_blueprint.md` turns the preserved README / AGENTS and registry posture into copy-ready starter guidance.
 - `starter_registry_exemplars.md` turns donor registry precedent into copy-ready field-shape examples for the first offsec registries.
 - `vertical_slice_proof_spec.md` turns the Phase 3 "thin real-CLI vertical slice" requirement into one exact proof boundary.
+- `artifact_specimens.md` turns the first governed challenge-local artifacts and minimal registry surfaces into example-filled records.
+- `phase_test_matrix.md` turns per-phase proof expectations into one compact validator and smoke-test matrix.
+- `machine_surface_specimen_index.md` turns the first `.wt/` and `.wt_local/` surface inventory into one execution-facing map.
+- `engineer_ambiguity_kill_sheet.md` turns the highest-risk implementation ambiguities into default answers with explicit escalation conditions.
+- `promotion_extraction_map.md` turns the Phase 4 to Phase 5 knowledge pipeline into one concrete source-to-candidate-to-accepted map.
 - `conditional_revisit_queue.md` records non-blocking later decisions with explicit reopen triggers and keep-default behavior.
 - `contradiction_sweep_ledger.md` records the already-reconciled tensions that engineers should not silently reopen.
 - These files are ordinary initiative-root support material rather than `authored_inputs`; they distill execution ergonomics from the canonical docs without becoming a second source of planning authority.
@@ -137,6 +142,7 @@ The source package already pointed at `plan` and `oversight` as the implementati
 - keep the starter posture executable through `starter_surface_blueprint.md` rather than forcing engineers to reconstruct the donor pattern from scattered donor-pack files; and
 - keep the starter registry posture executable through `starter_registry_exemplars.md` rather than forcing engineers to reconstruct donor JSON shapes from multiple registry artifacts; and
 - use initiative-root `README.md` for large preserved initiative packages where the file surface is too broad to treat the canonical docs as self-discovering; and
+- keep example records, machine-surface inventories, and test matrices beside the canonical docs so engineers can execute without deriving wrappers, validators, or proof paths from prose alone; and
 - preserve same-change-set discipline for docs, indexes, registries, rendered views, and retained evidence whenever one depends on the other.
 
 ## Failure Modes And Mitigations
