@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-27T21:21:13Z",
+  "updated_at": "2026-03-27T21:49:38Z",
   "entries": [
     {
       "evidence_id": "evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle",
@@ -39,19 +39,24 @@
         "plan/.wt/indexes/task_index.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/engineer_ambiguity_kill_sheet.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/machine_surface_specimen_index.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_test_matrix.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/promotion_extraction_map.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md"
       ],
-      "updated_at": "2026-03-27T21:16:46Z",
+      "updated_at": "2026-03-27T21:21:55Z",
       "project_id": "project.watchtower"
     }
   ]
