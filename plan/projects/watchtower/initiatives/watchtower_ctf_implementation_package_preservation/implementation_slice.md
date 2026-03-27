@@ -15,11 +15,16 @@ This initiative’s execution scope is preservation and normalization, not Watch
 
 The preserved package’s required read-first order is now canonicalized for follow-on engineers.
 
-1. Read `initiative_brief.md`, `design_record.md`, and `decision_notes.md` to lock the current-compatible baseline, preserved deltas, and known deferrals.
-2. Read `implementation_slice.md` front to back before touching `/home/j/WatchTower`; it now restates the phase dependencies, gates, exit criteria, starter human-surface rules, and first ready task.
-3. Reopen the mirrored source docs in `04_contracts/` before authoring manifests, schemas, validators, query or sync runtimes, lifecycle policy, or bootstrap behavior.
-4. Reopen the mirrored `03_workflows/` docs before authoring workflow docs, roles, routing, or workflow metadata.
-5. Keep mirrored `indexes/` companions, canonical docs, and later pack-owned machine surfaces aligned in the same change set whenever a governed contract changes.
+1. Read `README.md` first to map the larger initiative root and find the canonical versus support surfaces quickly.
+2. Read `initiative_brief.md`, `design_record.md`, and `decision_notes.md` to lock the current-compatible baseline, preserved deltas, reconciled tensions, and known deferrals.
+3. Read `implementation_slice.md` front to back before touching `/home/j/WatchTower`; it now restates the phase dependencies, gates, exit criteria, starter human-surface rules, and first ready task.
+4. Use `phase_output_manifest.md` and `phase_closeout_checklists.md` as the execution companions for the active phase.
+5. Use `starter_surface_blueprint.md` and `starter_registry_exemplars.md` during Phase 1 and Phase 2 so starter docs and starter registries are copy-ready instead of inferred.
+6. Use `vertical_slice_proof_spec.md` during Phase 3 to prove the first runtime seam exactly once and avoid a vague "runtime works" claim.
+7. Check `conditional_revisit_queue.md` and `contradiction_sweep_ledger.md` when something feels ambiguous; do not silently reopen a resolved baseline or deferral.
+8. Reopen the mirrored source docs in `04_contracts/` before authoring manifests, schemas, validators, query or sync runtimes, lifecycle policy, or bootstrap behavior.
+9. Reopen the mirrored `03_workflows/` docs before authoring workflow docs, roles, routing, or workflow metadata.
+10. Keep mirrored `indexes/` companions, canonical docs, and later pack-owned machine surfaces aligned in the same change set whenever a governed contract changes.
 
 Required discipline carried forward from the source execution guide:
 
@@ -33,9 +38,14 @@ Required discipline carried forward from the source execution guide:
 
 These support docs make the package more executable without creating a second authority layer.
 
+- `README.md` is the initiative-root navigation surface for the larger preserved package.
 - `phase_output_manifest.md` is the per-phase execution companion for outputs, command anchors, validation proof, and closeout evidence.
+- `phase_closeout_checklists.md` is the short final-pass closeout companion for each preserved phase.
 - `starter_surface_blueprint.md` is the copy-ready README / AGENTS and registry posture companion for the first offsec root.
+- `starter_registry_exemplars.md` is the copy-ready machine-registry companion for the first offsec control registries.
+- `vertical_slice_proof_spec.md` is the exact proof boundary for the first real Phase 3 runtime slice.
 - `conditional_revisit_queue.md` names the later decisions that remain explicitly deferred until execution evidence forces them back open.
+- `contradiction_sweep_ledger.md` records the already-reconciled tensions across source wording, canonical docs, and live task state.
 
 The four canonical docs and live task state remain authoritative. Update these support docs in the same change set whenever canonical phase, starter-surface, or deferred-decision meaning changes materially.
 
@@ -96,7 +106,7 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - all live-contract deltas are explicit;
   - the current-compatible identity baseline is consistent across canonical docs;
   - target repo state remains recorded as of `2026-03-26`; and
-  - `phase_output_manifest.md`, `starter_surface_blueprint.md`, and `conditional_revisit_queue.md` reflect the same current baseline; and
+  - `README.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, `starter_surface_blueprint.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` reflect the same current baseline; and
   - donor shared core and working reference packs are separated clearly.
 - Exit criteria:
   - one unambiguous current baseline exists for identity, topology, authority, and destination.
@@ -134,7 +144,8 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - `event_stream`, `artifact_index`, `environment_context`, `challenge_metadata`, `notes_metadata`, `session_state`, and `discrepancy` field contracts are locked;
   - the first machine-record slice lands `challenge_metadata`, `notes_metadata`, `event_stream`, `artifact_index`, `graph_index`, `session_state`, and `environment_context` together;
   - `source.type`, `trust_state`, and `verification_status` vocabularies are locked;
-  - template, documentation-family, human-surface-policy, rendered-surface, and lifecycle-policy registry entry shapes are explicit; and
+  - template, documentation-family, human-surface-policy, rendered-surface, and lifecycle-policy registry entry shapes are explicit;
+  - the first template, documentation-family, human-surface, rendered-surface, and authority-map artifacts align with `starter_registry_exemplars.md`; and
   - the baseline validation suite covers `pack_contract`, `front_matter`, `document_semantics`, `artifact`, `graph_index`, `authority_map`, `query_contracts`, and `lifecycle_policy`.
 - Exit criteria:
   - the package provides a complete schema, registry, and validation plan for the first real challenge flow.
@@ -153,7 +164,8 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
   - initial routing-table task types map only to authored workflow modules or roles in the same slice;
   - query, graph, sync-target, rendered-view, and document-semantics behavior aligns with the preserved contract docs;
   - `status` explicitly carries the safety-posture summary and confirmation-gate fields; and
-  - the authority map points to real query outputs, rendered views, and shared command or route surfaces.
+  - the authority map points to real query outputs, rendered views, and shared command or route surfaces; and
+  - the first runtime proof satisfies `vertical_slice_proof_spec.md` exactly, including the mandatory surface set, validation proof, and failure exclusions.
 - Exit criteria:
   - the package describes a complete runtime seam from host namespace to pack validation, query, sync, and workflow behavior.
 - Parallel-safe boundary:

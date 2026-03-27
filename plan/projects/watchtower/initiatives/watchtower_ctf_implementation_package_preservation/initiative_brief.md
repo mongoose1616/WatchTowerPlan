@@ -27,7 +27,7 @@ This initiative absorbs `/home/j/mvp_reference/CTF_implementation` into the gove
 - Normalize the source package into repo-native initiative surfaces so follow-on implementation can begin from this initiative alone.
 - Keep the initiative approval and readiness path compatible with the current `plan/.wt` validation contract.
 - Turn the preserved package into an engineer-ready same-initiative handoff surface with explicit trace, evidence, task, and human-surface starter expectations.
-- Publish concrete engineer-support surfaces that make phase outputs, starter human surfaces, and trigger-based later decisions explicit before `/home/j/WatchTower` execution starts.
+- Publish concrete engineer-support surfaces that make initiative navigation, phase outputs, starter human surfaces, starter registries, the first runtime proof path, and trigger-based later decisions explicit before `/home/j/WatchTower` execution starts.
 
 ## Non-Goals
 
@@ -111,11 +111,16 @@ The preserved package now carries the starter human-surface and authoring postur
 
 ## Engineer Handoff Support Surfaces
 
-The initiative now carries three support docs beside the four canonical authored docs. They do not replace canonical authority or live task state, but they make engineer handoff more executable.
+The initiative now carries a larger support-doc set beside the four canonical authored docs. These files do not replace canonical authority or live task state, but they make a large preserved package substantially easier to navigate and execute.
 
+- `README.md`: initiative-root navigation surface for the larger handoff package.
 - `phase_output_manifest.md`: per-phase outputs, command anchors, validation proof, and required evidence for the first WatchTower implementation pass.
+- `phase_closeout_checklists.md`: short final-pass closeout checks for each preserved phase.
 - `starter_surface_blueprint.md`: copy-ready README / AGENTS posture, required starter roots, and initial registry expectations derived from `plan` and `oversight`.
+- `starter_registry_exemplars.md`: copy-ready machine-registry exemplars for the first offsec template, documentation-family, human-surface, rendered-surface, and authority-map artifacts.
+- `vertical_slice_proof_spec.md`: the exact first Phase 3 runtime proof boundary, required surfaces, validation proof, and failure conditions.
 - `conditional_revisit_queue.md`: trigger-based later decisions that stay explicitly deferred unless execution evidence forces them back open.
+- `contradiction_sweep_ledger.md`: resolved wording, contract, and state tensions that engineers should not reopen casually.
 
 ## Durable Requirements
 
@@ -131,6 +136,11 @@ The initiative now carries three support docs beside the four canonical authored
 - `req.watchtower_ctf_package_preservation.010`: publish a phase execution manifest that maps every preserved phase to concrete outputs, command anchors, validation proof, and closeout evidence for `/home/j/WatchTower` implementation.
 - `req.watchtower_ctf_package_preservation.011`: publish a starter surface blueprint that turns the required offsec README / AGENTS roots and registry expectations into copy-ready execution guidance.
 - `req.watchtower_ctf_package_preservation.012`: publish a conditional revisit queue so non-blocking future decisions remain explicit, defaulted, and trigger-based rather than becoming hidden ambiguity during implementation.
+- `req.watchtower_ctf_package_preservation.013`: publish starter registry exemplars so the first offsec control registries can be authored from current `plan` / `oversight` patterns without reconstructing field shapes from donor precedent manually.
+- `req.watchtower_ctf_package_preservation.014`: publish a first vertical-slice proof spec so Phase 3 has one exact minimum end-to-end runtime proof instead of a vague "runtime works" claim.
+- `req.watchtower_ctf_package_preservation.015`: publish per-phase closeout checklists so engineers can confirm completion and evidence expectations quickly before task closeout.
+- `req.watchtower_ctf_package_preservation.016`: publish a contradiction-sweep ledger so already reconciled tensions stay explicit and do not drift back into implementation ambiguity.
+- `req.watchtower_ctf_package_preservation.017`: publish an initiative-root `README.md` so this larger preserved initiative has a stable human navigation surface instead of forcing readers to infer structure from the file tree alone.
 
 ## Acceptance Criteria
 
@@ -145,6 +155,11 @@ The initiative now carries three support docs beside the four canonical authored
 - `ac.watchtower_ctf_package_preservation.009`: `phase_output_manifest.md` covers every preserved phase with primary outputs, current command anchors, validation proof, evidence capture, and ready-to-close signals.
 - `ac.watchtower_ctf_package_preservation.010`: `starter_surface_blueprint.md` covers every required README / AGENTS starter root, the donor template posture, and the minimum registry baseline that should govern those human surfaces.
 - `ac.watchtower_ctf_package_preservation.011`: `conditional_revisit_queue.md` lists each remaining non-blocking conditional decision with its current default, reopen trigger, owning phase, and keep-default behavior when the trigger does not fire.
+- `ac.watchtower_ctf_package_preservation.012`: `starter_registry_exemplars.md` provides copy-ready exemplar entries for the first offsec `template_catalog`, `documentation_family_registry`, `human_surface_policy_registry`, `rendered_surface_registry`, and `authority_map`.
+- `ac.watchtower_ctf_package_preservation.013`: `vertical_slice_proof_spec.md` defines the exact first real runtime proof path, required machine surfaces, validation proof, evidence capture, and explicit failure conditions for Phase 3.
+- `ac.watchtower_ctf_package_preservation.014`: `phase_closeout_checklists.md` gives each preserved phase a concise closeout checklist that aligns with the task graph and phase output manifest.
+- `ac.watchtower_ctf_package_preservation.015`: `contradiction_sweep_ledger.md` records the major resolved tensions across source mirror, canonical docs, and live task state with their current governing surfaces.
+- `ac.watchtower_ctf_package_preservation.016`: the initiative root `README.md` provides a stable navigation surface for the larger preserved package and routes engineers to the canonical docs, support docs, provenance surfaces, and live machine state.
 
 ## Risks And Dependencies
 

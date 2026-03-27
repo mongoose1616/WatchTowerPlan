@@ -229,6 +229,91 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
       ],
       "notes": "Trigger-based later revisits must stay explicit so engineers do not silently reopen locked defaults."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.012",
+      "summary": "The initiative ships starter registry exemplars that make the first offsec template, documentation-family, human-surface, rendered-surface, and authority-map artifacts copy-ready from current donor patterns.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.013"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md"
+      ],
+      "related_paths": [
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/registries/documentation_family_registry.json",
+        "plan/.wt/registries/human_surface_policy_registry.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md"
+      ],
+      "notes": "The exemplar surface should remove ambiguity about starter registry field shape without replacing the real offsec registry artifacts."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.013",
+      "summary": "The initiative ships a vertical-slice proof spec that defines the exact first real runtime proof path, required machine surfaces, validation proof, and explicit failure conditions for Phase 3.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.014"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/02_phases/phase_3_ctf_runtime.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/state_and_index_contracts_plan.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts/query_sync_rendered_views_docs_plan.md"
+      ],
+      "notes": "This support surface turns the preserved thin real-CLI vertical-slice rule into one explicit proof boundary."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.014",
+      "summary": "The initiative ships concise phase closeout checklists that align with the task graph and phase output manifest for every preserved phase.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.015"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json"
+      ],
+      "notes": "The checklist surface should make phase closeout faster without becoming a second phase plan."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.015",
+      "summary": "The initiative ships a contradiction-sweep ledger that records major resolved tensions across source mirror, canonical docs, and live task state with their governing surfaces.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.016"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+      ],
+      "notes": "The contradiction ledger should make already-resolved tensions visible so engineers do not reopen them casually."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.016",
+      "summary": "The initiative root ships a README that provides stable navigation across canonical docs, support docs, provenance surfaces, and live machine state for the larger preserved package.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.017"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_capture_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json"
+      ],
+      "notes": "The README is a navigation aid for a large initiative root and does not supersede canonical or machine authority."
     }
   ]
 }

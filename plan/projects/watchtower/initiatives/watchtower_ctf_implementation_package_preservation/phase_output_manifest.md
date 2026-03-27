@@ -6,10 +6,11 @@ This support surface translates the preserved phase plan into bounded engineer o
 
 ## How To Use This Manifest
 
-1. Read `initiative_brief.md`, `design_record.md`, `decision_notes.md`, and `implementation_slice.md` first.
+1. Read `README.md`, `initiative_brief.md`, `design_record.md`, `decision_notes.md`, and `implementation_slice.md` first.
 2. Open the matching live task record under `.wt/tasks/**/task.json`.
 3. Use this manifest to confirm primary outputs, command anchors, validation proof, and closeout evidence before changing `/home/j/WatchTower`.
-4. Update this file in the same change set whenever a phase output, validation expectation, or evidence requirement changes materially.
+4. Use `phase_closeout_checklists.md` as the last short pass before calling a phase done.
+5. Update this file in the same change set whenever a phase output, validation expectation, or evidence requirement changes materially.
 
 ## `phase.0` Shared Contract Adoption And Alignment
 
@@ -17,7 +18,7 @@ This support surface translates the preserved phase plan into bounded engineer o
 - Primary outputs:
   - revalidated baseline identity, donor or recipient split, and current-compatible delta set in the canonical docs;
   - no unresolved ambiguity in read-first order, target-repo assumptions, or source-of-truth precedence; and
-  - current support docs `phase_output_manifest.md`, `starter_surface_blueprint.md`, and `conditional_revisit_queue.md`.
+  - current support docs `README.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, `starter_surface_blueprint.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md`.
 - Current command and query anchors:
   - `cd /home/j/WatchTowerPlan/core/python`
   - `uv run watchtower-core validate acceptance --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
@@ -70,7 +71,8 @@ This support surface translates the preserved phase plan into bounded engineer o
 - Mandatory evidence:
   - every new schema and registry file has an explicit validation pass;
   - `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` are present before claiming documentation completeness; and
-  - field-level contracts for `event_stream`, `artifact_index`, `challenge_metadata`, `notes_metadata`, `session_state`, and `environment_context` are recorded in code and reflected in docs.
+  - field-level contracts for `event_stream`, `artifact_index`, `challenge_metadata`, `notes_metadata`, `session_state`, and `environment_context` are recorded in code and reflected in docs; and
+  - the first registry set is materially aligned with `starter_registry_exemplars.md` or any intentional divergence is explained explicitly in docs and evidence.
 - Ready-to-close signal:
   - Phase 3 can build runtime behavior without re-deriving schema or registry meaning from prose.
 
@@ -80,7 +82,7 @@ This support surface translates the preserved phase plan into bounded engineer o
 - Primary outputs:
   - pack-owned query family, sync targets, rendered-surface generation, and workflow metadata wired to real offsec artifacts;
   - authored `ROUTING_TABLE.md`, workflow modules, workflow roles, and namespace command docs aligned to the runtime; and
-  - first thin real-CLI vertical slice from challenge intake through notes, event stream, artifact index, and initial query commands.
+  - first thin real-CLI vertical slice from challenge intake through notes, event stream, artifact index, challenge index, and initial query commands, matching `vertical_slice_proof_spec.md`.
 - Current command anchors:
   - `cd /home/j/WatchTower/core/python`
   - `uv run watchtower-core pack validate --pack-settings-path offensive_security/.wt/manifests/pack_settings.json --format json`
@@ -88,7 +90,7 @@ This support surface translates the preserved phase plan into bounded engineer o
   - run the first offsec namespace query and sync commands only after their command docs and validators exist
 - Mandatory evidence:
   - route preview, workflow metadata, and authored workflow docs agree;
-  - the first vertical slice proves real write, query, and rendered-view behavior rather than placeholder stubs; and
+  - the first vertical slice proves the exact proof boundary, surface set, and failure exclusions in `vertical_slice_proof_spec.md`; and
   - command-doc entrypoints under `offensive_security/docs/commands/core_python/` resolve to the implemented namespace surfaces.
 - Ready-to-close signal:
   - the pack has a real runtime seam with no placeholder-only query or workflow surfaces.
@@ -110,7 +112,7 @@ This support surface translates the preserved phase plan into bounded engineer o
   - `challenge.md` body text stays source-faithful while governed front matter remains machine-valid; and
   - closeout cannot pass while a discrepancy carries `no_closeout`.
 - Ready-to-close signal:
-  - one bounded challenge lifecycle can run from intake through closeout without manual contract interpretation.
+  - one bounded challenge lifecycle can run from intake through closeout without manual contract interpretation and the Phase 4 checklist passes cleanly.
 
 ## `phase.5` Knowledge Promotion And Retrieval
 
@@ -129,7 +131,7 @@ This support surface translates the preserved phase plan into bounded engineer o
   - typed relations remain authoritative on source artifacts, not only in derived indexes; and
   - retrieval ordering and review semantics are proven against at least one real extraction set.
 - Ready-to-close signal:
-  - the pack can move from challenge closeout to reusable knowledge without weakening provenance, review, or retrieval determinism.
+  - the pack can move from challenge closeout to reusable knowledge without weakening provenance, review, or retrieval determinism, and the Phase 5 checklist passes cleanly.
 
 ## `phase.6` Environment Adapters And Safety
 
@@ -148,7 +150,7 @@ This support surface translates the preserved phase plan into bounded engineer o
   - full-auto observability is proven before unattended execution claims are accepted; and
   - actor-ref requirements fail closed where the preserved contract requires them.
 - Ready-to-close signal:
-  - environment and safety behavior is implementable from explicit policy and validator proof rather than from operator intuition.
+  - environment and safety behavior is implementable from explicit policy and validator proof rather than from operator intuition, and the Phase 6 checklist passes cleanly.
 
 ## `phase.7` Release And Portability Proof
 
@@ -169,4 +171,4 @@ This support surface translates the preserved phase plan into bounded engineer o
   - the recipient bootstrap sequence is repeatable from documented commands and pack-owned surfaces; and
   - release proof records whether the handoff mode is repository bundle or pack-only bundle.
 - Ready-to-close signal:
-  - the pack can be exported, bootstrapped, validated, and handed off without donor-only residue or hidden cleanup steps.
+  - the pack can be exported, bootstrapped, validated, and handed off without donor-only residue or hidden cleanup steps, and the Phase 7 checklist passes cleanly.

@@ -39,9 +39,14 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 
 ### 4. Engineer Support Layer
 
+- `README.md` gives the larger initiative root one stable start-here surface instead of forcing engineers to infer intent from a wide file tree.
 - `phase_output_manifest.md` turns the preserved phase plan into bounded outputs, command anchors, validation proof, and closeout evidence.
+- `phase_closeout_checklists.md` turns the per-phase output contract into a fast final closeout pass.
 - `starter_surface_blueprint.md` turns the preserved README / AGENTS and registry posture into copy-ready starter guidance.
+- `starter_registry_exemplars.md` turns donor registry precedent into copy-ready field-shape examples for the first offsec registries.
+- `vertical_slice_proof_spec.md` turns the Phase 3 "thin real-CLI vertical slice" requirement into one exact proof boundary.
 - `conditional_revisit_queue.md` records non-blocking later decisions with explicit reopen triggers and keep-default behavior.
+- `contradiction_sweep_ledger.md` records the already-reconciled tensions that engineers should not silently reopen.
 - These files are ordinary initiative-root support material rather than `authored_inputs`; they distill execution ergonomics from the canonical docs without becoming a second source of planning authority.
 
 ### 5. Live Machine State Layer
@@ -130,6 +135,8 @@ The source package already pointed at `plan` and `oversight` as the implementati
 - require pack-local `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` surfaces so README / AGENTS / rendered-view expectations are machine-readable rather than convention-only;
 - require the offsec pack to name its critical README and AGENTS roots up front, matching the current `plan` / `oversight` posture of root plus critical subroots instead of every possible subtree; and
 - keep the starter posture executable through `starter_surface_blueprint.md` rather than forcing engineers to reconstruct the donor pattern from scattered donor-pack files; and
+- keep the starter registry posture executable through `starter_registry_exemplars.md` rather than forcing engineers to reconstruct donor JSON shapes from multiple registry artifacts; and
+- use initiative-root `README.md` for large preserved initiative packages where the file surface is too broad to treat the canonical docs as self-discovering; and
 - preserve same-change-set discipline for docs, indexes, registries, rendered views, and retained evidence whenever one depends on the other.
 
 ## Failure Modes And Mitigations

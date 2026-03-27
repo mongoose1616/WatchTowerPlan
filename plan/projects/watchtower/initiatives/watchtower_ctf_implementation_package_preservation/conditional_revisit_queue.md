@@ -29,5 +29,8 @@ The preserved package does not currently have blocking open decisions. This queu
 - `implementation_slice.md`
 - `initiative_brief.md`
 - `phase_output_manifest.md`
+- `phase_closeout_checklists.md`
 - `starter_surface_blueprint.md` when starter-surface posture changes
+- `starter_registry_exemplars.md` when starter-registry posture changes
+- `contradiction_sweep_ledger.md` when a resolved tension must be reopened or superseded
 - the affected live task records under `.wt/tasks/**/task.json`

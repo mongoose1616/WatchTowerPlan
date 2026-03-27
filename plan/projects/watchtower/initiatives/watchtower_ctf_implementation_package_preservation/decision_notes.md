@@ -2,7 +2,7 @@
 
 ## Summary
 
-The imported package no longer carries open phase-gated implementation decisions. All `86` rows in the preserved decision register are `locked_in_package`, and this initiative preserves that outcome as the canonical basis for follow-on WatchTower implementation through the exact row-by-row appendix below. The full raw register remains mirrored at `source_snapshot/CTF_implementation/indexes/open_decisions.json.raw`, while trigger-based later revisits are captured separately in `conditional_revisit_queue.md`.
+The imported package no longer carries open phase-gated implementation decisions. All `86` rows in the preserved decision register are `locked_in_package`, and this initiative preserves that outcome as the canonical basis for follow-on WatchTower implementation through the exact row-by-row appendix below. The full raw register remains mirrored at `source_snapshot/CTF_implementation/indexes/open_decisions.json.raw`, while trigger-based later revisits are captured separately in `conditional_revisit_queue.md` and already-reconciled tensions are summarized in `contradiction_sweep_ledger.md`.
 
 ## Preservation Decisions Locked By This Initiative
 
@@ -12,6 +12,7 @@ The imported package no longer carries open phase-gated implementation decisions
 - Keep support manifests beside the canonical docs rather than forcing them into initiative-state `authored_inputs`, because the initiative schema only accepts the four canonical doc kinds.
 - Treat the initiative as the new durable planning authority for this package, while still keeping current repo machine-readable surfaces above imported workbook history when conflicts exist.
 - Keep this same initiative as the engineer handoff anchor rather than creating a successor initiative for execution planning, and express readiness through a phase-aligned live task chain instead of a second planning package.
+- Keep a separate contradiction-sweep ledger so resolved tensions remain visible without inflating the locked decision appendix.
 
 ## Locked Current-Compatible Baseline
 

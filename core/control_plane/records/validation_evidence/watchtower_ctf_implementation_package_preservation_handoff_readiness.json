@@ -5,7 +5,7 @@
   "status": "active",
   "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
   "overall_result": "passed",
-  "recorded_at": "2026-03-27T18:23:33Z",
+  "recorded_at": "2026-03-27T21:21:55Z",
   "source_surface_paths": [
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
@@ -18,7 +18,7 @@
   "checks": [
     {
       "check_id": "check.watchtower_ctf_implementation_package_preservation.source_capture_and_canonicalization",
-      "title": "Source capture, canonicalization, and starter-surface proof remain complete",
+      "title": "Source capture, canonicalization, and handoff-support proof remain complete",
       "result": "passed",
       "subject_paths": [
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_capture_notes.md",
@@ -30,9 +30,14 @@
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
-        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md"
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
       ],
       "subject_ids": [
         "initiative.watchtower_ctf_implementation_package_preservation"
@@ -42,18 +47,28 @@
         "ac.watchtower_ctf_package_preservation.002",
         "ac.watchtower_ctf_package_preservation.003",
         "ac.watchtower_ctf_package_preservation.004",
-        "ac.watchtower_ctf_package_preservation.008"
+        "ac.watchtower_ctf_package_preservation.008",
+        "ac.watchtower_ctf_package_preservation.012",
+        "ac.watchtower_ctf_package_preservation.013",
+        "ac.watchtower_ctf_package_preservation.014",
+        "ac.watchtower_ctf_package_preservation.015",
+        "ac.watchtower_ctf_package_preservation.016"
       ],
-      "notes": "The preserved manifests, coverage matrix, canonical docs, and starter README/AGENTS posture together cover source parity, canonicalization, and human-surface expectations."
+      "notes": "The preserved manifests, coverage matrix, canonical docs, navigation surface, and expanded support docs together cover source parity, canonicalization, and engineer handoff expectations."
     },
     {
       "check_id": "check.watchtower_ctf_implementation_package_preservation.support_surface_handoff",
       "title": "Engineer support surfaces make the handoff more executable without changing authority order",
       "result": "passed",
       "subject_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
@@ -64,9 +79,14 @@
       "acceptance_ids": [
         "ac.watchtower_ctf_package_preservation.009",
         "ac.watchtower_ctf_package_preservation.010",
-        "ac.watchtower_ctf_package_preservation.011"
+        "ac.watchtower_ctf_package_preservation.011",
+        "ac.watchtower_ctf_package_preservation.012",
+        "ac.watchtower_ctf_package_preservation.013",
+        "ac.watchtower_ctf_package_preservation.014",
+        "ac.watchtower_ctf_package_preservation.015",
+        "ac.watchtower_ctf_package_preservation.016"
       ],
-      "notes": "The added support docs cover phase outputs, copy-ready starter surfaces, and trigger-based future revisits without introducing a second planning authority."
+      "notes": "The added support docs cover initiative navigation, phase outputs, closeout checks, starter surfaces, starter registries, the first runtime proof path, trigger-based future revisits, and resolved contradictions without introducing a second planning authority."
     },
     {
       "check_id": "check.watchtower_ctf_implementation_package_preservation.acceptance_contract_schema",
@@ -182,10 +202,15 @@
     "core/docs/commands/core_python/watchtower_core_query_evidence.md",
     "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/evidence/validation_bundle.handoff_readiness.json",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_output_manifest.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/phase_closeout_checklists.md",
     "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_surface_blueprint.md",
-    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md"
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/starter_registry_exemplars.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/vertical_slice_proof_spec.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/conditional_revisit_queue.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/contradiction_sweep_ledger.md"
   ],
   "notes": "Durable handoff-readiness evidence for the preserved WatchTower CTF implementation package."
 }

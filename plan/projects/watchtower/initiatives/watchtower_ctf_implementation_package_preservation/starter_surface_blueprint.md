@@ -4,6 +4,8 @@
 
 This support surface turns the preserved README / AGENTS posture into copy-ready offsec starter guidance. It adapts the current `plan` and `oversight` root-template behavior without copying either pack wholesale.
 
+Use `starter_registry_exemplars.md` as the machine-registry companion for the registry artifacts that should govern these human surfaces.
+
 ## Carry-Forward Rules
 
 - Use the thin root `README.md` pattern from `plan/.wt/templates/roots/README.md` and `/home/j/WatchTowerOversight/oversight/.wt/templates/roots/README.md`.
@@ -11,6 +13,7 @@ This support surface turns the preserved README / AGENTS posture into copy-ready
 - Keep `README.md` navigational and machine-aware rather than trying to restate every contract locally.
 - Keep `AGENTS.md` subtree-local and behavior-specific; do not restate repository-wide safety or workflow rules wholesale.
 - Treat the starter surfaces as governed outputs backed by `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry`, not as prose-only conventions.
+- Keep the first real registry entries materially aligned with `starter_registry_exemplars.md` unless an offsec-specific divergence is explicit and justified.
 - Update starter human surfaces, the registries that govern them, and any rendered visibility companions in the same change set when one depends on the other.
 
 ## Required Starter Roots
