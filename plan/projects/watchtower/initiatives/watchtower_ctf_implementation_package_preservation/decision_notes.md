@@ -44,6 +44,8 @@ The imported package no longer carries open phase-gated implementation decisions
 
 This appendix restates every row from `source_snapshot/CTF_implementation/indexes/open_decisions.json.raw` with its exact locked default, affected phases, and upstream dependency.
 
+It contains the full normalized set of `86` preserved decision rows. Later summary sections may intentionally restate a subset of those same decision ids for operator scanability, but those restatements do not add new preserved decisions beyond this appendix.
+
 - `decision.query_human_output_contract` (area: `query_runtime`; phases: `phase.3, phase.5`; upstream: `none_pack_owned`): curated queries support --format human|json|both with JSON as the default posture; human output is table-first plus one-line summaries where helpful, uses shared compact/standard/verbose presets, command-specific default row limits capped at roughly twenty, command-specific visible columns capped at six before expansion, explicit truncation and zero-result guidance, compact material trust/provenance cues, and treats status as the main operator-context command alongside a shared human structure for status, challenges, and sessions
 - `decision.curated_relation_expansion_contract` (area: `query_runtime`; phases: `phase.3, phase.5`; upstream: `none_pack_owned`): curated family queries may expand relations only through one shared --expand-relations surface with one-hop default unless depth is explicit, separate expansion limits, a default per-root cap of five targets, shared relation/family/trust/review filter flags aligned with graph query, graph suggestions only on truncation, focus support limited to knowledge/artifacts/events/discrepancies, and one shared --sort contract with clear failures on unsupported fields
 - `decision.graph_human_output_contract` (area: `graph_query`; phases: `phase.3, phase.5`; upstream: `none_pack_owned`): public graph query is core for agents but advanced for humans; human graph output defaults to depth-two capped traversal, root-summary plus relation-group presentation, repeated-node dedupe, inline provenance markers, root-plus-immediate-neighbor summaries, and named operator/provenance/retrieval/review modes as alias bundles over shared flags
@@ -135,6 +137,8 @@ This appendix restates every row from `source_snapshot/CTF_implementation/indexe
 ## Locked Post-V1 Deferrals
 
 The preserved intentional deferral set remains:
+
+This section is a scan-friendly summary of deferrals already present in the exact normalized decision register above. It intentionally repeats a subset of preserved decision ids and should not be used as a second counting surface when checking appendix parity against `open_decisions.json.raw`.
 
 - `decision.workflow_catalog`: defer a richer workflow catalog beyond routing-table plus workflow-metadata baseline.
 - `decision.actor_bootstrap_day_one`: reuse shared `actor_registry` and defer actor bootstrap unless needed immediately.
