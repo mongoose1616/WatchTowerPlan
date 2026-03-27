@@ -1,0 +1,163 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:records:validation-evidence:v1",
+  "id": "evidence.watchtower_ctf_implementation_package_preservation.handoff_readiness",
+  "title": "WatchTower CTF Implementation Package Preservation Handoff Readiness",
+  "status": "active",
+  "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-27T16:34:41Z",
+  "source_surface_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.watchtower_ctf_package_preservation"
+  ],
+  "checks": [
+    {
+      "check_id": "check.watchtower_ctf_implementation_package_preservation.source_capture_and_canonicalization",
+      "title": "Source capture, canonicalization, and starter-surface proof remain complete",
+      "result": "passed",
+      "subject_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_capture_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_original_inventory.txt",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_stored_inventory.txt",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_sha256.tsv",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+      ],
+      "subject_ids": [
+        "initiative.watchtower_ctf_implementation_package_preservation"
+      ],
+      "acceptance_ids": [
+        "ac.watchtower_ctf_package_preservation.001",
+        "ac.watchtower_ctf_package_preservation.002",
+        "ac.watchtower_ctf_package_preservation.003",
+        "ac.watchtower_ctf_package_preservation.004",
+        "ac.watchtower_ctf_package_preservation.008"
+      ],
+      "notes": "The preserved manifests, coverage matrix, canonical docs, and starter README/AGENTS posture together cover source parity, canonicalization, and human-surface expectations."
+    },
+    {
+      "check_id": "check.watchtower_ctf_implementation_package_preservation.acceptance_contract_schema",
+      "title": "Acceptance contract validates structurally",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json"
+      ],
+      "subject_ids": [
+        "contract.acceptance.watchtower_ctf_package_preservation"
+      ],
+      "validator_id": "validator.control_plane.acceptance_contract",
+      "acceptance_ids": [
+        "ac.watchtower_ctf_package_preservation.006"
+      ],
+      "notes": "The durable acceptance contract uses the published acceptance-contract schema and preserves the brief's acceptance IDs."
+    },
+    {
+      "check_id": "check.watchtower_ctf_implementation_package_preservation.validation_evidence_schema",
+      "title": "Durable validation evidence validates structurally",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json"
+      ],
+      "subject_ids": [
+        "evidence.watchtower_ctf_implementation_package_preservation.handoff_readiness"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.watchtower_ctf_package_preservation.006"
+      ],
+      "notes": "The durable evidence artifact remains schema-valid and trace-linked."
+    },
+    {
+      "check_id": "check.watchtower_ctf_implementation_package_preservation.traceability_schema",
+      "title": "Traceability index validates structurally after handoff hardening",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.json"
+      ],
+      "subject_ids": [
+        "trace.watchtower_ctf_implementation_package_preservation"
+      ],
+      "validator_id": "validator.control_plane.traceability_index",
+      "acceptance_ids": [
+        "ac.watchtower_ctf_package_preservation.006"
+      ],
+      "notes": "The traceability index publishes the requirement, acceptance, contract, evidence, validator, and task joins for the preserved initiative."
+    },
+    {
+      "check_id": "check.watchtower_ctf_implementation_package_preservation.task_graph_alignment",
+      "title": "Phase-aligned task graph and coordination views are coherent",
+      "result": "passed",
+      "subject_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_1_recipient_scaffold_and_bootstrap/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_3_runtime_query_sync_and_workflow_seam/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_4_challenge_artifacts_and_closeout/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_6_environment_adapters_and_safety/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json",
+        "plan/.wt/indexes/task_index.json",
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/.wt/indexes/readiness_index.json",
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "subject_ids": [
+        "initiative.watchtower_ctf_implementation_package_preservation",
+        "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment",
+        "task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap",
+        "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract",
+        "task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam",
+        "task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout",
+        "task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval",
+        "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety",
+        "task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof"
+      ],
+      "validator_id": "validator.plan.coordination_index",
+      "acceptance_ids": [
+        "ac.watchtower_ctf_package_preservation.005",
+        "ac.watchtower_ctf_package_preservation.007"
+      ],
+      "notes": "The first phase task is ready, later tasks are dependency-ordered, and initiative, readiness, and coordination surfaces all point to the same next engineer action."
+    },
+    {
+      "check_id": "check.watchtower_ctf_implementation_package_preservation.acceptance_reconciliation",
+      "title": "Acceptance, evidence, and traceability reconcile semantically",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
+        "core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md"
+      ],
+      "subject_ids": [
+        "trace.watchtower_ctf_implementation_package_preservation",
+        "contract.acceptance.watchtower_ctf_package_preservation",
+        "evidence.watchtower_ctf_implementation_package_preservation.handoff_readiness"
+      ],
+      "validator_id": "validator.trace.acceptance_reconciliation",
+      "acceptance_ids": [
+        "ac.watchtower_ctf_package_preservation.006"
+      ],
+      "notes": "Semantic reconciliation confirms the brief, contract, evidence artifact, validator references, and traceability joins stay aligned."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
+    "core/control_plane/indexes/traceability/traceability_index.json",
+    "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+    "core/docs/commands/core_python/watchtower_core_query_evidence.md",
+    "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/evidence/validation_bundle.handoff_readiness.json",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+  ],
+  "notes": "Durable handoff-readiness evidence for the preserved WatchTower CTF implementation package."
+}

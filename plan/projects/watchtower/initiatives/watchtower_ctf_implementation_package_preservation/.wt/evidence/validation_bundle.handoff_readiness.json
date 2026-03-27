@@ -1,0 +1,49 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
+  "title": "Engineer Handoff Validation Bundle",
+  "status": "active",
+  "updated_at": "2026-03-27T16:34:41Z",
+  "entries": [
+    {
+      "entry_id": "entry.watchtower_ctf_implementation_package_preservation.handoff_acceptance_contracts",
+      "acceptance_label": "trace_chain_complete",
+      "validation_type": "artifact_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
+        "core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json",
+        "core/control_plane/indexes/traceability/traceability_index.json"
+      ]
+    },
+    {
+      "entry_id": "entry.watchtower_ctf_implementation_package_preservation.handoff_task_graph",
+      "acceptance_label": "execution_task_chain_complete",
+      "validation_type": "coordination_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
+        "plan/.wt/indexes/task_index.json",
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/.wt/indexes/coordination_index.json"
+      ]
+    },
+    {
+      "entry_id": "entry.watchtower_ctf_implementation_package_preservation.handoff_docs_and_templates",
+      "acceptance_label": "starter_surface_and_best_practice_coverage",
+      "validation_type": "documentation_reconciliation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md"
+      ]
+    }
+  ]
+}

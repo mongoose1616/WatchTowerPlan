@@ -1,0 +1,40 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment",
+  "slug": "phase_0_shared_contract_adoption_and_alignment",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "title": "Phase 0 Shared Contract Adoption And Alignment",
+  "summary": "Revalidate the live baseline, donor and recipient split, and current-compatible identity before target-repo mutation.",
+  "status": "active",
+  "task_status": "ready",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-27T16:39:58Z",
+  "updated_at": "2026-03-27T16:39:58Z",
+  "related_ids": [
+    "initiative.watchtower_ctf_implementation_package_preservation",
+    "trace.watchtower_ctf_implementation_package_preservation",
+    "req.watchtower_ctf_package_preservation.003",
+    "req.watchtower_ctf_package_preservation.007",
+    "ac.watchtower_ctf_package_preservation.006"
+  ],
+  "applies_to": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/",
+    "recipient_repo_watchtower"
+  ],
+  "governing_document_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+  ],
+  "scope_items": [
+    "Recheck the current-compatible identity and source-of-truth order against current repo truth.",
+    "Confirm no new live-contract delta is needed before recipient repo changes begin."
+  ],
+  "done_when_items": [
+    "The current-compatible baseline, donor or recipient split, and read-first order are revalidated.",
+    "Phase 1 can start without unresolved baseline ambiguity."
+  ]
+}

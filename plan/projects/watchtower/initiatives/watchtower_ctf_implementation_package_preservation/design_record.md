@@ -9,6 +9,7 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 - make the initiative self-sufficient if `/home/j/mvp_reference/CTF_implementation` disappears;
 - preserve the source package byte-for-byte wherever practical;
 - keep canonical implementation guidance in the initiative’s four governed authored docs;
+- keep the same initiative usable as the engineer handoff anchor instead of forcing a successor initiative for execution planning;
 - avoid creating parallel plan-artifact families or validator drift; and
 - preserve the donor/recipient boundary so the preservation initiative does not begin implementing `/home/j/WatchTower`.
 
@@ -40,6 +41,19 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 
 - `.wt/**` remains the authoritative machine state for the initiative.
 - Support files remain ordinary initiative-root material and are referenced by the canonical docs, but are not inserted into `authored_inputs` because the initiative-state schema only accepts the four canonical doc kinds.
+- Engineer-facing execution work stays in this same initiative through a phase-aligned live task chain, a current validation bundle, and refreshed coordination surfaces.
+
+## Same-Initiative Handoff Design
+
+The preserved package is now the active engineer handoff package for WatchTower implementation planning. This same-initiative design deliberately avoids a successor planning package because splitting the preserved contract from the execution-facing task graph would reintroduce ambiguity about which surface governs the next engineer action.
+
+The handoff design therefore adds three machine-readable layers above the preserved docs:
+
+- one acceptance contract under `core/control_plane/contracts/acceptance/` so the durable `ac.watchtower_ctf_package_preservation.*` criteria can be loaded without reparsing prose;
+- one durable validation-evidence record under `core/control_plane/records/validation_evidence/` so handoff-readiness proof survives beyond transient command output; and
+- one phase-aligned same-initiative live task chain so initiative, task, readiness, and coordination surfaces all point at the next implementation step rather than a bootstrap placeholder.
+
+Current repo lifecycle vocabulary still renders `ready_for_execution` as initiative phase `capture` until the first execution-starting task transition occurs. This initiative does not fake that transition during the hardening pass. Instead, it makes the handoff execution-facing by publishing a first `ready` task, explicit dependencies for later tasks, complete trace joins, and a concrete next-action surface for engineers.
 
 ## Why The Mirror Uses `.json.raw`
 
@@ -73,7 +87,7 @@ This initiative also preserves the donor/recipient split:
 |---|---|
 | `initiative_brief.md` | `README.md`, baseline context docs, source-of-truth map, Step 1 source and trace surfaces, capability maps, package acceptance standard, inventory counts |
 | `design_record.md` | preservation rationale, transformed-mirror rule, donor/recipient split, live contract deltas, reference-pack precedent review, support-file placement rationale |
-| `implementation_slice.md` | phase docs, workflow docs, contract bundles, research anchors, standards posture, guides, backlog, dependency register, risk register, next execution slice |
+| `implementation_slice.md` | phase docs, workflow docs, contract bundles, research anchors, standards posture, guides, backlog, dependency register, risk register, same-initiative execution task chain, human-surface starter contract, next execution slice |
 | `decision_notes.md` | `indexes/open_decisions.json`, implementation gap audit, deferred review register, decision-to-contract propagation rules, live contract deltas that lock defaults |
 
 ## Live Contract Delta Adoption
@@ -99,6 +113,16 @@ The source package correctly relies on `plan` and `oversight` as implementation-
 - adopt pack-local control registries for artifact families, documentation families, templates, rendered surfaces, authority routing, lifecycle policy, and promotion policy;
 - preserve rendered visibility as governed surfaces rather than ad hoc markdown; and
 - keep environment adapters, offensive-security safety taxonomy, redaction rules, and challenge-specific evidence behavior as pack-native work with no false donor precedent.
+
+## Human-Surface And Template Carryover
+
+The source package already pointed at `plan` and `oversight` as the implementation-pattern references for human surfaces and machine-governed registries. This initiative now preserves that posture explicitly instead of leaving it implicit in precedent review prose.
+
+- carry the `README.md` root pattern forward as a thin navigation layer that points humans and agents to machine authority, rendered state, or deeper docs instead of repeating the full contract locally;
+- carry the `AGENTS.md` root pattern forward as a narrow subtree-local behavior overlay that never restates repository-wide safety or workflow rules wholesale;
+- require pack-local `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` surfaces so README / AGENTS / rendered-view expectations are machine-readable rather than convention-only;
+- require the offsec pack to name its critical README and AGENTS roots up front, matching the current `plan` / `oversight` posture of root plus critical subroots instead of every possible subtree; and
+- preserve same-change-set discipline for docs, indexes, registries, rendered views, and retained evidence whenever one depends on the other.
 
 ## Failure Modes And Mitigations
 

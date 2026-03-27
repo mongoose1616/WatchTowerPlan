@@ -6,23 +6,218 @@ This initiative’s execution scope is preservation and normalization, not Watch
 
 ## Execution Boundary
 
-- This initiative captures planning inputs only.
-- `/home/j/WatchTower` remains untouched during this pass.
-- The first real implementation work in the target repo is documented here as the next slice after initiative approval.
-- No additional live tasks are created during the capture pass beyond the bootstrap task already created by `plan bootstrap`.
+- This initiative remains the same-initiative engineer handoff package for downstream WatchTower implementation.
+- `/home/j/WatchTower` remains untouched during this hardening pass.
+- The transformed mirror remains immutable provenance; engineers should execute from the canonical docs and live task graph first, then reopen mirrored source docs only when deeper narrative context is needed.
+- The first real implementation work in the target repo is now represented by the phase-aligned live task chain documented here and in initiative-local task state.
+
+## Engineer Handoff Entry Order
+
+The preserved package’s required read-first order is now canonicalized for follow-on engineers.
+
+1. Read `initiative_brief.md`, `design_record.md`, and `decision_notes.md` to lock the current-compatible baseline, preserved deltas, and known deferrals.
+2. Read `implementation_slice.md` front to back before touching `/home/j/WatchTower`; it now restates the phase dependencies, gates, exit criteria, starter human-surface rules, and first ready task.
+3. Reopen the mirrored source docs in `04_contracts/` before authoring manifests, schemas, validators, query or sync runtimes, lifecycle policy, or bootstrap behavior.
+4. Reopen the mirrored `03_workflows/` docs before authoring workflow docs, roles, routing, or workflow metadata.
+5. Keep mirrored `indexes/` companions, canonical docs, and later pack-owned machine surfaces aligned in the same change set whenever a governed contract changes.
+
+Required discipline carried forward from the source execution guide:
+
+- implement phases in order unless this slice explicitly marks an item as parallel-safe;
+- do not reintroduce retired `domain_packs/**` topology or `/docs/**` authority assumptions;
+- keep the current-compatible scaffold identity until upstream slug handling changes through an explicit live-contract delta;
+- record any new live-contract delta before changing a phase or contract boundary; and
+- prefer shared-core reuse before pack-local duplication when generic helpers already exist.
 
 ## Phase Plan Preserved From The Source Package
 
-| Phase | Focus | Preserved Scope | Exit Intent |
+| Phase | Focus | Live Task | Exit Intent |
 |---|---|---|---|
-| `phase.0` | shared contract adoption | confirm current shared-core contract, hosted-pack topology, path rules, status and actor vocabulary, and authority order | implementation starts from live repo truth instead of workbook assumptions |
-| `phase.1` | scaffold and integrate the pack | export core, scaffold `offensive_security/`, bootstrap, validate, replace starter workflow metadata, and establish the first real recipient-repo baseline | the recipient repo contains a validated scaffolded pack with starter metadata replaced |
-| `phase.2` | author the pack machine contract | define schemas, registries, ledgers, validation suite, authority map, rendered-surface registry, template governance, lifecycle policy, provenance vocabularies, and glossary surfaces | machine contract is explicit enough to drive runtime and validation without re-derivation |
-| `phase.3` | build the CTF runtime | author workflow docs, routing and metadata, route preview posture, query and sync runtimes, graph query, query-family registry, and the first thin CLI vertical slice | real CLI behavior proves the first machine-record bundle end to end |
-| `phase.4` | build the domain artifacts | implement `challenge.md`, `notes.md`, `recap.md`, challenge metadata, notes metadata, session state, event stream, evidence inventory, closeout, and discrepancy handling | challenge execution and closeout artifacts work with governed state and validation |
-| `phase.5` | build knowledge, promotion, and retrieval | implement reusable knowledge families, relation typing, promotion policy, review status, deterministic retrieval, knowledge query output, and extraction behavior | knowledge capture and retrieval work without weakening provenance or review posture |
-| `phase.6` | build environment adapters and safety controls | implement local, SSH, VPN, and airgapped adapters, environment context, confirmation gates, refusal rules, actor refs, transfer ledger, and mode-state projection | execution autonomy and transfer behavior are explicit, auditable, and fail closed |
-| `phase.7` | release and portability proof | prove export, bootstrap, validate, and release portability for the intended handoff mode | implementation is portable and customer-safe by the repo’s existing export/bootstrap contract |
+| `phase.0` | shared contract adoption | `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment` | implementation starts from live repo truth instead of workbook assumptions |
+| `phase.1` | scaffold and integrate the pack | `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap` | the recipient repo contains a validated scaffolded pack with starter metadata replaced |
+| `phase.2` | author the pack machine contract | `task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract` | machine contract is explicit enough to drive runtime and validation without re-derivation |
+| `phase.3` | build the CTF runtime | `task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam` | real CLI behavior proves the first machine-record bundle end to end |
+| `phase.4` | build the domain artifacts | `task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout` | challenge execution and closeout artifacts work with governed state and validation |
+| `phase.5` | build knowledge, promotion, and retrieval | `task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval` | knowledge capture and retrieval work without weakening provenance or review posture |
+| `phase.6` | build environment adapters and safety controls | `task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety` | execution autonomy and transfer behavior are explicit, auditable, and fail closed |
+| `phase.7` | release and portability proof | `task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof` | implementation is portable and customer-safe by the repo’s existing export/bootstrap contract |
+
+## Same-Initiative Execution Task Chain
+
+The live handoff task graph is phase-aligned and intentionally linear at the phase boundary. Parallel-safe work exists inside some phases, but no later phase starts until its predecessor’s exit criteria are met.
+
+1. `phase.0_shared_contract_adoption_and_alignment`
+   - status: `ready`
+   - depends on: none
+   - governs: live baseline, donor/recipient split, source-precedence, and first engineer read-first order
+2. `phase.1_recipient_scaffold_and_bootstrap`
+   - status: `planned`
+   - depends on: `phase.0_shared_contract_adoption_and_alignment`
+3. `phase.2_pack_machine_contract`
+   - status: `planned`
+   - depends on: `phase.1_recipient_scaffold_and_bootstrap`
+4. `phase.3_runtime_query_sync_and_workflow_seam`
+   - status: `planned`
+   - depends on: `phase.2_pack_machine_contract`
+5. `phase.4_challenge_artifacts_and_closeout`
+   - status: `planned`
+   - depends on: `phase.3_runtime_query_sync_and_workflow_seam`
+6. `phase.5_knowledge_promotion_and_retrieval`
+   - status: `planned`
+   - depends on: `phase.4_challenge_artifacts_and_closeout`
+7. `phase.6_environment_adapters_and_safety`
+   - status: `planned`
+   - depends on: `phase.5_knowledge_promotion_and_retrieval`
+8. `phase.7_release_and_portability_proof`
+   - status: `planned`
+   - depends on: `phase.6_environment_adapters_and_safety`
+
+The bootstrap placeholder task created by `plan bootstrap` is no longer the execution entrypoint. It is retired in live task state so the next engineer action resolves to the real phase chain above.
+
+## Phase Dependencies, Validation, And Exit Criteria
+
+### `phase.0` Shared Contract Adoption
+
+- Dependencies:
+  - all Step 1 source docs;
+  - current `WatchTowerPlan/core` standards, commands, registries, and pack-context code; and
+  - reference pack manifests from `plan` and `oversight`.
+- Validation and acceptance:
+  - all live-contract deltas are explicit;
+  - the current-compatible identity baseline is consistent across canonical docs;
+  - target repo state remains recorded as of `2026-03-26`; and
+  - donor shared core and working reference packs are separated clearly.
+- Exit criteria:
+  - one unambiguous current baseline exists for identity, topology, authority, and destination.
+- Parallel-safe boundary:
+  - none; no downstream authoring begins until the baseline is locked.
+
+### `phase.1` Recipient Scaffold And Bootstrap
+
+- Dependencies:
+  - `phase.0` baseline;
+  - current `watchtower-core pack scaffold`, `pack bootstrap`, and `pack validate`; and
+  - shared `core/python/pyproject.toml` bootstrap behavior.
+- Validation and acceptance:
+  - scaffold, bootstrap, and direct pack validation commands are captured exactly as rerun on `2026-03-26`;
+  - manifest examples match the current-compatible proof;
+  - path normalization, typed ids, placeholder segments, and collision handling are locked before the first real challenge root exists;
+  - starter workflow metadata replacement is mandatory before route or index reliance;
+  - `offensive_security/docs/commands/core_python/README.md` is explicitly authored before authority-map command lookup depends on it;
+  - the immediate next slice is explicit, minimal, and proves a thin real-CLI vertical slice with real schemas and validators.
+- Exit criteria:
+  - the package shows exactly how to move from an empty target repo to a bootstrap-valid starter pack with no hidden steps.
+- Parallel-safe boundary:
+  - starter workflow metadata replacement and workflow-doc authoring may proceed in parallel only after the scaffolded pack root exists and the phase-0 baseline is locked.
+
+### `phase.2` Pack Machine Contract
+
+- Dependencies:
+  - `phase.0` identity and live-contract baselines;
+  - `phase.1` scaffolded machine root; and
+  - current typed shared schemas for pack settings and shared governance surfaces.
+- Validation and acceptance:
+  - all required schema families are assigned concrete paths;
+  - governed artifact families inherit shared payload primitives;
+  - `event_stream`, `artifact_index`, `environment_context`, `challenge_metadata`, `notes_metadata`, `session_state`, and `discrepancy` field contracts are locked;
+  - the first machine-record slice lands `challenge_metadata`, `notes_metadata`, `event_stream`, `artifact_index`, `graph_index`, `session_state`, and `environment_context` together;
+  - `source.type`, `trust_state`, and `verification_status` vocabularies are locked;
+  - template, documentation-family, human-surface-policy, rendered-surface, and lifecycle-policy registry entry shapes are explicit; and
+  - the baseline validation suite covers `pack_contract`, `front_matter`, `document_semantics`, `artifact`, `graph_index`, `authority_map`, `query_contracts`, and `lifecycle_policy`.
+- Exit criteria:
+  - the package provides a complete schema, registry, and validation plan for the first real challenge flow.
+- Parallel-safe boundary:
+  - registry authoring may proceed in parallel across families once the scaffold is validated, but the first machine-record slice does not start until the field-level contracts converge.
+
+### `phase.3` Runtime, Query, Sync, And Workflow Seam
+
+- Dependencies:
+  - `phase.1` scaffolded python, docs, and workflow roots;
+  - `phase.2` schema and validator plan; and
+  - working pack patterns from `plan` and `oversight`.
+- Validation and acceptance:
+  - query runtime and sync runtime inventories are non-empty and concrete;
+  - workflow inventory and workflow metadata registry match;
+  - initial routing-table task types map only to authored workflow modules or roles in the same slice;
+  - query, graph, sync-target, rendered-view, and document-semantics behavior aligns with the preserved contract docs;
+  - `status` explicitly carries the safety-posture summary and confirmation-gate fields; and
+  - the authority map points to real query outputs, rendered views, and shared command or route surfaces.
+- Exit criteria:
+  - the package describes a complete runtime seam from host namespace to pack validation, query, sync, and workflow behavior.
+- Parallel-safe boundary:
+  - author workflow metadata and workflow docs in parallel with the first machine-record slice;
+  - graph-query work waits until curated queries and knowledge are both stable.
+
+### `phase.4` Challenge Artifacts And Closeout
+
+- Dependencies:
+  - `phase.2` schema definitions; and
+  - `phase.3` document semantics, routing, and runtime hooks.
+- Validation and acceptance:
+  - `challenge.md` preserves source body text while allowing machine front matter;
+  - `notes.md` remains the active, append-preserving working surface with one canonical structure;
+  - closeout requires `challenge.md`, `notes.md`, `closeout_record`, extraction output, a passing closeout suite, and no active discrepancy carrying `no_closeout`;
+  - `solution/` and `recap.md` obey the locked outcome-based requirements;
+  - evidence capture keeps raw files under `artifacts/` and governed records under `.wt_local/evidence/artifacts.json`;
+  - command capture, closeout, extraction, challenge metadata, notes metadata, session state, event stream, artifact index, environment context, and discrepancy records all follow their exact preserved contracts; and
+  - closeout freezes `.wt_local/` in place instead of relocating or deleting the challenge root.
+- Exit criteria:
+  - the package defines the full artifact and ledger model for one challenge lifecycle.
+- Parallel-safe boundary:
+  - challenge, notes, evidence, and closeout surfaces may iterate together after runtime hooks exist, but closeout finalization waits on discrepancy and validation gates.
+
+### `phase.5` Knowledge Promotion And Retrieval
+
+- Dependencies:
+  - `phase.2` knowledge-family schema planning;
+  - `phase.4` extraction output and closeout behavior; and
+  - research anchors for ATT&CK, WSTG, and evidence/reporting patterns.
+- Validation and acceptance:
+  - every knowledge family has explicit ownership, schema, and template direction;
+  - the shared reusable-knowledge envelope and family payload contracts are explicit enough to author schemas without re-derivation;
+  - playbooks remain nested beneath tactics;
+  - extraction is requestable, runs automatically at closeout, and does not become periodic active-phase promotion by default;
+  - promotion and `review_status` remain distinct governed concepts;
+  - typed relations are authoritative on source artifacts and `related_artifact_ids` remain derived-only;
+  - promotion policy, glossary governance, external references, and deterministic retrieval ranking stay explicit; and
+  - challenge-specific detail is stripped or quarantined before promotion.
+- Exit criteria:
+  - the package provides a full reusable-knowledge and promotion plan from candidate extraction to canonical retrieval.
+- Parallel-safe boundary:
+  - family-specific knowledge payload authoring may proceed in parallel once the shared envelope and promotion policy are fixed, but promotion and retrieval runtime work waits on the phase-4 extraction contract.
+
+### `phase.6` Environment Adapters And Safety
+
+- Dependencies:
+  - `phase.2` environment, session, and discrepancy schemas;
+  - `phase.3` runtime hooks and workflow docs; and
+  - `phase.4` artifact and event-stream model.
+- Validation and acceptance:
+  - local, SSH, VPN, and airgapped modes are all addressed explicitly;
+  - `note_taker`, `assistant`, `teacher`, and `full_auto` are distinguished clearly;
+  - guidance-only stays the baseline until stronger autonomy is explicitly enabled;
+  - session state records requested versus effective mode and meaningful mode changes;
+  - full-auto observability, confirmation gates, refusal rules, airgapped transfer handling, actor-ref requirements, and provenance expectations remain explicit and auditable; and
+  - lifecycle and safety policy artifacts align with the preserved lifecycle and safety contract.
+- Exit criteria:
+  - the package contains a concrete environment and safety model that can be implemented without reinterpreting policy intent.
+- Parallel-safe boundary:
+  - adapter-specific implementation may proceed in parallel only after the shared adapter protocol and safety-confirmation matrix are fixed; no environment mode ships without the same safety gates.
+
+### `phase.7` Release And Portability Proof
+
+- Dependencies:
+  - `phase.0` through `phase.6` complete; and
+  - target repository ready to receive exported core and pack roots.
+- Validation and acceptance:
+  - donor and recipient roles are explicit;
+  - all handoff modes are documented: `core-only`, `core-plus-pack`, and `pack-only`;
+  - portability proof uses staged export rather than raw repo snapshots; and
+  - the target bootstrap sequence is explicit and reproducible.
+- Exit criteria:
+  - the package defines the full bootstrap, validation, and portability proof path into `/home/j/WatchTower`.
+- Parallel-safe boundary:
+  - changed-schema validation and portability verification may fan out once the full pack exists, but final staged export proof waits until all earlier phases are complete.
 
 ## Locked Runtime Rollout Sequence
 
@@ -302,6 +497,22 @@ The source package locks the first executable proof path and this initiative pre
 - Mark draft or informative sources explicitly and never treat them as higher authority than the current repo contract or primary sources.
 - The current anchor set remains MITRE ATT&CK Enterprise Tactics and ATT&CK Updates, OWASP WSTG, NIST SP 800-115, NIST SP 800-86, NIST SP 800-92 Rev.1 IPD, and Diataxis.
 
+### Human Surface, Template, And Best-Practice Carryover
+
+- The pack machine-contract baseline must require pack-local `template_catalog`, `documentation_family_registry`, and `human_surface_policy_registry` surfaces before the offsec pack is considered documentation-complete.
+- Required starter `README.md` roots are `offensive_security/`, `offensive_security/docs/`, `offensive_security/workflows/`, `offensive_security/docs/commands/core_python/`, `offensive_security/tracking/`, and `offensive_security/python/`.
+- Required starter `AGENTS.md` roots are `offensive_security/`, `offensive_security/workflows/`, and `offensive_security/python/`.
+- `offensive_security/docs/AGENTS.md` remains optional unless the docs subtree later needs local behavior that materially differs from the pack root rules.
+- Carry the `plan` / `oversight` root-template posture forward:
+  - `README.md` stays thin, navigational, and points readers to machine authority or rendered visibility surfaces where applicable.
+  - `AGENTS.md` stays narrow, local, and does not restate repository-wide rules.
+- Govern recurring human-facing roots through the registries above instead of prose-only convention.
+- Keep docs plus indexes, registries, and rendered views aligned in the same change set whenever one depends on the other.
+- Name rendered visibility surfaces explicitly and keep them registry-backed rather than ad hoc.
+- Use evidence-first readiness and contradiction-sweep discipline for engineer handoff claims.
+- Reuse shared core before pack-local duplication whenever a helper is generic.
+- Keep domain workflows, templates, terminology, and guidance pack-owned once they become offsec-specific.
+
 ### Template, Knowledge, And Evidence Standards
 
 - `challenge.md` required sections are `Source`, `Objective`, `Constraints`, and `Environment`.
@@ -362,38 +573,43 @@ The imported backlog remains preserved in the initiative and drives the first po
 
 Immediate preserved work:
 
-- confirm locked post-v1 deferrals remain intentional;
-- use donor-pack precedent to resolve defaults before inventing offsec-specific shapes;
-- implement the locked authority-map question set;
-- implement the locked retention and freeze rules;
-- scaffold and bootstrap the baseline pack in the target repo;
-- replace scaffold starter workflow metadata;
-- land first real CTF schemas and validators;
-- author first workflow docs and document-semantics service.
+- execute the `phase.0` task to re-verify live deltas, donor/recipient boundaries, and the current-compatible identity before target-repo mutation;
+- execute the `phase.1` task to export, scaffold, bootstrap, and validate the baseline pack in the target repo;
+- replace scaffold starter workflow metadata and land the first workflow docs;
+- implement the locked authority-map question set and retention or freeze rules;
+- land the first real CTF schemas, validators, and document-semantics service.
 
 Near-term preserved work:
 
-- implement query and sync runtimes;
-- implement challenge artifacts and ledgers;
-- implement closeout and knowledge-capture flow;
-- implement environment adapters and safety controls.
+- execute `phase.2` through `phase.4` to land the machine contract, runtime seam, and challenge artifact model;
+- execute `phase.5` to land knowledge promotion and retrieval;
+- execute `phase.6` to land environment adapters and safety controls.
 
 Later preserved work:
 
-- revisit whether `workflow_catalog` is needed after the baseline pack works;
+- execute `phase.7` portability proof after the full pack works end to end;
+- revisit whether `workflow_catalog` is needed after the baseline pack works; and
 - revisit pack-slug normalization and optional-segment path collapse after upstream fixes and migration tooling exist.
 
 ## First Post-Approval Execution Slice
 
-After this preservation initiative is approved, the next execution slice should occur in `/home/j/WatchTower` and should:
+After this hardening pass, the first ready engineer action is `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment`. That task should:
+
+1. reopen the canonical docs and mirrored `04_contracts/` surfaces in the read-first order above;
+2. re-verify the current-compatible identity, donor/recipient split, and preserved live-contract deltas against current repo truth;
+3. confirm no new live-contract delta needs to be recorded before target-repo mutation; and
+4. hand off directly into `phase.1_recipient_scaffold_and_bootstrap`.
+
+The first target-repo mutation then occurs in `phase.1`, which should:
 
 1. export shared core from `/home/j/WatchTowerPlan/core`;
 2. copy the staged export into `/home/j/WatchTower`;
 3. scaffold `offensive_security/` there with the current-compatible baseline identity;
 4. run `watchtower-core pack bootstrap --replace-hosted-packs --write` if donor pack wiring must be replaced;
 5. run `pack validate`, `validate all`, and changed-schema validation; and
-6. begin the phase-ordered implementation sequence preserved above.
+6. continue through the phase-ordered task chain preserved above.
 
 ## Gate
 
 - No `/home/j/WatchTower` execution starts until this initiative is approved and marked `ready_for_execution`.
+- The initiative stays in `ready_for_execution` until an engineer transitions the first ready task into an execution-starting status, at which point the normal initiative lifecycle will move into `in_progress`.

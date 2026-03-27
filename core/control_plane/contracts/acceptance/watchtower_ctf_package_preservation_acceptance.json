@@ -1,0 +1,178 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.watchtower_ctf_package_preservation",
+  "title": "WatchTower CTF Package Preservation Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
+  "source_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+  "entries": [
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.001",
+      "summary": "The initiative mirror contains exactly 62 stored files corresponding to the 62 source files.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.001",
+        "req.watchtower_ctf_package_preservation.002"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_original_inventory.txt",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_stored_inventory.txt"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_capture_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation"
+      ],
+      "notes": "Inventory parity for the transformed mirror and preserved source package."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.002",
+      "summary": "The transformed mirror preserves source bytes exactly, as proven by digest parity and reversible JSON restore proof.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.001",
+        "req.watchtower_ctf_package_preservation.002",
+        "req.watchtower_ctf_package_preservation.005"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_sha256.tsv",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_capture_notes.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/indexes/open_decisions.json.raw"
+      ],
+      "notes": "Digest parity and restore proof cover the `.json.raw` preservation shim."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.003",
+      "summary": "Every source file appears in the source coverage matrix with an explicit canonical target and status.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.002",
+        "req.watchtower_ctf_package_preservation.004"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_original_inventory.txt",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_stored_inventory.txt"
+      ],
+      "notes": "Coverage completeness keeps every preserved source file accounted for."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.004",
+      "summary": "Canonical initiative docs absorb the implementation-critical package content, exact phase gates, workflow and contract rules, human-surface starter contract, and reconciled decision set while leaving any remaining source-only narrative explicitly mirror-backed.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.003",
+        "req.watchtower_ctf_package_preservation.004",
+        "req.watchtower_ctf_package_preservation.006",
+        "req.watchtower_ctf_package_preservation.009"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_coverage_matrix.md"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/04_contracts",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/source_snapshot/CTF_implementation/07_guides/follow_on_agent_execution_guide.md"
+      ],
+      "notes": "Engineer-facing canonical docs must answer the implementation questions without reopening the donor package by default."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.005",
+      "summary": "After sync, confirm-inputs, and approval, the initiative remains ready_for_execution with aligned readiness, initiative, and coordination state.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.006",
+        "req.watchtower_ctf_package_preservation.008"
+      ],
+      "required_validator_ids": [
+        "validator.plan.initiative_state",
+        "validator.plan.readiness_index",
+        "validator.plan.initiative_index",
+        "validator.plan.coordination_index"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
+        "plan/.wt/indexes/readiness_index.json",
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md"
+      ],
+      "notes": "Ready-for-execution state must survive the hardening pass and point at the real next engineer action."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.006",
+      "summary": "The traceability layer, acceptance contract, durable validation evidence, and validator references agree on the initiative requirements, acceptance items, contracts, evidence, and validators.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.007"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence",
+        "validator.control_plane.traceability_index",
+        "validator.trace.acceptance_reconciliation"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
+        "core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md"
+      ],
+      "related_paths": [
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
+        "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "core/docs/commands/core_python/watchtower_core_query_evidence.md"
+      ],
+      "notes": "This is the machine-readable acceptance and evidence boundary for the preserved initiative."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.007",
+      "summary": "The active same-initiative task graph publishes one phase-aligned execution chain with explicit dependencies, related ids, governing docs, and a first executable task in ready state.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.008"
+      ],
+      "required_validator_ids": [
+        "validator.plan.task_state",
+        "validator.plan.task_summary_index",
+        "validator.plan.initiative_index",
+        "validator.plan.coordination_index"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_1_recipient_scaffold_and_bootstrap/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_3_runtime_query_sync_and_workflow_seam/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_4_challenge_artifacts_and_closeout/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_6_environment_adapters_and_safety/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json",
+        "plan/.wt/indexes/task_index.json",
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+      ],
+      "notes": "The bootstrap placeholder is retired from the execution entrypoint and replaced by phase-aligned same-initiative tasking."
+    },
+    {
+      "acceptance_id": "ac.watchtower_ctf_package_preservation.008",
+      "summary": "Canonical docs restate the required offsec README and AGENTS starter roots plus the adapted template-governance and best-practice posture needed for implementation bootstrap.",
+      "source_requirement_ids": [
+        "req.watchtower_ctf_package_preservation.009"
+      ],
+      "validation_targets": [
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md"
+      ],
+      "related_paths": [
+        "plan/.wt/registries/template_catalog.json",
+        "plan/.wt/registries/human_surface_policy_registry.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md"
+      ],
+      "notes": "This acceptance item preserves the README, AGENTS, and same-change-set posture engineers should apply when the offsec pack is created."
+    }
+  ]
+}

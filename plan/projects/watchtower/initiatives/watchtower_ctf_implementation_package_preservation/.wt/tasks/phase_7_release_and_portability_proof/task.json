@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof",
+  "slug": "phase_7_release_and_portability_proof",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "title": "Phase 7 Release And Portability Proof",
+  "summary": "Prove staged export, bootstrap, validation, and release portability for the finished offsec pack.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "chore",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-27T16:41:17Z",
+  "updated_at": "2026-03-27T16:41:17Z",
+  "dependency_task_ids": [
+    "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety"
+  ],
+  "related_ids": [
+    "initiative.watchtower_ctf_implementation_package_preservation",
+    "trace.watchtower_ctf_implementation_package_preservation",
+    "ac.watchtower_ctf_package_preservation.005",
+    "ac.watchtower_ctf_package_preservation.007"
+  ],
+  "applies_to": [
+    "recipient_repo_watchtower",
+    "offsec_pack_root"
+  ],
+  "governing_document_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+  ],
+  "scope_items": [
+    "Run staged export, target bootstrap, pack validation, validate all, and changed-schema validation for the finished pack.",
+    "Prove the finished pack can be handed off through the shared release contract without raw worktree assumptions."
+  ],
+  "done_when_items": [
+    "The offsec pack has an explicit staged-export portability proof into the recipient repo.",
+    "Release and validation guidance no longer depend on unstated donor-repo assumptions."
+  ]
+}

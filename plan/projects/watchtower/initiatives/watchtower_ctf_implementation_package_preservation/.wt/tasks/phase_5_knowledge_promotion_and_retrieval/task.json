@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval",
+  "slug": "phase_5_knowledge_promotion_and_retrieval",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "title": "Phase 5 Knowledge Promotion And Retrieval",
+  "summary": "Implement reusable knowledge families, promotion policy, relation governance, and deterministic retrieval.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-27T16:41:11Z",
+  "updated_at": "2026-03-27T16:41:11Z",
+  "dependency_task_ids": [
+    "task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout"
+  ],
+  "related_ids": [
+    "initiative.watchtower_ctf_implementation_package_preservation",
+    "trace.watchtower_ctf_implementation_package_preservation",
+    "ac.watchtower_ctf_package_preservation.004",
+    "ac.watchtower_ctf_package_preservation.007"
+  ],
+  "applies_to": [
+    "offsec_knowledge_root"
+  ],
+  "governing_document_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+  ],
+  "scope_items": [
+    "Implement the shared reusable-knowledge envelope, family payloads, promotion policy, and retrieval ranking.",
+    "Keep challenge-specific material quarantined from promoted knowledge until review gates pass."
+  ],
+  "done_when_items": [
+    "Knowledge promotion and retrieval work without weakening provenance or review posture.",
+    "The governed knowledge families and retrieval ranking no longer need re-derivation from source docs."
+  ]
+}

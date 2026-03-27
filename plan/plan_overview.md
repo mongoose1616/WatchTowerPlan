@@ -3,7 +3,7 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
+- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
 - `recommended_surface_path`: `plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md`
 
 ## Active Pack-Wide Initiatives
@@ -13,7 +13,7 @@
 - `trace.watchtower_ctf_implementation_package_preservation`: WatchTower CTF Implementation Package Preservation (`capture` / `project_scoped`)
 
 ## Blocked or Attention-Needed Items
-- None.
+- Actionable task `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment` (high) in `trace.watchtower_ctf_implementation_package_preservation` -> `plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json`
 
 ## Recent Completions or Changes
 - None.

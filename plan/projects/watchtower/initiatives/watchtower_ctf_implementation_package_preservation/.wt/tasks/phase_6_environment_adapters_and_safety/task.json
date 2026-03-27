@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety",
+  "slug": "phase_6_environment_adapters_and_safety",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "title": "Phase 6 Environment Adapters And Safety",
+  "summary": "Implement environment adapters, transfer governance, confirmation rules, and safety-enforcement policy.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-27T16:41:14Z",
+  "updated_at": "2026-03-27T16:41:14Z",
+  "dependency_task_ids": [
+    "task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval"
+  ],
+  "related_ids": [
+    "initiative.watchtower_ctf_implementation_package_preservation",
+    "trace.watchtower_ctf_implementation_package_preservation",
+    "ac.watchtower_ctf_package_preservation.004",
+    "ac.watchtower_ctf_package_preservation.007"
+  ],
+  "applies_to": [
+    "offsec_policy_root",
+    "offsec_ledger_root"
+  ],
+  "governing_document_paths": [
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md",
+    "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md"
+  ],
+  "scope_items": [
+    "Implement the local, ssh, vpn_reachable, and airgapped adapter contract plus transfer and provenance surfaces.",
+    "Enforce the safety confirmation matrix, actor refs, refusal rules, and mode-state projection."
+  ],
+  "done_when_items": [
+    "The environment and safety model is concrete enough to implement without reinterpreting policy intent.",
+    "No high-risk execution path bypasses explicit confirmation, provenance, or actor-ref gates."
+  ]
+}
