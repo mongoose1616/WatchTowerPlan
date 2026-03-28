@@ -3,7 +3,7 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Advance the current in-progress task set and keep initiative-local task state current.
+- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
 - `recommended_surface_path`: `plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md`
 
 ## Active Pack-Wide Initiatives
