@@ -29,7 +29,7 @@ uv run watchtower-core query foundations [--query <text>] [--foundation-id <foun
 - `--authority <authority>`: Exact authority filter such as `authoritative` or `supporting`.
 - `--tag <tag>`: Exact tag filter.
 - `--related-path <path>`: Exact repository-path filter such as `core/python/`, `core/workflows/modules/`, `core/workflows/roles/`, or `<pack-root>/workflows/roles/`.
-- `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/github_collaboration_reference.md`.
+- `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/uv_reference.md` or `<pack>/docs/references/<topic>_reference.md`.
 - `--cited-by-path <doc_path>`: Exact doc-path filter for documents that cite the foundation doc.
 - `--applied-by-path <doc_path>`: Exact doc-path filter for documents that apply the foundation doc in an applied-reference section.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
@@ -61,6 +61,7 @@ uv run watchtower-core query foundations --applied-by-path core/docs/standards/e
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching foundation IDs, authorities, titles, summaries, and current citation or application counts.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-capture fields such as `audience`, `reference_doc_paths`, `internal_reference_paths`, `external_reference_urls`, `cited_by_paths`, and `applied_by_paths`.
+- Matching `reference_doc_paths` values may point to either `core/docs/references/**` or an owning pack `docs/references/**` root.
 - If no entries match the requested filters, the command exits successfully and reports that no foundation entries matched.
 
 ## Related Commands
@@ -78,4 +79,4 @@ uv run watchtower-core query foundations --applied-by-path core/docs/standards/e
 - `core/control_plane/indexes/foundations/foundation_index.json`
 
 ## Updated At
-- `2026-03-24T20:35:00Z`
+- `2026-03-28T23:55:00Z`

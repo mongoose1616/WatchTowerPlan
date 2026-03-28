@@ -6,7 +6,7 @@ This command searches the governed standard index so engineers and agents can fi
 ## Use When
 - You need to find the governing standard for a repo surface without browsing the shared and pack-owned standards roots manually.
 - You want one machine-readable result set for a narrow standards subfamily such as a live pack-index family.
-- You want to know which standards currently rely on a given local reference doc under `core/docs/references/`.
+- You want to know which standards currently rely on a given local reference doc under a shared or owning-pack reference root.
 - You want machine-readable standard lookup results for workflows, scripts, or agent calls.
 
 ## Command
@@ -31,7 +31,7 @@ uv run watchtower-core query standards [--query <text>] [--standard-id <standard
 - `--tag <tag>`: Exact tag filter.
 - `--applies-to <target>`: Exact authored `applies_to` filter such as `core/python/`, `core/docs/standards/engineering/`, or a pack-owned standards root.
 - `--related-path <path>`: Exact repository-path filter such as `.github/` or `core/python/`.
-- `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/github_collaboration_reference.md`.
+- `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/github_collaboration_reference.md` or `<pack>/docs/references/<topic>_reference.md`.
 - `--operationalization-mode <mode>`: Exact operationalization-mode filter such as `validation`, `query`, or `workflow`.
 - `--operationalization-path <path>`: Repository-path filter for one operationalizing surface such as `core/python/src/watchtower_host/cli/parser.py`. Exact file paths match directly, indexed directory paths also match concrete descendants under that directory, and indexed glob patterns also match concrete files such as nested `README.md` or `AGENTS.md` surfaces.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
@@ -96,4 +96,4 @@ uv run watchtower-core query standards --operationalization-path core/docs/refer
 - `core/control_plane/indexes/standards/standard_index.json`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-28T23:55:00Z`

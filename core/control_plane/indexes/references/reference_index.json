@@ -96,6 +96,8 @@
         "https://docs.python.org/3/library/argparse.html"
       ],
       "cited_by_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md"
       ],
       "applied_by_paths": [
@@ -302,6 +304,7 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
@@ -525,10 +528,10 @@
     {
       "reference_id": "ref.mitre_attack",
       "title": "MITRE ATT&CK Reference",
-      "summary": "This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for offensive-security knowledge.",
+      "summary": "This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for threat-behavior mapping.",
       "status": "active",
       "doc_path": "core/docs/references/mitre_attack_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
       "uses_external_references": true,
@@ -895,6 +898,7 @@
         "https://peps.python.org/pep-0257/"
       ],
       "cited_by_paths": [
+        "core/docs/references/google_style_docstrings_reference.md",
         "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "applied_by_paths": [
@@ -922,6 +926,8 @@
         "https://peps.python.org/pep-0008/"
       ],
       "cited_by_paths": [
+        "core/docs/references/mypy_reference.md",
+        "core/docs/references/ruff_reference.md",
         "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "applied_by_paths": [
@@ -941,7 +947,7 @@
       "summary": "This document provides a working reference for PTES as a penetration-testing lifecycle baseline.",
       "status": "active",
       "doc_path": "core/docs/references/ptes_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
       "uses_external_references": true,
@@ -1000,6 +1006,12 @@
         "https://peps.python.org/pep-0621/"
       ],
       "cited_by_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/mypy_reference.md",
+        "core/docs/references/pytest_reference.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
+        "core/docs/references/ruff_reference.md",
+        "core/docs/references/src_layout_reference.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
@@ -1037,6 +1049,7 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/references/src_layout_reference.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
@@ -1146,6 +1159,9 @@
         "https://packaging.python.org/en/latest/specifications/pyproject-toml/"
       ],
       "cited_by_paths": [
+        "core/docs/references/argparse_subcommands_reference.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/pyproject_toml_reference.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md"
@@ -1577,6 +1593,7 @@
         "https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/"
       ],
       "cited_by_paths": [
+        "core/docs/references/pytest_reference.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
@@ -1669,6 +1686,7 @@
         "https://yaml.org/spec/1.2.2/"
       ],
       "cited_by_paths": [
+        "core/docs/references/front_matter_reference.md",
         "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "applied_by_paths": [
@@ -1681,6 +1699,93 @@
       "tags": [
         "reference",
         "yaml_1_2_2"
+      ]
+    },
+    {
+      "reference_id": "reference.core_swap_integration_assessment_closeout",
+      "title": "Core Swap Integration Assessment Closeout",
+      "summary": "Durable reference recording current WatchTowerPlan verification of the external oversight-host core-swap integration assessment and the resulting local applicability decisions.",
+      "status": "active",
+      "doc_path": "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+      "updated_at": "2026-03-28T23:55:00Z",
+      "repository_status": "supporting_authority",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "canonical_upstream_urls": [
+        "https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtowerplan_core_swap_integration_assessment.md"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/pack_registry.json",
+        "core/python/pyproject.toml",
+        "plan/.wt/manifests/pack_settings.json",
+        "core/python/tests/unit/test_control_plane_loader_surfaces.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_cli_validate_commands.py",
+        "core/python/tests/integration/test_validate_all_cli.py"
+      ],
+      "tags": [
+        "reference",
+        "assessment",
+        "closeout",
+        "pack_integration",
+        "portability"
+      ]
+    },
+    {
+      "reference_id": "reference.oversight_functionality_assessment_closeout",
+      "title": "Oversight Functionality Assessment Closeout",
+      "summary": "Durable reference recording current WatchTowerPlan verification of the external WatchTowerOversight functionality assessment and the resulting local applicability decisions.",
+      "status": "active",
+      "doc_path": "plan/docs/references/oversight_functionality_assessment_closeout_reference.md",
+      "updated_at": "2026-03-28T23:55:00Z",
+      "repository_status": "supporting_authority",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "canonical_upstream_urls": [
+        "https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtoweroversight_functionality_assessment.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/routes/route_index.json",
+        "core/control_plane/indexes/workflows/workflow_index.json",
+        "core/python/tests/integration/test_validate_all_cli.py",
+        "core/python/tests/unit/test_cli_validate_commands.py",
+        "core/python/tests/unit/test_cli_route_and_path_commands.py",
+        "core/python/tests/unit/test_workflow_execution_harness.py",
+        "plan/.wt/manifests/pack_settings.json"
+      ],
+      "tags": [
+        "reference",
+        "assessment",
+        "closeout",
+        "routing",
+        "validation"
+      ]
+    },
+    {
+      "reference_id": "reference.plan_guidance_promotion_helper_foundation_initiative_brief",
+      "title": "Guidance Promotion Reference",
+      "summary": "Durable reference for governed guidance promotion. Describes how initiative-local authored inputs become durable plan guidance while provenance lives in machine indexes rather than in source-package references.",
+      "status": "active",
+      "doc_path": "plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md",
+      "updated_at": "2026-03-28T23:55:00Z",
+      "repository_status": "supporting_authority",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "canonical_upstream_urls": [
+        "https://github.com/mongoose1616/WatchTowerPlan/blob/HEAD/plan/python/src/watchtower_plan/promotion/service.py",
+        "https://github.com/mongoose1616/WatchTowerPlan/blob/HEAD/plan/.wt/registries/promotion_policy_registry.json"
+      ],
+      "related_paths": [
+        "plan/python/src/watchtower_plan/promotion/service.py",
+        "plan/.wt/registries/promotion_policy_registry.json",
+        "plan/.wt/indexes/guidance_index.json",
+        "plan/.wt/indexes/promotion_index.json"
+      ],
+      "tags": [
+        "promoted_guidance",
+        "reference",
+        "guidance_promotion",
+        "initiative_brief"
       ]
     }
   ]

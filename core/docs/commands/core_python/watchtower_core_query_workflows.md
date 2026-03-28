@@ -30,7 +30,7 @@ uv run watchtower-core query workflows [--query <text>] [--workflow-id <workflow
 - `--task-family <family>`: Exact workflow task-family filter such as `engineering_validation` or `traceability`.
 - `--trigger-tag <tag>`: Exact trigger-tag filter such as `validation`, `github`, or `scope`.
 - `--related-path <path>`: Exact repository-path filter such as `core/docs/templates/foundation_document_template.md`.
-- `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/github_collaboration_reference.md`.
+- `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/github_collaboration_reference.md` or `<pack>/docs/references/<topic>_reference.md`.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -90,4 +90,4 @@ uv run watchtower-core query workflows --reference-path core/docs/references/git
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At
-- `2026-03-24T22:05:00Z`
+- `2026-03-28T23:55:00Z`

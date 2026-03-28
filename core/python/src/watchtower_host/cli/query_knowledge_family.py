@@ -124,7 +124,11 @@ def register_query_knowledge_commands(
     )
     query_foundations_parser.add_argument(
         "--reference-path",
-        help="Exact governed reference-doc filter such as core/docs/references/uv_reference.md.",
+        help=(
+            "Exact governed reference-doc filter such as "
+            "core/docs/references/uv_reference.md or "
+            "<pack>/docs/references/<topic>_reference.md."
+        ),
     )
     query_foundations_parser.add_argument(
         "--cited-by-path",
@@ -202,7 +206,8 @@ def register_query_knowledge_commands(
         "--reference-path",
         help=(
             "Exact governed reference-doc filter such as "
-            "core/docs/references/github_collaboration_reference.md."
+            "core/docs/references/github_collaboration_reference.md or "
+            "<pack>/docs/references/<topic>_reference.md."
         ),
     )
     add_limit_argument(query_workflows_parser)
@@ -214,8 +219,8 @@ def register_query_knowledge_commands(
         help="Search the reference index.",
         description=dedent(
             """
-            Search the governed reference index for curated internal reference
-            documents and their upstream authority links.
+            Search the governed reference index for curated shared-core and
+            pack-owned reference documents plus their upstream authority links.
 
             Use this when you know the topic you want, but not yet the exact
             reference document path.
@@ -226,6 +231,8 @@ def register_query_knowledge_commands(
             "uv run watchtower-core query references "
             "--repository-status candidate_future_guidance --format json",
             "uv run watchtower-core query references --related-path core/python/ --format json",
+            "uv run watchtower-core query references --related-path "
+            "<pack>/workflows/modules/<module>.md --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -252,7 +259,8 @@ def register_query_knowledge_commands(
     query_references_parser.add_argument(
         "--related-path",
         help=(
-            "Repository-path filter such as core/python/ or "
+            "Repository-path filter such as core/python/, "
+            "<pack>/workflows/modules/<module>.md, or "
             "core/docs/standards/engineering/. Directory paths ending in '/' "
             "match descendant touchpoints."
         ),
@@ -331,7 +339,8 @@ def register_query_knowledge_commands(
         "--reference-path",
         help=(
             "Exact governed reference-doc filter such as "
-            "core/docs/references/github_collaboration_reference.md."
+            "core/docs/references/github_collaboration_reference.md or "
+            "<pack>/docs/references/<topic>_reference.md."
         ),
     )
     query_standards_parser.add_argument(

@@ -14,7 +14,10 @@ from watchtower_plan.sync.registry import (
 )
 from watchtower_plan.testing.fixture_repo_support import (
     bootstrap_packwide_initiative,
+    materialize_command_doc_source_surfaces,
+    materialize_governed_applies_to_targets,
     materialize_minimal_plan_pack,
+    materialize_standard_operationalization_targets,
 )
 from watchtower_plan.workspace.constants import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
@@ -34,8 +37,9 @@ from watchtower_core.control_plane.loader import (
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
-REFERENCE_RESOLUTION_SYNC_TARGETS = frozenset(
-    {"reference-index", "foundation-index", "standard-index", "workflow-index"}
+REFERENCE_REUSE_PROOF_TARGETS = frozenset({"reference-index", "standard-index"})
+MATERIALIZATION_PROOF_TARGETS = frozenset(
+    {"command-index", "foundation-index", "initiative-index", "initiative-tracking"}
 )
 
 
@@ -55,6 +59,38 @@ def _build_coordination_fixture_repo(repo_root: Path) -> Path:
     return repo_root
 
 
+def _build_all_sync_fixture_repo(repo_root: Path) -> Path:
+    for relative_root in (
+        "core/control_plane",
+        "core/docs",
+        "core/workflows",
+        "plan/docs",
+        "plan/workflows",
+    ):
+        copytree(REPO_ROOT / relative_root, repo_root / relative_root)
+    for relative_file in ("README.md", "AGENTS.md"):
+        source = REPO_ROOT / relative_file
+        target = repo_root / relative_file
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(source.read_bytes())
+
+    (repo_root / "core" / "python").mkdir(parents=True)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
+    materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
+    materialize_standard_operationalization_targets(repo_root, REPO_ROOT)
+    materialize_command_doc_source_surfaces(repo_root, REPO_ROOT)
+    bootstrap_packwide_initiative(
+        repo_root,
+        trace_id="trace.example_all_sync_fixture",
+        title="Example All Sync Fixture",
+        summary=(
+            "Seeds one compact live initiative so all-sync integration tests can run "
+            "against a smaller current-contract repo snapshot."
+        ),
+    )
+    return repo_root
+
+
 @pytest.fixture(scope="module")
 def coordination_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
     return _build_coordination_fixture_repo(
@@ -66,6 +102,18 @@ def coordination_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> P
 def coordination_fixture_repo(tmp_path: Path, coordination_fixture_baseline: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(coordination_fixture_baseline, repo_root)
+    return repo_root
+
+
+@pytest.fixture(scope="module")
+def all_sync_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_all_sync_fixture_repo(tmp_path_factory.mktemp("all_sync_baseline") / "repo")
+
+
+@pytest.fixture
+def all_sync_fixture_repo(tmp_path: Path, all_sync_fixture_baseline: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(all_sync_fixture_baseline, repo_root)
     return repo_root
 
 
@@ -98,13 +146,14 @@ def test_all_sync_target_order_matches_registry() -> None:
     )
 
 
-def test_all_sync_reuses_reference_index_build_for_dependent_targets(
+def test_all_sync_reuses_reference_index_build_for_dependent_standard_target(
+    all_sync_fixture_repo: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+    loader = ControlPlaneLoader(all_sync_fixture_repo)
     service = AllSyncService(loader)
     reference_specs = tuple(
-        spec for spec in SYNC_TARGET_SPECS if spec.target in REFERENCE_RESOLUTION_SYNC_TARGETS
+        spec for spec in SYNC_TARGET_SPECS if spec.target in REFERENCE_REUSE_PROOF_TARGETS
     )
     reference_build_count = 0
     original_build_document = ReferenceIndexSyncService.build_document
@@ -251,12 +300,18 @@ def test_coordination_sync_dry_run_uses_generated_dependency_artifacts(
     assert "STALE SNAPSHOT MARKER" not in captured_content["content"]
 
 
-def test_all_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+def test_all_sync_run_specs_can_materialize_mixed_outputs_to_output_dir(
+    all_sync_fixture_repo: Path,
+    tmp_path: Path,
+) -> None:
+    loader = ControlPlaneLoader(all_sync_fixture_repo)
     service = AllSyncService(loader)
     output_dir = tmp_path / "sync_all"
+    materialization_specs = tuple(
+        spec for spec in SYNC_TARGET_SPECS if spec.target in MATERIALIZATION_PROOF_TARGETS
+    )
 
-    result = service.run(output_dir=output_dir)
+    result = service.run_specs(materialization_specs, output_dir=output_dir)
 
     assert result.wrote is True
     assert (output_dir / "core/control_plane/indexes/commands/command_index.json").exists()

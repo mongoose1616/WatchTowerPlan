@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "reference_distillation"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-28T20:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -52,12 +52,12 @@ This standard defines how externally published source material is distilled into
   - external source facts or rules
   - local interpretation or mapping
   - normative repository policy
-- Keep supporting lookup content in `core/docs/references/**` when the output is mainly a reusable working reference.
+- Keep supporting lookup content in `core/docs/references/**` when the output is shared or cross-pack, or in the owning pack's `docs/references/**` root when the output is pack-applied.
 - Make the distilled reference operationally sufficient for repeated repository use. Future readers should not need to reopen the upstream source for every common question or basic decision.
 - Do not collapse a local reference into a bibliography or link index. A distilled reference should carry concrete working content, not just source attribution.
 - Move normative repository rules into `core/docs/standards/**` or `plan/docs/standards/**` when the repository is adopting, narrowing, or enforcing the distilled guidance as local policy.
 - Use the reference template and reference-document standard when the output is a reference document.
-- When the output becomes a governed reference under `core/docs/references/**`, apply the front matter standard and the reference front matter profile in the same change set.
+- When the output becomes a governed reference under `core/docs/references/**` or an owning pack's `docs/references/**` root, apply the front matter standard and the reference front matter profile in the same change set.
 - Preserve the meaning of the source material without copying long passages into the repository.
 - Use repository-native terminology and examples when mapping the source locally, but do not rewrite the source so aggressively that the original meaning becomes unclear.
 - Distill the practical content that repeated readers will actually need: key terms, required or disallowed patterns, defaults, decision boundaries, edge cases, and common failure modes when the topic warrants them.
@@ -80,7 +80,8 @@ This standard defines how externally published source material is distilled into
 
 ## Process or Workflow
 1. Choose the correct output boundary before drafting.
-   - Use `core/docs/references/**` for supporting lookup guidance.
+   - Use `core/docs/references/**` for shared or cross-pack supporting lookup guidance.
+   - Use the owning pack's `docs/references/**` root when the reference is intentionally pack-applied.
    - Use `core/docs/standards/**` or `plan/docs/standards/**` when the repository is adopting or enforcing the guidance as local policy.
 2. Keep source facts, local mapping, and normative repository policy visibly separate.
 3. Carry forward the required companion standards for the chosen output shape.
@@ -127,4 +128,4 @@ This standard defines how externally published source material is distilled into
 3. Re-read the distilled output to confirm that source facts, local interpretation, and normative repository policy are still clearly separated.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-28T20:00:00Z`

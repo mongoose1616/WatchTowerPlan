@@ -50,7 +50,7 @@ uv run watchtower-core plan sync workflow-index --output /tmp/workflow_index.jso
 - The rebuild validates workflow structure, section order, optional explained `Additional Files to Load` bullets, and governed local-reference usage.
 - Workflow modules that publish `Additional Files to Load` must keep it task-specific, repo-local, checkout-portable, and free of generic routing-baseline boilerplate.
 - Workflow modules that use filesystem-absolute checkout paths instead of repository-native links are rejected during rebuild because those paths do not survive clone or worktree changes.
-- Workflow modules that try to cite raw external URLs instead of governed local reference docs under `core/docs/references/` are rejected during rebuild.
+- Workflow modules that try to cite raw external URLs instead of governed local reference docs in the shared or owning-pack `docs/references/` roots are rejected during rebuild.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many workflow entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
@@ -72,4 +72,4 @@ uv run watchtower-core plan sync workflow-index --output /tmp/workflow_index.jso
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At
-- `2026-03-16T09:41:00Z`
+- `2026-03-28T20:00:00Z`

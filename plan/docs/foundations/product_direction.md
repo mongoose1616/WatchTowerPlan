@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:55:00Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -51,8 +51,9 @@ Core is the shared system layer of the future product. Its job is to provide the
 - Give engineering and governance work a reliable home for proofs, readiness checks, contract publication, and runtime safety.
 - Make machine state and operational behavior trustworthy enough that domain workflows can depend on them.
 - Prioritize machine-usable structures that help LLMs and agents retrieve context, execute workflows, and stay inside governed boundaries.
-- Stay domain-agnostic instead of absorbing challenge-specific, reporting-specific, or other pack-local jobs.
-- Do not absorb domain templates, domain terminology, or pack-specific artifact conventions unless they are truly cross-domain.
+- Stay reusable and donor-neutral instead of absorbing challenge-specific, reporting-specific, or other pack-local jobs.
+- May host cross-pack external references when those references support shared functions or multiple hosted packs.
+- Do not absorb pack-applied guidance, domain templates, domain terminology, or pack-specific artifact conventions unless they are truly cross-domain.
 - Remain mostly behind the scenes for operators: strong in product support, thin in direct user-facing workflow language.
 
 ## Full Product Shape
@@ -75,6 +76,7 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Use core to help a human achieve a real domain goal efficiently, repeatably, and with clean closeout.
 - Let users start quickly, clarify scope, let the agent execute guided workflows, capture evidence, and finish with reusable closeout artifacts.
 - Own domain workflows, templates, terminology, references, knowledge surfaces, tool guidance, domain artifact expectations, and pack-local managed state.
+- Packs may intentionally duplicate a topic already represented in `core/docs/references/**` when the pack-specific operator mapping, touchpoints, or enforcement posture differ materially from the shared-core reference.
 - Shape how the LLM or agent assists the human in that domain instead of forcing the user to translate generic system capabilities into domain process by hand.
 - Use shared core contracts instead of reimplementing routing, validation, rule enforcement, traceability, or recovery differently for each domain.
 - Support future expansion through the same pack model instead of letting the first domain become the accidental default for all later work.
@@ -87,6 +89,7 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Customer-safe bootstrap for that consuming repository should be a curated export of shared core plus the selected hosted pack set, not a raw donor repository snapshot.
 - This repository should prepare the reusable substrate and contracts that product work will consume.
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
+- If a downstream working repository edits `core/**` while implementing that reusable substrate, the authored shared-core change must be reconciled back into `WatchTowerPlan/core/**` before closeout.
 
 ## References
 - [repository_scope.md](repository_scope.md)
@@ -95,4 +98,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](customer_story.md)
 
 ## Updated At
-- `2026-03-24T22:55:00Z`
+- `2026-03-28T23:55:00Z`

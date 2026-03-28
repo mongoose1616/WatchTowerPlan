@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.query import StandardQueryService, StandardSearchParams
+
 from tests.cli_command_helpers import run_json_command
 
 
@@ -245,6 +248,33 @@ def test_query_references_supports_repository_status_filter(capsys) -> None:
     )
 
 
+def test_query_references_returns_plan_owned_reference_docs_without_self_noise(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "query",
+            "references",
+            "--reference-id",
+            "reference.core_swap_integration_assessment_closeout",
+        ],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query references"
+    assert payload["status"] == "ok"
+    entry = next(
+        entry
+        for entry in payload["results"]
+        if entry["reference_id"] == "reference.core_swap_integration_assessment_closeout"
+    )
+    assert entry["doc_path"] == (
+        "plan/docs/references/core_swap_integration_assessment_closeout_reference.md"
+    )
+    assert entry["doc_path"] not in entry.get("related_paths", [])
+    assert entry["doc_path"] not in entry.get("cited_by_paths", [])
+    assert entry["doc_path"] not in entry.get("applied_by_paths", [])
+
+
 def test_query_references_supports_directory_descendant_related_path_filters(capsys) -> None:
     result, payload = run_json_command(
         capsys,
@@ -325,9 +355,7 @@ def test_query_standards_exposes_standard_template_operationalization_path(capsy
     )
 
 
-def test_query_standards_matches_descendant_and_glob_operationalization_paths(
-    capsys,
-) -> None:
+def test_standard_query_matches_descendant_and_glob_operationalization_paths() -> None:
     cases = (
         (
             "core/docs/templates/documentation_template.md",
@@ -390,24 +418,14 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.data_contracts.workflow_index",
         ),
     )
+    service = StandardQueryService(ControlPlaneLoader())
 
     for operationalization_path, expected_standard_id in cases:
-        result, payload = run_json_command(
-            capsys,
-            [
-                "query",
-                "standards",
-                "--operationalization-path",
-                operationalization_path,
-            ],
+        results = service.search(
+            StandardSearchParams(operationalization_path=operationalization_path)
         )
 
-        assert result == 0
-        assert payload["command"] == "watchtower-core query standards"
-        assert payload["status"] == "ok"
-        assert any(entry["standard_id"] == expected_standard_id for entry in payload["results"]), (
-            payload["results"]
-        )
+        assert any(entry.standard_id == expected_standard_id for entry in results), results
 
 
 def test_query_standards_supports_canonical_directory_path_filters(capsys) -> None:

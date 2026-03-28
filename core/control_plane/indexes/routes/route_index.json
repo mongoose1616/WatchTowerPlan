@@ -38,6 +38,45 @@
       ]
     },
     {
+      "route_id": "route.test_suite_optimization",
+      "task_type": "Test Suite Optimization",
+      "trigger_keywords": [
+        "slow tests",
+        "test runtime",
+        "optimize tests",
+        "refactor tests",
+        "trim tests",
+        "stale tests",
+        "legacy tests",
+        "migration tests",
+        "transition shims",
+        "backward compatibility shims",
+        "compatibility shims",
+        "periodic test cleanup",
+        "test performance"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_implementation",
+        "workflow.test_suite_optimization",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/code_implementation.md",
+        "core/workflows/modules/test_suite_optimization.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.domain_pack_integration",
       "task_type": "Domain Pack Integration",
       "trigger_keywords": [

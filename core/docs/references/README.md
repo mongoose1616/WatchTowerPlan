@@ -1,11 +1,11 @@
 # `core/docs/references`
 
 ## Description
-`This directory contains working references for external standards, frameworks, specifications, and published guidance that inform this repository. Each reference should include verified canonical upstream links, a dense quick-reference section, and an explicit local mapping to current repository surfaces or clearly marked future-adoption areas. Do not place repo-native standards or purely local reference notes in this directory.`
+`This directory contains working references for external standards, frameworks, specifications, and published guidance that inform shared core or multiple hosted packs. Each reference should include verified canonical upstream links, a dense quick-reference section, and an explicit local mapping to current repository surfaces or clearly marked future-adoption areas. Same-topic pack duplicates are allowed when the pack-local operator mapping or touchpoints differ materially. Do not place repo-native standards or purely local reference notes in this directory.`
 
 ## How To Use This Directory
 - Start with the reference file that matches the external topic, not with a broad repo scan.
-- Use `watchtower-core query references --query <topic>` when you want the governed reference lookup surface instead of browsing the directory manually.
+- Use `watchtower-core query references --query <topic>` when you want the governed reference lookup surface across shared-core and pack-owned references instead of browsing directories manually.
 - Use `watchtower-core query references --repository-status <candidate_future_guidance|supporting_authority|active_support>` when you need only the current maturity slice instead of the full corpus.
 - Treat these files as supporting lookup artifacts. Enforceable local policy still belongs in the shared and pack-owned standards roots and executable procedure still belongs in the shared or owning-pack workflow roots.
 - Use the `Current Repository Status` and `Current Touchpoints` sections inside each reference to tell whether the topic is active local support, supporting authority for an existing standard, or only candidate future guidance.
@@ -20,6 +20,7 @@
 ## Notes
 - Reference files follow the stable `<topic>_reference.md` naming pattern.
 - Prefer `watchtower-core query references` when you know the topic but not the exact filename.
+- Keep shared or cross-pack mappings here. Put pack-applied operator mappings under the owning pack `docs/references/` root even when the upstream topic already exists here.
 - Keep this README focused on orientation. Topic details belong in the individual reference files.
 
 ## Files

@@ -3,6 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from shutil import copytree
+from types import SimpleNamespace
+
+import pytest
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
@@ -10,7 +13,9 @@ from tests.pack_fixture_support import (
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.validation import ValidationSuiteService
+from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_host.cli.main import main
 
 REHOSTED_PACK_SLUG = "rehosted"
@@ -21,6 +26,96 @@ REHOSTED_INTEGRATION_MODULE = "watchtower_rehosted_fixture.integration"
 
 def _expected_cli_exit(payload: dict[str, object]) -> int:
     return 0 if bool(payload.get("passed")) else 1
+
+
+def _make_validation_all_result(*, included_families: tuple[str, ...]) -> SimpleNamespace:
+    family_targets = {
+        "pack_contract": "plan/.wt/manifests/pack_settings.json",
+        "front_matter": "core/docs/references/adr_guidance_reference.md",
+        "document_semantics": "core/workflows/modules/code_validation.md",
+        "artifacts": "core/control_plane/registries/schema_catalog.json",
+        "acceptance": "trace.governed_acceptance_example",
+    }
+    records = []
+    summaries = []
+    for family in included_families:
+        result = SimpleNamespace(
+            validator_id=f"validator.{family}",
+            target_path=family_targets[family],
+            engine="python",
+            schema_ids=(),
+            passed=True,
+            issues=(),
+        )
+        records.append(
+            SimpleNamespace(
+                family=family,
+                target=family_targets[family],
+                result=result,
+                issue_count=0,
+            )
+        )
+        summaries.append(
+            SimpleNamespace(
+                family=family,
+                total_count=1,
+                passed_count=1,
+                failed_count=0,
+            )
+        )
+
+    return SimpleNamespace(
+        passed=True,
+        total_count=len(records),
+        passed_count=len(records),
+        failed_count=0,
+        included_families=included_families,
+        family_summaries=tuple(summaries),
+        records=tuple(records),
+    )
+
+
+def _make_validation_suite_result(*, suite_id: str, pack_settings_path: str) -> SimpleNamespace:
+    step_kinds = ("front_matter", "document_semantics", "artifact")
+    summaries = []
+    records = []
+    for step_kind in step_kinds:
+        summaries.append(
+            SimpleNamespace(
+                step_id=f"step.fake.{step_kind}",
+                step_kind=step_kind,
+                total_count=1,
+                passed_count=1,
+                failed_count=0,
+            )
+        )
+        records.append(
+            SimpleNamespace(
+                step_id=f"step.fake.{step_kind}",
+                step_kind=step_kind,
+                target=f"fake.{step_kind}",
+                issue_count=0,
+                result=SimpleNamespace(
+                    validator_id=f"validator.fake.{step_kind}",
+                    target_path=f"fake/{step_kind}.json",
+                    engine="python",
+                    schema_ids=(),
+                    passed=True,
+                    issues=(),
+                ),
+            )
+        )
+
+    return SimpleNamespace(
+        suite_id=suite_id,
+        pack_settings_path=pack_settings_path,
+        passed=True,
+        total_count=len(records),
+        passed_count=len(records),
+        failed_count=0,
+        step_summaries=tuple(summaries),
+        records=tuple(records),
+    )
 
 
 def _materialize_unbootstrapped_rehosted_root_pack(repo_root: Path) -> dict[str, str]:
@@ -448,7 +543,19 @@ def test_validate_acceptance_supports_json_output(capsys) -> None:
     assert payload["validator_id"] == "validator.trace.acceptance_reconciliation"
 
 
-def test_validate_all_supports_json_output_when_acceptance_is_skipped(capsys) -> None:
+def test_validate_all_supports_json_output_when_acceptance_is_skipped(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    monkeypatch.setattr(
+        ValidationAllService,
+        "run",
+        lambda self, *, included_families=None: _make_validation_all_result(
+            included_families=included_families
+            or tuple(family for family in VALIDATION_ALL_FAMILIES if family != "acceptance")
+        ),
+    )
+
     result = main(["validate", "all", "--skip-acceptance", "--format", "json"])
 
     captured = capsys.readouterr()
@@ -468,7 +575,18 @@ def test_validate_all_supports_json_output_when_acceptance_is_skipped(capsys) ->
     assert any(summary["family"] == "artifacts" for summary in payload["family_summaries"])
 
 
-def test_validate_all_supports_json_output(capsys) -> None:
+def test_validate_all_supports_json_output(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    monkeypatch.setattr(
+        ValidationAllService,
+        "run",
+        lambda self, *, included_families=None: _make_validation_all_result(
+            included_families=included_families or VALIDATION_ALL_FAMILIES
+        ),
+    )
+
     result = main(["validate", "all", "--format", "json"])
 
     captured = capsys.readouterr()
@@ -1007,8 +1125,20 @@ def test_validate_portability_pack_only_reports_pack_bundle_exclusions(
     }
 
 
-def test_validate_suite_supports_json_output(capsys) -> None:
+def test_validate_suite_supports_json_output(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
     suite_id = ControlPlaneLoader(REPO_ROOT).load_pack_settings().default_validation_suite_id
+
+    monkeypatch.setattr(
+        ValidationSuiteService,
+        "run",
+        lambda self, suite_id, *, pack_settings_path=None: _make_validation_suite_result(
+            suite_id=suite_id,
+            pack_settings_path=pack_settings_path or PACK_SETTINGS_PATH,
+        ),
+    )
 
     result = main(
         [

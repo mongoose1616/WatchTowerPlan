@@ -342,3 +342,82 @@ def test_reference_index_sync_tracks_role_workflow_citations(tmp_path: Path) -> 
     entry = next(item for item in document["entries"] if item["reference_id"] == "ref.example")
     assert entry["cited_by_paths"] == ["core/workflows/roles/architecture_reviewer.md"]
     assert entry["applied_by_paths"] == ["core/workflows/roles/architecture_reviewer.md"]
+
+
+def test_reference_index_sync_includes_pack_owned_reference_docs_without_self_noise(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    workflow_path = repo_root / "packs/fixture/workflows/modules/example.md"
+    _write_repo_file(
+        workflow_path,
+        dedent(
+            """\
+            # Example Workflow
+
+            ## Purpose
+            Keep one pack-owned workflow surface available for reference indexing.
+            """
+        ),
+    )
+    reference_path = repo_root / "packs/fixture/docs/references/example_reference.md"
+    reference_path.parent.mkdir(parents=True, exist_ok=True)
+    reference_path.write_text(
+        dedent(
+            """\
+            ---
+            id: "ref.pack_fixture"
+            title: "Pack Fixture Reference"
+            summary: "Exercises hosted-pack reference discovery without self-noise."
+            type: "reference"
+            status: "active"
+            tags:
+              - "reference"
+              - "fixture"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-28T23:55:00Z"
+            audience: "shared"
+            authority: "supporting"
+            applies_to:
+              - "packs/fixture/docs/references/example_reference.md"
+              - "packs/fixture/workflows/modules/example.md"
+            ---
+
+            # Pack Fixture Reference
+
+            ## Canonical Upstream
+            - [Example upstream](https://example.com/reference)
+
+            ## Quick Reference or Distilled Reference
+            One pack-owned governed reference fixture.
+
+            ## Local Mapping in This Repository
+            ### Current Repository Status
+            - Supporting authority for one pack-owned workflow surface.
+
+            ### Current Touchpoints
+            - [reference doc](/packs/fixture/docs/references/example_reference.md)
+            - [workflow](/packs/fixture/workflows/modules/example.md)
+
+            ### Why It Matters Here
+            - Keep hosted-pack reference indexing generic and deterministic.
+
+            ## References
+            - [Example upstream](https://example.com/reference)
+            - [workflow](/packs/fixture/workflows/modules/example.md)
+
+            ## Updated At
+            - `2026-03-28T23:55:00Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+    document = ReferenceIndexSyncService(loader).build_document()
+
+    entry = next(item for item in document["entries"] if item["reference_id"] == "ref.pack_fixture")
+    assert entry["doc_path"] == "packs/fixture/docs/references/example_reference.md"
+    assert entry["related_paths"] == ["packs/fixture/workflows/modules/example.md"]
+    assert "cited_by_paths" not in entry
+    assert "applied_by_paths" not in entry

@@ -1,7 +1,7 @@
 # `watchtower-core plan sync reference-index`
 
 ## Summary
-This command rebuilds the governed reference index from the authored reference documents under `core/docs/references/`.
+This command rebuilds the governed reference index from the authored reference documents under `core/docs/references/` plus any admitted owning-pack `docs/references/` roots.
 
 ## Use When
 - You added, renamed, or materially updated a reference document.
@@ -47,6 +47,7 @@ uv run watchtower-core plan sync reference-index --output /tmp/reference_index.j
 
 ## Behavior and Outputs
 - The command rebuilds the reference index from governed reference docs and validates the generated artifact against its published schema.
+- Governed reference docs may live in the shared root or in an owning pack root when the reference is intentionally pack-applied.
 - By default the command runs in dry-run mode and reports the rebuilt entry count without mutating the repository.
 - In write mode, the command updates the canonical reference-index artifact or the requested alternate output path.
 - If the authored reference docs are structurally invalid, the command exits with an error instead of writing a broken artifact.
@@ -64,4 +65,4 @@ uv run watchtower-core plan sync reference-index --output /tmp/reference_index.j
 - `core/control_plane/indexes/references/reference_index.json`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-28T20:00:00Z`

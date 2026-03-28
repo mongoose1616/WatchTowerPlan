@@ -141,6 +141,8 @@ def _surface_kind(
             return "workflow_role" if kind == "file" else "workflow_family"
         if _path_matches_root(relative_path, pack_command_docs_root(docs_root=roots.docs_root)):
             return "command_doc" if kind == "file" else "command_docs"
+        if _path_matches_root(relative_path, f"{roots.docs_root}/references"):
+            return "reference_doc" if kind == "file" else "reference"
         if _path_matches_root(relative_path, f"{roots.docs_root}/standards"):
             return "standard_doc" if kind == "file" else "standards"
         if _path_matches_root(relative_path, roots.docs_root):

@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:30:00Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -60,9 +60,10 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Use retrieval-oriented metadata when it materially improves ranking or disambiguation instead of forcing the retriever to infer everything from prose.
 - `authority` should indicate whether a document is the source of truth, a supporting explanation, a reference, or historical context.
 - `applies_to` should list the concrete repository surfaces or concepts the document governs or explains.
+- `applies_to` should not list the document's own file path; that path is already represented by the document location and companion indexes.
 - When `applies_to` uses repository paths, exact files should use canonical repo-relative file paths with no trailing slash and directories should use canonical repo-relative directory paths ending in `/`.
 - `aliases` should capture important alternate phrasings, abbreviations, or synonymous terms that users and agents are likely to search for.
-- `core/docs/references/**` documents that use repository-governed reference structure should include front matter and validate against the reference profile.
+- Shared and pack-owned reference roots such as `core/docs/references/**` and `<pack>/docs/references/**` should include front matter and validate against the reference profile when they use the repository-governed reference structure.
 - the shared and pack-owned standards roots standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
 - `core/docs/foundations/**` and mirrored hosted-pack foundation roots such as `<pack>/docs/foundations/**` should include front matter and validate against the foundation profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
 - `core/docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
@@ -92,7 +93,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 ### Current profile rules
 | Document Family | Front Matter Rule | Validation Profile |
 |---|---|---|
-| `core/docs/references/**` | Required for governed reference docs | `reference_front_matter.schema.json` |
+| shared and pack-owned reference roots such as `core/docs/references/**` and `<pack>/docs/references/**` | Required for governed reference docs | `reference_front_matter.schema.json` |
 | the shared and pack-owned standards roots | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.schema.json` |
 | `core/docs/foundations/**` and mirrored hosted-pack foundation roots such as `<pack>/docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.schema.json` |
 | `core/docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
@@ -120,7 +121,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 5. Validate the parsed metadata object before treating the document change as complete.
 
 ## Examples
-- A long-lived reference under `core/docs/references/**` should use the reference front matter profile.
+- A long-lived reference under `core/docs/references/**` or an owning pack `docs/references/**` root should use the reference front matter profile.
 - A standard under the shared and pack-owned standards roots should use the standard front matter profile.
 - A mirrored foundation document under `core/docs/foundations/**` and the corresponding hosted-pack mirror root such as `<pack>/docs/foundations/**` should use the foundation front matter profile and stay byte-identical across both roots.
 - A command page under `core/docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
@@ -160,4 +161,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `core/docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-24T22:30:00Z`
+- `2026-03-28T23:55:00Z`

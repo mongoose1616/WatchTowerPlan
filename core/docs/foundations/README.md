@@ -1,7 +1,7 @@
 # `foundations`
 
 ## Description
-`This directory contains the shared foundations corpus for the repository. core/docs/foundations/ is the authored source and plan/docs/foundations/ is the required byte-identical mirror. Update the authored copy in core and refresh the mirror in the same change set.`
+`This directory contains the shared foundations corpus for the repository. core/docs/foundations/ is the authored source and plan/docs/foundations/ is the required byte-identical mirror. Update the authored copy in core and refresh the mirror in the same change set. If a downstream working repository edits the shared-core copy, reconcile the same bytes back into WatchTowerPlan/core/docs/foundations/ and WatchTowerPlan/plan/docs/foundations/ before treating the work as complete.`
 
 ## Audience Routes
 
@@ -39,6 +39,7 @@
 
 - `core/docs/foundations/` is the authored source.
 - `plan/docs/foundations/` must remain byte-identical to the authored source.
+- Downstream working copies of shared core must sync edited foundation files back into `WatchTowerPlan/core/docs/foundations/` and refresh `WatchTowerPlan/plan/docs/foundations/` in the same workstream.
 - `docs/foundations/` is retired and must not be recreated as a third foundations family.
 
 ## Paths

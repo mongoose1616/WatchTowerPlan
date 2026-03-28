@@ -32,8 +32,15 @@ def format_error_location(error: ValidationError) -> str | None:
 def matches_applies_to(relative_path: str, pattern: str) -> bool:
     """Return whether a repository-relative path matches a validator applies_to pattern."""
     if pattern.endswith("/**"):
-        prefix = pattern[:-3]
-        return relative_path == prefix.rstrip("/") or relative_path.startswith(prefix)
+        prefix = pattern[:-3].rstrip("/")
+        if any(token in prefix for token in "*?[]"):
+            path = PurePosixPath(relative_path)
+            candidates = (path, *path.parents)
+            return any(
+                str(candidate) != "." and PurePosixPath(candidate).match(prefix)
+                for candidate in candidates
+            )
+        return relative_path == prefix or relative_path.startswith(f"{prefix}/")
     return PurePosixPath(relative_path).match(pattern)
 
 

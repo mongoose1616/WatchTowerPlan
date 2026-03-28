@@ -9,7 +9,7 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:55:00Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -56,6 +56,7 @@ This document is authoritative for current repository ownership. It does not rep
 - The live plan-domain workspace under `plan/`, including `plan/.wt/`, pack-wide initiatives, project-scoped initiatives, and plan-domain workflow surfaces.
 - The first internal hosted-pack runtime under `plan/python/src/watchtower_plan/`, installed through the shared workspace contract.
 - The authored shared foundations under `core/docs/foundations/` and the required mirrored copy under `plan/docs/foundations/`.
+- The shared external reference corpus under `core/docs/references/` when the reference supports reusable-core behavior, shared standards, or multiple hosted packs.
 - Repository-native workflow routing, execution modules, standards, references, templates, and plan-facing rendered surfaces.
 - Machine-readable authority for schemas, startup manifests, registries, contracts, indexes, supporting fixtures, and retained validation or purge records.
 - Export-ready reusable runtime behavior, host composition, and the first internal pack runtime behind the shared workspace contract.
@@ -87,12 +88,15 @@ This document is authoritative for current repository ownership. It does not rep
 ## Boundaries That Must Hold
 
 - Root entrypoints remain routers, not large repository handbooks.
-- Shared core surfaces stay domain-agnostic.
+- Shared core stays reusable and donor-neutral instead of becoming the default home for pack-local procedure, terminology, or operator framing.
+- Shared core may host cross-pack external references when they support shared functions, shared standards, or multiple hosted packs.
+- Pack-owned docs, workflows, standards, and references own pack-applied operator framing, pack-local touchpoints, and domain-native mappings. Packs may intentionally duplicate a topic already present in `core/docs/references/**` when the pack-local purpose or touchpoints differ materially.
 - Host composition stays in `watchtower_host`, and pack-native orchestration stays in `watchtower_<pack>` packages.
 - Shared core policy and docs must not assume that consuming repositories retain the current internal `plan/` pack or any other donor-specific pack set.
 - Portable customer/bootstrap handoff is an allowlisted source transfer, not a raw repository snapshot. Retained records, test fixtures, and donor-local plan history stay repo-local unless a release contract explicitly selects them.
 - Live plan execution state stays under `plan/**`, not under documentation roots.
 - Shared foundations are authored in `core/docs/foundations/` and mirrored into `plan/docs/foundations/`.
+- `WatchTowerPlan/core/` remains the canonical authored shared-core source. When a downstream working repository edits `core/**`, the same change must be reconciled back into `WatchTowerPlan/core/**` in the same workstream, and any foundations change must also refresh `WatchTowerPlan/plan/docs/foundations/**` before the work is considered complete.
 - Future product narrative can guide planning, but it must not quietly redefine current repo scope.
 - Repo-specific behavior stays explicit instead of leaking into reusable surfaces.
 
@@ -101,4 +105,4 @@ This document is authoritative for current repository ownership. It does not rep
 - [product_direction.md](product_direction.md)
 
 ## Updated At
-- `2026-03-24T22:55:00Z`
+- `2026-03-28T23:55:00Z`

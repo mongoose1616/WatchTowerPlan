@@ -402,7 +402,9 @@
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "core/docs/references/**"
+        "core/docs/references/**",
+        "*/docs/references/**",
+        "packs/*/docs/references/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
@@ -450,7 +452,9 @@
       "engine": "json_schema",
       "artifact_kind": "documentation_front_matter",
       "applies_to": [
-        "core/docs/references/**"
+        "core/docs/references/**",
+        "*/docs/references/**",
+        "packs/*/docs/references/**"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"

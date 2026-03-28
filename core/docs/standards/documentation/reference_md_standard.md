@@ -1,7 +1,7 @@
 ---
 id: "std.documentation.reference_md"
 title: "Reference Document Standard"
-summary: "This standard defines the role, structure, and quality expectations for reference documents, especially external reference documents under `core/docs/references/**`."
+summary: "This standard defines the role, structure, and quality expectations for reference documents, especially governed external reference documents under shared and pack-owned references roots."
 type: "standard"
 status: "active"
 tags:
@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-27T15:00:00Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -17,14 +17,15 @@ authority: "authoritative"
 # Reference Document Standard
 
 ## Summary
-This standard defines the role, structure, and quality expectations for reference documents, especially external reference documents under `core/docs/references/**`.
+This standard defines the role, structure, and quality expectations for reference documents, especially governed external reference documents under shared and pack-owned references roots.
 
 ## Purpose
 Keep reference documents focused on durable lookup content by separating reader-facing reference material from authoring workflows, lifecycle checks, and broader process guidance.
 
 ## Scope
 - Applies to reference documents in this repository, especially governed
-  external reference documents under `core/docs/references/**`.
+  external reference documents under `core/docs/references/**` and owning-pack
+  references roots such as `<pack>/docs/references/**`.
 - Covers what belongs in a reference document, what should stay optional, and what should be enforced by workflows or standards instead of the document body.
 - Does not define the full authoring workflow for all documentation types.
 
@@ -46,17 +47,21 @@ Keep reference documents focused on durable lookup content by separating reader-
 - A reference document should optimize for fast lookup, stable terminology, and clear local application.
 - A reference document should cover one succinct standard, framework, format, specification, or working model.
 - Use the reference template when creating new reference documents.
-- When external published guidance materially shapes repository standards or design documents, prefer distilling it into `core/docs/references/**` and citing the local reference doc as the repo-native lookup surface rather than scattering raw vendor URLs across multiple docs.
-- Governed reference docs under `core/docs/references/**` must include
+- When external published guidance materially shapes repository standards or design documents, prefer distilling it into `core/docs/references/**` when the reference is shared or cross-pack, or into the owning pack's `docs/references/**` root when the value is pack-applied.
+- Shared core may host cross-pack external references, including domain-specific topics, when they support reusable-core behavior, shared standards, or multiple hosted packs.
+- Owning packs may intentionally duplicate a topic already present in `core/docs/references/**` when the pack-local operator mapping, touchpoints, or enforcement surface differ materially.
+- Governed reference docs under shared or pack-owned references roots must include
   `Canonical Upstream` and publish at least one authoritative external source
   URL.
 - Repo-native-only lookup content that has no canonical upstream authority
-  should live in another governed document family instead of `core/docs/references/**`.
-- Governed reference docs under `core/docs/references/**` must include `Local Mapping in This Repository`.
+  should live in another governed document family instead of the governed
+  references family.
+- Governed reference docs under shared or pack-owned references roots must include `Local Mapping in This Repository`.
 - `Local Mapping in This Repository` must include `Current Repository Status`.
 - `Current Repository Status` must start with one of the approved maturity phrases: `Candidate reference.`, `Supporting authority`, or `Active support`.
 - When a reference distills outside authority, keep observed source facts, local interpretation, and normative repository policy visibly distinct instead of blending them into one ambiguous summary.
 - Use `Current Touchpoints` for real current repo-local files or directories that the reference supports today.
+- Do not list the reference document's own path in `applies_to` or `Current Touchpoints`; the reference index already records `doc_path`.
 - If the reference is current supporting authority or active support, `Current Touchpoints` must be present and must point to real repository surfaces.
 - Generic backlinks in `References` are navigation only; they do not count as live local touchpoints.
 - Omit generic reader-orientation sections such as `Audience` and `Use When` unless a specific reference truly needs them to avoid ambiguity.
@@ -94,13 +99,12 @@ Keep reference documents focused on durable lookup content by separating reader-
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `core/docs/references/*_reference.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `core/docs/templates/reference_template.md`
+- `Operational Surfaces`: `core/docs/references/*_reference.md`; `*/docs/references/*_reference.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `core/docs/templates/reference_template.md`
 
 ## Validation
 - The document should be easy to scan as a lookup artifact.
 - The document should stay focused on one topic and should not sprawl into a survey of loosely related subjects.
-- Governed reference docs under `core/docs/references/**` should publish canonical
-  upstream links.
+- Governed reference docs under shared or pack-owned references roots should publish canonical upstream links.
 - `Current Repository Status` should use the approved maturity vocabulary so the machine-readable reference index can classify the reference deterministically.
 - `Current Touchpoints` should point only to real repository surfaces that the reference directly supports today.
 - Reviewers should reject references whose only repo-local links are generic README backlinks in `References` rather than explicit current touchpoints.
@@ -126,4 +130,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-27T15:00:00Z`
+- `2026-03-28T23:55:00Z`

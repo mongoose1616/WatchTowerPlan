@@ -1374,7 +1374,7 @@
     {
       "command_id": "command.watchtower_core.query.references",
       "command": "watchtower-core query references",
-      "summary": "Search the governed reference index for curated internal reference documents and their upstream authority links.",
+      "summary": "Search the governed reference index for curated shared-core and pack-owned reference documents plus their upstream authority links.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",

@@ -29,6 +29,9 @@ from watchtower_core.documentation.governed_documents import (
 from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
+from watchtower_core.documentation.reference_semantics import (
+    is_governed_reference_doc_path,
+)
 from watchtower_core.sync.path_support import existing_paths
 from watchtower_core.sync.reference_index import iter_citation_audit_documents
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
@@ -142,7 +145,11 @@ class FoundationIndexSyncService:
             reference_doc_paths = tuple(
                 value
                 for value in internal_reference_paths
-                if value.startswith("core/docs/references/")
+                if is_governed_reference_doc_path(
+                    value,
+                    self._repo_root,
+                    loader=self._loader,
+                )
             )
             direct_external_urls = ordered_unique(extract_external_urls(sections["References"]))
             transitive_external_urls = ordered_unique(

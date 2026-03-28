@@ -87,14 +87,21 @@ def _paths_for_pattern(
     default_extension: str,
 ) -> tuple[str, ...]:
     if pattern.endswith("/**"):
-        suffix = Path(pattern.removesuffix("/**")).suffix.casefold()
-        extension = suffix or default_extension
         relative_root = pattern.removesuffix("/**")
-        root = loader.resolve_path(relative_root)
-        if not root.exists():
-            return ()
+        suffix = Path(relative_root).suffix.casefold()
+        extension = suffix or default_extension
+        if any(token in relative_root for token in "*?[]"):
+            roots = tuple(
+                path for path in sorted(loader.repo_root.glob(relative_root)) if path.exists()
+            )
+        else:
+            root = loader.resolve_path(relative_root)
+            if not root.exists():
+                return ()
+            roots = (root,)
         return tuple(
             loader.workspace_config.logical_path_for(path)
+            for root in roots
             for path in sorted(root.rglob(f"*{extension}"))
             if path.is_file()
         )

@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "ptes"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -57,7 +57,7 @@ Provide a lifecycle model for penetration-testing planning, execution, and repor
 - Candidate reference. No active standard or workflow in this repository links this file directly yet.
 
 ### Why It Matters Here
-- Use this reference if offensive-security planning or domain-pack standards need a pentest lifecycle baseline.
+- Use this reference if a hosted pack or future methodology standard needs a security-testing lifecycle baseline.
 - Pair it with OWASP WSTG, CVSS, and reporting standards when formalizing pentest deliverables.
 
 ### If Local Policy Tightens
@@ -73,4 +73,4 @@ Provide a lifecycle model for penetration-testing planning, execution, and repor
 - If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-28T23:55:00Z`

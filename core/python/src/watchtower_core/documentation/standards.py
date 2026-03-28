@@ -14,12 +14,16 @@ from watchtower_core.adapters import (
     normalize_repo_path_reference,
     split_semicolon_list,
 )
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.operationalization_paths import (
     expand_pack_placeholder_operationalization_paths,
     operationalization_path_has_pack_placeholder,
     operationalization_path_is_glob,
 )
 from watchtower_core.documentation.governed_documents import ordered_unique
+from watchtower_core.documentation.reference_semantics import (
+    is_governed_reference_doc_path,
+)
 
 STANDARD_OPERATIONALIZATION_SECTION = "Operationalization"
 STANDARD_OPERATIONALIZATION_MODES_LABEL = "Modes"
@@ -73,6 +77,7 @@ def collect_standard_reference_metadata(
     source_path: Path,
     related_section: str,
     references_section: str,
+    loader: ControlPlaneLoader | None = None,
     reference_urls_by_path: Mapping[str, tuple[str, ...]] | None = None,
 ) -> StandardReferenceMetadata:
     """Collect reference-accounting metadata for one standard document."""
@@ -92,10 +97,14 @@ def collect_standard_reference_metadata(
         ),
     )
     reference_doc_paths = tuple(
-        value for value in internal_reference_paths if value.startswith("core/docs/references/")
+        value
+        for value in internal_reference_paths
+        if is_governed_reference_doc_path(value, repo_root, loader=loader)
     )
     applied_reference_doc_paths = tuple(
-        value for value in applied_reference_paths if value.startswith("core/docs/references/")
+        value
+        for value in applied_reference_paths
+        if is_governed_reference_doc_path(value, repo_root, loader=loader)
     )
 
     direct_external_urls = ordered_unique(
@@ -124,7 +133,8 @@ def collect_standard_reference_metadata(
     if direct_external_urls and not reference_doc_paths:
         raise ValueError(
             f"{relative_path} cites external authority directly but does not cite a "
-            "governed local reference doc under core/docs/references/."
+            "governed local reference doc under core/docs/references/ or an owning "
+            "pack docs/references/ root."
         )
     return StandardReferenceMetadata(
         internal_reference_paths=internal_reference_paths,

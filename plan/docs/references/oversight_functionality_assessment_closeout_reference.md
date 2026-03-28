@@ -1,16 +1,14 @@
 ---
-trace_id: trace.reference.oversight_functionality_assessment_closeout
 id: reference.oversight_functionality_assessment_closeout
 title: Oversight Functionality Assessment Closeout
 summary: Durable reference recording current WatchTowerPlan verification of the external WatchTowerOversight functionality assessment and the resulting local applicability decisions.
 type: reference
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-24T08:01:23Z'
+updated_at: '2026-03-28T23:55:00Z'
 audience: shared
 authority: reference
 applies_to:
-- plan/docs/references/oversight_functionality_assessment_closeout_reference.md
 - core/control_plane/indexes/routes/route_index.json
 - core/control_plane/indexes/workflows/workflow_index.json
 - core/python/tests/integration/test_validate_all_cli.py
@@ -26,7 +24,7 @@ tags:
 - validation
 ---
 
-# Subject Summary
+# Oversight Functionality Assessment Closeout
 
 This reference records how the external
 `WatchTowerOversight/oversight/assessments/watchtoweroversight_functionality_assessment.md`
@@ -36,7 +34,20 @@ maps to the current WatchTowerPlan repository after fresh local verification on
 Use it to separate recipient-host functionality findings for
 `WatchTowerOversight` from actual current issues in `WatchTowerPlan`.
 
-## Current Verification Snapshot
+## Canonical Upstream
+
+- [WatchTowerOversight functionality assessment](https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtoweroversight_functionality_assessment.md)
+
+## Quick Reference or Distilled Reference
+
+- The upstream assessment records recipient-host execution state in
+  `WatchTowerOversight`; this closeout records whether those findings reproduce
+  in the current `WatchTowerPlan` source repository.
+- The local answer is that the cited routing and validation concerns do not
+  currently reproduce here and should not be treated as open source-repository
+  defects without fresh local evidence.
+
+### Current Verification Snapshot
 
 - `watchtower-core pack list --format json` returned exactly one hosted pack:
   `pack.plan`, with `default_repo_pack=true`.
@@ -55,7 +66,7 @@ Use it to separate recipient-host functionality findings for
   - `tests/unit/test_cli_route_and_path_commands.py`
   - `tests/unit/test_workflow_execution_harness.py`
 
-## Findings Matrix
+### Findings Matrix
 
 - `1`: Not applicable now. The cited `8` document-semantics failures are stale
   in WatchTowerPlan; `watchtower-core validate all --format json` passed on
@@ -70,7 +81,24 @@ Use it to separate recipient-host functionality findings for
   not reproduce here; the referenced validation CLI, route preview, and
   workflow execution tests currently pass on the live repository baseline.
 
-## Recommendation And Contract Applicability
+## Local Mapping in This Repository
+
+### Current Repository Status
+
+- Supporting authority for current repository routing, validation, and
+  recipient-host applicability decisions in `WatchTowerPlan`.
+
+### Current Touchpoints
+
+- `core/control_plane/indexes/routes/route_index.json`
+- `core/control_plane/indexes/workflows/workflow_index.json`
+- `core/python/tests/integration/test_validate_all_cli.py`
+- `core/python/tests/unit/test_cli_validate_commands.py`
+- `core/python/tests/unit/test_cli_route_and_path_commands.py`
+- `core/python/tests/unit/test_workflow_execution_harness.py`
+- `plan/.wt/manifests/pack_settings.json`
+
+### Why It Matters Here
 
 - The report's pack-load and post-load fix sequence is recipient-host guidance
   for `WatchTowerOversight` after loading `oversight` into shared authority.
@@ -81,7 +109,7 @@ Use it to separate recipient-host functionality findings for
   behavior alone is not evidence of a current repository defect because the
   local route-preview tests for supported routed prompts still pass.
 
-## Additional Review Items
+### If Local Policy Tightens
 
 - The report's `uv` availability note is not a WatchTowerPlan repository defect.
   It describes host tooling availability in the external recipient checkout.
@@ -89,15 +117,11 @@ Use it to separate recipient-host functionality findings for
   as recipient-host state changes, not as a statement that WatchTowerPlan must
   expose or load `oversight`.
 
-## Related Surfaces
+## References
 
-- `plan/docs/references/oversight_functionality_assessment_closeout_reference.md`
+- [WatchTowerOversight functionality assessment](https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtoweroversight_functionality_assessment.md)
 - `core/control_plane/indexes/routes/route_index.json`
 - `core/control_plane/indexes/workflows/workflow_index.json`
-- `core/python/tests/integration/test_validate_all_cli.py`
-- `core/python/tests/unit/test_cli_validate_commands.py`
-- `core/python/tests/unit/test_cli_route_and_path_commands.py`
-- `core/python/tests/unit/test_workflow_execution_harness.py`
 - `plan/.wt/manifests/pack_settings.json`
 
 ## Notes
@@ -108,3 +132,7 @@ Use it to separate recipient-host functionality findings for
 - No new source-level code, configuration, or test fix was required in
   WatchTowerPlan for this review pass because the report's remaining findings do
   not reproduce here.
+
+## Updated At
+
+- `2026-03-28T23:55:00Z`

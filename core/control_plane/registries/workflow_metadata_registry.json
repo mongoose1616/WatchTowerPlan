@@ -610,6 +610,27 @@
       ]
     },
     {
+      "workflow_id": "workflow.test_suite_optimization",
+      "phase_type": "execution",
+      "task_family": "engineering_validation",
+      "primary_risks": [
+        "false_confidence",
+        "stale_coverage"
+      ],
+      "extra_trigger_tags": [
+        "test",
+        "runtime",
+        "performance",
+        "optimize",
+        "cleanup"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_implementation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.traceability_reconciliation",
       "phase_type": "reconciliation",
       "task_family": "traceability",

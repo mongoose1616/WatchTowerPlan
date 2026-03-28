@@ -84,6 +84,24 @@ def pack_standard_doc_roots(
     )
 
 
+def pack_reference_doc_roots(
+    repo_root: Path,
+    *,
+    loader: ControlPlaneLoader | None = None,
+) -> tuple[str, ...]:
+    """Return hosted-pack reference document roots, excluding reusable core."""
+
+    declared_roots = tuple(
+        f"{roots.docs_root}/references"
+        for roots in discover_pack_workspace_roots(repo_root, loader=loader)
+    )
+    return _ordered_existing_paths(
+        repo_root,
+        (*declared_roots, *_conventional_relative_paths(repo_root, "docs/references")),
+        exclude={"core/docs/references"},
+    )
+
+
 def pack_workflow_module_roots(
     repo_root: Path,
     *,
@@ -141,6 +159,35 @@ def pack_routing_table_paths(
     )
 
 
+def pack_workflow_root_slug_map(
+    repo_root: Path,
+    *,
+    loader: ControlPlaneLoader | None = None,
+) -> dict[str, str]:
+    """Return pack workflow roots mapped to their hosted-pack slug."""
+
+    effective_loader: ControlPlaneLoader | None = loader
+    if effective_loader is None or effective_loader.repo_root != repo_root:
+        try:
+            effective_loader = ControlPlaneLoader(repo_root)
+        except RepoRootNotFoundError:
+            effective_loader = None
+    if effective_loader is None:
+        return {}
+
+    root_slug_map: dict[str, str] = {}
+    for settings_path in discover_pack_settings_paths(repo_root):
+        try:
+            pack_settings = effective_loader.load_pack_settings(settings_path)
+        except Exception:
+            continue
+        pack_slug = _pack_slug_from_pack_id(pack_settings.pack_id)
+        workflows_root = pack_settings.workspace_roots.workflows_root
+        root_slug_map[f"{workflows_root}/modules"] = pack_slug
+        root_slug_map[f"{workflows_root}/roles"] = pack_slug
+    return root_slug_map
+
+
 def _conventional_relative_paths(repo_root: Path, suffix: str) -> tuple[str, ...]:
     matches: list[str] = []
     for pattern in (f"*/{suffix}", f"packs/*/{suffix}"):
@@ -168,10 +215,18 @@ def _ordered_existing_paths(
     return tuple(retained)
 
 
+def _pack_slug_from_pack_id(pack_id: str) -> str:
+    if pack_id.startswith("pack.") and len(pack_id) > len("pack."):
+        return pack_id.split(".", 1)[1]
+    return pack_id.replace(".", "_")
+
+
 __all__ = [
     "discover_pack_workspace_roots",
+    "pack_reference_doc_roots",
     "pack_routing_table_paths",
     "pack_standard_doc_roots",
+    "pack_workflow_root_slug_map",
     "pack_workflow_module_roots",
     "pack_workflow_role_roots",
 ]

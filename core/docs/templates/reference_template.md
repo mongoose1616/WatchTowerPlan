@@ -11,7 +11,8 @@ updated_at: "YYYY-MM-DDTHH:MM:SSZ"
 audience: "shared"
 authority: "reference"
 applies_to:
-  - "core/docs/references/<reference_file>.md"
+  - "core/python/"
+  - "core/docs/standards/"
 aliases:
   - "alternate_term"
 ---
@@ -20,11 +21,12 @@ aliases:
 
 > Use this template for repository reference documents that summarize a standard, framework, format, taxonomy, or working model.
 > Write the document as native guidance for this repository.
-> Governed references under `core/docs/references/**` should keep the front matter block and align it with [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md) and the reference front matter profile.
+> Governed references under `core/docs/references/**` or an owning pack `docs/references/**` root should keep the front matter block and align it with [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md) and the reference front matter profile.
+> `applies_to` should name the repository surfaces or stable concepts the reference explains, not the reference document's own path.
 > When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
 > Prefer repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
-> Governed references under `core/docs/references/**` must include `## Canonical Upstream` and publish at least one official documentation, standards-body, vendor, RFC, or similar authoritative URL.
-> If the topic has no canonical upstream authority, it does not belong in the governed `core/docs/references/**` family and should be authored in a more appropriate repo-native document family instead.
+> Governed references under shared or pack-owned references roots must include `## Canonical Upstream` and publish at least one official documentation, standards-body, vendor, RFC, or similar authoritative URL.
+> If the topic has no canonical upstream authority, it does not belong in the governed references family and should be authored in a more appropriate repo-native document family instead.
 > Keep the document focused on durable lookup content. Reference lifecycle checks belong in the documentation-generation and documentation-refresh workflows rather than in each reference file.
 > Authoring and review checklists belong in documentation workflows and standards, not in the reference document itself.
 > Make `## Quick Reference or Distilled Reference` the main value of the document, not a thin preface to the upstream links.
@@ -50,7 +52,7 @@ aliases:
 - <Official URL, standard, RFC, vendor doc, or spec page.>
 - <Optional internal authority doc if one exists.>
 
-<Keep this section in governed reference docs under `core/docs/references/**`. Publish the authoritative upstream URLs that justify the local reference.>
+<Keep this section in governed reference docs under `core/docs/references/**` or an owning pack `docs/references/**` root. Publish the authoritative upstream URLs that justify the local reference.>
 
 ## Related Standards and Sources
 - <Related internal standard, template, workflow, or companion reference.>
@@ -88,6 +90,7 @@ aliases:
 
 ### Current Touchpoints
 - <Link the actual current repository files or directories that this reference directly supports today.>
+- <Do not list the reference document's own path here.>
 - <Omit this subsection only when the reference is still candidate future guidance with no active local touchpoints.>
 
 ### Why It Matters Here

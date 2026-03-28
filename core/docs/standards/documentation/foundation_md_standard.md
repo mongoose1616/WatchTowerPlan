@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "foundation_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T23:43:00Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -44,7 +44,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - Keep front-matter `audience` accurate so intent-layer retrieval can route human and agent readers effectively.
 - Keep each foundation document centered on one primary intent surface, such as product shape, design philosophy, standards posture, or technology direction.
 - Keep foundation docs durable and repo-native. They should explain current repository intent, not historical lineage.
-- When external guidance materially shapes a foundation doc, prefer citing a governed local reference under `core/docs/references/**` instead of only raw external URLs.
+- When external guidance materially shapes a foundation doc, prefer citing a governed local reference instead of only raw external URLs.
 - Publish a `References` section so internal and external source use remains explicit.
 - Publish an `Updated At` section and keep it aligned with front matter `updated_at`.
 - Operationalization for this standard should publish only governed foundation
@@ -93,4 +93,4 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - [README.md](/core/docs/foundations/README.md)
 
 ## Updated At
-- `2026-03-12T23:43:00Z`
+- `2026-03-28T23:55:00Z`

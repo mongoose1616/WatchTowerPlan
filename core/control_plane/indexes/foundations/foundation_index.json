@@ -54,6 +54,7 @@
         "plan/docs/standards/"
       ],
       "cited_by_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/standards/documentation/foundation_md_standard.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
@@ -214,7 +215,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-24T22:55:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -252,7 +253,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-24T22:55:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -267,8 +268,10 @@
         "plan/python/src/watchtower_plan/"
       ],
       "cited_by_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/standards/engineering/repository_portability_standard.md",
-        "core/workflows/modules/foundations_context_review.md"
+        "core/workflows/modules/foundations_context_review.md",
+        "plan/docs/references/core_swap_integration_assessment_closeout_reference.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/engineering/repository_portability_standard.md",

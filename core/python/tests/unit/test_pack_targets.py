@@ -61,6 +61,17 @@ def test_document_semantics_targets_include_command_docs(tmp_path: Path) -> None
     assert "core/docs/commands/core_python/watchtower_core_validate_portability.md" in targets
 
 
+def test_markdown_targets_include_pack_owned_reference_docs(tmp_path: Path) -> None:
+    context, _ = _pack_validation_context(tmp_path)
+    relative_path = "packs/targets/docs/references/example_reference.md"
+    target_path = context.loader.resolve_path(relative_path)
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    target_path.write_text("# Placeholder\n", encoding="utf-8")
+
+    assert relative_path in front_matter_targets(context)
+    assert relative_path in document_semantics_targets(context)
+
+
 def test_artifact_targets_exclude_schema_definitions_and_keep_artifacts(
     tmp_path: Path,
 ) -> None:

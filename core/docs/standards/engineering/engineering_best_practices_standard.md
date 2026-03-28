@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:30:00Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -56,7 +56,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - Keep query helpers read-oriented and side-effect free. Keep derived-artifact rebuild or materialization logic in dedicated `sync/` surfaces.
 - Update human-readable and machine-readable companion surfaces in the same change set when one depends on the other. Examples include docs plus indexes, command pages plus command-index entries, and schemas plus examples and catalog records.
 - Reuse shared schema fragments, typed models, and existing governed IDs instead of duplicating field rules across surfaces.
-- When external guidance materially shapes repository policy or design, distill it into `core/docs/references/**` and have standards or designs cite the local reference doc in addition to, or instead of, raw vendor URLs.
+- When external guidance materially shapes repository policy or design, distill it into a governed shared or owning-pack references root based on ownership and have standards or designs cite the local reference doc in addition to, or instead of, raw vendor URLs.
 - When governing standards or references materially constrain one change, keep the resulting task, design, validation, or handoff surfaces explicit enough that a reviewer can tell which documents were followed without reverse-engineering the decision from code alone.
 - Use UTC timestamps with the canonical repository field names `updated_at`, `recorded_at`, and later `generated_at` when applicable.
 - Prefer deletion over indefinite deprecation when an obsolete artifact no longer needs to remain present.
@@ -114,4 +114,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-24T22:30:00Z`
+- `2026-03-28T23:55:00Z`

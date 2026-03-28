@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "reference_distillation"
 owner: "repository_maintainer"
-updated_at: "2026-03-27T15:00:00Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,7 +53,9 @@ This standard defines how externally published source material is distilled into
   - external source facts or rules
   - local interpretation or mapping
   - normative repository policy
-- Keep supporting lookup content in `core/docs/references/**` or the owning pack's references root when the output is mainly a reusable working reference.
+- Keep supporting lookup content in `core/docs/references/**` when the output is shared or cross-pack, or in the owning pack's references root when the output is pack-applied.
+- Shared core may retain external reference topics when they support reusable-core behavior or multiple hosted packs.
+- Owning packs may intentionally publish the same upstream topic as a pack-owned reference when the local operator mapping, touchpoints, or enforcement posture differ materially from the shared-core reference.
 - Make the distilled reference operationally sufficient for repeated repository use. Future readers should not need to reopen the upstream source for every common question or basic decision.
 - Do not collapse a local reference into a bibliography or link index. A distilled reference should carry concrete working content, not just source attribution.
 - Move normative repository rules into `core/docs/standards/**` or the owning pack's `docs/standards/**` when the repository is adopting, narrowing, or enforcing the distilled guidance as local policy.
@@ -110,4 +112,4 @@ This standard defines how externally published source material is distilled into
 - A good distillation reduces repeat research while keeping the reader one step away from the canonical upstream source when deeper detail is needed.
 
 ## Updated At
-- `2026-03-27T15:00:00Z`
+- `2026-03-28T23:55:00Z`

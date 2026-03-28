@@ -1,24 +1,24 @@
 ---
 id: "ref.mitre_attack"
 title: "MITRE ATT&CK Reference"
-summary: "This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for offensive-security knowledge."
+summary: "This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for threat-behavior mapping."
 type: "reference"
 status: "active"
 tags:
   - "reference"
   - "mitre_attack"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-28T23:55:00Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # MITRE ATT&CK Reference
 ## Summary
-This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for offensive-security knowledge.
+This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for threat-behavior mapping.
 
 ## Purpose
-Provide a shared vocabulary for structuring offensive-security techniques, mappings, and reusable knowledge.
+Provide a shared vocabulary for structuring threat-behavior mappings, detections, and reusable knowledge.
 
 ## Scope
 - Covers MITRE ATT&CK as a knowledge and classification framework.
@@ -54,7 +54,7 @@ Provide a shared vocabulary for structuring offensive-security techniques, mappi
 - Candidate reference. No active standard or workflow in this repository links this file directly yet.
 
 ### Why It Matters Here
-- Use this reference if domain packs or future security knowledge surfaces need tactic mapping.
+- Use this reference if hosted packs or future threat-mapping surfaces need tactic mapping.
 - Pair it with domain-specific workflows or tagging standards rather than using it as free-form decoration.
 
 ### If Local Policy Tightens
@@ -69,4 +69,4 @@ Provide a shared vocabulary for structuring offensive-security techniques, mappi
 - If this topic becomes active repository policy later, move the enforceable rule into the appropriate shared or pack-owned standards root, or the relevant workflow module.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-28T23:55:00Z`

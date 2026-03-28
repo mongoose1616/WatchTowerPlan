@@ -1,10 +1,10 @@
 # `watchtower-core query references`
 
 ## Summary
-This command searches the governed reference index so engineers and agents can find curated reference documents by topic, reference ID, repository-status maturity, local repository touchpoint, canonical upstream URL, or free-text lookup terms.
+This command searches the governed reference index so engineers and agents can find curated shared-core and pack-owned reference documents by topic, reference ID, repository-status maturity, local repository touchpoint, canonical upstream URL, or free-text lookup terms.
 
 ## Use When
-- You want to find the right reference document without browsing `core/docs/references/` manually.
+- You want to find the right reference document without browsing shared-core and pack-owned references roots manually.
 - You need to separate active-support references from supporting-authority or candidate-future guidance without scanning the whole corpus.
 - You need to know whether a reference maps to a local repo surface such as `core/python/` or one of the standards directories.
 - You want machine-readable lookup results for workflows, scripts, or agent calls.
@@ -28,7 +28,7 @@ uv run watchtower-core query references [--query <text>] [--reference-id <refere
 - `--reference-id <reference_id>`: Exact reference identifier filter such as `ref.uv`.
 - `--repository-status <status>`: Exact repository-status filter such as `supporting_authority`, `active_support`, or `candidate_future_guidance`.
 - `--tag <tag>`: Exact tag filter such as `uv` or `reference`.
-- `--related-path <path>`: Repository-path filter such as `core/python/` or `core/docs/standards/engineering/`. Directory paths ending in `/` match descendant touchpoints such as `core/python/pyproject.toml`.
+- `--related-path <path>`: Repository-path filter such as `core/python/`, `<pack>/workflows/modules/<module>.md`, or `core/docs/standards/engineering/`. Directory paths ending in `/` match descendant touchpoints such as `core/python/pyproject.toml`.
 - `--upstream-url <url>`: Exact canonical-upstream URL filter.
 - `--cited-by-path <doc_path>`: Exact governed-doc filter for documents that cite the reference.
 - `--applied-by-path <doc_path>`: Exact governed-doc filter for documents that apply the reference in an applied-reference section.
@@ -54,6 +54,11 @@ uv run watchtower-core query references --related-path core/python/ --format jso
 
 ```sh
 cd core/python
+uv run watchtower-core query references --related-path <pack>/workflows/modules/<module>.md --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core query references --upstream-url https://docs.astral.sh/uv/
 ```
 
@@ -66,6 +71,7 @@ uv run watchtower-core query references --applied-by-path <pack-root>/docs/stand
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching reference IDs, lifecycle status, repository-status maturity, titles, summaries, whether the indexed document explicitly uses internal or external references, and whether the reference is currently cited or applied elsewhere.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, result records, the derived `repository_status` field, and reverse-citation fields such as `cited_by_paths` and `applied_by_paths`.
+- Matching `doc_path` values may point to either `core/docs/references/**` or an owning pack `docs/references/**` root.
 - If no entries match the requested filters, the command exits successfully and reports that no reference entries matched.
 
 ## Related Commands
@@ -82,4 +88,4 @@ uv run watchtower-core query references --applied-by-path <pack-root>/docs/stand
 - `core/control_plane/indexes/references/reference_index.json`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-28T23:55:00Z`

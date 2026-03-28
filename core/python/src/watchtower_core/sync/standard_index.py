@@ -169,6 +169,7 @@ class StandardIndexSyncService:
                 source_path=path,
                 related_section=sections["Related Standards and Sources"],
                 references_section=sections["References"],
+                loader=self._loader,
                 reference_urls_by_path=reference_urls_by_path,
             )
 

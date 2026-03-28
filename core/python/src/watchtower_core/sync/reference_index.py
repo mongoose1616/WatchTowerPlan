@@ -31,9 +31,11 @@ from watchtower_core.documentation.markdown_semantics import (
 )
 from watchtower_core.documentation.reference_semantics import (
     REFERENCE_LOCAL_MAPPING_SECTION,
+    governed_reference_doc_roots,
     parse_reference_local_mapping,
 )
 from watchtower_core.pack_integration.roots import (
+    pack_reference_doc_roots,
     pack_standard_doc_roots,
     pack_workflow_module_roots,
     pack_workflow_role_roots,
@@ -43,7 +45,6 @@ REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference
 REFERENCE_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"
 )
-REFERENCE_DOC_ROOT = "core/docs/references"
 REFERENCE_EXCLUDED_NAMES = {"README.md", "AGENTS.md"}
 
 
@@ -83,10 +84,8 @@ class ReferenceIndexSyncService:
         citation_maps = self._build_citation_maps()
         entries: list[dict[str, object]] = []
 
-        docs_root = self._repo_root / REFERENCE_DOC_ROOT
-        for path in sorted(docs_root.glob("*.md")):
-            if path.name in REFERENCE_EXCLUDED_NAMES:
-                continue
+        reference_documents = self._reference_documents()
+        for path in reference_documents:
 
             relative_path = path.relative_to(self._repo_root).as_posix()
             front_matter = load_front_matter(path)
@@ -144,9 +143,12 @@ class ReferenceIndexSyncService:
                 repo_root=self._repo_root,
                 source_path=path,
             )
-            related_paths = ordered_unique(
-                applies_to_path_values(applies_to, relative_path=relative_path),
-                local_mapping.related_paths,
+            related_paths = _exclude_self_path(
+                ordered_unique(
+                    applies_to_path_values(applies_to, relative_path=relative_path),
+                    local_mapping.related_paths,
+                ),
+                relative_path=relative_path,
             )
             aliases = ordered_unique(
                 _front_matter_list(front_matter, "aliases"),
@@ -170,8 +172,14 @@ class ReferenceIndexSyncService:
                 "uses_external_references": True,
                 "canonical_upstream_urls": list(canonical_upstream_urls),
             }
-            cited_by_paths = citation_maps["cited_by"].get(relative_path, ())
-            applied_by_paths = citation_maps["applied_by"].get(relative_path, ())
+            cited_by_paths = _exclude_self_path(
+                citation_maps["cited_by"].get(relative_path, ()),
+                relative_path=relative_path,
+            )
+            applied_by_paths = _exclude_self_path(
+                citation_maps["applied_by"].get(relative_path, ()),
+                relative_path=relative_path,
+            )
             if cited_by_paths:
                 entry["cited_by_paths"] = list(cited_by_paths)
             if applied_by_paths:
@@ -216,6 +224,8 @@ class ReferenceIndexSyncService:
             applied_urls,
         ) in iter_citation_audit_documents(self._repo_root):
             for reference_path, canonical_urls in reference_targets.items():
+                if reference_path == relative_path:
+                    continue
                 canonical_url_set = set(canonical_urls)
                 if reference_path in cited_paths or canonical_url_set.intersection(cited_urls):
                     cited_by[reference_path].add(relative_path)
@@ -233,16 +243,25 @@ class ReferenceIndexSyncService:
 
     def _load_reference_targets(self) -> dict[str, tuple[str, ...]]:
         targets: dict[str, tuple[str, ...]] = {}
-        docs_root = self._repo_root / REFERENCE_DOC_ROOT
-        for path in sorted(docs_root.glob("*.md")):
-            if path.name in REFERENCE_EXCLUDED_NAMES:
-                continue
+        for path in self._reference_documents():
             relative_path = path.relative_to(self._repo_root).as_posix()
             markdown = load_markdown_body(path)
             sections = extract_sections(markdown)
             canonical_upstream_urls = extract_external_urls(sections.get("Canonical Upstream", ""))
             targets[relative_path] = canonical_upstream_urls
         return targets
+
+    def _reference_documents(self) -> tuple[Path, ...]:
+        documents: list[Path] = []
+        for root in governed_reference_doc_roots(self._repo_root, loader=self._loader):
+            docs_root = self._repo_root / root
+            for path in sorted(docs_root.glob("*.md")):
+                if path.name in REFERENCE_EXCLUDED_NAMES:
+                    continue
+                documents.append(path)
+        return tuple(
+            sorted(documents, key=lambda path: path.relative_to(self._repo_root).as_posix())
+        )
 
 
 def _front_matter_list(front_matter: dict[str, Any], key: str) -> tuple[str, ...]:
@@ -269,6 +288,10 @@ def _optional_string(value: Any) -> str | None:
     return value if isinstance(value, str) and value else None
 
 
+def _exclude_self_path(values: tuple[str, ...], *, relative_path: str) -> tuple[str, ...]:
+    return tuple(value for value in values if value != relative_path)
+
+
 def iter_citation_audit_documents(
     repo_root: Path,
 ) -> tuple[tuple[str, set[str], set[str], set[str], set[str]], ...]:
@@ -289,6 +312,12 @@ def iter_citation_audit_documents(
             ("Related Standards and Sources", "References"),
             ("Related Standards and Sources",),
         ),
+        (
+            "core/docs/references",
+            {"README.md", "AGENTS.md"},
+            ("Related Standards and Sources", "References"),
+            (),
+        ),
         *(
             (
                 relative_directory,
@@ -297,6 +326,15 @@ def iter_citation_audit_documents(
                 ("Related Standards and Sources",),
             )
             for relative_directory in pack_standard_doc_roots(repo_root)
+        ),
+        *(
+            (
+                relative_directory,
+                {"README.md", "AGENTS.md"},
+                ("Related Standards and Sources", "References"),
+                (),
+            )
+            for relative_directory in pack_reference_doc_roots(repo_root)
         ),
         (
             "core/workflows/modules",

@@ -802,7 +802,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/foundation_md_standard.md",
-      "updated_at": "2026-03-12T23:43:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -879,11 +879,11 @@
       "standard_id": "std.documentation.reference_md",
       "category": "documentation",
       "title": "Reference Document Standard",
-      "summary": "This standard defines the role, structure, and quality expectations for reference documents, especially external reference documents under `core/docs/references/**`.",
+      "summary": "This standard defines the role, structure, and quality expectations for reference documents, especially governed external reference documents under shared and pack-owned references roots.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/reference_md_standard.md",
-      "updated_at": "2026-03-27T15:00:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -892,6 +892,7 @@
       ],
       "operationalization_paths": [
         "core/docs/references/*_reference.md",
+        "*/docs/references/*_reference.md",
         "core/workflows/modules/documentation_refresh.md",
         "core/workflows/modules/documentation_generation.md",
         "core/docs/templates/reference_template.md"
@@ -963,7 +964,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-27T15:00:00Z",
+      "updated_at": "2026-03-28T21:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1014,7 +1015,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-24T22:05:00Z",
+      "updated_at": "2026-03-28T21:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1263,7 +1264,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-24T22:30:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1845,7 +1846,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/governance/reference_distillation_standard.md",
-      "updated_at": "2026-03-27T15:00:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1945,7 +1946,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/front_matter_standard.md",
-      "updated_at": "2026-03-24T22:30:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -3451,7 +3452,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/reference_distillation_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-28T20:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

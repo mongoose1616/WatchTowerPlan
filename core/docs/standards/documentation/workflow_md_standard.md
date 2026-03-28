@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:05:00Z"
+updated_at: "2026-03-28T21:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -87,7 +87,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Workflow documents should stay structured enough that the derived workflow index can capture their kind, title, purpose summary, and task-specific additional files without manual curation.
 - `Data Structure` and `Outputs` may remain brief when the workflow does not define a stable working structure or durable deliverable, but the headings should still be present.
 - Use repository-native Markdown links when `Additional Files to Load` is present so the files can be captured and queried deterministically.
-- Prefer governed local reference docs under `core/docs/references/**` instead of raw external URLs when outside authority materially affects the workflow.
+- Prefer governed local reference docs under `core/docs/references/**` or an owning pack's `docs/references/**` root instead of raw external URLs when outside authority materially affects the workflow.
 - Do not add front matter to workflow documents unless a narrower standard or validator explicitly requires it.
 - Do not put routing-table row logic in a workflow file.
 - Do not put repository-wide wrapper rules in a workflow file when they belong in `AGENTS.md`.
@@ -152,4 +152,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-24T22:05:00Z`
+- `2026-03-28T21:30:00Z`

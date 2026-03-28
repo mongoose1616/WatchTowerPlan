@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-27T15:00:00Z"
+updated_at: "2026-03-28T21:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,7 +53,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
 - Leave one blank line between the last item in a bullet or numbered list and the next heading.
 - Keep `References` for companion docs, examples, and supporting material that help the reader navigate the repo or verify implementation.
-- When an external topic already has a governed local reference under `core/docs/references/**`, cite that local reference instead of scattering raw external URLs.
+- When an external topic already has a governed local reference under `core/docs/references/**` or an owning pack's `docs/references/**` root, cite that local reference instead of scattering raw external URLs.
 - Publish an `Operationalization` section using compact metadata bullets so maintainers can see which modes and repository surfaces actively enforce or embody the standard, using exact repo-relative file paths, repo-relative directory paths ending in `/`, or bounded repo-relative glob patterns when the governed surface is a repeating file family.
 - Do not publish semantically duplicate operationalization surfaces. Use one canonical path form for each governed file or directory so the standard index does not carry redundant entries.
 - Keep `Updated At` aligned with front matter `updated_at`.
@@ -101,4 +101,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/core/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-27T15:00:00Z`
+- `2026-03-28T21:30:00Z`

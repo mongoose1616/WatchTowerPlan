@@ -50,6 +50,18 @@ def test_document_semantics_validation_auto_selects_command_validator() -> None:
     assert result.issue_count == 0
 
 
+def test_document_semantics_validation_auto_selects_reference_validator_for_plan_owned_doc() -> None:
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate(
+        "plan/docs/references/core_swap_integration_assessment_closeout_reference.md"
+    )
+
+    assert result.passed is True
+    assert result.validator_id == "validator.documentation.reference_semantics"
+    assert result.issue_count == 0
+
+
 def test_document_semantics_validation_auto_selects_initiative_handoff_validator_for_canonical_doc() -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 

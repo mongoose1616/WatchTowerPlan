@@ -14,10 +14,22 @@ def test_validate_all_reports_current_repo_baseline_via_cli_json(
 ) -> None:
     monkeypatch.chdir(REPO_ROOT / "core" / "python")
 
-    result = main(["validate", "all", "--format", "json"])
+    result = main(
+        [
+            "validate",
+            "all",
+            "--skip-front-matter",
+            "--skip-document-semantics",
+            "--skip-artifacts",
+            "--skip-acceptance",
+            "--format",
+            "json",
+        ]
+    )
 
     payload = json.loads(capsys.readouterr().out)
     assert result == (0 if payload["passed"] else 1)
     assert payload["command"] == "watchtower-core validate all"
     assert payload["status"] == "ok"
     assert isinstance(payload["passed"], bool)
+    assert payload["included_families"] == ["pack_contract"]

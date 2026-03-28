@@ -1128,6 +1128,46 @@
       ]
     },
     {
+      "workflow_id": "workflow.test_suite_optimization",
+      "workflow_kind": "module",
+      "title": "Test Suite Optimization Workflow",
+      "summary": "Use this workflow to reduce test-runtime cost without dropping the active proof that the repository still needs.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/test_suite_optimization.md",
+      "phase_type": "execution",
+      "task_family": "engineering_validation",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "false_confidence",
+        "stale_coverage"
+      ],
+      "trigger_tags": [
+        "test",
+        "suite",
+        "optimization",
+        "reduce",
+        "runtime",
+        "cost",
+        "without",
+        "dropping",
+        "active",
+        "proof",
+        "that",
+        "repository",
+        "still",
+        "needs",
+        "performance",
+        "optimize",
+        "cleanup"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_implementation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.acceptance_evidence_reconciliation",
       "workflow_kind": "module",
       "title": "Acceptance and Evidence Reconciliation Workflow",

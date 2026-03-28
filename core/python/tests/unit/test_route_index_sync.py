@@ -71,6 +71,14 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
         and "workflow.task_handoff_review" not in entry["required_workflow_ids"]
         for entry in entries
     )
+    assert any(
+        entry["route_id"] == "route.test_suite_optimization"
+        and entry["task_type"] == "Test Suite Optimization"
+        and "slow tests" in entry["trigger_keywords"]
+        and "workflow.test_suite_optimization" in entry["required_workflow_ids"]
+        and "workflow.code_validation" in entry["required_workflow_ids"]
+        for entry in entries
+    )
 
 
 def test_route_index_sync_writes_temp_output(tmp_path: Path) -> None:

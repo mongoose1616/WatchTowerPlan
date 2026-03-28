@@ -21,7 +21,10 @@ from watchtower_core.control_plane.loader import (
 )
 from watchtower_core.control_plane.models import PackRegistry, PackRuntimeManifest, PackSettings
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
-from watchtower_core.pack_integration.roots import discover_pack_workspace_roots
+from watchtower_core.pack_integration.roots import (
+    discover_pack_workspace_roots,
+    pack_reference_doc_roots,
+)
 
 
 def test_control_plane_loader_reads_pack_registry_and_runtime_manifest(
@@ -221,6 +224,20 @@ def test_pack_workspace_root_discovery_prefers_root_pack_paths_before_nested_pat
     roots = discover_pack_workspace_roots(repo_root)
 
     assert tuple(root.workspace_root for root in roots) == ("plan", "packs/oversight")
+
+
+def test_pack_reference_doc_root_discovery_supports_generic_hosted_pack_docs_roots(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "fixture",
+        default_repo_pack=True,
+    )
+    reference_root = repo_root / "packs" / "fixture" / "docs" / "references"
+    reference_root.mkdir(parents=True, exist_ok=True)
+
+    assert pack_reference_doc_roots(repo_root) == ("packs/fixture/docs/references",)
 
 
 def test_control_plane_loader_falls_back_to_core_shared_pack_settings_without_pack_root(

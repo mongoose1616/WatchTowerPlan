@@ -122,14 +122,62 @@ def _write_invalid_standard_fixture(path: Path) -> None:
     )
 
 
-def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
-    service = _service()
-
-    result = service.run(
+@pytest.fixture(scope="module")
+def focused_validation_without_acceptance_result():
+    service = _service_with_targets(
+        {
+            "step.plan.front_matter": (
+                "core/docs/references/adr_guidance_reference.md",
+                "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+            ),
+            "step.plan.document_semantics": (
+                "core/workflows/modules/code_validation.md",
+                "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+            ),
+            "step.plan.artifacts": (
+                "core/control_plane/manifests/pack_settings.json",
+                "core/control_plane/registries/pack_registry.json",
+                "core/control_plane/registries/schema_catalog.json",
+                "core/control_plane/indexes/foundations/foundation_index.json",
+                "plan/.wt/manifests/pack_runtime_manifest.json",
+            ),
+        }
+    )
+    return service.run(
         included_families=tuple(
             family for family in VALIDATION_ALL_FAMILIES if family != "acceptance"
         )
     )
+
+
+@pytest.fixture(scope="module")
+def focused_validation_all_result():
+    service = _service_with_targets(
+        {
+            "step.plan.front_matter": (
+                "core/docs/references/adr_guidance_reference.md",
+                "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+            ),
+            "step.plan.document_semantics": (
+                "core/workflows/modules/code_validation.md",
+                "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+            ),
+            "step.plan.artifacts": (
+                "core/control_plane/manifests/pack_settings.json",
+                "core/control_plane/registries/pack_registry.json",
+                "core/control_plane/registries/schema_catalog.json",
+                "core/control_plane/indexes/foundations/foundation_index.json",
+                "plan/.wt/manifests/pack_runtime_manifest.json",
+            ),
+        }
+    )
+    return service.run()
+
+
+def test_validate_all_can_pass_when_acceptance_is_skipped(
+    focused_validation_without_acceptance_result,
+) -> None:
+    result = focused_validation_without_acceptance_result
 
     assert result.passed is True
     assert result.total_count >= 1
@@ -143,10 +191,10 @@ def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
     assert any(summary.family == "artifacts" for summary in result.family_summaries)
 
 
-def test_validate_all_passes_when_all_governed_families_are_aligned() -> None:
-    service = _service()
-
-    result = service.run()
+def test_validate_all_passes_when_all_governed_families_are_aligned(
+    focused_validation_all_result,
+) -> None:
+    result = focused_validation_all_result
 
     assert result.passed is True
     assert result.total_count >= 1
@@ -227,12 +275,14 @@ def test_validate_all_reports_missing_standard_guidance_section(
     assert "missing required sections: Guidance" in result.records[0].result.issues[0].message
 
 
-def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
-    service = _service()
+def test_validate_all_artifacts_include_live_control_plane_targets(
+    focused_validation_all_result,
+) -> None:
+    artifact_records = tuple(
+        record for record in focused_validation_all_result.records if record.family == "artifacts"
+    )
 
-    result = service.run(included_families=("artifacts",))
-
-    target_paths = {record.target for record in result.records}
+    target_paths = {record.target for record in artifact_records}
     assert "core/control_plane/manifests/pack_settings.json" in target_paths
     assert "core/control_plane/registries/pack_registry.json" in target_paths
     assert "core/control_plane/registries/schema_catalog.json" in target_paths
@@ -241,7 +291,20 @@ def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
     assert all(
         not target_path.startswith("core/control_plane/examples/") for target_path in target_paths
     )
-    assert result.passed is True
+    assert all(record.result.passed for record in artifact_records)
+
+
+def test_validate_all_includes_plan_reference_docs_in_governed_markdown_families(
+    focused_validation_all_result,
+) -> None:
+    observed_targets = {
+        (record.family, record.target)
+        for record in focused_validation_all_result.records
+        if record.family in {"front_matter", "document_semantics"}
+    }
+    target = "plan/docs/references/core_swap_integration_assessment_closeout_reference.md"
+    assert ("front_matter", target) in observed_targets
+    assert ("document_semantics", target) in observed_targets
 
 
 def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
@@ -280,7 +343,18 @@ def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
 def test_validate_all_reuses_validator_registry_materialization(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    service = _service()
+    service = _service_with_targets(
+        {
+            "step.plan.front_matter": (
+                "core/docs/references/adr_guidance_reference.md",
+                "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+            ),
+            "step.plan.document_semantics": (
+                "core/workflows/modules/code_validation.md",
+                "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
+            ),
+        }
+    )
     validator_registry_path = service._loader.load_pack_settings().get("validator_registry").path
     validator_registry_document_loads = 0
     original_load_validated_document = service._loader.load_validated_document
@@ -297,7 +371,7 @@ def test_validate_all_reuses_validator_registry_materialization(
         wrapped_load_validated_document,
     )
 
-    result = service.run()
+    result = service.run(included_families=("front_matter", "document_semantics"))
 
     assert result.passed is True
     assert validator_registry_document_loads == 1

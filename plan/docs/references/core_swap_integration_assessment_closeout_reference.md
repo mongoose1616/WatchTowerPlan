@@ -1,16 +1,14 @@
 ---
-trace_id: trace.reference.core_swap_integration_assessment_closeout
 id: reference.core_swap_integration_assessment_closeout
 title: Core Swap Integration Assessment Closeout
 summary: Durable reference recording current WatchTowerPlan verification of the external oversight-host core-swap integration assessment and the resulting local applicability decisions.
 type: reference
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-24T16:42:24Z'
+updated_at: '2026-03-28T23:55:00Z'
 audience: shared
 authority: reference
 applies_to:
-- plan/docs/references/core_swap_integration_assessment_closeout_reference.md
 - core/control_plane/registries/pack_registry.json
 - core/python/pyproject.toml
 - plan/.wt/manifests/pack_settings.json
@@ -26,7 +24,7 @@ tags:
 - portability
 ---
 
-# Subject Summary
+# Core Swap Integration Assessment Closeout
 
 This reference records how the external
 `WatchTowerOversight/oversight/assessments/watchtowerplan_core_swap_integration_assessment.md`
@@ -36,7 +34,20 @@ maps to the current WatchTowerPlan repository after fresh local verification on
 Use it to separate recipient-host rehost findings for `WatchTowerOversight` from
 actual source-repository work in `WatchTowerPlan`.
 
-## Current Verification Snapshot
+## Canonical Upstream
+
+- [WatchTowerOversight core-swap integration assessment](https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtowerplan_core_swap_integration_assessment.md)
+
+## Quick Reference or Distilled Reference
+
+- The upstream assessment is useful as a recipient-host portability comparison,
+  but its import, purge, bootstrap, and rehost actions are not remediation
+  steps for the live `WatchTowerPlan` source repository.
+- The local question this reference answers is whether the assessment findings
+  indicate a real source-repository defect here or simply describe the
+  intentional `plan` host shape and recipient-specific bootstrap work elsewhere.
+
+### Current Verification Snapshot
 
 - `watchtower-core doctor` passed and loaded the current shared-governance
   surface set for this repository.
@@ -65,7 +76,7 @@ actual source-repository work in `WatchTowerPlan`.
   - `tests/unit/test_control_plane_loader_surfaces.py`
   - `tests/unit/test_standard_index_sync.py`
 
-## Findings Matrix
+### Findings Matrix
 
 - `1`: Not applicable in WatchTowerPlan. The repository intentionally hosts
   `pack.plan`, and the persisted registry correctly declares it as the default
@@ -120,7 +131,24 @@ actual source-repository work in `WatchTowerPlan`.
   longer hard-codes donor-host `plan/...` paths when verifying externalized-pack
   behavior.
 
-## Recommendation And Contract Applicability
+## Local Mapping in This Repository
+
+### Current Repository Status
+
+- Supporting authority for current repository validation, hosted-pack boundary,
+  and portability-interpretation decisions in `WatchTowerPlan`.
+
+### Current Touchpoints
+
+- `core/control_plane/registries/pack_registry.json`
+- `core/python/pyproject.toml`
+- `plan/.wt/manifests/pack_settings.json`
+- `core/python/tests/unit/test_control_plane_loader_surfaces.py`
+- `core/python/tests/unit/test_standard_index_sync.py`
+- `core/python/tests/unit/test_cli_validate_commands.py`
+- `core/python/tests/integration/test_validate_all_cli.py`
+
+### Why It Matters Here
 
 - The report's import, purge, bootstrap, and rehost contract sections are
   recipient-repository guidance for a copied-core consumer whose active hosted
@@ -141,7 +169,7 @@ actual source-repository work in `WatchTowerPlan`.
   describe the active WatchTowerPlan host shape rather than a pack-neutral copy
   contract.
 
-## Additional Review Items
+### If Local Policy Tightens
 
 - The report's placeholder sweep is not actionable in this repository today
   because the current validator baseline is green and no active document
@@ -150,16 +178,13 @@ actual source-repository work in `WatchTowerPlan`.
   recipient must still perform its own bootstrap and discovery rebuild instead
   of inheriting WatchTowerPlan host composition as-is.
 
-## Related Surfaces
+## References
 
-- `plan/docs/references/core_swap_integration_assessment_closeout_reference.md`
+- [WatchTowerOversight core-swap integration assessment](https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtowerplan_core_swap_integration_assessment.md)
+- `core/docs/foundations/repository_scope.md`
+- `core/docs/standards/engineering/core_host_pack_python_boundary_standard.md`
 - `core/control_plane/registries/pack_registry.json`
-- `core/python/pyproject.toml`
 - `plan/.wt/manifests/pack_settings.json`
-- `core/python/tests/unit/test_control_plane_loader_surfaces.py`
-- `core/python/tests/unit/test_standard_index_sync.py`
-- `core/python/tests/unit/test_cli_validate_commands.py`
-- `core/python/tests/integration/test_validate_all_cli.py`
 
 ## Notes
 
@@ -168,3 +193,7 @@ actual source-repository work in `WatchTowerPlan`.
   path with the current closeout record under a different durable filename.
 - Treat the external oversight-host assessment as a portability comparison, not
   as evidence that the current WatchTowerPlan repository is broken.
+
+## Updated At
+
+- `2026-03-28T23:55:00Z`
