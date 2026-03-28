@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-28T07:26:05Z",
+  "updated_at": "2026-03-28T08:40:33Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -19,8 +19,8 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-28T07:26:05Z",
-      "open_task_count": 3,
+      "updated_at": "2026-03-28T08:40:33Z",
+      "open_task_count": 2,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
       "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -34,31 +34,18 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval",
         "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety",
         "task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof"
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval",
-          "title": "Phase 5 Knowledge Promotion And Retrieval",
+          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety",
+          "title": "Phase 6 Environment Adapters And Safety",
           "task_status": "in_progress",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety",
-          "title": "Phase 6 Environment Adapters And Safety",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
           "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_6_environment_adapters_and_safety/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof",

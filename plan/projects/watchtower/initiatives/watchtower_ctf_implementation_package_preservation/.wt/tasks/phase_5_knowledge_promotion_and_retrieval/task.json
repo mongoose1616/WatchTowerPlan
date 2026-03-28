@@ -6,15 +6,12 @@
   "title": "Phase 5 Knowledge Promotion And Retrieval",
   "summary": "Implement reusable knowledge families, promotion policy, relation governance, and deterministic retrieval.",
   "status": "active",
-  "task_status": "in_progress",
+  "task_status": "completed",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:41:11Z",
-  "updated_at": "2026-03-28T07:26:05Z",
-  "dependency_task_ids": [
-    "task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout"
-  ],
+  "updated_at": "2026-03-28T08:40:08Z",
   "related_ids": [
     "initiative.watchtower_ctf_implementation_package_preservation",
     "trace.watchtower_ctf_implementation_package_preservation",
