@@ -44,6 +44,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
    - Confirm the donor extract already passed engineering-core readiness.
    - Run the recipient validation baseline, targeted pack-contract validation, and any repo-local workspace validation required by the active repository contract.
    - Confirm lingering donor hosted-pack registry entries, workspace sources, stale lockfiles, donor-only records, and donor-only traceability joins are gone.
+   - When changing or hardening this workflow itself, rerun the full extract, apply, and bootstrap cycle at least once more and confirm the second pass lands on the same final recipient state apart from expected transient runtime residue.
 7. Close the workflow surfaces in the same change.
    - Update command docs, workflow docs, standards, and governed indexes when the shared-core extract or bootstrap contract changed materially.
    - Record whether the fix belonged in the donor shared core, the recipient repository, or both.

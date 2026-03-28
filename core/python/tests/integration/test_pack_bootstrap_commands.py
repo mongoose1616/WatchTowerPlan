@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -124,3 +125,58 @@ def test_pack_bootstrap_reports_deferred_workspace_sync_extras(
     assert payload["workspace_sync_required"] is True
     assert payload["workspace_sync_extras"] == ["dev"]
     assert payload["next_steps"][0].startswith("Run `uv sync --extra dev` in core/python")
+
+
+@pytest.mark.parametrize(
+    "supplied_pack_settings_path",
+    (
+        "absolute",
+        "parent_traversal",
+    ),
+)
+def test_pack_bootstrap_rejects_nonportable_pack_settings_paths(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+    supplied_pack_settings_path: str,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    surfaces = materialize_pack_validation_suite(
+        repo_root / REHOSTED_PACK_SLUG,
+        pack_id=f"pack.{REHOSTED_PACK_SLUG}",
+        pack_slug=REHOSTED_PACK_SLUG,
+        command_namespace=REHOSTED_PACK_SLUG,
+        python_distribution=REHOSTED_PYTHON_DISTRIBUTION,
+        python_package=REHOSTED_PYTHON_PACKAGE,
+        integration_module=REHOSTED_INTEGRATION_MODULE,
+        register_with_host_registry=False,
+        register_with_core_python_workspace=False,
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    if supplied_pack_settings_path == "absolute":
+        pack_settings_path = str((repo_root / surfaces["pack_settings_path"]).resolve())
+    else:
+        pack_settings_path = f"../{surfaces['pack_settings_path']}"
+
+    result = main(
+        [
+            "pack",
+            "bootstrap",
+            "--pack-settings-path",
+            pack_settings_path,
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 1
+    assert payload == {
+        "command": "watchtower-core pack bootstrap",
+        "message": "pack_settings_path must stay repository-relative and portable.",
+        "status": "error",
+    }

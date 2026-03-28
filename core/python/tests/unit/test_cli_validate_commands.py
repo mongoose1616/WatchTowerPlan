@@ -634,6 +634,126 @@ def test_validate_portability_supports_engineering_core_scope(
     assert payload["scope"] == "engineering_core_bundle"
 
 
+def test_validate_portability_engineering_core_reports_donor_residue(
+    tmp_path: Path,
+    capsys,
+) -> None:
+    donor_pack_slug = "plan"
+    donor_pack_settings_path = f"{donor_pack_slug}/.wt/manifests/pack_settings.json"
+    (tmp_path / "core/python/tests/unit").mkdir(parents=True)
+    (tmp_path / "core/python/tests/unit/test_example.py").write_text("", encoding="utf-8")
+    (tmp_path / "core/python/pyproject.toml").write_text(
+        "\n".join(
+            (
+                "[project]",
+                'name = "watchtower-core"',
+            )
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "core/control_plane/registries").mkdir(parents=True)
+    (tmp_path / "core/control_plane/registries/pack_registry.json").write_text(
+        json.dumps(
+            {
+                "packs": [
+                    {
+                        "pack_slug": donor_pack_slug,
+                        "pack_settings_path": donor_pack_settings_path,
+                        "python_distribution": "watchtower-plan",
+                    }
+                ]
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "core/control_plane/contracts/acceptance").mkdir(parents=True)
+    (
+        tmp_path / "core/control_plane/contracts/acceptance/donor_acceptance.json"
+    ).write_text(
+        "{}\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "core/control_plane/indexes/traceability").mkdir(parents=True)
+    (
+        tmp_path / "core/control_plane/indexes/traceability/traceability_index.json"
+    ).write_text(
+        json.dumps(
+            {
+                "$schema": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
+                "id": "index.traceability",
+                "title": "Traceability Index",
+                "status": "active",
+                "entries": [
+                    {
+                        "trace_id": "trace.donor_specific",
+                        "title": "Donor Specific Traceability",
+                        "summary": "Still references donor implementation lineage.",
+                        "status": "active",
+                        "initiative_status": "completed",
+                        "updated_at": "2026-03-28T03:00:00Z",
+                        "closed_at": "2026-03-28T03:00:00Z",
+                        "closure_reason": "Fixture donor-only lineage.",
+                        "task_ids": ["task.plan.bootstrap"],
+                    }
+                ],
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "core/control_plane/records/releases").mkdir(parents=True)
+    (tmp_path / "core/control_plane/records/releases/example.json").write_text(
+        "{}\n",
+        encoding="utf-8",
+    )
+    (tmp_path / donor_pack_slug / ".wt" / "manifests").mkdir(parents=True)
+    (
+        tmp_path / donor_pack_slug / ".wt" / "manifests" / "pack_settings.json"
+    ).write_text(
+        "{}\n",
+        encoding="utf-8",
+    )
+    (tmp_path / donor_pack_slug / ".wt" / "runtime" / "telemetry").mkdir(parents=True)
+    (
+        tmp_path / donor_pack_slug / ".wt" / "runtime" / "telemetry" / "example.jsonl"
+    ).write_text(
+        "{}\n",
+        encoding="utf-8",
+    )
+
+    result = main(
+        [
+            "validate",
+            "portability",
+            "--root",
+            str(tmp_path),
+            "--engineering-core",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    issue_codes = {issue["code"] for issue in payload["issues"]}
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate portability"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is False
+    assert payload["scope"] == "engineering_core_bundle"
+    assert issue_codes >= {
+        "acceptance_contract_present",
+        "omitted_pack_registry_entry",
+        "omitted_pack_root_present",
+        "pack_runtime_state_present",
+        "retained_history_present",
+        "traceability_acceptance_lineage_present",
+        "unexpected_root_surface_present",
+    }
+
+
 def test_validate_portability_reports_release_exclusions(
     tmp_path: Path,
     capsys,
