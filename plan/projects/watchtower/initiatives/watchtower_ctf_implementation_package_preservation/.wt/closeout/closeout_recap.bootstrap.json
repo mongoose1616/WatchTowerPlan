@@ -3,8 +3,8 @@
   "id": "closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap",
   "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
   "title": "Bootstrap Closeout Shell",
-  "status": "planned",
-  "updated_at": "2026-03-28T02:00:00Z",
+  "status": "completed",
+  "updated_at": "2026-03-28T10:11:09Z",
   "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
   "acceptance_ids": [
     "ac.watchtower_ctf_package_preservation.001",
@@ -40,5 +40,8 @@
     "completed",
     "superseded",
     "cancelled"
-  ]
+  ],
+  "terminal_state": "completed",
+  "closed_at": "2026-03-28T10:11:09Z",
+  "closure_reason": "Delivered and validated WatchTower implementation"
 }

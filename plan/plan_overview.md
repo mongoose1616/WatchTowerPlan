@@ -1,22 +1,22 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `active_work`
-- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Finalize closeout, evidence, and promotion decisions.
-- `recommended_surface_path`: `plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/summary.md`
+- `coordination_mode`: `ready_for_bootstrap`
+- `summary`: No active plan-workspace initiatives exist.
+- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
+- `recommended_surface_path`: `plan/plan_overview.md`
 
 ## Active Pack-Wide Initiatives
 - None.
 
 ## Active Project Initiatives
-- `trace.watchtower_ctf_implementation_package_preservation`: WatchTower CTF Implementation Package Preservation (`closeout` / `project_scoped`)
+- None.
 
 ## Blocked or Attention-Needed Items
 - None.
 
 ## Recent Completions or Changes
-- None.
+- `trace.watchtower_ctf_implementation_package_preservation`: WatchTower CTF Implementation Package Preservation (`completed` at `2026-03-28T10:11:09Z`) - Delivered and validated WatchTower implementation
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)

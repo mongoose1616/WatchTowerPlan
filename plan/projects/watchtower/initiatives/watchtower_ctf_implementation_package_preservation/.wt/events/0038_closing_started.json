@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.watchtower_ctf_implementation_package_preservation.0038_closing_started",
+  "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
+  "sequence": 38,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-28T10:11:09Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.watchtower_ctf_implementation_package_preservation"
+}

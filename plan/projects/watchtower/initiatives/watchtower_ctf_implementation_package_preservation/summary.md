@@ -2,7 +2,9 @@
 
 ## Outcome Summary
 Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.
-- `lifecycle_stage`: `in_progress`
+- `lifecycle_stage`: `completed`
+- `closed_at`: `2026-03-28T10:11:09Z`
+- `closure_reason`: Delivered and validated WatchTower implementation
 
 ## Delivered Outputs
 - Authored input: [initiative_brief.md](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md)
@@ -26,14 +28,14 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof`: `completed`
 
 ## Promoted Guidance
-- `promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell`: `planned` / approval `pending`
+- `promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell`: `candidate` / approval `pending`
 - Candidate target path (planned, not yet promoted): `plan/docs/references/watchtower_ctf_implementation_package_preservation_initiative_brief.md`
 - Candidate target path (planned, not yet promoted): `plan/docs/decisions/watchtower_ctf_implementation_package_preservation_design_record.md`
 - Candidate target path (planned, not yet promoted): `plan/docs/patterns/watchtower_ctf_implementation_package_preservation_implementation_slice.md`
 - Candidate target path (planned, not yet promoted): `plan/docs/standards/governance/watchtower_ctf_implementation_package_preservation_decision_notes.md`
 
 ## Evidence References
-- `evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle`: `active`
+- `evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle`: `completed`
 - Trace evidence ref: `evidence.watchtower_ctf_implementation_package_preservation.handoff_readiness`
 - Acceptance contract ref: `contract.acceptance.watchtower_ctf_package_preservation`
 
@@ -41,6 +43,8 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - No unresolved follow-up items remain.
 
 ## Closeout State
-- `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-28T10:08:34Z`
-- `closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap`: `planned`
+- `lifecycle_stage`: `completed`
+- `updated_at`: `2026-03-28T10:11:09Z`
+- `closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap`: `completed`
+- `closed_at`: `2026-03-28T10:11:09Z`
+- `closure_reason`: Delivered and validated WatchTower implementation

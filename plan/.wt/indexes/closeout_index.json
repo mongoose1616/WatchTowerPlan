@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-28T10:08:34Z",
+  "updated_at": "2026-03-28T10:11:09Z",
   "entries": [
     {
       "closeout_id": "closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap",
@@ -11,7 +11,7 @@
       "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
       "initiative_title": "WatchTower CTF Implementation Package Preservation",
       "title": "Bootstrap Closeout Shell",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation",
       "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
       "acceptance_ids": [
@@ -49,8 +49,9 @@
         "superseded",
         "cancelled"
       ],
-      "updated_at": "2026-03-28T02:00:00Z",
-      "project_id": "project.watchtower"
+      "updated_at": "2026-03-28T10:11:09Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
     }
   ]
 }
