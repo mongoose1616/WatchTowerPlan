@@ -10,10 +10,10 @@
 - None.
 
 ## Active Project Initiatives
-- `trace.watchtower_ctf_implementation_package_preservation`: WatchTower CTF Implementation Package Preservation (`capture` / `project_scoped`)
+- `trace.watchtower_ctf_implementation_package_preservation`: WatchTower CTF Implementation Package Preservation (`execution` / `project_scoped`)
 
 ## Blocked or Attention-Needed Items
-- Actionable task `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment` (high) in `trace.watchtower_ctf_implementation_package_preservation` -> `plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json`
+- Actionable task `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap` (high) in `trace.watchtower_ctf_implementation_package_preservation` -> `plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_1_recipient_scaffold_and_bootstrap/task.json`
 
 ## Recent Completions or Changes
 - None.

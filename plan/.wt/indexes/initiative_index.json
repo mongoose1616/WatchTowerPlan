@@ -10,9 +10,9 @@
       "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "current_phase": "capture",
-      "updated_at": "2026-03-28T02:00:00Z",
-      "open_task_count": 8,
+      "current_phase": "execution",
+      "updated_at": "2026-03-28T03:42:22Z",
+      "open_task_count": 7,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
       "next_action": "Start the highest-priority ready task from the initiative package.",
@@ -26,7 +26,6 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment",
         "task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap",
         "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract",
         "task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam",
@@ -37,25 +36,13 @@
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment",
-          "title": "Phase 0 Shared Contract Adoption And Alignment",
+          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap",
+          "title": "Phase 1 Recipient Scaffold And Bootstrap",
           "task_status": "ready",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json",
-          "is_actionable": true
-        },
-        {
-          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap",
-          "title": "Phase 1 Recipient Scaffold And Bootstrap",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
           "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_1_recipient_scaffold_and_bootstrap/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment"
-          ]
+          "is_actionable": true
         },
         {
           "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract",

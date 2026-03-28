@@ -2,7 +2,7 @@
 
 ## Outcome Summary
 Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.
-- `lifecycle_stage`: `ready_for_execution`
+- `lifecycle_stage`: `in_progress`
 
 ## Delivered Outputs
 - Authored input: [initiative_brief.md](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md)
@@ -16,6 +16,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Project repositories: [repositories.md](/plan/projects/watchtower/repositories.md)
 - Project summary: [summary.md](/plan/projects/watchtower/summary.md)
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation`: `cancelled`
+- Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment`: `completed`
 
 ## Promoted Guidance
 - `promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell`: `planned` / approval `pending`
@@ -30,8 +31,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Acceptance contract ref: `contract.acceptance.watchtower_ctf_package_preservation`
 
 ## Unresolved Follow-Ups
-- Open task `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment`: `ready`
-- Open task `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap`: `planned`
+- Open task `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap`: `ready`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract`: `planned`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam`: `planned`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout`: `planned`
@@ -40,6 +40,6 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof`: `planned`
 
 ## Closeout State
-- `lifecycle_stage`: `ready_for_execution`
-- `updated_at`: `2026-03-28T02:00:00Z`
+- `lifecycle_stage`: `in_progress`
+- `updated_at`: `2026-03-28T03:42:22Z`
 - `closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap`: `planned`
