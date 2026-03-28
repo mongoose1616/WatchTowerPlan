@@ -132,12 +132,12 @@
       "title": "Phase 2 Pack Machine Contract",
       "summary": "Author the offsec schemas, registries, policies, validation suite, and human-surface starter contract.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "in_progress",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json",
-      "updated_at": "2026-03-28T03:55:25Z",
+      "updated_at": "2026-03-28T03:56:49Z",
       "project_id": "project.watchtower",
       "depends_on": [
         "task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap"

@@ -8,7 +8,7 @@
 - `owner`: `repository_maintainer`
 - `lifecycle_stage`: `in_progress`
 - `review_status`: `approved`
-- `updated_at`: `2026-03-28T03:55:25Z`
+- `updated_at`: `2026-03-28T03:56:49Z`
 
 ## Scope and Non-Goals
 Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.
@@ -36,7 +36,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 ## Planned Slices or Workstreams
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json) | `ready` | `high` | `repository_maintainer` | Author the offsec schemas, registries, policies, validation suite, and human-surface starter contract. | task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap |
+| [task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json) | `in_progress` | `high` | `repository_maintainer` | Author the offsec schemas, registries, policies, validation suite, and human-surface starter contract. | task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap |
 | [task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_3_runtime_query_sync_and_workflow_seam/task.json) | `planned` | `high` | `repository_maintainer` | Implement the pack runtime seam, query and sync surfaces, workflow docs, and rendered visibility outputs. | task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract |
 | [task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_4_challenge_artifacts_and_closeout/task.json) | `planned` | `high` | `repository_maintainer` | Implement challenge-local artifacts, evidence capture, discrepancy handling, and closeout behavior. | task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam |
 | [task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json) | `planned` | `high` | `repository_maintainer` | Implement reusable knowledge families, promotion policy, relation governance, and deterministic retrieval. | task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout |
