@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-28T09:53:47Z`
+- `updated_at`: `2026-03-28T10:08:34Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -17,16 +17,14 @@
 | `2026-03-27T21:49:38Z` | `ready_for_execution_marked` | `actor.watchtower_core` | The initiative package entered ready_for_execution after approval. |
 
 ## Active Tasks
-| Task | Status | Priority | Owner | Summary | Depends On |
-| --- | --- | --- | --- | --- | --- |
-| [task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json) | `planned` | `high` | `repository_maintainer` | Prove staged export, bootstrap, validation, and release portability for the finished offsec pack. | task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety |
+_No active tasks._
 
 ## Blockers
-- Task `task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof` depends on `task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety`.
+- No active blockers, unresolved dependencies, or open discrepancy risks are recorded.
 
 ## Next Actions
-- Promote the next planned task to ready before opening follow-up work.
-- Next surface: [plan.md](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md)
+- Finalize closeout, evidence, and promotion decisions.
+- Next surface: [summary.md](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/summary.md)
 
 ## Evidence or Validation State
 - `machine_valid`: `True`

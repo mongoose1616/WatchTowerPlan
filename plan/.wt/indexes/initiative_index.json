@@ -10,13 +10,13 @@
       "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-28T09:53:47Z",
-      "open_task_count": 1,
+      "current_phase": "closeout",
+      "updated_at": "2026-03-28T10:08:34Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
-      "next_action": "Promote the next planned task to ready before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/summary.md",
       "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
       "slug": "watchtower_ctf_implementation_package_preservation",
       "scope_type": "project_scoped",
@@ -24,20 +24,6 @@
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof",
-          "title": "Phase 7 Release And Portability Proof",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json",
-          "is_actionable": false
-        }
       ],
       "source_surface_paths": [
         "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",

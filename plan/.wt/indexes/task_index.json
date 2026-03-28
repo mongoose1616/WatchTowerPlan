@@ -357,16 +357,13 @@
       "title": "Phase 7 Release And Portability Proof",
       "summary": "Prove staged export, bootstrap, validation, and release portability for the finished offsec pack.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json",
-      "updated_at": "2026-03-27T21:44:35Z",
+      "updated_at": "2026-03-28T10:08:34Z",
       "project_id": "project.watchtower",
-      "depends_on": [
-        "task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety"
-      ],
       "related_ids": [
         "initiative.watchtower_ctf_implementation_package_preservation",
         "trace.watchtower_ctf_implementation_package_preservation",
