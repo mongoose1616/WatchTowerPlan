@@ -1,13 +1,13 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `ready_for_bootstrap`
-- `summary`: No active plan-workspace initiatives exist.
-- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
-- `recommended_surface_path`: `plan/plan_overview.md`
+- `coordination_mode`: `active_work`
+- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
+- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
+- `recommended_surface_path`: `plan/initiatives/repository_hardening_local_validation_loop/plan.md`
 
 ## Active Pack-Wide Initiatives
-- None.
+- `trace.repository_hardening_local_validation_loop`: Repository Hardening and Local Validation Loop (`capture` / `pack_wide`)
 
 ## Active Project Initiatives
 - None.

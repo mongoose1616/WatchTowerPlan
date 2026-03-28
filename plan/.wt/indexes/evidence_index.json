@@ -3,8 +3,37 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-28T10:11:09Z",
+  "updated_at": "2026-03-28T21:49:21Z",
   "entries": [
+    {
+      "evidence_id": "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Bootstrap Validation Bundle",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/repository_hardening_local_validation_loop",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/discrepancies",
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-28T21:48:47Z"
+    },
     {
       "evidence_id": "evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle",
       "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",

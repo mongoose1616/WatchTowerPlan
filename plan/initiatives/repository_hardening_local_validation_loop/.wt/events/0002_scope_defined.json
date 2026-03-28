@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.repository_hardening_local_validation_loop.0002_scope_defined",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "sequence": 2,
+  "event_type": "scope_defined",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-28T21:48:47Z",
+  "summary": "Recorded the initial pack-wide initiative scope.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.repository_hardening_local_validation_loop",
+  "related_paths": [
+    "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
+    "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+    "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+    "core/docs/standards/validations/repository_validation_standard.md",
+    "core/docs/standards/engineering/python_workspace_standard.md"
+  ]
+}

@@ -3,8 +3,26 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-28T10:11:09Z",
+  "updated_at": "2026-03-28T21:49:21Z",
   "entries": [
+    {
+      "review_subject_id": "initiative.repository_hardening_local_validation_loop",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Repository Hardening and Local Validation Loop",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-28T21:49:21Z",
+      "lifecycle_stage": "ready_for_execution",
+      "ready_for_execution": true
+    },
     {
       "review_subject_id": "initiative.watchtower_ctf_implementation_package_preservation",
       "subject_kind": "initiative",
@@ -23,6 +41,22 @@
       "project_id": "project.watchtower",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "promotion.repository_hardening_local_validation_loop.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-28T21:48:47Z"
     },
     {
       "review_subject_id": "promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell",

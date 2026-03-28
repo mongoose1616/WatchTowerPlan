@@ -1,0 +1,81 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "trace_id": "trace.repository_hardening_local_validation_loop",
+  "slug": "repository_hardening_local_validation_loop",
+  "title": "Repository Hardening and Local Validation Loop",
+  "summary": "Hardens local verification, shared-core boundaries, and parser-module hotspots.",
+  "scope_type": "pack_wide",
+  "status": "active",
+  "lifecycle_stage": "ready_for_execution",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-28T21:48:47Z",
+  "updated_at": "2026-03-28T21:49:21Z",
+  "task_ids": [
+    "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.repository_hardening_local_validation_loop.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.repository_hardening_local_validation_loop.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
+      "sha256": "9c3a560b1954719771809d20f5c0590213f7e7172883f9f29ba895b33d8f6727",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-28T21:49:05Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+      "sha256": "16e6ea8f64534779fc4969c0276c56bf14f03376eda676c902623f326bab5f01",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-28T21:49:05Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+      "sha256": "599e78dacab5a0c3b33a1fb3b32dbba223afb7f8ed813c8853be65e85ca9c081",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-28T21:49:05Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "governing_document_paths": [
+    "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
+    "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+    "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+    "core/docs/standards/validations/repository_validation_standard.md",
+    "core/docs/standards/engineering/python_workspace_standard.md"
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": true,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-28T21:49:05Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-28T21:49:21Z"
+    }
+  ]
+}

@@ -47,6 +47,32 @@
       "notes": "Durable generic example evidence for acceptance, validation, and traceability guidance."
     },
     {
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "title": "Repository Hardening and Local Validation Loop",
+      "summary": "Hardens local verification, shared-core boundaries, and parser-module hotspots.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-28T21:49:21Z",
+      "source_surface_paths": [
+        "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop"
+      ],
+      "related_paths": [
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/initiative.json",
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json",
+        "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
       "title": "WatchTower CTF Implementation Package Preservation",
       "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",

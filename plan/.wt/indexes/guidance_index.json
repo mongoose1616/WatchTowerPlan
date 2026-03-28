@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-28T10:11:09Z",
+  "updated_at": "2026-03-28T23:55:00Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -110,7 +110,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-24T22:55:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -135,7 +135,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-24T22:55:00Z",
+      "updated_at": "2026-03-28T23:55:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -234,8 +234,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
-      "updated_at": "2026-03-24T16:42:24Z",
-      "trace_id": "trace.reference.core_swap_integration_assessment_closeout",
+      "updated_at": "2026-03-28T23:55:00Z",
       "audience": "shared",
       "authority": "reference",
       "tags": [
@@ -246,7 +245,6 @@
         "portability"
       ],
       "applies_to": [
-        "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
         "core/control_plane/registries/pack_registry.json",
         "core/python/pyproject.toml",
         "plan/.wt/manifests/pack_settings.json",
@@ -264,8 +262,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/references/oversight_functionality_assessment_closeout_reference.md",
-      "updated_at": "2026-03-24T08:01:23Z",
-      "trace_id": "trace.reference.oversight_functionality_assessment_closeout",
+      "updated_at": "2026-03-28T23:55:00Z",
       "audience": "shared",
       "authority": "reference",
       "tags": [
@@ -276,7 +273,6 @@
         "validation"
       ],
       "applies_to": [
-        "plan/docs/references/oversight_functionality_assessment_closeout_reference.md",
         "core/control_plane/indexes/routes/route_index.json",
         "core/control_plane/indexes/workflows/workflow_index.json",
         "core/python/tests/integration/test_validate_all_cli.py",
@@ -294,8 +290,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md",
-      "updated_at": "2026-03-19T10:10:00Z",
-      "trace_id": "trace.guidance.plan_guidance_promotion_helper_foundation_initiative_brief",
+      "updated_at": "2026-03-28T23:55:00Z",
       "audience": "shared",
       "authority": "reference",
       "tags": [
@@ -305,7 +300,6 @@
         "initiative_brief"
       ],
       "applies_to": [
-        "plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md",
         "plan/python/src/watchtower_plan/promotion/service.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
@@ -685,7 +679,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/reference_distillation_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-28T20:00:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [

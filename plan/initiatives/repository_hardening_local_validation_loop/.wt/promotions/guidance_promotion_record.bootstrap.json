@@ -1,0 +1,48 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.repository_hardening_local_validation_loop.bootstrap_shell",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "trace_id": "trace.repository_hardening_local_validation_loop",
+  "title": "Bootstrap Promotion Shell",
+  "status": "planned",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-28T21:48:47Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/repository_hardening_local_validation_loop_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/repository_hardening_local_validation_loop_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/repository_hardening_local_validation_loop_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "trace_id": "trace.repository_hardening_local_validation_loop",
+  "title": "Bootstrap Validation Bundle",
+  "status": "planned",
+  "updated_at": "2026-03-28T21:48:47Z",
+  "entries": [
+    {
+      "entry_id": "entry.repository_hardening_local_validation_loop.schema_validation",
+      "acceptance_label": "package_contracts_valid",
+      "validation_type": "schema_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/initiative.json"
+      ]
+    },
+    {
+      "entry_id": "entry.repository_hardening_local_validation_loop.gate_validation",
+      "acceptance_label": "ready_for_execution_gate",
+      "validation_type": "readiness_gate",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/discrepancies"
+      ]
+    }
+  ]
+}

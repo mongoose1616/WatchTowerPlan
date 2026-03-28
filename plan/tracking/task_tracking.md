@@ -1,7 +1,9 @@
 # Task Tracking
 
 ## Open Tasks
-_No open tasks._
+| Task | Status | Priority | Owner | Trace ID | Summary |
+| --- | --- | --- | --- | --- | --- |
+| [task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop](/plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json) | `planned` | `medium` | `repository_maintainer` | `trace.repository_hardening_local_validation_loop` | Bootstrap Repository Hardening and Local Validation Loop live initiative package. |
 
 ## Closed Task Summary
 - `completed`: 8
@@ -20,4 +22,4 @@ _No open tasks._
 | [task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json) | `completed` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Prove staged export, bootstrap, validation, and release portability for the finished offsec pack. |
 | [task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/bootstrap_watchtower_ctf_implementation_package_preservation/task.json) | `cancelled` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Bootstrap placeholder retired after the phase-aligned execution chain replaced it. |
 
-_Updated At: `2026-03-28T10:08:34Z`_
+_Updated At: `2026-03-28T21:48:47Z`_

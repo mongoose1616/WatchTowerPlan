@@ -3,8 +3,44 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-28T10:11:09Z",
+  "updated_at": "2026-03-28T21:49:21Z",
   "entries": [
+    {
+      "promotion_id": "promotion.repository_hardening_local_validation_loop.bootstrap_shell",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Bootstrap Promotion Shell",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/repository_hardening_local_validation_loop",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-28T21:48:47Z",
+      "target_paths": [
+        "plan/docs/decisions/repository_hardening_local_validation_loop_design_record.md",
+        "plan/docs/patterns/repository_hardening_local_validation_loop_implementation_slice.md",
+        "plan/docs/references/repository_hardening_local_validation_loop_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
     {
       "promotion_id": "promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell",
       "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",

@@ -5,6 +5,28 @@
   "status": "active",
   "entries": [
     {
+      "task_id": "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Bootstrap Repository Hardening and Local Validation Loop",
+      "summary": "Bootstrap Repository Hardening and Local Validation Loop live initiative package.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json",
+      "updated_at": "2026-03-28T21:48:47Z",
+      "governing_document_paths": [
+        "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
+        "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "task_id": "task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation",
       "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
       "trace_id": "trace.watchtower_ctf_implementation_package_preservation",
