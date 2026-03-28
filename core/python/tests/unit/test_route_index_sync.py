@@ -65,6 +65,12 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
         and "workflow.documentation_refresh" in entry["required_workflow_ids"]
         for entry in entries
     )
+    assert any(
+        entry["route_id"] == "route.commit_closeout"
+        and "workflow.commit_closeout" in entry["required_workflow_ids"]
+        and "workflow.task_handoff_review" not in entry["required_workflow_ids"]
+        for entry in entries
+    )
 
 
 def test_route_index_sync_writes_temp_output(tmp_path: Path) -> None:

@@ -4,7 +4,7 @@
 Use this workflow to load the repository foundation documents that materially shape planning, design, or foundations-aware review work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.
 
 ## Use When
-- An initiative brief, design record, or related planning artifact should be aligned with `core/docs/foundations/`.
+- A design brief, decision record, or pack-owned planning artifact should be aligned with `core/docs/foundations/`.
 - A review or documentation-alignment task explicitly asks whether guidance stays cohesive with repository foundations or scope posture.
 - A planning task depends on explicit product, standards, or technology-direction context.
 - A task needs a short record of which foundation documents materially shaped the output.
@@ -29,7 +29,7 @@ Use this workflow to load the repository foundation documents that materially sh
    - Add `repository_standards_posture.md` when the task can affect authority boundaries, synchronized updates, or governance expectations.
    - Add `engineering_stack_direction.md` when the task affects implementation, tooling, validation, or storage choices.
    - Add [customer_story.md](/core/docs/foundations/customer_story.md) when product or design work depends on the intended future operator or user experience, not only on the future product boundary.
-   - Add the active pack's coordination tracker or coordination index when the task is a review loop about overall repository coherence, authority, or next remediation work.
+   - Add the active pack's coordination tracker or another governed progress surface when the task is a review loop about overall repository coherence, authority, or next remediation work.
    - Prefer direct repository foundations over inferred product assumptions.
 2. Extract the governing context.
    - Record the product boundaries, design principles, standards posture, or technology-direction guidance that should shape the task.

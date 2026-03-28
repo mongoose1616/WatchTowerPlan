@@ -5,16 +5,16 @@ Use this workflow to define the implementation approach and apply the requested 
 
 ## Use When
 - A feature, fix, refactor, or behavior change needs to be implemented.
-- Existing code must be changed to satisfy an initiative brief, implementation slice, issue, or bug report.
+- Existing code must be changed to satisfy a design brief, implementation slice, issue, or bug report.
 - A task requires code changes plus the adjacent tests, docs, or configuration updates needed to keep the repository coherent.
 
 ## Inputs
 - Scoped implementation brief
-- Relevant initiative brief, implementation slice, issue, or acceptance criteria
+- Relevant design brief, implementation slice, issue, or acceptance criteria
 - Current-state context summary
 - Governing standards, references, and design docs applied
 - External guidance notes when needed
-- Required task, initiative, or handoff reference expectations when already identified
+- Required task-tracking, review, or handoff reference expectations when already identified
 - Technical constraints and non-functional requirements
 - Open questions
 
@@ -28,7 +28,7 @@ Use this workflow to define the implementation approach and apply the requested 
    - Modify the relevant code, tests, docs, configs, or schemas needed for a coherent result.
    - Apply the governing-document set deliberately instead of relying only on nearby repository patterns or memory.
    - Keep related surfaces synchronized when the change affects a governed source of truth.
-   - Update task, initiative, documentation, or handoff surfaces when the governing standards or references need explicit links or traceable mention for later review and validation.
+   - Update task-tracking, documentation, or handoff surfaces when the governing standards or references need explicit links or traceable mention for later review and validation.
    - Follow existing repository patterns unless there is a clear reason to change them.
    - If the implementation intentionally deviates from a governing document, make that deviation explicit and either update the governing document or record focused follow-up work.
 

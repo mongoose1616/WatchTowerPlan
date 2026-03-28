@@ -238,15 +238,13 @@
         "workflow.core",
         "workflow.task_scope_definition",
         "workflow.internal_context_review",
-        "workflow.commit_closeout",
-        "workflow.task_handoff_review"
+        "workflow.commit_closeout"
       ],
       "required_workflow_paths": [
         "core/workflows/modules/core.md",
         "core/workflows/modules/task_scope_definition.md",
         "core/workflows/modules/internal_context_review.md",
-        "core/workflows/modules/commit_closeout.md",
-        "core/workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/commit_closeout.md"
       ]
     },
     {

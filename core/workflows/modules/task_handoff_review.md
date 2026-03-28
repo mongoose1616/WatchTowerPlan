@@ -11,7 +11,7 @@ Use this workflow to confirm that the active task output is coherent, handoff-re
 ## Inputs
 - Active task outputs or draft deliverables
 - Current task context and applied internal or external guidance records
-- Current initiative view or traceability state when the task belongs to a traced initiative
+- Current tracked-work or coordination state when the task belongs to a governed local follow-up system
 - Known related surfaces, unresolved questions, or follow-up concerns
 - Commit readiness signal when the task may be ready for closeout
 
@@ -22,15 +22,15 @@ Use this workflow to confirm that the active task output is coherent, handoff-re
    - Confirm that the governing standards, references, or design docs that materially shaped the result are explicit enough to survive handoff.
    - If the output is a review or audit, confirm that the scope boundary, evidence basis, and any confirmation-pass result are explicit.
 2. Identify related-surface impacts.
-   - Note any adjacent standards, workflows, templates, docs, tests, schemas, initiative surfaces, or machine-readable artifacts that should be updated in the same change set.
-   - Check whether the task, initiative, documentation, or review surfaces should carry explicit links or references to the governing documents used during the work.
-   - When the task belongs to a traced initiative, check whether the current result changes initiative phase, ownership, blockers, next-step projection, or closeout readiness.
+   - Note any adjacent standards, workflows, templates, docs, tests, schemas, tracked-work surfaces, or machine-readable artifacts that should be updated in the same change set.
+   - Check whether the task-tracking, documentation, or review surfaces should carry explicit links or references to the governing documents used during the work.
+   - When the task belongs to a governed local tracker or coordination surface, check whether the current result changes status, ownership, blockers, next-step projection, or closeout readiness.
    - Distinguish same-change updates from explicit deferred follow-up work.
 3. Record follow-up and closeout needs.
    - Surface unresolved questions, risks, blockers, and recommended next steps explicitly.
    - Record any deviation from governing standards or references, plus whether it was resolved, intentionally accepted, or deferred.
    - If the task was a review loop, record whether repeated passes found no new actionable issues or which gaps remain open.
-   - Confirm the task-handling outcome is explicit for non-trivial work: durable task present, task transition recorded, or explicit no-task reason.
+   - Confirm any repository-local task or closeout outcome is explicit for non-trivial work when the active pack or repository requires it.
    - If the change is ready to be committed, add the commit-closeout workflow rather than improvising commit behavior here.
 
 ## Data Structure
@@ -38,10 +38,10 @@ Use this workflow to confirm that the active task output is coherent, handoff-re
 - Review scope and confirmation status when applicable
 - Governing documents carried through the task
 - Related surfaces to update
-- Initiative or trace follow-up when the task belongs to a traced initiative
+- Tracked-work or coordination follow-up when the task belongs to a governed local tracker
 - Deferred follow-up work
 - Remaining risks or open questions
-- Task-handling outcome when the work is non-trivial
+- Repository-local task-handling outcome when required
 - Commit-closeout recommendation when relevant
 
 ## Outputs

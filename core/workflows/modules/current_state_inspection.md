@@ -17,12 +17,12 @@ Use this workflow to inspect the current repository, codebase, document set, or 
 ## Workflow
 1. Identify the current surfaces in scope.
    - Select the files, directories, artifacts, interfaces, or documents that materially affect the task.
-   - When the work belongs to an existing planning trace, start with the active pack's initiative tracker or initiative index before fanning out into initiative, design, decision, implementation, or task family surfaces.
+   - When the work already belongs to a governed local tracker, coordination surface, or review package, start there before fanning out into adjacent documents, code, or artifact families.
    - Prefer governed lookup and index surfaces before raw repo scanning when the relevant family is already published there.
    - Focus on the minimum local context needed for correct execution.
 2. Inspect the current state directly.
    - Read the relevant local files, neighboring surfaces, and existing patterns.
-   - Use the initiative view to identify the current phase, active ownership, and next controlling surface when that is more efficient than scanning multiple family trackers separately.
+   - Use governed coordination or lookup surfaces to identify current status, ownership, or the next controlling surface when that is more efficient than scanning multiple families separately.
    - Capture the current behavior, structure, or artifact shape that the task must respect.
 3. Record constraints and affected surfaces.
    - Note dependencies, coupling, adjacent surfaces, and known risks.

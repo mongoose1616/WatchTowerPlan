@@ -12,7 +12,7 @@ Use this workflow to evaluate a code change for correctness, regression risk, ma
 ## Inputs
 - Scoped review brief
 - Code changes under review plus the touched and high-risk adjacent surfaces
-- Relevant initiative brief, implementation slice, issue, or acceptance criteria
+- Relevant design brief, implementation slice, issue, or acceptance criteria
 - Current-state context summary
 - Internal standards and canonical references applied
 - External guidance notes when needed

@@ -51,8 +51,12 @@ Keep workflow documents small, composable, and explicit so routed task execution
 ## Guidance
 - Design each workflow document around one primary objective.
 - Keep workflow documents loadable through routing rather than as broad narrative docs that require human interpretation to become usable.
+- In this repository family, workflow documents are first-class execution surfaces for LLM or agent operation, not secondary narrative attachments to the code.
 - Put reusable, repeatable execution procedures under `*/workflows/modules/`.
 - Put persona-, reviewer-, or lens-oriented orchestration docs under `*/workflows/roles/`.
+- Keep reusable, repo-agnostic execution behavior under `core/workflows/**` when multiple WatchTower repositories or packs should be able to reuse it unchanged.
+- Move pack-owned coordination semantics, tracker rules, retention policy, and domain nouns into the owning pack workflow roots instead of leaking them into shared core modules.
+- Shared core workflow modules may mention pack-owned coordination or tracked-work surfaces only as optional local context, not as required baseline steps for every repo.
 - Workflow roles should call reusable modules where practical instead of copying generic execution procedures into every role.
 - Workflow roles must publish a `Composes Modules` section that names the reusable workflow modules the role directly orchestrates.
 - The routing table remains the authority for which workflow documents become active for a request. A role's `Composes Modules` section makes that direct role-to-module composition auditable; it does not auto-activate modules outside the routed workflow set.
@@ -105,6 +109,7 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - A workflow document should not become a hidden policy document.
 - A workflow document should not depend on unstated tribal knowledge to be usable.
 - A shared phase module is valid only when it remains a concrete execution concern rather than vague meta-guidance.
+- A shared core workflow should not require one pack's initiative system, trace model, coordination index, or retention rules as if those surfaces were universal.
 - A workflow document may reference external sources only when authoritative guidance materially affects the workflow and no adequate internal source exists.
 - A workflow document should not restate routing-baseline files as if they were task-specific additional context.
 
@@ -131,6 +136,7 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - A reviewer should be able to identify the workflow's single objective quickly.
 - The document should be executable as written without broad unstated assumptions.
 - The workflow document should not duplicate the role of `AGENTS.md`, `ROUTING_TABLE.md`, or a standards document.
+- Shared core workflow documents should read as reusable execution substrate rather than as wrappers around one specific pack's tracker or coordination model.
 - The required sections should be present and materially useful rather than empty headings.
 - Workflow roles should publish a materially useful `Composes Modules` section instead of leaving module orchestration implicit in prose alone.
 - `Composes Modules` entries should point only to governed workflow-module documents.

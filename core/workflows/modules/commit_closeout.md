@@ -13,7 +13,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 - Completed change set
 - `git status` and staged diff context
 - Relevant task summary, acceptance criteria, or rationale for the change
-- Current trace or task-handling outcome when the change is non-trivial
+- Current repository-local task or trace outcome when the change is non-trivial
 - Internal standards and canonical references applied
 - [git_commit_standard.md](/core/docs/standards/engineering/git_commit_standard.md)
 - Open questions about scope, breaking-change status, or related footers
@@ -32,9 +32,9 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
    - Use [git_commit_standard.md](/core/docs/standards/engineering/git_commit_standard.md) as the governing policy for type, scope, description, body, and footers.
    - Choose the commit type and optional scope that best reflect the dominant effect of the change.
    - Write the subject in imperative voice with 72 characters or fewer and no trailing punctuation.
-   - Add a body and footers when the change is complex, risky, trace-linked, task-linked, or breaking.
-   - For traced or non-trivial work, include `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason` when the active pack or repository task-handling rules require durable outcome tracking.
-   - Prefer repository semantic trace and task identifiers over opaque UUIDs when adding commit metadata.
+   - Add a body and footers when the change is complex, risky, task-linked, trace-linked, or breaking.
+   - For non-trivial work, include repository-specific tracking footers such as `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason` only when the active pack or repository rules require durable outcome tracking.
+   - Prefer repository-semantic trace or task identifiers over opaque UUIDs when adding commit metadata.
 3. Validate the commit message and create the commit when requested.
    - Check the message against the repository regex and commit-message rules from the standard.
    - Confirm the message accurately matches the staged change set.
