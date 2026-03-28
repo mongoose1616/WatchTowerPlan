@@ -23,6 +23,29 @@ def _copy_control_plane_repo(tmp_path: Path) -> Path:
     return repo_root
 
 
+def _append_workflow_metadata(
+    repo_root: Path,
+    workflow_id: str,
+    *,
+    phase_type: str = "execution",
+    task_family: str = "workflow_testing",
+    primary_risks: tuple[str, ...] = ("boundary_leak",),
+    extra_trigger_tags: tuple[str, ...] = ("workflow", "test"),
+) -> None:
+    metadata_path = repo_root / "core/control_plane/registries/workflow_metadata_registry.json"
+    metadata_document = json.loads(metadata_path.read_text(encoding="utf-8"))
+    metadata_document["entries"].append(
+        {
+            "workflow_id": workflow_id,
+            "phase_type": phase_type,
+            "task_family": task_family,
+            "primary_risks": list(primary_risks),
+            "extra_trigger_tags": list(extra_trigger_tags),
+        }
+    )
+    metadata_path.write_text(f"{json.dumps(metadata_document, indent=2)}\n", encoding="utf-8")
+
+
 def test_workflow_index_sync_builds_schema_valid_document() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = WorkflowIndexSyncService(loader)
@@ -153,6 +176,201 @@ def test_validate_workflow_additional_load_section_accepts_document_relative_fil
     )
 
     assert result == ("core/docs/references/example_reference.md",)
+
+
+def test_workflow_index_sync_rejects_core_workflow_pack_owned_additional_load_path(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    workflow_path = repo_root / "core/workflows/modules/shared_validation.md"
+    pack_doc_path = repo_root / "plan/docs/standards/example_standard.md"
+    workflow_path.parent.mkdir(parents=True, exist_ok=True)
+    pack_doc_path.parent.mkdir(parents=True, exist_ok=True)
+    pack_doc_path.write_text("# Example Standard\n", encoding="utf-8")
+    workflow_path.write_text(
+        dedent(
+            """\
+            # Shared Validation Workflow
+
+            ## Purpose
+            Use this workflow to validate one shared repository change.
+
+            ## Use When
+            - One shared change needs validation.
+
+            ## Inputs
+            - One scoped validation request.
+
+            ## Additional Files to Load
+            - [example_standard.md](/plan/docs/standards/example_standard.md): invalid pack-owned
+              guidance.
+
+            ## Workflow
+            1. Validate the shared change.
+
+            ## Data Structure
+            - One shared validation record.
+
+            ## Outputs
+            - One validation result.
+
+            ## Done When
+            - The shared validation pass is complete.
+            """
+        ),
+        encoding="utf-8",
+    )
+    _append_workflow_metadata(repo_root, "workflow.shared_validation")
+
+    loader = ControlPlaneLoader(repo_root)
+    with pytest.raises(
+        ValueError,
+        match=r"shared core workflow docs must keep 'Additional Files to Load' under core/",
+    ):
+        WorkflowIndexSyncService(loader).build_document()
+
+
+def test_workflow_index_sync_rejects_core_workflow_pack_specific_coordination_language(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    workflow_path = repo_root / "core/workflows/modules/shared_validation.md"
+    workflow_path.parent.mkdir(parents=True, exist_ok=True)
+    workflow_path.write_text(
+        dedent(
+            """\
+            # Shared Validation Workflow
+
+            ## Purpose
+            Use this workflow to validate one shared repository change.
+
+            ## Use When
+            - One shared change needs validation.
+
+            ## Inputs
+            - Existing initiative context when present.
+
+            ## Workflow
+            1. Review the initiative tracker before validating the change.
+
+            ## Data Structure
+            - One shared validation record.
+
+            ## Outputs
+            - One validation result.
+
+            ## Done When
+            - The shared validation pass is complete.
+            """
+        ),
+        encoding="utf-8",
+    )
+    _append_workflow_metadata(repo_root, "workflow.shared_validation")
+
+    loader = ControlPlaneLoader(repo_root)
+    with pytest.raises(
+        ValueError,
+        match=(
+            r"shared core workflow docs must not require pack-specific "
+            r"coordination language such as 'initiative'"
+        ),
+    ):
+        WorkflowIndexSyncService(loader).build_document()
+
+
+def test_workflow_index_sync_rejects_core_role_composing_pack_module(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    role_path = repo_root / "core/workflows/roles/shared_reviewer.md"
+    pack_module_path = repo_root / "plan/workflows/modules/plan_specific_review.md"
+    role_path.parent.mkdir(parents=True, exist_ok=True)
+    pack_module_path.parent.mkdir(parents=True, exist_ok=True)
+    role_path.write_text(
+        dedent(
+            """\
+            # Shared Reviewer Role
+
+            ## Purpose
+            Use this role to apply one shared review lens.
+
+            ## Use When
+            - Running one shared review.
+
+            ## Inputs
+            - One scoped review request.
+
+            ## Composes Modules
+            - [plan_specific_review.md](/plan/workflows/modules/plan_specific_review.md): invalid
+              pack-owned module.
+
+            ## Workflow
+            1. Apply the shared review lens.
+
+            ## Data Structure
+            - One shared review result.
+
+            ## Outputs
+            - One shared review output.
+
+            ## Done When
+            - The shared review lens has been applied.
+            """
+        ),
+        encoding="utf-8",
+    )
+    pack_module_path.write_text(
+        dedent(
+            """\
+            # Plan Specific Review Workflow
+
+            ## Purpose
+            Use this workflow to apply one pack-owned review path.
+
+            ## Use When
+            - Running one pack-owned review.
+
+            ## Inputs
+            - One scoped pack review request.
+
+            ## Workflow
+            1. Execute the pack-owned review procedure.
+
+            ## Data Structure
+            - One pack-owned review record.
+
+            ## Outputs
+            - One pack-owned review output.
+
+            ## Done When
+            - The pack-owned review is complete.
+            """
+        ),
+        encoding="utf-8",
+    )
+    _append_workflow_metadata(
+        repo_root,
+        "workflow.shared_reviewer",
+        phase_type="review",
+        task_family="shared_review",
+        primary_risks=("boundary_leak", "composition_drift"),
+        extra_trigger_tags=("shared", "review"),
+    )
+    _append_workflow_metadata(
+        repo_root,
+        "workflow.plan_specific_review",
+        phase_type="review",
+        task_family="pack_review",
+        primary_risks=("pack_coupling",),
+        extra_trigger_tags=("plan", "review"),
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+    with pytest.raises(
+        ValueError,
+        match=r"shared core workflow roles must compose only modules under core/workflows/modules/",
+    ):
+        WorkflowIndexSyncService(loader).build_document()
 
 
 def test_workflow_index_sync_rejects_heading_after_list_without_blank_line(

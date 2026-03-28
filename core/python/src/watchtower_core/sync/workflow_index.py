@@ -90,6 +90,27 @@ WORKFLOW_TRIGGER_TAG_STOPWORDS = {
 WORKFLOW_REFERENCE_DOC_PATH_PATTERN = re.compile(
     r"^(?:core|[^/]+|packs/[^/]+)/docs/references/.+\.md$"
 )
+CORE_SHARED_WORKFLOW_ROOTS = (
+    CORE_WORKFLOW_MODULE_ROOT,
+    CORE_WORKFLOW_ROLE_ROOT,
+)
+CORE_SHARED_WORKFLOW_ALLOWED_REFERENCE_PREFIX = "core/"
+CORE_SHARED_ROLE_ALLOWED_MODULE_ROOT = CORE_WORKFLOW_MODULE_ROOT
+CORE_SHARED_WORKFLOW_DISALLOWED_PATH_PATTERN = re.compile(
+    r"(?<![A-Za-z0-9_])(?:plan/|oversight/|packs/)",
+)
+CORE_SHARED_WORKFLOW_DISALLOWED_LANGUAGE_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
+    (re.compile(r"\btrace_id\b", re.IGNORECASE), "trace_id"),
+    (re.compile(r"\binitiative\b", re.IGNORECASE), "initiative"),
+    (
+        re.compile(r"\bcoordination (?:index|tracker)\b", re.IGNORECASE),
+        "coordination index or coordination tracker",
+    ),
+    (
+        re.compile(r"\btraceability (?:state|view)\b", re.IGNORECASE),
+        "traceability state or traceability view",
+    ),
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -137,6 +158,10 @@ def _workflow_title_suffix(workflow_kind: str) -> str:
     if workflow_kind == "role":
         return " Role"
     raise ValueError(f"Unsupported workflow kind: {workflow_kind}")
+
+
+def _is_core_shared_workflow_path(relative_path: str) -> bool:
+    return any(relative_path.startswith(f"{root}/") for root in CORE_SHARED_WORKFLOW_ROOTS)
 
 
 def _is_reference_doc_path(path: str) -> bool:
@@ -259,6 +284,62 @@ def validate_workflow_section_order(
         raise ValueError(
             f"{relative_path} places optional section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} "
             "outside the allowed position between 'Inputs' and 'Workflow'."
+        )
+
+
+def validate_core_shared_workflow_boundary(
+    relative_path: str,
+    markdown: str,
+    *,
+    internal_reference_paths: tuple[str, ...],
+    composes_module_paths: tuple[str, ...],
+) -> None:
+    """Fail closed when shared core workflow docs depend on pack-owned surfaces."""
+
+    if not _is_core_shared_workflow_path(relative_path):
+        return
+
+    disallowed_reference_paths = tuple(
+        path
+        for path in internal_reference_paths
+        if not path.startswith(CORE_SHARED_WORKFLOW_ALLOWED_REFERENCE_PREFIX)
+    )
+    if disallowed_reference_paths:
+        joined = ", ".join(disallowed_reference_paths)
+        raise ValueError(
+            f"{relative_path} shared core workflow docs must keep "
+            f"{WORKFLOW_ADDITIONAL_LOAD_SECTION!r} under "
+            f"{CORE_SHARED_WORKFLOW_ALLOWED_REFERENCE_PREFIX} "
+            f"and out of pack-owned roots: {joined}"
+        )
+
+    disallowed_composed_paths = tuple(
+        path
+        for path in composes_module_paths
+        if not path.startswith(f"{CORE_SHARED_ROLE_ALLOWED_MODULE_ROOT}/")
+    )
+    if disallowed_composed_paths:
+        joined = ", ".join(disallowed_composed_paths)
+        raise ValueError(
+            f"{relative_path} shared core workflow roles must compose only modules under "
+            f"{CORE_SHARED_ROLE_ALLOWED_MODULE_ROOT}/: {joined}"
+        )
+
+    path_match = CORE_SHARED_WORKFLOW_DISALLOWED_PATH_PATTERN.search(markdown)
+    if path_match is not None:
+        raise ValueError(
+            f"{relative_path} shared core workflow docs must not reference pack-owned roots "
+            f"such as {path_match.group(0)!r}; move that repository-local logic into the "
+            "owning pack workflow root."
+        )
+
+    for pattern, label in CORE_SHARED_WORKFLOW_DISALLOWED_LANGUAGE_PATTERNS:
+        if pattern.search(markdown) is None:
+            continue
+        raise ValueError(
+            f"{relative_path} shared core workflow docs must not require pack-specific "
+            f"coordination language such as {label!r}; move that tracked-work logic into "
+            "the owning pack workflow root."
         )
 
 
@@ -411,6 +492,13 @@ def load_workflow_document_with_reference_map(
         raise ValueError(
             f"{relative_path} {workflow_kind} title must end with {title_suffix!r}."
         )
+
+    validate_core_shared_workflow_boundary(
+        relative_path,
+        markdown,
+        internal_reference_paths=internal_reference_paths,
+        composes_module_paths=composes_module_paths,
+    )
 
     summary = extract_first_paragraph(sections["Purpose"])
     reference_doc_paths = tuple(

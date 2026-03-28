@@ -48,6 +48,7 @@ uv run watchtower-core plan sync workflow-index --output /tmp/workflow_index.jso
 ## Behavior and Outputs
 - The command reads workflow modules under `core/workflows/modules/` and `plan/workflows/modules/` and rebuilds the machine-readable workflow index deterministically.
 - The rebuild validates workflow structure, section order, optional explained `Additional Files to Load` bullets, and governed local-reference usage.
+- Shared core workflow documents under `core/workflows/modules/` and `core/workflows/roles/` must remain pack-neutral during rebuild: they may not load pack-owned docs, shared core roles may not compose pack-owned modules, and pack-specific coordination language such as `initiative` or `trace_id` is rejected.
 - Workflow modules that publish `Additional Files to Load` must keep it task-specific, repo-local, checkout-portable, and free of generic routing-baseline boilerplate.
 - Workflow modules that use filesystem-absolute checkout paths instead of repository-native links are rejected during rebuild because those paths do not survive clone or worktree changes.
 - Workflow modules that try to cite raw external URLs instead of governed local reference docs in the shared or owning-pack `docs/references/` roots are rejected during rebuild.
@@ -72,4 +73,4 @@ uv run watchtower-core plan sync workflow-index --output /tmp/workflow_index.jso
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At
-- `2026-03-28T20:00:00Z`
+- `2026-03-29T01:20:00Z`
