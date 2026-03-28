@@ -14,9 +14,11 @@ from watchtower_core.cli.common import (
 )
 from watchtower_core.query.references import REFERENCE_REPOSITORY_STATUS_VALUES
 from watchtower_host.cli.query_knowledge_handlers import (
+    _run_query_authority,
     _run_query_foundations,
     _run_query_references,
     _run_query_standards,
+    _run_query_templates,
     _run_query_workflows,
 )
 
@@ -25,6 +27,52 @@ def register_query_knowledge_commands(
     query_subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register knowledge-oriented query commands."""
+    query_authority_parser = query_subparsers.add_parser(
+        "authority",
+        help="Search the authority map.",
+        description=dedent(
+            """
+            Search the governed authority map for recurring questions about
+            canonical machine surfaces, preferred commands, and fallback human
+            guidance.
+
+            Use this first when the question is "what is authoritative here?"
+            or "which governed lookup surface should I trust before scanning the
+            repository directly?".
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query authority --query canonical",
+            "uv run watchtower-core query authority --question-id "
+            "authority.governance.template_selection --format json",
+            "uv run watchtower-core query authority --artifact-kind template_catalog",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    add_query_argument(
+        query_authority_parser,
+        help_text=(
+            "Free-text query over authority-map fields such as question ID, "
+            "question text, canonical path, preferred command, aliases, and "
+            "fallback paths."
+        ),
+    )
+    query_authority_parser.add_argument(
+        "--question-id",
+        help="Exact authority question filter such as authority.governance.command_lookup.",
+    )
+    query_authority_parser.add_argument(
+        "--domain",
+        help="Exact authority domain filter such as governance or planning.",
+    )
+    query_authority_parser.add_argument(
+        "--artifact-kind",
+        help="Exact canonical artifact-kind filter such as command_index or template_catalog.",
+    )
+    add_limit_argument(query_authority_parser)
+    add_human_json_format_argument(query_authority_parser)
+    query_authority_parser.set_defaults(handler=_run_query_authority)
+
     query_foundations_parser = query_subparsers.add_parser(
         "foundations",
         help="Search the foundation index.",
@@ -303,3 +351,68 @@ def register_query_knowledge_commands(
     add_limit_argument(query_standards_parser)
     add_human_json_format_argument(query_standards_parser)
     query_standards_parser.set_defaults(handler=_run_query_standards)
+
+    query_templates_parser = query_subparsers.add_parser(
+        "templates",
+        help="Search the template catalog.",
+        description=dedent(
+            """
+            Search the governed template catalog for reusable document
+            scaffolds, section requirements, allowed roots, and authoring
+            guidance.
+
+            Use this before drafting or refreshing a governed document when the
+            repository already defines its shape and required sections.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query templates --query standard",
+            "uv run watchtower-core query templates --allowed-root core/docs/commands --format json",
+            "uv run watchtower-core query templates --family-id workflow --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    add_query_argument(
+        query_templates_parser,
+        help_text=(
+            "Free-text query over template IDs, template paths, section IDs, "
+            "allowed roots, authoring goals, operator notes, and guidance text."
+        ),
+    )
+    query_templates_parser.add_argument(
+        "--template-id",
+        help="Exact template identifier such as template.core.workflow.module.",
+    )
+    query_templates_parser.add_argument(
+        "--family-id",
+        help="Exact documentation-family filter such as workflow.",
+    )
+    query_templates_parser.add_argument(
+        "--surface-id",
+        help="Exact rendered or authored surface filter such as surface.documentation.standard.",
+    )
+    query_templates_parser.add_argument(
+        "--authorship-mode",
+        choices=("authored", "rendered"),
+        help="Exact authorship-mode filter.",
+    )
+    query_templates_parser.add_argument(
+        "--llm-guidance-mode",
+        choices=("required", "advisory", "none"),
+        help="Exact LLM-guidance-mode filter.",
+    )
+    query_templates_parser.add_argument(
+        "--allowed-root",
+        help="Exact allowed-root filter such as core/docs/standards or plan/docs/commands.",
+    )
+    query_templates_parser.add_argument(
+        "--required-section-id",
+        help="Exact required-section filter such as operationalization or command.",
+    )
+    query_templates_parser.add_argument(
+        "--required-rendered-surface-id",
+        help="Exact required rendered-surface filter when the template binds to rendered companions.",
+    )
+    add_limit_argument(query_templates_parser)
+    add_human_json_format_argument(query_templates_parser)
+    query_templates_parser.set_defaults(handler=_run_query_templates)

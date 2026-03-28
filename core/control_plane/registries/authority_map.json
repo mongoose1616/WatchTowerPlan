@@ -5,6 +5,30 @@
   "status": "active",
   "entries": [
     {
+      "question_id": "authority.governance.lookup_discipline",
+      "domain": "governance",
+      "question": "Which governed lookup surface should I trust before scanning the repository directly?",
+      "status": "active",
+      "artifact_kind": "authority_map",
+      "canonical_path": "core/control_plane/registries/authority_map.json",
+      "preferred_command": "watchtower-core query authority",
+      "preferred_human_path": "AGENTS.md",
+      "status_fields": [
+        "status"
+      ],
+      "fallback_paths": [
+        "core/docs/commands/core_python/watchtower_core_query.md",
+        "core/docs/commands/core_python/watchtower_core_query_authority.md",
+        "core/docs/standards/workflows/routing_and_context_loading_standard.md"
+      ],
+      "aliases": [
+        "canonical lookup order",
+        "what is authoritative",
+        "search discipline"
+      ],
+      "notes": "Use this when the first problem is choosing the authoritative lookup surface rather than scanning docs, JSON artifacts, or repo search results directly."
+    },
+    {
       "question_id": "authority.governance.command_lookup",
       "domain": "governance",
       "question": "Which command surface should I use and where is it documented?",
@@ -26,6 +50,31 @@
         "command docs"
       ],
       "notes": "Use this when the main question is which CLI command or command page answers a repository task."
+    },
+    {
+      "question_id": "authority.governance.template_selection",
+      "domain": "governance",
+      "question": "Which governed template or section contract should I use before drafting or refreshing a doc?",
+      "status": "active",
+      "artifact_kind": "template_catalog",
+      "canonical_path": "core/control_plane/registries/template_catalog.json",
+      "preferred_command": "watchtower-core query templates",
+      "preferred_human_path": "core/docs/templates/README.md",
+      "status_fields": [
+        "entry_status",
+        "authorship_mode"
+      ],
+      "fallback_paths": [
+        "core/docs/commands/core_python/watchtower_core_query_templates.md",
+        "core/docs/templates/",
+        "core/docs/standards/documentation/"
+      ],
+      "aliases": [
+        "template selection",
+        "document shape",
+        "required sections"
+      ],
+      "notes": "Use this when the document family already has a governed template and the goal is to stop guessing section order, allowed roots, or authoring requirements."
     },
     {
       "question_id": "authority.governance.workflow_routing",

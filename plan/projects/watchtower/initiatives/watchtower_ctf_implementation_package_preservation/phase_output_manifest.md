@@ -21,15 +21,21 @@ This support surface translates the preserved phase plan into bounded engineer o
   - revalidated baseline identity, donor or recipient split, and current-compatible delta set in the canonical docs;
   - no unresolved ambiguity in read-first order, target-repo assumptions, or source-of-truth precedence; and
   - current support docs `README.md`, `cold_start_runbook.md`, `phase_output_manifest.md`, `phase_closeout_checklists.md`, `starter_surface_blueprint.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md`.
-- Current command and query anchors:
+- Exact Phase 0 proof sequence:
+  - Run the sequence in this order. The three `validate artifact` commands are mandatory whenever the named JSON companions changed in the same change set. If those machine companions did not change, `validate acceptance` plus the three plan queries remain the minimum no-change proof.
   - `cd /home/j/WatchTowerPlan/core/python`
+  - `uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json --format json`
+  - `uv run watchtower-core validate artifact --path core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json --format json`
+  - `uv run watchtower-core validate artifact --path core/control_plane/indexes/traceability/traceability_index.json --format json`
   - `uv run watchtower-core validate acceptance --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
   - `uv run watchtower-core plan query trace --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
   - `uv run watchtower-core plan query readiness --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
   - `uv run watchtower-core plan query coordination --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
 - Mandatory evidence:
-  - current acceptance contract and durable handoff-readiness evidence still validate;
-  - coordination points to one real next engineer action; and
+  - current acceptance contract and durable handoff-readiness evidence still validate structurally when touched;
+  - the joined traceability row still validates structurally when that machine companion changed;
+  - semantic acceptance reconciliation still passes for `trace.watchtower_ctf_implementation_package_preservation`;
+  - coordination points to one real next engineer action and readiness has no hidden blocker; and
   - no new live-contract delta is required before recipient-repo mutation.
 - Ready-to-close signal:
   - Phase 1 can start without baseline ambiguity or hidden prerequisite review.

@@ -116,6 +116,8 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         subcommand_implementation_paths=(
             ("paths", QUERY_DISCOVERY_FAMILY_PATH),
             ("commands", QUERY_DISCOVERY_FAMILY_PATH),
+            ("authority", QUERY_KNOWLEDGE_FAMILY_PATH),
+            ("templates", QUERY_KNOWLEDGE_FAMILY_PATH),
             ("foundations", QUERY_KNOWLEDGE_FAMILY_PATH),
             ("workflows", QUERY_KNOWLEDGE_FAMILY_PATH),
             ("references", QUERY_KNOWLEDGE_FAMILY_PATH),

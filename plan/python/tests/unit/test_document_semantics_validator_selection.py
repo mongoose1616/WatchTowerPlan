@@ -5,6 +5,9 @@ from textwrap import dedent
 
 import pytest
 from watchtower_plan.validation import DocumentSemanticsValidationService
+from watchtower_plan.validation.document_semantics import (
+    INITIATIVE_HANDOFF_DOCUMENT_SEMANTICS_VALIDATOR_ID,
+)
 
 from tests.unit.document_semantics_fixtures import (
     REPO_ROOT,
@@ -44,6 +47,32 @@ def test_document_semantics_validation_auto_selects_command_validator() -> None:
 
     assert result.passed is True
     assert result.validator_id == "validator.documentation.command_semantics"
+    assert result.issue_count == 0
+
+
+def test_document_semantics_validation_auto_selects_initiative_handoff_validator_for_canonical_doc() -> None:
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate(
+        "plan/projects/watchtower/initiatives/"
+        "watchtower_ctf_implementation_package_preservation/initiative_brief.md"
+    )
+
+    assert result.passed is True
+    assert result.validator_id == INITIATIVE_HANDOFF_DOCUMENT_SEMANTICS_VALIDATOR_ID
+    assert result.issue_count == 0
+
+
+def test_document_semantics_validation_auto_selects_initiative_handoff_validator_for_rendered_surface() -> None:
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate(
+        "plan/projects/watchtower/initiatives/"
+        "watchtower_ctf_implementation_package_preservation/plan.md"
+    )
+
+    assert result.passed is True
+    assert result.validator_id == INITIATIVE_HANDOFF_DOCUMENT_SEMANTICS_VALIDATOR_ID
     assert result.issue_count == 0
 
 

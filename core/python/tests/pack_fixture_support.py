@@ -21,6 +21,14 @@ _DEFAULT_COMMAND_NAMESPACE = "fixture"
 _DEFAULT_PYTHON_DISTRIBUTION = "watchtower-fixture-pack"
 _DEFAULT_PYTHON_PACKAGE = "watchtower_fixture_pack"
 _DEFAULT_INTEGRATION_MODULE = "watchtower_fixture_pack.integration"
+_PLAN_DEPENDENT_CORE_ACCEPTANCE_FILES = (
+    "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
+    (
+        "core/control_plane/records/validation_evidence/"
+        "watchtower_ctf_implementation_package_preservation_handoff_readiness.json"
+    ),
+)
+_PLAN_DEPENDENT_TRACE_IDS = ("trace.watchtower_ctf_implementation_package_preservation",)
 
 
 def materialize_pack_validation_suite(
@@ -476,6 +484,7 @@ def materialize_validation_repo_subset(
         github_root = REPO_ROOT / ".github"
         if github_root.exists():
             copytree(github_root, repo_root / ".github", dirs_exist_ok=True)
+        _prune_plan_dependent_core_acceptance_artifacts(repo_root)
     return repo_root
 
 
@@ -612,6 +621,25 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 def _write_json(path: Path, document: dict[str, Any]) -> None:
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def _prune_plan_dependent_core_acceptance_artifacts(repo_root: Path) -> None:
+    for relative_path in _PLAN_DEPENDENT_CORE_ACCEPTANCE_FILES:
+        artifact_path = repo_root / relative_path
+        if artifact_path.exists():
+            artifact_path.unlink()
+
+    traceability_path = repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
+    if not traceability_path.exists():
+        return
+
+    traceability_index = _load_json(traceability_path)
+    traceability_index["entries"] = [
+        entry
+        for entry in traceability_index.get("entries", [])
+        if entry.get("trace_id") not in _PLAN_DEPENDENT_TRACE_IDS
+    ]
+    _write_json(traceability_path, traceability_index)
 
 
 def _materialize_owned_roots(repo_root: Path, owned_roots: dict[str, Any]) -> None:

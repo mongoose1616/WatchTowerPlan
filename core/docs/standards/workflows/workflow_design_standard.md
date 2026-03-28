@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:05:00Z"
+updated_at: "2026-03-27T15:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,7 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [workflow_md_standard.md](/core/docs/standards/documentation/workflow_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/core/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [source_and_citation_standard.md](/core/docs/standards/governance/source_and_citation_standard.md): workflows should keep observed facts, bounded inference, and adopted policy distinguishable when discovery or judgment is part of the work.
 - [agent_workflow_authoring_reference.md](/core/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules narrow, explicit, and efficient for LLM or agent use.
 - [workflow_template.md](/core/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md): shared workflow-routing surface that operationalizes or depends on this standard.
@@ -71,6 +72,8 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - Workflow documents may publish `Additional Files to Load` only when extra repo-local files beyond the routing baseline materially change execution.
 - `Additional Files to Load` should point to the next files an agent or maintainer should actually open, not to generic repo-wide context that routing already guarantees.
 - `Additional Files to Load` bullets should use `source: execution implication` form and remain short enough to keep the module scan-friendly.
+- When a workflow depends on governed lookup or authored-document shape, tell the reader to use the relevant query surface such as `watchtower-core query authority`, `watchtower-core query commands`, or `watchtower-core query templates` before raw scanning or improvised structure.
+- When a workflow requires discovery or judgment, make it explicit which steps are observed current-state facts, which steps allow bounded inference, and where local policy or recommendation is being applied.
 - `Additional Files to Load` links should use repository-native Markdown targets such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another repo-relative path the current checkout can resolve.
 - Filesystem-absolute targets such as `/home/...` or other machine-local checkout paths are invalid in workflow documents because they break clone, branch, and worktree portability.
 - Steps should be ordered and concrete enough that the workflow can be followed without hidden verbal context.
@@ -158,4 +161,4 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-24T22:05:00Z`
+- `2026-03-27T15:00:00Z`

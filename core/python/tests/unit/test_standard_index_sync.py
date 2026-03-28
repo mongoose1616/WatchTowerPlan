@@ -194,6 +194,30 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         [],
     )
 
+    reference_distillation_entry = next(
+        entry
+        for entry in entries
+        if entry["standard_id"] == "std.governance.reference_distillation"
+    )
+    assert reference_distillation_entry["category"] == "governance"
+    assert {
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/reference_distillation.md",
+        "core/docs/templates/reference_template.md",
+    }.issubset(set(reference_distillation_entry.get("operationalization_paths", [])))
+
+    source_and_citation_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.governance.source_and_citation"
+    )
+    assert source_and_citation_entry["category"] == "governance"
+    assert {
+        "AGENTS.md",
+        "core/docs/AGENTS.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/docs/commands/core_python/watchtower_core_query_authority.md",
+    }.issubset(set(source_and_citation_entry.get("operationalization_paths", [])))
+
 
 def test_pack_placeholder_operationalization_paths_match_live_pack_paths() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)

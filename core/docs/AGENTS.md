@@ -18,6 +18,7 @@
 
 ## Local Rules
 - Treat the authored foundations under [core/docs/foundations/](/core/docs/foundations/) and the current documentation standards under [core/docs/standards/](/core/docs/standards/) as the controlling contract for documentation roots and endstate behavior.
+- Use `watchtower-core query authority` to resolve canonical documentation and standards surfaces before broad scanning, and use `watchtower-core query templates` before drafting or materially restructuring governed docs whose family shape already exists.
 - Write documentation as native guidance for this repository.
 - Use current repository paths, names, and terminology.
 - Keep each document focused on one standard, topic, or area.
@@ -30,6 +31,7 @@
 ## Do
 - Keep documentation scoped, current, and easy to scan.
 - Use real repository paths and real repository surfaces when mapping guidance locally.
+- Keep observed facts, local interpretation, and normative repository policy distinguishable when a document depends on external or multi-surface authority.
 - Split documents when one file starts mixing multiple concerns heavily.
 
 ## Do Not

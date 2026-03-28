@@ -19,10 +19,10 @@ Captures the full CTF implementation package inside the governed WatchTower init
 
 ## Promoted Guidance
 - `promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell`: `planned` / approval `pending`
-- Candidate target: [watchtower_ctf_implementation_package_preservation_initiative_brief.md](/plan/docs/references/watchtower_ctf_implementation_package_preservation_initiative_brief.md)
-- Candidate target: [watchtower_ctf_implementation_package_preservation_design_record.md](/plan/docs/decisions/watchtower_ctf_implementation_package_preservation_design_record.md)
-- Candidate target: [watchtower_ctf_implementation_package_preservation_implementation_slice.md](/plan/docs/patterns/watchtower_ctf_implementation_package_preservation_implementation_slice.md)
-- Candidate target: [watchtower_ctf_implementation_package_preservation_decision_notes.md](/plan/docs/standards/governance/watchtower_ctf_implementation_package_preservation_decision_notes.md)
+- Candidate target path (planned, not yet promoted): `plan/docs/references/watchtower_ctf_implementation_package_preservation_initiative_brief.md`
+- Candidate target path (planned, not yet promoted): `plan/docs/decisions/watchtower_ctf_implementation_package_preservation_design_record.md`
+- Candidate target path (planned, not yet promoted): `plan/docs/patterns/watchtower_ctf_implementation_package_preservation_implementation_slice.md`
+- Candidate target path (planned, not yet promoted): `plan/docs/standards/governance/watchtower_ctf_implementation_package_preservation_decision_notes.md`
 
 ## Evidence References
 - `evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle`: `active`
@@ -41,5 +41,5 @@ Captures the full CTF implementation package inside the governed WatchTower init
 
 ## Closeout State
 - `lifecycle_stage`: `ready_for_execution`
-- `updated_at`: `2026-03-27T22:21:04Z`
+- `updated_at`: `2026-03-28T02:00:00Z`
 - `closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap`: `planned`

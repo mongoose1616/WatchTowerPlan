@@ -21,6 +21,8 @@ Use this workflow to load the minimum shared standards and instructions that app
    - Treat `core.md` as shared context, not as a replacement for task-specific modules.
 3. Load shared standards and canonical instructions.
    - Gather only the standards, templates, or canonical docs that apply across the routed modules or are explicitly required by the request.
+   - When the first question is which surface is canonical, resolve it with `watchtower-core query authority` before broader repository scanning.
+   - When the task creates or materially restructures a governed doc, resolve the template through `watchtower-core query templates` plus the relevant family standard before drafting.
    - Prefer explicit repository rules over inferred conventions.
    - When the target surface includes `core/python/**`, include the Python workspace standard and the Python workspace README in the shared context set.
 4. Stop at shared context.

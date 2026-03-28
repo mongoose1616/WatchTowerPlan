@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T20:30:00Z"
+updated_at: "2026-03-27T15:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,8 @@ Keep reference documents focused on durable lookup content by separating reader-
 ## Related Standards and Sources
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_index_standard.md](/core/docs/standards/data_contracts/reference_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_distillation_standard.md](/core/docs/standards/governance/reference_distillation_standard.md): external source material should be distilled and mapped through the shared governance posture before it becomes a durable local reference.
+- [source_and_citation_standard.md](/core/docs/standards/governance/source_and_citation_standard.md): source-backed claims in references should keep observed authority, local interpretation, and local policy boundaries explicit.
 - [reference_template.md](/core/docs/templates/reference_template.md): authoring scaffold that should stay aligned with this standard.
 - [documentation_generation.md](/core/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
 - [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
@@ -53,6 +55,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Governed reference docs under `core/docs/references/**` must include `Local Mapping in This Repository`.
 - `Local Mapping in This Repository` must include `Current Repository Status`.
 - `Current Repository Status` must start with one of the approved maturity phrases: `Candidate reference.`, `Supporting authority`, or `Active support`.
+- When a reference distills outside authority, keep observed source facts, local interpretation, and normative repository policy visibly distinct instead of blending them into one ambiguous summary.
 - Use `Current Touchpoints` for real current repo-local files or directories that the reference supports today.
 - If the reference is current supporting authority or active support, `Current Touchpoints` must be present and must point to real repository surfaces.
 - Generic backlinks in `References` are navigation only; they do not count as live local touchpoints.
@@ -123,4 +126,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-16T20:30:00Z`
+- `2026-03-27T15:00:00Z`

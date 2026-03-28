@@ -4,6 +4,10 @@ from __future__ import annotations
 
 import argparse
 
+from watchtower_core.cli.query_presenters import (
+    authority_entry_payload as _authority_entry_payload,
+    print_authority_entry as _print_authority_entry,
+)
 from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
     _emit_command_error,
@@ -14,7 +18,7 @@ from watchtower_core.cli.handler_common import (
     _task_filter_kwargs,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import ArtifactIndexEntry, AuthorityMapEntry
+from watchtower_core.control_plane.models import ArtifactIndexEntry
 from watchtower_core.query import (
     AuthorityMapQueryService,
     AuthorityMapSearchParams,
@@ -441,36 +445,6 @@ def _run_query_project_context(args: argparse.Namespace) -> int:
         payload_factory=lambda: payload,
         render_human=_render_human,
     )
-
-
-def _authority_entry_payload(entry: AuthorityMapEntry) -> dict[str, object]:
-    return {
-        "question_id": entry.question_id,
-        "domain": entry.domain,
-        "question": entry.question,
-        "status": entry.status,
-        "artifact_kind": entry.artifact_kind,
-        "canonical_path": entry.canonical_path,
-        "preferred_command": entry.preferred_command,
-        "preferred_human_path": entry.preferred_human_path,
-        "status_fields": list(entry.status_fields),
-        "fallback_paths": list(entry.fallback_paths),
-        "aliases": list(entry.aliases),
-        "notes": entry.notes,
-    }
-
-
-def _print_authority_entry(entry: AuthorityMapEntry) -> None:
-    print(f"- {entry.question_id} [{entry.domain} -> {entry.artifact_kind}]")
-    print(f"  {entry.question}")
-    print(f"  Canonical: {entry.canonical_path}")
-    print(f"  Command: {entry.preferred_command}")
-    if entry.preferred_human_path is not None:
-        print(f"  Human: {entry.preferred_human_path}")
-    if entry.status_fields:
-        print(f"  Status fields: {', '.join(entry.status_fields)}")
-
-
 def _print_artifact_entry(entry: ArtifactIndexEntry) -> None:
     print(f"- {entry.artifact_id} [{entry.artifact_family}, {entry.status}]")
     if entry.title is not None:

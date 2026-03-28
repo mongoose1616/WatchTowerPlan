@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-03-27T15:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,8 @@ Keep standards structured enough that internal and external authority is not onl
 - [documentation_semantics_standard.md](/core/docs/standards/documentation/documentation_semantics_standard.md): governed standards inherit the shared semantic guardrails for repo-local links and list-to-heading spacing.
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md): governed standards must use the standard front matter profile.
 - [reference_md_standard.md](/core/docs/standards/documentation/reference_md_standard.md): external authority should be normalized through local reference docs when practical.
+- [reference_distillation_standard.md](/core/docs/standards/governance/reference_distillation_standard.md): externally sourced policy inputs should flow through distilled local references before they become repository rules.
+- [source_and_citation_standard.md](/core/docs/standards/governance/source_and_citation_standard.md): source-backed claims and applied implications must remain auditable instead of being merged into ambiguous prose.
 - [standard_index_standard.md](/core/docs/standards/data_contracts/standard_index_standard.md): standard docs must remain structured enough for the governed standard index to capture citation and application signals.
 - [standard_document_template.md](/core/docs/templates/standard_document_template.md): authoring scaffold that should stay aligned with this standard.
 - [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md): standard docs must use UTC `updated_at` values consistently.
@@ -47,6 +49,7 @@ Keep standards structured enough that internal and external authority is not onl
 - When multiple standards in one narrow governed family share the same baseline operationalization, validation, or change-control contract, capture that shared contract in one companion standard and let each member standard publish only its family-specific deltas after explicitly citing the shared baseline.
 - Use `Related Standards and Sources` for the authorities that materially shape the standard, not for loose “nice to read” links.
 - Every bullet in `Related Standards and Sources` should use `source: implication` form so the repo-local consequence of the cited authority is explicit.
+- When a standard depends on observed repo state, an external source, or a distilled reference, keep observed facts, inferred implications, and the adopted local policy distinguishable instead of collapsing them into one unlabeled rule.
 - Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
 - Leave one blank line between the last item in a bullet or numbered list and the next heading.
 - Keep `References` for companion docs, examples, and supporting material that help the reader navigate the repo or verify implementation.
@@ -98,4 +101,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/core/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-03-27T15:00:00Z`

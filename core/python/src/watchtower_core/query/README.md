@@ -1,18 +1,18 @@
 # `watchtower_core.query`
 
 ## Summary
-Export-safe generic query services over governed pack surfaces, command and workflow indexes, authority maps, route metadata, artifact-family rules, and governed knowledge or record indexes such as standards, references, foundations, acceptance contracts, evidence, repository paths, and traceability.
+Export-safe generic query services over governed pack surfaces, command and workflow indexes, authority maps, template catalogs, route metadata, artifact-family rules, and governed knowledge or record indexes such as standards, references, foundations, acceptance contracts, evidence, repository paths, and traceability.
 
 ## Boundary
 - `Classification`: `reusable_core`
-- `Supported Imports`: The package root plus explicit generic query submodules such as `commands`, `workflows`, `routes`, `authority`, `governance_surfaces`, `artifact_families`, `acceptance`, `evidence`, `foundations`, `references`, `repository`, `standards`, and `traceability`.
+- `Supported Imports`: The package root plus explicit generic query submodules such as `commands`, `workflows`, `routes`, `authority`, `templates`, `governance_surfaces`, `artifact_families`, `acceptance`, `evidence`, `foundations`, `references`, `repository`, `standards`, and `traceability`.
 - `Non-Goals`: Pack-owned initiative, task, review, closeout, discrepancy, readiness, evidence, and other pack-local query services that belong under the owning `watchtower_<pack>.query` package, plus pack-flavored duplicates of reusable query helpers.
 
 ## Key Surfaces
 - `__init__.py`: Curated root export surface for reusable generic query services while still fail-closing pack-owned query surfaces that do not belong in reusable core.
 - `common.py`: Shared text normalization, scoring, and query-adapter helpers used by both reusable-core and pack-owned query services.
 - `rendered_search.py`: Shared rendered-surface search filters, ranking helpers, and deterministic initiative search-term builders used by hosted packs.
-- `commands.py`, `workflows.py`, and `authority.py`: Index and registry query services for generic governed lookups.
+- `commands.py`, `workflows.py`, `authority.py`, and `templates.py`: Index and registry query services for generic governed lookups and governed document-shape discovery.
 - `routes.py`: Export-safe advisory route-preview service over the governed route and workflow indexes.
 - `governance_surfaces.py`: Pack-surface lookup over `pack_settings` and `governance_surface_map`.
 - `artifact_families.py`: Artifact-family registry query and path-resolution helpers.

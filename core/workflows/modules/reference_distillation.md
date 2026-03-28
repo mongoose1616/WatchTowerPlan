@@ -22,13 +22,15 @@ Use this workflow to extract durable local guidance from external source materia
 
 ## Additional Files to Load
 - [reference_md_standard.md](/core/docs/standards/documentation/reference_md_standard.md): defines the required structure and quality bar for the resulting reference doc.
+- [reference_distillation_standard.md](/core/docs/standards/governance/reference_distillation_standard.md): defines the shared promotion boundary between upstream sources, local references, and repository policy.
+- [source_and_citation_standard.md](/core/docs/standards/governance/source_and_citation_standard.md): keeps observed source facts, local mapping, and adopted policy distinct.
 - [reference_template.md](/core/docs/templates/reference_template.md): provides the dense local-reference shape the output should follow.
 
 ## Workflow
 1. Read and verify the source material directly.
    - Review the canonical upstream sources rather than relying on secondhand summaries when possible.
    - Confirm which source version, date, or baseline is being distilled.
-   - Separate authoritative statements from interpretation, commentary, and uncertainty.
+   - Separate authoritative statements from local interpretation, commentary, and uncertainty.
 2. Extract the durable local guidance.
    - Distill the source material into concise rules, mappings, decision points, or lookup content relevant to this repository.
    - Answer the recurring practical questions directly in the distillation rather than forcing later readers to reopen the upstream source for every common case.
@@ -42,7 +44,7 @@ Use this workflow to extract durable local guidance from external source materia
 4. Choose the repository output shape.
    - Decide whether the result should become a local reference, a standards update, supporting design input, or a companion document set.
    - Keep normative policy in `core/docs/standards/**` or the owning pack's `docs/standards/**` and supporting lookup material in `core/docs/references/**` when documentation changes are required.
-   - If the requested deliverable is a new repository document, add `documentation_generation.md` rather than treating distillation notes as the final document implicitly.
+   - If the requested deliverable is a new repository document, add `documentation_generation.md` rather than treating distillation notes as the final document implicitly, and use `watchtower-core query templates` if the target family has a governed template.
    - Split the output if multiple unrelated references would otherwise be forced into one file.
 5. Review for accuracy and maintainability.
    - Check that source attribution is clear, local mappings are accurate, and unsupported interpretation is avoided.

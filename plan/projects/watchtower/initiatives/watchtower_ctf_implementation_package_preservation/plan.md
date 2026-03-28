@@ -8,15 +8,22 @@
 - `owner`: `repository_maintainer`
 - `lifecycle_stage`: `ready_for_execution`
 - `review_status`: `approved`
-- `updated_at`: `2026-03-27T22:21:04Z`
+- `updated_at`: `2026-03-28T02:00:00Z`
 
 ## Scope and Non-Goals
 Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.
 - Scope type: `project_scoped`.
-- No explicit non-goals or deferred scope items are recorded.
+- Non-goal: Do not mutate `/home/j/WatchTower` during this preservation initiative.
+- Non-goal: Do not alter repo-wide readiness rules, artifact validation behavior, or validator selection.
+- Non-goal: Do not replace the transformed mirror with a reauthored summary; the source snapshot remains the frozen provenance layer.
+- Locked post-v1 deferral: `decision.workflow_catalog`: defer a richer workflow catalog beyond routing-table plus workflow-metadata baseline.
+- Locked post-v1 deferral: `decision.actor_bootstrap_day_one`: reuse shared `actor_registry` and defer actor bootstrap unless needed immediately.
+- Locked post-v1 deferral: `decision.public_rebuild_cli`: keep public operator guidance centered on `sync`.
+- Locked post-v1 deferral: `decision.pentest_pack_split`: keep one `offensive_security` hosted pack for v1.
+- Locked post-v1 deferral: `decision.saved_query_views`: defer saved query views beyond v1, with pack-owned defaults first and user-local views outside the governed pack root later.
+- Locked post-v1 deferral: `decision.provenance_review_impact_surface`: defer richer provenance-triggered downstream review tooling beyond v1.
 
 ## Objectives
-- Bootstrap WatchTower CTF Implementation Package Preservation: Bootstrap placeholder retired after the phase-aligned execution chain replaced it.
 - Phase 0 Shared Contract Adoption And Alignment: Revalidate the live baseline, donor and recipient split, and current-compatible identity before target-repo mutation.
 - Phase 1 Recipient Scaffold And Bootstrap: Export shared core, scaffold the offsec pack, bootstrap it in the recipient repo, and replace starter workflow metadata.
 - Phase 2 Pack Machine Contract: Author the offsec schemas, registries, policies, validation suite, and human-surface starter contract.
@@ -40,29 +47,6 @@ Captures the full CTF implementation package inside the governed WatchTower init
 | [task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/bootstrap_watchtower_ctf_implementation_package_preservation/task.json) | `cancelled` | `high` | `repository_maintainer` | Bootstrap placeholder retired after the phase-aligned execution chain replaced it. | - |
 
 ## Dependencies and Risks
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.artifact_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/artifact_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.artifact_index_project_drift`: `high` `stale_aggregate_index` / `resolved`. Project aggregate index drift detected for plan/.wt/indexes/artifact_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.closeout_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/closeout_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.coordination_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.decision_notes_drift`: `high` `authored_input_drift` / `resolved`. Authored input drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/decision_notes.md; machine confirmation is required.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.design_record_drift`: `high` `authored_input_drift` / `resolved`. Authored input drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/design_record.md; machine confirmation is required.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.discrepancy_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/discrepancy_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.evidence_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/evidence_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.guidance_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/guidance_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.implementation_slice_drift`: `high` `authored_input_drift` / `resolved`. Authored input drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/implementation_slice.md; machine confirmation is required.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.initiative_brief_drift`: `high` `authored_input_drift` / `resolved`. Authored input drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md; machine confirmation is required.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.initiative_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.plan_overview_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/plan_overview.md.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.plan_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.progress_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/progress.md.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.project_index_project_drift`: `high` `stale_aggregate_index` / `resolved`. Project aggregate index drift detected for plan/.wt/indexes/project_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.project_project_drift`: `high` `stale_rendered_surface` / `resolved`. Project rendered surface drift detected for plan/projects/watchtower/project.md.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.promotion_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/promotion_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.readiness_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.review_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/review_index.json.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.summary_project_drift`: `high` `stale_rendered_surface` / `resolved`. Project rendered surface drift detected for plan/projects/watchtower/summary.md.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.summary_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/summary.md.
-- Discrepancy `discrepancy.watchtower.watchtower_ctf_implementation_package_preservation.task_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/task_index.json.
 - Task `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap` depends on `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment`.
 - Task `task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract` depends on `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap`.
 - Task `task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam` depends on `task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract`.

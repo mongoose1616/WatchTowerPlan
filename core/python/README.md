@@ -81,7 +81,9 @@
 - `uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior"`
 - `uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json`
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json`
+- `uv run watchtower-core query authority --query canonical --format json`
 - `uv run watchtower-core query commands --query coordination --format json`
+- `uv run watchtower-core query templates --query standard --format json`
 - `uv run watchtower-core query foundations --query philosophy`
 - `uv run watchtower-core query workflows --query validation`
 - `uv run watchtower-core query references --query uv`
@@ -120,6 +122,8 @@
   - [watchtower_core_pack.md](/core/docs/commands/core_python/watchtower_core_pack.md)
   - [watchtower_core_sync.md](/core/docs/commands/core_python/watchtower_core_sync.md)
   - [watchtower_core_validate.md](/core/docs/commands/core_python/watchtower_core_validate.md)
+- Use [watchtower_core_query_authority.md](/core/docs/commands/core_python/watchtower_core_query_authority.md) when the first question is which governed surface is authoritative.
+- Use [watchtower_core_query_templates.md](/core/docs/commands/core_python/watchtower_core_query_templates.md) before drafting or materially restructuring governed docs whose shape is already published.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the machine-readable command lookup surface.
 - Open the owning pack command-doc root when you need pack-native bootstrap, live query, task, sync, or closeout commands.
 - Use the `pack` command pages below when you need the copied-core bring-up contract explained explicitly:
@@ -154,6 +158,8 @@
 - `uv run watchtower-core validate portability --root <staged-export> --include-pack <slug>` is the read-only scrub check after pack-bootstrap wiring is already reconciled or when you need to inspect an already-staged repository bundle independently.
 - `uv run watchtower-core validate portability --root <pack-bundle> --include-pack <slug> --pack-only` is the read-only scrub check for a pack-only bundle.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow documents.
+- `uv run watchtower-core query authority --query "<question>" --format json` is the shared first step when the main problem is choosing the canonical lookup surface before broader repo search.
+- `uv run watchtower-core query templates --query "<doc family>" --format json` is the shared first step when a governed doc family already defines the required section shape.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.
 - The decision, design, implementation, initiative, and task tracking sync commands rebuild summary-first human trackers with companion terminal-history tables. Use the paired `query` commands when you need exact filtered machine lookup.

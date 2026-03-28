@@ -36,6 +36,9 @@
 ## Local Rules
 - Treat the authored foundations under [core/docs/foundations/](/core/docs/foundations/), repository-wide standards under [core/docs/standards/](/core/docs/standards/), plan-domain standards under [plan/docs/standards/](/plan/docs/standards/), and authored machine-readable authority under [core/control_plane](/core/control_plane/README.md) plus `plan/.wt/**` as the current repository contract.
 - When guidance disagrees, prefer this precedence order: current machine-readable authority for deterministic state and rules, then current foundations and standards, then supporting references and helper docs.
+- When the main question is which surface is canonical, use `watchtower-core query authority` first, then the narrow index-backed query command for the resolved family, then the exact canonical doc or registry, and only then raw repo search such as `rg` when no governed lookup surface exists or when verifying unindexed implementation detail.
+- Before drafting or materially restructuring a governed document, use `watchtower-core query templates` plus the relevant family standard or catalog entry instead of inventing document shape from scratch.
+- Distinguish observed current-state facts from inference, local policy, and open questions when writing analysis, standards, references, workflow outputs, or closeout guidance.
 - If work is happening under [core/docs](/core/docs), also apply [core/docs/AGENTS.md](/core/docs/AGENTS.md).
 - If work is happening under [plan/docs](/plan/docs), also apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md).
 - If work is happening under [plan](/plan), also apply [plan/AGENTS.md](/plan/AGENTS.md).
@@ -60,6 +63,7 @@
 - Follow the routed workflow modules for task execution.
 - Keep implementation choices aligned to the current foundations, standards, and machine-readable authority surfaces when companion guidance disagrees or is incomplete.
 - Use the nearest applicable [README.md](/README.md) as the quick reference before broader scans.
+- Use governed lookup surfaces and template-catalog data before reopening large directory trees or rediscovering already-indexed repository facts manually.
 - Apply [core/docs/AGENTS.md](/core/docs/AGENTS.md) when work falls under `core/docs/**`.
 - Apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md) when work falls under `plan/docs/**`.
 - Apply [plan/AGENTS.md](/plan/AGENTS.md) when work falls anywhere under `plan/**`.
@@ -71,6 +75,9 @@
 ## Do Not
 - Do not bypass the domain-owned routing tables under [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md) and [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md) when selecting workflow modules.
 - Do not treat retained history, supporting references, or older planning docs as authority when current foundations, standards, or machine-readable control-plane surfaces already publish the living rule.
+- Do not use raw repo search to rediscover authority, command, standards, workflow, reference, or template answers that current governed lookup surfaces already publish.
+- Do not improvise governed document structure when an active template, registry entry, or family standard already defines the required shape.
+- Do not present inference, recommendation, or open questions as if they were observed current-state facts.
 - Do not place durable documentation outside `core/docs/` and `plan/docs/`, or workflow procedures outside `core/workflows/` and `plan/workflows/`.
 - Do not store mutable runtime state, caches, or transient event streams under `core/control_plane/`.
 - Do not add unapproved parallel Python package roots or alternate virtual-environment conventions outside `core/python/`. The approved exception is the plan-domain package root under `plan/python/**`.

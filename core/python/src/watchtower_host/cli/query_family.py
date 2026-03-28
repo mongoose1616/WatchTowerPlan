@@ -25,7 +25,9 @@ def register_query_family(
             Search the governed lookup surfaces without opening the raw JSON
             artifacts directly.
 
-            Use `paths` for repository navigation, `commands` for CLI discovery,
+            Use `authority` first when the question is which surface is
+            canonical. Use `paths` for repository navigation, `commands` for CLI
+            discovery, `templates` for governed document shape lookup,
             `foundations` for the intent-layer foundation corpus, `workflows`
             for workflow-module lookup, `references` for the reference library,
             `standards` for governed repository standards, `acceptance` for
@@ -37,8 +39,10 @@ def register_query_family(
             """
         ).strip(),
         epilog=examples(
+            "uv run watchtower-core query authority --query canonical --format json",
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query templates --query standard --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --related-path "
             "core/docs/standards/documentation/workflow_md_standard.md",

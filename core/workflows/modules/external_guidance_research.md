@@ -28,6 +28,8 @@ Use this workflow to consult authoritative external guidance only when internal 
    - Record the external guidance that materially affects the task.
    - Capture relevant version, date, or baseline details when the source is time-sensitive.
    - Distinguish direct source guidance from local interpretation or still-open uncertainty.
+4. Route durable guidance into the local authoring flow.
+   - If the research should become durable repository guidance, continue through `reference_distillation.md` and then `documentation_generation.md` or `documentation_refresh.md` instead of leaving the result as one-off notes.
 
 ## Data Structure
 - Research trigger or gap
@@ -44,3 +46,4 @@ Use this workflow to consult authoritative external guidance only when internal 
 - The active task has the minimum external guidance it needs, if any.
 - Material source details and relevant version or date context are recorded.
 - External authority has been used to close a real gap rather than as routine background browsing.
+- Durable guidance has either been routed into the distillation and documentation flow or explicitly left as one-off research with that boundary stated.

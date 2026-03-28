@@ -4,13 +4,35 @@
   "initiative_id": "initiative.watchtower_ctf_implementation_package_preservation",
   "title": "Bootstrap Closeout Shell",
   "status": "planned",
-  "updated_at": "2026-03-27T05:17:18Z",
+  "updated_at": "2026-03-28T02:00:00Z",
   "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
   "acceptance_ids": [
-    "acceptance.watchtower_ctf_implementation_package_preservation.bootstrap"
+    "ac.watchtower_ctf_package_preservation.001",
+    "ac.watchtower_ctf_package_preservation.002",
+    "ac.watchtower_ctf_package_preservation.003",
+    "ac.watchtower_ctf_package_preservation.004",
+    "ac.watchtower_ctf_package_preservation.005",
+    "ac.watchtower_ctf_package_preservation.006",
+    "ac.watchtower_ctf_package_preservation.007",
+    "ac.watchtower_ctf_package_preservation.008",
+    "ac.watchtower_ctf_package_preservation.009",
+    "ac.watchtower_ctf_package_preservation.010",
+    "ac.watchtower_ctf_package_preservation.011",
+    "ac.watchtower_ctf_package_preservation.012",
+    "ac.watchtower_ctf_package_preservation.013",
+    "ac.watchtower_ctf_package_preservation.014",
+    "ac.watchtower_ctf_package_preservation.015",
+    "ac.watchtower_ctf_package_preservation.016",
+    "ac.watchtower_ctf_package_preservation.017",
+    "ac.watchtower_ctf_package_preservation.018",
+    "ac.watchtower_ctf_package_preservation.019",
+    "ac.watchtower_ctf_package_preservation.020",
+    "ac.watchtower_ctf_package_preservation.021",
+    "ac.watchtower_ctf_package_preservation.022",
+    "ac.watchtower_ctf_package_preservation.023"
   ],
   "evidence_ids": [
-    "evidence.watchtower_ctf_implementation_package_preservation.bootstrap_validation_bundle"
+    "evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle"
   ],
   "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
   "promotion_review_required": true,

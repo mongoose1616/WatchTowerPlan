@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from watchtower_core.adapters import render_repo_link
+from watchtower_core.adapters import extract_sections, load_markdown_body, render_repo_link
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.rebuild import RenderedViewBuilder, RenderedViewSpec
@@ -41,11 +41,13 @@ class PlanWorkspaceRenderer:
     def __init__(
         self,
         *,
+        repo_root: Path,
         workspace_paths: PackWorkspacePaths,
         rendered_views: RenderedViewBuilder,
         vocabulary: TerminologyHelper,
         overview_path: str,
     ) -> None:
+        self._repo_root = repo_root
         self._workspace_paths = workspace_paths
         self._rendered_views = rendered_views
         self._vocabulary = vocabulary
@@ -217,23 +219,9 @@ class PlanWorkspaceRenderer:
                                 f"- `review_status`: `{initiative['review_status']}`",
                                 f"- `updated_at`: `{snapshot_updated_at(snapshot)}`",
                             ),
-                            "scope_and_non_goals": (
-                                str(initiative["summary"]),
-                                f"- Scope type: `{initiative['scope_type']}`.",
-                                *(
-                                    (
-                                        "- Deferred or explicitly out-of-scope items:",
-                                        *(
-                                            f"- `{document['deferred_item_id']}`: {document['summary']} "
-                                            f"(`{document['status']}`)"
-                                            for document in snapshot.deferred_documents
-                                        ),
-                                    )
-                                    if snapshot.deferred_documents
-                                    else (
-                                        "- No explicit non-goals or deferred scope items are recorded.",
-                                    )
-                                ),
+                            "scope_and_non_goals": initiative_scope_lines(
+                                snapshot,
+                                repo_root=self._repo_root,
                             ),
                             "objectives": initiative_objective_lines(snapshot),
                             "planned_slices_or_workstreams": task_rows,
@@ -307,7 +295,10 @@ class PlanWorkspaceRenderer:
                             "delivered_outputs": initiative_delivered_output_lines(
                                 snapshot
                             ),
-                            "promoted_guidance": initiative_promotion_lines(snapshot),
+                            "promoted_guidance": initiative_promotion_lines(
+                                snapshot,
+                                repo_root=self._repo_root,
+                            ),
                             "evidence_references": initiative_evidence_reference_lines(
                                 snapshot
                             ),
@@ -322,6 +313,76 @@ class PlanWorkspaceRenderer:
             for result in rendered_views:
                 documents[result.relative_output_path] = result.content
         return documents
+
+
+def _initiative_section_text(
+    repo_root: Path,
+    snapshot: PlanInitiativeSnapshot,
+    *,
+    filename: str,
+    section_title: str,
+) -> str | None:
+    document_path = repo_root / snapshot.initiative_root / filename
+    if not document_path.exists():
+        return None
+    sections = extract_sections(load_markdown_body(document_path))
+    return sections.get(section_title)
+
+
+def _section_bullet_items(section_text: str | None) -> tuple[str, ...]:
+    if section_text is None:
+        return ()
+    items: list[str] = []
+    for line in section_text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("- "):
+            items.append(stripped[2:].strip())
+    return tuple(items)
+
+
+def initiative_scope_lines(
+    snapshot: PlanInitiativeSnapshot,
+    *,
+    repo_root: Path,
+) -> tuple[str, ...]:
+    initiative = snapshot.initiative_document
+    lines = [
+        str(initiative["summary"]),
+        f"- Scope type: `{initiative['scope_type']}`.",
+    ]
+    non_goal_items = _section_bullet_items(
+        _initiative_section_text(
+            repo_root,
+            snapshot,
+            filename="initiative_brief.md",
+            section_title="Non-Goals",
+        )
+    )
+    if non_goal_items:
+        lines.extend(f"- Non-goal: {item}" for item in non_goal_items)
+
+    deferred_lines = [
+        f"- Deferred item `{document['deferred_item_id']}`: {document['summary']} "
+        f"(`{document['status']}`)"
+        for document in snapshot.deferred_documents
+    ]
+    if not deferred_lines:
+        deferred_lines.extend(
+            f"- Locked post-v1 deferral: {item}"
+            for item in _section_bullet_items(
+                _initiative_section_text(
+                    repo_root,
+                    snapshot,
+                    filename="decision_notes.md",
+                    section_title="Locked Post-V1 Deferrals",
+                )
+            )
+        )
+    if deferred_lines:
+        lines.extend(deferred_lines)
+    elif not non_goal_items:
+        lines.append("- No explicit non-goals or deferred scope items are recorded.")
+    return tuple(lines)
 
 
 def initiative_task_rows(
@@ -366,6 +427,7 @@ def initiative_objective_lines(
         dict.fromkeys(
             f"{task_document['title']}: {task_document['summary']}"
             for task_document in snapshot.task_documents
+            if str(task_document.get("task_status", "")) != "cancelled"
         )
     )
     if not objectives:
@@ -382,9 +444,12 @@ def initiative_dependency_and_risk_lines(
     for reason in readiness.blocking_reasons:
         lines.append(f"- Readiness blocker: `{reason}`.")
     for document in snapshot.discrepancy_documents:
+        status = str(document.get("status", ""))
+        if status in {"resolved", "closed", "completed", "cancelled"}:
+            continue
         lines.append(
             f"- Discrepancy `{document['discrepancy_id']}`: `{document['severity']}` "
-            f"`{document['category']}` / `{document['status']}`. {document['summary']}"
+            f"`{document['category']}` / `{status}`. {document['summary']}"
         )
     for task_document in snapshot.task_documents:
         blocked_by = tuple(
@@ -584,6 +649,8 @@ def initiative_delivered_output_lines(
 
 def initiative_promotion_lines(
     snapshot: PlanInitiativeSnapshot,
+    *,
+    repo_root: Path,
 ) -> tuple[str, ...]:
     if not snapshot.promotion_documents:
         return ("- No promotion candidates are currently recorded.",)
@@ -597,9 +664,15 @@ def initiative_promotion_lines(
                 continue
             target_path = candidate.get("target_path")
             if isinstance(target_path, str) and target_path:
-                lines.append(
-                    f"- Candidate target: {render_repo_link(target_path, label=Path(target_path).name)}"
-                )
+                target_repo_path = repo_root / target_path
+                if target_repo_path.exists():
+                    lines.append(
+                        f"- Candidate target: {render_repo_link(target_path, label=Path(target_path).name)}"
+                    )
+                else:
+                    lines.append(
+                        f"- Candidate target path (planned, not yet promoted): `{target_path}`"
+                    )
     return tuple(lines)
 
 
@@ -679,6 +752,7 @@ __all__ = [
     "initiative_linked_output_lines",
     "initiative_objective_lines",
     "initiative_promotion_lines",
+    "initiative_scope_lines",
     "initiative_task_rows",
     "initiative_unresolved_follow_up_lines",
 ]

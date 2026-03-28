@@ -17,3 +17,7 @@
 | `core/docs/templates/routing_table_template.md` | Template for a routing table document. |
 | `core/docs/templates/standard_document_template.md` | Template for a governed standard or best-practice document under `core/docs/standards/` or an owning pack standards root. |
 | `core/docs/templates/workflow_template.md` | Template for a workflow document. |
+
+## Notes
+- Prefer `cd core/python && ./.venv/bin/watchtower-core query templates --query <topic> --format json` when the first question is which governed template or required section set applies.
+- Use the family-specific template before drafting or materially restructuring a governed document.

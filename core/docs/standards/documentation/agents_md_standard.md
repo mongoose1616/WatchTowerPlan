@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "agents_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T20:35:00Z"
+updated_at: "2026-03-27T15:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - [readme_md_standard.md](/core/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_table_md_standard.md](/core/docs/standards/documentation/routing_table_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/core/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [source_and_citation_standard.md](/core/docs/standards/governance/source_and_citation_standard.md): `AGENTS.md` should reinforce source hierarchy, lookup discipline, and fact-versus-inference boundaries when those rules are active for the scope.
 - [agent_template.md](/core/docs/templates/agent_template.md): authoring scaffold that should stay aligned with this standard.
 
 ## Guidance
@@ -46,6 +47,8 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - Nested `AGENTS.md` files should define only subtree-local rules that materially help work in that subtree.
 - Nested `AGENTS.md` files inherit parent `AGENTS.md` files and must not weaken parent safety, governance, or framing rules.
 - `AGENTS.md` should point to the relevant routing surface rather than embedding full routing logic.
+- When the scope has governed discovery or template surfaces, `AGENTS.md` should tell agents to use those surfaces before raw repo search or improvised document shape decisions.
+- `AGENTS.md` should keep any lookup-order rules explicit enough that agents can tell observed facts, local policy, and bounded inference apart when that distinction affects execution.
 - Use the nearest applicable `README.md` as the quick reference for directory purpose and file inventory.
 - Put detailed task behavior in routed workflow documents rather than in `AGENTS.md`.
 - Put durable reference material, standards catalogs, templates, or long procedural content in the appropriate companion docs rather than in `AGENTS.md`.
@@ -70,6 +73,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - The file should be concise enough to scan quickly before work begins.
 - Each bullet should express a real rule, boundary, or operating expectation for the scope where the file lives.
 - The file should point to the routing surface instead of trying to reproduce full routing logic.
+- When governed lookup surfaces or templates exist for the scope, the file should direct agents to them before broad scanning or guesswork.
 - The file should align with the nearest applicable `README.md` and should not contradict directory purpose or ownership boundaries.
 - If the file contains large procedural sections, standards catalogs, or generic filler that could apply anywhere, it should be tightened or split.
 
@@ -89,4 +93,4 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - The best `AGENTS.md` files are short, scoped, and obviously tied to the directory they govern.
 
 ## Updated At
-- `2026-03-24T20:35:00Z`
+- `2026-03-27T15:00:00Z`

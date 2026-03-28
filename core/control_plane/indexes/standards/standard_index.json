@@ -627,7 +627,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/agents_md_standard.md",
-      "updated_at": "2026-03-24T20:35:00Z",
+      "updated_at": "2026-03-27T15:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -642,12 +642,14 @@
         "core/docs/standards/documentation/readme_md_standard.md",
         "core/docs/standards/documentation/routing_table_md_standard.md",
         "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/templates/agent_template.md"
       ],
       "applied_reference_paths": [
         "core/docs/standards/documentation/readme_md_standard.md",
         "core/docs/standards/documentation/routing_table_md_standard.md",
         "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/templates/agent_template.md"
       ],
       "tags": [
@@ -881,7 +883,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/reference_md_standard.md",
-      "updated_at": "2026-03-16T20:30:00Z",
+      "updated_at": "2026-03-27T15:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -897,6 +899,8 @@
       "internal_reference_paths": [
         "core/docs/standards/metadata/front_matter_standard.md",
         "core/docs/standards/data_contracts/reference_index_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/templates/reference_template.md",
         "core/workflows/modules/documentation_generation.md",
         "core/workflows/modules/documentation_refresh.md"
@@ -904,6 +908,8 @@
       "applied_reference_paths": [
         "core/docs/standards/metadata/front_matter_standard.md",
         "core/docs/standards/data_contracts/reference_index_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/templates/reference_template.md",
         "core/workflows/modules/documentation_generation.md",
         "core/workflows/modules/documentation_refresh.md"
@@ -957,7 +963,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-23T16:35:00Z",
+      "updated_at": "2026-03-27T15:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -977,6 +983,8 @@
         "core/docs/standards/documentation/documentation_semantics_standard.md",
         "core/docs/standards/metadata/front_matter_standard.md",
         "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/standards/data_contracts/standard_index_standard.md",
         "core/docs/templates/standard_document_template.md",
         "core/docs/standards/metadata/timestamp_standard.md",
@@ -986,6 +994,8 @@
         "core/docs/standards/documentation/documentation_semantics_standard.md",
         "core/docs/standards/metadata/front_matter_standard.md",
         "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/standards/data_contracts/standard_index_standard.md",
         "core/docs/templates/standard_document_template.md",
         "core/docs/standards/metadata/timestamp_standard.md"
@@ -1825,6 +1835,106 @@
       ]
     },
     {
+      "standard_id": "std.governance.reference_distillation",
+      "category": "governance",
+      "title": "Reference Distillation Standard",
+      "summary": "This standard defines how externally published source material is distilled into durable local reference guidance and, when needed, translated into explicit repository policy.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/governance/reference_distillation_standard.md",
+      "updated_at": "2026-03-27T15:00:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/reference_distillation.md",
+        "core/workflows/modules/documentation_generation.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/docs/templates/reference_template.md",
+        "core/docs/standards/documentation/reference_md_standard.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/metadata/front_matter_standard.md",
+        "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
+        "core/docs/templates/reference_template.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/reference_distillation.md",
+        "core/workflows/modules/documentation_generation.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/metadata/front_matter_standard.md",
+        "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
+        "core/docs/templates/reference_template.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/reference_distillation.md",
+        "core/workflows/modules/documentation_generation.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "reference_distillation"
+      ]
+    },
+    {
+      "standard_id": "std.governance.source_and_citation",
+      "category": "governance",
+      "title": "Source And Citation Standard",
+      "summary": "This standard defines shared authority order, citation discipline, and fact-versus-inference expectations for repository work.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/governance/source_and_citation_standard.md",
+      "updated_at": "2026-03-27T15:00:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation",
+        "review"
+      ],
+      "operationalization_paths": [
+        "AGENTS.md",
+        "core/docs/AGENTS.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/reference_distillation.md",
+        "core/workflows/modules/documentation_generation.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/documentation/standard_md_standard.md",
+        "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/workflows/workflow_design_standard.md",
+        "core/docs/commands/core_python/watchtower_core_query_authority.md"
+      ],
+      "internal_reference_paths": [
+        "AGENTS.md",
+        "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/documentation/standard_md_standard.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md"
+      ],
+      "applied_reference_paths": [
+        "AGENTS.md",
+        "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/documentation/standard_md_standard.md",
+        "core/workflows/modules/current_state_inspection.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "source_and_citation"
+      ]
+    },
+    {
       "standard_id": "std.metadata.front_matter",
       "category": "metadata",
       "title": "Front Matter Standard",
@@ -2267,7 +2377,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/routing_and_context_loading_standard.md",
-      "updated_at": "2026-03-24T22:05:00Z",
+      "updated_at": "2026-03-27T15:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2285,6 +2395,7 @@
       "internal_reference_paths": [
         "core/docs/standards/documentation/agents_md_standard.md",
         "core/docs/standards/documentation/routing_table_md_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/standards/workflows/workflow_design_standard.md",
         "core/docs/standards/data_contracts/route_index_standard.md",
         "core/docs/references/agent_workflow_authoring_reference.md",
@@ -2293,6 +2404,7 @@
       "applied_reference_paths": [
         "core/docs/standards/documentation/agents_md_standard.md",
         "core/docs/standards/documentation/routing_table_md_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/standards/workflows/workflow_design_standard.md",
         "core/docs/standards/data_contracts/route_index_standard.md",
         "core/docs/references/agent_workflow_authoring_reference.md",
@@ -2326,7 +2438,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-24T22:05:00Z",
+      "updated_at": "2026-03-27T15:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2350,6 +2462,7 @@
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/standards/documentation/workflow_md_standard.md",
         "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/references/agent_workflow_authoring_reference.md",
         "core/docs/templates/workflow_template.md",
         "core/workflows/ROUTING_TABLE.md",
@@ -2359,6 +2472,7 @@
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/standards/documentation/workflow_md_standard.md",
         "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/references/agent_workflow_authoring_reference.md",
         "core/docs/templates/workflow_template.md",
         "core/workflows/ROUTING_TABLE.md",

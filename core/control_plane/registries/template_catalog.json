@@ -160,7 +160,171 @@
         "core/docs/foundations",
         "plan/docs/foundations"
       ]
+    },
+    {
+      "template_id": "template.core.documentation.standard",
+      "surface_id": "surface.documentation.standard",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "core/docs/templates/standard_document_template.md",
+      "required_section_ids": [
+        "summary",
+        "purpose",
+        "scope",
+        "use_when",
+        "related_standards_and_sources",
+        "guidance",
+        "operationalization",
+        "validation",
+        "change_control",
+        "references",
+        "updated_at"
+      ],
+      "optional_section_ids": [
+        "structure_or_data_model",
+        "notes"
+      ],
+      "section_order": [
+        "summary",
+        "purpose",
+        "scope",
+        "use_when",
+        "related_standards_and_sources",
+        "guidance",
+        "operationalization",
+        "validation",
+        "change_control",
+        "references",
+        "updated_at"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create one governed repository standard with auditable source implications and operationalization metadata.",
+        "hard_requirements": [
+          "Write `Related Standards and Sources` bullets in `source: implication` form.",
+          "Publish compact `Operationalization` metadata instead of burying enforcement surfaces in prose."
+        ],
+        "advisory_notes": [
+          "Keep observed source facts, inferred implications, and adopted local policy distinguishable when the standard depends on multiple authority layers."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for governed standard and best-practice docs under shared and pack-owned standards roots.",
+      "allowed_roots": [
+        "core/docs/standards",
+        "plan/docs/standards"
+      ]
+    },
+    {
+      "template_id": "template.core.documentation.reference",
+      "surface_id": "surface.documentation.reference",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "core/docs/templates/reference_template.md",
+      "required_section_ids": [
+        "summary",
+        "purpose",
+        "scope",
+        "canonical_upstream",
+        "related_standards_and_sources",
+        "quick_reference_or_distilled_reference",
+        "local_mapping_in_this_repository",
+        "current_repository_status",
+        "references",
+        "updated_at"
+      ],
+      "optional_section_ids": [
+        "current_touchpoints",
+        "why_it_matters_here",
+        "if_local_policy_tightens",
+        "process_or_workflow",
+        "examples",
+        "tooling_and_automation",
+        "notes"
+      ],
+      "section_order": [
+        "summary",
+        "purpose",
+        "scope",
+        "canonical_upstream",
+        "related_standards_and_sources",
+        "quick_reference_or_distilled_reference",
+        "local_mapping_in_this_repository",
+        "current_repository_status",
+        "current_touchpoints",
+        "why_it_matters_here",
+        "if_local_policy_tightens",
+        "process_or_workflow",
+        "examples",
+        "references",
+        "tooling_and_automation",
+        "notes",
+        "updated_at"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create one durable local reference that captures canonical upstream authority plus dense repo-local lookup guidance.",
+        "hard_requirements": [
+          "Publish at least one canonical upstream authority when the reference lives in a governed references root.",
+          "Make `Quick Reference or Distilled Reference` substantive enough that readers do not need to reopen the upstream source for common cases."
+        ],
+        "advisory_notes": [
+          "Keep source facts, local mapping, and adopted local policy visibly separate when the reference distills outside authority."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for durable reference docs that distill external authority into repo-local lookup guidance.",
+      "allowed_roots": [
+        "core/docs/references",
+        "plan/docs/references"
+      ]
+    },
+    {
+      "template_id": "template.core.documentation.command_reference",
+      "surface_id": "surface.documentation.command_reference",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "core/docs/templates/command_reference_template.md",
+      "required_section_ids": [
+        "summary",
+        "use_when",
+        "command",
+        "synopsis",
+        "arguments_and_options",
+        "examples",
+        "behavior_and_outputs",
+        "related_commands",
+        "source_surface",
+        "updated_at"
+      ],
+      "optional_section_ids": [],
+      "section_order": [
+        "summary",
+        "use_when",
+        "command",
+        "synopsis",
+        "arguments_and_options",
+        "examples",
+        "behavior_and_outputs",
+        "related_commands",
+        "source_surface",
+        "updated_at"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create one repository-native command page that maps a CLI surface to real usage, options, and outputs.",
+        "hard_requirements": [
+          "Keep one primary command or subcommand per page.",
+          "Include at least one `--format json` example when the command supports structured output."
+        ],
+        "advisory_notes": [
+          "Prefer runnable examples from the documented workspace and describe human and JSON output behavior separately when both exist."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for shared and pack-owned command pages under docs/commands/core_python/.",
+      "allowed_roots": [
+        "core/docs/commands",
+        "plan/docs/commands"
+      ]
     }
   ],
-  "notes": "This catalog governs the reusable-core template assets for core-owned roots and mirrored foundation guidance."
+  "notes": "This catalog governs reusable-core template assets for core-owned roots, mirrored foundations, and the shared authoring scaffolds that agents should query before drafting governed docs."
 }

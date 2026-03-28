@@ -4,11 +4,17 @@ from __future__ import annotations
 
 import argparse
 
+from watchtower_core.cli.query_presenters import (
+    authority_entry_payload,
+    print_authority_entry,
+    print_template_catalog_entry,
+    template_catalog_entry_payload,
+)
 from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
     _print_reference_usage_summary,
 )
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import CORE_PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     FoundationIndexEntry,
     ReferenceIndexEntry,
@@ -16,15 +22,44 @@ from watchtower_core.control_plane.models import (
     WorkflowIndexEntry,
 )
 from watchtower_core.query import (
+    AuthorityMapQueryService,
+    AuthorityMapSearchParams,
     FoundationQueryService,
     FoundationSearchParams,
     ReferenceQueryService,
     ReferenceSearchParams,
     StandardQueryService,
     StandardSearchParams,
+    TemplateCatalogQueryService,
+    TemplateCatalogSearchParams,
     WorkflowQueryService,
     WorkflowSearchParams,
 )
+
+
+def _run_query_authority(args: argparse.Namespace) -> int:
+    service = AuthorityMapQueryService(
+        ControlPlaneLoader(),
+        pack_settings_path=CORE_PACK_SETTINGS_PATH,
+    )
+    entries = service.search(
+        AuthorityMapSearchParams(
+            query=args.query,
+            question_id=args.question_id,
+            domain=args.domain,
+            artifact_kind=args.artifact_kind,
+            limit=args.limit,
+        )
+    )
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query authority",
+        entries=entries,
+        noun="authority",
+        empty_message="No authority-map entries matched the requested filters.",
+        payload_results_factory=lambda: [authority_entry_payload(entry) for entry in entries],
+        render_entry=print_authority_entry,
+    )
 
 
 def _run_query_foundations(args: argparse.Namespace) -> int:
@@ -131,6 +166,36 @@ def _run_query_standards(args: argparse.Namespace) -> int:
         empty_message="No standard entries matched the requested filters.",
         payload_results_factory=lambda: [_standard_entry_payload(entry) for entry in entries],
         render_entry=_print_standard_entry,
+    )
+
+
+def _run_query_templates(args: argparse.Namespace) -> int:
+    service = TemplateCatalogQueryService(
+        ControlPlaneLoader(),
+        pack_settings_path=CORE_PACK_SETTINGS_PATH,
+    )
+    entries = service.search(
+        TemplateCatalogSearchParams(
+            query=args.query,
+            template_id=args.template_id,
+            family_id=args.family_id,
+            surface_id=args.surface_id,
+            authorship_mode=args.authorship_mode,
+            llm_guidance_mode=args.llm_guidance_mode,
+            allowed_root=args.allowed_root,
+            required_section_id=args.required_section_id,
+            required_rendered_surface_id=args.required_rendered_surface_id,
+            limit=args.limit,
+        )
+    )
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query templates",
+        entries=entries,
+        noun="template",
+        empty_message="No template-catalog entries matched the requested filters.",
+        payload_results_factory=lambda: [template_catalog_entry_payload(entry) for entry in entries],
+        render_entry=print_template_catalog_entry,
     )
 
 

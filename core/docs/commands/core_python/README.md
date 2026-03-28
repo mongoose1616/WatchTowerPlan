@@ -7,6 +7,8 @@
 - Start with `watchtower_core.md` for the root command and shared options.
 - Use `watchtower_core_route.md` when the main question is how a request maps to workflow documents.
 - Use `watchtower_core_query.md` when the main question is which shared read-only lookup surface to use.
+- Use `watchtower_core_query_authority.md` when the first question is which governed surface is canonical.
+- Use `watchtower_core_query_templates.md` before drafting or materially restructuring governed docs whose shape is already defined.
 - Use `watchtower_core_release.md` when the main question is the local release-gate or staged customer handoff flow.
 - Use `watchtower_core_sync.md` when the main question is which shared derived artifact to rebuild.
 - For pack-owned command groups and leaf pages, start in the owning pack command-doc root such as `<pack-root>/docs/commands/core_python/`.
@@ -14,6 +16,7 @@
 - Use `watchtower_core_validate_suite.md` when the main question is how to run one pack-declared validation suite with optional `pack_settings` selection.
 - Use `watchtower_core_validate_schema.md` when the main question is how to validate a `*.schema.json` definition file directly.
 - Use `watchtower_core_pack_bootstrap.md` when the main question is copied-core startup, donor-pack scrub and reload, or the shared hosted-pack registry and workspace wiring flow.
+- Prefer `uv run watchtower-core query authority --query <question> --format json` when you need the canonical lookup surface before scanning docs or indexes directly.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
 
 ## Files
@@ -22,7 +25,9 @@
 | `core/docs/commands/core_python/README.md` | Describes the purpose of the core Python command-doc directory and the fastest ways to find command details. |
 | `core/docs/commands/core_python/watchtower_core.md` | Human-readable page for the root `watchtower-core` command and shared CLI behavior. |
 | `core/docs/commands/core_python/watchtower_core_route.md` | Entry page for advisory route preview commands. |
-| `core/docs/commands/core_python/watchtower_core_query.md` | Entry page for shared governed query commands such as command discovery, repository paths, standards, references, foundations, workflows, acceptance, and evidence. |
+| `core/docs/commands/core_python/watchtower_core_query.md` | Entry page for shared governed query commands such as authority resolution, command discovery, repository paths, templates, standards, references, foundations, workflows, acceptance, and evidence. |
+| `core/docs/commands/core_python/watchtower_core_query_authority.md` | Resolves which shared governed surface is canonical for a recurring governance question. |
+| `core/docs/commands/core_python/watchtower_core_query_templates.md` | Searches the governed template catalog for required sections, allowed roots, and authoring guidance. |
 | `core/docs/commands/core_python/watchtower_core_release.md` | Entry page for the local release-gate command family. |
 | `core/docs/commands/core_python/watchtower_core_release_check.md` | Runs the local release gate and stages one final export. |
 | `core/docs/commands/core_python/watchtower_core_query_foundations.md` | Query foundations by topic, related surface, authority, or downstream citation or application use. |

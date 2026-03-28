@@ -22,18 +22,19 @@ Use this workflow to author a new repository document that is accurate, well-str
 1. Gather source context.
    - Read the relevant source files, references, workflows, or repository surfaces.
    - Extract the facts, rules, structures, and relationships that the new document must reflect.
-   - Separate stable facts from assumptions or unresolved questions.
+   - Separate stable facts from assumptions, local inference, or unresolved questions.
 2. Choose the document shape.
-   - Select the most appropriate template or document mode.
+   - Select the most appropriate template or document mode through `watchtower-core query templates` and the governing family standard before drafting new structure from memory.
    - Decide whether the document should be structured as reference, how-to, explanation, overview, or a hybrid.
    - Split the output if multiple standards, topics, or areas would otherwise be forced into one file.
 3. Define the document structure.
    - Establish the title, summary, and core sections before drafting.
-   - Include required sections, tables, mappings, or metadata where appropriate, but do not pre-seed optional sections that add no value for the current scope.
+   - Include required sections, tables, mappings, or metadata from the chosen governed template where appropriate, but do not pre-seed optional sections that add no value for the current scope.
    - Keep the title and section structure tightly tied to the document's single focus.
 4. Draft the document.
    - Write the content using current repository terminology and paths.
    - Prefer clear, direct language over vague summary text.
+   - Keep observed facts, local interpretation, and normative policy visibly distinguishable when the document depends on multiple authority layers.
    - Keep the document tied to actual repository surfaces instead of abstract descriptions when possible.
    - Delete placeholder or author-only scaffolding once the real document shape is clear.
 5. Reconcile related docs and review classification.

@@ -841,6 +841,8 @@
         "standards",
         "documentation",
         "standard",
+        "governance",
+        "citation",
         "templates",
         "template",
         "distill"
@@ -850,10 +852,14 @@
       ],
       "related_paths": [
         "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/templates/reference_template.md"
       ],
       "internal_reference_paths": [
         "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/governance/source_and_citation_standard.md",
         "core/docs/templates/reference_template.md"
       ]
     },

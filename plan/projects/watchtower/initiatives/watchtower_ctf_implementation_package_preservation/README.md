@@ -37,6 +37,6 @@
 
 ## Notes
 - This initiative is the engineer handoff package for the WatchTower offsec implementation, but it does not mutate `/home/j/WatchTower` by itself.
-- Start with this `README.md`, then open `cold_start_runbook.md` if you are entering at the first ready task. Use the support docs as execution aids, not as a second authority layer.
+- Start with this `README.md`, then open `cold_start_runbook.md` if you are entering at the first ready task. The canonical cold-start order then continues through `initiative_brief.md`, `design_record.md`, `decision_notes.md`, `implementation_slice.md`, and the phase companions. Use the support docs as execution aids, not as a second authority layer.
 - The transformed mirror under `source_snapshot/CTF_implementation/` is frozen provenance. Update canonical docs or recapture explicitly; do not silently edit mirrored meaning in place.
 - The real next engineer action is published by live task state, not by this `README.md`. Use `plan/.wt/indexes/coordination_index.json` and the ready Phase 0 task when checking current execution posture.

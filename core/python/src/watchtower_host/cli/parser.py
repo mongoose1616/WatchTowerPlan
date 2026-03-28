@@ -44,7 +44,9 @@ def build_parser(
             "uv run watchtower-core release check --output-root /tmp/customer_plan "
             "--include-pack plan --overwrite --format json",
             'uv run watchtower-core route preview --request "review code and commit"',
+            "uv run watchtower-core query authority --query canonical --format json",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query templates --query standard --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --query validation",
             "uv run watchtower-core query references --query uv",

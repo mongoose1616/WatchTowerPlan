@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-27T22:21:04Z",
+  "updated_at": "2026-03-28T02:00:00Z",
   "entries": [
     {
       "promotion_id": "promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell",
@@ -29,7 +29,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-27T05:17:18Z",
+      "updated_at": "2026-03-28T02:00:00Z",
       "project_id": "project.watchtower",
       "target_paths": [
         "plan/docs/decisions/watchtower_ctf_implementation_package_preservation_design_record.md",
@@ -39,7 +39,7 @@
       ],
       "approval_state": "pending",
       "evidence_refs": [
-        "evidence.watchtower_ctf_implementation_package_preservation.bootstrap_validation_bundle"
+        "evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

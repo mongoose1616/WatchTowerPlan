@@ -22,7 +22,7 @@ Use this workflow to compare current CLI or implementation behavior against comp
 ## Workflow
 1. Define the reconciliation boundary.
    - List the implementation surfaces in scope and the companion docs or machine-readable artifacts that make claims about them.
-   - Decide which surface is authoritative for each claim type when the repository already defines a canonical source of truth.
+   - Decide which surface is authoritative for each claim type when the repository already defines a canonical source of truth, using `watchtower-core query authority` first if the canonical lookup surface is unclear.
 2. Capture current implementation evidence.
    - Read the relevant code, tests, CLI help output, schemas, indexes, examples, or generated artifacts.
    - Prefer executable or machine-validated evidence over inferred prose when determining current behavior.

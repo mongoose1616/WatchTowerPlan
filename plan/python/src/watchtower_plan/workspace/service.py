@@ -473,6 +473,7 @@ class PlanWorkspaceService:
         if self._builder is None:
             vocabulary = self._vocabulary_service()
             self._renderer = PlanWorkspaceRenderer(
+                repo_root=self._loader.repo_root,
                 workspace_paths=self._workspace_paths,
                 rendered_views=RenderedViewBuilder(self._pack_loader),
                 vocabulary=vocabulary,

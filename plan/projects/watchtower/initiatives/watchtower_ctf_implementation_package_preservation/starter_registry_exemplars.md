@@ -243,6 +243,97 @@ Use the donor shape from `plan/.wt/registries/human_surface_policy_registry.json
           "authorship_mode": "authored"
         }
       ]
+    },
+    {
+      "policy_id": "policy.human_surface.offsec_docs_root",
+      "path_pattern": "offensive_security/docs",
+      "match_mode": "exact",
+      "root_kind": "docs_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "documentation_family_registry"
+      ],
+      "clarifying_rule": "The docs root must publish one stable README before standards, references, and command families expand.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.offsec_command_docs_root",
+      "path_pattern": "offensive_security/docs/commands/core_python",
+      "match_mode": "exact",
+      "root_kind": "command_docs_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "documentation_family_registry"
+      ],
+      "clarifying_rule": "The command-doc root must publish one namespace README before authority-map command lookup depends on it.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.offsec_tracking_root",
+      "path_pattern": "offensive_security/tracking",
+      "match_mode": "exact",
+      "root_kind": "tracking_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "rendered_surface_registry"
+      ],
+      "clarifying_rule": "The tracking root must publish one stable README that routes readers into rendered visibility surfaces.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.offsec_python_root",
+      "path_pattern": "offensive_security/python",
+      "match_mode": "exact",
+      "root_kind": "python_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "template_catalog"
+      ],
+      "clarifying_rule": "The python root must publish a README and a local AGENTS file before pack-owned runtime code is treated as rooted and governed.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "required",
+          "authorship_mode": "authored"
+        }
+      ]
     }
   ]
 }

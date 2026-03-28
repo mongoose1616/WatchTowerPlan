@@ -14,15 +14,16 @@ This runbook is the first-ready-task start surface for a cold-start engineer. It
 
 1. Read `README.md` to map the initiative root and confirm the package boundary.
 2. Read `.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json` to lock the current task scope, governing docs, and done-when posture.
-3. Read `implementation_slice.md`:
+3. Read `initiative_brief.md`, `design_record.md`, and `decision_notes.md` to lock the current-compatible baseline, the preserved architecture, and the locked defaults before implementation planning detail.
+4. Read `implementation_slice.md`:
    - `Engineer Handoff Entry Order`
    - `phase.0` Shared Contract Adoption
-4. Read `phase_output_manifest.md`:
+5. Read `phase_output_manifest.md`:
    - `phase.0` Shared Contract Adoption And Alignment
-5. Read `phase_closeout_checklists.md`:
+6. Read `phase_closeout_checklists.md`:
    - `phase.0` Shared Contract Adoption And Alignment
-6. Read `engineer_ambiguity_kill_sheet.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` before changing any preserved baseline.
-7. Reopen `decision_notes.md` only when a locked default, live delta, or deferred trigger is actually implicated.
+7. Read `engineer_ambiguity_kill_sheet.md`, `conditional_revisit_queue.md`, and `contradiction_sweep_ledger.md` before changing any preserved baseline.
+8. Reopen the mirrored source docs only when deeper donor narrative is needed or when a locked default, live delta, or deferred trigger is actually implicated.
 
 ## Questions To Answer
 
@@ -35,7 +36,12 @@ This runbook is the first-ready-task start surface for a cold-start engineer. It
 
 ## Command Anchors
 
+Run the sequence in this order. The three `validate artifact` commands are mandatory whenever the named JSON companions changed in the same change set. If those machine companions did not change, `validate acceptance` plus the three plan queries remain the minimum no-change proof.
+
 - `cd /home/j/WatchTowerPlan/core/python`
+- `uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json --format json`
+- `uv run watchtower-core validate artifact --path core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json --format json`
+- `uv run watchtower-core validate artifact --path core/control_plane/indexes/traceability/traceability_index.json --format json`
 - `uv run watchtower-core validate acceptance --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
 - `uv run watchtower-core plan query trace --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
 - `uv run watchtower-core plan query readiness --trace-id trace.watchtower_ctf_implementation_package_preservation --format json`
@@ -46,7 +52,10 @@ This runbook is the first-ready-task start surface for a cold-start engineer. It
 - If the baseline identity, authority order, or donor/recipient split is wrong, update `initiative_brief.md`, `design_record.md`, and `implementation_slice.md` in the same change set.
 - If a locked default or live delta changes, update `decision_notes.md` and add or refresh the matching entry in `contradiction_sweep_ledger.md` or `conditional_revisit_queue.md` when applicable.
 - If only the engineer start path was ambiguous, update `README.md`, this runbook, `phase_output_manifest.md`, and `phase_closeout_checklists.md` together.
-- If machine acceptance or evidence drifted, update the acceptance contract, durable validation evidence, and initiative validation bundle together, then rerun `sync all`, `confirm-inputs`, and `approve`.
+- If machine acceptance or evidence drifted, update `core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json`, `core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json`, and `.wt/evidence/validation_bundle.handoff_readiness.json` together. If the joined trace row changed, update `core/control_plane/indexes/traceability/traceability_index.json` in the same change set.
+- After any such machine-companion change, rerun the exact Phase 0 proof sequence above, then run `uv run watchtower-core plan sync all --write --format json`.
+- After the sync pass, run `uv run watchtower-core plan confirm-inputs --project-slug watchtower --initiative-slug watchtower_ctf_implementation_package_preservation --write --format json`.
+- Finish the repair path with `uv run watchtower-core plan approve --project-slug watchtower --initiative-slug watchtower_ctf_implementation_package_preservation --write --format json`.
 - If no baseline change is needed, leave canonical docs unchanged. The proof is that these surfaces still agree and the query or validation outputs still confirm the same current baseline.
 
 ## Done When

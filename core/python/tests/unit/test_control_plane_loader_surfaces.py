@@ -5,10 +5,11 @@ import json
 import pytest
 
 from tests.unit.control_plane_loader_test_support import REPO_ROOT, copy_validation_repo_subset
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import CORE_PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     RenderedSurfaceRegistry,
     SchemaCatalog,
+    TemplateCatalog,
     ValidationSuiteRegistry,
     ValidatorRegistry,
 )
@@ -133,6 +134,29 @@ def test_control_plane_loader_reads_authority_map() -> None:
         f"watchtower-core {pack_namespace} query trace",
     }
     assert "status" in entry.status_fields
+    core_loader = ControlPlaneLoader(REPO_ROOT, active_pack_settings_path=CORE_PACK_SETTINGS_PATH)
+    core_authority_map = core_loader.load_authority_map()
+    assert (
+        core_authority_map.get("authority.governance.template_selection").preferred_command
+        == "watchtower-core query templates"
+    )
+    assert (
+        core_authority_map.get("authority.governance.lookup_discipline").canonical_path
+        == "core/control_plane/registries/authority_map.json"
+    )
+
+
+def test_control_plane_loader_reads_template_catalog() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT, active_pack_settings_path=CORE_PACK_SETTINGS_PATH)
+
+    catalog = loader.load_template_catalog()
+    entry = catalog.get("template.core.documentation.command_reference")
+
+    assert isinstance(catalog, TemplateCatalog)
+    assert catalog.artifact_id == "registry.template_catalog"
+    assert entry.template_path == "core/docs/templates/command_reference_template.md"
+    assert "core/docs/commands" in entry.allowed_roots
+    assert "command" in entry.required_section_ids
 
 
 def test_control_plane_loader_reads_rendered_surface_registry() -> None:

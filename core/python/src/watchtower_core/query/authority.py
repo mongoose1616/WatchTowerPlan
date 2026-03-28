@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import AuthorityMapEntry
+from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.control_plane.models import AuthorityMap, AuthorityMapEntry
 from watchtower_core.query.common import query_score
 
 
@@ -23,13 +23,19 @@ class AuthorityMapSearchParams:
 class AuthorityMapQueryService:
     """Search the authority map for canonical planning and governance surfaces."""
 
-    def __init__(self, loader: ControlPlaneLoader) -> None:
+    def __init__(
+        self,
+        loader: ControlPlaneLoader,
+        *,
+        pack_settings_path: str = PACK_SETTINGS_PATH,
+    ) -> None:
         self._loader = loader
+        self._pack_settings_path = pack_settings_path
 
     def search(self, params: AuthorityMapSearchParams) -> tuple[AuthorityMapEntry, ...]:
         """Return authority-map entries matching the requested filters."""
 
-        authority_map = self._loader.load_authority_map()
+        authority_map = self._authority_map()
         question_id = params.question_id.casefold() if params.question_id is not None else None
         domain = params.domain.casefold() if params.domain is not None else None
         artifact_kind = (
@@ -71,6 +77,17 @@ class AuthorityMapQueryService:
         if params.limit is not None:
             entries = entries[: params.limit]
         return tuple(entries)
+
+    def _authority_map(self) -> AuthorityMap:
+        effective_pack_settings_path = self._loader.effective_pack_settings_path(
+            self._pack_settings_path
+        )
+        effective_loader = (
+            self._loader
+            if self._loader.active_pack_settings_path == effective_pack_settings_path
+            else self._loader.derive(active_pack_settings_path=effective_pack_settings_path)
+        )
+        return effective_loader.load_authority_map()
 
 
 __all__ = ["AuthorityMapQueryService", "AuthorityMapSearchParams"]

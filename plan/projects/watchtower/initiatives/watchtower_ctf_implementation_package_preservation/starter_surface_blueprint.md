@@ -116,7 +116,7 @@ Use this shape for the offsec root `AGENTS.md` and adapt it only where local beh
 | `offensive_security/workflows/` | routing table, modules, roles, workflow inventory | require local AGENTS guidance about workflow ownership and routing-table alignment |
 | `offensive_security/docs/commands/core_python/` | namespace command inventory and command-doc entrypoints | no local AGENTS file by default |
 | `offensive_security/tracking/` | rendered human trackers and how to read them | no local AGENTS file by default |
-| `offensive_security/python/` | package boundary, runtime modules, tests, and pack-owned code ownership | optional local AGENTS file should narrow coding expectations for pack-owned Python only |
+| `offensive_security/python/` | package boundary, runtime modules, tests, and pack-owned code ownership | require a local `AGENTS.md` file that narrows coding expectations for pack-owned Python only |
 
 ## Registry Starter Expectations
 
@@ -126,7 +126,7 @@ Use this shape for the offsec root `AGENTS.md` and adapt it only where local beh
   - the required `README.md` and `AGENTS.md` surfaces for `offensive_security/`;
   - the required `README.md`, `AGENTS.md`, `ROUTING_TABLE.md`, and `modules/README.md` surfaces for `offensive_security/workflows/`;
   - the required `README.md` for `offensive_security/docs/`, `offensive_security/docs/commands/core_python/`, and `offensive_security/tracking/`; and
-  - the required `README.md` plus optional or required `AGENTS.md` treatment for `offensive_security/python/`.
+  - the required `README.md` and `AGENTS.md` surfaces for `offensive_security/python/`.
 
 ## Best-Practice Reminders
 

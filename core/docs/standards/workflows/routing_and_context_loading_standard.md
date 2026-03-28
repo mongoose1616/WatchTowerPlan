@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:05:00Z"
+updated_at: "2026-03-27T15:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -35,6 +35,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 ## Related Standards and Sources
 - [agents_md_standard.md](/core/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_table_md_standard.md](/core/docs/standards/documentation/routing_table_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [source_and_citation_standard.md](/core/docs/standards/governance/source_and_citation_standard.md): lookup-order discipline should keep authoritative observation separate from later inference or policy selection.
 - [workflow_design_standard.md](/core/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [route_index_standard.md](/core/docs/standards/data_contracts/route_index_standard.md): defines the derived machine-readable route surface used for advisory route preview.
 - [agent_workflow_authoring_reference.md](/core/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for separating stable routing context from task-specific extra files to load.
@@ -50,6 +51,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Always include the shared core workflow module in routed task sets.
 - Load only the minimum workflow documents required for the matched task type or task types.
 - Route from the full prompt context rather than exact keyword matching alone. Treat routing-table trigger keywords as examples that help classification, not as an exhaustive command grammar.
+- When the active question is which governed surface is authoritative, resolve that first through `watchtower-core query authority`, then move to the narrow family query command, then the exact canonical doc or registry, and only then raw repo search such as `rg` if no governed lookup surface exists or if unindexed implementation detail still needs direct verification.
 - Workflow documents remain repository-available, but they are inactive unless the routing result selects them, the user explicitly requests them, or the active route merges them after new scope or risk is discovered.
 - Prefer loading narrow task-family modules plus any required workflow roles or shared phase modules over reintroducing copied cross-cutting steps into every route.
 - Workflow roles must publish direct role-to-module orchestration through `Composes Modules`, but that section is audit and retrieval metadata unless the routing result also selected those module documents.
@@ -82,15 +84,16 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 2. Apply repository-wide constraints and root-level dos and don'ts.
 3. Consult the shared routing table and any pack-owned routing tables.
 4. Match the request to the nearest task type or task types using full prompt context rather than exact keyword matching alone.
-5. Load `modules/core.md` plus the minimum additional workflow documents required by the routing result, and treat all unselected workflow documents as available but inactive.
-6. Load any `Additional Files to Load` sections only after the route is known, and only for the workflow documents that were actually selected.
-7. If the request explicitly includes commit creation or change-set closeout, add `modules/commit_closeout.md` to the dominant route or select the Commit Closeout route alone when commit creation is the only requested task.
-8. Execute the task using the loaded modules and any directly relevant repository context.
-9. If execution reveals a material documentation gap, add the smallest documentation route needed: load `modules/documentation_generation.md` for new docs or `modules/documentation_refresh.md` for stale docs, plus any required shared phase modules not already loaded, unless the gap is minor enough to fix as an adjacent same-change update.
-10. If execution reveals a material implementation-versus-documentation drift risk, add `modules/documentation_implementation_reconciliation.md` or switch to the dedicated reconciliation route unless the drift has already been checked explicitly inside the active route.
-11. If execution reveals a material traceability-drift risk, add `modules/traceability_reconciliation.md` or switch to the dedicated reconciliation route unless the trace agreement has already been checked explicitly inside the active route.
-12. If execution reveals a material governed-artifact coherence risk, add `modules/governed_artifact_reconciliation.md` or switch to the dedicated reconciliation route unless the artifact-family agreement has already been checked explicitly inside the active route.
-13. If routing is unclear or incomplete, request clarification or improve the routing surfaces rather than silently broadening context.
+5. If the request first asks which governed surface or doc family is authoritative, resolve that with `watchtower-core query authority` before broad repository search or manual directory browsing.
+6. Load `modules/core.md` plus the minimum additional workflow documents required by the routing result, and treat all unselected workflow documents as available but inactive.
+7. Load any `Additional Files to Load` sections only after the route is known, and only for the workflow documents that were actually selected.
+8. If the request explicitly includes commit creation or change-set closeout, add `modules/commit_closeout.md` to the dominant route or select the Commit Closeout route alone when commit creation is the only requested task.
+9. Execute the task using the loaded modules and any directly relevant repository context.
+10. If execution reveals a material documentation gap, add the smallest documentation route needed: load `modules/documentation_generation.md` for new docs or `modules/documentation_refresh.md` for stale docs, plus any required shared phase modules not already loaded, unless the gap is minor enough to fix as an adjacent same-change update.
+11. If execution reveals a material implementation-versus-documentation drift risk, add `modules/documentation_implementation_reconciliation.md` or switch to the dedicated reconciliation route unless the drift has already been checked explicitly inside the active route.
+12. If execution reveals a material traceability-drift risk, add `modules/traceability_reconciliation.md` or switch to the dedicated reconciliation route unless the trace agreement has already been checked explicitly inside the active route.
+13. If execution reveals a material governed-artifact coherence risk, add `modules/governed_artifact_reconciliation.md` or switch to the dedicated reconciliation route unless the artifact-family agreement has already been checked explicitly inside the active route.
+14. If routing is unclear or incomplete, request clarification or improve the routing surfaces rather than silently broadening context.
 
 ## Operationalization
 - `Modes`: `workflow`
@@ -120,4 +123,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-24T22:05:00Z`
+- `2026-03-27T15:00:00Z`

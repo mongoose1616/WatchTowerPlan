@@ -36,3 +36,13 @@ def test_fail_closed_package_getattr_raises_the_configured_message() -> None:
 
     with pytest.raises(AttributeError, match="fail closed"):
         getattr_fn("Anything")
+
+
+def test_watchtower_core_query_exports_template_catalog_lookup_surface() -> None:
+    from watchtower_core.query import (
+        TemplateCatalogQueryService,
+        TemplateCatalogSearchParams,
+    )
+
+    assert TemplateCatalogQueryService.__name__ == "TemplateCatalogQueryService"
+    assert TemplateCatalogSearchParams.__name__ == "TemplateCatalogSearchParams"

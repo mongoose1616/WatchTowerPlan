@@ -18,17 +18,20 @@ Use this workflow to identify the repository-specific standards, templates, work
 
 ## Workflow
 1. Gather the governing internal documents.
+   - When the first question is which surface is canonical, resolve it through `watchtower-core query authority`.
    - Identify the repository-specific standards, references, templates, workflows, ADRs, and canonical docs that apply to the active task.
    - Build one minimum governing-document set that distinguishes binding local policy from supporting reference material.
    - Prefer explicit local conventions and current repository patterns over inferred preferences.
 2. Reduce the set to the material context.
    - Keep only the internal documents that materially change how the task should be executed or judged.
    - For engineering work, include the narrower engineering standards and supporting references that constrain the touched surfaces rather than stopping at generic repository guidance.
+   - For new or materially restructured governed docs, resolve the template and required sections through `watchtower-core query templates` before drafting from memory.
    - When standards depend on governed local reference docs, load those specific reference docs instead of broad-scanning the whole reference corpus.
    - Avoid broad loading that does not affect the active work.
 3. Record the governing internal context.
    - Note only the internal documents that should shape the task output or decision.
    - Record why each document matters and whether downstream implementation, validation, or handoff should reference it explicitly.
+   - Keep observed repo facts, inferred implications, and normative local policy distinguishable when they all appear in the same context package.
    - Surface any internal guidance gaps that may require clarification, documentation work, or narrower standards later.
 
 ## Data Structure

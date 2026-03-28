@@ -126,7 +126,7 @@ Path:
   "status": "active",
   "requested_mode": "assistant",
   "effective_mode": "assistant",
-  "interaction_mode": "guided",
+  "interaction_mode": "guided_user_execution",
   "environment_context_ref": "offensive_security/ctf/unknown_platform/unknown_event/warmup_echo/.wt_local/environment_context.json",
   "started_at_utc": "2026-03-28T00:00:30Z",
   "last_activity_at_utc": "2026-03-28T00:05:15Z",
@@ -152,7 +152,7 @@ Path:
 
 ```json
 {"event_id":"event.ctf.unknown_platform.unknown_event.warmup_echo.challenge_created_001","event_type":"challenge_created","timestamp_utc":"2026-03-28T00:00:31Z","challenge_id":"challenge.ctf.unknown_platform.unknown_event.warmup_echo","actor_ref":"actor.repository_maintainer","workflow_id":"workflow.offensivesecurity.challenge_intake","route_id":"route.offsec.challenge_intake","payload":{"summary":"Created challenge root and initialized core machine records."}}
-{"event_id":"event.ctf.unknown_platform.unknown_event.warmup_echo.session_started_001","event_type":"session_started","timestamp_utc":"2026-03-28T00:00:32Z","challenge_id":"challenge.ctf.unknown_platform.unknown_event.warmup_echo","session_id":"session.ctf.unknown_platform.unknown_event.warmup_echo.001","requested_mode":"assistant","effective_mode":"assistant","interaction_mode":"guided","payload":{"summary":"Started first guided execution session."}}
+{"event_id":"event.ctf.unknown_platform.unknown_event.warmup_echo.session_started_001","event_type":"session_started","timestamp_utc":"2026-03-28T00:00:32Z","challenge_id":"challenge.ctf.unknown_platform.unknown_event.warmup_echo","session_id":"session.ctf.unknown_platform.unknown_event.warmup_echo.001","requested_mode":"assistant","effective_mode":"assistant","interaction_mode":"guided_user_execution","payload":{"summary":"Started the first guided user-execution session."}}
 {"event_id":"event.ctf.unknown_platform.unknown_event.warmup_echo.command_001","event_type":"command_activity","timestamp_utc":"2026-03-28T00:04:58Z","challenge_id":"challenge.ctf.unknown_platform.unknown_event.warmup_echo","session_id":"session.ctf.unknown_platform.unknown_event.warmup_echo.001","artifact_id":"artifact.ctf.unknown_platform.unknown_event.warmup_echo.command_output_001","artifact_family":"evidence_artifact","payload":{"stage":"executed","execution_context_type":"local","command_summary":"Ran strings against provided sample artifact.","exit_code":0,"related_evidence_refs":["artifact.ctf.unknown_platform.unknown_event.warmup_echo.command_output_001"],"safety_classification":"read_only"}}
 ```
 

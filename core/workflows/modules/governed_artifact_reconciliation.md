@@ -25,7 +25,7 @@ Use this workflow to reconcile schema-backed governed artifacts with their compa
 ## Workflow
 1. Define the artifact-family boundary.
    - List the artifact families, canonical files, and dependent surfaces in scope.
-   - Decide which surface is authoritative for schema identity, canonical paths, lookup records, and behavioral assumptions.
+   - Decide which surface is authoritative for schema identity, canonical paths, lookup records, and behavioral assumptions, using `watchtower-core query authority` first if the lookup boundary is not already explicit.
 2. Gather the current governed surfaces.
    - Read the live artifacts, their companion schemas, example sets, registries or indexes, and any loader, validator, or command surfaces that resolve or validate them.
    - Prefer published artifact fields such as `$id`, canonical paths, stable identifiers, and governed examples over inferred descriptions.
