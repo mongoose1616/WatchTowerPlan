@@ -6,7 +6,7 @@ import json
 import os
 import re
 import tomllib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 
@@ -55,8 +55,27 @@ _NONPORTABLE_ACCEPTANCE_PATH_PREFIXES = (
     "core/control_plane/contracts/acceptance/",
     "core/control_plane/records/validation_evidence/",
 )
+_ENGINEERING_EXTRACT_ALLOWED_ROOT_FILES = {
+    ".gitignore",
+    "AGENTS.md",
+    "LICENSE",
+    "LICENSE.md",
+    "LICENSE.txt",
+    "README.md",
+}
+_ENGINEERING_EXTRACT_ALLOWED_ROOT_DIRECTORIES = {".github"}
 REPOSITORY_EXPORT_SCOPE = "repository_bundle"
 PACK_BUNDLE_EXPORT_SCOPE = "pack_bundle"
+ENGINEERING_CORE_EXTRACT_SCOPE = "engineering_core_bundle"
+_SHARED_CORE_PORTABLE_VALIDATOR_PREFIXES = (
+    "validator.control_plane.",
+    "validator.documentation.",
+    "validator.interface.",
+    "validator.pack.contract",
+    "validator.portability.",
+    "validator.schema_definition.",
+    "validator.trace.",
+)
 
 
 class PortabilityValidationService:
@@ -76,26 +95,43 @@ class PortabilityValidationService:
             raise ValueError(f"Portability root must be a directory: {root_path}")
 
         normalized_pack_slugs = tuple(dict.fromkeys(included_pack_slugs))
-        if scope not in {REPOSITORY_EXPORT_SCOPE, PACK_BUNDLE_EXPORT_SCOPE}:
+        if scope not in {
+            ENGINEERING_CORE_EXTRACT_SCOPE,
+            REPOSITORY_EXPORT_SCOPE,
+            PACK_BUNDLE_EXPORT_SCOPE,
+        }:
             raise ValueError(f"Unknown portability scope: {scope}")
         if scope == PACK_BUNDLE_EXPORT_SCOPE and not normalized_pack_slugs:
             raise ValueError(
                 "Pack-bundle portability validation requires at least one --include-pack slug."
             )
 
-        issues = (
-            self._scan_retained_history(root_path)
-            + self._scan_acceptance_lineage(root_path)
-            + self._scan_developer_residue(root_path)
-            + self._scan_pack_runtime_state(root_path)
-            + self._scan_test_surfaces(root_path)
-            + self._scan_project_repository_maps(root_path)
-            + self._scan_internal_assessment_documents(root_path)
-            + self._scan_absolute_paths(root_path)
-        )
+        if scope == ENGINEERING_CORE_EXTRACT_SCOPE:
+            issues = (
+                self._scan_engineering_core_shape(root_path)
+                + self._scan_engineering_core_retained_history(root_path)
+                + self._scan_engineering_core_acceptance_lineage(root_path)
+                + self._scan_developer_residue(root_path)
+                + self._scan_pack_runtime_state(root_path)
+                + self._scan_project_repository_maps(root_path)
+                + self._scan_internal_assessment_documents(root_path)
+                + self._scan_absolute_paths(root_path)
+                + self._scan_pack_selection(root_path, ())
+            )
+        else:
+            issues = (
+                self._scan_retained_history(root_path)
+                + self._scan_acceptance_lineage(root_path)
+                + self._scan_developer_residue(root_path)
+                + self._scan_pack_runtime_state(root_path)
+                + self._scan_test_surfaces(root_path)
+                + self._scan_project_repository_maps(root_path)
+                + self._scan_internal_assessment_documents(root_path)
+                + self._scan_absolute_paths(root_path)
+            )
         if scope == REPOSITORY_EXPORT_SCOPE:
             issues.extend(self._scan_pack_selection(root_path, normalized_pack_slugs))
-        else:
+        elif scope == PACK_BUNDLE_EXPORT_SCOPE:
             issues.extend(self._scan_pack_bundle_selection(root_path, normalized_pack_slugs))
         issues = sorted(
             issues,
@@ -173,6 +209,130 @@ class PortabilityValidationService:
                         "Customer-ready exports must exclude acceptance-linked traceability "
                         f"lineage such as {trace_label} because the paired acceptance "
                         "contracts and retained evidence are internal-only surfaces."
+                    ),
+                    location=self._relative(traceability_path, root_path),
+                )
+            )
+        return issues
+
+    def _scan_engineering_core_shape(self, root_path: Path) -> list[ValidationIssue]:
+        core_root = root_path / "core"
+        if not core_root.is_dir():
+            return [
+                ValidationIssue(
+                    code="shared_core_missing",
+                    message=(
+                        "Engineering core extracts must stage shared core at core/ and "
+                        "exclude other donor roots."
+                    ),
+                    location="core",
+                )
+            ]
+
+        issues: list[ValidationIssue] = []
+        for child in sorted(root_path.iterdir()):
+            if child.name == "core":
+                continue
+            if (
+                child.is_file()
+                and child.name in _ENGINEERING_EXTRACT_ALLOWED_ROOT_FILES
+            ):
+                continue
+            if (
+                child.is_dir()
+                and child.name in _ENGINEERING_EXTRACT_ALLOWED_ROOT_DIRECTORIES
+            ):
+                continue
+            issues.append(
+                ValidationIssue(
+                    code="unexpected_root_surface_present",
+                    message=(
+                        "Engineering core extracts must stage only shared core surfaces; "
+                        f"unexpected root surface {self._relative(child, root_path)} is present."
+                    ),
+                    location=self._relative(child, root_path),
+                )
+            )
+        return issues
+
+    def _scan_engineering_core_retained_history(self, root_path: Path) -> list[ValidationIssue]:
+        records_root = root_path / "core" / "control_plane" / "records"
+        if not records_root.exists():
+            return []
+
+        issues: list[ValidationIssue] = []
+        for candidate in sorted(records_root.rglob("*")):
+            if not candidate.is_file() or candidate.name == "README.md":
+                continue
+            relative_path = self._relative(candidate, root_path)
+            if relative_path.startswith("core/control_plane/records/validation_evidence/"):
+                try:
+                    document = json.loads(candidate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    document = None
+                if validation_evidence_artifact_is_shared_core_portable(document):
+                    continue
+            issues.append(
+                ValidationIssue(
+                    code="retained_history_present",
+                    message=(
+                        "Engineering core extracts must exclude donor-specific retained "
+                        f"history such as {relative_path}."
+                    ),
+                    location=relative_path,
+                )
+            )
+        return issues
+
+    def _scan_engineering_core_acceptance_lineage(
+        self,
+        root_path: Path,
+    ) -> list[ValidationIssue]:
+        issues: list[ValidationIssue] = []
+        acceptance_root = root_path / "core" / "control_plane" / "contracts" / "acceptance"
+        if acceptance_root.exists():
+            for candidate in sorted(acceptance_root.glob("*.json")):
+                relative_path = self._relative(candidate, root_path)
+                try:
+                    document = json.loads(candidate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    document = None
+                if acceptance_contract_is_shared_core_portable(document):
+                    continue
+                issues.append(
+                    ValidationIssue(
+                        code="acceptance_contract_present",
+                        message=(
+                            "Engineering core extracts must exclude donor-specific acceptance "
+                            f"contracts such as {relative_path}."
+                        ),
+                        location=relative_path,
+                    )
+                )
+
+        traceability_path = (
+            root_path / "core" / "control_plane" / "indexes" / "traceability"
+            / "traceability_index.json"
+        )
+        if not traceability_path.exists():
+            return issues
+
+        try:
+            document = json.loads(traceability_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return issues
+
+        for entry in document.get("entries", ()):
+            if traceability_entry_is_shared_core_portable(entry):
+                continue
+            trace_id = entry.get("trace_id") if isinstance(entry, dict) else None
+            trace_label = trace_id if isinstance(trace_id, str) else "<unknown-trace>"
+            issues.append(
+                ValidationIssue(
+                    code="traceability_acceptance_lineage_present",
+                    message=(
+                        "Engineering core extracts must exclude donor-specific traceability "
+                        f"lineage such as {trace_label}."
                     ),
                     location=self._relative(traceability_path, root_path),
                 )
@@ -670,8 +830,98 @@ def traceability_entry_requires_nonportable_acceptance_lineage(entry: object) ->
     return False
 
 
+def acceptance_contract_is_shared_core_portable(document: object) -> bool:
+    if not isinstance(document, dict):
+        return False
+    if not _is_shared_core_repo_path(document.get("source_surface_path")):
+        return False
+    entries = document.get("entries")
+    if not isinstance(entries, list):
+        return False
+    for entry in entries:
+        if not isinstance(entry, dict):
+            return False
+        if not _all_shared_core_repo_paths(entry.get("validation_targets")):
+            return False
+        if not _all_shared_core_repo_paths(entry.get("related_paths")):
+            return False
+        if not _all_shared_core_validator_ids(entry.get("required_validator_ids", ())):
+            return False
+    return True
+
+
+def validation_evidence_artifact_is_shared_core_portable(document: object) -> bool:
+    if not isinstance(document, dict):
+        return False
+    if not _all_shared_core_repo_paths(document.get("source_surface_paths")):
+        return False
+    if not _all_shared_core_repo_paths(document.get("related_paths")):
+        return False
+    checks = document.get("checks")
+    if not isinstance(checks, list):
+        return False
+    for check in checks:
+        if not isinstance(check, dict):
+            return False
+        if not _all_shared_core_repo_paths(check.get("subject_paths")):
+            return False
+        validator_id = check.get("validator_id")
+        if validator_id is not None and not _is_shared_core_validator_id(validator_id):
+            return False
+    return True
+
+
+def traceability_entry_is_shared_core_portable(entry: object) -> bool:
+    if not isinstance(entry, dict):
+        return False
+    if not _all_shared_core_repo_paths(entry.get("source_surface_paths")):
+        return False
+    if not _all_shared_core_repo_paths(entry.get("related_paths")):
+        return False
+    if not _all_shared_core_validator_ids(entry.get("validator_ids")):
+        return False
+    task_ids = entry.get("task_ids")
+    if isinstance(task_ids, list) and task_ids:
+        return False
+    return True
+
+
+def _all_shared_core_repo_paths(values: object) -> bool:
+    if values in (None, (), []):
+        return True
+    if not isinstance(values, list | tuple):
+        return False
+    return all(_is_shared_core_repo_path(value) for value in values)
+
+
+def _is_shared_core_repo_path(value: object) -> bool:
+    if not isinstance(value, str):
+        return False
+    candidate = value.rstrip("/")
+    if not candidate or "://" in candidate or candidate.startswith("<"):
+        return False
+    return PurePosixPath(candidate).parts[:1] == ("core",)
+
+
+def _all_shared_core_validator_ids(values: object) -> bool:
+    if values in (None, (), []):
+        return True
+    if not isinstance(values, list | tuple):
+        return False
+    return all(_is_shared_core_validator_id(value) for value in values)
+
+
+def _is_shared_core_validator_id(value: object) -> bool:
+    return isinstance(value, str) and value.startswith(_SHARED_CORE_PORTABLE_VALIDATOR_PREFIXES)
+
+
 __all__ = [
+    "ENGINEERING_CORE_EXTRACT_SCOPE",
     "PACK_BUNDLE_EXPORT_SCOPE",
     "PortabilityValidationService",
     "REPOSITORY_EXPORT_SCOPE",
+    "acceptance_contract_is_shared_core_portable",
+    "traceability_entry_is_shared_core_portable",
+    "traceability_entry_requires_nonportable_acceptance_lineage",
+    "validation_evidence_artifact_is_shared_core_portable",
 ]

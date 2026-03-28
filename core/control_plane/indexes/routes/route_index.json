@@ -81,6 +81,43 @@
       ]
     },
     {
+      "route_id": "route.shared_core_refresh",
+      "task_type": "Shared Core Refresh",
+      "trigger_keywords": [
+        "refresh core",
+        "sync core from donor",
+        "sync core from watchtowerplan",
+        "copy core from donor repo",
+        "repo-to-repo core refresh",
+        "rehost core",
+        "engineering core extract",
+        "extract shared core",
+        "copied-core refresh"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.shared_core_refresh",
+        "workflow.code_validation",
+        "workflow.documentation_refresh",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/shared_core_refresh.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/workflows/modules/governed_artifact_reconciliation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.code_review",
       "task_type": "Code Review",
       "trigger_keywords": [

@@ -21,6 +21,7 @@ def register_pack_family(
         _run_pack_bootstrap,
         _run_pack_describe,
         _run_pack_export,
+        _run_pack_extract_core,
         _run_pack_list,
         _run_pack_scaffold,
         _run_pack_validate,
@@ -48,6 +49,8 @@ def register_pack_family(
             "uv run watchtower-core pack bootstrap --pack-settings-path "
             "oversight/.wt/manifests/pack_settings.json --replace-hosted-packs "
             "--write --format json",
+            "uv run watchtower-core pack extract-core --output-root /tmp/shared_core "
+            "--overwrite --format json",
             "uv run watchtower-core pack export --output-root /tmp/customer_export "
             "--include-pack plan --overwrite --format json",
         ),
@@ -136,7 +139,9 @@ def register_pack_family(
             shared core/python workspace so the host can load it through the
             normal pack contract. Use replace-hosted-packs mode when a copied
             core/ snapshot still carries donor hosted-pack wiring that should
-            be scrubbed before the recipient pack is reloaded.
+            be scrubbed before the recipient pack is reloaded. Use sync-extra
+            when the recipient workspace should also install optional groups
+            such as dev during the same bootstrap pass.
             """
         ).strip(),
         epilog=examples(
@@ -147,6 +152,9 @@ def register_pack_family(
             "uv run watchtower-core pack bootstrap --pack-settings-path "
             "oversight/.wt/manifests/pack_settings.json --write "
             "--no-sync-workspace --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "oversight/.wt/manifests/pack_settings.json --write "
+            "--sync-extra dev --format json",
             "uv run watchtower-core pack bootstrap --pack-settings-path "
             "oversight/.wt/manifests/pack_settings.json --replace-hosted-packs "
             "--write --format json",
@@ -169,6 +177,15 @@ def register_pack_family(
         help="Skip uv sync after writing shared workspace metadata.",
     )
     pack_bootstrap_parser.add_argument(
+        "--sync-extra",
+        action="append",
+        default=[],
+        help=(
+            "Optional uv extra group to install during workspace sync. Repeat for "
+            "multiple extras."
+        ),
+    )
+    pack_bootstrap_parser.add_argument(
         "--replace-hosted-packs",
         action="store_true",
         help=(
@@ -179,20 +196,51 @@ def register_pack_family(
     add_human_json_format_argument(pack_bootstrap_parser)
     pack_bootstrap_parser.set_defaults(handler=_run_pack_bootstrap)
 
+    pack_extract_core_parser = pack_subparsers.add_parser(
+        "extract-core",
+        help="Stage a donor-neutral engineering core bundle for repo-to-repo reuse.",
+        description=dedent(
+            """
+            Copy only shared core into one staging directory, scrub donor pack
+            wiring and donor-only retained artifacts, and validate the result
+            against the engineering-core portability contract.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core pack extract-core --output-root /tmp/shared_core "
+            "--overwrite --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    pack_extract_core_parser.add_argument(
+        "--output-root",
+        required=True,
+        help="Filesystem path where the engineering core extract should be written.",
+    )
+    pack_extract_core_parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Replace an existing staged extract directory.",
+    )
+    add_human_json_format_argument(pack_extract_core_parser)
+    pack_extract_core_parser.set_defaults(handler=_run_pack_extract_core)
+
     pack_export_parser = pack_subparsers.add_parser(
         "export",
         help="Stage a portability-clean repository bundle or pack-only bundle.",
         description=dedent(
             """
-            Copy a curated staged export for customer handoff. By default the
-            command stages shared core plus the selected hosted-pack roots,
-            reconciles shared registry and workspace metadata to the selected
-            pack set, and validates the staged result against the hosted-pack
-            and portability contracts.
+            Copy a curated customer-safe staged export. By default the command
+            stages shared core plus the selected hosted-pack roots, reconciles
+            shared registry and workspace metadata to the selected pack set,
+            and validates the staged result against the hosted-pack and
+            portability contracts.
 
             Use --pack-only to stage one or more scrubbed pack roots without
             shared core. Pack-only exports are additive bundles for a compatible
-            core repository, not standalone runtime repositories.
+            core repository, not standalone runtime repositories. Use
+            extract-core instead when the goal is engineering repo-to-repo core
+            refresh rather than customer-safe handoff.
             """
         ).strip(),
         epilog=examples(

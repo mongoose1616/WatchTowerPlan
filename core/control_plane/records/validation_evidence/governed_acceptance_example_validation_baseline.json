@@ -7,8 +7,9 @@
   "overall_result": "passed",
   "recorded_at": "2026-03-19T11:00:00Z",
   "source_surface_paths": [
-    "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
-    "plan/docs/standards/governance/traceability_standard.md"
+    "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+    "core/docs/commands/core_python/watchtower_core_query_evidence.md",
+    "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
   ],
   "source_acceptance_contract_ids": [
     "contract.acceptance.governed_acceptance_example"

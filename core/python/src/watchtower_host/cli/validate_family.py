@@ -71,6 +71,8 @@ def register_validate_family(
             "uv run watchtower-core validate acceptance --trace-id "
             "trace.governed_acceptance_example --format json",
             "uv run watchtower-core validate portability --include-pack plan --format json",
+            "uv run watchtower-core validate portability --root /tmp/shared_core "
+            "--engineering-core --format json",
             "uv run watchtower-core validate front-matter --path "
             "core/docs/standards/metadata/front_matter_standard.md --format json",
         ),
@@ -179,12 +181,16 @@ def register_validate_family(
             unselected hosted packs, and filesystem-absolute donor paths.
 
             Use --pack-only when the target root is an additive pack bundle
-            without shared core.
+            without shared core. Use --engineering-core when the target root is
+            a donor-neutral shared-core extract intended for engineering
+            repo-to-repo refresh rather than customer-safe handoff.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate portability",
             "uv run watchtower-core validate portability --include-pack plan --format json",
+            "uv run watchtower-core validate portability --root /tmp/shared_core "
+            "--engineering-core --format json",
             "uv run watchtower-core validate portability --root /tmp/customer_plan_pack "
             "--include-pack plan --pack-only --format json",
             "uv run watchtower-core validate portability --root /tmp/customer_export "
@@ -216,6 +222,15 @@ def register_validate_family(
         help=(
             "Validate the target as a pack-only bundle that intentionally omits shared "
             "core surfaces."
+        ),
+    )
+    validate_portability_parser.add_argument(
+        "--engineering-core",
+        action="store_true",
+        help=(
+            "Validate the target as a donor-neutral engineering core extract that "
+            "retains reusable shared-core tests but excludes donor pack wiring and "
+            "donor-only retained artifacts."
         ),
     )
     add_human_json_format_argument(validate_portability_parser)

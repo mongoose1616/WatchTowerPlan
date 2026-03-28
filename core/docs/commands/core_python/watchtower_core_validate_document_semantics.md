@@ -77,9 +77,9 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 ## Source Surface
 - `core/python/src/watchtower_host/cli/validate_family.py`
 - `core/python/src/watchtower_host/cli/validation_handlers.py`
-- `plan/python/src/watchtower_plan/validation/document_semantics.py`
+- `core/python/src/watchtower_core/pack_integration/runtime.py`
 - `core/python/src/watchtower_core/documentation/command_semantics.py`
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-24T23:50:00Z`
+- `2026-03-28T04:20:00Z`

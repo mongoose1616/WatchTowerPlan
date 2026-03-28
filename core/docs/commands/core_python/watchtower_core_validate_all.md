@@ -85,9 +85,11 @@ uv run watchtower-core validate all --pack-settings-path /tmp/example_pack/.wt/m
 - `core/python/src/watchtower_core/validation/suite.py`
 - `core/python/src/watchtower_core/validation/pack_targets.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
-- `plan/python/src/watchtower_plan/validation/document_semantics.py`
+- `core/python/src/watchtower_core/pack_integration/runtime.py`
+- `core/python/src/watchtower_host/cli/validation_handlers.py`
+- `core/python/src/watchtower_core/documentation/command_semantics.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 
 ## Updated At
-- `2026-03-25T02:55:00Z`
+- `2026-03-28T04:20:00Z`

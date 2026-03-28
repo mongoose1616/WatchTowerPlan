@@ -629,7 +629,9 @@ def _prune_plan_dependent_core_acceptance_artifacts(repo_root: Path) -> None:
         if artifact_path.exists():
             artifact_path.unlink()
 
-    traceability_path = repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
+    traceability_path = (
+        repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
+    )
     if not traceability_path.exists():
         return
 

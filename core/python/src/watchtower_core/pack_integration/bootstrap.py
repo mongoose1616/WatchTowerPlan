@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import json
-import subprocess
 import shutil
+import subprocess
 import sys
 from dataclasses import dataclass
 from importlib import import_module
@@ -48,6 +48,7 @@ class PackBootstrapRequest:
     pack_settings_path: str
     write: bool = False
     sync_workspace: bool = True
+    sync_extras: tuple[str, ...] = ()
     replace_hosted_packs: bool = False
 
 
@@ -66,6 +67,7 @@ class PackBootstrapResult:
     core_python_pyproject_changed: bool
     workspace_sync_ran: bool
     workspace_sync_required: bool
+    workspace_sync_extras: tuple[str, ...]
     validation_passed: bool | None
     changed_paths: tuple[str, ...]
     wrote: bool
@@ -164,6 +166,7 @@ def bootstrap_hosted_pack(
             core_python_pyproject_changed=core_python_pyproject_changed,
             workspace_sync_ran=False,
             workspace_sync_required=request.sync_workspace and core_python_pyproject_changed,
+            workspace_sync_extras=tuple(dict.fromkeys(request.sync_extras)),
             validation_passed=None,
             changed_paths=tuple(changed_paths),
             wrote=False,
@@ -188,7 +191,10 @@ def bootstrap_hosted_pack(
         if pack_registry_changed:
             rebuild_shared_discovery_surfaces(repo_root)
         if request.sync_workspace and core_python_pyproject_changed:
-            _run_workspace_sync(repo_root)
+            _run_workspace_sync(
+                repo_root,
+                extras=tuple(dict.fromkeys(request.sync_extras)),
+            )
             workspace_sync_ran = True
         if workspace_sync_ran or not core_python_pyproject_changed:
             validation_passed = _validate_bootstrapped_pack(
@@ -204,7 +210,10 @@ def bootstrap_hosted_pack(
             original_workspace_file_texts=original_workspace_file_texts,
         )
         if workspace_sync_ran:
-            _best_effort_workspace_resync(repo_root)
+            _best_effort_workspace_resync(
+                repo_root,
+                extras=tuple(dict.fromkeys(request.sync_extras)),
+            )
         raise
 
     return PackBootstrapResult(
@@ -219,6 +228,7 @@ def bootstrap_hosted_pack(
         core_python_pyproject_changed=core_python_pyproject_changed,
         workspace_sync_ran=workspace_sync_ran,
         workspace_sync_required=not workspace_sync_ran and core_python_pyproject_changed,
+        workspace_sync_extras=tuple(dict.fromkeys(request.sync_extras)),
         validation_passed=validation_passed,
         changed_paths=tuple(changed_paths),
         wrote=True,
@@ -465,11 +475,14 @@ def _preflight_integration_module_source(
     )
 
 
-def _run_workspace_sync(repo_root: Path) -> None:
+def _run_workspace_sync(repo_root: Path, *, extras: tuple[str, ...] = ()) -> None:
     core_python_root = repo_root / "core" / "python"
     uv_executable = _resolve_uv_executable()
+    command = [uv_executable, "sync"]
+    for extra in dict.fromkeys(extras):
+        command.extend(("--extra", extra))
     completed = subprocess.run(
-        [uv_executable, "sync"],
+        command,
         cwd=core_python_root,
         check=False,
         capture_output=True,
@@ -480,7 +493,10 @@ def _run_workspace_sync(repo_root: Path) -> None:
     stderr = completed.stderr.strip()
     stdout = completed.stdout.strip()
     detail = stderr or stdout or "uv sync failed without output."
-    raise ValueError(f"Hosted-pack bootstrap could not sync the shared workspace: {detail}")
+    raise ValueError(
+        "Hosted-pack bootstrap could not sync the shared workspace: "
+        f"{detail}"
+    )
 
 
 def _resolve_uv_executable() -> str:
@@ -496,9 +512,13 @@ def _resolve_uv_executable() -> str:
     )
 
 
-def _best_effort_workspace_resync(repo_root: Path) -> None:
+def _best_effort_workspace_resync(
+    repo_root: Path,
+    *,
+    extras: tuple[str, ...] = (),
+) -> None:
     try:
-        _run_workspace_sync(repo_root)
+        _run_workspace_sync(repo_root, extras=extras)
     except Exception:
         return
 

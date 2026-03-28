@@ -22,8 +22,12 @@ from watchtower_core.sync.foundation_index import FoundationIndexSyncService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 from watchtower_core.validation.pack_contract import PackContractValidationService
 from watchtower_core.validation.portability import (
+    ENGINEERING_CORE_EXTRACT_SCOPE,
     PortabilityValidationService,
+    acceptance_contract_is_shared_core_portable,
+    traceability_entry_is_shared_core_portable,
     traceability_entry_requires_nonportable_acceptance_lineage,
+    validation_evidence_artifact_is_shared_core_portable,
 )
 
 _PORTABLE_ROOT_FILES = (
@@ -108,6 +112,30 @@ class PackExportResult:
         return self.portability_result.passed and all(
             summary.passed for summary in self.pack_validations
         )
+
+
+@dataclass(frozen=True, slots=True)
+class EngineeringCoreExtractRequest:
+    """Parameters for staging one bootstrap-ready engineering core extract."""
+
+    output_root: str
+    overwrite: bool = False
+
+
+@dataclass(frozen=True, slots=True)
+class EngineeringCoreExtractResult:
+    """Summary of one staged shared-core extract plus readiness validation."""
+
+    output_root: str
+    copied_paths: tuple[str, ...]
+    scrubbed_paths: tuple[str, ...]
+    changed_paths: tuple[str, ...]
+    workspace_lock_removed: bool
+    readiness_result: ValidationResult
+
+    @property
+    def passed(self) -> bool:
+        return self.readiness_result.passed
 
 
 def export_hosted_repository(
@@ -236,6 +264,59 @@ def export_hosted_repository(
     )
 
 
+def extract_engineering_core(
+    repo_root: Path,
+    request: EngineeringCoreExtractRequest,
+) -> EngineeringCoreExtractResult:
+    """Stage a donor-neutral shared-core extract for repository-to-repository reuse."""
+
+    resolved_repo_root = repo_root.resolve()
+    output_root = Path(request.output_root).expanduser().resolve()
+    _validate_output_root(repo_root=resolved_repo_root, output_root=output_root)
+    _prepare_output_root(output_root=output_root, overwrite=request.overwrite)
+
+    copied_paths = _copy_portable_surfaces(
+        repo_root=resolved_repo_root,
+        output_root=output_root,
+        selected_pack_roots=(),
+        include_root_material=True,
+        include_core=True,
+    )
+    scrubbed_paths = _scrub_engineering_core_root(output_root)
+
+    changed_paths = _scrub_all_hosted_pack_wiring(output_root)
+    workspace_lock_removed = False
+    if changed_paths:
+        rebuild_shared_discovery_surfaces(output_root)
+        changed_paths.update(
+            {
+                "core/control_plane/indexes/commands/command_index.json",
+                "core/control_plane/indexes/repository_paths/repository_path_index.json",
+                "core/control_plane/indexes/references/reference_index.json",
+                "core/control_plane/indexes/standards/standard_index.json",
+                "core/control_plane/indexes/workflows/workflow_index.json",
+                "core/control_plane/indexes/routes/route_index.json",
+            }
+        )
+        _rebuild_foundation_index(output_root)
+        changed_paths.add("core/control_plane/indexes/foundations/foundation_index.json")
+        if CORE_PYPROJECT_RELATIVE_PATH in changed_paths:
+            workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
+
+    readiness_result = PortabilityValidationService().validate(
+        output_root,
+        scope=ENGINEERING_CORE_EXTRACT_SCOPE,
+    )
+    return EngineeringCoreExtractResult(
+        output_root=str(output_root),
+        copied_paths=tuple(copied_paths),
+        scrubbed_paths=tuple(sorted(set(scrubbed_paths))),
+        changed_paths=tuple(sorted(changed_paths)),
+        workspace_lock_removed=workspace_lock_removed,
+        readiness_result=readiness_result,
+    )
+
+
 def _copy_portable_surfaces(
     *,
     repo_root: Path,
@@ -283,6 +364,19 @@ def _copy_portable_surfaces(
             shutil.copy2(source, destination)
         copied_paths.append(relative_path)
     return copied_paths
+
+
+def _copy_engineering_core_surface(
+    *,
+    repo_root: Path,
+    output_root: Path,
+) -> list[str]:
+    source = repo_root / "core"
+    if not source.is_dir():
+        raise ValueError("Engineering core extract requires a donor core/ directory.")
+    destination = output_root / "core"
+    shutil.copytree(source, destination, ignore=_copytree_ignore)
+    return ["core"]
 
 
 def _copytree_ignore(current_root: str, names: list[str]) -> set[str]:
@@ -352,6 +446,16 @@ def _scrub_export_root(output_root: Path) -> list[str]:
     return scrubbed_paths
 
 
+def _scrub_engineering_core_root(output_root: Path) -> list[str]:
+    scrubbed_paths: list[str] = []
+    scrubbed_paths.extend(_scrub_nonportable_engineering_history(output_root))
+    scrubbed_paths.extend(_scrub_nonportable_engineering_acceptance_lineage(output_root))
+    scrubbed_paths.extend(_scrub_internal_assessment_references(output_root))
+    scrubbed_paths.extend(_scrub_project_repository_maps(output_root))
+    scrubbed_paths.extend(_scrub_developer_residue(output_root))
+    return scrubbed_paths
+
+
 def _scrub_retained_history(output_root: Path) -> list[str]:
     scrubbed_paths: list[str] = []
     records_root = output_root / "core" / "control_plane" / "records"
@@ -364,6 +468,27 @@ def _scrub_retained_history(output_root: Path) -> list[str]:
             continue
         candidate.unlink()
         scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
+    return scrubbed_paths
+
+
+def _scrub_nonportable_engineering_history(output_root: Path) -> list[str]:
+    scrubbed_paths: list[str] = []
+    records_root = output_root / "core" / "control_plane" / "records"
+    if not records_root.exists():
+        return scrubbed_paths
+    for candidate in sorted(records_root.rglob("*")):
+        if not candidate.is_file() or candidate.name == "README.md":
+            continue
+        relative_path = candidate.relative_to(output_root).as_posix()
+        if relative_path.startswith("core/control_plane/records/validation_evidence/"):
+            try:
+                document = json.loads(candidate.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                document = None
+            if validation_evidence_artifact_is_shared_core_portable(document):
+                continue
+        candidate.unlink()
+        scrubbed_paths.append(relative_path)
     return scrubbed_paths
 
 
@@ -404,6 +529,42 @@ def _scrub_nonportable_acceptance_lineage(output_root: Path) -> list[str]:
     return scrubbed_paths
 
 
+def _scrub_nonportable_engineering_acceptance_lineage(output_root: Path) -> list[str]:
+    scrubbed_paths: list[str] = []
+
+    acceptance_root = output_root / "core" / "control_plane" / "contracts" / "acceptance"
+    if acceptance_root.exists():
+        for candidate in sorted(acceptance_root.glob("*.json")):
+            try:
+                document = json.loads(candidate.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                document = None
+            if acceptance_contract_is_shared_core_portable(document):
+                continue
+            candidate.unlink()
+            scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
+
+    traceability_path = (
+        output_root / "core" / "control_plane" / "indexes" / "traceability"
+        / "traceability_index.json"
+    )
+    if traceability_path.exists():
+        document = json.loads(traceability_path.read_text(encoding="utf-8"))
+        entries = document.get("entries")
+        if isinstance(entries, list):
+            filtered_entries = [
+                entry for entry in entries if traceability_entry_is_shared_core_portable(entry)
+            ]
+            if filtered_entries != entries:
+                traceability_path.write_text(
+                    f"{json.dumps({**document, 'entries': filtered_entries}, indent=2)}\n",
+                    encoding="utf-8",
+                )
+                scrubbed_paths.append(traceability_path.relative_to(output_root).as_posix())
+
+    return scrubbed_paths
+
+
 def _scrub_developer_residue(output_root: Path) -> list[str]:
     scrubbed_paths: list[str] = []
     for candidate in sorted(output_root.rglob("*")):
@@ -420,6 +581,31 @@ def _scrub_developer_residue(output_root: Path) -> list[str]:
         ):
             candidate.unlink()
             scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
+    return scrubbed_paths
+
+
+def _scrub_project_repository_maps(output_root: Path) -> list[str]:
+    scrubbed_paths: list[str] = []
+    for candidate in sorted(output_root.rglob("project_repository_map.json")):
+        if not candidate.is_file():
+            continue
+        candidate.unlink()
+        scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
+    return scrubbed_paths
+
+
+def _scrub_internal_assessment_references(output_root: Path) -> list[str]:
+    scrubbed_paths: list[str] = []
+    for candidate in sorted(output_root.rglob("*.md")):
+        if not candidate.is_file():
+            continue
+        relative_path = candidate.relative_to(output_root).as_posix()
+        if "docs/references/" not in relative_path:
+            continue
+        if not candidate.name.endswith(_INTERNAL_REFERENCE_SUFFIXES):
+            continue
+        candidate.unlink()
+        scrubbed_paths.append(relative_path)
     return scrubbed_paths
 
 
@@ -514,10 +700,13 @@ def _validate_output_root(*, repo_root: Path, output_root: Path) -> None:
 
 
 __all__ = [
+    "EngineeringCoreExtractRequest",
+    "EngineeringCoreExtractResult",
     "PACK_BUNDLE_EXPORT_SCOPE",
     "PackExportRequest",
     "PackExportResult",
     "PackExportValidationSummary",
     "REPOSITORY_EXPORT_SCOPE",
+    "extract_engineering_core",
     "export_hosted_repository",
 ]

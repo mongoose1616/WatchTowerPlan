@@ -79,3 +79,48 @@ def test_pack_bootstrap_replace_hosted_packs_scrubs_donor_wiring_in_copied_core_
     )
     assert donor_pack.python_distribution not in pyproject_text
     assert REHOSTED_PYTHON_DISTRIBUTION in pyproject_text
+
+
+def test_pack_bootstrap_reports_deferred_workspace_sync_extras(
+    tmp_path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    surfaces = materialize_pack_validation_suite(
+        repo_root / REHOSTED_PACK_SLUG,
+        pack_id=f"pack.{REHOSTED_PACK_SLUG}",
+        pack_slug=REHOSTED_PACK_SLUG,
+        command_namespace=REHOSTED_PACK_SLUG,
+        python_distribution=REHOSTED_PYTHON_DISTRIBUTION,
+        python_package=REHOSTED_PYTHON_PACKAGE,
+        integration_module=REHOSTED_INTEGRATION_MODULE,
+        register_with_host_registry=False,
+        register_with_core_python_workspace=False,
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "bootstrap",
+            "--pack-settings-path",
+            surfaces["pack_settings_path"],
+            "--write",
+            "--no-sync-workspace",
+            "--sync-extra",
+            "dev",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["workspace_sync_ran"] is False
+    assert payload["workspace_sync_required"] is True
+    assert payload["workspace_sync_extras"] == ["dev"]
+    assert payload["next_steps"][0].startswith("Run `uv sync --extra dev` in core/python")

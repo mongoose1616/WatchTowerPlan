@@ -7,10 +7,83 @@ from shutil import copytree
 import pytest
 
 from tests.pack_fixture_support import (
+    REPO_ROOT,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_host.cli.main import main
+
+
+def test_pack_extract_core_stages_engineering_shared_core(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    donor_pack = ControlPlaneLoader(REPO_ROOT).load_pack_registry().default_pack()
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    output_root = tmp_path / "shared_core"
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "extract-core",
+            "--output-root",
+            str(output_root),
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core pack extract-core"
+    assert payload["passed"] is True
+    assert payload["readiness"]["passed"] is True
+    assert (output_root / "core").is_dir()
+    assert (output_root / "AGENTS.md").is_file()
+    assert (output_root / "README.md").is_file()
+    assert "core" in {path.name for path in output_root.iterdir()}
+    assert (output_root / "core/python/tests").is_dir()
+    assert any((output_root / "core/python/tests").rglob("*.py"))
+
+    pack_registry = json.loads(
+        (output_root / "core/control_plane/registries/pack_registry.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert pack_registry["packs"] == []
+
+    pyproject_text = (output_root / "core/python/pyproject.toml").read_text(encoding="utf-8")
+    assert donor_pack.python_distribution not in pyproject_text
+    assert not (output_root / "core/python/uv.lock").exists()
+
+    assert (
+        output_root
+        / "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json"
+    ).is_file()
+    assert (
+        output_root
+        / "core/control_plane/records/validation_evidence/"
+        / "governed_acceptance_example_validation_baseline.json"
+    ).is_file()
+    traceability = json.loads(
+        (
+            output_root / "core/control_plane/indexes/traceability/traceability_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert [entry["trace_id"] for entry in traceability["entries"]] == [
+        "trace.governed_acceptance_example"
+    ]
+    assert all(
+        path.startswith("core/")
+        for path in traceability["entries"][0]["source_surface_paths"]
+    )
 
 
 def test_pack_export_core_only_scrubs_donor_hosted_pack_wiring(

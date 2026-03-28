@@ -7,6 +7,7 @@ Use this workflow to implement or refactor the reusable-core, host-runtime, and 
 - A task introduces or refactors `watchtower_core`, `watchtower_host`, or `watchtower_<pack>` boundaries.
 - A change adds pack discovery, pack command registration, pack manifests, pack-owned command docs, or pack portability work.
 - A repository needs to make one pack externalizable without rewriting core code.
+- Use [shared_core_refresh.md](/core/workflows/modules/shared_core_refresh.md) instead when the main task is refreshing shared `core/` from a donor repository into a recipient repository.
 
 ## Inputs
 - Scoped architecture or implementation brief

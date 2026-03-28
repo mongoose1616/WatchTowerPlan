@@ -1,12 +1,13 @@
 # `watchtower-core pack`
 
 ## Summary
-This command group inspects, exports, scaffolds, bootstraps, and validates hosted domain-pack integration contracts.
+This command group inspects, extracts, exports, scaffolds, bootstraps, and validates hosted domain-pack integration contracts.
 
 ## Use When
 - You want to see which hosted packs the current repository exposes.
 - You need the runtime manifest and registry details for one pack before changing host or pack wiring.
 - You need a curated staged export for customer bootstrap or customer release handoff.
+- You need a donor-neutral `core/` extract for engineering repo-to-repo refresh.
 - You want a starter hosted-pack root plus the exact registry and workspace snippets needed to finish host wiring deliberately.
 - You want one guarded command to register a scaffolded or pack-authored root into shared host composition.
 - You want a dedicated pack-interface validation command instead of relying only on `validate all`.
@@ -26,7 +27,7 @@ uv run watchtower-core pack <pack_command> [args]
 ```
 
 ## Arguments and Options
-- `<pack_command>`: Choose `list`, `describe`, `export`, `scaffold`, `bootstrap`, or `validate`.
+- `<pack_command>`: Choose `list`, `describe`, `extract-core`, `export`, `scaffold`, `bootstrap`, or `validate`.
 - `-h`, `--help`: Show the command help text.
 
 ## Examples
@@ -48,6 +49,11 @@ uv run watchtower-core pack validate --format json
 ```sh
 cd core/python
 uv run watchtower-core pack export --output-root /tmp/customer_export --include-pack plan --overwrite --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core pack extract-core --output-root /tmp/shared_core --overwrite --format json
 ```
 
 ```sh
@@ -74,6 +80,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - With no leaf command, the group prints pack-specific help and exits successfully.
 - `list` reports the effective hosted-pack runtime view. In steady state that matches the shared registry; during copied-core bring-up it may also include runtime-only packs discovered from valid local manifests.
 - `describe` combines the effective runtime entry plus the pack-owned runtime manifest for one hosted pack.
+- `extract-core` stages a donor-neutral shared-core bundle for engineering reuse and validates it against the engineering-core portability contract.
 - `export` stages either a portability-clean repository bundle or a portability-clean pack-only bundle, depending on whether `--pack-only` is used.
 - `release check` remains the preferred one-shot local gate when you want dirty-worktree protection and broad validation wrapped around export instead of calling `export` directly.
 - `scaffold` renders the pack-owned starter files for one new hosted pack without mutating shared host surfaces.
@@ -87,6 +94,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 |---|---|
 | `watchtower-core pack list` | Lists the effective hosted packs available to runtime composition. |
 | `watchtower-core pack describe` | Shows one hosted pack's effective runtime entry, runtime manifest, and integration-module status. |
+| `watchtower-core pack extract-core` | Builds a donor-neutral shared-core extract for engineering repo-to-repo reuse. |
 | `watchtower-core pack export` | Builds a curated staged export of shared core plus selected hosted-pack roots, or a scrubbed pack-only bundle when `--pack-only` is used. |
 | `watchtower-core release check` | Preferred one-shot local release gate that runs validation and dirty-worktree checks before staging the final export. |
 | `watchtower-core pack scaffold` | Creates a starter hosted-pack root and emits the pack settings path to bootstrap next. |
@@ -100,4 +108,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - `core/control_plane/registries/pack_registry.json`
 
 ## Updated At
-- `2026-03-25T03:10:00Z`
+- `2026-03-28T04:20:00Z`

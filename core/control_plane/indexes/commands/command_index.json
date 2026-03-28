@@ -75,12 +75,12 @@
     {
       "command_id": "command.watchtower_core.pack.bootstrap",
       "command": "watchtower-core pack bootstrap",
-      "summary": "Register one hosted pack into the shared pack registry and the shared core/python workspace so the host can load it through the normal pack contract. Use replace-hosted-packs mode when a copied core/ snapshot still carries donor hosted-pack wiring that should be scrubbed before the recipient pack is reloaded.",
+      "summary": "Register one hosted pack into the shared pack registry and the shared core/python workspace so the host can load it through the normal pack contract. Use replace-hosted-packs mode when a copied core/ snapshot still carries donor hosted-pack wiring that should be scrubbed before the recipient pack is reloaded. Use sync-extra when the recipient workspace should also install optional groups such as dev during the same bootstrap pass.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
-      "synopsis": "uv run watchtower-core pack bootstrap [-h] --pack-settings-path PACK_SETTINGS_PATH [--write] [--no-sync-workspace] [--replace-hosted-packs] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core pack bootstrap [-h] --pack-settings-path PACK_SETTINGS_PATH [--write] [--no-sync-workspace] [--sync-extra SYNC_EXTRA] [--replace-hosted-packs] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_host/cli/pack_handlers.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.pack",
@@ -123,7 +123,7 @@
     {
       "command_id": "command.watchtower_core.pack.export",
       "command": "watchtower-core pack export",
-      "summary": "Copy a curated staged export for customer handoff. By default the command stages shared core plus the selected hosted-pack roots, reconciles shared registry and workspace metadata to the selected pack set, and validates the staged result against the hosted-pack and portability contracts.",
+      "summary": "Copy a curated customer-safe staged export. By default the command stages shared core plus the selected hosted-pack roots, reconciles shared registry and workspace metadata to the selected pack set, and validates the staged result against the hosted-pack and portability contracts.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -142,6 +142,31 @@
         "cli",
         "pack",
         "export"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.pack.extract_core",
+      "command": "watchtower-core pack extract-core",
+      "summary": "Copy only shared core into one staging directory, scrub donor pack wiring and donor-only retained artifacts, and validate the result against the engineering-core portability contract.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
+      "synopsis": "uv run watchtower-core pack extract-core [-h] --output-root OUTPUT_ROOT [--overwrite] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.pack",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "pack",
+        "extract",
+        "core"
       ]
     },
     {
@@ -1790,7 +1815,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_portability.md",
-      "synopsis": "uv run watchtower-core validate portability [-h] [--root ROOT] [--include-pack INCLUDE_PACK] [--pack-only] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core validate portability [-h] [--root ROOT] [--include-pack INCLUDE_PACK] [--pack-only] [--engineering-core] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",

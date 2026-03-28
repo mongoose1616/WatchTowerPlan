@@ -4,10 +4,11 @@
 This command stages either a portability-clean repository bundle or a portability-clean pack-only bundle for customer handoff.
 
 ## Use When
-- You want a curated export instead of handing off a raw donor repository snapshot.
+- You want a curated customer-safe export instead of handing off a raw donor repository snapshot.
 - You need a core-only bootstrap bundle with hosted-pack wiring scrubbed out of shared registry and workspace metadata.
 - You need a core-plus-selected-pack bundle with omitted pack roots, retained history, tests, runtime residue, and donor-only assessment references removed.
 - You need a scrubbed pack-only bundle that can be copied into a compatible core repository and bootstrapped there.
+- You do not want to retain shared reusable-core tests or other engineering-only source surfaces in the staged handoff.
 
 ## Command
 | Field | Value |
@@ -55,6 +56,7 @@ uv run watchtower-core pack export --output-root /tmp/customer_bundle --include-
 ## Behavior and Outputs
 - By default, copies only the allowlisted root files plus shared `core/` and the selected hosted-pack roots. It does not copy unrelated root notes, donor caches, or omitted hosted-pack roots into the staged export.
 - With `--pack-only`, copies only the selected hosted-pack roots. Shared `core/`, root routing material, and shared workspace files are intentionally omitted.
+- This is the customer-safe handoff builder, not the engineering repo-to-repo shared-core refresh path. Use `watchtower-core pack extract-core` when the recipient needs reusable-core tests and other engineering surfaces retained.
 - Scrubs retained governed history under `core/control_plane/records/**`, shared acceptance-contract examples, acceptance-linked traceability entries that depend on scrubbed retained evidence, shared and pack-owned test trees, pack-owned `watchtower_<pack>.testing` helpers, pack `.wt/runtime/**`, donor project repository maps, developer-machine residue, and internal assessment or comparison closeout references.
 - Treat the staged export as the final handoff surface. An actively used working repository can accumulate fresh telemetry, caches, or runtime residue after validation, so rerun `pack export` immediately before release or customer bootstrap.
 - Use `watchtower-core release check` when you want the fail-closed local gate to wrap dirty-worktree protection, the broad validation baseline, and the final staged export in one command instead of running this export step directly.
@@ -72,6 +74,7 @@ uv run watchtower-core pack export --output-root /tmp/customer_bundle --include-
 | Command | Relationship |
 |---|---|
 | `watchtower-core pack` | Parent command group for hosted-pack inspection, export, scaffold, bootstrap, and validation flows. |
+| `watchtower-core pack extract-core` | Builds the looser engineering shared-core extract when the goal is repo-to-repo reuse rather than customer-safe handoff. |
 | `watchtower-core release check` | Preferred one-shot local release gate when you want validation and dirty-worktree protection around this export step. |
 | `watchtower-core pack bootstrap` | Reconciles shared hosted-pack wiring in-place without building a curated staged export. |
 | `watchtower-core validate portability` | Validates an already-staged export or donor root without mutating it. |
@@ -84,4 +87,4 @@ uv run watchtower-core pack export --output-root /tmp/customer_bundle --include-
 - `core/python/src/watchtower_core/pack_integration/bootstrap.py`
 
 ## Updated At
-- `2026-03-25T02:55:00Z`
+- `2026-03-28T04:20:00Z`

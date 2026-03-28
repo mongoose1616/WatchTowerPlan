@@ -1698,7 +1698,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/repository_portability_standard.md",
-      "updated_at": "2026-03-25T02:55:00Z",
+      "updated_at": "2026-03-28T04:20:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1713,6 +1713,7 @@
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
         "core/docs/commands/core_python/watchtower_core_pack_export.md",
         "core/control_plane/registries/pack_registry.json",
         "core/python/pyproject.toml"
@@ -1725,6 +1726,7 @@
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
         "core/docs/commands/core_python/watchtower_core_pack_export.md",
         "core/docs/standards/operations/customer_release_and_bootstrap_standard.md"
       ],
@@ -1736,6 +1738,7 @@
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
         "core/docs/commands/core_python/watchtower_core_pack_export.md",
         "core/docs/standards/operations/customer_release_and_bootstrap_standard.md"
       ],

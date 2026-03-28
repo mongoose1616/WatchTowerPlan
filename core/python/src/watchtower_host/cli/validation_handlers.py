@@ -31,6 +31,7 @@ from watchtower_core.validation import (
 )
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_core.validation.portability import (
+    ENGINEERING_CORE_EXTRACT_SCOPE,
     PACK_BUNDLE_EXPORT_SCOPE,
     REPOSITORY_EXPORT_SCOPE,
 )
@@ -271,6 +272,32 @@ def _run_validate_all(args: argparse.Namespace) -> int:
 
 
 def _run_validate_portability(args: argparse.Namespace) -> int:
+    if bool(getattr(args, "engineering_core", False)) and bool(
+        getattr(args, "pack_only", False)
+    ):
+        return _emit_command_error(
+            args,
+            "watchtower-core validate portability",
+            "--engineering-core cannot be combined with --pack-only.",
+            prefix="Validation error",
+        )
+    if bool(getattr(args, "engineering_core", False)) and (args.include_pack or ()):
+        return _emit_command_error(
+            args,
+            "watchtower-core validate portability",
+            "--engineering-core cannot be combined with --include-pack.",
+            prefix="Validation error",
+        )
+
+    scope = (
+        ENGINEERING_CORE_EXTRACT_SCOPE
+        if bool(getattr(args, "engineering_core", False))
+        else (
+            PACK_BUNDLE_EXPORT_SCOPE
+            if bool(getattr(args, "pack_only", False))
+            else REPOSITORY_EXPORT_SCOPE
+        )
+    )
     result = _run_value_error_operation(
         args,
         command_name="watchtower-core validate portability",
@@ -278,11 +305,7 @@ def _run_validate_portability(args: argparse.Namespace) -> int:
         operation=lambda: PortabilityValidationService().validate(
             args.root,
             included_pack_slugs=tuple(args.include_pack or ()),
-            scope=(
-                PACK_BUNDLE_EXPORT_SCOPE
-                if bool(getattr(args, "pack_only", False))
-                else REPOSITORY_EXPORT_SCOPE
-            ),
+            scope=scope,
         ),
     )
     if result is None:
@@ -294,11 +317,7 @@ def _run_validate_portability(args: argparse.Namespace) -> int:
         evidence_write=None,
     )
     payload["included_pack_slugs"] = list(args.include_pack or ())
-    payload["scope"] = (
-        PACK_BUNDLE_EXPORT_SCOPE
-        if bool(getattr(args, "pack_only", False))
-        else REPOSITORY_EXPORT_SCOPE
-    )
+    payload["scope"] = scope
     return _emit_detail_result(
         args,
         payload_factory=lambda: payload,

@@ -979,6 +979,76 @@
       ]
     },
     {
+      "workflow_id": "workflow.shared_core_refresh",
+      "workflow_kind": "module",
+      "title": "Shared Core Refresh Workflow",
+      "summary": "Use this workflow to refresh shared `core/` from one WatchTower-style repository into another repository through the engineering shared-core extract path instead of raw copy or customer-safe bundle export.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/shared_core_refresh.md",
+      "phase_type": "execution",
+      "task_family": "architecture",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "donor_residue",
+        "bootstrap_drift"
+      ],
+      "trigger_tags": [
+        "shared",
+        "core",
+        "refresh",
+        "one",
+        "watchtower",
+        "style",
+        "repository",
+        "another",
+        "through",
+        "engineering",
+        "extract",
+        "path",
+        "instead",
+        "raw",
+        "copy",
+        "customer",
+        "safe",
+        "bundle",
+        "export",
+        "docs",
+        "standards",
+        "portability",
+        "standard",
+        "hosted",
+        "pack",
+        "integration",
+        "commands",
+        "python",
+        "bootstrap",
+        "validate",
+        "rehost"
+      ],
+      "companion_workflow_ids": [
+        "workflow.domain_pack_integration",
+        "workflow.documentation_refresh",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "core/docs/standards/engineering/repository_portability_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_validate_portability.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/engineering/repository_portability_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
+        "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+        "core/docs/commands/core_python/watchtower_core_validate_portability.md"
+      ]
+    },
+    {
       "workflow_id": "workflow.task_handoff_review",
       "workflow_kind": "module",
       "title": "Task Handoff Review Workflow",

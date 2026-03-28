@@ -590,6 +590,50 @@ def test_validate_portability_supports_pack_only_scope_for_clean_bundle(
     assert payload["scope"] == "pack_bundle"
 
 
+def test_validate_portability_supports_engineering_core_scope(
+    tmp_path: Path,
+    capsys,
+) -> None:
+    (tmp_path / "core/python/tests/unit").mkdir(parents=True)
+    (tmp_path / "core/python/tests/unit/test_example.py").write_text("", encoding="utf-8")
+    (tmp_path / "core/python/pyproject.toml").write_text(
+        "\n".join(
+            (
+                "[project]",
+                'name = "watchtower-core"',
+            )
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "core/control_plane/registries").mkdir(parents=True)
+    (tmp_path / "core/control_plane/registries/pack_registry.json").write_text(
+        '{\n  "packs": []\n}\n',
+        encoding="utf-8",
+    )
+
+    result = main(
+        [
+            "validate",
+            "portability",
+            "--root",
+            str(tmp_path),
+            "--engineering-core",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core validate portability"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is True
+    assert payload["included_pack_slugs"] == []
+    assert payload["scope"] == "engineering_core_bundle"
+
+
 def test_validate_portability_reports_release_exclusions(
     tmp_path: Path,
     capsys,

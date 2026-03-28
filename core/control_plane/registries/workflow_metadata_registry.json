@@ -261,6 +261,28 @@
       ]
     },
     {
+      "workflow_id": "workflow.shared_core_refresh",
+      "phase_type": "execution",
+      "task_family": "architecture",
+      "primary_risks": [
+        "donor_residue",
+        "bootstrap_drift"
+      ],
+      "extra_trigger_tags": [
+        "core",
+        "refresh",
+        "extract",
+        "rehost"
+      ],
+      "companion_workflow_ids": [
+        "workflow.domain_pack_integration",
+        "workflow.documentation_refresh",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.external_guidance_research",
       "phase_type": "research",
       "task_family": "external_research",

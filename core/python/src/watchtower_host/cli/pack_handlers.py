@@ -19,8 +19,10 @@ from watchtower_core.pack_integration.bootstrap import (
 )
 from watchtower_core.pack_integration.export import (
     PACK_BUNDLE_EXPORT_SCOPE,
+    EngineeringCoreExtractRequest,
     PackExportRequest,
     export_hosted_repository,
+    extract_engineering_core,
 )
 from watchtower_core.pack_integration.importing import import_pack_integration_module
 from watchtower_core.pack_integration.runtime import (
@@ -277,6 +279,7 @@ def _run_pack_validate(args: argparse.Namespace) -> int:
 
 def _run_pack_bootstrap(args: argparse.Namespace) -> int:
     loader = ControlPlaneLoader()
+    sync_extras = tuple(dict.fromkeys(args.sync_extra or ()))
     result = _run_value_error_operation(
         args,
         command_name="watchtower-core pack bootstrap",
@@ -287,6 +290,7 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
                 pack_settings_path=args.pack_settings_path,
                 write=bool(args.write),
                 sync_workspace=not bool(args.no_sync_workspace),
+                sync_extras=sync_extras,
                 replace_hosted_packs=bool(args.replace_hosted_packs),
             ),
         ),
@@ -297,8 +301,10 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
     next_steps: list[str] = (
         [
             (
-                "Run uv sync in core/python before using the hosted pack from a clean "
-                "shell or environment."
+                "Run "
+                + _workspace_sync_command(sync_extras)
+                + " in core/python before using the hosted pack from a clean shell "
+                "or environment."
             ),
             (
                 "Run watchtower-core pack validate --pack-settings-path "
@@ -329,6 +335,7 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         "core_python_pyproject_changed": result.core_python_pyproject_changed,
         "workspace_sync_ran": result.workspace_sync_ran,
         "workspace_sync_required": result.workspace_sync_required,
+        "workspace_sync_extras": list(result.workspace_sync_extras),
         "validation_passed": result.validation_passed,
         "changed_paths": list(result.changed_paths),
         "wrote": result.wrote,
@@ -359,6 +366,8 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
             + ("yes" if result.core_python_pyproject_changed else "no")
         )
         print("Workspace Sync: " + ("ran" if result.workspace_sync_ran else "skipped"))
+        if result.workspace_sync_extras:
+            print("Workspace Sync Extras: " + ", ".join(result.workspace_sync_extras))
         if result.validation_passed is not None:
             print("Validation: " + ("passed" if result.validation_passed else "failed"))
         elif result.workspace_sync_required:
@@ -376,6 +385,90 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         args,
         payload_factory=lambda: payload,
         render_human=_render_human,
+    )
+
+
+def _run_pack_extract_core(args: argparse.Namespace) -> int:
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core pack extract-core",
+        prefix="Pack extract error",
+        operation=lambda: extract_engineering_core(
+            ControlPlaneLoader().repo_root,
+            EngineeringCoreExtractRequest(
+                output_root=args.output_root,
+                overwrite=bool(args.overwrite),
+            ),
+        ),
+    )
+    if result is None:
+        return 1
+
+    next_steps = [
+        (
+            "Copy the staged core/ into the recipient repository root, then run "
+            "watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> "
+            "--replace-hosted-packs --write --sync-extra dev --format json there."
+        )
+    ]
+    payload = {
+        "command": "watchtower-core pack extract-core",
+        "status": "ok",
+        "passed": result.passed,
+        "output_root": result.output_root,
+        "copied_paths": list(result.copied_paths),
+        "scrubbed_paths": list(result.scrubbed_paths),
+        "changed_paths": list(result.changed_paths),
+        "workspace_lock_removed": result.workspace_lock_removed,
+        "readiness": {
+            "passed": result.readiness_result.passed,
+            "validator_id": result.readiness_result.validator_id,
+            "target_path": result.readiness_result.target_path,
+            "engine": result.readiness_result.engine,
+            "schema_ids": list(result.readiness_result.schema_ids),
+            "issue_count": result.readiness_result.issue_count,
+            "issues": [
+                {
+                    "code": issue.code,
+                    "message": issue.message,
+                    "location": issue.location,
+                    "schema_id": issue.schema_id,
+                }
+                for issue in result.readiness_result.issues
+            ],
+        },
+        "next_steps": next_steps,
+    }
+
+    def _render_human() -> None:
+        status = "PASS" if result.passed else "FAIL"
+        print(f"{status} {result.output_root}")
+        print("Scope: engineering core extract")
+        print("Copied Roots: " + ", ".join(result.copied_paths))
+        print(f"Scrubbed Paths: {len(result.scrubbed_paths)}")
+        if result.workspace_lock_removed:
+            print(
+                "Workspace Lock: removed core/python/uv.lock because shared "
+                "workspace wiring changed."
+            )
+        readiness = result.readiness_result
+        print(
+            ("PASS" if readiness.passed else "FAIL")
+            + f" readiness: {readiness.issue_count} issues"
+        )
+        if not readiness.passed:
+            for issue in readiness.issues[:10]:
+                location = f" ({issue.location})" if issue.location else ""
+                print(f"- {issue.code}{location}: {issue.message}")
+        print("Next Steps:")
+        for step in next_steps:
+            print(f"- {step}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+        exit_code=0 if result.passed else 1,
     )
 
 
@@ -499,6 +592,13 @@ def _run_pack_export(args: argparse.Namespace) -> int:
     )
 
 
+def _workspace_sync_command(sync_extras: tuple[str, ...]) -> str:
+    if not sync_extras:
+        return "`uv sync`"
+    extras = " ".join(f"--extra {extra}" for extra in sync_extras)
+    return f"`uv sync {extras}`"
+
+
 def _run_pack_scaffold(args: argparse.Namespace) -> int:
     loader = ControlPlaneLoader()
     result = _run_value_error_operation(
@@ -617,6 +717,7 @@ def _render_pack_registry_entry(entry: PackRegistryEntry) -> None:
 __all__ = [
     "_run_pack_bootstrap",
     "_run_pack_describe",
+    "_run_pack_extract_core",
     "_run_pack_list",
     "_run_pack_scaffold",
     "_run_pack_validate",
