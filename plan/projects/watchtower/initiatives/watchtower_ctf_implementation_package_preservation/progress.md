@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-28T06:25:05Z`
+- `updated_at`: `2026-03-28T07:26:05Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -19,13 +19,11 @@
 ## Active Tasks
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_4_challenge_artifacts_and_closeout/task.json) | `in_progress` | `high` | `repository_maintainer` | Implement challenge-local artifacts, evidence capture, discrepancy handling, and closeout behavior. | task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam |
-| [task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json) | `planned` | `high` | `repository_maintainer` | Implement reusable knowledge families, promotion policy, relation governance, and deterministic retrieval. | task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout |
+| [task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json) | `in_progress` | `high` | `repository_maintainer` | Implement reusable knowledge families, promotion policy, relation governance, and deterministic retrieval. | task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout |
 | [task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_6_environment_adapters_and_safety/task.json) | `planned` | `high` | `repository_maintainer` | Implement environment adapters, transfer governance, confirmation rules, and safety-enforcement policy. | task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval |
 | [task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json) | `planned` | `high` | `repository_maintainer` | Prove staged export, bootstrap, validation, and release portability for the finished offsec pack. | task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety |
 
 ## Blockers
-- Task `task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout` depends on `task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam`.
 - Task `task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval` depends on `task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout`.
 - Task `task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety` depends on `task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval`.
 - Task `task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof` depends on `task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety`.

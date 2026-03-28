@@ -20,6 +20,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap`: `completed`
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract`: `completed`
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam`: `completed`
+- Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout`: `completed`
 
 ## Promoted Guidance
 - `promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell`: `planned` / approval `pending`
@@ -34,12 +35,11 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Acceptance contract ref: `contract.acceptance.watchtower_ctf_package_preservation`
 
 ## Unresolved Follow-Ups
-- Open task `task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout`: `in_progress`
-- Open task `task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval`: `planned`
+- Open task `task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval`: `in_progress`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety`: `planned`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof`: `planned`
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-28T06:25:05Z`
+- `updated_at`: `2026-03-28T07:26:05Z`
 - `closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap`: `planned`
