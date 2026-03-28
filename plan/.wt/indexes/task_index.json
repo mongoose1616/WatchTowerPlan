@@ -230,16 +230,13 @@
       "title": "Phase 4 Challenge Artifacts And Closeout",
       "summary": "Implement challenge-local artifacts, evidence capture, discrepancy handling, and closeout behavior.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_4_challenge_artifacts_and_closeout/task.json",
-      "updated_at": "2026-03-28T06:25:05Z",
+      "updated_at": "2026-03-28T07:25:30Z",
       "project_id": "project.watchtower",
-      "depends_on": [
-        "task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam"
-      ],
       "related_ids": [
         "initiative.watchtower_ctf_implementation_package_preservation",
         "trace.watchtower_ctf_implementation_package_preservation",
@@ -277,12 +274,12 @@
       "title": "Phase 5 Knowledge Promotion And Retrieval",
       "summary": "Implement reusable knowledge families, promotion policy, relation governance, and deterministic retrieval.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "in_progress",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json",
-      "updated_at": "2026-03-27T21:44:35Z",
+      "updated_at": "2026-03-28T07:26:05Z",
       "project_id": "project.watchtower",
       "depends_on": [
         "task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout"
