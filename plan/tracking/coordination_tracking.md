@@ -17,9 +17,9 @@
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_1_recipient_scaffold_and_bootstrap/task.json) | `trace.watchtower_ctf_implementation_package_preservation` | `ready` | `high` | `repository_maintainer` |
+| [task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json) | `trace.watchtower_ctf_implementation_package_preservation` | `ready` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 _No recent closeouts._
 
-_Updated At: `2026-03-28T03:42:22Z`_
+_Updated At: `2026-03-28T03:55:25Z`_
