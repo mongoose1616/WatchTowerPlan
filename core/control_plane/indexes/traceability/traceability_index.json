@@ -14,9 +14,9 @@
       "closed_at": "2026-03-19T11:00:00Z",
       "closure_reason": "Published the durable generic acceptance and evidence example used by repository standards and command documentation.",
       "source_surface_paths": [
-        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
         "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
-        "core/docs/commands/core_python/watchtower_core_query_evidence.md"
+        "core/docs/commands/core_python/watchtower_core_query_evidence.md",
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
       ],
       "requirement_ids": [
         "req.example_acceptance_contract.001"
@@ -52,7 +52,7 @@
       "summary": "Captures the full CTF implementation package inside the governed WatchTower initiative so WatchTower implementation no longer depends on /home/j/mvp_reference/CTF_implementation.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-28T03:56:49Z",
+      "updated_at": "2026-03-28T05:26:18Z",
       "source_surface_paths": [
         "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
         "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",

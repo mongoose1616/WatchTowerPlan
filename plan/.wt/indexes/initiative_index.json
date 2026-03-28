@@ -11,8 +11,8 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-28T03:56:49Z",
-      "open_task_count": 6,
+      "updated_at": "2026-03-28T05:26:18Z",
+      "open_task_count": 5,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md",
       "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -26,7 +26,6 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract",
         "task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam",
         "task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout",
         "task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval",
@@ -35,25 +34,13 @@
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract",
-          "title": "Phase 2 Pack Machine Contract",
+          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam",
+          "title": "Phase 3 Runtime Query Sync And Workflow Seam",
           "task_status": "in_progress",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam",
-          "title": "Phase 3 Runtime Query Sync And Workflow Seam",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
           "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_3_runtime_query_sync_and_workflow_seam/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout",

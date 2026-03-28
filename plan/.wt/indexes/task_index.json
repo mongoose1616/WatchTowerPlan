@@ -132,16 +132,13 @@
       "title": "Phase 2 Pack Machine Contract",
       "summary": "Author the offsec schemas, registries, policies, validation suite, and human-surface starter contract.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json",
-      "updated_at": "2026-03-28T03:56:49Z",
+      "updated_at": "2026-03-28T05:26:02Z",
       "project_id": "project.watchtower",
-      "depends_on": [
-        "task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap"
-      ],
       "related_ids": [
         "initiative.watchtower_ctf_implementation_package_preservation",
         "trace.watchtower_ctf_implementation_package_preservation",
@@ -185,12 +182,12 @@
       "title": "Phase 3 Runtime Query Sync And Workflow Seam",
       "summary": "Implement the pack runtime seam, query and sync surfaces, workflow docs, and rendered visibility outputs.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "in_progress",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_3_runtime_query_sync_and_workflow_seam/task.json",
-      "updated_at": "2026-03-27T21:44:35Z",
+      "updated_at": "2026-03-28T05:26:18Z",
       "project_id": "project.watchtower",
       "depends_on": [
         "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract"

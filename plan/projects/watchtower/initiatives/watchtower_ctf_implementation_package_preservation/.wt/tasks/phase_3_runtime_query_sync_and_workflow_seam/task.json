@@ -6,12 +6,12 @@
   "title": "Phase 3 Runtime Query Sync And Workflow Seam",
   "summary": "Implement the pack runtime seam, query and sync surfaces, workflow docs, and rendered visibility outputs.",
   "status": "active",
-  "task_status": "planned",
+  "task_status": "in_progress",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-27T16:41:06Z",
-  "updated_at": "2026-03-27T21:44:35Z",
+  "updated_at": "2026-03-28T05:26:18Z",
   "dependency_task_ids": [
     "task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract"
   ],

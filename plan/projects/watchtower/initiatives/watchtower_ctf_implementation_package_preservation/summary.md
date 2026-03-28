@@ -18,6 +18,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation`: `cancelled`
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment`: `completed`
 - Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap`: `completed`
+- Terminal task `task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract`: `completed`
 
 ## Promoted Guidance
 - `promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell`: `planned` / approval `pending`
@@ -32,8 +33,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Acceptance contract ref: `contract.acceptance.watchtower_ctf_package_preservation`
 
 ## Unresolved Follow-Ups
-- Open task `task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract`: `in_progress`
-- Open task `task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam`: `planned`
+- Open task `task.watchtower_ctf_implementation_package_preservation.phase_3_runtime_query_sync_and_workflow_seam`: `in_progress`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_4_challenge_artifacts_and_closeout`: `planned`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval`: `planned`
 - Open task `task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety`: `planned`
@@ -41,5 +41,5 @@ Captures the full CTF implementation package inside the governed WatchTower init
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-28T03:56:49Z`
+- `updated_at`: `2026-03-28T05:26:18Z`
 - `closeout.watchtower_ctf_implementation_package_preservation.bootstrap_recap`: `planned`
