@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copytree, rmtree
 
 import pytest
 
@@ -42,8 +41,13 @@ def test_shared_core_refresh_round_trip_bootstraps_clean_recipient_repo(
         tmp_path / "donor_fixture",
         include_shared_discovery_sources=True,
     )
-    recipient_root = tmp_path / "recipient_repo"
-    recipient_root.mkdir(parents=True, exist_ok=True)
+    recipient_root = materialize_validation_repo_subset(
+        tmp_path / "recipient_repo",
+        include_shared_discovery_sources=True,
+    )
+    preserved_marker = recipient_root / "core/python/.venv/bin/marker.txt"
+    preserved_marker.parent.mkdir(parents=True, exist_ok=True)
+    preserved_marker.write_text("keep\n", encoding="utf-8")
 
     recipient_surfaces, bootstrap_payload = _run_shared_core_refresh_cycle(
         tmp_path=tmp_path,
@@ -73,6 +77,8 @@ def test_shared_core_refresh_round_trip_bootstraps_clean_recipient_repo(
     assert donor_pack.python_distribution not in pyproject_text
     assert REHOSTED_PYTHON_DISTRIBUTION in pyproject_text
     assert recipient_surfaces["pack_settings_path"] == "rehosted/.wt/manifests/pack_settings.json"
+    assert preserved_marker.is_file()
+    assert preserved_marker.read_text(encoding="utf-8") == "keep\n"
 
 
 def test_shared_core_refresh_round_trip_is_idempotent_across_repeated_cycles(
@@ -84,8 +90,10 @@ def test_shared_core_refresh_round_trip_is_idempotent_across_repeated_cycles(
         tmp_path / "donor_fixture",
         include_shared_discovery_sources=True,
     )
-    recipient_root = tmp_path / "recipient_repo"
-    recipient_root.mkdir(parents=True, exist_ok=True)
+    recipient_root = materialize_validation_repo_subset(
+        tmp_path / "recipient_repo",
+        include_shared_discovery_sources=True,
+    )
 
     recipient_surfaces, _ = _run_shared_core_refresh_cycle(
         tmp_path=tmp_path,
@@ -142,8 +150,8 @@ def _run_shared_core_refresh_cycle(
     assert extract_payload["passed"] is True
     assert extract_payload["readiness"]["passed"] is True
 
-    _replace_tree(output_root / "core", recipient_root / "core")
-    _seed_recipient_root_shell(output_root=output_root, recipient_root=recipient_root)
+    stale_path = recipient_root / "core/stale.txt"
+    stale_path.write_text("delete\n", encoding="utf-8")
 
     if recipient_surfaces is None:
         recipient_surfaces = materialize_pack_validation_suite(
@@ -159,6 +167,24 @@ def _run_shared_core_refresh_cycle(
         )
 
     monkeypatch.chdir(recipient_root / "core" / "python")
+    apply_result, apply_payload = _run_cli_json(
+        [
+            "pack",
+            "apply-core",
+            "--source-root",
+            str(output_root),
+            "--write",
+            "--format",
+            "json",
+        ],
+        capsys,
+    )
+    assert apply_result == 0
+    assert apply_payload["command"] == "watchtower-core pack apply-core"
+    assert apply_payload["source_readiness"]["passed"] is True
+    assert apply_payload["wrote"] is True
+    assert not stale_path.exists()
+
     bootstrap_result, bootstrap_payload = _run_cli_json(
         [
             "pack",
@@ -221,25 +247,6 @@ def _run_shared_core_refresh_cycle(
 def _run_cli_json(arguments: list[str], capsys) -> tuple[int, dict[str, object]]:
     result = main(arguments)
     return result, json.loads(capsys.readouterr().out)
-
-
-def _replace_tree(source_root: Path, destination_root: Path) -> None:
-    if destination_root.exists():
-        rmtree(destination_root)
-    copytree(source_root, destination_root)
-
-
-def _seed_recipient_root_shell(*, output_root: Path, recipient_root: Path) -> None:
-    for source_path in sorted(output_root.iterdir(), key=lambda path: path.name):
-        if source_path.name == "core":
-            continue
-        destination_path = recipient_root / source_path.name
-        if destination_path.exists():
-            continue
-        if source_path.is_dir():
-            copytree(source_path, destination_path)
-            continue
-        destination_path.write_bytes(source_path.read_bytes())
 
 
 def _snapshot_refresh_state(repo_root: Path) -> dict[str, bytes]:

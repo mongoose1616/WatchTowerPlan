@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import filecmp
 import json
 import shutil
 from dataclasses import dataclass
@@ -124,6 +125,14 @@ class EngineeringCoreExtractRequest:
 
 
 @dataclass(frozen=True, slots=True)
+class EngineeringCoreApplyRequest:
+    """Parameters for applying one staged engineering core extract locally."""
+
+    source_root: str
+    write: bool = False
+
+
+@dataclass(frozen=True, slots=True)
 class EngineeringCoreExtractResult:
     """Summary of one staged shared-core extract plus readiness validation."""
 
@@ -137,6 +146,20 @@ class EngineeringCoreExtractResult:
     @property
     def passed(self) -> bool:
         return self.readiness_result.passed
+
+
+@dataclass(frozen=True, slots=True)
+class EngineeringCoreApplyResult:
+    """Summary of applying one staged shared-core extract into a recipient repo."""
+
+    source_root: str
+    source_core_root: str
+    target_core_root: str
+    source_readiness_result: ValidationResult
+    changed_paths: tuple[str, ...]
+    deleted_paths: tuple[str, ...]
+    preserved_paths: tuple[str, ...]
+    wrote: bool
 
 
 def export_hosted_repository(
@@ -321,6 +344,51 @@ def extract_engineering_core(
     )
 
 
+def apply_engineering_core_extract(
+    repo_root: Path,
+    request: EngineeringCoreApplyRequest,
+) -> EngineeringCoreApplyResult:
+    """Apply one staged engineering core extract into the local recipient repo."""
+
+    resolved_repo_root = repo_root.resolve()
+    source_root = Path(request.source_root).expanduser().resolve()
+    _validate_apply_source_root(repo_root=resolved_repo_root, source_root=source_root)
+
+    source_core_root = source_root / "core"
+    if not source_core_root.is_dir():
+        raise ValueError(
+            "Engineering core apply source is missing the staged core/ directory: "
+            f"{source_root}"
+        )
+
+    readiness_result = PortabilityValidationService().validate(
+        source_root,
+        scope=ENGINEERING_CORE_EXTRACT_SCOPE,
+    )
+    if not readiness_result.passed:
+        raise ValueError(
+            "Engineering core apply source failed readiness validation: "
+            f"{_validation_issue_summary(readiness_result)}"
+        )
+
+    target_core_root = resolved_repo_root / "core"
+    changed_paths, deleted_paths, preserved_paths = _apply_core_tree(
+        source_core_root=source_core_root,
+        target_core_root=target_core_root,
+        write=request.write,
+    )
+    return EngineeringCoreApplyResult(
+        source_root=str(source_root),
+        source_core_root=str(source_core_root),
+        target_core_root=str(target_core_root),
+        source_readiness_result=readiness_result,
+        changed_paths=changed_paths,
+        deleted_paths=deleted_paths,
+        preserved_paths=preserved_paths,
+        wrote=request.write,
+    )
+
+
 def _copy_portable_surfaces(
     *,
     repo_root: Path,
@@ -394,6 +462,24 @@ def _copytree_ignore(current_root: str, names: list[str]) -> set[str]:
     return ignored
 
 
+def _is_dev_residue_relative_path(relative_path: PurePosixPath) -> bool:
+    parts = relative_path.parts
+    if any(part in _DEV_DIRECTORY_NAMES for part in parts):
+        return True
+    if any(any(part.endswith(suffix) for suffix in _DEV_FILE_SUFFIXES) for part in parts):
+        return True
+    if not parts:
+        return False
+    name = parts[-1]
+    return name in _DEV_FILE_NAMES or any(name.endswith(suffix) for suffix in _DEV_FILE_SUFFIXES)
+
+
+def _validation_issue_summary(result: ValidationResult) -> str:
+    if not result.issues:
+        return "validation failed without reported issues."
+    return "; ".join(f"{issue.code}: {issue.message}" for issue in result.issues[:5])
+
+
 def _scrub_export_root(
     output_root: Path,
     *,
@@ -458,6 +544,120 @@ def _scrub_export_root(
             candidate.unlink()
             scrubbed_paths.append(relative_path)
     return scrubbed_paths
+
+
+def _apply_core_tree(
+    *,
+    source_core_root: Path,
+    target_core_root: Path,
+    write: bool,
+) -> tuple[tuple[str, ...], tuple[str, ...], tuple[str, ...]]:
+    changed_paths: set[str] = set()
+    deleted_paths: set[str] = set()
+    preserved_paths: set[str] = set()
+    if write:
+        target_core_root.mkdir(parents=True, exist_ok=True)
+    _sync_applied_core_directory(
+        source_directory=source_core_root,
+        target_directory=target_core_root,
+        relative_root=PurePosixPath(),
+        write=write,
+        changed_paths=changed_paths,
+        deleted_paths=deleted_paths,
+        preserved_paths=preserved_paths,
+    )
+    return (
+        tuple(sorted(changed_paths)),
+        tuple(sorted(deleted_paths)),
+        tuple(sorted(preserved_paths)),
+    )
+
+
+def _sync_applied_core_directory(
+    *,
+    source_directory: Path,
+    target_directory: Path,
+    relative_root: PurePosixPath,
+    write: bool,
+    changed_paths: set[str],
+    deleted_paths: set[str],
+    preserved_paths: set[str],
+) -> None:
+    source_names: set[str] = set()
+    target_entries = (
+        {entry.name: entry for entry in target_directory.iterdir()}
+        if target_directory.is_dir()
+        else {}
+    )
+
+    for source_entry in sorted(source_directory.iterdir(), key=lambda entry: entry.name):
+        relative_path = _join_relative_path(relative_root, source_entry.name)
+        repo_relative_path = _core_repo_relative_path(relative_path)
+        if _is_dev_residue_relative_path(relative_path):
+            preserved_paths.add(repo_relative_path)
+            continue
+        source_names.add(source_entry.name)
+        target_entry = target_entries.get(source_entry.name)
+
+        if source_entry.is_dir():
+            if target_entry is not None and not target_entry.is_dir():
+                deleted_paths.add(repo_relative_path)
+                if write:
+                    target_entry.unlink()
+            if write:
+                (target_directory / source_entry.name).mkdir(parents=True, exist_ok=True)
+            _sync_applied_core_directory(
+                source_directory=source_entry,
+                target_directory=target_directory / source_entry.name,
+                relative_root=relative_path,
+                write=write,
+                changed_paths=changed_paths,
+                deleted_paths=deleted_paths,
+                preserved_paths=preserved_paths,
+            )
+            continue
+
+        if target_entry is not None and target_entry.is_dir():
+            deleted_paths.add(repo_relative_path)
+            if write:
+                shutil.rmtree(target_entry)
+            target_entry = None
+
+        if not (target_entry is not None and target_entry.is_file()):
+            changed_paths.add(repo_relative_path)
+        elif not filecmp.cmp(source_entry, target_entry, shallow=False):
+            changed_paths.add(repo_relative_path)
+
+        if write and repo_relative_path in changed_paths:
+            destination = target_directory / source_entry.name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source_entry, destination)
+
+    for target_entry in sorted(target_entries.values(), key=lambda entry: entry.name):
+        relative_path = _join_relative_path(relative_root, target_entry.name)
+        repo_relative_path = _core_repo_relative_path(relative_path)
+        if _is_dev_residue_relative_path(relative_path):
+            preserved_paths.add(repo_relative_path)
+            continue
+        if target_entry.name in source_names:
+            continue
+        deleted_paths.add(repo_relative_path)
+        if not write:
+            continue
+        if target_entry.is_dir():
+            shutil.rmtree(target_entry)
+        else:
+            target_entry.unlink()
+
+
+def _join_relative_path(relative_root: PurePosixPath, name: str) -> PurePosixPath:
+    if not relative_root.parts:
+        return PurePosixPath(name)
+    return relative_root / name
+
+
+def _core_repo_relative_path(relative_path: PurePosixPath) -> str:
+    return PurePosixPath("core", relative_path).as_posix()
 
 
 def _scrub_engineering_core_root(output_root: Path) -> list[str]:
@@ -755,7 +955,17 @@ def _validate_output_root(*, repo_root: Path, output_root: Path) -> None:
         )
 
 
+def _validate_apply_source_root(*, repo_root: Path, source_root: Path) -> None:
+    if source_root == repo_root or source_root.is_relative_to(repo_root):
+        raise ValueError(
+            "Engineering core apply source must live outside the recipient repository "
+            f"root to avoid self-overwrite: {source_root}"
+        )
+
+
 __all__ = [
+    "EngineeringCoreApplyRequest",
+    "EngineeringCoreApplyResult",
     "EngineeringCoreExtractRequest",
     "EngineeringCoreExtractResult",
     "PACK_BUNDLE_EXPORT_SCOPE",
@@ -763,6 +973,7 @@ __all__ = [
     "PackExportResult",
     "PackExportValidationSummary",
     "REPOSITORY_EXPORT_SCOPE",
+    "apply_engineering_core_extract",
     "extract_engineering_core",
     "export_hosted_repository",
 ]

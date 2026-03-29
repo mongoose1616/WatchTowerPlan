@@ -16,6 +16,7 @@
 - Use `watchtower_core_validate_suite.md` when the main question is how to run one pack-declared validation suite with optional `pack_settings` selection.
 - Use `watchtower_core_validate_schema.md` when the main question is how to validate a `*.schema.json` definition file directly.
 - Use `watchtower_core_pack_extract_core.md` when the main question is engineering repo-to-repo `core/` refresh rather than customer-safe export.
+- Use `watchtower_core_pack_apply_core.md` when the main question is how to replace the local `core/` tree from a staged engineering extract without deleting `.venv` or caches.
 - Use `watchtower_core_pack_bootstrap.md` when the main question is copied-core startup, donor-pack scrub and reload, or the shared hosted-pack registry and workspace wiring flow.
 - Prefer `uv run watchtower-core query authority --query <question> --format json` when you need the canonical lookup surface before scanning docs or indexes directly.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
@@ -38,4 +39,5 @@
 | `core/docs/commands/core_python/watchtower_core_validate_schema.md` | Validates one JSON Schema definition file against the Draft 2020-12 metaschema. |
 | `core/docs/commands/core_python/watchtower_core_validate_suite.md` | Runs one pack-declared validation suite through the reusable-core suite runtime. |
 | `core/docs/commands/core_python/watchtower_core_pack_extract_core.md` | Stages a donor-neutral shared-core extract for engineering repo-to-repo reuse. |
+| `core/docs/commands/core_python/watchtower_core_pack_apply_core.md` | Applies a staged engineering shared-core extract into the local repository core/ tree. |
 | `core/docs/commands/core_python/watchtower_core_doctor.md` | Fastest non-mutating health snapshot for the Python workspace and governed repository surfaces. |

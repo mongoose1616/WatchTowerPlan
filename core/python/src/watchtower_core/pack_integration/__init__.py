@@ -158,6 +158,14 @@ _EXPORTS: dict[str, tuple[str, str]] = {
         "watchtower_core.pack_integration.bootstrap",
         "PackBootstrapResult",
     ),
+    "EngineeringCoreApplyRequest": (
+        "watchtower_core.pack_integration.export",
+        "EngineeringCoreApplyRequest",
+    ),
+    "EngineeringCoreApplyResult": (
+        "watchtower_core.pack_integration.export",
+        "EngineeringCoreApplyResult",
+    ),
     "PackExportRequest": (
         "watchtower_core.pack_integration.export",
         "PackExportRequest",
@@ -181,6 +189,10 @@ _EXPORTS: dict[str, tuple[str, str]] = {
     "bootstrap_hosted_pack": (
         "watchtower_core.pack_integration.bootstrap",
         "bootstrap_hosted_pack",
+    ),
+    "apply_engineering_core_extract": (
+        "watchtower_core.pack_integration.export",
+        "apply_engineering_core_extract",
     ),
     "export_hosted_repository": (
         "watchtower_core.pack_integration.export",
@@ -230,6 +242,8 @@ __all__ = [
     "CORE_PYPROJECT_RELATIVE_PATH",
     "CORE_UV_LOCK_RELATIVE_PATH",
     "CorePythonWorkspaceRegistration",
+    "EngineeringCoreApplyRequest",
+    "EngineeringCoreApplyResult",
     "PackBootstrapRequest",
     "PackBootstrapResult",
     "PackExportRequest",
@@ -249,6 +263,7 @@ __all__ = [
     "PackScaffoldResult",
     "REQUIRED_PACK_CAPABILITIES",
     "SUPPORTED_PACK_CAPABILITIES",
+    "apply_engineering_core_extract",
     "bootstrap_hosted_pack",
     "export_hosted_repository",
     "core_python_workspace_registration",

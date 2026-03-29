@@ -92,12 +92,13 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 Use this start-up flow when a recipient repository copied `core/` exactly from a donor repository and now needs to replace the donor's hosted-pack wiring with its own pack.
 
 1. In the donor repository, prefer `watchtower-core pack extract-core --output-root <path> --overwrite --format json` instead of a raw `core/` copy when you control the source repository.
-2. Confirm `uv` is installed and available on `PATH`. If not, install it first by following [uv_reference.md](/core/docs/references/uv_reference.md) or the onboarding steps in [core/python/README.md](/core/python/README.md), then verify with `uv --version`.
-3. Author or scaffold the recipient pack root and confirm its `pack_settings.json` plus `pack_runtime_manifest.json` are valid.
-4. Run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --sync-extra dev --format json`.
-5. On the normal path, bootstrap now materializes the recipient pack's declared `sync all` slice automatically after shared workspace reconciliation. No extra manual pack-local sync step should be needed.
-6. If a staged change or fixture intentionally needs to defer the honest workspace sync, add `--no-sync-workspace`, then run `uv sync --extra dev`, `watchtower-core <recipient-namespace> sync all --write --format json`, and `watchtower-core pack validate --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --format json` as soon as the shared workspace can be synced honestly.
-7. Run `watchtower-core pack list --format json` and `watchtower-core validate all --format json` to confirm the recipient pack now owns the shared host wiring.
+2. In the recipient repository, run `watchtower-core pack apply-core --source-root <path> --write --format json` to replace the local `core/` tree from the staged extract while preserving local `.venv` and cache residue.
+3. Confirm `uv` is installed and available on `PATH`. If not, install it first by following [uv_reference.md](/core/docs/references/uv_reference.md) or the onboarding steps in [core/python/README.md](/core/python/README.md), then verify with `uv --version`.
+4. Author or scaffold the recipient pack root and confirm its `pack_settings.json` plus `pack_runtime_manifest.json` are valid.
+5. Run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --sync-extra dev --format json`.
+6. On the normal path, bootstrap now materializes the recipient pack's declared `sync all` slice automatically after shared workspace reconciliation. No extra manual pack-local sync step should be needed.
+7. If a staged change or fixture intentionally needs to defer the honest workspace sync, add `--no-sync-workspace`, then run `uv sync --extra dev`, `watchtower-core <recipient-namespace> sync all --write --format json`, and `watchtower-core pack validate --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --format json` as soon as the shared workspace can be synced honestly.
+8. Run `watchtower-core pack list --format json` and `watchtower-core validate all --format json` to confirm the recipient pack now owns the shared host wiring.
 7. Run `watchtower-core pack export --output-root <path> --include-pack <slug> --overwrite --format json` before treating the copied repository as a customer-safe deliverable, or `watchtower-core pack export --output-root <path> --include-pack <slug> --pack-only --overwrite --format json` when you need an additive pack bundle without shared core.
 
 ## Related Commands
@@ -105,6 +106,7 @@ Use this start-up flow when a recipient repository copied `core/` exactly from a
 |---|---|
 | `watchtower-core pack` | Parent command group for hosted-pack inspection, scaffold, bootstrap, and validation flows. |
 | `watchtower-core pack extract-core` | Preferred donor-side engineering extract when repo-to-repo shared-core refresh is the goal. |
+| `watchtower-core pack apply-core` | Preferred recipient-side helper for replacing `core/` from a staged engineering extract without deleting local dev residue. |
 | `watchtower-core pack export` | Builds the curated staged export that bootstrap alone does not provide. |
 | `watchtower-core pack scaffold` | Generates the pack-owned starter surfaces that bootstrap then registers. |
 | `watchtower-core pack validate` | Validates the same hosted pack contract directly. |

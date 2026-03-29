@@ -18,6 +18,7 @@ def register_pack_family(
     """Register the hosted-pack command family."""
     from watchtower_core.cli.handler_common import _run_help
     from watchtower_host.cli.pack_handlers import (
+        _run_pack_apply_core,
         _run_pack_bootstrap,
         _run_pack_describe,
         _run_pack_export,
@@ -51,6 +52,8 @@ def register_pack_family(
             "--write --format json",
             "uv run watchtower-core pack extract-core --output-root /tmp/shared_core "
             "--overwrite --format json",
+            "uv run watchtower-core pack apply-core --source-root /tmp/shared_core "
+            "--write --format json",
             "uv run watchtower-core pack export --output-root /tmp/customer_export "
             "--include-pack plan --overwrite --format json",
         ),
@@ -224,6 +227,37 @@ def register_pack_family(
     )
     add_human_json_format_argument(pack_extract_core_parser)
     pack_extract_core_parser.set_defaults(handler=_run_pack_extract_core)
+
+    pack_apply_core_parser = pack_subparsers.add_parser(
+        "apply-core",
+        help="Apply a staged engineering core extract into the local repository core/.",
+        description=dedent(
+            """
+            Validate one staged engineering shared-core extract and apply its
+            core/ tree into the current repository while preserving local
+            developer residue such as .venv and cache directories.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core pack apply-core --source-root /tmp/shared_core "
+            "--format json",
+            "uv run watchtower-core pack apply-core --source-root /tmp/shared_core "
+            "--write --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    pack_apply_core_parser.add_argument(
+        "--source-root",
+        required=True,
+        help="Filesystem path to the staged engineering shared-core extract root.",
+    )
+    pack_apply_core_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Replace the local core/ tree from the staged extract.",
+    )
+    add_human_json_format_argument(pack_apply_core_parser)
+    pack_apply_core_parser.set_defaults(handler=_run_pack_apply_core)
 
     pack_export_parser = pack_subparsers.add_parser(
         "export",

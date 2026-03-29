@@ -1584,6 +1584,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/core_python/watchtower_core_pack_apply_core.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Applies a staged engineering shared-core extract into the local repository core/ tree.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
       "kind": "file",
       "surface_kind": "command_doc",

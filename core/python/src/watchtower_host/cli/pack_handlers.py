@@ -19,8 +19,10 @@ from watchtower_core.pack_integration.bootstrap import (
 )
 from watchtower_core.pack_integration.export import (
     PACK_BUNDLE_EXPORT_SCOPE,
+    EngineeringCoreApplyRequest,
     EngineeringCoreExtractRequest,
     PackExportRequest,
+    apply_engineering_core_extract,
     export_hosted_repository,
     extract_engineering_core,
 )
@@ -428,7 +430,8 @@ def _run_pack_extract_core(args: argparse.Namespace) -> int:
 
     next_steps = [
         (
-            "Copy the staged core/ into the recipient repository root, then run "
+            "Run watchtower-core pack apply-core --source-root "
+            f"{result.output_root} --write --format json in the recipient repository, then run "
             "watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> "
             "--replace-hosted-packs --write --sync-extra dev --format json there."
         )
@@ -491,6 +494,99 @@ def _run_pack_extract_core(args: argparse.Namespace) -> int:
         payload_factory=lambda: payload,
         render_human=_render_human,
         exit_code=0 if result.passed else 1,
+    )
+
+
+def _run_pack_apply_core(args: argparse.Namespace) -> int:
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core pack apply-core",
+        prefix="Pack apply error",
+        operation=lambda: apply_engineering_core_extract(
+            ControlPlaneLoader().repo_root,
+            EngineeringCoreApplyRequest(
+                source_root=args.source_root,
+                write=bool(args.write),
+            ),
+        ),
+    )
+    if result is None:
+        return 1
+
+    next_steps = (
+        [
+            (
+                "Re-run watchtower-core pack apply-core --source-root "
+                f"{result.source_root} --write --format json to replace local core/ "
+                "from the staged extract."
+            )
+        ]
+        if not result.wrote
+        else [
+            (
+                "Run watchtower-core pack bootstrap --pack-settings-path "
+                "<recipient-pack-settings> --replace-hosted-packs --write "
+                "--sync-extra dev --format json."
+            )
+        ]
+    )
+    payload = {
+        "command": "watchtower-core pack apply-core",
+        "status": "ok",
+        "source_root": result.source_root,
+        "source_core_root": result.source_core_root,
+        "target_core_root": result.target_core_root,
+        "source_readiness": {
+            "passed": result.source_readiness_result.passed,
+            "validator_id": result.source_readiness_result.validator_id,
+            "target_path": result.source_readiness_result.target_path,
+            "engine": result.source_readiness_result.engine,
+            "schema_ids": list(result.source_readiness_result.schema_ids),
+            "issue_count": result.source_readiness_result.issue_count,
+            "issues": [
+                {
+                    "code": issue.code,
+                    "message": issue.message,
+                    "location": issue.location,
+                    "schema_id": issue.schema_id,
+                }
+                for issue in result.source_readiness_result.issues
+            ],
+        },
+        "changed_paths": list(result.changed_paths),
+        "deleted_paths": list(result.deleted_paths),
+        "preserved_paths": list(result.preserved_paths),
+        "wrote": result.wrote,
+        "next_steps": next_steps,
+    }
+
+    def _render_human() -> None:
+        mode = "write mode" if result.wrote else "dry-run mode"
+        print(f"Applied staged core extract from {result.source_root} in {mode}.")
+        print(
+            "Source Readiness: "
+            + ("passed" if result.source_readiness_result.passed else "failed")
+        )
+        print(f"Changed Paths: {len(result.changed_paths)}")
+        print(f"Deleted Paths: {len(result.deleted_paths)}")
+        print(f"Preserved Paths: {len(result.preserved_paths)}")
+        if result.deleted_paths:
+            print("Deleted Paths:")
+            for path in result.deleted_paths:
+                print(f"- {path}")
+        if result.preserved_paths:
+            print("Preserved Paths:")
+            for path in result.preserved_paths:
+                print(f"- {path}")
+        if next_steps:
+            print("Next Steps:")
+            for step in next_steps:
+                print(f"- {step}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
     )
 
 
@@ -737,6 +833,7 @@ def _render_pack_registry_entry(entry: PackRegistryEntry) -> None:
 
 
 __all__ = [
+    "_run_pack_apply_core",
     "_run_pack_bootstrap",
     "_run_pack_describe",
     "_run_pack_extract_core",

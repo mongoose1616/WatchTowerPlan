@@ -43,13 +43,15 @@ uv run watchtower-core pack extract-core --output-root /tmp/shared_core --overwr
 - Preserves only shared acceptance, validation-evidence, and traceability lineage that remains fully `core/**`-scoped and reusable-core portable. Donor-specific retained history and donor-specific acceptance lineage are removed.
 - Rebuilds the shared discovery indexes when hosted-pack wiring changes during the scrub so the staged `core/` remains internally coherent.
 - Validates the staged output against the engineering-core portability contract before returning success.
-- Use `watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json` in the recipient repository after copying the staged `core/`; that bootstrap pass now materializes the recipient pack's declared `sync all` slice when the workspace is ready.
+- Use `watchtower-core pack apply-core --source-root <path> --write --format json` in the recipient repository to replace the local `core/` tree from this staged extract while preserving recipient-local `.venv` and cache residue.
+- Then run `watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json`; that bootstrap pass materializes the recipient pack's declared `sync all` slice when the workspace is ready.
 - Exits non-zero when staging or readiness validation fails. The staged output is left on disk for inspection.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core pack` | Parent command group for hosted-pack inspection, bootstrap, extract, export, scaffold, and validation flows. |
+| `watchtower-core pack apply-core` | Applies the staged shared-core extract into the recipient repository while preserving local dev residue. |
 | `watchtower-core pack bootstrap` | Reconciles the recipient repository's hosted-pack wiring after this staged `core/` is copied in. |
 | `watchtower-core pack export` | Builds the stricter customer-safe handoff bundle rather than the engineering repo-to-repo shared-core extract. |
 | `watchtower-core validate portability` | Validates an already-staged extract with `--engineering-core` when you need a standalone readiness check. |

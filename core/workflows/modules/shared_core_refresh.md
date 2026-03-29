@@ -35,8 +35,9 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
    - Do not substitute `watchtower-core pack export` for this step; export is the customer-safe release path and intentionally strips engineering surfaces such as shared tests.
    - Treat a failed extract as a donor shared-core problem first, not as a signal to hand-edit the staged output blindly.
 4. Apply the extract into the recipient.
-   - Copy the staged `core/` into the recipient repository and keep the recipient root shell authoritative unless the task explicitly includes root-shell reconciliation too.
-   - Remove or replace any lingering donor runtime or recipient-local scratch surfaces only when they conflict with the incoming shared core.
+   - Prefer `cd core/python && uv run watchtower-core pack apply-core --source-root <extract-root> --write --format json` in the recipient repository instead of a raw copy command.
+   - Keep the recipient root shell authoritative unless the task explicitly includes root-shell reconciliation too.
+   - The apply step should replace governed shared-core content while preserving recipient-local `.venv`, caches, and similar local scratch surfaces.
 5. Bootstrap the recipient pack into the refreshed shared core.
    - Run `cd core/python && uv run watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json` unless the recipient intentionally needs a different extra set.
    - Expect the normal bootstrap path to rebuild both the shared discovery indexes and the recipient pack's declared `sync all` slice when the pack publishes that target.

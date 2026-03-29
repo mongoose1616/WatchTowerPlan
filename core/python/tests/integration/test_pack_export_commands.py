@@ -86,6 +86,98 @@ def test_pack_extract_core_stages_engineering_shared_core(
     )
 
 
+def test_pack_apply_core_replaces_local_core_and_preserves_dev_residue(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    donor_repo_root = materialize_validation_repo_subset(
+        tmp_path / "donor_fixture",
+        include_shared_discovery_sources=True,
+    )
+    recipient_root = materialize_validation_repo_subset(
+        tmp_path / "recipient_fixture",
+        include_shared_discovery_sources=True,
+    )
+    output_root = tmp_path / "shared_core"
+
+    monkeypatch.chdir(donor_repo_root / "core" / "python")
+    result = main(
+        [
+            "pack",
+            "extract-core",
+            "--output-root",
+            str(output_root),
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["passed"] is True
+
+    preserved_marker = recipient_root / "core/python/.venv/bin/marker.txt"
+    preserved_marker.parent.mkdir(parents=True, exist_ok=True)
+    preserved_marker.write_text("keep\n", encoding="utf-8")
+    stale_path = recipient_root / "core/stale.txt"
+    stale_path.write_text("delete\n", encoding="utf-8")
+
+    monkeypatch.chdir(recipient_root / "core" / "python")
+    result = main(
+        [
+            "pack",
+            "apply-core",
+            "--source-root",
+            str(output_root),
+            "--write",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core pack apply-core"
+    assert payload["source_readiness"]["passed"] is True
+    assert payload["wrote"] is True
+    assert "core/stale.txt" in payload["deleted_paths"]
+    assert "core/python/.venv" in payload["preserved_paths"]
+    assert preserved_marker.is_file()
+    assert preserved_marker.read_text(encoding="utf-8") == "keep\n"
+    assert not stale_path.exists()
+
+
+def test_pack_apply_core_rejects_missing_staged_core_directory(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    recipient_root = materialize_validation_repo_subset(
+        tmp_path / "recipient_fixture",
+        include_shared_discovery_sources=True,
+    )
+    missing_source_root = tmp_path / "missing_extract"
+    missing_source_root.mkdir(parents=True, exist_ok=True)
+
+    monkeypatch.chdir(recipient_root / "core" / "python")
+    result = main(
+        [
+            "pack",
+            "apply-core",
+            "--source-root",
+            str(missing_source_root),
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core pack apply-core"
+    assert "missing the staged core/ directory" in payload["message"]
+
+
 def test_pack_export_core_only_scrubs_donor_hosted_pack_wiring(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
