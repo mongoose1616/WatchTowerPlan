@@ -43,6 +43,7 @@ exclude = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit"]
+cache_dir = ".pytest_cache"
 addopts = [
   "-q",
   "--maxfail=1",

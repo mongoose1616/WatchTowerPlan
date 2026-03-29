@@ -19,3 +19,6 @@ exclude = [
   "src/watchtower_plan/testing/**",
   "tests/**",
 ]
+
+[tool.pytest.ini_options]
+cache_dir = ".pytest_cache"
