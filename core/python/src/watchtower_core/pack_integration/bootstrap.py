@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -14,6 +15,7 @@ from watchtower_core.control_plane.loader import (
     PACK_REGISTRY_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.pack_integration.runtime import load_pack_sync_runtime
 from watchtower_core.pack_integration.runtime_registry import load_pack_registry_runtime_view
 from watchtower_core.pack_integration.workspace_registration import (
     CORE_PYPROJECT_RELATIVE_PATH,
@@ -68,9 +70,19 @@ class PackBootstrapResult:
     workspace_sync_ran: bool
     workspace_sync_required: bool
     workspace_sync_extras: tuple[str, ...]
+    pack_sync_targets: tuple[str, ...]
+    pack_sync_ran: bool
+    pack_sync_required: bool
     validation_passed: bool | None
     changed_paths: tuple[str, ...]
     wrote: bool
+
+
+@dataclass(frozen=True, slots=True)
+class PackLocalSyncAllResult:
+    """Parsed result from one pack-local `sync all` invocation."""
+
+    relative_output_paths: tuple[str, ...]
 
 
 def bootstrap_hosted_pack(
@@ -90,6 +102,9 @@ def bootstrap_hosted_pack(
         integration_module=runtime_manifest.integration_module,
         python_root=runtime_manifest.owned_roots.python_root,
     )
+    pack_sync_runtime = load_pack_sync_runtime(loader, pack_settings_path=pack_settings_path)
+    pack_sync_targets = tuple(dict.fromkeys(pack_sync_runtime.targets))
+    pack_sync_declares_all = "all" in pack_sync_targets
 
     pack_registry_entry = _build_pack_registry_entry(
         loader=loader,
@@ -167,6 +182,9 @@ def bootstrap_hosted_pack(
             workspace_sync_ran=False,
             workspace_sync_required=request.sync_workspace and core_python_pyproject_changed,
             workspace_sync_extras=tuple(dict.fromkeys(request.sync_extras)),
+            pack_sync_targets=pack_sync_targets,
+            pack_sync_ran=False,
+            pack_sync_required=False,
             validation_passed=None,
             changed_paths=tuple(changed_paths),
             wrote=False,
@@ -178,6 +196,8 @@ def bootstrap_hosted_pack(
         (uv_lock_path, *shared_discovery_paths)
     )
     workspace_sync_ran = False
+    pack_sync_ran = False
+    pack_sync_required = False
     validation_passed: bool | None = None
 
     try:
@@ -196,6 +216,33 @@ def bootstrap_hosted_pack(
                 extras=tuple(dict.fromkeys(request.sync_extras)),
             )
             workspace_sync_ran = True
+        can_run_pack_sync = pack_sync_declares_all and (
+            workspace_sync_ran or not core_python_pyproject_changed
+        )
+        if can_run_pack_sync:
+            pack_sync_preview = _run_pack_local_sync_all(
+                repo_root=repo_root,
+                command_namespace=runtime_manifest.command_namespace,
+                write=False,
+            )
+            pack_sync_paths = tuple(
+                repo_root / relative_path
+                for relative_path in pack_sync_preview.relative_output_paths
+            )
+            original_workspace_file_texts.update(_snapshot_optional_texts(pack_sync_paths))
+            pack_sync_result = _run_pack_local_sync_all(
+                repo_root=repo_root,
+                command_namespace=runtime_manifest.command_namespace,
+                write=True,
+            )
+            pack_sync_ran = True
+            changed_paths.extend(pack_sync_result.relative_output_paths)
+        elif (
+            pack_sync_declares_all
+            and core_python_pyproject_changed
+            and not request.sync_workspace
+        ):
+            pack_sync_required = True
         if workspace_sync_ran or not core_python_pyproject_changed:
             validation_passed = _validate_bootstrapped_pack(
                 repo_root=repo_root,
@@ -229,8 +276,11 @@ def bootstrap_hosted_pack(
         workspace_sync_ran=workspace_sync_ran,
         workspace_sync_required=not workspace_sync_ran and core_python_pyproject_changed,
         workspace_sync_extras=tuple(dict.fromkeys(request.sync_extras)),
+        pack_sync_targets=pack_sync_targets,
+        pack_sync_ran=pack_sync_ran,
+        pack_sync_required=pack_sync_required,
         validation_passed=validation_passed,
-        changed_paths=tuple(changed_paths),
+        changed_paths=tuple(dict.fromkeys(changed_paths)),
         wrote=True,
     )
 
@@ -510,6 +560,89 @@ def _resolve_uv_executable() -> str:
         "Hosted-pack bootstrap could not find the `uv` executable needed for shared "
         "workspace sync. Install `uv` or rerun with --no-sync-workspace."
     )
+
+
+def _run_pack_local_sync_all(
+    *,
+    repo_root: Path,
+    command_namespace: str,
+    write: bool,
+) -> PackLocalSyncAllResult:
+    command = [
+        sys.executable,
+        "-m",
+        "watchtower_host.cli.main",
+        command_namespace,
+        "sync",
+        "all",
+    ]
+    if write:
+        command.append("--write")
+    command.extend(("--format", "json"))
+    env = dict(os.environ)
+    env["WATCHTOWER_TELEMETRY"] = "off"
+    completed = subprocess.run(
+        command,
+        cwd=repo_root / "core" / "python",
+        check=False,
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    if completed.returncode != 0:
+        detail = _cli_command_error_detail(completed)
+        raise ValueError(
+            "Hosted-pack bootstrap could not run the pack-local sync-all command: "
+            f"{detail}"
+        )
+    stdout = completed.stdout.strip()
+    if not stdout:
+        return PackLocalSyncAllResult(relative_output_paths=())
+    try:
+        payload = json.loads(stdout)
+    except json.JSONDecodeError as exc:
+        raise ValueError(
+            "Hosted-pack bootstrap received non-JSON output from the pack-local "
+            f"sync-all command: {exc}"
+        ) from exc
+    if payload.get("status") != "ok":
+        raise ValueError(
+            "Hosted-pack bootstrap received an error payload from the pack-local "
+            f"sync-all command: {payload!r}"
+        )
+    raw_results = payload.get("results")
+    if not isinstance(raw_results, list):
+        return PackLocalSyncAllResult(relative_output_paths=())
+    relative_output_paths: list[str] = []
+    for entry in raw_results:
+        if not isinstance(entry, dict):
+            continue
+        relative_output_path = entry.get("relative_output_path")
+        if not isinstance(relative_output_path, str) or not relative_output_path:
+            continue
+        relative_output_paths.append(relative_output_path)
+    return PackLocalSyncAllResult(
+        relative_output_paths=tuple(dict.fromkeys(relative_output_paths))
+    )
+
+
+def _cli_command_error_detail(completed: subprocess.CompletedProcess[str]) -> str:
+    stdout = completed.stdout.strip()
+    if stdout:
+        try:
+            payload = json.loads(stdout)
+        except json.JSONDecodeError:
+            pass
+        else:
+            message = payload.get("message")
+            if isinstance(message, str) and message:
+                return message
+    stderr = completed.stderr.strip()
+    if stderr:
+        return stderr
+    if stdout:
+        return stdout
+    return "command failed without output."
 
 
 def _best_effort_workspace_resync(

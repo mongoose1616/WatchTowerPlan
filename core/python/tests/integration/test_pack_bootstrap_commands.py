@@ -124,7 +124,67 @@ def test_pack_bootstrap_reports_deferred_workspace_sync_extras(
     assert payload["workspace_sync_ran"] is False
     assert payload["workspace_sync_required"] is True
     assert payload["workspace_sync_extras"] == ["dev"]
+    assert payload["pack_sync_targets"] == ["all"]
+    assert payload["pack_sync_ran"] is False
+    assert payload["pack_sync_required"] is True
     assert payload["next_steps"][0].startswith("Run `uv sync --extra dev` in core/python")
+    assert any(
+        step
+        == (
+            f"Run watchtower-core {REHOSTED_PACK_SLUG} sync all --write --format json "
+            "after the shared workspace sync completes."
+        )
+        for step in payload["next_steps"]
+    )
+
+
+def test_pack_bootstrap_runs_pack_local_sync_all_when_workspace_is_ready(
+    tmp_path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    surfaces = materialize_pack_validation_suite(
+        repo_root / REHOSTED_PACK_SLUG,
+        pack_id=f"pack.{REHOSTED_PACK_SLUG}",
+        pack_slug=REHOSTED_PACK_SLUG,
+        command_namespace=REHOSTED_PACK_SLUG,
+        python_distribution=REHOSTED_PYTHON_DISTRIBUTION,
+        python_package=REHOSTED_PYTHON_PACKAGE,
+        integration_module=REHOSTED_INTEGRATION_MODULE,
+        register_with_host_registry=False,
+        register_with_core_python_workspace=True,
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "bootstrap",
+            "--pack-settings-path",
+            surfaces["pack_settings_path"],
+            "--write",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    sync_index_path = (
+        repo_root / REHOSTED_PACK_SLUG / ".wt" / "indexes" / "fixture_sync_index.json"
+    )
+    assert result == 0
+    assert payload["workspace_sync_required"] is False
+    assert payload["pack_sync_targets"] == ["all"]
+    assert payload["pack_sync_ran"] is True
+    assert payload["pack_sync_required"] is False
+    assert f"{REHOSTED_PACK_SLUG}/.wt/indexes/fixture_sync_index.json" in payload[
+        "changed_paths"
+    ]
+    assert sync_index_path.is_file()
 
 
 @pytest.mark.parametrize(

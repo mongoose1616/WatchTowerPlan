@@ -101,7 +101,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Treat copied-core adoption as source transfer plus explicit reconciliation. Do not copy donor `.venv`, local editable-install metadata, caches, or pack `.wt/runtime/**` outputs and expect them to be part of the hosted-pack contract.
 - Treat `pack bootstrap` as shared wiring reconciliation, not as a customer-release scrub. Donor retained records, tests, fixture packs, internal assessments, and other repo-local history still need explicit exclusion from portable output.
 - Treat `pack export --pack-only` as an additive pack-bundle flow. It intentionally omits shared core and therefore defers shared registry and shared workspace validation until the bundle is copied into a compatible core repository and bootstrapped there.
-- Expect `watchtower-core pack bootstrap --write` to reconcile the shared hosted-pack registry, shared workspace registration, and the shared command, repository-path, reference, standard, workflow, and route discovery indexes when the hosted-pack set changes.
+- Expect `watchtower-core pack bootstrap --write` to reconcile the shared hosted-pack registry, shared workspace registration, the shared command, repository-path, reference, standard, workflow, and route discovery indexes when the hosted-pack set changes, and to run the pack-local `sync all` slice when the selected pack declares it and the workspace is ready.
 
 ## Structure or Data Model
 ### Additional pack-local Python ownership rules

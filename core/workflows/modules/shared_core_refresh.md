@@ -39,7 +39,8 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
    - Remove or replace any lingering donor runtime or recipient-local scratch surfaces only when they conflict with the incoming shared core.
 5. Bootstrap the recipient pack into the refreshed shared core.
    - Run `cd core/python && uv run watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json` unless the recipient intentionally needs a different extra set.
-   - Use `--no-sync-workspace` only when a fixture or staged environment intentionally needs deferred sync, then follow immediately with the explicit `uv sync` command and `watchtower-core pack validate`.
+   - Expect the normal bootstrap path to rebuild both the shared discovery indexes and the recipient pack's declared `sync all` slice when the pack publishes that target.
+   - Use `--no-sync-workspace` only when a fixture or staged environment intentionally needs deferred sync, then follow immediately with the explicit `uv sync` command, the recipient `watchtower-core <namespace> sync all --write --format json` pass when declared, and `watchtower-core pack validate`.
 6. Validate the refreshed recipient state.
    - Confirm the donor extract already passed engineering-core readiness.
    - Run the recipient validation baseline, targeted pack-contract validation, and any repo-local workspace validation required by the active repository contract.

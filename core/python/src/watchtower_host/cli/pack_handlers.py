@@ -306,15 +306,28 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
                 + " in core/python before using the hosted pack from a clean shell "
                 "or environment."
             ),
-            (
-                "Run watchtower-core pack validate --pack-settings-path "
-                f"{result.pack_settings_path} --format json after the workspace sync "
-                "completes."
-            ),
         ]
         if result.workspace_sync_required
         else []
     )
+    command_namespace = result.pack_registry_entry.get("command_namespace")
+    pack_sync_command = (
+        f"watchtower-core {command_namespace} sync all --write --format json"
+        if isinstance(command_namespace, str)
+        and command_namespace
+        and "all" in result.pack_sync_targets
+        else None
+    )
+    if result.pack_sync_required and pack_sync_command is not None:
+        next_steps.append(
+            f"Run {pack_sync_command} after the shared workspace sync completes."
+        )
+    if result.workspace_sync_required:
+        next_steps.append(
+            "Run watchtower-core pack validate --pack-settings-path "
+            f"{result.pack_settings_path} --format json after the workspace sync "
+            "completes."
+        )
     payload = {
         "command": "watchtower-core pack bootstrap",
         "status": "ok",
@@ -336,6 +349,9 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         "workspace_sync_ran": result.workspace_sync_ran,
         "workspace_sync_required": result.workspace_sync_required,
         "workspace_sync_extras": list(result.workspace_sync_extras),
+        "pack_sync_targets": list(result.pack_sync_targets),
+        "pack_sync_ran": result.pack_sync_ran,
+        "pack_sync_required": result.pack_sync_required,
         "validation_passed": result.validation_passed,
         "changed_paths": list(result.changed_paths),
         "wrote": result.wrote,
@@ -368,6 +384,12 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         print("Workspace Sync: " + ("ran" if result.workspace_sync_ran else "skipped"))
         if result.workspace_sync_extras:
             print("Workspace Sync Extras: " + ", ".join(result.workspace_sync_extras))
+        if result.pack_sync_targets:
+            print("Pack Sync Targets: " + ", ".join(result.pack_sync_targets))
+        if result.pack_sync_ran:
+            print("Pack Sync: ran pack-local sync all.")
+        elif result.pack_sync_required:
+            print("Pack Sync: deferred until the shared workspace is synced.")
         if result.validation_passed is not None:
             print("Validation: " + ("passed" if result.validation_passed else "failed"))
         elif result.workspace_sync_required:

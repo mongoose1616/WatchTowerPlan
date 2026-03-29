@@ -43,7 +43,7 @@ uv run watchtower-core pack extract-core --output-root /tmp/shared_core --overwr
 - Preserves only shared acceptance, validation-evidence, and traceability lineage that remains fully `core/**`-scoped and reusable-core portable. Donor-specific retained history and donor-specific acceptance lineage are removed.
 - Rebuilds the shared discovery indexes when hosted-pack wiring changes during the scrub so the staged `core/` remains internally coherent.
 - Validates the staged output against the engineering-core portability contract before returning success.
-- Use `watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json` in the recipient repository after copying the staged `core/`.
+- Use `watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json` in the recipient repository after copying the staged `core/`; that bootstrap pass now materializes the recipient pack's declared `sync all` slice when the workspace is ready.
 - Exits non-zero when staging or readiness validation fails. The staged output is left on disk for inspection.
 
 ## Related Commands

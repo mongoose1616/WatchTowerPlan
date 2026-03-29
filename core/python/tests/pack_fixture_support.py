@@ -181,6 +181,74 @@ def materialize_pack_validation_suite(
         ),
         encoding="utf-8",
     )
+    sync_command_doc_path = (
+        repo_root
+        / runtime_manifest["owned_roots"]["docs_root"]
+        / "commands"
+        / "core_python"
+        / f"watchtower_core_{command_namespace}_sync.md"
+    )
+    sync_command_doc_path.parent.mkdir(parents=True, exist_ok=True)
+    sync_command_doc_path.write_text(
+        "\n".join(
+            (
+                f"# `watchtower-core {command_namespace} sync`",
+                "",
+                "## Summary",
+                f"Fixture command page for the `{command_namespace} sync` hosted-pack family.",
+                "",
+                "## Command",
+                "| Field | Value |",
+                "|---|---|",
+                f"| Invocation | `watchtower-core {command_namespace} sync` |",
+                "| Kind | `subcommand_family` |",
+                "| Workspace | `core_python` |",
+                f"| Source Surface | `{command_source_surface}` |",
+                "",
+                "## Source Surface",
+                f"- `{command_source_surface}`",
+                "",
+                "## Updated At",
+                "- `2026-03-29T02:10:00Z`",
+                "",
+            )
+        ),
+        encoding="utf-8",
+    )
+    sync_all_command_doc_path = (
+        repo_root
+        / runtime_manifest["owned_roots"]["docs_root"]
+        / "commands"
+        / "core_python"
+        / f"watchtower_core_{command_namespace}_sync_all.md"
+    )
+    sync_all_command_doc_path.parent.mkdir(parents=True, exist_ok=True)
+    sync_all_command_doc_path.write_text(
+        "\n".join(
+            (
+                f"# `watchtower-core {command_namespace} sync all`",
+                "",
+                "## Summary",
+                f"Fixture command page for the `{command_namespace} sync all` hosted-pack command.",
+                "",
+                "## Command",
+                "| Field | Value |",
+                "|---|---|",
+                f"| Invocation | `watchtower-core {command_namespace} sync all` |",
+                "| Kind | `subcommand` |",
+                "| Workspace | `core_python` |",
+                f"| Source Surface | `{command_source_surface}` |",
+                "",
+                "## Source Surface",
+                f"- `{command_source_surface}`",
+                "",
+                "## Updated At",
+                "- `2026-03-29T02:12:00Z`",
+                "",
+            )
+        ),
+        encoding="utf-8",
+    )
 
     pack_registry_path = repo_root / "core" / "control_plane" / "registries" / "pack_registry.json"
     if register_with_host_registry and pack_registry_path.exists():

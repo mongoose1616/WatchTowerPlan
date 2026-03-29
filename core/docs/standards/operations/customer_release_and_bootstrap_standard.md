@@ -63,7 +63,7 @@ This standard defines the shared release and bootstrap checklist for customer-sa
 - When the change touched one or more `*.schema.json` files, run `watchtower-core validate schema --path <schema> --format json` for each changed schema in addition to the broad repository gate.
 - Rebuild the final handoff bundle immediately before release. A working repository can accumulate telemetry, caches, or runtime residue after validation.
 - Expect the final export to omit internal acceptance-contract examples, retained validation evidence, and any traceability entry that either depends on scrubbed evidence or still points outside the staged shared-core and selected-pack roots.
-- Pack-only bundles are additive handoff surfaces, not standalone repositories. After copy, the recipient still needs compatible shared core plus `watchtower-core pack bootstrap` and `watchtower-core pack validate`.
+- Pack-only bundles are additive handoff surfaces, not standalone repositories. After copy, the recipient still needs compatible shared core plus `watchtower-core pack bootstrap` and `watchtower-core pack validate`. If the recipient intentionally bootstraps with `--no-sync-workspace` and shared workspace wiring changed, follow immediately with the deferred pack-local `sync all` step once `uv sync` finishes.
 
 ## Structure or Data Model
 ### Execution Path Selection
@@ -86,7 +86,7 @@ This standard defines the shared release and bootstrap checklist for customer-sa
 | 2 | Prefer `watchtower-core release check ... --format json` for the chosen handoff mode. | This is the one-shot local gate that fails closed on dirty worktrees when git metadata is available. |
 | 3 | If you need to inspect or record the steps separately, run `watchtower-core validate all --format json`, then `watchtower-core validate schema --path <schema> --format json` for changed `*.schema.json` files, then `watchtower-core pack export ... --format json`. | This is the manual equivalent of the one-shot gate. |
 | 4 | Review the final staged export result and require `passed: true` plus `portability.issue_count: 0`. | The staged artifact, not the donor repo, is the release surface. |
-| 5 | If the handoff is pack-only, provide recipient instructions to copy the bundle into compatible shared core, then run `watchtower-core pack bootstrap` and `watchtower-core pack validate`. | Pack-only bundles intentionally omit shared core and shared wiring. |
+| 5 | If the handoff is pack-only, provide recipient instructions to copy the bundle into compatible shared core, then run `watchtower-core pack bootstrap` and `watchtower-core pack validate`. If bootstrap deferred shared workspace sync, include the follow-on `watchtower-core <pack-namespace> sync all --write --format json` step too. | Pack-only bundles intentionally omit shared core and shared wiring. |
 | 6 | Hand off the staged output directory itself, not the donor worktree. | Prevents runtime residue or omitted-pack leaks from reappearing after the final scrub. |
 
 ## Operationalization
