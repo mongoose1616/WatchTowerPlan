@@ -9,34 +9,20 @@
       "title": "Repository Hardening and Local Validation Loop",
       "summary": "Hardens local verification, shared-core boundaries, and parser-module hotspots.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "capture",
-      "updated_at": "2026-03-28T21:49:21Z",
-      "open_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-29T00:30:24Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/repository_hardening_local_validation_loop/plan.md",
-      "next_action": "Promote the next planned task to ready before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/repository_hardening_local_validation_loop/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/repository_hardening_local_validation_loop/summary.md",
       "initiative_id": "initiative.repository_hardening_local_validation_loop",
       "slug": "repository_hardening_local_validation_loop",
       "scope_type": "pack_wide",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop",
-          "title": "Bootstrap Repository Hardening and Local Validation Loop",
-          "task_status": "planned",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json",
-          "is_actionable": false
-        }
       ],
       "source_surface_paths": [
         "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
@@ -51,17 +37,25 @@
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "task_ids": [
-        "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop"
+        "task.repository_hardening_local_validation_loop.add_local_verification_runner.002",
+        "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop",
+        "task.repository_hardening_local_validation_loop.decompose_plan_query_registration.003",
+        "task.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.001"
       ],
       "evidence_ids": [
         "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
       ],
+      "closed_at": "2026-03-29T00:30:24Z",
+      "closure_reason": "Delivered local verification hardening, shared-core boundary cleanup, and plan query decomposition.",
       "related_paths": [
         "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
         "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
         "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
         "plan/initiatives/repository_hardening_local_validation_loop/.wt/initiative.json",
-        "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json"
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/add_local_verification_runner/task.json",
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json",
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/decompose_plan_query_registration/task.json",
+        "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/fix_shared_core_validation_boundary/task.json"
       ],
       "tags": [
         "traceability"

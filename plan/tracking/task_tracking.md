@@ -1,17 +1,17 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop](/plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json) | `planned` | `medium` | `repository_maintainer` | `trace.repository_hardening_local_validation_loop` | Bootstrap Repository Hardening and Local Validation Loop live initiative package. |
+_No open tasks._
 
 ## Closed Task Summary
-- `completed`: 8
+- `completed`: 12
 - `cancelled`: 1
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
 | --- | --- | --- | --- | --- | --- |
+| [task.repository_hardening_local_validation_loop.add_local_verification_runner.002](/plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/add_local_verification_runner/task.json) | `completed` | `high` | `repository_maintainer` | `trace.repository_hardening_local_validation_loop` | Add a canonical local verification script, optional git-hook installer, and aligned docs for daily use. |
+| [task.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.001](/plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/fix_shared_core_validation_boundary/task.json) | `completed` | `high` | `repository_maintainer` | `trace.repository_hardening_local_validation_loop` | Remove live plan coupling from shared-core validation tests and restore the current core lint baseline. |
 | [task.watchtower_ctf_implementation_package_preservation.phase_0_shared_contract_adoption_and_alignment](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_0_shared_contract_adoption_and_alignment/task.json) | `completed` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Revalidate the live baseline, donor and recipient split, and current-compatible identity before target-repo mutation. |
 | [task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_1_recipient_scaffold_and_bootstrap/task.json) | `completed` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Export shared core, scaffold the offsec pack, bootstrap it in the recipient repo, and replace starter workflow metadata. |
 | [task.watchtower_ctf_implementation_package_preservation.phase_2_pack_machine_contract](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_2_pack_machine_contract/task.json) | `completed` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Author the offsec schemas, registries, policies, validation suite, and human-surface starter contract. |
@@ -20,6 +20,8 @@
 | [task.watchtower_ctf_implementation_package_preservation.phase_5_knowledge_promotion_and_retrieval](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_5_knowledge_promotion_and_retrieval/task.json) | `completed` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Implement reusable knowledge families, promotion policy, relation governance, and deterministic retrieval. |
 | [task.watchtower_ctf_implementation_package_preservation.phase_6_environment_adapters_and_safety](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_6_environment_adapters_and_safety/task.json) | `completed` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Implement environment adapters, transfer governance, confirmation rules, and safety-enforcement policy. |
 | [task.watchtower_ctf_implementation_package_preservation.phase_7_release_and_portability_proof](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/phase_7_release_and_portability_proof/task.json) | `completed` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Prove staged export, bootstrap, validation, and release portability for the finished offsec pack. |
+| [task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop](/plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.repository_hardening_local_validation_loop` | Bootstrap Repository Hardening and Local Validation Loop live initiative package. |
+| [task.repository_hardening_local_validation_loop.decompose_plan_query_registration.003](/plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/decompose_plan_query_registration/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.repository_hardening_local_validation_loop` | Split the plan query parser registration surface into smaller modules with clearer ownership boundaries. |
 | [task.watchtower_ctf_implementation_package_preservation.bootstrap_watchtower_ctf_implementation_package_preservation](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/tasks/bootstrap_watchtower_ctf_implementation_package_preservation/task.json) | `cancelled` | `high` | `repository_maintainer` | `trace.watchtower_ctf_implementation_package_preservation` | Bootstrap placeholder retired after the phase-aligned execution chain replaced it. |
 
-_Updated At: `2026-03-28T21:48:47Z`_
+_Updated At: `2026-03-29T00:29:22Z`_

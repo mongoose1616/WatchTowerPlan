@@ -625,7 +625,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
     )
     assert payload["next_steps"] == [
         (
-            "Run uv sync in core/python before using the hosted pack from a clean shell "
+            "Run `uv sync` in core/python before using the hosted pack from a clean shell "
             "or environment."
         ),
         (

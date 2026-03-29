@@ -376,7 +376,10 @@ def register_query_knowledge_commands(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query templates --query standard",
-            "uv run watchtower-core query templates --allowed-root core/docs/commands --format json",
+            (
+                "uv run watchtower-core query templates --allowed-root "
+                "core/docs/commands --format json"
+            ),
             "uv run watchtower-core query templates --family-id workflow --format json",
         ),
         formatter_class=HelpFormatter,
@@ -420,7 +423,10 @@ def register_query_knowledge_commands(
     )
     query_templates_parser.add_argument(
         "--required-rendered-surface-id",
-        help="Exact required rendered-surface filter when the template binds to rendered companions.",
+        help=(
+            "Exact required rendered-surface filter when the template binds "
+            "to rendered companions."
+        ),
     )
     add_limit_argument(query_templates_parser)
     add_human_json_format_argument(query_templates_parser)

@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.repository_hardening_local_validation_loop.add_local_verification_runner.002",
+  "slug": "add_local_verification_runner",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "title": "Add Local Verification Runner",
+  "summary": "Add a canonical local verification script, optional git-hook installer, and aligned docs for daily use.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-28T21:55:45Z",
+  "updated_at": "2026-03-29T00:29:14Z",
+  "governing_document_paths": [
+    "core/docs/standards/validations/repository_validation_standard.md",
+    "core/docs/standards/engineering/python_workspace_standard.md"
+  ],
+  "scope_items": [
+    "Add a shared local verification entrypoint under core/python/tools.",
+    "Add an optional hook-install flow that wires local git hooks to the shared verification command.",
+    "Refresh README, validation standard, and review checklist guidance around the new local flow."
+  ],
+  "done_when_items": [
+    "One documented local command covers the normal fast and broad verification loops.",
+    "Developers can install a local pre-push hook without hand-writing their own script."
+  ],
+  "dependency_task_ids": [
+    "task.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.001"
+  ]
+}

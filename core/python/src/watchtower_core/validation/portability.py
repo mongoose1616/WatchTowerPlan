@@ -130,6 +130,12 @@ class PortabilityValidationService:
                 + self._scan_absolute_paths(root_path)
             )
         if scope == REPOSITORY_EXPORT_SCOPE:
+            issues.extend(
+                self._scan_repository_export_traceability(
+                    root_path,
+                    normalized_pack_slugs,
+                )
+            )
             issues.extend(self._scan_pack_selection(root_path, normalized_pack_slugs))
         elif scope == PACK_BUNDLE_EXPORT_SCOPE:
             issues.extend(self._scan_pack_bundle_selection(root_path, normalized_pack_slugs))
@@ -209,6 +215,51 @@ class PortabilityValidationService:
                         "Customer-ready exports must exclude acceptance-linked traceability "
                         f"lineage such as {trace_label} because the paired acceptance "
                         "contracts and retained evidence are internal-only surfaces."
+                    ),
+                    location=self._relative(traceability_path, root_path),
+                )
+            )
+        return issues
+
+    def _scan_repository_export_traceability(
+        self,
+        root_path: Path,
+        included_pack_slugs: tuple[str, ...],
+    ) -> list[ValidationIssue]:
+        traceability_path = (
+            root_path / "core" / "control_plane" / "indexes" / "traceability"
+            / "traceability_index.json"
+        )
+        if not traceability_path.exists():
+            return []
+
+        allowed_roots = ("core",) + self._selected_pack_roots(
+            root_path,
+            included_pack_slugs,
+        )
+        try:
+            document = json.loads(traceability_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return []
+
+        issues: list[ValidationIssue] = []
+        for entry in document.get("entries", ()):
+            if traceability_entry_requires_nonportable_acceptance_lineage(entry):
+                continue
+            if traceability_entry_is_repository_export_portable(
+                entry,
+                allowed_roots=allowed_roots,
+            ):
+                continue
+            trace_id = entry.get("trace_id") if isinstance(entry, dict) else None
+            trace_label = trace_id if isinstance(trace_id, str) else "<unknown-trace>"
+            issues.append(
+                ValidationIssue(
+                    code="traceability_nonportable_entry_present",
+                    message=(
+                        "Customer-ready exports must exclude traceability lineage such "
+                        f"as {trace_label} when it points outside the staged shared core "
+                        "and selected pack roots."
                     ),
                     location=self._relative(traceability_path, root_path),
                 )
@@ -757,7 +808,7 @@ class PortabilityValidationService:
             python_distribution = entry.get("python_distribution")
             if not isinstance(pack_slug, str) or not isinstance(pack_settings_path, str):
                 continue
-            pack_root = pack_settings_path.split("/", 1)[0]
+            pack_root = _pack_workspace_root_from_settings_path(pack_settings_path)
             entries.append(
                 {
                     "pack_slug": pack_slug,
@@ -768,6 +819,24 @@ class PortabilityValidationService:
                 }
             )
         return entries
+
+    def _selected_pack_roots(
+        self,
+        root_path: Path,
+        included_pack_slugs: tuple[str, ...],
+    ) -> tuple[str, ...]:
+        if not included_pack_slugs:
+            return ()
+        pack_registry_path = (
+            root_path / "core" / "control_plane" / "registries" / "pack_registry.json"
+        )
+        selected_slugs = set(included_pack_slugs)
+        roots = [
+            entry["pack_root"]
+            for entry in self._load_pack_registry_entries(pack_registry_path)
+            if entry["pack_slug"] in selected_slugs
+        ]
+        return tuple(dict.fromkeys(roots))
 
     def _discover_pack_bundle_entries(self, root_path: Path) -> list[dict[str, str]]:
         entries: list[dict[str, str]] = []
@@ -886,12 +955,48 @@ def traceability_entry_is_shared_core_portable(entry: object) -> bool:
     return True
 
 
+def traceability_entry_is_repository_export_portable(
+    entry: object,
+    *,
+    allowed_roots: tuple[str, ...],
+) -> bool:
+    if not isinstance(entry, dict):
+        return False
+    if traceability_entry_requires_nonportable_acceptance_lineage(entry):
+        return False
+    if not _all_repo_paths_within_allowed_roots(
+        entry.get("source_surface_paths"),
+        allowed_roots,
+    ):
+        return False
+    if not _all_repo_paths_within_allowed_roots(
+        entry.get("related_paths"),
+        allowed_roots,
+    ):
+        return False
+    return True
+
+
 def _all_shared_core_repo_paths(values: object) -> bool:
     if values in (None, (), []):
         return True
     if not isinstance(values, list | tuple):
         return False
     return all(_is_shared_core_repo_path(value) for value in values)
+
+
+def _all_repo_paths_within_allowed_roots(
+    values: object,
+    allowed_roots: tuple[str, ...],
+) -> bool:
+    if values in (None, (), []):
+        return True
+    if not isinstance(values, list | tuple):
+        return False
+    normalized_roots = _normalize_allowed_roots(allowed_roots)
+    return all(
+        _repo_path_is_within_allowed_roots(value, normalized_roots) for value in values
+    )
 
 
 def _is_shared_core_repo_path(value: object) -> bool:
@@ -901,6 +1006,44 @@ def _is_shared_core_repo_path(value: object) -> bool:
     if not candidate or "://" in candidate or candidate.startswith("<"):
         return False
     return PurePosixPath(candidate).parts[:1] == ("core",)
+
+
+def _repo_path_is_within_allowed_roots(
+    value: object,
+    allowed_roots: tuple[str, ...],
+) -> bool:
+    if not isinstance(value, str):
+        return False
+    candidate = value.rstrip("/")
+    if not candidate or "://" in candidate or candidate.startswith("<"):
+        return False
+    normalized_candidate = PurePosixPath(candidate).as_posix()
+    return any(
+        normalized_candidate == root or normalized_candidate.startswith(f"{root}/")
+        for root in allowed_roots
+    )
+
+
+def _normalize_allowed_roots(allowed_roots: tuple[str, ...]) -> tuple[str, ...]:
+    normalized: list[str] = []
+    for root in allowed_roots:
+        if not isinstance(root, str):
+            continue
+        candidate = root.strip().strip("/")
+        if not candidate or "://" in candidate or candidate.startswith("<"):
+            continue
+        parts = PurePosixPath(candidate).parts
+        if not parts or any(part in {"", ".", ".."} for part in parts):
+            continue
+        normalized.append(PurePosixPath(*parts).as_posix())
+    return tuple(dict.fromkeys(normalized))
+
+
+def _pack_workspace_root_from_settings_path(pack_settings_path: str) -> str:
+    workspace_root, separator, _ = pack_settings_path.partition("/.wt/")
+    if separator and workspace_root:
+        return workspace_root
+    return pack_settings_path.split("/", 1)[0]
 
 
 def _all_shared_core_validator_ids(values: object) -> bool:
@@ -921,6 +1064,7 @@ __all__ = [
     "PortabilityValidationService",
     "REPOSITORY_EXPORT_SCOPE",
     "acceptance_contract_is_shared_core_portable",
+    "traceability_entry_is_repository_export_portable",
     "traceability_entry_is_shared_core_portable",
     "traceability_entry_requires_nonportable_acceptance_lineage",
     "validation_evidence_artifact_is_shared_core_portable",

@@ -76,7 +76,11 @@ def test_foundations_context_review_loads_foundation_review_and_discovery_routes
     assert "core/docs/foundations/engineering_stack_direction.md" in markdown
     assert "core/docs/foundations/product_direction.md" in markdown
     assert "core/docs/foundations/customer_story.md" in markdown
-    assert "active pack's coordination tracker or coordination index" in markdown
+    assert (
+        "Add another governed progress surface when the task is a review loop about overall "
+        "repository coherence, authority, or next remediation work."
+        in markdown
+    )
     assert "SUMMARY.md" not in markdown
     assert "watchtower-core query foundations" in markdown
 
@@ -163,12 +167,14 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
     )
     reusable_core_query_docs = {
         "watchtower_core_query_acceptance.md",
+        "watchtower_core_query_authority.md",
         "watchtower_core_query_commands.md",
         "watchtower_core_query_evidence.md",
         "watchtower_core_query_foundations.md",
         "watchtower_core_query_paths.md",
         "watchtower_core_query_references.md",
         "watchtower_core_query_standards.md",
+        "watchtower_core_query_templates.md",
         "watchtower_core_query_workflows.md",
     }
     for path in shared_query_docs:

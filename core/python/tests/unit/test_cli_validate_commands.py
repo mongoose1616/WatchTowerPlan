@@ -22,6 +22,7 @@ REHOSTED_PACK_SLUG = "rehosted"
 REHOSTED_PYTHON_DISTRIBUTION = "watchtower-rehosted-fixture"
 REHOSTED_PYTHON_PACKAGE = "watchtower_rehosted_fixture"
 REHOSTED_INTEGRATION_MODULE = "watchtower_rehosted_fixture.integration"
+FIXTURE_PACK_SETTINGS_PATH = "packs/fixture/.wt/manifests/pack_settings.json"
 
 
 def _expected_cli_exit(payload: dict[str, object]) -> int:
@@ -30,7 +31,7 @@ def _expected_cli_exit(payload: dict[str, object]) -> int:
 
 def _make_validation_all_result(*, included_families: tuple[str, ...]) -> SimpleNamespace:
     family_targets = {
-        "pack_contract": "plan/.wt/manifests/pack_settings.json",
+        "pack_contract": FIXTURE_PACK_SETTINGS_PATH,
         "front_matter": "core/docs/references/adr_guidance_reference.md",
         "document_semantics": "core/workflows/modules/code_validation.md",
         "artifacts": "core/control_plane/registries/schema_catalog.json",
@@ -141,7 +142,7 @@ def _materialize_unbootstrapped_rehosted_root_pack(repo_root: Path) -> dict[str,
             / "tests"
             / "fixtures"
             / "python"
-                / "watchtower_oversight_fixture"
+            / "watchtower_oversight_fixture"
         ),
         description="Synthetic rehosted runtime package used to prove hosted-pack portability.",
     )
@@ -920,6 +921,20 @@ def test_validate_portability_reports_release_exclusions(
                         "acceptance_ids": ["ac.acceptance_example.001"],
                         "acceptance_contract_ids": ["contract.acceptance.acceptance_example"],
                         "evidence_ids": ["evidence.acceptance_example.validation_baseline"],
+                    },
+                    {
+                        "trace_id": "trace.plan_only_example",
+                        "title": "Plan-only Example",
+                        "summary": "Traceability lineage that points outside the staged roots.",
+                        "status": "active",
+                        "initiative_status": "active",
+                        "updated_at": "2026-03-28T22:15:00Z",
+                        "source_surface_paths": [
+                            "plan/initiatives/example/initiative_brief.md",
+                        ],
+                        "related_paths": [
+                            "plan/.wt/indexes/task_index.json",
+                        ],
                     }
                 ],
             }
@@ -932,16 +947,17 @@ def test_validate_portability_reports_release_exclusions(
         json.dumps(
             {
                 "packs": [
-                        {
-                            "pack_slug": omitted_pack_slug,
-                            "pack_settings_path": omitted_pack_settings_path,
-                            "python_distribution": omitted_pack_distribution,
-                        }
-                    ]
-                }
-            ),
-            encoding="utf-8",
+                    {
+                        "pack_slug": omitted_pack_slug,
+                        "pack_settings_path": omitted_pack_settings_path,
+                        "python_distribution": omitted_pack_distribution,
+                    }
+                ]
+            }
         )
+        + "\n",
+        encoding="utf-8",
+    )
     (tmp_path / "packs" / omitted_pack_slug / ".wt" / "manifests").mkdir(parents=True)
     (
         tmp_path / "packs" / omitted_pack_slug / ".wt" / "manifests" / "pack_settings.json"
@@ -1028,6 +1044,7 @@ def test_validate_portability_reports_release_exclusions(
         "retained_history_present",
         "test_surface_present",
         "traceability_acceptance_lineage_present",
+        "traceability_nonportable_entry_present",
         "workspace_pack_dependency_present",
         "workspace_pack_source_present",
     }

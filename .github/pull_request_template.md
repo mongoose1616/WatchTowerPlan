@@ -9,9 +9,9 @@
 - Related initiative briefs / decisions / design records / implementation slices:
 
 ## Validation
-- [ ] `cd core/python && ./.venv/bin/python -m mypy src`
-- [ ] `cd core/python && ./.venv/bin/ruff check src tests/unit tests/integration`
-- [ ] `cd core/python && ./.venv/bin/python -m pytest`
+- [ ] `cd core/python && ./tools/verify.sh fast`
+- [ ] `cd core/python && ./tools/verify.sh all`
+- [ ] `cd core/python && ./tools/verify.sh all --pack plan` when the change touches `plan/python/**`
 - [ ] Other validation run and summarized below when required
 
 ## Governed Surfaces

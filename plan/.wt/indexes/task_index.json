@@ -5,6 +5,28 @@
   "status": "active",
   "entries": [
     {
+      "task_id": "task.repository_hardening_local_validation_loop.add_local_verification_runner.002",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Add Local Verification Runner",
+      "summary": "Add a canonical local verification script, optional git-hook installer, and aligned docs for daily use.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/add_local_verification_runner/task.json",
+      "updated_at": "2026-03-29T00:29:14Z",
+      "depends_on": [
+        "task.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.001"
+      ],
+      "governing_document_paths": [
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "task_id": "task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop",
       "initiative_id": "initiative.repository_hardening_local_validation_loop",
       "trace_id": "trace.repository_hardening_local_validation_loop",
@@ -12,16 +34,57 @@
       "title": "Bootstrap Repository Hardening and Local Validation Loop",
       "summary": "Bootstrap Repository Hardening and Local Validation Loop live initiative package.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json",
-      "updated_at": "2026-03-28T21:48:47Z",
+      "updated_at": "2026-03-28T21:55:20Z",
       "governing_document_paths": [
         "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",
         "plan/initiatives/repository_hardening_local_validation_loop/design_record.md",
         "plan/initiatives/repository_hardening_local_validation_loop/implementation_slice.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
+      "task_id": "task.repository_hardening_local_validation_loop.decompose_plan_query_registration.003",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Decompose Plan Query Registration",
+      "summary": "Split the plan query parser registration surface into smaller modules with clearer ownership boundaries.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "chore",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/decompose_plan_query_registration/task.json",
+      "updated_at": "2026-03-29T00:29:22Z",
+      "depends_on": [
+        "task.repository_hardening_local_validation_loop.add_local_verification_runner.002"
+      ],
+      "governing_document_paths": [
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "plan/python/README.md"
+      ]
+    },
+    {
+      "task_id": "task.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.001",
+      "initiative_id": "initiative.repository_hardening_local_validation_loop",
+      "trace_id": "trace.repository_hardening_local_validation_loop",
+      "initiative_title": "Repository Hardening and Local Validation Loop",
+      "title": "Fix Shared-Core Validation Boundary",
+      "summary": "Remove live plan coupling from shared-core validation tests and restore the current core lint baseline.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/fix_shared_core_validation_boundary/task.json",
+      "updated_at": "2026-03-29T00:29:04Z",
+      "governing_document_paths": [
         "core/docs/standards/validations/repository_validation_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
       ]

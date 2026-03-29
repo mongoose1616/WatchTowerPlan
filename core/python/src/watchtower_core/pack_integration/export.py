@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import shutil
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from watchtower_core.control_plane.loader import PACK_REGISTRY_PATH, ControlPlaneLoader
 from watchtower_core.pack_integration.bootstrap import (
@@ -25,6 +25,7 @@ from watchtower_core.validation.portability import (
     ENGINEERING_CORE_EXTRACT_SCOPE,
     PortabilityValidationService,
     acceptance_contract_is_shared_core_portable,
+    traceability_entry_is_repository_export_portable,
     traceability_entry_is_shared_core_portable,
     traceability_entry_requires_nonportable_acceptance_lineage,
     validation_evidence_artifact_is_shared_core_portable,
@@ -173,7 +174,10 @@ def export_hosted_repository(
         include_root_material=not request.pack_only,
         include_core=not request.pack_only,
     )
-    scrubbed_paths = _scrub_export_root(output_root)
+    scrubbed_paths = _scrub_export_root(
+        output_root,
+        selected_pack_roots=tuple(selected_pack_roots),
+    )
 
     changed_paths: set[str] = set()
     workspace_lock_removed = False
@@ -390,10 +394,20 @@ def _copytree_ignore(current_root: str, names: list[str]) -> set[str]:
     return ignored
 
 
-def _scrub_export_root(output_root: Path) -> list[str]:
+def _scrub_export_root(
+    output_root: Path,
+    *,
+    selected_pack_roots: tuple[str, ...],
+) -> list[str]:
     scrubbed_paths: list[str] = []
     scrubbed_paths.extend(_scrub_retained_history(output_root))
     scrubbed_paths.extend(_scrub_nonportable_acceptance_lineage(output_root))
+    scrubbed_paths.extend(
+        _scrub_nonportable_traceability_entries(
+            output_root,
+            allowed_roots=("core", *selected_pack_roots),
+        )
+    )
 
     for candidate in sorted(output_root.rglob("runtime")):
         if not candidate.is_dir() or candidate.parent.name != ".wt":
@@ -527,6 +541,48 @@ def _scrub_nonportable_acceptance_lineage(output_root: Path) -> list[str]:
     )
     scrubbed_paths.append(traceability_path.relative_to(output_root).as_posix())
     return scrubbed_paths
+
+
+def _scrub_nonportable_traceability_entries(
+    output_root: Path,
+    *,
+    allowed_roots: tuple[str, ...],
+) -> list[str]:
+    traceability_path = (
+        output_root / "core" / "control_plane" / "indexes" / "traceability"
+        / "traceability_index.json"
+    )
+    if not traceability_path.exists():
+        return []
+
+    normalized_roots = tuple(
+        dict.fromkeys(
+            PurePosixPath(root.strip("/")).as_posix()
+            for root in allowed_roots
+            if isinstance(root, str) and root.strip("/")
+        )
+    )
+    document = json.loads(traceability_path.read_text(encoding="utf-8"))
+    entries = document.get("entries")
+    if not isinstance(entries, list):
+        return []
+
+    filtered_entries = [
+        entry
+        for entry in entries
+        if traceability_entry_is_repository_export_portable(
+            entry,
+            allowed_roots=normalized_roots,
+        )
+    ]
+    if filtered_entries == entries:
+        return []
+
+    traceability_path.write_text(
+        f"{json.dumps({**document, 'entries': filtered_entries}, indent=2)}\n",
+        encoding="utf-8",
+    )
+    return [traceability_path.relative_to(output_root).as_posix()]
 
 
 def _scrub_nonportable_engineering_acceptance_lineage(output_root: Path) -> list[str]:

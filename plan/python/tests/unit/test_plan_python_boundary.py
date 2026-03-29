@@ -176,6 +176,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "repository.py",
         "routes.py",
         "standards.py",
+        "templates.py",
         "traceability.py",
         "workflows.py",
     ]
@@ -205,6 +206,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "pack_contract.py",
         "pack_targets.py",
         "portability.py",
+        "schema_definition.py",
         "suite.py",
     ]
     assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "documentation").glob("*.py")) == [

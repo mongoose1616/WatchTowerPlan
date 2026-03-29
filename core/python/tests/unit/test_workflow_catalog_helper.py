@@ -24,7 +24,10 @@ def test_workflow_catalog_helper_resolves_metadata_companions_and_routes() -> No
         "workflow.documentation_refresh",
         "workflow.task_handoff_review",
     ]
-    assert [entry.route_id for entry in snapshot.route_bindings] == ["route.code_implementation"]
+    assert [entry.route_id for entry in snapshot.route_bindings] == [
+        "route.code_implementation",
+        "route.test_suite_optimization",
+    ]
     assert "workflow.code_validation" in {
         entry.workflow_id for entry in snapshot.compatible_workflows
     }

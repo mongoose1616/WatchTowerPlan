@@ -7,10 +7,10 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CommandIndexEntry
+from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.documentation.command_semantics import (
     load_command_doc_source_surfaces,
 )
-from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_host.cli.introspection import iter_host_command_parser_specs
 
 COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
@@ -61,6 +61,7 @@ def _entry_to_document(entry: CommandIndexEntry) -> dict[str, object]:
     if entry.notes is not None:
         document["notes"] = entry.notes
     return document
+
 
 class CommandIndexSyncService:
     """Build and write the command index from host-composed CLI metadata."""

@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-28T21:49:21Z",
+  "updated_at": "2026-03-29T00:30:24Z",
   "entries": [
     {
       "promotion_id": "promotion.repository_hardening_local_validation_loop.bootstrap_shell",
@@ -11,7 +11,7 @@
       "trace_id": "trace.repository_hardening_local_validation_loop",
       "initiative_title": "Repository Hardening and Local Validation Loop",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/repository_hardening_local_validation_loop",
       "candidate_count": 3,
       "candidate_paths": [
@@ -27,7 +27,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-28T21:48:47Z",
+      "updated_at": "2026-03-29T00:30:24Z",
       "target_paths": [
         "plan/docs/decisions/repository_hardening_local_validation_loop_design_record.md",
         "plan/docs/patterns/repository_hardening_local_validation_loop_implementation_slice.md",

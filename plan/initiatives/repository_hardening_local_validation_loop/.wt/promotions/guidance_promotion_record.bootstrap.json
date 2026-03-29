@@ -4,7 +4,7 @@
   "initiative_id": "initiative.repository_hardening_local_validation_loop",
   "trace_id": "trace.repository_hardening_local_validation_loop",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
+  "status": "candidate",
   "approval_state": "pending",
   "review_refs": [
     "repository_maintainer_review"
@@ -12,7 +12,7 @@
   "evidence_refs": [
     "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
   ],
-  "updated_at": "2026-03-28T21:48:47Z",
+  "updated_at": "2026-03-29T00:30:24Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/repository_hardening_local_validation_loop/initiative_brief.md",

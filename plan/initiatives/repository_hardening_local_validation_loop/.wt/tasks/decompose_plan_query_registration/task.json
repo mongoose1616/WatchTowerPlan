@@ -1,0 +1,30 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.repository_hardening_local_validation_loop.decompose_plan_query_registration.003",
+  "slug": "decompose_plan_query_registration",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "title": "Decompose Plan Query Registration",
+  "summary": "Split the plan query parser registration surface into smaller modules with clearer ownership boundaries.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "chore",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-28T21:55:45Z",
+  "updated_at": "2026-03-29T00:29:22Z",
+  "governing_document_paths": [
+    "core/docs/standards/engineering/python_code_design_standard.md",
+    "plan/python/README.md"
+  ],
+  "scope_items": [
+    "Extract the oversized plan query parser registration into smaller registration modules.",
+    "Keep parser behavior and command docs coherent while reducing one plan-owned hotspot."
+  ],
+  "done_when_items": [
+    "The plan query registration surface is split across smaller focused modules without behavior drift.",
+    "Targeted typing, lint, and command smoke checks pass for the refactored parser surface."
+  ],
+  "dependency_task_ids": [
+    "task.repository_hardening_local_validation_loop.add_local_verification_runner.002"
+  ]
+}

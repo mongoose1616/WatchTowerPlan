@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-28T21:49:21Z",
+  "updated_at": "2026-03-29T00:30:24Z",
   "entries": [
     {
       "review_subject_id": "initiative.repository_hardening_local_validation_loop",
@@ -19,9 +19,9 @@
       "evidence_refs": [
         "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-28T21:49:21Z",
-      "lifecycle_stage": "ready_for_execution",
-      "ready_for_execution": true
+      "updated_at": "2026-03-29T00:30:24Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
     },
     {
       "review_subject_id": "initiative.watchtower_ctf_implementation_package_preservation",
@@ -56,7 +56,7 @@
       "evidence_refs": [
         "evidence.repository_hardening_local_validation_loop.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-28T21:48:47Z"
+      "updated_at": "2026-03-29T00:30:24Z"
     },
     {
       "review_subject_id": "promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell",

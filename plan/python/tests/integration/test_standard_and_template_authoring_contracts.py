@@ -80,7 +80,7 @@ def test_reference_authoring_surfaces_stay_aligned_with_governed_contract() -> N
     assert "## Canonical Upstream" in template_markdown, (
         "reference template must include Canonical Upstream"
     )
-    assert "does not belong in the governed `core/docs/references/**` family" in template_markdown
+    assert "does not belong in the governed references family" in template_markdown
 
 
 def test_standard_document_template_stays_aligned_with_governed_contract() -> None:

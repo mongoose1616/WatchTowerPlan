@@ -142,7 +142,9 @@ def _validate_required_sections(
     sections: dict[str, str],
 ) -> None:
     missing_sections = [
-        section_title for section_title in COMMAND_REQUIRED_SECTIONS if section_title not in sections
+        section_title
+        for section_title in COMMAND_REQUIRED_SECTIONS
+        if section_title not in sections
     ]
     if missing_sections:
         joined = ", ".join(missing_sections)

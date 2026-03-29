@@ -185,6 +185,10 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_host/cli/query_discovery_family.py"
     )
     assert (
+        spec_by_id["command.watchtower_core.query.authority"].implementation_path
+        == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
+    )
+    assert (
         spec_by_id["command.watchtower_core.query.foundations"].implementation_path
         == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
     )
@@ -197,6 +201,14 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
     )
     assert (
+        spec_by_id["command.watchtower_core.query.templates"].implementation_path
+        == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.workflows"].implementation_path
+        == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
+    )
+    assert (
         spec_by_id["command.watchtower_core.query.acceptance"].implementation_path
         == "core/python/src/watchtower_host/cli/query_records_family.py"
     )
@@ -205,7 +217,6 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_host/cli/query_records_family.py"
     )
     assert "command.watchtower_core.query.artifacts" not in spec_by_id
-    assert "command.watchtower_core.query.authority" not in spec_by_id
     assert "command.watchtower_core.query.coordination" not in spec_by_id
     assert "command.watchtower_core.query.discrepancies" not in spec_by_id
     assert "command.watchtower_core.query.initiatives" not in spec_by_id

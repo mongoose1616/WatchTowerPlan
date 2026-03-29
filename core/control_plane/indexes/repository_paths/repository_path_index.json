@@ -146,9 +146,7 @@
         "acceptance"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
-        "core/control_plane/contracts/intake/",
-        "core/control_plane/contracts/compatibility/"
+        "core/control_plane/contracts/acceptance/"
       ]
     },
     {
@@ -3217,6 +3215,26 @@
       "kind": "file",
       "surface_kind": "python_workspace_file",
       "summary": "Opens an interactive shell rooted at `core/python/` with `.venv` activated when the local environment already exists.",
+      "parent_path": "core/python/tools/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/python/tools/install_git_hooks.sh",
+      "kind": "file",
+      "surface_kind": "python_workspace_file",
+      "summary": "Installs the optional repository-local pre-push hook path and configures which verification mode it should run.",
+      "parent_path": "core/python/tools/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/python/tools/verify.sh",
+      "kind": "file",
+      "surface_kind": "python_workspace_file",
+      "summary": "Runs the canonical local verification flow for fast and broad shared-core validation, with optional hosted-pack coverage.",
       "parent_path": "core/python/tools/",
       "maturity": "supporting",
       "priority": "medium",

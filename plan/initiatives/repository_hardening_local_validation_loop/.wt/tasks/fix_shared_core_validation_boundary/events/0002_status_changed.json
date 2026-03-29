@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.0002_status_changed",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-28T21:55:45Z",
+  "summary": "Changed task.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.001 status from planned to in_progress.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/fix_shared_core_validation_boundary/task.json"
+  },
+  "task_id": "task.repository_hardening_local_validation_loop.fix_shared_core_validation_boundary.001"
+}

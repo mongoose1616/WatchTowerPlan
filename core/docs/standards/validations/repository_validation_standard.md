@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-25T02:15:00Z"
+updated_at: "2026-03-28T23:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -66,12 +66,17 @@ This standard defines the baseline validation expectations for repository change
 - Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - Use `watchtower-core validate artifact --schema-id ... --supplemental-schema-path ...` when you need bounded validation of external artifacts or pack-owned interfaces without changing the canonical validator registry.
 - Treat `pytest -q` as the fast unit-only local loop for `core/python/tests/unit/`.
+- Treat `./tools/verify.sh fast` from `core/python/` as the canonical shared-core narrow local wrapper around the current `mypy`, Ruff, and unit-pytest loop.
+- Treat `./tools/verify.sh all` from `core/python/` as the canonical broad shared-core wrapper around the current typecheck, lint, broad pytest, and `watchtower-core validate all` baseline.
 - When validators, loaders, sync flows, or closeout logic change, cover at least one failure mode or boundary condition in addition to the happy path.
 - When `core/python/**` changes, the normal workspace validation baseline is:
+  - `./tools/verify.sh fast`
+  - `./tools/verify.sh all`
   - `./.venv/bin/python -m mypy src`
   - `./.venv/bin/ruff check src tests/unit tests/integration`
   - `./.venv/bin/python -m pytest tests/unit tests/integration -q`
 - When a pack-owned Python boundary changes, run the owning pack test root as part of the baseline, for example:
+  - `./tools/verify.sh all --pack <pack-root>`
   - `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q`
 - When one change spans both shared core and a hosted pack, run both the shared-core suite and the affected pack-owned test root before closeout.
 - Keep validation evidence split the same way the suites are split: shared-core validation should prove `core/python/tests/` remains pack-neutral, while pack-owned validation should cover direct `watchtower_<pack>` behavior from the owning pack root.
@@ -109,4 +114,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-25T02:15:00Z`
+- `2026-03-28T23:15:00Z`

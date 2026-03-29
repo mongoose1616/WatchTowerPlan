@@ -59,7 +59,7 @@ uv run watchtower-core validate portability --root /tmp/customer_export --includ
 ```
 
 ## Behavior and Outputs
-- The command scans the target root for retained control-plane history, shared acceptance-contract artifacts, acceptance-linked traceability lineage that depends on scrubbed retained evidence, developer-machine residue, pack-local runtime outputs, shared and pack-owned test trees, pack-owned `watchtower_<pack>.testing` helpers, donor project repository maps, donor-only assessment or comparison closeout references, shared workspace references to omitted packs, and filesystem-absolute donor paths.
+- The command scans the target root for retained control-plane history, shared acceptance-contract artifacts, traceability lineage that depends on scrubbed retained evidence or still points outside the staged shared-core and selected-pack roots, developer-machine residue, pack-local runtime outputs, shared and pack-owned test trees, pack-owned `watchtower_<pack>.testing` helpers, donor project repository maps, donor-only assessment or comparison closeout references, shared workspace references to omitted packs, and filesystem-absolute donor paths.
 - With no `--include-pack` flags, the command validates a core-only bootstrap target and treats every hosted pack as omitted.
 - When one or more `--include-pack` flags are provided, the command expects the shared pack registry and shared `core/python` workspace metadata to match exactly that selected pack set.
 - With `--pack-only`, the command validates the target as an additive pack bundle. It requires at least one selected pack slug, rejects bundled shared `core/`, and checks the discovered pack manifests against the selected pack set without expecting shared registry or workspace metadata.
@@ -87,4 +87,4 @@ uv run watchtower-core validate portability --root /tmp/customer_export --includ
 - `core/python/src/watchtower_core/validation/portability.py`
 
 ## Updated At
-- `2026-03-28T04:20:00Z`
+- `2026-03-28T23:15:00Z`

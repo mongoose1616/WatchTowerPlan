@@ -11,7 +11,7 @@ tags:
   - "release"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T04:20:00Z"
+updated_at: "2026-03-28T23:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -66,14 +66,14 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - Treat portability validation of an actively used workspace as diagnostic, not as a release substitute. Working repositories can accumulate fresh telemetry, caches, or runtime residue after bootstrap or validation runs; the final customer/bootstrap artifact should come from a fresh `watchtower-core pack export` pass.
 - Exclude the following families from customer release and customer bootstrap by default unless the recipient explicitly needs them:
   - Retained governed history under `core/control_plane/records/**`, including migrations, release records, purge history, and validation evidence.
-  - Example, demo, and fixture material that exists only to prove schemas, validation, or traceability behavior, including shared acceptance-contract examples and their acceptance-linked traceability joins.
+  - Example, demo, and fixture material that exists only to prove schemas, validation, or traceability behavior, including shared acceptance-contract examples, their acceptance-linked traceability joins, and traceability entries that still point at omitted pack or planning surfaces outside the staged roots.
   - Local environments, caches, build outputs, editable-install residue, and other machine-local developer artifacts.
   - Pack-local runtime outputs such as `<pack>/.wt/runtime/**`, telemetry sinks, or other ephemeral machine state.
   - Shared and pack-owned test trees plus pack-owned `testing/` helper modules that exist only for internal validation. Shared reusable-core tests may remain in engineering shared-core extracts, but not in customer-safe bundle exports.
   - Donor project maps, donor repository references, internal comparison or assessment closeout references, and any content that leaks machine-local absolute filesystem paths.
   - Hosted pack roots that are not part of the selected recipient pack set.
 - Customer-facing docs, manifests, and registries must use repository-relative paths or neutral placeholders. Filesystem-absolute donor checkout paths are invalid portability input.
-- When retained validation evidence is excluded, the paired shared acceptance-contract examples and acceptance-linked traceability entries must be excluded too. Portable bundles may therefore carry an empty `core/control_plane/indexes/traceability/traceability_index.json` when no live portable trace lineage remains.
+- When retained validation evidence is excluded, the paired shared acceptance-contract examples and acceptance-linked traceability entries must be excluded too. Any remaining traceability entries in a repository bundle must point only at shared `core/` or the selected pack roots. Portable bundles may therefore carry an empty `core/control_plane/indexes/traceability/traceability_index.json` when no live portable trace lineage remains.
 - Shared core docs and metadata may mention the current internal pack as an example, but they must not make that pack look like a consuming-repository invariant.
 - Treat packaged outputs as curated deliverables. Wheels, sdists, starter bundles, and repo-copy flows may all need different inclusion rules; none should silently inherit internal-only test or history surfaces.
 - When donor-governance history is intentionally retained in the source repository, document it as internal retained history rather than implying that it belongs in copied repositories or customer bootstrap bundles.
@@ -122,4 +122,4 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 
 ## Updated At
-- `2026-03-28T04:20:00Z`
+- `2026-03-28T23:15:00Z`

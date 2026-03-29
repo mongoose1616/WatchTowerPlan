@@ -1699,7 +1699,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/repository_portability_standard.md",
-      "updated_at": "2026-03-28T04:20:00Z",
+      "updated_at": "2026-03-28T23:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2148,7 +2148,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/operations/customer_release_and_bootstrap_standard.md",
-      "updated_at": "2026-03-25T02:55:00Z",
+      "updated_at": "2026-03-28T23:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2269,7 +2269,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-25T02:15:00Z",
+      "updated_at": "2026-03-28T23:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

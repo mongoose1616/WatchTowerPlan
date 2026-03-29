@@ -11,7 +11,7 @@ tags:
   - "bootstrap"
   - "portability"
 owner: "repository_maintainer"
-updated_at: "2026-03-25T02:55:00Z"
+updated_at: "2026-03-28T23:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -62,7 +62,7 @@ This standard defines the shared release and bootstrap checklist for customer-sa
 - Run the broad repository gate before export. The normal release baseline is `watchtower-core validate all --format json`.
 - When the change touched one or more `*.schema.json` files, run `watchtower-core validate schema --path <schema> --format json` for each changed schema in addition to the broad repository gate.
 - Rebuild the final handoff bundle immediately before release. A working repository can accumulate telemetry, caches, or runtime residue after validation.
-- Expect the final export to omit internal acceptance-contract examples, retained validation evidence, and acceptance-linked traceability entries that only exist to prove donor-repo validation behavior.
+- Expect the final export to omit internal acceptance-contract examples, retained validation evidence, and any traceability entry that either depends on scrubbed evidence or still points outside the staged shared-core and selected-pack roots.
 - Pack-only bundles are additive handoff surfaces, not standalone repositories. After copy, the recipient still needs compatible shared core plus `watchtower-core pack bootstrap` and `watchtower-core pack validate`.
 
 ## Structure or Data Model
@@ -112,4 +112,4 @@ This standard defines the shared release and bootstrap checklist for customer-sa
 - [watchtower_core_validate_schema.md](/core/docs/commands/core_python/watchtower_core_validate_schema.md)
 
 ## Updated At
-- `2026-03-25T02:55:00Z`
+- `2026-03-28T23:15:00Z`

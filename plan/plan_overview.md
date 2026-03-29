@@ -1,13 +1,13 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `active_work`
-- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
-- `recommended_surface_path`: `plan/initiatives/repository_hardening_local_validation_loop/plan.md`
+- `coordination_mode`: `ready_for_bootstrap`
+- `summary`: No active plan-workspace initiatives exist.
+- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
+- `recommended_surface_path`: `plan/plan_overview.md`
 
 ## Active Pack-Wide Initiatives
-- `trace.repository_hardening_local_validation_loop`: Repository Hardening and Local Validation Loop (`capture` / `pack_wide`)
+- None.
 
 ## Active Project Initiatives
 - None.
@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.repository_hardening_local_validation_loop`: Repository Hardening and Local Validation Loop (`completed` at `2026-03-29T00:30:24Z`) - Delivered local verification hardening, shared-core boundary cleanup, and plan query decomposition.
 - `trace.watchtower_ctf_implementation_package_preservation`: WatchTower CTF Implementation Package Preservation (`completed` at `2026-03-28T10:11:09Z`) - Delivered and validated WatchTower implementation
 
 ## Navigation Links

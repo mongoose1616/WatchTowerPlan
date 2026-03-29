@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `trace.repository_hardening_local_validation_loop` | Repository Hardening and Local Validation Loop | `capture` | repository_maintainer | `1` | [plan.md](/plan/initiatives/repository_hardening_local_validation_loop/plan.md) | [plan.md](/plan/initiatives/repository_hardening_local_validation_loop/plan.md) | [task.repository_hardening_local_validation_loop.bootstrap_repository_hardening_and_local_validation_loop](/plan/initiatives/repository_hardening_local_validation_loop/.wt/tasks/bootstrap_repository_hardening_and_local_validation_loop/task.json) (`planned`) | Promote the next planned task to ready before opening follow-up work. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- | --- |
+| `trace.repository_hardening_local_validation_loop` | Repository Hardening and Local Validation Loop | `completed` | [plan.md](/plan/initiatives/repository_hardening_local_validation_loop/plan.md) | `2026-03-29T00:30:24Z` | Delivered local verification hardening, shared-core boundary cleanup, and plan query decomposition. |
 | `trace.watchtower_ctf_implementation_package_preservation` | WatchTower CTF Implementation Package Preservation | `completed` | [plan.md](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/plan.md) | `2026-03-28T10:11:09Z` | Delivered and validated WatchTower implementation |
 
-_Updated At: `2026-03-28T21:49:21Z`_
+_Updated At: `2026-03-29T00:30:24Z`_

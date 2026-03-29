@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.repository_hardening_local_validation_loop.0014_closing_started",
+  "initiative_id": "initiative.repository_hardening_local_validation_loop",
+  "sequence": 14,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-29T00:30:24Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.repository_hardening_local_validation_loop"
+}

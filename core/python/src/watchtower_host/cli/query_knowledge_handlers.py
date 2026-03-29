@@ -4,17 +4,20 @@ from __future__ import annotations
 
 import argparse
 
+from watchtower_core.cli.handler_common import (
+    _emit_collection_query_results,
+    _print_reference_usage_summary,
+)
 from watchtower_core.cli.query_presenters import (
     authority_entry_payload,
     print_authority_entry,
     print_template_catalog_entry,
     template_catalog_entry_payload,
 )
-from watchtower_core.cli.handler_common import (
-    _emit_collection_query_results,
-    _print_reference_usage_summary,
+from watchtower_core.control_plane.loader import (
+    CORE_PACK_SETTINGS_PATH,
+    ControlPlaneLoader,
 )
-from watchtower_core.control_plane.loader import CORE_PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     FoundationIndexEntry,
     ReferenceIndexEntry,
@@ -194,7 +197,9 @@ def _run_query_templates(args: argparse.Namespace) -> int:
         entries=entries,
         noun="template",
         empty_message="No template-catalog entries matched the requested filters.",
-        payload_results_factory=lambda: [template_catalog_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            template_catalog_entry_payload(entry) for entry in entries
+        ],
         render_entry=print_template_catalog_entry,
     )
 
