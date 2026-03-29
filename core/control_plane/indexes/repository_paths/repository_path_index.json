@@ -7,6 +7,26 @@
   "root_path": ".",
   "entries": [
     {
+      "path": ".githooks/README.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Describes the purpose of the repository-local hook directory.",
+      "parent_path": ".githooks/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": ".githooks/pre-push",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Optional pre-push hook that runs the configured local verification mode.",
+      "parent_path": ".githooks/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": ".github/",
       "kind": "directory",
       "surface_kind": "repository_surface",
@@ -3231,10 +3251,20 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/python/tools/git_hooks/",
+      "kind": "directory",
+      "surface_kind": "python_workspace",
+      "summary": "Holds the shared templates used to materialize one repository-local `.githooks/` guard path.",
+      "parent_path": "core/python/tools/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/python/tools/install_git_hooks.sh",
       "kind": "file",
       "surface_kind": "python_workspace_file",
-      "summary": "Installs the optional repository-local pre-push hook path and configures which verification mode it should run.",
+      "summary": "Materializes the repository-local `.githooks/` path from shared templates and configures which verification mode it should run.",
       "parent_path": "core/python/tools/",
       "maturity": "supporting",
       "priority": "medium",

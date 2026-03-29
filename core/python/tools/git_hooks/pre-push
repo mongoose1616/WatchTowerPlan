@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${WATCHTOWER_SKIP_VERIFY:-0}" == "1" ]]; then
+  exit 0
+fi
+
+repo_root="$(git rev-parse --show-toplevel)"
+mode="$(git config --get watchtower.verifyMode || echo fast)"
+pack_slug="$(git config --get watchtower.verifyPack || true)"
+
+command=("$repo_root/core/python/tools/verify.sh" "$mode")
+if [[ -n "$pack_slug" ]]; then
+  command+=("--pack" "$pack_slug")
+fi
+
+"${command[@]}"

@@ -11,6 +11,8 @@ EOF
 }
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+hook_template_root="$repo_root/core/python/tools/git_hooks"
+hook_root="$repo_root/.githooks"
 mode="fast"
 pack_slug=""
 
@@ -53,6 +55,15 @@ case "$mode" in
     exit 2
     ;;
 esac
+
+if [[ ! -f "$hook_template_root/README.md" || ! -f "$hook_template_root/pre-push" ]]; then
+  echo "Missing shared git hook templates under $hook_template_root" >&2
+  exit 1
+fi
+
+mkdir -p "$hook_root"
+install -m 0644 "$hook_template_root/README.md" "$hook_root/README.md"
+install -m 0755 "$hook_template_root/pre-push" "$hook_root/pre-push"
 
 git -C "$repo_root" config core.hooksPath .githooks
 git -C "$repo_root" config watchtower.verifyMode "$mode"
