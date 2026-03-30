@@ -295,6 +295,11 @@ class BenchmarkRunner:
                 )
                 if run_index >= warmup_runs:
                     telemetry_on_runs.append(elapsed_ms)
+                    if telemetry_path is None:
+                        raise ValueError(
+                            "Benchmark command required telemetry output but no telemetry "
+                            "JSONL path was returned."
+                        )
                     for key, duration_ms in _extract_hotspots_from_telemetry(telemetry_path):
                         telemetry_on_hotspots.setdefault(key, []).append(duration_ms)
 
