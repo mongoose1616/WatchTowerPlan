@@ -56,6 +56,7 @@ uv run watchtower-core benchmark run --write-record --record-id benchmark.core_c
 - Warmup runs are excluded from the retained measured timing samples.
 - The command validates the generated benchmark record against the benchmark-record schema before writing output.
 - If `--baseline-record` is provided, the command requires matching suite ID and command IDs before computing comparison deltas.
+- The retained environment context records a portable Python executable label rather than a machine-local absolute interpreter path.
 - In `human` mode, the command prints the suite summary and per-command median timings.
 - In `json` mode, the command prints one JSON object containing the full generated benchmark record plus any output paths.
 - The command exits with status code `0` when the benchmark run succeeds and `1` when suite loading, subprocess execution, telemetry capture, comparison compatibility, or schema validation fails.
@@ -74,4 +75,4 @@ uv run watchtower-core benchmark run --write-record --record-id benchmark.core_c
 - `core/control_plane/records/benchmarks/`
 
 ## Updated At
-- `2026-03-29T12:30:00Z`
+- `2026-03-30T18:30:00Z`

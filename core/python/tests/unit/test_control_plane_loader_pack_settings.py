@@ -15,16 +15,22 @@ from tests.unit.control_plane_loader_test_support import (
     materialize_pack_validation_surfaces,
     write_json,
 )
+from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import (
     PACK_SETTINGS_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.control_plane.models import PackRegistry, PackRuntimeManifest, PackSettings
+from watchtower_core.control_plane.models import (
+    PackRegistry,
+    PackRuntimeManifest,
+    PackSettings,
+)
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 from watchtower_core.pack_integration.roots import (
     discover_pack_workspace_roots,
     pack_reference_doc_roots,
 )
+from watchtower_core.pack_integration.runtime_registry import load_pack_registry_runtime_view
 
 
 def test_control_plane_loader_reads_pack_registry_and_runtime_manifest(
@@ -238,6 +244,76 @@ def test_pack_reference_doc_root_discovery_supports_generic_hosted_pack_docs_roo
     reference_root.mkdir(parents=True, exist_ok=True)
 
     assert pack_reference_doc_roots(repo_root) == ("packs/fixture/docs/references",)
+
+
+def test_pack_workspace_root_discovery_ignores_recoverable_pack_registry_errors(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "fixture", default_repo_pack=True)
+    loader = ControlPlaneLoader(repo_root)
+
+    def _raise_missing_registry() -> PackRegistry:
+        raise ArtifactLoadError("missing pack registry")
+
+    monkeypatch.setattr(loader, "load_pack_registry", _raise_missing_registry)
+
+    roots = discover_pack_workspace_roots(repo_root, loader=loader)
+
+    assert tuple(root.workspace_root for root in roots) == ("fixture",)
+
+
+def test_pack_workspace_root_discovery_propagates_unexpected_pack_registry_errors(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "fixture", default_repo_pack=True)
+    loader = ControlPlaneLoader(repo_root)
+
+    def _raise_unexpected_registry_error() -> PackRegistry:
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr(loader, "load_pack_registry", _raise_unexpected_registry_error)
+
+    with pytest.raises(RuntimeError, match="boom"):
+        discover_pack_workspace_roots(repo_root, loader=loader)
+
+
+def test_pack_registry_runtime_view_ignores_recoverable_pack_activation_errors(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "fixture", default_repo_pack=True)
+    loader = ControlPlaneLoader(repo_root)
+
+    def _raise_missing_pack_settings(*args: object, **kwargs: object) -> str:
+        raise ArtifactLoadError("missing pack settings")
+
+    monkeypatch.setattr(loader, "activate_pack_settings", _raise_missing_pack_settings)
+
+    runtime_view = load_pack_registry_runtime_view(loader)
+
+    assert any(entry.pack_slug == "fixture" for entry in runtime_view.entries)
+
+
+def test_pack_registry_runtime_view_propagates_unexpected_pack_activation_errors(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "fixture", default_repo_pack=True)
+    loader = ControlPlaneLoader(repo_root)
+
+    def _raise_unexpected_pack_activation(*args: object, **kwargs: object) -> str:
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr(loader, "activate_pack_settings", _raise_unexpected_pack_activation)
+
+    with pytest.raises(RuntimeError, match="boom"):
+        load_pack_registry_runtime_view(loader)
 
 
 def test_control_plane_loader_falls_back_to_core_shared_pack_settings_without_pack_root(

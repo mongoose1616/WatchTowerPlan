@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import IO, cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import (
@@ -79,3 +80,40 @@ def test_telemetry_session_records_nested_operations(tmp_path: Path) -> None:
     assert records[2]["operation_kind"] == "cli_command"
     assert records[2]["attributes"]["cli_output_format"] == "json"
     assert records[3]["status"] == "ok"
+
+
+def test_telemetry_session_disables_cleanly_when_writer_fails(tmp_path: Path) -> None:
+    class _BrokenWriter:
+        def __init__(self) -> None:
+            self.closed = False
+
+        def write(self, _: str) -> None:
+            raise OSError("disk full")
+
+        def flush(self) -> None:
+            return None
+
+        def close(self) -> None:
+            self.closed = True
+
+    session = create_telemetry_session(
+        ControlPlaneLoader(),
+        ["doctor"],
+        environ={
+            "WATCHTOWER_TELEMETRY": "on",
+            "WATCHTOWER_TELEMETRY_STDERR": "off",
+            "WATCHTOWER_TELEMETRY_DIR": str(tmp_path),
+        },
+    )
+
+    assert session.enabled is True
+    assert session._writer is not None
+    session._writer.close()
+    broken_writer = _BrokenWriter()
+    session._writer = cast(IO[str], broken_writer)
+
+    session._emit_record({"record_type": "test_failure"})
+
+    assert session.enabled is False
+    assert session.disabled_reason == "telemetry_write_failed:OSError"
+    assert broken_writer.closed is True

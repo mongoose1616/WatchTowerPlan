@@ -471,12 +471,20 @@ def _environment_context_document(repo_root: Path) -> dict[str, object]:
     status_output = _git_output(repo_root, "status", "--porcelain")
     return {
         "python_version": platform.python_version(),
-        "python_executable": sys.executable,
+        "python_executable": _python_executable_label(sys.executable),
         "platform": platform.platform(),
         "cpu_count": os.cpu_count(),
         "git_commit": git_commit,
         "worktree_dirty": bool(status_output.strip()) if status_output is not None else None,
     }
+
+
+def _python_executable_label(raw_executable: str) -> str:
+    normalized = raw_executable.strip()
+    if not normalized:
+        return "python"
+    candidate = normalized.rsplit("/", maxsplit=1)[-1].rsplit("\\", maxsplit=1)[-1]
+    return candidate or "python"
 
 
 def _git_output(repo_root: Path, *args: str) -> str | None:

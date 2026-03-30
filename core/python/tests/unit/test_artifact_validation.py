@@ -295,7 +295,7 @@ def test_artifact_validation_auto_selects_benchmark_record_validator_for_retaine
             },
             "environment_context": {
                 "python_version": "3.12.0",
-                "python_executable": "/tmp/python",
+                "python_executable": "python",
                 "platform": "linux-test"
             },
             "commands": [
@@ -440,7 +440,7 @@ def test_artifact_validation_reports_invalid_benchmark_record(tmp_path: Path) ->
             },
             "environment_context": {
                 "python_version": "3.12.0",
-                "python_executable": "/tmp/python",
+                "python_executable": "python",
                 "platform": "linux-test"
             },
             "commands": [],

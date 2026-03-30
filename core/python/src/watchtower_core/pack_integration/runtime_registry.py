@@ -11,6 +11,9 @@ from watchtower_core.control_plane.models import (
     PackSettings,
 )
 from watchtower_core.control_plane.pack_settings_discovery import discover_pack_settings_paths
+from watchtower_core.pack_integration.discovery_errors import (
+    RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS,
+)
 
 _RUNTIME_VIEW_CACHE_KEY = "pack_registry_runtime_view"
 
@@ -84,7 +87,7 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
     seen_settings_paths: set[str] = set()
     try:
         active_pack_settings_path = loader.activate_pack_settings()
-    except Exception:
+    except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
         active_pack_settings_path = None
 
     for entry in authored_registry.packs:
@@ -113,7 +116,7 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
             pack_loader.activate_pack_settings()
             pack_settings = pack_loader.load_pack_settings()
             runtime_manifest = pack_loader.load_pack_runtime_manifest()
-        except Exception:
+        except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
             continue
         if (
             pack_settings.pack_id in seen_pack_ids
@@ -215,14 +218,14 @@ def _authored_entry_error(loader: Any, entry: PackRegistryEntry) -> str | None:
     entry_loader = loader.derive(active_pack_settings_path=None)
     try:
         entry_loader.load_pack_settings(entry.pack_settings_path)
-    except Exception as exc:
+    except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS as exc:
         return (
             f"Hosted-pack registry entry for {entry.pack_slug!r} is unusable because its "
             f"pack settings path could not be loaded: {entry.pack_settings_path} ({exc})"
         )
     try:
         entry_loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
-    except Exception as exc:
+    except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS as exc:
         return (
             f"Hosted-pack registry entry for {entry.pack_slug!r} is unusable because its "
             "runtime manifest could not be loaded from the declared pack settings path: "

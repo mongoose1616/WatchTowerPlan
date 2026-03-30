@@ -10,6 +10,9 @@ from watchtower_core.control_plane.models import PackWorkspaceRoots
 from watchtower_core.control_plane.pack_settings_discovery import (
     discover_pack_settings_paths,
 )
+from watchtower_core.pack_integration.discovery_errors import (
+    RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS,
+)
 
 
 def discover_pack_workspace_roots(
@@ -29,19 +32,28 @@ def discover_pack_workspace_roots(
     seen_settings_paths: set[str] = set()
     seen_workspace_roots: set[str] = set()
 
+    can_load_pack_registry = effective_loader is not None and hasattr(
+        effective_loader, "load_pack_registry"
+    )
+    can_load_pack_settings = effective_loader is not None and hasattr(
+        effective_loader, "load_pack_settings"
+    )
+
     pack_registry = None
-    if effective_loader is not None:
+    if can_load_pack_registry:
+        assert effective_loader is not None
         try:
             pack_registry = effective_loader.load_pack_registry()
-        except Exception:
+        except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
             pack_registry = None
 
-    if pack_registry is not None and effective_loader is not None:
+    if pack_registry is not None and can_load_pack_settings:
+        assert effective_loader is not None
         for entry in pack_registry.packs:
             seen_settings_paths.add(entry.pack_settings_path)
             try:
                 pack_settings = effective_loader.load_pack_settings(entry.pack_settings_path)
-            except Exception:
+            except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
                 continue
             workspace_roots = pack_settings.workspace_roots
             if workspace_roots.workspace_root in seen_workspace_roots:
@@ -49,13 +61,14 @@ def discover_pack_workspace_roots(
             discovered_roots.append(workspace_roots)
             seen_workspace_roots.add(workspace_roots.workspace_root)
 
-    if effective_loader is not None:
+    if can_load_pack_settings:
+        assert effective_loader is not None
         for settings_path in discover_pack_settings_paths(repo_root):
             if settings_path in seen_settings_paths:
                 continue
             try:
                 pack_settings = effective_loader.load_pack_settings(settings_path)
-            except Exception:
+            except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
                 continue
             workspace_roots = pack_settings.workspace_roots
             if workspace_roots.workspace_root in seen_workspace_roots:
@@ -172,14 +185,14 @@ def pack_workflow_root_slug_map(
             effective_loader = ControlPlaneLoader(repo_root)
         except RepoRootNotFoundError:
             effective_loader = None
-    if effective_loader is None:
+    if effective_loader is None or not hasattr(effective_loader, "load_pack_settings"):
         return {}
 
     root_slug_map: dict[str, str] = {}
     for settings_path in discover_pack_settings_paths(repo_root):
         try:
             pack_settings = effective_loader.load_pack_settings(settings_path)
-        except Exception:
+        except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
             continue
         pack_slug = _pack_slug_from_pack_id(pack_settings.pack_id)
         workflows_root = pack_settings.workspace_roots.workflows_root
@@ -213,8 +226,6 @@ def _ordered_existing_paths(
             retained.append(relative_path)
             seen.add(relative_path)
     return tuple(retained)
-
-
 def _pack_slug_from_pack_id(pack_id: str) -> str:
     if pack_id.startswith("pack.") and len(pack_id) > len("pack."):
         return pack_id.split(".", 1)[1]

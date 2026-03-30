@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "performance_benchmarking"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T12:30:00Z"
+updated_at: "2026-03-30T18:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,7 +47,8 @@ Give the repository one explicit methodology for repeatable performance measurem
 - Use median runtime as the primary reported summary for each telemetry mode.
 - Benchmark both telemetry-on and telemetry-off modes when the suite contract says telemetry overhead is part of the measurement question.
 - Treat runtime telemetry JSONL as supporting input to hotspot extraction, not as retained benchmark evidence by itself.
-- Capture environment context with each retained benchmark record, including Python version, platform, CPU count when available, and current git context when available.
+- Capture environment context with each retained benchmark record, including Python version, Python executable label, platform, CPU count when available, and current git context when available.
+- Do not retain machine-local absolute paths inside benchmark environment context fields when an executable label or repo-logical path is sufficient for interpretation.
 - Require suite-ID and command-ID parity before comparing a current benchmark run against a retained baseline record.
 - Keep the benchmark runner stdlib-only unless a later approved change explicitly widens the dependency boundary.
 
@@ -73,6 +74,7 @@ Give the repository one explicit methodology for repeatable performance measurem
 | benchmark suite registry | authored under `core/control_plane/registries/benchmark_suite_registry.json` |
 | retained benchmark records | stored under `core/control_plane/records/benchmarks/` |
 | schema contract | validate against the published benchmark-record schema before writing retained output |
+| environment context | retain portable runtime labels and repo context, not machine-local absolute interpreter paths |
 | command evidence | retain raw telemetry-on and telemetry-off measured timing samples plus medians, delta, ratio, and top nested operations |
 | baseline comparison | optional, but only when suite ID and command IDs match exactly |
 
@@ -98,4 +100,4 @@ Give the repository one explicit methodology for repeatable performance measurem
 - [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md)
 
 ## Updated At
-- `2026-03-29T12:30:00Z`
+- `2026-03-30T18:30:00Z`

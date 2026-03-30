@@ -6,7 +6,7 @@
   "benchmark_kind": "baseline",
   "suite_id": "suite.benchmark.core_cli_representative_v1",
   "suite_title": "Core CLI Representative Benchmark Suite",
-  "recorded_at": "2026-03-30T02:55:43Z",
+  "recorded_at": "2026-03-30T18:32:25Z",
   "working_directory": "core/python",
   "benchmark_contract": {
     "working_directory": "core/python",
@@ -32,10 +32,10 @@
   },
   "environment_context": {
     "python_version": "3.12.3",
-    "python_executable": "/home/j/WatchTowerPlan/core/python/.venv/bin/python3",
+    "python_executable": "python3",
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "cpu_count": 32,
-    "git_commit": "62c5bbcbe64ca6e2f050804b0193c9bafa46ff8b",
+    "git_commit": "e3c3673de23453e133fe92d2586871208dce1300",
     "worktree_dirty": true
   },
   "commands": [
@@ -56,23 +56,23 @@
       "warmup_runs": 1,
       "measured_runs": 5,
       "telemetry_on_runs_ms": [
-        470.746,
-        516.344,
-        505.839,
-        482.705,
-        469.563
+        488.885,
+        611.147,
+        429.52,
+        432.482,
+        428.033
       ],
       "telemetry_off_runs_ms": [
-        472.431,
-        510.985,
-        466.501,
-        477.335,
-        472.347
+        593.777,
+        457.264,
+        438.095,
+        467.651,
+        430.825
       ],
-      "median_ms_telemetry_on": 482.705,
-      "median_ms_telemetry_off": 472.431,
-      "delta_ms": 10.274,
-      "ratio_on_over_off": 1.022,
+      "median_ms_telemetry_on": 432.482,
+      "median_ms_telemetry_off": 457.264,
+      "delta_ms": -24.782,
+      "ratio_on_over_off": 0.946,
       "top_nested_operations": [
         {
           "operation_kind": "cli_stage",
@@ -103,28 +103,28 @@
       "warmup_runs": 1,
       "measured_runs": 5,
       "telemetry_on_runs_ms": [
-        479.964,
-        508.792,
-        464.093,
-        453.929,
-        474.853
+        495.311,
+        504.28,
+        423.583,
+        424.745,
+        437.683
       ],
       "telemetry_off_runs_ms": [
-        498.891,
-        465.412,
-        451.723,
-        467.65,
-        509.494
+        538.365,
+        433.623,
+        432.624,
+        438.791,
+        424.716
       ],
-      "median_ms_telemetry_on": 474.853,
-      "median_ms_telemetry_off": 467.65,
-      "delta_ms": 7.203,
-      "ratio_on_over_off": 1.015,
+      "median_ms_telemetry_on": 437.683,
+      "median_ms_telemetry_off": 433.623,
+      "delta_ms": 4.06,
+      "ratio_on_over_off": 1.009,
       "top_nested_operations": [
         {
           "operation_kind": "cli_stage",
           "operation_name": "parser_build",
-          "median_duration_ms": 9.0
+          "median_duration_ms": 8.0
         },
         {
           "operation_kind": "cli_stage",
@@ -150,48 +150,48 @@
       "warmup_runs": 1,
       "measured_runs": 5,
       "telemetry_on_runs_ms": [
-        3586.73,
-        3634.107,
-        3687.191,
-        3828.774,
-        3548.611
+        3373.254,
+        3497.481,
+        3516.225,
+        3422.011,
+        3542.848
       ],
       "telemetry_off_runs_ms": [
-        3667.196,
-        3700.565,
-        3654.51,
-        3632.343,
-        3597.872
+        3396.606,
+        3377.979,
+        3693.76,
+        3595.999,
+        3647.241
       ],
-      "median_ms_telemetry_on": 3634.107,
-      "median_ms_telemetry_off": 3654.51,
-      "delta_ms": -20.403,
-      "ratio_on_over_off": 0.994,
+      "median_ms_telemetry_on": 3497.481,
+      "median_ms_telemetry_off": 3595.999,
+      "delta_ms": -98.518,
+      "ratio_on_over_off": 0.973,
       "top_nested_operations": [
         {
           "operation_kind": "validation",
           "operation_name": "document_semantics",
-          "median_duration_ms": 2991.0
+          "median_duration_ms": 2825.0
         },
         {
           "operation_kind": "pack_runtime",
           "operation_name": "load_active_pack_integration",
-          "median_duration_ms": 129.0
+          "median_duration_ms": 157.0
         },
         {
           "operation_kind": "pack_runtime",
           "operation_name": "load_pack_validation_runtime",
-          "median_duration_ms": 129.0
-        },
-        {
-          "operation_kind": "cli_stage",
-          "operation_name": "parser_build",
-          "median_duration_ms": 18.0
+          "median_duration_ms": 157.0
         },
         {
           "operation_kind": "pack_runtime_import",
           "operation_name": "watchtower_plan.integration",
-          "median_duration_ms": 6.0
+          "median_duration_ms": 39.0
+        },
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "parser_build",
+          "median_duration_ms": 17.0
         }
       ]
     },
@@ -211,44 +211,44 @@
       "warmup_runs": 1,
       "measured_runs": 3,
       "telemetry_on_runs_ms": [
-        105994.391,
-        104731.739,
-        105470.25
+        100501.728,
+        98873.725,
+        101415.567
       ],
       "telemetry_off_runs_ms": [
-        104583.962,
-        107071.417,
-        104258.024
+        100939.313,
+        100456.72,
+        100926.274
       ],
-      "median_ms_telemetry_on": 105470.25,
-      "median_ms_telemetry_off": 104583.962,
-      "delta_ms": 886.288,
-      "ratio_on_over_off": 1.008,
+      "median_ms_telemetry_on": 100501.728,
+      "median_ms_telemetry_off": 100926.274,
+      "delta_ms": -424.546,
+      "ratio_on_over_off": 0.996,
       "top_nested_operations": [
         {
           "operation_kind": "validation_all",
           "operation_name": "run",
-          "median_duration_ms": 97108.0
+          "median_duration_ms": 97901.0
         },
         {
           "operation_kind": "validation_suite",
           "operation_name": "suite.plan.validation_baseline",
-          "median_duration_ms": 97108.0
+          "median_duration_ms": 97900.0
         },
         {
           "operation_kind": "pack_contract_validation",
           "operation_name": "validate",
-          "median_duration_ms": 274.0
+          "median_duration_ms": 257.0
         },
         {
           "operation_kind": "pack_runtime",
           "operation_name": "load_active_pack_integration",
-          "median_duration_ms": 129.0
+          "median_duration_ms": 155.0
         },
         {
           "operation_kind": "pack_runtime",
           "operation_name": "load_pack_validation_runtime",
-          "median_duration_ms": 129.0
+          "median_duration_ms": 155.0
         }
       ]
     },
@@ -268,43 +268,43 @@
       "warmup_runs": 1,
       "measured_runs": 5,
       "telemetry_on_runs_ms": [
-        12602.878,
-        12385.645,
-        12677.495,
-        12909.899,
-        12510.27
+        12026.539,
+        11780.484,
+        11837.159,
+        11880.673,
+        12245.425
       ],
       "telemetry_off_runs_ms": [
-        12812.5,
-        12638.074,
-        12684.271,
-        12455.607,
-        12451.017
+        12122.777,
+        12063.604,
+        11870.285,
+        11861.04,
+        11921.536
       ],
-      "median_ms_telemetry_on": 12602.878,
-      "median_ms_telemetry_off": 12638.074,
-      "delta_ms": -35.196,
+      "median_ms_telemetry_on": 11880.673,
+      "median_ms_telemetry_off": 11921.536,
+      "delta_ms": -40.863,
       "ratio_on_over_off": 0.997,
       "top_nested_operations": [
         {
           "operation_kind": "sync_command",
           "operation_name": "watchtower-core plan sync workflow-index",
-          "median_duration_ms": 11809.0
+          "median_duration_ms": 11225.0
         },
         {
           "operation_kind": "cli_stage",
           "operation_name": "parser_build",
-          "median_duration_ms": 212.0
+          "median_duration_ms": 192.0
         },
         {
           "operation_kind": "pack_runtime",
           "operation_name": "load_active_pack_integration",
-          "median_duration_ms": 17.0
+          "median_duration_ms": 52.0
         },
         {
           "operation_kind": "pack_runtime_import",
           "operation_name": "watchtower_plan.integration",
-          "median_duration_ms": 16.0
+          "median_duration_ms": 51.0
         },
         {
           "operation_kind": "cli_stage",

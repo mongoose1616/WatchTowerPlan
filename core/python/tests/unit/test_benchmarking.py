@@ -71,7 +71,7 @@ def _write_baseline_record(repo_root: Path, *, suite_id: str) -> Path:
         },
         "environment_context": {
             "python_version": "3.12.0",
-            "python_executable": "/tmp/python",
+            "python_executable": "python",
             "platform": "linux-test",
         },
         "commands": [
@@ -121,7 +121,7 @@ def test_benchmark_runner_excludes_warmups_and_builds_comparison(
         "watchtower_core.benchmarking.runner._environment_context_document",
         lambda repo_root: {
             "python_version": "3.12.0",
-            "python_executable": "/tmp/python",
+            "python_executable": "python",
             "platform": "linux-test",
         },
     )
@@ -176,7 +176,7 @@ def test_benchmark_runner_writes_canonical_record(
         "watchtower_core.benchmarking.runner._environment_context_document",
         lambda repo_root: {
             "python_version": "3.12.0",
-            "python_executable": "/tmp/python",
+            "python_executable": "python",
             "platform": "linux-test",
         },
     )
@@ -254,3 +254,34 @@ def test_benchmark_runner_fails_closed_when_telemetry_file_is_missing(
             },
             require_telemetry=True,
         )
+
+
+def test_environment_context_uses_python_executable_label(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        "watchtower_core.benchmarking.runner.sys.executable",
+        "/tmp/venv/bin/python3",
+    )
+    monkeypatch.setattr(
+        "watchtower_core.benchmarking.runner.platform.python_version",
+        lambda: "3.12.0",
+    )
+    monkeypatch.setattr(
+        "watchtower_core.benchmarking.runner.platform.platform",
+        lambda: "linux-test",
+    )
+    monkeypatch.setattr("watchtower_core.benchmarking.runner.os.cpu_count", lambda: 8)
+    git_outputs = iter(("abc1234", ""))
+    monkeypatch.setattr(
+        "watchtower_core.benchmarking.runner._git_output",
+        lambda repo_root, *args: next(git_outputs),
+    )
+
+    from watchtower_core.benchmarking.runner import _environment_context_document
+
+    document = _environment_context_document(Path("/tmp/repo"))
+
+    assert document["python_executable"] == "python3"
+    assert document["git_commit"] == "abc1234"
+    assert document["worktree_dirty"] is False

@@ -1469,7 +1469,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/performance_benchmarking_standard.md",
-      "updated_at": "2026-03-29T12:30:00Z",
+      "updated_at": "2026-03-30T18:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

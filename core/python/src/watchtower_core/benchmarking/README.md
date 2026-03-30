@@ -13,6 +13,7 @@ Reusable fail-closed benchmarking helpers for deliberate, repeatable shared-core
 - Benchmark commands run in fresh serialized subprocesses from the governed working directory declared by the benchmark suite registry.
 - Telemetry-on runs must emit exactly one JSONL file per measured subprocess so nested operation hotspots can be derived deterministically.
 - Benchmark outputs validate against the governed benchmark-record schema before optional retained record writes.
+- Retained environment context uses portable runtime labels instead of machine-local absolute interpreter paths.
 
 ## Related Surfaces
 - `core/docs/standards/engineering/performance_benchmarking_standard.md`

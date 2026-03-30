@@ -605,7 +605,7 @@
       "path": "core/control_plane/records/benchmarks/benchmark_core_cli_representative_v1_20260329_baseline.json",
       "kind": "file",
       "surface_kind": "control_plane_record",
-      "summary": "Baseline retained benchmark record for the governed reusable-core CLI representative suite captured on `2026-03-30T02:55:43Z`.",
+      "summary": "Baseline retained benchmark record for the governed reusable-core CLI representative suite captured on `2026-03-30T18:32:25Z`.",
       "parent_path": "core/control_plane/records/benchmarks/",
       "maturity": "supporting",
       "priority": "medium",
