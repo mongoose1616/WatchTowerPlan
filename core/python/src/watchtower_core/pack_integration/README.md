@@ -24,5 +24,6 @@ This package holds the reusable contracts and helpers that let `watchtower_host`
 - Use the helpers here when host code, validation code, and command-index sync all need the same pack-contract path rules.
 - Prefer `watchtower-core pack scaffold` for pack-owned starter generation and `watchtower-core pack bootstrap` for shared registry plus workspace wiring.
 - Use `watchtower-core pack export` when the deliverable is a curated customer/bootstrap bundle instead of an internal engineering checkout. Add `--pack-only` when you need only the scrubbed hosted-pack roots without shared core.
+- Keep pack-specific staged-export cleanup in the owning `watchtower_<pack>` package through the optional `export_cleanup` capability instead of hard-coding pack history rules into reusable core.
 - Use `watchtower-core release check` when you want the local fail-closed release gate to enforce dirty-worktree protection, the broad validation baseline, schema-definition checks, and the final staged export in one command.
 - Treat runtime-only discovered packs as bootstrap-mode compatibility for copied-core consuming repositories. Shared registry and shared workspace wiring remain the steady-state integration contract once a pack is meant to stay integrated.

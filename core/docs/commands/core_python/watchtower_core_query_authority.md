@@ -5,7 +5,7 @@ This command searches the shared authority map so engineers and agents can resol
 
 ## Use When
 - You know the class of question you need to answer but not which machine or human surface is authoritative.
-- You need one focused canonical-answer surface for governance questions such as lookup order, command discovery, template selection, or standards lookup.
+- You need one focused canonical-answer surface for planning, governance, or engineering questions such as lookup order, command discovery, template selection, standards lookup, or benchmarking ownership.
 - You want machine-readable authority resolution for a workflow, script, or agent.
 
 ## Command
@@ -25,7 +25,7 @@ uv run watchtower-core query authority [--query <text>] [--question-id <question
 ## Arguments and Options
 - `--query <text>`: Free-text query over authority-map fields such as the question, canonical path, preferred command, aliases, and fallback paths.
 - `--question-id <question_id>`: Exact authority question filter such as `authority.governance.template_selection`.
-- `--domain <domain>`: Exact authority domain filter such as `governance`.
+- `--domain <domain>`: Exact authority domain filter such as `governance` or `engineering`.
 - `--artifact-kind <kind>`: Exact canonical artifact-kind filter such as `command_index`, `template_catalog`, or `authority_map`.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
@@ -45,6 +45,11 @@ uv run watchtower-core query authority --question-id authority.governance.templa
 ```sh
 cd core/python
 uv run watchtower-core query authority --artifact-kind template_catalog
+```
+
+```sh
+cd core/python
+uv run watchtower-core query authority --query benchmark --format json
 ```
 
 ## Behavior and Outputs
@@ -70,4 +75,4 @@ uv run watchtower-core query authority --artifact-kind template_catalog
 - `core/control_plane/registries/authority_map.json`
 
 ## Updated At
-- `2026-03-27T15:00:00Z`
+- `2026-03-29T03:00:00Z`

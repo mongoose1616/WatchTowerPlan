@@ -16,6 +16,7 @@
 | `core/python/uv.lock` | Locked dependency graph used for repeatable local onboarding. |
 | `core/python/src/` | Holds the `watchtower_core` reusable-core package source tree. |
 | `core/python/src/watchtower_core/**/README.md` | Package-level runtime boundary docs for the reusable-core namespaces. |
+| `core/python/src/watchtower_core/benchmarking/README.md` | Describes the governed benchmarking package, suite loading, retained record generation, and fail-closed execution contract. |
 | `core/python/src/watchtower_core/telemetry/README.md` | Describes the local runtime telemetry package, sink rules, and opt-out environment variables. |
 | `core/python/src/watchtower_host/README.md` | Describes the host-owned CLI composition boundary for the `watchtower-core` binary. |
 | `core/python/tests/` | Holds pack-neutral shared-core and host tests plus synthetic fixture data. |
@@ -62,7 +63,7 @@
 - When copying `core/` into another repo, copy source-owned files only. Do not carry over `core/python/.venv`, editable-install metadata from an existing environment, local caches, or pack `.wt/runtime/**` outputs.
 - If copied-core validation fails because a shared-core test or doc still names donor-pack validators, workflows, rendered surfaces, or tracking files directly, fix the donor shared core and regenerate the extract instead of normalizing the problem in the recipient only.
 - Treat shared workspace reconciliation and customer-release scrub as separate steps. `pack bootstrap` normalizes shared wiring, but portable customer artifacts still need retained records, tests, fixture packs, and other internal-only surfaces removed explicitly.
-- Use `watchtower-core pack export --output-root <path> ...` when you need the curated staged bundle, not just shared host-wiring reconciliation in the donor workspace. Add `--pack-only` when you need only the scrubbed pack roots for a compatible core repository.
+- Use `watchtower-core pack export --output-root <path> ...` when you need the curated staged bundle, not just shared host-wiring reconciliation in the donor workspace. Add `--pack-only` when you need only the scrubbed pack roots for a compatible core repository. Selected packs may also contribute pack-owned `export_cleanup` hooks that scrub pack-local live history from the staged bundle.
 - Follow [customer_release_and_bootstrap_standard.md](/core/docs/standards/operations/customer_release_and_bootstrap_standard.md) for the full release and bootstrap sequence. Agents should prefer `--format json`; humans may use either output mode.
 - When authoring or changing `*.schema.json` files, run `watchtower-core validate schema --path <schema>` in addition to the broad repository validation baseline.
 - Package artifacts are curated deliverables, not raw repository exports. Shared `core/python/tests/**`, pack-owned `python/tests/**`, and pack-owned `watchtower_<pack>.testing` helpers are internal validation surfaces by default.
@@ -85,6 +86,7 @@
 - `./core/python/.venv/bin/mypy core/python/src/watchtower_core`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
+- `uv run watchtower-core benchmark run --format json`
 - `uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior"`
 - `uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json`
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json`
@@ -96,6 +98,7 @@
 - `uv run watchtower-core query references --query uv`
 - `uv run watchtower-core query references --repository-status candidate_future_guidance --format json`
 - `uv run watchtower-core query standards --category governance --format json`
+- `uv run watchtower-core query benchmarks --limit 5 --format json`
 - `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
 - `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core pack list --format json`
@@ -143,6 +146,7 @@
 ### Commands Inside `./tools/dev_shell.sh`
 - `watchtower-core --help`
 - `watchtower-core doctor`
+- `watchtower-core benchmark run --format json`
 - `pytest -q`
 - `ruff check .`
 - `mypy src`
@@ -152,6 +156,7 @@
 - Runtime telemetry is default-on for `watchtower-core` commands. The default sink is `<machine_root>/runtime/telemetry/`.
 - Use `WATCHTOWER_TELEMETRY=off` to disable runtime telemetry, `WATCHTOWER_TELEMETRY_STDERR=off` to suppress the one-line stderr summary, and `WATCHTOWER_TELEMETRY_DIR=<path>` to redirect the JSONL sink.
 - Command payloads and exit codes remain unchanged on stdout; telemetry emits only operational JSONL files plus one concise stderr summary per invocation.
+- Deliberate retained performance measurement is separate from telemetry. Use `watchtower-core benchmark run` and the governed benchmark-suite registry when you need repeatable benchmark evidence.
 - `./tools/verify.sh fast` is the canonical narrow local loop for shared-core work. It wraps the current `mypy`, Ruff, and unit-pytest baseline.
 - `./tools/verify.sh all` is the canonical broad shared-core pass. It adds the broad shared-core pytest run plus `watchtower-core validate all`.
 - Add `--pack <slug>` to `./tools/verify.sh all` when a hosted-pack Python boundary changed. Use the current repository's hosted-pack slug when the local pass should include one pack-owned Python workspace.
@@ -162,7 +167,7 @@
 - Use `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` when the change touches one hosted pack directly.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration ../../<pack-root>/python/tests -q` when one change spans both shared core and one hosted pack.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before shared root sync commands, pack-owned sync-all commands, or `validate all`.
-- `uv run watchtower-core pack export --output-root <staged-export> --include-pack <slug> --overwrite --format json` is the one-command repository-bundle export path for customer/bootstrap handoff.
+- `uv run watchtower-core pack export --output-root <staged-export> --include-pack <slug> --overwrite --format json` is the one-command repository-bundle export path for customer/bootstrap handoff. When the selected pack declares `export_cleanup`, the staged export may also rebuild clean pack-local derived surfaces after pack-local history is scrubbed.
 - `uv run watchtower-core pack export --output-root <pack-bundle> --include-pack <slug> --pack-only --overwrite --format json` stages a scrubbed additive pack bundle without shared core.
 - `uv run watchtower-core release check --output-root <path> ... --format json` is the preferred local release gate when you want dirty-worktree protection, the broad validation baseline, changed-schema checks, and final staged export creation in one command.
 - `uv run watchtower-core validate schema --path <schema>` is the explicit schema-definition path for touched `*.schema.json` files; `validate artifact` remains the artifact-instance path.
@@ -194,6 +199,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_host/README.md` | `host_composition` | Host-owned CLI parser, registry, and entrypoint composition for the `watchtower-core` binary. |
 | `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
 | `core/python/src/watchtower_core/documentation/README.md` | `reusable_core` | Repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic. |
+| `core/python/src/watchtower_core/benchmarking/README.md` | `reusable_core` | Governed benchmark suite execution, telemetry-on versus telemetry-off comparison, and retained benchmark record generation. |
 | `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services, suite orchestration, and aggregate baseline helpers; pack-local document semantics stay under the owning `watchtower_<pack>.validation` package. |
 | `core/python/src/watchtower_core/query/README.md` | `reusable_core` | Export-safe generic query services over governed indexes, routes, pack surfaces, knowledge docs, records, and artifact families; pack-local coordination and lifecycle queries stay under the owning `watchtower_<pack>.query` package. |
 | `core/python/src/watchtower_core/sync/README.md` | `reusable_core` | Export-safe sync harness plus repo-shared command, governed-doc, workflow, route, and repository-path index rebuild services; pack-local sync orchestration stays under the owning `watchtower_<pack>.sync` package. |

@@ -556,7 +556,7 @@
       "path": "core/control_plane/records/",
       "kind": "directory",
       "surface_kind": "control_plane_records",
-      "summary": "Retained governed record families for migrations, releases, and validation evidence.",
+      "summary": "Retained governed record families for migrations, releases, validation evidence, and benchmark baselines.",
       "parent_path": "core/control_plane/",
       "maturity": "supporting",
       "priority": "medium",
@@ -577,6 +577,36 @@
       "surface_kind": "control_plane_record",
       "summary": "Describes the purpose of the records directory and its main record families.",
       "parent_path": "core/control_plane/records/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/benchmarks/",
+      "kind": "directory",
+      "surface_kind": "control_plane_records",
+      "summary": "Committed benchmark records captured by the reusable-core benchmarking runtime.",
+      "parent_path": "core/control_plane/records/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/benchmarks/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Describes the purpose of the benchmark-record directory and its retained-history boundary.",
+      "parent_path": "core/control_plane/records/benchmarks/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/benchmarks/benchmark_core_cli_representative_v1_20260329_baseline.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Baseline retained benchmark record for the governed reusable-core CLI representative suite captured on `2026-03-30T02:55:43Z`.",
+      "parent_path": "core/control_plane/records/benchmarks/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
@@ -857,7 +887,17 @@
       "path": "core/control_plane/registries/authority_map.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "Canonical authored registry of supported planning and governance questions, preferred commands, and fallback surfaces.",
+      "summary": "Canonical authored registry of supported planning, governance, and engineering questions, preferred commands, and fallback surfaces.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/benchmark_suite_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Catalogs governed reusable-core benchmark suites and their serialized command definitions.",
       "parent_path": "core/control_plane/registries/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1006,6 +1046,26 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the authored authority-map registry artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/benchmark_record.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the retained benchmark-record artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/benchmark_suite_registry.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the authored benchmark-suite registry artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1422,16 +1482,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/schemas/interfaces/packs/benchmark_report.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for one pack-owned benchmark report.",
-      "parent_path": "core/control_plane/schemas/interfaces/packs/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/schemas/interfaces/packs/extraction_output_envelope.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -1594,6 +1644,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/core_python/watchtower_core_benchmark.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for governed reusable-core benchmark commands.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_benchmark_run.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Runs one governed benchmark suite and can retain the resulting benchmark record.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/commands/core_python/watchtower_core_doctor.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1627,7 +1697,7 @@
       "path": "core/docs/commands/core_python/watchtower_core_query.md",
       "kind": "file",
       "surface_kind": "command_doc",
-      "summary": "Entry page for shared governed query commands such as authority resolution, command discovery, repository paths, templates, standards, references, foundations, workflows, acceptance, and evidence.",
+      "summary": "Entry page for shared governed query commands such as authority resolution, command discovery, repository paths, templates, standards, references, foundations, workflows, acceptance, evidence, and benchmarks.",
       "parent_path": "core/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1638,6 +1708,16 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Resolves which shared governed surface is canonical for a recurring governance question.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_benchmarks.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Searches retained benchmark records captured by the reusable-core benchmarking runtime.",
       "parent_path": "core/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2053,7 +2133,7 @@
       "path": "core/docs/standards/documentation/compact_document_authoring_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
-      "summary": "Defines the repository rule for compact, high-signal authored documents and generated human-readable outputs.",
+      "summary": "Defines the repository rule for proportional, high-signal authored documents and generated human-readable outputs.",
       "parent_path": "core/docs/standards/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2214,6 +2294,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the minimum shared and pack-owned surfaces a hosted pack must satisfy before integration.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/performance_benchmarking_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the deliberate fail-closed benchmarking contract for reusable-core performance measurement and retained benchmark evidence.",
       "parent_path": "core/docs/standards/engineering/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2876,6 +2966,16 @@
       "surface_kind": "python_source",
       "summary": "Canonical package root for the core helper and harness layer.",
       "parent_path": "core/python/src/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/benchmarking/README.md",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Describes the governed benchmarking package, suite loading, retained record generation, and fail-closed execution contract.",
+      "parent_path": "core/python/src/watchtower_core/benchmarking/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -3584,7 +3684,7 @@
       "path": "plan/docs/standards/governance/coordination_tracking_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
-      "summary": "Defines the compact human coordination tracker and the planning-root start-here experience.",
+      "summary": "Defines the derived human coordination tracker and the planning-root start-here experience.",
       "parent_path": "plan/docs/standards/governance/",
       "maturity": "authoritative",
       "priority": "high",

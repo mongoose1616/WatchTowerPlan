@@ -309,3 +309,98 @@ class ValidationSuiteRegistry:
             if suite.suite_id == suite_id:
                 return suite
         raise KeyError(suite_id)
+
+
+@dataclass(frozen=True, slots=True)
+class BenchmarkSuiteCommandDefinition:
+    """Benchmark-suite command definition."""
+
+    command_id: str
+    title: str
+    description: str
+    argv: tuple[str, ...]
+    measured_runs_override: int | None = None
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> BenchmarkSuiteCommandDefinition:
+        return cls(
+            command_id=document["id"],
+            title=document["title"],
+            description=document["description"],
+            argv=tuple(document["argv"]),
+            measured_runs_override=document.get("measured_runs_override"),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class BenchmarkSuiteDefinition:
+    """Benchmark suite definition."""
+
+    suite_id: str
+    title: str
+    description: str
+    status: str
+    working_directory: str
+    warmup_runs: int
+    measured_runs: int
+    commands: tuple[BenchmarkSuiteCommandDefinition, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> BenchmarkSuiteDefinition:
+        return cls(
+            suite_id=document["id"],
+            title=document["title"],
+            description=document["description"],
+            status=document["status"],
+            working_directory=document["working_directory"],
+            warmup_runs=document["warmup_runs"],
+            measured_runs=document["measured_runs"],
+            commands=tuple(
+                BenchmarkSuiteCommandDefinition.from_document(entry)
+                for entry in document["commands"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get_command(self, command_id: str) -> BenchmarkSuiteCommandDefinition:
+        """Return one benchmark-suite command by identifier."""
+
+        for command in self.commands:
+            if command.command_id == command_id:
+                return command
+        raise KeyError(command_id)
+
+
+@dataclass(frozen=True, slots=True)
+class BenchmarkSuiteRegistry:
+    """Typed benchmark-suite registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    suites: tuple[BenchmarkSuiteDefinition, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> BenchmarkSuiteRegistry:
+        suites = tuple(
+            BenchmarkSuiteDefinition.from_document(entry) for entry in document["suites"]
+        )
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            suites=suites,
+        )
+
+    def get(self, suite_id: str) -> BenchmarkSuiteDefinition:
+        """Return one benchmark suite by identifier."""
+
+        for suite in self.suites:
+            if suite.suite_id == suite_id:
+                return suite
+        raise KeyError(suite_id)

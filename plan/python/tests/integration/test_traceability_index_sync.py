@@ -83,6 +83,27 @@ def test_traceability_index_sync_writes_temp_output(tmp_path: Path) -> None:
     assert written_document["id"] == "index.traceability"
 
 
+def test_traceability_index_sync_allows_zero_trace_workspace(tmp_path: Path) -> None:
+    repo_root = _build_full_plan_fixture_repo(tmp_path)
+    for candidate in (repo_root / "core/control_plane/contracts/acceptance").glob("*.json"):
+        candidate.unlink()
+    for candidate in (repo_root / "core/control_plane/records/validation_evidence").glob("*.json"):
+        candidate.unlink()
+    task_index_path = repo_root / PLAN_TASK_INDEX_PATH
+    task_index_document = json.loads(task_index_path.read_text(encoding="utf-8"))
+    task_index_document["entries"] = []
+    task_index_path.write_text(
+        f"{json.dumps(task_index_document, indent=2)}\n",
+        encoding="utf-8",
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    document = TraceabilityIndexSyncService(loader).build_document()
+
+    loader.schema_store.validate_instance(document)
+    assert document["entries"] == []
+
+
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")

@@ -63,7 +63,7 @@ def register_query_knowledge_commands(
     )
     query_authority_parser.add_argument(
         "--domain",
-        help="Exact authority domain filter such as governance or planning.",
+        help="Exact authority domain filter such as governance, planning, or engineering.",
     )
     query_authority_parser.add_argument(
         "--artifact-kind",

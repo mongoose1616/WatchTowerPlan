@@ -883,11 +883,18 @@ def test_validate_portability_reports_release_exclusions(
     )
     omitted_pack_distribution = "watchtower-recipient"
     (tmp_path / "core/control_plane/records/releases").mkdir(parents=True)
+    (tmp_path / "core/control_plane/records/benchmarks").mkdir(parents=True)
     (tmp_path / "core/control_plane/records/README.md").write_text(
         "# Records\n",
         encoding="utf-8",
     )
     (tmp_path / "core/control_plane/records/releases/example.json").write_text(
+        "{}\n",
+        encoding="utf-8",
+    )
+    (
+        tmp_path / "core/control_plane/records/benchmarks/example_benchmark.json"
+    ).write_text(
         "{}\n",
         encoding="utf-8",
     )
@@ -1026,6 +1033,7 @@ def test_validate_portability_reports_release_exclusions(
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     issue_codes = {issue["code"] for issue in payload["issues"]}
+    issue_locations = {issue["location"] for issue in payload["issues"]}
     assert result == 1
     assert payload["command"] == "watchtower-core validate portability"
     assert payload["status"] == "ok"
@@ -1048,6 +1056,7 @@ def test_validate_portability_reports_release_exclusions(
         "workspace_pack_dependency_present",
         "workspace_pack_source_present",
     }
+    assert "core/control_plane/records/benchmarks" in issue_locations
 
 
 def test_validate_portability_pack_only_reports_pack_bundle_exclusions(

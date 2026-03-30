@@ -6,7 +6,7 @@ Local, fail-open runtime telemetry for `watchtower-core` command execution. This
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: `create_telemetry_session`, `telemetry_operation`, `add_operation_attributes`, and `TelemetryConfig`
-- `Non-Goals`: OpenTelemetry exporters, remote collectors, W3C trace propagation, metrics backends, or durable governed artifact storage.
+- `Non-Goals`: OpenTelemetry exporters, remote collectors, W3C trace propagation, metrics backends, deliberate benchmark methodology, or durable governed benchmark storage.
 
 ## Runtime Contract
 - Telemetry is default-on and local only.
@@ -15,6 +15,7 @@ Local, fail-open runtime telemetry for `watchtower-core` command execution. This
 - Set `WATCHTOWER_TELEMETRY_DIR=<path>` to override the sink directory.
 - Default sink location is `<machine_root>/runtime/telemetry/<yyyy>/<mm>/<dd>/`.
 - Runtime telemetry is operational machine state, not a governed durable artifact family.
+- Deliberate retained benchmark evidence belongs to `watchtower_core.benchmarking`, not to this package.
 
 ## Related Surfaces
 - `core/docs/standards/engineering/runtime_telemetry_standard.md`

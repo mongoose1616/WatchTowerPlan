@@ -26,6 +26,7 @@
 - Keep plan-owned tests under `plan/python/tests/` instead of `core/python/tests/`.
 - Keep pack-specific test helpers under `watchtower_plan.testing` or `plan/python/tests/`; do not reintroduce direct `watchtower_plan` imports into the shared `core/python/tests/` suite.
 - `plan/python/tests/` and `watchtower_plan.testing` are internal validation surfaces by default. Do not treat them as customer-release runtime surface unless the recipient explicitly needs the plan test harness.
+- Keep customer-export cleanup logic for the live plan workspace in `watchtower_plan`, exposed through the pack integration `export_cleanup` hook, instead of hard-coding plan history rules into reusable core.
 - `watchtower_host` may compose `watchtower_plan` into the shared `watchtower-core` CLI, but reusable-core logic in `watchtower_core` must stay pack-agnostic.
 - Repo-shared governed-document helpers now live under `core/python/src/watchtower_core/documentation/`; do not duplicate them back into `watchtower_plan`.
 - `watchtower_plan` is not a plan-flavored mirror of `watchtower_core`; keep only repo-local plan behavior here.

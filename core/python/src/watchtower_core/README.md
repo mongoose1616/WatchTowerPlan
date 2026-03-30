@@ -26,6 +26,7 @@
 | `adapters/` | `reusable_core` | Parsing and normalizing governed front matter and Markdown surfaces. |
 | `control_plane/` | `reusable_core` | Workspace-aware schema, artifact, and loader primitives. |
 | `documentation/` | `reusable_core` | Repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic used by validation and sync services. |
+| `benchmarking/` | `reusable_core` | Governed benchmark suite execution, telemetry-on versus telemetry-off comparison, retained benchmark record generation, and fail-closed benchmarking helpers. |
 | `validation/` | `reusable_core` | Export-safe validation services, pack-target enumeration, and result models; pack-owned semantic validators stay under the owning `watchtower_<pack>.validation` package. |
 | `query/` | `reusable_core` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; pack-local lifecycle or coordination queries stay under the owning `watchtower_<pack>.query` package. |
 | `sync/` | `reusable_core` | Export-safe sync harness and repo-shared command, route, and repository-path index rebuild services; pack-local sync orchestration stays under the owning `watchtower_<pack>.sync` package. |
@@ -51,3 +52,4 @@
 - Reach pack-owned behavior through the owning `watchtower_<pack>` package only when the behavior is truly tied to a pack-local workspace.
 - Do not pull pack-owned logic back into reusable core when the behavior still depends on pack-local lifecycle rules, rendered surfaces, or workspace state.
 - Runtime telemetry is an active reusable-core baseline. Use `watchtower_core.telemetry` for per-command sessions and nested operation timing instead of ad hoc stderr timers or pack-local JSONL writers.
+- Deliberate retained performance measurement belongs in `watchtower_core.benchmarking`, not in the default-on telemetry package.

@@ -5,6 +5,7 @@
 
 ## Notes
 - Portable customer exports intentionally omit this retained-record family. A staged handoff bundle may therefore contain only `README.md` here.
+- Benchmark records live in the sibling `core/control_plane/records/benchmarks/` family rather than alongside validation evidence.
 
 ## Files
 | Path | Description |

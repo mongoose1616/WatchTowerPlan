@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "runtime_telemetry"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-29T12:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -26,7 +26,7 @@ Give the repository one deliberate runtime-observability baseline so operators a
 - Applies to reusable-core telemetry runtime code, host-owned CLI lifecycle instrumentation, and pack-owned command or orchestration paths that emit runtime telemetry.
 - Applies to runtime telemetry storage under pack machine roots such as `<pack-root>/.wt/runtime/telemetry/`.
 - Covers enablement defaults, environment-variable control, stderr summaries, JSONL event records, and failure posture.
-- Does not define OTEL exporters, cross-process trace propagation, or durable promoted telemetry analysis.
+- Does not define OTEL exporters, cross-process trace propagation, deliberate benchmark methodology, retained benchmark evidence, or performance-regression policy.
 
 ## Use When
 - Adding or changing runtime timing or error tracing behavior.
@@ -35,6 +35,7 @@ Give the repository one deliberate runtime-observability baseline so operators a
 
 ## Related Standards and Sources
 - [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md): establishes that local runtime telemetry is now an active implementation baseline while OTEL remains a later candidate.
+- [performance_benchmarking_standard.md](/core/docs/standards/engineering/performance_benchmarking_standard.md): governs deliberate retained performance measurement and keeps that contract separate from default-on telemetry.
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): constrains where runtime implementation and local tooling live.
 - [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): constrains how hosted packs own machine-root storage and runtime integration surfaces.
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md): explains how pack authors should carry the runtime sink contract into copied or newly created packs.
@@ -53,6 +54,7 @@ Give the repository one deliberate runtime-observability baseline so operators a
 - Keep runtime telemetry identifiers separate from planning `trace_id`. When planning identity is already available, attach it only as optional context.
 - Instrument public service or orchestration boundaries rather than every low-level helper.
 - Treat runtime telemetry JSONL as operational runtime state, not as a governed durable artifact family.
+- Do not treat telemetry JSONL as retained benchmark evidence. Use the performance benchmarking standard and retained benchmark-record family for deliberate repeatable performance measurement.
 
 ## Structure or Data Model
 ### Enablement contract
@@ -95,15 +97,18 @@ Give the repository one deliberate runtime-observability baseline so operators a
 - Reviewers should reject runtime telemetry changes that alter existing stdout payload contracts without an explicit separately approved command-contract change.
 - Reviewers should reject runtime telemetry sinks that escape the active pack machine root by default.
 - Reviewers should reject telemetry failures that can break normal command execution.
+- Reviewers should reject telemetry changes that silently widen this surface into benchmark methodology or retained performance evidence ownership.
 - Representative commands should prove both enabled and disabled paths through unit or integration coverage.
 
 ## Change Control
 - Update this standard when the runtime telemetry enablement contract, sink placement rule, event model, or failure posture changes materially.
 - Update companion READMEs, host or pack authoring guidance, and affected command docs in the same change set when telemetry behavior changes materially.
+- Keep deliberate benchmarking methodology and retained benchmark evidence in `performance_benchmarking_standard.md` rather than silently widening this telemetry baseline.
 - If OTEL, W3C propagation, or durable promoted telemetry analysis becomes active policy later, capture that as a separate approved change rather than silently widening this baseline.
 
 ## References
 - [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md)
+- [performance_benchmarking_standard.md](/core/docs/standards/engineering/performance_benchmarking_standard.md)
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md)
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md)
@@ -113,4 +118,4 @@ Give the repository one deliberate runtime-observability baseline so operators a
 - [w3c_trace_context_reference.md](/core/docs/references/w3c_trace_context_reference.md)
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-29T12:30:00Z`

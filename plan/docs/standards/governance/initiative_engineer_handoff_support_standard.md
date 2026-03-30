@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_handoff"
 owner: "repository_maintainer"
-updated_at: "2026-03-27T22:15:00Z"
+updated_at: "2026-03-29T04:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -45,11 +45,11 @@ This standard defines the minimum support-doc kit, cold-start posture, and reusa
 - The initiative needs reusable README, manifest, checklist, or cold-start templates rather than bespoke one-off support files.
 
 ## Related Standards and Sources
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/initiative_tracking_standard.md): defines the live initiative package and execution-facing tracking posture this support kit complements.
-- [traceability_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/traceability_standard.md): defines the trace spine and joined machine surfaces that support docs must stay aligned with.
-- [acceptance_evidence_reconciliation_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): governs how support-surface claims stay aligned with acceptance and evidence artifacts.
-- [README.md](/home/j/WatchTowerPlan/plan/.wt/templates/initiatives/README.md): reusable template for the initiative-root navigation surface.
-- [cold_start_runbook.md](/home/j/WatchTowerPlan/plan/.wt/templates/initiatives/cold_start_runbook.md): reusable template for first-ready-task entry guidance.
+- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md): defines the live initiative package and execution-facing tracking posture this support kit complements.
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): defines the trace spine and joined machine surfaces that support docs must stay aligned with.
+- [acceptance_evidence_reconciliation_standard.md](/plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): governs how support-surface claims stay aligned with acceptance and evidence artifacts.
+- [README.md](/plan/.wt/templates/initiatives/README.md): reusable template for the initiative-root navigation surface.
+- [cold_start_runbook.md](/plan/.wt/templates/initiatives/cold_start_runbook.md): reusable template for first-ready-task entry guidance.
 
 ## Guidance
 - Engineer-facing initiative packages must keep the four canonical authored docs and live task state as the authority layer.
@@ -116,11 +116,11 @@ This standard defines the minimum support-doc kit, cold-start posture, and reusa
 - Update the initiative tracking guidance, template catalog, initiative templates, and any affected acceptance or evidence guidance in the same change set when this standard changes materially.
 
 ## References
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/initiative_tracking_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/traceability_standard.md)
-- [acceptance_evidence_reconciliation_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md)
-- [README.md](/home/j/WatchTowerPlan/plan/.wt/templates/initiatives/README.md)
-- [cold_start_runbook.md](/home/j/WatchTowerPlan/plan/.wt/templates/initiatives/cold_start_runbook.md)
+- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md)
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
+- [acceptance_evidence_reconciliation_standard.md](/plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md)
+- [README.md](/plan/.wt/templates/initiatives/README.md)
+- [cold_start_runbook.md](/plan/.wt/templates/initiatives/cold_start_runbook.md)
 
 ## Updated At
-- `2026-03-27T22:15:00Z`
+- `2026-03-29T04:05:00Z`

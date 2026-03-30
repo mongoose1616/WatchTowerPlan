@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T03:35:00Z"
+updated_at: "2026-03-29T04:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -86,6 +86,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - `owned_roots` must match the pack-owned roots declared in `pack_settings.json`, and optional `domain_roots` should be used for pack-specific roots such as `reviews`, `assessments`, or `targets`.
 - The integration module must live under the declared `python_package` and export one typed `PACK_INTEGRATION`.
 - Required capabilities are `command_registration`, `query_runtime`, `sync_targets`, and `validation_provider`.
+- Declare optional `export_cleanup` only when the pack needs pack-owned customer-release scrub logic that reusable core cannot infer generically. The hook should remove pack-local live history from staged exports and rebuild any required clean derived surfaces when shared core is present.
 - `query_runtime` and `sync_targets` must publish non-empty command and target inventories.
 - Keep pack-local validator registries limited to pack-owned validators. Shared core validator IDs belong in `core/control_plane/registries/validator_registry.json`; conflicting duplicates should be treated as contract drift.
 - When a pack publishes workflow IDs that are not already described by the shared core workflow metadata registry, keep those entries in a pack-owned `workflow_metadata_registry` and point `pack_settings.json` at that pack-local path. The loader merges the shared core registry with the pack-owned registry and rejects conflicting duplicates.
@@ -147,4 +148,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-29T03:35:00Z`
+- `2026-03-29T04:10:00Z`

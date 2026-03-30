@@ -1,6 +1,9 @@
 """Typed models for schema catalog and registry artifacts."""
 
 from watchtower_core.control_plane.models.catalog_core import (
+    BenchmarkSuiteCommandDefinition,
+    BenchmarkSuiteDefinition,
+    BenchmarkSuiteRegistry,
     SchemaCatalog,
     SchemaCatalogRecord,
     ValidationSuiteDefinition,
@@ -53,6 +56,9 @@ __all__ = [
     "ArtifactFamilyRegistry",
     "AuthorityMap",
     "AuthorityMapEntry",
+    "BenchmarkSuiteCommandDefinition",
+    "BenchmarkSuiteDefinition",
+    "BenchmarkSuiteRegistry",
     "DocumentationFamilyEntry",
     "DocumentationFamilyRegistry",
     "HumanSurfacePolicyEntry",

@@ -50,6 +50,7 @@ class PackCommandGroupDiscovery:
 QUERY_DISCOVERY_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_discovery_family.py"
 QUERY_KNOWLEDGE_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_knowledge_family.py"
 QUERY_RECORDS_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_records_family.py"
+BENCHMARK_FAMILY_PATH = "core/python/src/watchtower_host/cli/benchmark_family.py"
 PACK_FAMILY_HANDLERS_PATH = "core/python/src/watchtower_host/cli/pack_handlers.py"
 
 
@@ -69,6 +70,12 @@ def _register_query_family(subparsers: argparse._SubParsersAction) -> None:
     from watchtower_host.cli.query_family import register_query_family
 
     register_query_family(subparsers)
+
+
+def _register_benchmark_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.benchmark_family import register_benchmark_family
+
+    register_benchmark_family(subparsers)
 
 
 def _register_pack_family(subparsers: argparse._SubParsersAction) -> None:
@@ -109,6 +116,15 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         implementation_path="core/python/src/watchtower_host/cli/route_family.py",
     ),
     CommandGroupSpec(
+        name="benchmark",
+        registrar=_register_benchmark_family,
+        doc_root="core/docs/commands/core_python",
+        implementation_path=BENCHMARK_FAMILY_PATH,
+        subcommand_implementation_paths=(
+            ("run", "core/python/src/watchtower_host/cli/benchmark_handlers.py"),
+        ),
+    ),
+    CommandGroupSpec(
         name="query",
         registrar=_register_query_family,
         doc_root="core/docs/commands/core_python",
@@ -123,6 +139,7 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
             ("references", QUERY_KNOWLEDGE_FAMILY_PATH),
             ("standards", QUERY_KNOWLEDGE_FAMILY_PATH),
             ("acceptance", QUERY_RECORDS_FAMILY_PATH),
+            ("benchmarks", QUERY_RECORDS_FAMILY_PATH),
             ("evidence", QUERY_RECORDS_FAMILY_PATH),
         ),
     ),

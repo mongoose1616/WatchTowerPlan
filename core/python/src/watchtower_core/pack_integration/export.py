@@ -14,6 +14,7 @@ from watchtower_core.pack_integration.bootstrap import (
     bootstrap_hosted_pack,
     rebuild_shared_discovery_surfaces,
 )
+from watchtower_core.pack_integration.runtime import load_active_pack_integration
 from watchtower_core.pack_integration.workspace_registration import (
     CORE_PYPROJECT_RELATIVE_PATH,
     CORE_UV_LOCK_RELATIVE_PATH,
@@ -117,6 +118,32 @@ class PackExportResult:
 
 
 @dataclass(frozen=True, slots=True)
+class PackExportCleanupRequest:
+    """Inputs passed to one optional pack-owned export cleanup hook."""
+
+    output_root: str
+    export_scope: str
+    pack_settings_path: str
+    pack_slug: str
+    command_namespace: str
+    workspace_root: str
+    machine_root: str
+    docs_root: str
+    tracking_root: str
+    overview_path: str
+    initiatives_root: str | None = None
+    projects_root: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class PackExportCleanupResult:
+    """Paths scrubbed or rewritten by one pack-owned export cleanup hook."""
+
+    scrubbed_paths: tuple[str, ...] = ()
+    changed_paths: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
 class EngineeringCoreExtractRequest:
     """Parameters for staging one bootstrap-ready engineering core extract."""
 
@@ -201,14 +228,21 @@ def export_hosted_repository(
         output_root,
         selected_pack_roots=tuple(selected_pack_roots),
     )
-
-    changed_paths: set[str] = set()
-    workspace_lock_removed = False
-    pack_validations: tuple[PackExportValidationSummary, ...] = ()
-    pack_validation_note: str | None = None
     export_scope = (
         PACK_BUNDLE_EXPORT_SCOPE if request.pack_only else REPOSITORY_EXPORT_SCOPE
     )
+    cleanup_scrubbed_paths, cleanup_changed_paths = _run_pack_export_cleanup_hooks(
+        repo_root=resolved_repo_root,
+        output_root=output_root,
+        export_scope=export_scope,
+        selected_pack_settings_paths=tuple(selected_pack_settings_paths),
+    )
+    scrubbed_paths.extend(cleanup_scrubbed_paths)
+
+    changed_paths: set[str] = set(cleanup_changed_paths)
+    workspace_lock_removed = False
+    pack_validations: tuple[PackExportValidationSummary, ...] = ()
+    pack_validation_note: str | None = None
     if request.pack_only:
         pack_validation_note = (
             "Pack-only export skips shared-core hosted-pack contract validation because "
@@ -544,6 +578,57 @@ def _scrub_export_root(
             candidate.unlink()
             scrubbed_paths.append(relative_path)
     return scrubbed_paths
+
+
+def _run_pack_export_cleanup_hooks(
+    *,
+    repo_root: Path,
+    output_root: Path,
+    export_scope: str,
+    selected_pack_settings_paths: tuple[str, ...],
+) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    if not selected_pack_settings_paths:
+        return (), ()
+
+    loader = ControlPlaneLoader(repo_root)
+    scrubbed_paths: set[str] = set()
+    changed_paths: set[str] = set()
+    for pack_settings_path in selected_pack_settings_paths:
+        loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
+        if "export_cleanup" not in loaded.integration.declared_capabilities:
+            continue
+        hook = loaded.integration.export_cleanup
+        if hook is None:
+            raise ValueError(
+                "Pack integration declares export_cleanup but is missing the hook: "
+                f"{loaded.runtime_manifest.integration_module}"
+            )
+        workspace_roots = loaded.pack_settings.workspace_roots
+        runtime_roots = loaded.runtime_manifest.owned_roots
+        result = hook(
+            PackExportCleanupRequest(
+                output_root=str(output_root),
+                export_scope=export_scope,
+                pack_settings_path=pack_settings_path,
+                pack_slug=loaded.runtime_manifest.pack_slug,
+                command_namespace=loaded.runtime_manifest.command_namespace,
+                workspace_root=runtime_roots.workspace_root,
+                machine_root=runtime_roots.machine_root,
+                docs_root=runtime_roots.docs_root,
+                tracking_root=runtime_roots.tracking_root,
+                overview_path=workspace_roots.overview_path,
+                initiatives_root=workspace_roots.initiatives_root,
+                projects_root=workspace_roots.projects_root,
+            )
+        )
+        if not isinstance(result, PackExportCleanupResult):
+            raise ValueError(
+                "Pack export_cleanup hook must return PackExportCleanupResult: "
+                f"{loaded.runtime_manifest.integration_module}"
+            )
+        scrubbed_paths.update(result.scrubbed_paths)
+        changed_paths.update(result.changed_paths)
+    return tuple(sorted(scrubbed_paths)), tuple(sorted(changed_paths))
 
 
 def _apply_core_tree(

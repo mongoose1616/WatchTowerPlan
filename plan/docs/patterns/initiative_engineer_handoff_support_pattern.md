@@ -6,7 +6,7 @@ summary: "Reusable pattern for turning a large initiative package into a cold-st
 type: pattern
 status: active
 owner: repository_maintainer
-updated_at: "2026-03-27T22:17:34Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: shared
 authority: authoritative
 applies_to:
@@ -36,7 +36,7 @@ Use this pattern when an initiative package is large enough that engineers are e
   - phase test matrices for multi-phase proof expectations
   - ambiguity, contradiction, and revisit surfaces when defaults and deferred decisions matter
   - promotion maps when closeout feeds reusable knowledge
-- Keep the root README thin and navigational. Put the detailed first-ready-task path in `cold_start_runbook.md`.
+- Keep the root README navigational, but include every materially distinct boundary and first-step pointer needed to enter the package without guesswork. Put the detailed first-ready-task path in `cold_start_runbook.md`.
 - Keep support docs aligned with canonical docs, live tasks, acceptance, and evidence in the same change set.
 
 ## Boundaries or Constraints

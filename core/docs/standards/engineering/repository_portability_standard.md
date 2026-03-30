@@ -11,7 +11,7 @@ tags:
   - "release"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T03:35:00Z"
+updated_at: "2026-03-29T04:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -64,7 +64,7 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - `watchtower-core pack bootstrap --replace-hosted-packs --write` reconciles the selected pack set into the shared hosted-pack registry, shared `core/python` workspace metadata, shared discovery indexes, and the selected pack's deterministic `sync all` slice when the pack declares it and the workspace is ready. It does not by itself purge donor records, tests, fixtures, internal assessments, or customer-release artifacts.
 - Treat `watchtower-core pack bootstrap --replace-hosted-packs --write --sync-extra dev` as the normal recipient-side follow-on after copying an engineering shared-core extract into place, unless the recipient intentionally defers workspace sync.
 - If a recipient repository still fails after `apply-core` because a shared-core test or doc names donor-pack surfaces directly, treat that as a donor shared-core portability defect first. Fix the donor shared core and regenerate the extract instead of carrying recipient-only normalization.
-- `watchtower-core pack export --output-root <path> ...` is the preferred staged handoff path because it copies only allowlisted source roots, scrubs default customer-release exclusions, reconciles the staged shared pack set when shared core is present, and then validates the staged output.
+- `watchtower-core pack export --output-root <path> ...` is the preferred staged handoff path because it copies only allowlisted source roots, scrubs default customer-release exclusions, runs any declared pack-owned `export_cleanup` hooks needed to remove pack-local live history or rebuild clean derived surfaces, reconciles the staged shared pack set when shared core is present, and then validates the staged output.
 - Follow the customer release and bootstrap checklist when the goal is a real handoff rather than only a local portability diagnosis. The normal sequence is broad repo validation, explicit schema-definition checks when needed, then a fresh staged export.
 - Treat portability validation of an actively used workspace as diagnostic, not as a release substitute. Working repositories can accumulate fresh telemetry, caches, or runtime residue after bootstrap or validation runs; the final customer/bootstrap artifact should come from a fresh `watchtower-core pack export` pass.
 - Exclude the following families from customer release and customer bootstrap by default unless the recipient explicitly needs them:
@@ -73,6 +73,7 @@ Keep downstream adoption and customer handoff safe by defining the difference be
   - Local environments, caches, build outputs, editable-install residue, and other machine-local developer artifacts.
   - Pack-local runtime outputs such as `<pack>/.wt/runtime/**`, telemetry sinks, or other ephemeral machine state.
   - Shared and pack-owned test trees plus pack-owned `testing/` helper modules that exist only for internal validation. Shared reusable-core tests may remain in engineering shared-core extracts, but not in customer-safe bundle exports.
+  - Pack-owned live history or coordination residue that the selected pack marks as internal-only export cleanup, such as initiative or project archives, pack-local work-item notes, or rendered trackers that should be regenerated from the cleaned state in the staged export.
   - Donor project maps, donor repository references, internal comparison or assessment closeout references, and any content that leaks machine-local absolute filesystem paths.
   - Hosted pack roots that are not part of the selected recipient pack set.
 - Customer-facing docs, manifests, and registries must use repository-relative paths or neutral placeholders. Filesystem-absolute donor checkout paths are invalid portability input.
@@ -126,4 +127,4 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 
 ## Updated At
-- `2026-03-29T03:35:00Z`
+- `2026-03-29T04:10:00Z`

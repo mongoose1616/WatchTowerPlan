@@ -27,6 +27,48 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.benchmark",
+      "command": "watchtower-core benchmark",
+      "summary": "Run deliberate, fail-closed reusable-core performance benchmarks.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_benchmark.md",
+      "synopsis": "uv run watchtower-core benchmark [-h] <benchmark_command> ...",
+      "implementation_path": "core/python/src/watchtower_host/cli/benchmark_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "benchmark"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.benchmark.run",
+      "command": "watchtower-core benchmark run",
+      "summary": "Run one governed benchmark suite through fresh serialized subprocesses.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_benchmark_run.md",
+      "synopsis": "uv run watchtower-core benchmark run [-h] [--suite-id SUITE_ID] [--runs RUNS] [--warmup-runs WARMUP_RUNS] [--baseline-record BASELINE_RECORD] [--output OUTPUT] [--write-record] [--record-id RECORD_ID] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/benchmark_handlers.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.benchmark",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "benchmark",
+        "run"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.doctor",
       "command": "watchtower-core doctor",
       "summary": "Run a small, low-risk workspace health snapshot that confirms the core Python CLI is installed and that the main governed lookup surfaces load successfully.",
@@ -1290,6 +1332,30 @@
         "cli",
         "query",
         "authority"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.benchmarks",
+      "command": "watchtower-core query benchmarks",
+      "summary": "Search retained benchmark records captured by the reusable-core benchmarking runtime.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_query_benchmarks.md",
+      "synopsis": "uv run watchtower-core query benchmarks [-h] [--record-id RECORD_ID] [--suite-id SUITE_ID] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_records_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "benchmarks"
       ]
     },
     {

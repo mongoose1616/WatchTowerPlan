@@ -21,7 +21,7 @@ class AuthorityMapSearchParams:
 
 
 class AuthorityMapQueryService:
-    """Search the authority map for canonical planning and governance surfaces."""
+    """Search the authority map for canonical planning, governance, and engineering surfaces."""
 
     def __init__(
         self,

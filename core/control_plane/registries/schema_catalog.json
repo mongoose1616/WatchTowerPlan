@@ -18,6 +18,34 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:records:benchmark-record:v1",
+      "title": "Benchmark Record",
+      "description": "Schema for durable benchmark-record artifacts retained under shared core control-plane history.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "benchmark_record",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/benchmark_record.schema.json",
+      "aliases": [
+        "benchmark evidence schema",
+        "performance baseline record schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:benchmark-suite-registry:v1",
+      "title": "Benchmark Suite Registry",
+      "description": "Schema for authored benchmark suite registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "benchmark_suite_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/benchmark_suite_registry.schema.json",
+      "aliases": [
+        "benchmark suite schema",
+        "performance suite registry schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:command-index:v1",
       "title": "Command Index",
       "description": "Schema for machine-readable command index artifacts.",
@@ -578,20 +606,6 @@
       "canonical_path": "core/control_plane/schemas/interfaces/packs/artifact_index.schema.json",
       "aliases": [
         "pack artifact catalog schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:interfaces:packs:benchmark-report:v1",
-      "title": "Benchmark Report",
-      "description": "Schema for one pack-owned benchmark report that captures baseline, slice, or closeout performance evidence.",
-      "status": "active",
-      "schema_family": "interface",
-      "subject_kind": "benchmark_report",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/packs/benchmark_report.schema.json",
-      "aliases": [
-        "pack benchmark schema",
-        "performance evidence schema"
       ]
     },
     {

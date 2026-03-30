@@ -121,6 +121,31 @@
       "notes": "Use this when the question is repository policy, not the current planning state or command contract."
     },
     {
+      "question_id": "authority.engineering.performance_benchmarking",
+      "domain": "engineering",
+      "question": "Which standard and retained record surface govern performance benchmarking in shared core?",
+      "status": "active",
+      "artifact_kind": "benchmark_record",
+      "canonical_path": "core/docs/standards/engineering/performance_benchmarking_standard.md",
+      "preferred_command": "watchtower-core query benchmarks",
+      "preferred_human_path": "core/docs/standards/engineering/performance_benchmarking_standard.md",
+      "status_fields": [
+        "status"
+      ],
+      "fallback_paths": [
+        "core/control_plane/registries/benchmark_suite_registry.json",
+        "core/control_plane/records/benchmarks/",
+        "core/docs/commands/core_python/watchtower_core_query_benchmarks.md"
+      ],
+      "aliases": [
+        "benchmark standard",
+        "performance benchmark",
+        "benchmark evidence",
+        "benchmarking"
+      ],
+      "notes": "Use this when the question is deliberate repeatable performance measurement or retained performance evidence. Runtime telemetry is governed separately."
+    },
+    {
       "question_id": "authority.governance.foundation_intent",
       "domain": "governance",
       "question": "Which foundation document defines the governing intent for this area?",

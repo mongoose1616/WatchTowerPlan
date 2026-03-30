@@ -26,6 +26,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - Workspace aggregation: `workspace/` owns pack-wide derived surfaces, rendered views, overview shaping, and artifact-index generation across live `plan/**` initiative state.
 - Pack-local aggregate services: `promotion/` and `rendering/` still coordinate durable guidance promotion and rendered initiative payload shaping that remain specific to the current pack.
 - Plan-domain closeout: `closeout/` owns retained trace closeout and initiative-package terminal closeout helpers because those flows depend on live plan workspace state and repo-local retention policy.
+- Pack-owned export cleanup: `integration.py` and `export_cleanup.py` own the staged-export scrub that removes live initiative, project, and work-item history from customer bundles and then rebuilds clean derived plan surfaces when shared core is present.
 - Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the pack-local integrations behind reusable-core boundaries, but generic governed-surface rebuild, validation, and documentation helpers should move back into `watchtower_core`.
 
 ## Key Surfaces

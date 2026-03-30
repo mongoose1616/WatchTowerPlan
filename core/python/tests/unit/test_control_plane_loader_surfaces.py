@@ -7,6 +7,7 @@ import pytest
 from tests.unit.control_plane_loader_test_support import REPO_ROOT, copy_validation_repo_subset
 from watchtower_core.control_plane.loader import CORE_PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import (
+    BenchmarkSuiteRegistry,
     RenderedSurfaceRegistry,
     SchemaCatalog,
     TemplateCatalog,
@@ -203,6 +204,19 @@ def test_control_plane_loader_reads_validation_suite_registry() -> None:
 
     assert isinstance(registry, ValidationSuiteRegistry)
     assert suite.get_step(f"step.{pack_slug}.front_matter").step_kind == "front_matter"
+
+
+def test_control_plane_loader_reads_benchmark_suite_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT, active_pack_settings_path=CORE_PACK_SETTINGS_PATH)
+
+    registry = loader.load_benchmark_suite_registry()
+    suite = registry.get("suite.benchmark.core_cli_representative_v1")
+
+    assert isinstance(registry, BenchmarkSuiteRegistry)
+    assert suite.working_directory == "core/python"
+    assert suite.warmup_runs == 1
+    assert suite.measured_runs == 5
+    assert suite.get_command("step.benchmark.validate_all").measured_runs_override == 3
 
 
 def test_schema_catalog_get_by_subject_kind_returns_unique_match() -> None:
@@ -423,7 +437,10 @@ def test_control_plane_loader_reads_command_index() -> None:
     command_ids = {entry.command_id for entry in command_index.entries}
     doctor = command_index.get("command.watchtower_core.doctor")
     query_group = command_index.get("command.watchtower_core.query")
+    benchmark_group = command_index.get("command.watchtower_core.benchmark")
+    benchmark_run = command_index.get("command.watchtower_core.benchmark.run")
     query_commands = command_index.get("command.watchtower_core.query.commands")
+    query_benchmarks = command_index.get("command.watchtower_core.query.benchmarks")
     query_paths = command_index.get("command.watchtower_core.query.paths")
     query_foundations = command_index.get("command.watchtower_core.query.foundations")
     query_workflows = command_index.get("command.watchtower_core.query.workflows")
@@ -454,6 +471,21 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert doctor.parent_command_id == "command.watchtower_core"
     assert doctor.doc_path == "core/docs/commands/core_python/watchtower_core_doctor.md"
     assert doctor.implementation_path == "core/python/src/watchtower_host/cli/doctor_family.py"
+    assert benchmark_group.parent_command_id == "command.watchtower_core"
+    assert benchmark_group.doc_path == "core/docs/commands/core_python/watchtower_core_benchmark.md"
+    assert (
+        benchmark_group.implementation_path
+        == "core/python/src/watchtower_host/cli/benchmark_family.py"
+    )
+    assert benchmark_run.parent_command_id == "command.watchtower_core.benchmark"
+    assert (
+        benchmark_run.doc_path
+        == "core/docs/commands/core_python/watchtower_core_benchmark_run.md"
+    )
+    assert (
+        benchmark_run.implementation_path
+        == "core/python/src/watchtower_host/cli/benchmark_handlers.py"
+    )
     assert route_group.parent_command_id == "command.watchtower_core"
     assert route_group.doc_path == "core/docs/commands/core_python/watchtower_core_route.md"
     assert route_group.implementation_path == "core/python/src/watchtower_host/cli/route_family.py"
@@ -522,6 +554,15 @@ def test_control_plane_loader_reads_command_index() -> None:
     )
     assert (
         query_acceptance.implementation_path
+        == "core/python/src/watchtower_host/cli/query_records_family.py"
+    )
+    assert query_benchmarks.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_benchmarks.doc_path
+        == "core/docs/commands/core_python/watchtower_core_query_benchmarks.md"
+    )
+    assert (
+        query_benchmarks.implementation_path
         == "core/python/src/watchtower_host/cli/query_records_family.py"
     )
     assert query_evidence.parent_command_id == "command.watchtower_core.query"

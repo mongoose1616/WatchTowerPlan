@@ -1,0 +1,320 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:records:benchmark-record:v1",
+  "id": "benchmark.core_cli_representative_v1.20260329_baseline",
+  "title": "Core CLI Representative Benchmark Suite Baseline",
+  "status": "active",
+  "benchmark_kind": "baseline",
+  "suite_id": "suite.benchmark.core_cli_representative_v1",
+  "suite_title": "Core CLI Representative Benchmark Suite",
+  "recorded_at": "2026-03-30T02:55:43Z",
+  "working_directory": "core/python",
+  "benchmark_contract": {
+    "working_directory": "core/python",
+    "warmup_runs": 1,
+    "measured_runs": 5,
+    "execution_mode": "serialized_subprocess",
+    "failure_posture": "fail_closed",
+    "telemetry_environment": {
+      "telemetry_on": {
+        "WATCHTOWER_TELEMETRY": "on",
+        "WATCHTOWER_TELEMETRY_STDERR": "off",
+        "WATCHTOWER_TELEMETRY_DIR": "<temp benchmark dir>"
+      },
+      "telemetry_off": {
+        "WATCHTOWER_TELEMETRY": "off",
+        "WATCHTOWER_TELEMETRY_STDERR": "off"
+      }
+    },
+    "notes": [
+      "Benchmark runs execute fresh subprocesses in serialized order.",
+      "Warmup runs are excluded from retained measured timing samples."
+    ]
+  },
+  "environment_context": {
+    "python_version": "3.12.3",
+    "python_executable": "/home/j/WatchTowerPlan/core/python/.venv/bin/python3",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_count": 32,
+    "git_commit": "62c5bbcbe64ca6e2f050804b0193c9bafa46ff8b",
+    "worktree_dirty": true
+  },
+  "commands": [
+    {
+      "command_id": "step.benchmark.route_preview_workflow_system",
+      "title": "Workflow System Route Preview",
+      "description": "Preview the workflow route selected for a cross-pack workflow-system audit request.",
+      "command": "watchtower-core route preview --request audit the workflow system across core and plan --format json",
+      "argv": [
+        "watchtower-core",
+        "route",
+        "preview",
+        "--request",
+        "audit the workflow system across core and plan",
+        "--format",
+        "json"
+      ],
+      "warmup_runs": 1,
+      "measured_runs": 5,
+      "telemetry_on_runs_ms": [
+        470.746,
+        516.344,
+        505.839,
+        482.705,
+        469.563
+      ],
+      "telemetry_off_runs_ms": [
+        472.431,
+        510.985,
+        466.501,
+        477.335,
+        472.347
+      ],
+      "median_ms_telemetry_on": 482.705,
+      "median_ms_telemetry_off": 472.431,
+      "delta_ms": 10.274,
+      "ratio_on_over_off": 1.022,
+      "top_nested_operations": [
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "parser_build",
+          "median_duration_ms": 3.0
+        },
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "argv_parse",
+          "median_duration_ms": 0.0
+        }
+      ]
+    },
+    {
+      "command_id": "step.benchmark.query_workflow_roles",
+      "title": "Workflow Role Query",
+      "description": "Query the governed workflow index for active workflow roles.",
+      "command": "watchtower-core query workflows --workflow-kind role --format json",
+      "argv": [
+        "watchtower-core",
+        "query",
+        "workflows",
+        "--workflow-kind",
+        "role",
+        "--format",
+        "json"
+      ],
+      "warmup_runs": 1,
+      "measured_runs": 5,
+      "telemetry_on_runs_ms": [
+        479.964,
+        508.792,
+        464.093,
+        453.929,
+        474.853
+      ],
+      "telemetry_off_runs_ms": [
+        498.891,
+        465.412,
+        451.723,
+        467.65,
+        509.494
+      ],
+      "median_ms_telemetry_on": 474.853,
+      "median_ms_telemetry_off": 467.65,
+      "delta_ms": 7.203,
+      "ratio_on_over_off": 1.015,
+      "top_nested_operations": [
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "parser_build",
+          "median_duration_ms": 9.0
+        },
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "argv_parse",
+          "median_duration_ms": 0.0
+        }
+      ]
+    },
+    {
+      "command_id": "step.benchmark.validate_runtime_telemetry_standard",
+      "title": "Runtime Telemetry Standard Validation",
+      "description": "Validate one canonical engineering standard through the governed document-semantics path.",
+      "command": "watchtower-core validate document-semantics --path core/docs/standards/engineering/runtime_telemetry_standard.md --format json",
+      "argv": [
+        "watchtower-core",
+        "validate",
+        "document-semantics",
+        "--path",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md",
+        "--format",
+        "json"
+      ],
+      "warmup_runs": 1,
+      "measured_runs": 5,
+      "telemetry_on_runs_ms": [
+        3586.73,
+        3634.107,
+        3687.191,
+        3828.774,
+        3548.611
+      ],
+      "telemetry_off_runs_ms": [
+        3667.196,
+        3700.565,
+        3654.51,
+        3632.343,
+        3597.872
+      ],
+      "median_ms_telemetry_on": 3634.107,
+      "median_ms_telemetry_off": 3654.51,
+      "delta_ms": -20.403,
+      "ratio_on_over_off": 0.994,
+      "top_nested_operations": [
+        {
+          "operation_kind": "validation",
+          "operation_name": "document_semantics",
+          "median_duration_ms": 2991.0
+        },
+        {
+          "operation_kind": "pack_runtime",
+          "operation_name": "load_active_pack_integration",
+          "median_duration_ms": 129.0
+        },
+        {
+          "operation_kind": "pack_runtime",
+          "operation_name": "load_pack_validation_runtime",
+          "median_duration_ms": 129.0
+        },
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "parser_build",
+          "median_duration_ms": 18.0
+        },
+        {
+          "operation_kind": "pack_runtime_import",
+          "operation_name": "watchtower_plan.integration",
+          "median_duration_ms": 6.0
+        }
+      ]
+    },
+    {
+      "command_id": "step.benchmark.validate_all",
+      "title": "Validate All Baseline",
+      "description": "Run the bounded repository validation baseline without acceptance reconciliation.",
+      "command": "watchtower-core validate all --skip-acceptance --format json",
+      "argv": [
+        "watchtower-core",
+        "validate",
+        "all",
+        "--skip-acceptance",
+        "--format",
+        "json"
+      ],
+      "warmup_runs": 1,
+      "measured_runs": 3,
+      "telemetry_on_runs_ms": [
+        105994.391,
+        104731.739,
+        105470.25
+      ],
+      "telemetry_off_runs_ms": [
+        104583.962,
+        107071.417,
+        104258.024
+      ],
+      "median_ms_telemetry_on": 105470.25,
+      "median_ms_telemetry_off": 104583.962,
+      "delta_ms": 886.288,
+      "ratio_on_over_off": 1.008,
+      "top_nested_operations": [
+        {
+          "operation_kind": "validation_all",
+          "operation_name": "run",
+          "median_duration_ms": 97108.0
+        },
+        {
+          "operation_kind": "validation_suite",
+          "operation_name": "suite.plan.validation_baseline",
+          "median_duration_ms": 97108.0
+        },
+        {
+          "operation_kind": "pack_contract_validation",
+          "operation_name": "validate",
+          "median_duration_ms": 274.0
+        },
+        {
+          "operation_kind": "pack_runtime",
+          "operation_name": "load_active_pack_integration",
+          "median_duration_ms": 129.0
+        },
+        {
+          "operation_kind": "pack_runtime",
+          "operation_name": "load_pack_validation_runtime",
+          "median_duration_ms": 129.0
+        }
+      ]
+    },
+    {
+      "command_id": "step.benchmark.sync_workflow_index",
+      "title": "Workflow Index Sync Preview",
+      "description": "Build the active workflow index through the plan-owned sync surface.",
+      "command": "watchtower-core plan sync workflow-index --format json",
+      "argv": [
+        "watchtower-core",
+        "plan",
+        "sync",
+        "workflow-index",
+        "--format",
+        "json"
+      ],
+      "warmup_runs": 1,
+      "measured_runs": 5,
+      "telemetry_on_runs_ms": [
+        12602.878,
+        12385.645,
+        12677.495,
+        12909.899,
+        12510.27
+      ],
+      "telemetry_off_runs_ms": [
+        12812.5,
+        12638.074,
+        12684.271,
+        12455.607,
+        12451.017
+      ],
+      "median_ms_telemetry_on": 12602.878,
+      "median_ms_telemetry_off": 12638.074,
+      "delta_ms": -35.196,
+      "ratio_on_over_off": 0.997,
+      "top_nested_operations": [
+        {
+          "operation_kind": "sync_command",
+          "operation_name": "watchtower-core plan sync workflow-index",
+          "median_duration_ms": 11809.0
+        },
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "parser_build",
+          "median_duration_ms": 212.0
+        },
+        {
+          "operation_kind": "pack_runtime",
+          "operation_name": "load_active_pack_integration",
+          "median_duration_ms": 17.0
+        },
+        {
+          "operation_kind": "pack_runtime_import",
+          "operation_name": "watchtower_plan.integration",
+          "median_duration_ms": 16.0
+        },
+        {
+          "operation_kind": "cli_stage",
+          "operation_name": "argv_parse",
+          "median_duration_ms": 0.0
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Runtime telemetry is measured separately from deliberate retained benchmark evidence."
+  ]
+}

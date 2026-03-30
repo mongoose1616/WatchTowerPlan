@@ -24,7 +24,7 @@
 - `cli/parser.py`: Registry-backed parser construction for the current host command tree.
 - `cli/registry.py`: Root command-family registry metadata for the current host command tree.
 - `cli/introspection.py`: Parser-backed command metadata used by command-index rebuilds and CLI surface validation.
-- `cli/*_family.py`: Host-owned root command-family registration for `doctor`, `route`, `query`, `pack`, `release`, `sync`, and `validate`.
+- `cli/*_family.py`: Host-owned root command-family registration for `doctor`, `route`, `benchmark`, `query`, `pack`, `release`, `sync`, and `validate`.
 - `cli/*_handlers.py`: Host-owned root command handlers that delegate into reusable-core services.
 
 ## Related Surfaces
@@ -35,3 +35,4 @@
 - `watchtower_host.cli.main` owns top-level telemetry session creation for each `watchtower-core` invocation.
 - Host composition is responsible for command-level status, exit-code, help, and parse-error telemetry while pack and reusable-core layers emit nested operations under the active session.
 - Telemetry stays fail-open and never changes stdout payload contracts.
+- The `benchmark` family is separate from telemetry and owns deliberate retained performance measurement commands rather than per-invocation operational observation.

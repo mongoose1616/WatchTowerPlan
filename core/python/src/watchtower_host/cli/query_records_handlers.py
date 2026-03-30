@@ -8,10 +8,16 @@ from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import AcceptanceContract, ValidationEvidenceArtifact
+from watchtower_core.control_plane.models import (
+    AcceptanceContract,
+    BenchmarkRecordArtifact,
+    ValidationEvidenceArtifact,
+)
 from watchtower_core.query import (
     AcceptanceContractQueryService,
     AcceptanceContractSearchParams,
+    BenchmarkRecordQueryService,
+    BenchmarkRecordSearchParams,
     ValidationEvidenceQueryService,
     ValidationEvidenceSearchParams,
 )
@@ -57,6 +63,26 @@ def _run_query_evidence(args: argparse.Namespace) -> int:
         empty_message="No validation-evidence artifacts matched the requested filters.",
         payload_results_factory=lambda: [_evidence_entry_payload(entry) for entry in entries],
         render_entry=_print_evidence_entry,
+    )
+
+
+def _run_query_benchmarks(args: argparse.Namespace) -> int:
+    service = BenchmarkRecordQueryService(ControlPlaneLoader())
+    entries = service.search(
+        BenchmarkRecordSearchParams(
+            record_id=args.record_id,
+            suite_id=args.suite_id,
+            limit=args.limit,
+        )
+    )
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query benchmarks",
+        entries=entries,
+        noun="benchmark record",
+        empty_message="No benchmark records matched the requested filters.",
+        payload_results_factory=lambda: [_benchmark_entry_payload(entry) for entry in entries],
+        render_entry=_print_benchmark_entry,
     )
 
 
@@ -113,3 +139,25 @@ def _print_evidence_entry(entry: ValidationEvidenceArtifact) -> None:
     print(f"  Trace: {entry.trace_id}")
     print(f"  Recorded At: {entry.recorded_at}")
     print(f"  Checks: {len(entry.checks)}")
+
+
+def _benchmark_entry_payload(entry: BenchmarkRecordArtifact) -> dict[str, object]:
+    return {
+        "record_id": entry.record_id,
+        "title": entry.title,
+        "status": entry.status,
+        "benchmark_kind": entry.benchmark_kind,
+        "suite_id": entry.suite_id,
+        "suite_title": entry.suite_title,
+        "recorded_at": entry.recorded_at,
+        "doc_path": entry.doc_path,
+        "command_count": len(entry.commands),
+        "baseline_record_path": entry.baseline_record_path,
+    }
+
+
+def _print_benchmark_entry(entry: BenchmarkRecordArtifact) -> None:
+    print(f"- {entry.record_id} [{entry.benchmark_kind}]")
+    print(f"  Suite: {entry.suite_id}")
+    print(f"  Recorded At: {entry.recorded_at}")
+    print(f"  Commands: {len(entry.commands)}")

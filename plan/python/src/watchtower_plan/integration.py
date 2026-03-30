@@ -13,6 +13,7 @@ from watchtower_core.pack_integration import (
 from watchtower_core.validation.pack_targets import (
     resolve_pack_validation_suite_targets,
 )
+from watchtower_plan.export_cleanup import scrub_plan_export
 from watchtower_plan.validation.document_semantics import (
     DocumentSemanticsValidationService,
 )
@@ -88,6 +89,7 @@ PACK_INTEGRATION = PackIntegration(
         "query_runtime",
         "sync_targets",
         "validation_provider",
+        "export_cleanup",
     ),
     command_implementation_path="plan/python/src/watchtower_plan/cli/namespace.py",
     command_subcommand_implementation_paths=(
@@ -103,6 +105,7 @@ PACK_INTEGRATION = PackIntegration(
     query_runtime=_query_runtime,
     sync_targets=_sync_targets,
     validation_provider=_validation_provider,
+    export_cleanup=scrub_plan_export,
 )
 
 

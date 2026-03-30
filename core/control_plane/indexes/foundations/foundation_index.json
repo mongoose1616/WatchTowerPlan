@@ -188,12 +188,14 @@
       "cited_by_paths": [
         "core/docs/standards/data_contracts/format_selection_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/standards/engineering/performance_benchmarking_standard.md",
         "core/docs/standards/engineering/runtime_telemetry_standard.md",
         "core/workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/data_contracts/format_selection_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/standards/engineering/performance_benchmarking_standard.md",
         "core/docs/standards/engineering/runtime_telemetry_standard.md",
         "core/workflows/modules/foundations_context_review.md"
       ],

@@ -1,7 +1,7 @@
 # `watchtower-core`
 
 ## Summary
-This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, hosted-pack inspection, release gating, pack-owned orchestration, query, sync, and validation flows.
+This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, benchmarking, hosted-pack inspection, release gating, pack-owned orchestration, query, sync, and validation flows.
 
 ## Use When
 - You need the top-level command map before choosing a narrower command group.
@@ -23,7 +23,7 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to a command group such as `doctor`, `route`, `pack`, `release`, `<pack-namespace>`, `query`, `sync`, or `validate`.
+- `<command>`: Dispatch to a command group such as `doctor`, `route`, `benchmark`, `pack`, `release`, `<pack-namespace>`, `query`, `sync`, or `validate`.
 - `-h`, `--help`: Show the root command help text.
 - No root-only flags exist beyond help and subcommand selection.
 
@@ -36,6 +36,11 @@ uv run watchtower-core --help
 ```sh
 cd core/python
 uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core benchmark run --format json
 ```
 
 ```sh
@@ -73,6 +78,7 @@ uv run watchtower-core validate all --format json
 - With a valid subcommand, it dispatches to that group's handler and returns the group's exit status.
 - Runtime telemetry is default-on and local. Each invocation writes one JSONL file under `<machine_root>/runtime/telemetry/` unless `WATCHTOWER_TELEMETRY=off` disables it or `WATCHTOWER_TELEMETRY_DIR` redirects the sink.
 - The CLI keeps human and JSON command payloads on stdout. Telemetry emits only one concise stderr summary line per invocation unless `WATCHTOWER_TELEMETRY_STDERR=off` suppresses it.
+- Deliberate retained performance measurement now lives under the separate `benchmark` command family rather than under the runtime telemetry contract.
 - Use the group pages and leaf command pages for exact flags and behavior instead of treating this root page as the exhaustive command catalog.
 - Use `watchtower-core query commands --query <term> --format json` when you need machine-readable command discovery instead of browsing docs manually.
 
@@ -80,6 +86,7 @@ uv run watchtower-core validate all --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core route` | Advisory route preview for turning a request into workflow documents. |
+| `watchtower-core benchmark` | Governed reusable-core performance benchmarking and retained benchmark record generation. |
 | `watchtower-core pack` | Inspects hosted-pack registry entries, runtime manifests, and pack-contract validation. |
 | `watchtower-core release` | Runs the local fail-closed release gate for customer-safe bundle staging. |
 | `watchtower-core <pack-namespace>` | Pack-owned namespace for bootstrap, live query, task, closeout, and other pack-local flows. |
@@ -93,4 +100,4 @@ uv run watchtower-core validate all --format json
 - `core/python/src/watchtower_host/cli/registry.py`
 
 ## Updated At
-- `2026-03-25T02:15:00Z`
+- `2026-03-29T12:30:00Z`

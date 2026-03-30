@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "authority_map"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:50:00Z"
+updated_at: "2026-03-29T03:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,9 +20,9 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/`.
 
 ## Purpose
-- Publish one machine-readable policy answer for which planning or governance surface is canonical for a recurring question.
+- Publish one machine-readable policy answer for which planning, governance, or engineering surface is canonical for a recurring question.
 - Reduce surface-lookup ambiguity for agents, scripts, and maintainers without turning the authority map into a second path index or prose encyclopedia.
-- Keep canonical-versus-rendered-surface relationships explicit as the live planning and governance corpus grows.
+- Keep canonical-versus-rendered-surface relationships explicit as the live planning, governance, and engineering corpus grows.
 
 ## Scope
 - Applies to machine-readable authority-map artifacts stored under `core/control_plane/registries/`.
@@ -30,7 +30,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Does not replace the path index, command index, coordination index, initiative index, traceability index, or the human README and command-doc surfaces those canonical machine answers point to.
 
 ## Use When
-- Publishing or changing the canonical machine answer for a common planning or governance question.
+- Publishing or changing the canonical machine answer for a common planning, governance, or engineering question.
 - Adding an authority-discovery query surface for agents or automation.
 - Reviewing whether a proposed lookup policy belongs in the authority map or in a different registry or index.
 
@@ -43,7 +43,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 ## Guidance
 - Model canonical-surface lookup as an authored registry, not as a derived index.
 - Keep the authority map narrow and question-driven.
-- Treat the authority map as policy that answers recurring planning and governance questions, not as a complete inventory of every governed artifact.
+- Treat the authority map as policy that answers recurring planning, governance, and engineering questions, not as a complete inventory of every governed artifact.
 - Store published authority maps under `core/control_plane/registries/`.
 - Keep the companion schema under `core/control_plane/schemas/artifacts/`.
 - Use repository-relative paths for canonical and fallback surfaces.
@@ -69,13 +69,13 @@ This standard defines the role, structure, and boundary rules for the authored a
 | `id` | Required | Stable identifier for the authority-map registry artifact. |
 | `title` | Required | Human-readable title for the registry. |
 | `status` | Required | Use the governed lifecycle vocabulary for the registry artifact itself. |
-| `entries` | Required | Array of supported planning or governance authority answers. |
+| `entries` | Required | Array of supported planning, governance, or engineering authority answers. |
 
 ### Authority entry fields
 | Field | Requirement | Notes |
 |---|---|---|
 | `question_id` | Required | Stable identifier for the supported lookup question. |
-| `domain` | Required | Use `planning` or `governance`. |
+| `domain` | Required | Use `planning`, `governance`, or `engineering`. |
 | `question` | Required | Human-readable lookup question the entry answers. |
 | `status` | Required | Lifecycle status for the authority answer itself. |
 | `artifact_kind` | Required | Canonical governed artifact kind that should answer the question. |
@@ -99,7 +99,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Reviewers should reject entries that duplicate the path index, command index, or README prose without adding canonical-precedence value.
 
 ## Change Control
-- Update this standard when the repository changes how canonical planning or governance surfaces are resolved.
+- Update this standard when the repository changes how canonical planning, governance, or engineering surfaces are resolved.
 - Update the companion schema, live registry, command docs, root entrypoints, and affected pack-owned planning standards in the same change set when authority precedence changes materially.
 - Prefer updating the authority map over scattering canonical-surface policy across several READMEs.
 
@@ -109,4 +109,4 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Pack-owned planning index standards under `<pack>/docs/standards/data_contracts/`
 
 ## Updated At
-- `2026-03-23T16:50:00Z`
+- `2026-03-29T03:00:00Z`

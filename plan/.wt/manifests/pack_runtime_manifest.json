@@ -14,7 +14,8 @@
     "command_registration",
     "query_runtime",
     "sync_targets",
-    "validation_provider"
+    "validation_provider",
+    "export_cleanup"
   ],
   "required_validation_suite_ids": [
     "suite.plan.validation_baseline"

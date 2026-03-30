@@ -31,6 +31,8 @@ from watchtower_core.control_plane.loader_constants import (
     ACCEPTANCE_CONTRACTS_DIRECTORY,
     ACTOR_REGISTRY_PATH,
     AUTHORITY_MAP_PATH,
+    BENCHMARK_RECORDS_DIRECTORY,
+    BENCHMARK_SUITE_REGISTRY_PATH,
     COMMAND_INDEX_PATH,
     CORE_PACK_SETTINGS_PATH,
     FOUNDATION_INDEX_PATH,
@@ -54,6 +56,9 @@ from watchtower_core.control_plane.loader_constants import (
 )
 from watchtower_core.control_plane.loader_pack_settings import (
     _activate_pack_settings as _activate_pack_settings_method,
+)
+from watchtower_core.control_plane.loader_pack_settings import (
+    _current_benchmark_suite_registry_path as _current_benchmark_suite_registry_path_method,
 )
 from watchtower_core.control_plane.loader_pack_settings import (
     _current_pack_settings_path as _current_pack_settings_path_method,
@@ -108,6 +113,12 @@ from watchtower_core.control_plane.loader_surfaces import (
 )
 from watchtower_core.control_plane.loader_surfaces import (
     load_authority_map as _load_authority_map_method,
+)
+from watchtower_core.control_plane.loader_surfaces import (
+    load_benchmark_record_artifacts as _load_benchmark_record_artifacts_method,
+)
+from watchtower_core.control_plane.loader_surfaces import (
+    load_benchmark_suite_registry as _load_benchmark_suite_registry_method,
 )
 from watchtower_core.control_plane.loader_surfaces import (
     load_command_index as _load_command_index_method,
@@ -245,6 +256,8 @@ __all__ = [
     "ACCEPTANCE_CONTRACTS_DIRECTORY",
     "ACTOR_REGISTRY_PATH",
     "AUTHORITY_MAP_PATH",
+    "BENCHMARK_RECORDS_DIRECTORY",
+    "BENCHMARK_SUITE_REGISTRY_PATH",
     "COMMAND_INDEX_PATH",
     "CORE_PACK_SETTINGS_PATH",
     "ControlPlaneLoader",
@@ -319,6 +332,7 @@ class ControlPlaneLoader:
         self._active_schema_catalog_path: str | None = None
         self._active_validator_registry_path: str | None = None
         self._active_validation_suite_registry_path: str | None = None
+        self._active_benchmark_suite_registry_path: str | None = None
         self._active_documentation_family_registry_path: str | None = None
         self._active_template_catalog_path: str | None = None
         self._active_artifact_family_registry_path: str | None = None
@@ -360,6 +374,7 @@ class ControlPlaneLoader:
     load_schema_catalog = _load_schema_catalog_method
     load_validator_registry = _load_validator_registry_method
     load_validation_suite_registry = _load_validation_suite_registry_method
+    load_benchmark_suite_registry = _load_benchmark_suite_registry_method
     load_pack_registry = _load_pack_registry_method
     load_pack_settings = _load_pack_settings_method
     pack_runtime_manifest_path = _pack_runtime_manifest_path_method
@@ -394,6 +409,7 @@ class ControlPlaneLoader:
     load_task_index = _load_task_index_method
     load_traceability_index = _load_traceability_index_method
     load_acceptance_contracts = _load_acceptance_contracts_method
+    load_benchmark_record_artifacts = _load_benchmark_record_artifacts_method
     load_validation_evidence_artifacts = _load_validation_evidence_artifacts_method
     load_active_pack_context = _load_active_pack_context_method
     load_pack_context = _load_pack_context_method
@@ -405,6 +421,7 @@ class ControlPlaneLoader:
     effective_pack_settings_path = _effective_pack_settings_path_method
     _current_validator_registry_path = _current_validator_registry_path_method
     _current_validation_suite_registry_path = _current_validation_suite_registry_path_method
+    _current_benchmark_suite_registry_path = _current_benchmark_suite_registry_path_method
     _current_surface_path = _current_surface_path_method
     _required_surface_path = _required_surface_path_method
     _surface_name_for_active_path = _surface_name_for_active_path_method

@@ -12,6 +12,8 @@ from watchtower_core.control_plane.loader_constants import (
     ACCEPTANCE_CONTRACTS_DIRECTORY,
     ACTOR_REGISTRY_PATH,
     AUTHORITY_MAP_PATH,
+    BENCHMARK_RECORDS_DIRECTORY,
+    BENCHMARK_SUITE_REGISTRY_PATH,
     COMMAND_INDEX_PATH,
     CORE_PACK_SETTINGS_PATH,
     FOUNDATION_INDEX_PATH,
@@ -39,6 +41,8 @@ from watchtower_core.control_plane.models import (
     ArtifactFamilyRegistry,
     ArtifactIndex,
     AuthorityMap,
+    BenchmarkRecordArtifact,
+    BenchmarkSuiteRegistry,
     CommandIndex,
     CoordinationIndex,
     DocumentationFamilyRegistry,
@@ -159,6 +163,18 @@ def load_validation_suite_registry(loader: Any) -> ValidationSuiteRegistry:
         loader._load_typed_document(
             loader._current_validation_suite_registry_path(),
             ValidationSuiteRegistry.from_document,
+        ),
+    )
+
+
+def load_benchmark_suite_registry(loader: Any) -> BenchmarkSuiteRegistry:
+    """Load the current benchmark-suite registry."""
+
+    return cast(
+        BenchmarkSuiteRegistry,
+        loader._load_typed_document(
+            loader._current_benchmark_suite_registry_path(),
+            BenchmarkSuiteRegistry.from_document,
         ),
     )
 
@@ -634,6 +650,23 @@ def load_validation_evidence_artifacts(
     )
 
 
+def load_benchmark_record_artifacts(
+    loader: Any,
+) -> tuple[BenchmarkRecordArtifact, ...]:
+    """Load all governed benchmark record artifacts."""
+
+    return cast(
+        tuple[BenchmarkRecordArtifact, ...],
+        loader._load_typed_directory(
+            BENCHMARK_RECORDS_DIRECTORY,
+            lambda relative_path, document: BenchmarkRecordArtifact.from_document(
+                document,
+                doc_path=relative_path,
+            ),
+        ),
+    )
+
+
 def load_pack_context(
     loader: Any,
     pack_settings_path: str = PACK_SETTINGS_PATH,
@@ -688,6 +721,10 @@ def _declared_surface_loaders(loader: Any) -> dict[str, Callable[[str], object]]
         "validation_suite_registry": lambda relative_path: loader._load_typed_document(
             relative_path,
             ValidationSuiteRegistry.from_document,
+        ),
+        "benchmark_suite_registry": lambda relative_path: loader._load_typed_document(
+            relative_path,
+            BenchmarkSuiteRegistry.from_document,
         ),
         "authority_map": lambda relative_path: loader._load_typed_document(
             relative_path,
@@ -850,6 +887,7 @@ def load_known_surface(loader: Any, relative_path: str) -> object:
     known_surfaces: dict[str, Callable[[], object]] = {
         VALIDATOR_REGISTRY_PATH: loader.load_validator_registry,
         VALIDATION_SUITE_REGISTRY_PATH: loader.load_validation_suite_registry,
+        BENCHMARK_SUITE_REGISTRY_PATH: loader.load_benchmark_suite_registry,
         PACK_REGISTRY_PATH: loader.load_pack_registry,
         AUTHORITY_MAP_PATH: loader.load_authority_map,
         RENDERED_SURFACE_REGISTRY_PATH: loader.load_rendered_surface_registry,

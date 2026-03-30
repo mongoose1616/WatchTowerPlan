@@ -188,6 +188,12 @@ def test_pack_export_core_only_scrubs_donor_hosted_pack_wiring(
         include_shared_discovery_sources=True,
     )
     output_root = tmp_path / "customer_core"
+    benchmark_record_path = (
+        repo_root
+        / "core/control_plane/records/benchmarks/fixture_benchmark_record.json"
+    )
+    benchmark_record_path.parent.mkdir(parents=True, exist_ok=True)
+    benchmark_record_path.write_text("{}\n", encoding="utf-8")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(
@@ -211,6 +217,10 @@ def test_pack_export_core_only_scrubs_donor_hosted_pack_wiring(
     assert payload["default_pack_slug"] is None
     assert payload["pack_validation_note"] is None
     assert payload["portability"]["passed"] is True
+    assert (
+        "core/control_plane/records/benchmarks/fixture_benchmark_record.json"
+        in payload["scrubbed_paths"]
+    )
     assert (output_root / "core").is_dir()
     assert not (output_root / "plan").exists()
     assert (output_root / "core/python/tests").is_dir()
@@ -219,6 +229,10 @@ def test_pack_export_core_only_scrubs_donor_hosted_pack_wiring(
         path.is_file() and path.name != "README.md"
         for path in (output_root / "core/control_plane/records").rglob("*")
     )
+    assert not (
+        output_root
+        / "core/control_plane/records/benchmarks/fixture_benchmark_record.json"
+    ).exists()
     assert not any(
         path.is_file() and path.suffix == ".json"
         for path in (output_root / "core/control_plane/contracts/acceptance").glob("*.json")
@@ -606,3 +620,91 @@ def test_pack_export_reexports_bootstrapped_bundle_after_runtime_residue(
         reexport_root / "packs/recipient/python/src/watchtower_recipient_fixture/__pycache__"
     )
     assert not pycache_root.exists()
+
+
+def test_pack_export_selected_plan_pack_scrubs_live_history_and_rebuilds_clean_views(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    copytree(REPO_ROOT / "plan", repo_root / "plan", dirs_exist_ok=True)
+    output_root = tmp_path / "customer_plan"
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "export",
+            "--output-root",
+            str(output_root),
+            "--include-pack",
+            "plan",
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core pack export"
+    assert payload["passed"] is True
+    assert payload["included_pack_slugs"] == ["plan"]
+    assert payload["portability"]["passed"] is True
+    assert payload["portability"]["issue_count"] == 0
+    assert any(path.startswith("plan/initiatives/") for path in payload["scrubbed_paths"])
+    assert any(path.startswith("plan/projects/") for path in payload["scrubbed_paths"])
+    assert any(path.startswith("plan/.wt/work_items/") for path in payload["scrubbed_paths"])
+
+    assert (output_root / "plan/initiatives").is_dir()
+    assert not any((output_root / "plan/initiatives").iterdir())
+    assert (output_root / "plan/projects").is_dir()
+    assert not any((output_root / "plan/projects").iterdir())
+    assert (output_root / "plan/.wt/work_items").is_dir()
+    assert not any((output_root / "plan/.wt/work_items").iterdir())
+
+    plan_overview = (output_root / "plan/plan_overview.md").read_text(encoding="utf-8")
+    assert "/home/j/WatchTowerPlan" not in plan_overview
+
+    initiative_index = json.loads(
+        (output_root / "plan/.wt/indexes/initiative_index.json").read_text(encoding="utf-8")
+    )
+    assert initiative_index["entries"] == []
+
+    project_index = json.loads(
+        (output_root / "plan/.wt/indexes/project_index.json").read_text(encoding="utf-8")
+    )
+    assert project_index["entries"] == []
+
+    coordination_index = json.loads(
+        (output_root / "plan/.wt/indexes/coordination_index.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert coordination_index["active_initiative_count"] == 0
+    assert coordination_index["actionable_task_count"] == 0
+    assert coordination_index["recommended_surface_path"] == "plan/plan_overview.md"
+
+    task_tracking = (output_root / "plan/tracking/task_tracking.md").read_text(encoding="utf-8")
+    assert "plan/initiatives/" not in task_tracking
+
+    artifact_index = json.loads(
+        (output_root / "plan/.wt/indexes/artifact_index.json").read_text(encoding="utf-8")
+    )
+    assert not any(
+        isinstance(entry.get("path"), str)
+        and (
+            entry["path"].startswith("plan/initiatives/")
+            or entry["path"].startswith("plan/projects/")
+        )
+        for entry in artifact_index["artifacts"]
+    )
+
+    handoff_standard = (
+        output_root / "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md"
+    ).read_text(encoding="utf-8")
+    assert "/home/j/WatchTowerPlan" not in handoff_standard

@@ -12,7 +12,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/authority_map_standard.md",
-      "updated_at": "2026-03-23T16:50:00Z",
+      "updated_at": "2026-03-29T03:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -210,7 +210,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
-      "updated_at": "2026-03-24T22:30:00Z",
+      "updated_at": "2026-03-29T04:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -706,8 +706,8 @@
     {
       "standard_id": "std.documentation.compact_document_authoring",
       "category": "documentation",
-      "title": "Compact Document Authoring Standard",
-      "summary": "This standard defines the repository rule that authored documents should stay concise without sacrificing the depth, structure, or markdown quality needed for real human review.",
+      "title": "Proportional Document Authoring Standard",
+      "summary": "This standard defines the repository rule that authored documents should include the detail and structure needed for real human review without normalizing low-value boilerplate.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/compact_document_authoring_standard.md",
@@ -1407,7 +1407,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-      "updated_at": "2026-03-25T03:10:00Z",
+      "updated_at": "2026-03-29T04:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1459,6 +1459,46 @@
         "engineering",
         "hosted_pack",
         "integration"
+      ]
+    },
+    {
+      "standard_id": "std.engineering.performance_benchmarking",
+      "category": "engineering",
+      "title": "Performance Benchmarking Standard",
+      "summary": "This standard defines the deliberate fail-closed benchmarking contract for reusable-core performance measurement and retained benchmark evidence.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/engineering/performance_benchmarking_standard.md",
+      "updated_at": "2026-03-29T12:30:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "benchmarking",
+        "documentation",
+        "validation"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/benchmarking/",
+        "core/python/src/watchtower_host/cli/benchmark_family.py",
+        "core/control_plane/registries/benchmark_suite_registry.json",
+        "core/control_plane/records/benchmarks/"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/engineering/runtime_telemetry_standard.md",
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/engineering/runtime_telemetry_standard.md",
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "performance_benchmarking"
       ]
     },
     {
@@ -1582,7 +1622,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-24T22:55:00Z",
+      "updated_at": "2026-03-29T03:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1699,7 +1739,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/repository_portability_standard.md",
-      "updated_at": "2026-03-28T23:15:00Z",
+      "updated_at": "2026-03-29T04:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1759,7 +1799,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/runtime_telemetry_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-29T12:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1782,6 +1822,7 @@
       ],
       "internal_reference_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/performance_benchmarking_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
@@ -1792,6 +1833,7 @@
       ],
       "applied_reference_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/performance_benchmarking_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
@@ -2148,7 +2190,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/operations/customer_release_and_bootstrap_standard.md",
-      "updated_at": "2026-03-29T00:45:00Z",
+      "updated_at": "2026-03-29T04:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2919,7 +2961,7 @@
       "standard_id": "std.governance.coordination_tracking",
       "category": "governance",
       "title": "Coordination Tracking Standard",
-      "summary": "This standard defines the repository's compact traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces.",
+      "summary": "This standard defines the repository's derived traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/coordination_tracking_standard.md",
@@ -3233,7 +3275,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
-      "updated_at": "2026-03-27T22:15:00Z",
+      "updated_at": "2026-03-29T04:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

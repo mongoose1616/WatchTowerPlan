@@ -9,6 +9,8 @@
 | `core/control_plane/schemas/artifacts/README.md` | Describes the purpose of the artifact schema directory and its current contents. |
 | `core/control_plane/schemas/artifacts/acceptance_contract.schema.json` | Schema for the machine-readable acceptance-contract artifact family. |
 | `core/control_plane/schemas/artifacts/authority_map.schema.json` | Schema for the authored authority-map registry artifact family. |
+| `core/control_plane/schemas/artifacts/benchmark_record.schema.json` | Schema for the retained benchmark-record artifact family. |
+| `core/control_plane/schemas/artifacts/benchmark_suite_registry.schema.json` | Schema for the authored benchmark-suite registry artifact family. |
 | `core/control_plane/schemas/artifacts/command_index.schema.json` | Schema for the machine-readable command-index artifact family. |
 | `core/control_plane/schemas/artifacts/coordination_index.schema.json` | Schema for the machine-readable coordination-index artifact family. |
 | `core/control_plane/schemas/artifacts/foundation_index.schema.json` | Schema for the machine-readable foundation-index artifact family. |
@@ -31,4 +33,4 @@
 
 ## Notes
 - `core/control_plane/schemas/interfaces/packs/` holds the pack-facing startup contracts such as `pack_settings`, `governance_surface_map`, `path_pattern_registry`, `status_registry`, `actor_registry`, and `artifact_index`.
-- This directory carries the active control-plane artifact schemas plus the current migration, release, and evidence record schemas consumed by the current first-party hosted pack.
+- This directory carries the active control-plane artifact schemas plus the current migration, release, evidence, and benchmark record schemas consumed by the current shared-core runtime.

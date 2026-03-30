@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:registries:authority-map:v1",
   "title": "Authority Map",
-  "description": "Authored machine-readable authority map for canonical planning and governance surfaces.",
+  "description": "Authored machine-readable authority map for canonical planning, governance, and engineering surfaces.",
   "type": "object",
   "required": [
     "$schema",
@@ -61,7 +61,8 @@
       "type": "string",
       "enum": [
         "planning",
-        "governance"
+        "governance",
+        "engineering"
       ]
     },
     "authorityEntry": {

@@ -70,6 +70,7 @@ def test_query_help_lists_authority_and_templates(capsys) -> None:
     help_text = capsys.readouterr().out
     assert result == 0
     assert "authority" in help_text
+    assert "benchmarks" in help_text
     assert "templates" in help_text
 
 
@@ -106,4 +107,21 @@ def test_query_commands_discovers_authority_and_template_leaves(capsys) -> None:
     assert result == 0
     assert any(
         entry["command"] == "watchtower-core query templates" for entry in payload["results"]
+    )
+
+    result, payload = run_json_command(
+        capsys,
+        [
+            "query",
+            "commands",
+            "--query",
+            "watchtower-core query benchmarks",
+            "--limit",
+            "10",
+        ],
+    )
+
+    assert result == 0
+    assert any(
+        entry["command"] == "watchtower-core query benchmarks" for entry in payload["results"]
     )

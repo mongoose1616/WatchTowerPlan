@@ -20,9 +20,10 @@
 | `core/control_plane/registries/` | Canonical lookup data and pack-startup registries owned by core. |
 | `core/control_plane/contracts/` | Versioned machine-readable contract families, currently the acceptance-contract set. |
 | `core/control_plane/indexes/` | Deliberate derived lookup files when a concrete consumer exists. |
-| `core/control_plane/records/` | Retained governed record families for migrations, releases, and validation evidence. |
+| `core/control_plane/records/` | Retained governed record families for migrations, releases, validation evidence, and benchmark baselines. |
 
 ## Notes
 - Keep authored control-plane assets here and keep live pack machine state under the owning pack machine root such as `<pack>/.wt/`.
 - Use `core/control_plane/**` for authored machine authority and pack machine roots such as `<pack>/.wt/**` for live pack state. Do not blur those roles.
 - Treat retained record families under `core/control_plane/records/**` as internal governed history. They are not portable customer-bootstrap surfaces unless a release contract explicitly includes governance history.
+- Benchmark suite definitions belong in the authored registry layer, while captured benchmark results belong in retained benchmark records. Runtime telemetry JSONL remains outside this tree.

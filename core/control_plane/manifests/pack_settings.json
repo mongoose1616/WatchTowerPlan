@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Pack settings load root for the reusable shared-core boundary.",
-  "updated_at": "2026-03-27T15:00:00Z",
+  "updated_at": "2026-03-29T12:30:00Z",
   "pack_id": "pack.core_shared",
   "surfaces": [
     {
@@ -52,6 +52,13 @@
       "surface_name": "validation_suite_registry",
       "surface_kind": "registry",
       "path": "core/control_plane/registries/validation_suite_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "benchmark_suite_registry",
+      "surface_kind": "registry",
+      "path": "core/control_plane/registries/benchmark_suite_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
     },

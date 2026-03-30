@@ -16,6 +16,8 @@ if TYPE_CHECKING:
     from watchtower_core.pack_integration.export import (
         PackExportRequest,
         PackExportResult,
+        PackExportCleanupRequest,
+        PackExportCleanupResult,
         PackExportValidationSummary,
     )
     from watchtower_core.pack_integration.scaffold import (
@@ -41,6 +43,7 @@ REQUIRED_PACK_CAPABILITIES: tuple[str, ...] = (
 )
 OPTIONAL_PACK_CAPABILITIES: tuple[str, ...] = (
     "bootstrap",
+    "export_cleanup",
     "task_lifecycle",
     "initiative_lifecycle",
     "project_context",
@@ -123,6 +126,7 @@ class PackIntegration:
     sync_targets: PackSyncTargetProvider | None = None
     validation_provider: PackValidationProvider | None = None
     bootstrap: PackLifecycleHook | None = None
+    export_cleanup: PackLifecycleHook | None = None
     task_lifecycle: PackLifecycleHook | None = None
     initiative_lifecycle: PackLifecycleHook | None = None
     project_context: PackLifecycleHook | None = None
@@ -169,6 +173,14 @@ _EXPORTS: dict[str, tuple[str, str]] = {
     "PackExportRequest": (
         "watchtower_core.pack_integration.export",
         "PackExportRequest",
+    ),
+    "PackExportCleanupRequest": (
+        "watchtower_core.pack_integration.export",
+        "PackExportCleanupRequest",
+    ),
+    "PackExportCleanupResult": (
+        "watchtower_core.pack_integration.export",
+        "PackExportCleanupResult",
     ),
     "PackExportResult": (
         "watchtower_core.pack_integration.export",
@@ -247,6 +259,8 @@ __all__ = [
     "PackBootstrapRequest",
     "PackBootstrapResult",
     "PackExportRequest",
+    "PackExportCleanupRequest",
+    "PackExportCleanupResult",
     "PackExportResult",
     "PackExportValidationSummary",
     "PackCommandRegistrar",

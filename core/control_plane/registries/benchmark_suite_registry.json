@@ -1,0 +1,90 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:benchmark-suite-registry:v1",
+  "id": "registry.benchmark_suites",
+  "title": "Benchmark Suite Registry",
+  "status": "active",
+  "suites": [
+    {
+      "id": "suite.benchmark.core_cli_representative_v1",
+      "title": "Core CLI Representative Benchmark Suite",
+      "description": "Representative serialized subprocess benchmark suite for current shared-core CLI discovery, validation, routing, and sync flows.",
+      "status": "active",
+      "working_directory": "core/python",
+      "warmup_runs": 1,
+      "measured_runs": 5,
+      "commands": [
+        {
+          "id": "step.benchmark.route_preview_workflow_system",
+          "title": "Workflow System Route Preview",
+          "description": "Preview the workflow route selected for a cross-pack workflow-system audit request.",
+          "argv": [
+            "watchtower-core",
+            "route",
+            "preview",
+            "--request",
+            "audit the workflow system across core and plan",
+            "--format",
+            "json"
+          ]
+        },
+        {
+          "id": "step.benchmark.query_workflow_roles",
+          "title": "Workflow Role Query",
+          "description": "Query the governed workflow index for active workflow roles.",
+          "argv": [
+            "watchtower-core",
+            "query",
+            "workflows",
+            "--workflow-kind",
+            "role",
+            "--format",
+            "json"
+          ]
+        },
+        {
+          "id": "step.benchmark.validate_runtime_telemetry_standard",
+          "title": "Runtime Telemetry Standard Validation",
+          "description": "Validate one canonical engineering standard through the governed document-semantics path.",
+          "argv": [
+            "watchtower-core",
+            "validate",
+            "document-semantics",
+            "--path",
+            "core/docs/standards/engineering/runtime_telemetry_standard.md",
+            "--format",
+            "json"
+          ]
+        },
+        {
+          "id": "step.benchmark.validate_all",
+          "title": "Validate All Baseline",
+          "description": "Run the bounded repository validation baseline without acceptance reconciliation.",
+          "argv": [
+            "watchtower-core",
+            "validate",
+            "all",
+            "--skip-acceptance",
+            "--format",
+            "json"
+          ],
+          "measured_runs_override": 3,
+          "notes": "This is the heaviest command in the suite and uses fewer measured runs to keep the representative benchmark practical."
+        },
+        {
+          "id": "step.benchmark.sync_workflow_index",
+          "title": "Workflow Index Sync Preview",
+          "description": "Build the active workflow index through the plan-owned sync surface.",
+          "argv": [
+            "watchtower-core",
+            "plan",
+            "sync",
+            "workflow-index",
+            "--format",
+            "json"
+          ]
+        }
+      ],
+      "notes": "This suite is the canonical reusable-core benchmark baseline for current CLI workflows. It is serialized, subprocess-based, and intended for retained core benchmark records."
+    }
+  ]
+}

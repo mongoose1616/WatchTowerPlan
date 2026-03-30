@@ -98,6 +98,8 @@ def test_load_active_pack_integration_uses_pack_settings_surface(tmp_path: Path)
     assert loaded.registry_entry.command_namespace == "plan"
     assert loaded.runtime_manifest.command_namespace == "plan"
     assert loaded.integration.python_package == "watchtower_plan"
+    assert "export_cleanup" in loaded.integration.declared_capabilities
+    assert loaded.integration.export_cleanup is not None
 
 
 def test_load_active_pack_integration_records_pack_runtime_telemetry(tmp_path: Path) -> None:

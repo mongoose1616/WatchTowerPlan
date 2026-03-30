@@ -5,6 +5,7 @@
 
 ## Notes
 - Start with `watchtower_core.md` for the root command and shared options.
+- Use `watchtower_core_benchmark.md` when the main question is deliberate performance benchmarking rather than operational telemetry.
 - Use `watchtower_core_route.md` when the main question is how a request maps to workflow documents.
 - Use `watchtower_core_query.md` when the main question is which shared read-only lookup surface to use.
 - Use `watchtower_core_query_authority.md` when the first question is which governed surface is canonical.
@@ -26,8 +27,11 @@
 |---|---|
 | `core/docs/commands/core_python/README.md` | Describes the purpose of the core Python command-doc directory and the fastest ways to find command details. |
 | `core/docs/commands/core_python/watchtower_core.md` | Human-readable page for the root `watchtower-core` command and shared CLI behavior. |
+| `core/docs/commands/core_python/watchtower_core_benchmark.md` | Entry page for governed reusable-core benchmark commands. |
+| `core/docs/commands/core_python/watchtower_core_benchmark_run.md` | Runs one governed benchmark suite and can retain the resulting benchmark record. |
 | `core/docs/commands/core_python/watchtower_core_route.md` | Entry page for advisory route preview commands. |
-| `core/docs/commands/core_python/watchtower_core_query.md` | Entry page for shared governed query commands such as authority resolution, command discovery, repository paths, templates, standards, references, foundations, workflows, acceptance, and evidence. |
+| `core/docs/commands/core_python/watchtower_core_query.md` | Entry page for shared governed query commands such as authority resolution, command discovery, repository paths, templates, standards, references, foundations, workflows, acceptance, evidence, and benchmarks. |
+| `core/docs/commands/core_python/watchtower_core_query_benchmarks.md` | Searches retained benchmark records captured by the reusable-core benchmarking runtime. |
 | `core/docs/commands/core_python/watchtower_core_query_authority.md` | Resolves which shared governed surface is canonical for a recurring governance question. |
 | `core/docs/commands/core_python/watchtower_core_query_templates.md` | Searches the governed template catalog for required sections, allowed roots, and authoring guidance. |
 | `core/docs/commands/core_python/watchtower_core_release.md` | Entry page for the local release-gate command family. |

@@ -31,8 +31,9 @@ def register_query_family(
             `foundations` for the intent-layer foundation corpus, `workflows`
             for workflow-module lookup, `references` for the reference library,
             `standards` for governed repository standards, `acceptance` for
-            governed acceptance contracts, and `evidence` for durable validation
-            proof.
+            governed acceptance contracts, `evidence` for durable validation
+            proof, and `benchmarks` for retained reusable-core performance
+            baselines and comparisons.
 
             Live pack-workspace queries live under the owning pack namespace,
             such as `watchtower-core <pack-namespace> query ...`.
@@ -49,6 +50,8 @@ def register_query_family(
             "uv run watchtower-core query references --query github",
             "uv run watchtower-core query standards --reference-path "
             "core/docs/references/github_collaboration_reference.md",
+            "uv run watchtower-core query benchmarks --suite-id "
+            "suite.benchmark.core_cli_representative_v1 --format json",
             "uv run watchtower-core query acceptance --trace-id trace.governed_acceptance_example",
             "uv run watchtower-core query evidence --trace-id trace.governed_acceptance_example",
         ),

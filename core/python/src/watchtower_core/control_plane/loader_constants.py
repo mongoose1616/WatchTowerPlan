@@ -6,6 +6,7 @@ from typing import TypeVar
 
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validator_registry.json"
 VALIDATION_SUITE_REGISTRY_PATH = "core/control_plane/registries/validation_suite_registry.json"
+BENCHMARK_SUITE_REGISTRY_PATH = "core/control_plane/registries/benchmark_suite_registry.json"
 PACK_REGISTRY_PATH = "core/control_plane/registries/pack_registry.json"
 AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = "core/control_plane/registries/workflow_metadata_registry.json"
@@ -28,6 +29,7 @@ STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.json"
 WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
+BENCHMARK_RECORDS_DIRECTORY = "core/control_plane/records/benchmarks"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/records/validation_evidence"
 
 TArtifact = TypeVar("TArtifact")

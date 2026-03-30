@@ -3,7 +3,7 @@
   "surface_name": "path_pattern_registry",
   "contract_version": "v1",
   "description": "Canonical path patterns for shared-core surfaces without pack-specific workspace roots.",
-  "updated_at": "2026-03-24T19:05:00Z",
+  "updated_at": "2026-03-29T12:30:00Z",
   "patterns": [
     {
       "family_name": "pack_settings",
@@ -36,6 +36,23 @@
       "entity_shape": "file",
       "visibility": "hidden",
       "authoritative": true
+    },
+    {
+      "family_name": "benchmark_suite_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/registries/benchmark_suite_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "benchmark_record",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/records/benchmarks/*.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true,
+      "notes": "Retained benchmark records are internal governed history and are intentionally excluded from portable exports."
     },
     {
       "family_name": "workflow_module",

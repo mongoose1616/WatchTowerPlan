@@ -255,41 +255,74 @@ def test_artifact_validation_supports_explicit_pack_work_item_note_validator(
     assert result.issue_count == 0
 
 
-def test_artifact_validation_auto_selects_benchmark_report_validator_for_initiative_evidence(
+def test_artifact_validation_auto_selects_benchmark_record_validator_for_retained_record(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_validation_repo_subset(tmp_path)
     service = ArtifactValidationService(ControlPlaneLoader(repo_root))
     artifact_path = (
-        repo_root / "packs" / "example" / "initiatives" / "demo" / "benchmark_fixture.json"
+        repo_root / "core" / "control_plane" / "records" / "benchmarks" / "benchmark_fixture.json"
     )
     write_json(
         artifact_path,
         {
-            "$schema": "urn:watchtower:schema:interfaces:packs:benchmark-report:v1",
+            "$schema": "urn:watchtower:schema:artifacts:records:benchmark-record:v1",
             "id": "benchmark.fixture.current",
             "title": "Benchmark Fixture",
             "status": "active",
-            "trace_id": "trace.fixture.current",
-            "initiative_slug": "demo",
-            "benchmark_kind": "task_slice",
-            "captured_at": "2026-03-23T16:15:00Z",
-            "commands": {
-                "pack_validate": {
-                    "command": (
-                        "./core/python/.venv/bin/watchtower-core pack validate "
-                        "--pack example --format json"
-                    ),
-                    "telemetry_on_runs_ms": [12.4],
+            "benchmark_kind": "baseline",
+            "suite_id": "suite.benchmark.fixture",
+            "suite_title": "Fixture Benchmark Suite",
+            "recorded_at": "2026-03-29T12:30:00Z",
+            "working_directory": "core/python",
+            "benchmark_contract": {
+                "working_directory": "core/python",
+                "warmup_runs": 1,
+                "measured_runs": 2,
+                "execution_mode": "serialized_subprocess",
+                "failure_posture": "fail_closed",
+                "telemetry_environment": {
+                    "telemetry_on": {
+                        "WATCHTOWER_TELEMETRY": "on",
+                        "WATCHTOWER_TELEMETRY_STDERR": "off",
+                        "WATCHTOWER_TELEMETRY_DIR": "<temp benchmark dir>"
+                    },
+                    "telemetry_off": {
+                        "WATCHTOWER_TELEMETRY": "off",
+                        "WATCHTOWER_TELEMETRY_STDERR": "off"
+                    }
                 }
             },
+            "environment_context": {
+                "python_version": "3.12.0",
+                "python_executable": "/tmp/python",
+                "platform": "linux-test"
+            },
+            "commands": [
+                {
+                    "command_id": "step.benchmark.fixture",
+                    "title": "Fixture Command",
+                    "description": "Fixture benchmark command.",
+                    "command": "watchtower-core doctor",
+                    "argv": ["watchtower-core", "doctor"],
+                    "warmup_runs": 1,
+                    "measured_runs": 2,
+                    "telemetry_on_runs_ms": [12.4, 11.8],
+                    "telemetry_off_runs_ms": [11.0, 10.9],
+                    "median_ms_telemetry_on": 12.1,
+                    "median_ms_telemetry_off": 10.95,
+                    "delta_ms": 1.15,
+                    "ratio_on_over_off": 1.105,
+                    "top_nested_operations": []
+                }
+            ]
         },
     )
 
     result = service.validate(artifact_path)
 
     assert result.passed is True
-    assert result.validator_id == "validator.interface.benchmark_report"
+    assert result.validator_id == "validator.control_plane.benchmark_record"
     assert result.issue_count == 0
 
 
@@ -311,7 +344,7 @@ def test_artifact_validation_rejects_schema_definition_without_explicit_validato
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 
     with pytest.raises(ValidationSelectionError):
-        service.validate("core/control_plane/schemas/interfaces/packs/benchmark_report.schema.json")
+        service.validate("core/control_plane/schemas/artifacts/benchmark_record.schema.json")
 
 
 def test_artifact_validation_auto_selects_pack_settings_validator() -> None:
@@ -375,33 +408,55 @@ def test_artifact_validation_reports_invalid_pack_interface_artifact(tmp_path: P
     assert any("work_item_id" in issue.message for issue in result.issues)
 
 
-def test_artifact_validation_reports_invalid_benchmark_report(tmp_path: Path) -> None:
+def test_artifact_validation_reports_invalid_benchmark_record(tmp_path: Path) -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
     artifact_path = tmp_path / "benchmark_invalid.json"
     write_json(
         artifact_path,
         {
-            "$schema": "urn:watchtower:schema:interfaces:packs:benchmark-report:v1",
+            "$schema": "urn:watchtower:schema:artifacts:records:benchmark-record:v1",
             "id": "benchmark.example.invalid",
-            "title": "Invalid Benchmark Report",
+            "title": "Invalid Benchmark Record",
             "status": "active",
-            "trace_id": "trace.example.invalid_benchmark",
             "benchmark_kind": "task_slice",
-            "captured_at": "2026-03-22T20:45:00Z",
-            "commands": {},
+            "suite_id": "suite.benchmark.invalid",
+            "suite_title": "Invalid Benchmark Suite",
+            "recorded_at": "2026-03-29T12:30:00Z",
+            "working_directory": "core/python",
+            "benchmark_contract": {
+                "working_directory": "core/python",
+                "warmup_runs": 1,
+                "measured_runs": 2,
+                "execution_mode": "serialized_subprocess",
+                "failure_posture": "fail_closed",
+                "telemetry_environment": {
+                    "telemetry_on": {
+                        "WATCHTOWER_TELEMETRY": "on"
+                    },
+                    "telemetry_off": {
+                        "WATCHTOWER_TELEMETRY": "off"
+                    }
+                }
+            },
+            "environment_context": {
+                "python_version": "3.12.0",
+                "python_executable": "/tmp/python",
+                "platform": "linux-test"
+            },
+            "commands": [],
         },
     )
 
     result = service.validate(
         artifact_path,
-        validator_id="validator.interface.benchmark_report",
+        validator_id="validator.control_plane.benchmark_record",
     )
 
     assert result.passed is False
-    assert result.validator_id == "validator.interface.benchmark_report"
+    assert result.validator_id == "validator.control_plane.benchmark_record"
     assert result.issue_count >= 1
     assert any(
-        issue.location in {"initiative_slug", "commands"} or "initiative_slug" in issue.message
+        issue.location == "commands" or "commands" in issue.message
         for issue in result.issues
     )
 

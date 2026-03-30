@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:30:00Z"
+updated_at: "2026-03-29T04:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,6 +53,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - Keep `integration_module` under the declared `python_package`; host composition must not reach sideways into unrelated packages.
 - `query_runtime` must return a typed query runtime describing the pack-owned query command surface.
 - `sync_targets` must return a typed sync runtime describing the pack-owned sync target surface.
+- Optional `export_cleanup` may be declared when customer-safe staged exports need pack-owned scrub or rebuild behavior beyond the shared-core default exclusions.
 - Keep command namespaces unique across the hosted-pack registry.
 - Keep pack-settings surfaces pack-local unless they intentionally point at shared core control-plane authority under `core/control_plane/`.
 - Keep each pack namespace's command docs under the pack-owned docs root and publish the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
@@ -83,7 +84,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | `command_namespace` | Required | Must be unique across hosted packs |
 | `python_distribution`, `python_package` | Required | Distribution and import names must be explicit |
 | `integration_module` | Required | Import string for the typed pack descriptor |
-| `declared_capabilities` | Required | Must align with the integration descriptor hooks |
+| `declared_capabilities` | Required | Must align with the integration descriptor hooks, including optional `export_cleanup` when the pack owns customer-export cleanup behavior |
 | `owned_roots` | Required | Must match the owning pack roots |
 | `owned_roots.domain_roots` | Optional | Names optional pack-specific roots such as `reviews`, `assessments`, or `targets` |
 | `required_validation_suite_ids` | Required | Used by pack-interface validation |
@@ -145,4 +146,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-24T22:30:00Z`
+- `2026-03-29T04:10:00Z`

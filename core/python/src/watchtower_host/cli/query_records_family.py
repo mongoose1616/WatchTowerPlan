@@ -12,6 +12,7 @@ from watchtower_core.cli.common import (
 )
 from watchtower_host.cli.query_records_handlers import (
     _run_query_acceptance,
+    _run_query_benchmarks,
     _run_query_evidence,
 )
 
@@ -95,3 +96,39 @@ def register_query_record_commands(
     )
     add_human_json_format_argument(query_evidence_parser)
     query_evidence_parser.set_defaults(handler=_run_query_evidence)
+
+    query_benchmarks_parser = query_subparsers.add_parser(
+        "benchmarks",
+        help="Search retained benchmark records.",
+        description=dedent(
+            """
+            Search retained benchmark records captured by the reusable-core
+            benchmarking runtime.
+
+            Use this when you need the durable benchmark baseline or the latest
+            retained comparison record without opening the raw JSON artifact
+            directly.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query benchmarks",
+            "uv run watchtower-core query benchmarks --suite-id suite.benchmark.core_cli_representative_v1 --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_benchmarks_parser.add_argument(
+        "--record-id",
+        help="Exact benchmark record ID filter.",
+    )
+    query_benchmarks_parser.add_argument(
+        "--suite-id",
+        help="Exact benchmark suite ID filter.",
+    )
+    query_benchmarks_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of benchmark records to return.",
+    )
+    add_human_json_format_argument(query_benchmarks_parser)
+    query_benchmarks_parser.set_defaults(handler=_run_query_benchmarks)

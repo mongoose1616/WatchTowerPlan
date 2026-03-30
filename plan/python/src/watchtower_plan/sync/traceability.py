@@ -57,18 +57,11 @@ class TraceabilityIndexSyncService:
         self._merge_validation_evidence(accumulators)
         self._merge_existing_state(accumulators, existing_entries)
 
-        if not accumulators:
-            raise ValueError("Traceability index rebuild produced no trace entries.")
-
         published_entries = [
             accumulators[trace_id].build_document()
             for trace_id in sorted(accumulators)
             if accumulators[trace_id].should_publish()
         ]
-        if not published_entries:
-            raise ValueError(
-                "Traceability index rebuild produced no publishable trace entries."
-            )
 
         document: dict[str, object] = {
             "$schema": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",

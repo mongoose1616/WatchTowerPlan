@@ -47,6 +47,34 @@
       ]
     },
     {
+      "id": "validator.control_plane.benchmark_record",
+      "title": "Benchmark Record Validator",
+      "description": "Validates durable retained benchmark-record artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "benchmark_record",
+      "applies_to": [
+        "core/control_plane/records/benchmarks/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:records:benchmark-record:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.benchmark_suite_registry",
+      "title": "Benchmark Suite Registry Validator",
+      "description": "Validates authored benchmark suite registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "benchmark_suite_registry",
+      "applies_to": [
+        "core/control_plane/registries/benchmark_suite_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:benchmark-suite-registry:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.command_index",
       "title": "Command Index Validator",
       "description": "Validates machine-readable command index artifacts.",
@@ -522,21 +550,6 @@
         "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1"
       ],
       "notes": "Supports explicit validation or repo-local auto-selection for pack-owned work-item note artifacts without requiring repo-local example fixtures."
-    },
-    {
-      "id": "validator.interface.benchmark_report",
-      "title": "Benchmark Report Validator",
-      "description": "Validates generic pack-facing benchmark report artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "benchmark_report",
-      "applies_to": [
-        "**/benchmark_*.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:benchmark-report:v1"
-      ],
-      "notes": "Supports explicit validation or repo-local auto-selection for initiative-local and pack-owned benchmark evidence without requiring pack-specific validator duplication."
     },
     {
       "id": "validator.interface.extraction_output_envelope",

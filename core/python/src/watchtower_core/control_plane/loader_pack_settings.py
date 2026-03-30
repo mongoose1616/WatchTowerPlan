@@ -7,6 +7,7 @@ from typing import Any, cast
 
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader_constants import (
+    BENCHMARK_SUITE_REGISTRY_PATH,
     CORE_PACK_SETTINGS_PATH,
     PACK_RUNTIME_MANIFEST_FILENAME,
     PACK_SETTINGS_PATH,
@@ -47,6 +48,9 @@ def _activate_pack_settings(loader: Any, pack_settings_path: str) -> None:
     loader._active_validator_registry_path = validator_registry_path
     loader._active_validation_suite_registry_path = loader._active_surface_paths.get(
         "validation_suite_registry"
+    )
+    loader._active_benchmark_suite_registry_path = loader._active_surface_paths.get(
+        "benchmark_suite_registry"
     )
     loader._active_documentation_family_registry_path = loader._active_surface_paths.get(
         "documentation_family_registry"
@@ -161,6 +165,20 @@ def _current_validation_suite_registry_path(loader: Any) -> str:
         loader._default_pack_surface_path(
             "validation_suite_registry",
             VALIDATION_SUITE_REGISTRY_PATH,
+        ),
+    )
+
+
+def _current_benchmark_suite_registry_path(loader: Any) -> str:
+    """Return the benchmark-suite registry path active for this loader instance."""
+
+    if loader._active_benchmark_suite_registry_path is not None:
+        return cast(str, loader._active_benchmark_suite_registry_path)
+    return cast(
+        str,
+        loader._default_pack_surface_path(
+            "benchmark_suite_registry",
+            BENCHMARK_SUITE_REGISTRY_PATH,
         ),
     )
 

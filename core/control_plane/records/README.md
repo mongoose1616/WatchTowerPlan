@@ -10,6 +10,7 @@
 | `core/control_plane/records/migrations/` | Append-only history of schema and contract migrations. |
 | `core/control_plane/records/releases/` | Append-only history of releases and their evidence pointers. |
 | `core/control_plane/records/validation_evidence/` | Committed validation evidence linked to traced initiatives, validators, and acceptance items. |
+| `core/control_plane/records/benchmarks/` | Committed benchmark records captured by the reusable-core benchmarking runtime. |
 
 ## Notes
 - Treat this directory as donor-repository history unless a recipient explicitly needs governance lineage.
