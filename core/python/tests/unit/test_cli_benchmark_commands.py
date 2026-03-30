@@ -4,8 +4,8 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from tests.cli_command_helpers import run_json_command
-from watchtower_host.cli.main import main
 from watchtower_host.cli import benchmark_handlers, query_records_handlers
+from watchtower_host.cli.main import main
 
 
 def test_benchmark_run_supports_json_output(monkeypatch, capsys, tmp_path: Path) -> None:

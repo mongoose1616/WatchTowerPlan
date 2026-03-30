@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import argparse
-from textwrap import dedent
 from pathlib import Path
+from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, add_human_json_format_argument, examples
 
@@ -32,8 +32,16 @@ def register_benchmark_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core benchmark run --format json",
-            "uv run watchtower-core benchmark run --output /tmp/core_cli_benchmark.json --format json",
-            "uv run watchtower-core benchmark run --write-record --record-id benchmark.core_cli_representative_v1.20260329_baseline --format json",
+            (
+                "uv run watchtower-core benchmark run "
+                "--output /tmp/core_cli_benchmark.json --format json"
+            ),
+            (
+                "uv run watchtower-core benchmark run --write-record "
+                "--record-id "
+                "benchmark.core_cli_representative_v1.20260329_baseline "
+                "--format json"
+            ),
         ),
         formatter_class=HelpFormatter,
     )
@@ -59,8 +67,16 @@ def register_benchmark_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core benchmark run --format json",
-            "uv run watchtower-core benchmark run --suite-id suite.benchmark.core_cli_representative_v1 --runs 3 --format json",
-            "uv run watchtower-core benchmark run --baseline-record core/control_plane/records/benchmarks/benchmark_core_cli_representative_v1_20260329_baseline.json --format json",
+            (
+                "uv run watchtower-core benchmark run --suite-id "
+                "suite.benchmark.core_cli_representative_v1 --runs 3 --format json"
+            ),
+            (
+                "uv run watchtower-core benchmark run --baseline-record "
+                "core/control_plane/records/benchmarks/"
+                "benchmark_core_cli_representative_v1_20260329_baseline.json "
+                "--format json"
+            ),
         ),
         formatter_class=HelpFormatter,
     )

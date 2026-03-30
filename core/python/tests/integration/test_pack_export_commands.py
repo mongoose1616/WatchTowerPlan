@@ -705,6 +705,8 @@ def test_pack_export_selected_plan_pack_scrubs_live_history_and_rebuilds_clean_v
     )
 
     handoff_standard = (
-        output_root / "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md"
+        output_root
+        / "plan/docs/standards/governance/"
+        / "initiative_engineer_handoff_support_standard.md"
     ).read_text(encoding="utf-8")
     assert "/home/j/WatchTowerPlan" not in handoff_standard

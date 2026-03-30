@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.benchmarking import BenchmarkRunRequest, BenchmarkRunner
+from watchtower_core.benchmarking import BenchmarkRunner, BenchmarkRunRequest
 from watchtower_core.cli.handler_common import (
     _emit_command_error,
     _emit_detail_result,

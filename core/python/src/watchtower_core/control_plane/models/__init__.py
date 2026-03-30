@@ -1,5 +1,14 @@
 """Typed models for governed control-plane artifacts."""
 
+from watchtower_core.control_plane.models.benchmarking import (
+    BenchmarkCommandComparison,
+    BenchmarkCommandRecord,
+    BenchmarkContract,
+    BenchmarkEnvironmentContext,
+    BenchmarkModeEnvironment,
+    BenchmarkNestedOperation,
+    BenchmarkRecordArtifact,
+)
 from watchtower_core.control_plane.models.catalog import (
     ArtifactFamilyEntry,
     ArtifactFamilyRegistry,
@@ -43,15 +52,6 @@ from watchtower_core.control_plane.models.catalog import (
     ValidatorRegistry,
     WorkflowMetadataDefinition,
     WorkflowMetadataRegistry,
-)
-from watchtower_core.control_plane.models.benchmarking import (
-    BenchmarkCommandComparison,
-    BenchmarkCommandRecord,
-    BenchmarkContract,
-    BenchmarkEnvironmentContext,
-    BenchmarkModeEnvironment,
-    BenchmarkNestedOperation,
-    BenchmarkRecordArtifact,
 )
 from watchtower_core.control_plane.models.coordination import (
     CoordinationIndex,

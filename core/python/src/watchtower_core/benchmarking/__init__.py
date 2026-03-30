@@ -2,9 +2,9 @@
 
 from watchtower_core.benchmarking.runner import (
     BENCHMARK_RECORDS_DIRECTORY,
+    BenchmarkRunner,
     BenchmarkRunRequest,
     BenchmarkRunResult,
-    BenchmarkRunner,
 )
 
 __all__ = [

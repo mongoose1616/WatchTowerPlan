@@ -112,7 +112,10 @@ def register_query_record_commands(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query benchmarks",
-            "uv run watchtower-core query benchmarks --suite-id suite.benchmark.core_cli_representative_v1 --format json",
+            (
+                "uv run watchtower-core query benchmarks --suite-id "
+                "suite.benchmark.core_cli_representative_v1 --format json"
+            ),
         ),
         formatter_class=HelpFormatter,
     )

@@ -99,8 +99,14 @@ def test_artifact_targets_exclude_schema_definitions_and_keep_artifacts(
     targets = artifact_targets(context)
 
     assert str(surfaces["artifact_relative_path"]) in targets
-    assert "core/control_plane/schemas/artifacts/benchmark_record.schema.json" not in targets
-    assert "core/control_plane/schemas/artifacts/benchmark_suite_registry.schema.json" not in targets
+    assert (
+        "core/control_plane/schemas/artifacts/benchmark_record.schema.json"
+        not in targets
+    )
+    assert (
+        "core/control_plane/schemas/artifacts/benchmark_suite_registry.schema.json"
+        not in targets
+    )
     assert (
         "core/control_plane/schemas/interfaces/packs/pack_work_item_note.schema.json"
         not in targets

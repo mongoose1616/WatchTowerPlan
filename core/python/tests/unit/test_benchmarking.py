@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 from tests.unit.control_plane_loader_test_support import copy_validation_repo_subset
-from watchtower_core.benchmarking.runner import BenchmarkRunRequest, BenchmarkRunner
+from watchtower_core.benchmarking.runner import BenchmarkRunner, BenchmarkRunRequest
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 

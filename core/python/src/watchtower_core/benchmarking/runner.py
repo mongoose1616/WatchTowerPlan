@@ -173,7 +173,10 @@ class BenchmarkRunner:
             "environment_context": _environment_context_document(self._loader.repo_root),
             "commands": command_documents,
             "notes": [
-                "Runtime telemetry is measured separately from deliberate retained benchmark evidence.",
+                (
+                    "Runtime telemetry is measured separately from deliberate "
+                    "retained benchmark evidence."
+                ),
             ],
         }
         if baseline_record_path is not None:
@@ -360,7 +363,10 @@ class BenchmarkRunner:
         try:
             self._loader.schema_store.validate_instance(document)
         except ValidationError as exc:
-            raise ValueError(f"Generated benchmark record failed schema validation: {exc.message}") from exc
+            raise ValueError(
+                "Generated benchmark record failed schema validation: "
+                f"{exc.message}"
+            ) from exc
 
 
 def _run_subprocess_command(
