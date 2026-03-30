@@ -29,7 +29,7 @@ aliases:
 
 # Engineering Design Principles
 
-This repository is meant to feel like a governed operating environment for LLM- and agent-driven work, not a pile of notes, prompts, and helper scripts. The design philosophy is simple: keep reusable core, host composition, and pack-native runtime explicit, keep the shared substrate trustworthy, keep root and human-facing surfaces compact, and keep the boundary between readable outputs and canonical machine state easy to inspect.
+This repository is meant to feel like a governed operating environment for LLM- and agent-driven work, not a pile of notes, prompts, and helper scripts. The design philosophy is simple: keep reusable core, host composition, and pack-native runtime explicit, keep the shared substrate trustworthy, keep root and human-facing surfaces navigable without hiding material detail, and keep the boundary between readable outputs and canonical machine state easy to inspect.
 
 ## Audience
 
@@ -66,7 +66,7 @@ The repository only works when humans and machines can both find the right level
 - Separate readable human artifacts from canonical machine authority.
 - Keep workflows modular, routed, and easy to compose.
 - Build validation, governance, and traceability into the design instead of adding them later.
-- Treat compactness and context efficiency as system-quality concerns, not just documentation style preferences.
+- Treat ambiguity-free completeness proportional to the task and context efficiency as system-quality concerns, not just documentation style preferences.
 - Treat changes as governed updates that move through proposals, ADRs, traceability, and synchronized artifact changes.
 - Keep historical and reference material available, but visibly non-authoritative.
 

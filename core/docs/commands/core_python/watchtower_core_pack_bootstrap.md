@@ -70,6 +70,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Removes unusable donor registry entries when copied-core bootstrap is reconciling the current repository's active hosted pack into place.
 - `--replace-hosted-packs` is the copied-core scrub-and-reload mode: it removes the current shared hosted-pack registry entries, rewrites `core/python/pyproject.toml` to retain only the target pack's shared workspace registration, and then rebuilds the shared discovery indexes for the recipient pack.
 - The command only reconciles shared hosted-pack wiring. It does not build a curated staged export or scrub donor retained records, test trees, internal assessment docs, or other customer-release exclusions described in [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md).
+- The command also does not reinterpret donor-specific shared-core tests or docs as recipient contract. If pack-neutral shared-core validation fails after copied-core apply, fix the donor shared core and restage the extract rather than expecting bootstrap to hide donor drift.
 - Rebuilds the shared discovery indexes whenever the shared hosted-pack registry changes:
   - `core/control_plane/indexes/commands/command_index.json`
   - `core/control_plane/indexes/repository_paths/repository_path_index.json`
@@ -98,10 +99,11 @@ Use this start-up flow when a recipient repository copied `core/` exactly from a
 4. Author or scaffold the recipient pack root and confirm its `pack_settings.json` plus `pack_runtime_manifest.json` are valid.
 5. Run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --sync-extra dev --format json`.
 6. On the normal path, bootstrap now materializes the recipient pack's declared `sync all` slice automatically after shared workspace reconciliation. No extra manual pack-local sync step should be needed.
-7. If the recipient pack publishes a pack-owned foundations view such as `plan/docs/foundations/**`, copy `core/docs/foundations/**` into that pack-owned root and adapt the pack-local wording before final validation.
-8. If a staged change or fixture intentionally needs to defer the honest workspace sync, add `--no-sync-workspace`, then run `uv sync --extra dev`, `watchtower-core <recipient-namespace> sync all --write --format json`, and `watchtower-core pack validate --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --format json` as soon as the shared workspace can be synced honestly.
-9. Run `watchtower-core pack list --format json` and `watchtower-core validate all --format json` to confirm the recipient pack now owns the shared host wiring.
-10. Run `watchtower-core pack export --output-root <path> --include-pack <slug> --overwrite --format json` before treating the copied repository as a customer-safe deliverable, or `watchtower-core pack export --output-root <path> --include-pack <slug> --pack-only --overwrite --format json` when you need an additive pack bundle without shared core.
+7. If copied-core validation still fails because a shared-core test or doc names donor-pack validators, workflows, rendered surfaces, or tracking files directly, stop and fix the donor shared core before continuing. `pack bootstrap` only reconciles recipient hosted-pack wiring; it does not convert donor-specific shared-core assertions into recipient-owned ones.
+8. If the recipient pack publishes a pack-owned foundations view such as `plan/docs/foundations/**`, copy `core/docs/foundations/**` into that pack-owned root and adapt the pack-local wording before final validation.
+9. If a staged change or fixture intentionally needs to defer the honest workspace sync, add `--no-sync-workspace`, then run `uv sync --extra dev`, `watchtower-core <recipient-namespace> sync all --write --format json`, and `watchtower-core pack validate --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --format json` as soon as the shared workspace can be synced honestly.
+10. Run `watchtower-core pack list --format json` and `watchtower-core validate all --format json` to confirm the recipient pack now owns the shared host wiring.
+11. Run `watchtower-core pack export --output-root <path> --include-pack <slug> --overwrite --format json` before treating the copied repository as a customer-safe deliverable, or `watchtower-core pack export --output-root <path> --include-pack <slug> --pack-only --overwrite --format json` when you need an additive pack bundle without shared core.
 
 ## Related Commands
 | Command | Relationship |
@@ -121,4 +123,4 @@ Use this start-up flow when a recipient repository copied `core/` exactly from a
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-29T00:45:00Z`
+- `2026-03-29T03:35:00Z`

@@ -1,7 +1,7 @@
 # `watchtower-core plan task create`
 
 ## Summary
-This command creates one initiative-local live task record from compact structured inputs and refreshes derived plan-workspace surfaces in write mode.
+This command creates one initiative-local live task record from structured inputs and refreshes derived plan-workspace surfaces in write mode.
 
 ## Use When
 - You need a new bounded live task record without hand-editing initiative-local task JSON.

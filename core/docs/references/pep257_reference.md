@@ -19,7 +19,7 @@ authority: "reference"
 This document provides a working reference for Python docstrings so repository code stays understandable when modules, classes, or functions need explanation.
 
 ## Purpose
-Provide a concise baseline for docstring quality, especially for public interfaces and non-obvious behavior.
+Provide a clear baseline for docstring quality, especially for public interfaces and non-obvious behavior.
 
 ## Scope
 - Covers common PEP 257 expectations that matter for code review and documentation quality.
@@ -34,7 +34,7 @@ Provide a concise baseline for docstring quality, especially for public interfac
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
 - Add docstrings where they improve comprehension, especially for public or non-obvious behavior.
-- Start with a concise summary sentence.
+- Start with an opening summary sentence that matches the amount of explanation the surface needs.
 - Keep docstrings aligned with actual behavior instead of aspirational intent.
 - Prefer docstrings that explain purpose, behavior, or constraints rather than repeating the function name.
 - Keep trivial private helpers lightly documented unless they need explanation.
@@ -42,7 +42,7 @@ Provide a concise baseline for docstring quality, especially for public interfac
 ### Common Cases
 | Case | Recommended Shape | Notes |
 |---|---|---|
-| Simple callable | One-line summary | Best when behavior is obvious after one sentence. |
+| Simple callable | Opening summary sentence | Best when behavior is obvious after the opening sentence. |
 | Non-obvious callable | Multi-line docstring | Use when side effects, constraints, or behavior need more explanation. |
 | Public module or class | Dedicated docstring | Helps preserve intent and usage at reusable boundaries. |
 | Behavior change | Update the docstring in the same change | Prevents docstrings from drifting behind the code. |
@@ -61,7 +61,7 @@ Provide a concise baseline for docstring quality, especially for public interfac
 
 ### Why It Matters Here
 - Use this reference as the baseline for when repository Python code needs docstrings at all.
-- The Python code design standard now uses this reference as the explicit baseline for concise public and non-obvious docstrings.
+- The Python code design standard now uses this reference as the explicit baseline for focused public and non-obvious docstrings.
 - Pair it with [google_style_docstrings_reference.md](/core/docs/references/google_style_docstrings_reference.md) if the repo adopts a structured section format for richer docstrings.
 - If docstring requirements become mandatory for local Python code, define the precise rule under `core/docs/standards/engineering/**`.
 

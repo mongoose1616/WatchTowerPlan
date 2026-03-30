@@ -30,6 +30,36 @@ def test_document_semantics_validation_auto_selects_workflow_validator() -> None
     assert result.issue_count == 0
 
 
+def test_document_semantics_validation_auto_selects_workflow_validator_for_core_role() -> None:
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate("core/workflows/roles/workflow_steward.md")
+
+    assert result.passed is True
+    assert result.validator_id == "validator.documentation.workflow_semantics"
+    assert result.issue_count == 0
+
+
+def test_document_semantics_validation_auto_selects_workflow_validator_for_plan_module() -> None:
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate("plan/workflows/modules/task_lifecycle_management.md")
+
+    assert result.passed is True
+    assert result.validator_id == "validator.documentation.workflow_semantics"
+    assert result.issue_count == 0
+
+
+def test_document_semantics_validation_auto_selects_workflow_validator_for_plan_role() -> None:
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate("plan/workflows/roles/planning_author.md")
+
+    assert result.passed is True
+    assert result.validator_id == "validator.documentation.workflow_semantics"
+    assert result.issue_count == 0
+
+
 def test_document_semantics_validation_auto_selects_standard_validator() -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 

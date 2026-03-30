@@ -45,7 +45,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 
 ## Guidance
 - A reference document should optimize for fast lookup, stable terminology, and clear local application.
-- A reference document should cover one succinct standard, framework, format, specification, or working model.
+- A reference document should cover one clearly bounded standard, framework, format, specification, or working model.
 - Use the reference template when creating new reference documents.
 - When external published guidance materially shapes repository standards or design documents, prefer distilling it into `core/docs/references/**` when the reference is shared or cross-pack, or into the owning pack's `docs/references/**` root when the value is pack-applied.
 - Shared core may host cross-pack external references, including domain-specific topics, when they support reusable-core behavior, shared standards, or multiple hosted packs.
@@ -69,10 +69,10 @@ Keep reference documents focused on durable lookup content by separating reader-
 - `Quick Reference or Distilled Reference` is the core deliverable of a reference document, not filler between the summary and the link list.
 - Prefer concrete lookup density over abstract summary. Use rules, decision points, field tables, syntax, examples, defaults, and pitfalls where they materially help.
 - A reference that mostly restates scope and then points the reader to upstream links should be treated as incomplete.
-- Avoid leaving the dense reference section as only a short `Core Guidance` summary unless the topic is so small that anything denser would be artificial.
+- Avoid leaving the dense reference section as only a high-level `Core Guidance` summary unless the topic is so small that anything denser would be artificial.
 - For topics with correctness, security, interoperability, parsing, storage, data-loss, or configuration risk, the quick-reference section should surface defaults, unsafe assumptions, disallowed patterns, edge cases, and failure modes explicitly.
 - If the upstream source leaves material ambiguity, the reference should name the ambiguity and the local interpretation boundary instead of hiding it behind vague summary language.
-- Keep process guidance brief and limited to how the reader should apply the reference locally.
+- Keep process guidance limited to how the reader should apply the reference locally, but include every materially distinct step or boundary the reader needs.
 - Keep examples focused on correct local use rather than broad tutorials.
 - Keep lifecycle checks, refresh steps, change-control notes, and authoring checklists in documentation workflows or standards rather than in the reference document body.
 - Keep local reference filenames topic-stable and versionless. If the upstream source is versioned, record that version in the title, canonical upstream note, `Updated At`, or body rather than the filename.

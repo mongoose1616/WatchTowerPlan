@@ -6,7 +6,7 @@ This command provides the machine-readable live coordination view for the plan w
 ## Use When
 - You want the current live coordination view without reopening initiative, task, and traceability surfaces separately.
 - You need machine-readable coordination output for an agent, workflow, or script.
-- You want compact active-task summaries plus one recommended next surface to open first.
+- You want focused active-task summaries plus one recommended next surface to open first.
 
 ## Command
 | Field | Value |
@@ -38,7 +38,7 @@ uv run watchtower-core plan query coordination [--query <text>] [--trace-id <tra
 - This command defaults to active initiatives because it is the start-here path for the live plan workspace.
 - The JSON output also carries top-level coordination state, recommended next action, actionable-task summaries, and recent closeout context.
 - Explicit non-active `--initiative-status` lookups resolve result rows from initiative-family data while the top-level coordination snapshot remains the current repo state.
-- `plan/plan_overview.md` is the compact human companion view built from the same live coordination state, while `plan/tracking/coordination_tracking.md` remains the richer human browse companion.
+- `plan/plan_overview.md` is the focused human companion view built from the same live coordination state, while `plan/tracking/coordination_tracking.md` remains the richer human browse companion.
 - Use `watchtower-core plan query trace` after this command when you need the canonical traceability record for one trace.
 - Use `watchtower-core plan query authority` when you need to confirm whether coordination is canonical for the question you are asking.
 - Use `watchtower-core plan query initiatives` when you want broader initiative-family lookup or exhaustive closed-history browsing.
@@ -67,7 +67,7 @@ uv run watchtower-core plan query coordination --initiative-status completed --t
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - With no explicit `--initiative-status`, the command defaults to `active`.
-- The default coordination snapshot stays compact by carrying only active initiative entries plus recent closeout context.
+- The default coordination snapshot stays focused by carrying only active initiative entries plus recent closeout context.
 - In `human` mode, the command prints the top-level coordination mode, recommended next action, matching initiatives, and recent closeout context when useful.
 - In `json` mode, the command prints one JSON object with the command name, coordination mode, recommended next action, result records, actionable tasks, recent closeouts, and the active-only default when it was applied. Embedded initiative entries use `artifact_status` plus `initiative_status`.
 - When `--initiative-status` is explicitly set to a non-active value, the command keeps the same top-level coordination snapshot but serves matching result rows from the initiative-family view so historical lookup remains available without bloating the default coordination artifact.
@@ -81,7 +81,7 @@ uv run watchtower-core plan query coordination --initiative-status completed --t
 | `watchtower-core plan query trace` | Descends from the start-here coordination view into the canonical traceability record for one trace. |
 | `watchtower-core plan query initiatives` | Broader initiative-family lookup surface, including closed-history inspection. |
 | `watchtower-core plan sync all` | Rebuilds the live coordination index and its dependent rendered surfaces. |
-| `watchtower-core plan query tasks` | Inspects the full task records behind the compact active-task summaries. |
+| `watchtower-core plan query tasks` | Inspects the full task records behind the focused active-task summaries. |
 | `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
 
 ## Source Surface

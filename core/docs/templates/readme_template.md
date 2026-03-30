@@ -20,4 +20,4 @@
 `<Optional. Delete this section if exclusions, ownership limits, or storage rules do not need to be stated immediately.>`
 
 ## Notes
-`<Optional. Delete this section if no short usage hints, naming patterns, or companion lookup surfaces materially reduce scan cost.>`
+`<Optional. Delete this section if no focused usage hints, naming patterns, or companion lookup surfaces materially reduce scan cost.>`

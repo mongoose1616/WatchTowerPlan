@@ -43,8 +43,10 @@ Use this workflow to reconcile traced planning and governance artifacts with the
    - Update stale trackers, initiative views, indexes, and trace joins when the underlying artifacts are already correct.
    - Treat the mismatch as an upstream artifact issue when the canonical initiative brief, decision note, design record, implementation slice, contract, or evidence surface is wrong instead.
    - Add the relevant planning workflow if the reconciliation reveals a missing durable artifact that should be created rather than merely re-linked.
+   - When the canonical artifacts are already correct and the drift is in derived mirrors, rebuild the affected surfaces with [watchtower_core_plan_sync_traceability_index.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_traceability_index.md), [watchtower_core_plan_sync_initiative_index.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_initiative_index.md), [watchtower_core_plan_sync_task_index.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_task_index.md), or [watchtower_core_plan_sync_github_tasks.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md) instead of hand-editing derived state.
 5. Validate the reconciled result.
    - Re-run the narrowest meaningful checks such as path resolution, schema validation for touched indexes or contracts, and targeted tracker or index consistency checks.
+   - Confirm the command-driven traceability, initiative, task, and GitHub mirrors now agree with the authoritative planning artifacts for the in-scope traces.
    - Ensure every discrepancy is either resolved in the same change or recorded as explicit follow-up work with the missing link called out.
 
 ## Data Structure

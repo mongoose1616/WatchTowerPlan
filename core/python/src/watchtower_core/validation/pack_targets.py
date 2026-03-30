@@ -163,7 +163,7 @@ def _include_validation_target(
     path = Path(relative_path)
     if path.name in _EXCLUDED_MARKDOWN_TARGET_NAMES:
         return False
-    if "workflows" in path.parts and "modules" not in path.parts:
+    if "workflows" in path.parts and not {"modules", "roles"}.intersection(path.parts):
         return False
     if exclude_workflow_targets and "workflows" in path.parts:
         return False

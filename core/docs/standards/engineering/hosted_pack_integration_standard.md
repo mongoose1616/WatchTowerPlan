@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-25T03:10:00Z"
+updated_at: "2026-03-29T03:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -81,6 +81,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 | `surfaces.validation_suite_registry` | Required runtime surface |
 | `surfaces.workflow_metadata_registry` | Starter runtime surface for pack-owned workflow IDs; the loader merges it with the shared core workflow metadata registry |
 
+- Treat activated `pack_settings.json` plus the merged shared and pack-owned registries as the only reusable shared-core contract for pack-aware assertions. Shared-core tests, docs, and workflow guidance may use the current repository pack as an example, but they must derive runtime expectations from the active pack contract instead of hard-coding one donor repository's validator IDs, rendered surfaces, workflow IDs, or tracking filenames.
 - `pack_runtime_manifest.json` must declare `pack_id`, `pack_slug`, `command_namespace`, `python_distribution`, `python_package`, `integration_module`, `declared_capabilities`, `owned_roots`, and `required_validation_suite_ids`.
 - `owned_roots` must match the pack-owned roots declared in `pack_settings.json`, and optional `domain_roots` should be used for pack-specific roots such as `reviews`, `assessments`, or `targets`.
 - The integration module must live under the declared `python_package` and export one typed `PACK_INTEGRATION`.
@@ -133,6 +134,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Reviewers should reject pack-local helper modules that fork generic standard, reference, or workflow parsing logic already exported by `watchtower_core`.
 - `watchtower-core pack validate --pack <slug>` or `--pack-settings-path <path>` should pass before a pack is treated as integrated.
 - Reviewers should reject bootstrap guidance that implies a raw donor repository snapshot is already customer-safe once shared host wiring passes.
+- Reviewers should reject shared-core tests or docs that depend on a specific donor pack's named validator, workflow, authority, or rendered-surface entries when the same assertion should be derived from the activated pack contract.
 
 ## Change Control
 - Update this standard when the minimum hosted-pack surface set, required capabilities, or pack-extension ownership rules change materially.
@@ -145,4 +147,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-25T03:10:00Z`
+- `2026-03-29T03:35:00Z`

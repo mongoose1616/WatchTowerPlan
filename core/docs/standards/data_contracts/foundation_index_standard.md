@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable foundation indexes stored under `core/control_plane/indexes/foundations/`.
 
 ## Purpose
-Provide a compact lookup and governance-audit surface for the repository's intent-layer foundation documents without forcing tooling to rescan Markdown directly.
+Provide a focused lookup and governance-audit surface for the repository's intent-layer foundation documents without forcing tooling to rescan Markdown directly.
 
 ## Scope
 - Applies to machine-readable foundation index artifacts stored under `core/control_plane/indexes/foundations/`.
@@ -29,7 +29,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Use When
 - Adding or materially updating a governed foundation document under `core/docs/foundations/**`.
-- Building query or review tooling that needs a compact view over the foundations corpus.
+- Building query or review tooling that needs a retrieval-oriented view over the foundations corpus.
 - Auditing where foundation documents are currently cited or applied across standards, workflows, and planning surfaces.
 
 ## Related Standards and Sources
@@ -51,7 +51,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Carry front-matter `audience` into the index so intent-layer routing is queryable without reparsing Markdown.
 - Capture reverse citation and reverse application paths so repo tooling can answer which standards, workflows, and planning docs currently rely on a foundation doc.
 - When a foundation doc depends on external authority, prefer citing a local governed reference doc in the shared or owning-pack `docs/references/**` roots rather than only raw external URLs.
-- Publish compact operationalization metadata that covers the authoritative sync, query, and bounded documentation surfaces for the foundation-index family so tooling can resolve the contract from the surfaces engineers actually touch.
+- Publish operationalization metadata that covers the authoritative sync, query, and bounded documentation surfaces for the foundation-index family so tooling can resolve the contract from the surfaces engineers actually touch.
 - Keep the index aligned with the foundations corpus in the same change set.
 
 ## Structure or Data Model
@@ -69,7 +69,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 |---|---|---|
 | `foundation_id` | Required | Stable foundation identifier from governed front matter. |
 | `title` | Required | Human-readable foundation title. |
-| `summary` | Required | Concise description of the foundation document. |
+| `summary` | Required | Clear description of the foundation document. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `audience` | Required | Retrieval-oriented readership signal mirrored from front matter. |
 | `authority` | Required | Retrieval and precedence signal from front matter. |

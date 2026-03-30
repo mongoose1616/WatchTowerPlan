@@ -1,7 +1,7 @@
 # `core/workflows`
 
 ## Description
-`This directory is the authoritative reusable-core workflow root and shared agent-execution surface. It holds shared routing guidance, reusable workflow modules, and any future shared workflow roles for core implementation, review, validation, documentation, and repository-governance work.`
+`This directory is the authoritative reusable-core workflow root and shared agent-execution surface. It holds shared routing guidance, reusable workflow modules, and shared workflow roles for core implementation, review, validation, documentation, and repository-governance work.`
 
 ## Paths
 | Path | Description |
@@ -15,5 +15,6 @@
 ## Notes
 - Workflow-root boundaries and routing behavior are governed by `core/docs/foundations/repository_scope.md`, `core/docs/standards/workflows/routing_and_context_loading_standard.md`, and the authoritative routing tables.
 - Shared reusable workflow modules live under `core/workflows/modules/` and should stay donor-neutral enough for multiple WatchTower repos or packs to reuse without local rewrites.
-- Shared reusable workflow roles, when they exist, live under `core/workflows/roles/`.
+- Shared reusable workflow roles live under `core/workflows/roles/`; the active shared role set currently includes `workflow_steward.md`.
+- `Workflow System Review` is the shared audit route for workflow modules, workflow roles, routing tables, indexes, and validator coverage.
 - Pack-owned routing and orchestration live under the owning pack workflow roots and may reference shared modules from this root instead of copying them.

@@ -2,7 +2,7 @@
 
 ## Outcome Summary
 
-- Render the completed or current outcome in one concise summary.
+- Render the completed or current outcome with enough detail to capture every materially distinct result, boundary, and current-state qualifier the reader needs.
 
 ## Delivered Outputs
 

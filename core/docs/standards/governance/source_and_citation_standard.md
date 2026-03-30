@@ -60,7 +60,7 @@ This standard defines shared authority order, citation discipline, and fact-vers
 - When a claim depends on current repository state, cite the exact repository path or governed artifact path that supports it.
 - When a claim depends on outside authority, cite the canonical upstream source directly or the governed local reference that faithfully distills it.
 - Prefer governed local references over scattering raw external URLs across multiple docs once the topic has been distilled locally.
-- If a conclusion is not directly observed, state the confidence boundary plainly. Use compact qualifiers such as `confirmed`, `strong inference`, `tentative`, or `unknown` when a review or analysis surface benefits from graded certainty.
+- If a conclusion is not directly observed, state the confidence boundary plainly. Use explicit qualifiers such as `confirmed`, `strong inference`, `tentative`, or `unknown` when a review or analysis surface benefits from graded certainty.
 - If material uncertainty remains, keep the uncertainty visible instead of smoothing it over with vague summary language.
 - When a workflow or AGENTS surface tells contributors how to discover repo facts, point to the governed lookup surface first instead of directing them to broad raw scanning.
 

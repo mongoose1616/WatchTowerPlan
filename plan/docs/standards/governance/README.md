@@ -8,7 +8,7 @@
 |---|---|
 | `plan/docs/standards/governance/README.md` | Describes the purpose of the governance standards directory and the standards stored here. |
 | `plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md` | Defines semantic reconciliation across acceptance intent, machine contracts, evidence, and traceability. |
-| `plan/docs/standards/governance/coordination_tracking_standard.md` | Defines the compact human coordination tracker and the planning-root start-here experience. |
+| `plan/docs/standards/governance/coordination_tracking_standard.md` | Defines the derived human coordination tracker and the planning-root start-here experience. |
 | `plan/docs/standards/governance/decision_capture_standard.md` | Defines how durable repository decisions should be recorded, validated, and propagated into canonical artifacts. |
 | `plan/docs/standards/governance/github_collaboration_standard.md` | Defines the hosted GitHub issue, pull request, label, and project-field collaboration layer. |
 | `plan/docs/standards/governance/github_task_sync_standard.md` | Defines the first push-only GitHub sync contract for local-first task records. |

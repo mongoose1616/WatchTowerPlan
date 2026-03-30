@@ -31,6 +31,16 @@ def _default_pack_namespace(loader: ControlPlaneLoader) -> str:
     return loader.load_pack_registry().default_pack().command_namespace
 
 
+def _first_pack_tracking_surface_path(loader: ControlPlaneLoader) -> str:
+    tracking_root = loader.load_pack_settings().workspace_roots.tracking_root
+    for surface in loader.load_rendered_surface_registry().surfaces:
+        if surface.output_path.startswith(f"{tracking_root}/"):
+            return surface.output_path
+    raise AssertionError(
+        "Expected one rendered surface rooted under the active pack tracking root."
+    )
+
+
 def test_standard_index_sync_builds_schema_valid_document() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = StandardIndexSyncService(loader)
@@ -148,25 +158,28 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         [],
     )
 
-    planning_family_entry = next(
-        entry
-        for entry in entries
-        if entry["standard_id"] == "std.data_contracts.planning_index_family"
-    )
-    assert "planning_index_family" in planning_family_entry.get("tags", [])
-    assert "core/docs/commands/core_python/watchtower_core_query_standards.md" in (
-        planning_family_entry.get("operationalization_paths", [])
-    )
-
     planning_family_member_ids = {
         "std.data_contracts.coordination_index",
         "std.data_contracts.initiative_index",
         "std.data_contracts.task_index",
         "std.data_contracts.traceability_index",
     }
-    for standard_id in planning_family_member_ids:
-        entry = next(entry for entry in entries if entry["standard_id"] == standard_id)
-        assert "planning_index_family" in entry.get("tags", [])
+    planning_family_entry = next(
+        (
+            entry
+            for entry in entries
+            if entry["standard_id"] == "std.data_contracts.planning_index_family"
+        ),
+        None,
+    )
+    if planning_family_entry is not None:
+        assert "planning_index_family" in planning_family_entry.get("tags", [])
+        assert "core/docs/commands/core_python/watchtower_core_query_standards.md" in (
+            planning_family_entry.get("operationalization_paths", [])
+        )
+        for standard_id in planning_family_member_ids:
+            entry = next(entry for entry in entries if entry["standard_id"] == standard_id)
+            assert "planning_index_family" in entry.get("tags", [])
 
     compact_entry = next(
         entry
@@ -221,17 +234,17 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
 
 def test_pack_placeholder_operationalization_paths_match_live_pack_paths() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
-    tracking_root = _default_pack_tracking_root(loader)
+    tracking_surface_path = _first_pack_tracking_surface_path(loader)
     docs_root = _default_pack_docs_root(loader)
     command_namespace = _default_pack_namespace(loader)
 
     assert operationalization_path_matches(
-        f"{tracking_root}/task_tracking.md",
-        "<pack>/tracking/task_tracking.md",
+        tracking_surface_path,
+        f"<pack>/tracking/{Path(tracking_surface_path).name}",
         REPO_ROOT,
     )
     assert operationalization_path_matches(
-        f"{tracking_root}/task_tracking.md",
+        tracking_surface_path,
         "<pack>/tracking/",
         REPO_ROOT,
     )

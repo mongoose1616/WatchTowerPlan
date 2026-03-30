@@ -385,6 +385,40 @@
       ]
     },
     {
+      "route_id": "route.workflow_system_review",
+      "task_type": "Workflow System Review",
+      "trigger_keywords": [
+        "workflow system",
+        "workflow audit",
+        "routing audit",
+        "role model",
+        "workflow index",
+        "route index",
+        "context loading",
+        "workflow coverage"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.workflow_steward",
+        "workflow.workflow_system_review",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/roles/workflow_steward.md",
+        "core/workflows/modules/workflow_system_review.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.documentation_refresh",
       "task_type": "Documentation Refresh",
       "trigger_keywords": [
@@ -610,6 +644,46 @@
         "core/workflows/modules/internal_context_review.md",
         "core/workflows/modules/external_guidance_research.md",
         "plan/workflows/modules/decision_capture.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.planning_authoring",
+      "task_type": "Planning Authoring",
+      "trigger_keywords": [
+        "end-to-end planning",
+        "full planning package",
+        "planning package",
+        "planning author",
+        "author initiative package",
+        "author planning package",
+        "initiative brief design record implementation slice",
+        "initiative brief to implementation slice"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.foundations_context_review",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.planning_author",
+        "workflow.initiative_brief_authoring",
+        "workflow.design_record_planning",
+        "workflow.implementation_slice_planning",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "plan/workflows/roles/planning_author.md",
+        "plan/workflows/modules/initiative_brief_authoring.md",
+        "plan/workflows/modules/design_record_planning.md",
+        "plan/workflows/modules/implementation_slice_planning.md",
         "core/workflows/modules/task_handoff_review.md"
       ]
     },
@@ -842,6 +916,42 @@
       ]
     },
     {
+      "route_id": "route.task_coordination",
+      "task_type": "Task Coordination",
+      "trigger_keywords": [
+        "task coordination",
+        "coordinate tasks",
+        "coordinate task execution",
+        "end-to-end task coordination",
+        "task lifecycle and handoff",
+        "task handoff and github sync",
+        "plan task coordination",
+        "task board coordination"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.task_coordinator",
+        "workflow.task_lifecycle_management",
+        "workflow.task_phase_transition",
+        "workflow.github_task_sync",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "plan/workflows/roles/task_coordinator.md",
+        "plan/workflows/modules/task_lifecycle_management.md",
+        "plan/workflows/modules/task_phase_transition.md",
+        "plan/workflows/modules/github_task_sync.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.task_lifecycle_management",
       "task_type": "Task Lifecycle Management",
       "trigger_keywords": [
@@ -927,6 +1037,48 @@
         "core/workflows/modules/current_state_inspection.md",
         "core/workflows/modules/internal_context_review.md",
         "plan/workflows/modules/task_phase_transition.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.traceability_governance",
+      "task_type": "Traceability Governance",
+      "trigger_keywords": [
+        "traceability governance",
+        "govern traceability",
+        "traceability steward",
+        "end-to-end traceability",
+        "decision trace closeout",
+        "decision to closeout",
+        "acceptance evidence closeout",
+        "traceability and closeout"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.code_validation",
+        "workflow.traceability_steward",
+        "workflow.decision_capture",
+        "workflow.traceability_reconciliation",
+        "workflow.acceptance_evidence_reconciliation",
+        "workflow.initiative_closeout",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/code_validation.md",
+        "plan/workflows/roles/traceability_steward.md",
+        "plan/workflows/modules/decision_capture.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
+        "plan/workflows/modules/acceptance_evidence_reconciliation.md",
+        "plan/workflows/modules/initiative_closeout.md",
         "core/workflows/modules/task_handoff_review.md"
       ]
     },

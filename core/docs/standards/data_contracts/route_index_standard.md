@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable route indexes stored under `core/control_plane/indexes/routes/`.
 
 ## Purpose
-Provide a compact machine-readable rendered surface of the routing table so route-preview tooling can resolve task types and required workflow documents without reparsing the shared routing table and any pack-owned routing tables on every lookup.
+Provide a focused machine-readable rendered surface of the routing table so route-preview tooling can resolve task types and required workflow documents without reparsing the shared routing table and any pack-owned routing tables on every lookup.
 
 ## Scope
 - Applies to machine-readable route index artifacts stored under `core/control_plane/indexes/routes/`.

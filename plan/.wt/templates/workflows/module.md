@@ -27,12 +27,11 @@ Describe the narrow goal of the module.
 
 ## Workflow
 
-1. Describe the first step.
-2. Describe the second step.
+Describe the workflow as an ordered sequence when step order matters. Continue the sequence for as many steps as the module requires, and include each materially distinct branch, checkpoint, or handoff needed for correct execution.
 
 ## Data Structure
 
-- Summarize the key data or state that the module produces.
+- Describe every materially distinct data element or tracked state that the module depends on or produces.
 
 ## Outputs
 

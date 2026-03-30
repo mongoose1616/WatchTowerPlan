@@ -16,6 +16,7 @@
 - Use [README.md](/plan/workflows/README.md) as the quick reference before broader scans.
 - Keep this subtree focused on plan-domain workflow guidance, route selection, and plan-owned workflow documents.
 - Keep [ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md), `modules/README.md`, and `roles/README.md` aligned with the active authoritative workflow set.
+- Enumerate every materially distinct input, branch, tracked field, handoff, output, validation condition, and unresolved question needed for unambiguous planning execution. Do not target fixed bullet counts or stop because a section already feels long enough.
 
 ## Do
 - Route readers toward the live `plan/**` authority surfaces and the authoritative plan routing table together.

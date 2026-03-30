@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for `README.md` files used as directory-level orientation documents in this repository.
 
 ## Purpose
-Keep `README.md` files compact, trustworthy, and useful as the first-stop reference for what a directory is for and what the main entries inside it mean.
+Keep `README.md` files trustworthy and useful as the first-stop reference for what a directory is for and what the main entries inside it mean.
 
 ## Scope
 - Applies to `README.md` files used to describe a directory in this repository.
@@ -42,8 +42,8 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - A `README.md` should act as a quick-reference orientation layer before broader scans.
 - Use exactly one `README.md` per directory.
 - Do not add front matter or lifecycle `status` to a directory README.
-- Keep the document short enough to scan quickly.
-- Default to the smallest useful orientation surface. If readers need a generated query, command index, or companion document for exhaustive lookup, link to it instead of duplicating its contents.
+- Keep the document scannable while still naming the materially important entrypoints and boundaries.
+- Include the orientation detail needed for a reader to open the right next path without ambiguity. If readers need a generated query, command index, or companion document for exhaustive lookup, link to it instead of duplicating its contents.
 - The title should be the repository-relative directory path in backticks. Use `# \`.\`` for the repository root.
 - Include a `Description` section that states what belongs in the directory and any important usage boundaries.
 - Include one inventory section:
@@ -57,7 +57,7 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - If a directory contains many siblings with one stable naming pattern, describe the pattern once and list only the anchor files or path families a reader should open first.
 - Include the local `README.md` itself in the inventory table.
 - Add `Boundaries` only when the directory has important exclusions, ownership limits, or storage rules that a reader needs immediately.
-- Add `Notes` when a compact usage hint, naming pattern, or companion lookup surface materially reduces scanning cost.
+- Add `Notes` when a focused usage hint, naming pattern, or companion lookup surface materially reduces scanning cost.
 - Prefer linking to companion documents rather than copying their detailed content into the README.
 - Do not turn a README into a standards document, workflow module, changelog, or broad narrative overview.
 - Do not embed local operating instructions that belong in `AGENTS.md`.
@@ -85,7 +85,7 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - The README should stay focused on the directory it lives in.
 - The inventory should point to real local files or paths and describe why a reader would care about them.
 - The inventory should be expressed as a Markdown table with the standard two-column shape.
-- The file should be short and scannable enough to serve as quick context before deeper reading.
+- The file should be scannable enough to serve as quick context before deeper reading without omitting materially important entrypoints or boundaries.
 - When the directory has many similar entries, the README should point to the governing naming pattern or lookup surface instead of repeating low-value inventories.
 - The README should not contain front matter, workflow procedure, or broad repository policy that belongs elsewhere.
 

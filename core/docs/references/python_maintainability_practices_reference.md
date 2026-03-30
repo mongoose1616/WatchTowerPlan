@@ -45,13 +45,13 @@ Capture the parts of general Python maintainability guidance that are worth adop
 | `Protocol`-style contracts | Use structural interfaces when behavior matters more than shared implementation. | Fits pack integration, validators, and reusable helpers better than shared base classes. |
 | Pure functions | Prefer pure helpers for parsing, filtering, shaping, validation prep, and lookup. | Keeps orchestration and side effects explicit and easier to test. |
 | Pragmatic exceptions | Break cleanliness rules only for explicit local reasons. | Matches the repository's fail-closed and reviewable posture better than blanket dogma. |
-| Current documentation | Keep docstrings current and useful, not exhaustive or redundant. | Aligns with the repo's preference for concise public or non-obvious docstrings. |
+| Current documentation | Keep docstrings current and useful, not exhaustive or redundant. | Aligns with the repo's preference for focused public or non-obvious docstrings. |
 | Edge-case testing | Cover failure modes and boundary conditions, not only happy paths. | Important for validators, loaders, sync flows, and command surfaces. |
 
 ### Guidance To Reject or Narrow
 | Theme | Do Not Adopt As-Is | Local Reason |
 |---|---|---|
-| Docstrings everywhere | Do not require docstrings for every public symbol mechanically. | The repo prefers concise docs for public and non-obvious behavior, not noise. |
+| Docstrings everywhere | Do not require docstrings for every public symbol mechanically. | The repo prefers focused docs for public and non-obvious behavior, not noise. |
 | Blanket inheritance guidance without typing context | Do not treat composition as a ban on all inheritance. | Small data classes, typed descriptors, and controlled framework seams may still justify inheritance. |
 | Blanket TDD policy | Do not require TDD as the only acceptable path. | Repository validation is required, but the workflow should remain pragmatic. |
 | Opaque extra IDs | Do not add UUIDs everywhere to compensate for weak naming. | The repo already uses readable semantic IDs and `trace_id` joins. |

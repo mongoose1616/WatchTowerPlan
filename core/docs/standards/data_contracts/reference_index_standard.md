@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable reference indexes stored under `core/control_plane/indexes/references/`.
 
 ## Purpose
-Provide a compact lookup and discovery surface for governed reference documents, their canonical upstream authority, their local repository touchpoints, and their downstream citation footprint without forcing tooling to scan Markdown directly.
+Provide a focused lookup and discovery surface for governed reference documents, their canonical upstream authority, their local repository touchpoints, and their downstream citation footprint without forcing tooling to scan Markdown directly.
 
 ## Scope
 - Applies to machine-readable reference index artifacts stored under `core/control_plane/indexes/references/`.
@@ -30,7 +30,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 ## Use When
 - Adding a new governed reference under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - Refreshing reference-tracking data after a reference document is renamed, removed, or materially retargeted.
-- Building lookup or routing tooling that needs a compact machine-readable view over the reference corpus.
+- Building lookup or routing tooling that needs a retrieval-oriented machine-readable view over the reference corpus.
 
 ## Related Standards and Sources
 - [reference_md_standard.md](/core/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -69,7 +69,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 |---|---|---|
 | `reference_id` | Required | Stable reference identifier from governed front matter. |
 | `title` | Required | Human-readable reference title. |
-| `summary` | Required | Concise description of the reference document. |
+| `summary` | Required | Clear description of the reference document. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the reference document under the shared or owning-pack references root. |
 | `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the reference document’s `Updated At` value. |

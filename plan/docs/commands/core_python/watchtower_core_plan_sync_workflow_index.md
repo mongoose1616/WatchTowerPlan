@@ -1,11 +1,12 @@
 # `watchtower-core plan sync workflow-index`
 
 ## Summary
-This command rebuilds the governed workflow index from the workflow modules under `core/workflows/modules/` and `plan/workflows/modules/`.
+This command rebuilds the governed workflow index from the workflow modules and workflow roles under `core/workflows/` and `plan/workflows/`.
 
 ## Use When
 - You changed a workflow module and need the machine-readable workflow index to reflect the current workflow corpus.
-- You want workflow lookup and routing surfaces to stay aligned with the current workflow modules.
+- You changed a workflow role and need the machine-readable workflow index to reflect the current role-model corpus.
+- You want workflow lookup and routing surfaces to stay aligned with the current workflow modules and roles.
 - You want a controlled way to regenerate one workflow-specific index without rebuilding unrelated derived artifacts.
 
 ## Command
@@ -46,12 +47,13 @@ uv run watchtower-core plan sync workflow-index --output /tmp/workflow_index.jso
 ```
 
 ## Behavior and Outputs
-- The command reads workflow modules under `core/workflows/modules/` and `plan/workflows/modules/` and rebuilds the machine-readable workflow index deterministically.
-- The rebuild validates workflow structure, section order, optional explained `Additional Files to Load` bullets, and governed local-reference usage.
+- The command reads workflow modules and workflow roles under `core/workflows/` and `plan/workflows/` and rebuilds the machine-readable workflow index deterministically.
+- The rebuild validates workflow structure, section order, optional explained `Additional Files to Load` bullets, governed local-reference usage, and role-only `Composes Modules` integrity.
 - Shared core workflow documents under `core/workflows/modules/` and `core/workflows/roles/` must remain pack-neutral during rebuild: they may not load pack-owned docs, shared core roles may not compose pack-owned modules, and pack-specific coordination language such as `initiative` or `trace_id` is rejected.
-- Workflow modules that publish `Additional Files to Load` must keep it task-specific, repo-local, checkout-portable, and free of generic routing-baseline boilerplate.
+- Workflow modules and roles that publish task-specific composition or additional-load guidance must keep it repo-local, checkout-portable, and free of generic routing-baseline boilerplate.
 - Workflow modules that use filesystem-absolute checkout paths instead of repository-native links are rejected during rebuild because those paths do not survive clone or worktree changes.
 - Workflow modules that try to cite raw external URLs instead of governed local reference docs in the shared or owning-pack `docs/references/` roots are rejected during rebuild.
+- Workflow roles must include `Composes Modules`, and the rebuilt index records those `composes_module_paths` explicitly so query and review surfaces can inspect the active role model.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many workflow entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
@@ -73,4 +75,4 @@ uv run watchtower-core plan sync workflow-index --output /tmp/workflow_index.jso
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At
-- `2026-03-29T01:20:00Z`
+- `2026-03-29T19:10:00Z`

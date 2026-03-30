@@ -1,10 +1,10 @@
 # Root Purpose
 
-Briefly describe the governed root and what belongs there.
+Describe the governed root and what belongs there. Include every materially distinct boundary, purpose, or usage note needed for a new reader to navigate it without guesswork.
 
 ## Contents or Subtrees
 
-- List the important child paths or files with one-line descriptions.
+- List the important child paths or files with descriptions sized to the amount of explanation each one needs.
 
 ## Navigation Hints
 

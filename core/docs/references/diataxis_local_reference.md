@@ -76,7 +76,7 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - the shared and pack-owned standards roots primarily map to reference because they define structures, rules, naming, contracts, and documentation expectations.
 - [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md), [product_direction.md](/core/docs/foundations/product_direction.md), and [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md) primarily map to explanation because they describe rationale, interpretation, and layered application rather than serving as strict lookup-only artifacts.
 - `core/docs/templates/**` support how-to and tutorial-style authoring depending on whether a template is being used as a scaffold, a teaching aid, or a repeatable documentation starting point.
-- `README.md` files should usually act as orientation or navigation docs and should stay concise instead of absorbing full standards, workflows, or deep explanation content.
+- `README.md` files should usually act as orientation or navigation docs and should stay focused on helping the reader find the right next surface instead of absorbing full standards, workflows, or deep explanation content.
 
 ### If Local Policy Tightens
 - Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
@@ -93,7 +93,7 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - Pack-owned reference-distillation standards under `<pack>/docs/standards/governance/`
 
 ## Notes
-- This document is intentionally short and operational.
+- This document is intentionally focused and operational.
 - When interpretation becomes ambiguous, re-evaluate the document against the Diataxis model rather than extending this local distillation by guesswork.
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
 - The prior `https://diataxis.fr/workflow/` link returned `404` during the refresh and was removed from the canonical upstream list.

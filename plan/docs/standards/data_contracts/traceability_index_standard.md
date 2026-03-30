@@ -21,7 +21,7 @@ authority: "authoritative"
 This standard defines the unified machine-readable traceability index stored under `core/control_plane/indexes/traceability/`.
 
 ## Purpose
-- Provide one compact join surface for initiative briefs, decision notes, design records, implementation slices, task records, acceptance contracts, validators, and validation evidence.
+- Provide one unified join surface for initiative briefs, decision notes, design records, implementation slices, task records, acceptance contracts, validators, and validation evidence.
 - Let Python query services and workflows answer trace questions without parsing multiple indexes and documents ad hoc.
 - Complete the baseline machine-readable trace chain established by the repository planning model.
 
@@ -51,7 +51,7 @@ This standard defines the unified machine-readable traceability index stored und
 - Treat the governed initiative packages, task index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
 - Every traceability entry should publish:
   - `trace_id`
-  - a concise title and summary
+  - a clear title and summary
   - `initiative_status`
   - upstream source surface paths
   - downstream acceptance, validator, and evidence IDs when they exist
@@ -75,7 +75,7 @@ This standard defines the unified machine-readable traceability index stored und
 |---|---|---|
 | `trace_id` | Required | Shared trace identifier. |
 | `title` | Required | Human-readable trace title. |
-| `summary` | Required | Concise description of what the traced initiative covers. |
+| `summary` | Required | Clear description of what the traced initiative covers. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `initiative_status` | Required | Initiative outcome state such as `active` or `completed`. |
 | `updated_at` | Required | Last meaningful content update RFC 3339 UTC timestamp for the joined record. |

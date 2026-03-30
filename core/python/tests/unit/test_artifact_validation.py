@@ -294,12 +294,16 @@ def test_artifact_validation_auto_selects_benchmark_report_validator_for_initiat
 
 
 def test_artifact_validation_prefers_more_specific_pack_owned_validator() -> None:
-    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = ArtifactValidationService(loader)
+    pack = loader.load_pack_registry().default_pack()
+    machine_root = loader.load_pack_settings().workspace_roots.machine_root
+    artifact_path = f"{machine_root}/work_items/pack_work_item_note_stage1_bootstrap.json"
 
-    result = service.validate("plan/.wt/work_items/pack_work_item_note_stage1_bootstrap.json")
+    result = service.validate(artifact_path)
 
     assert result.passed is True
-    assert result.validator_id == "validator.plan.pack_work_item_note"
+    assert result.validator_id == f"validator.{pack.pack_slug}.pack_work_item_note"
     assert result.issue_count == 0
 
 

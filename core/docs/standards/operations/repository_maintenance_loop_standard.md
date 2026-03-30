@@ -51,7 +51,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md): maintenance work should use the baseline validation loop before closeout.
 - Pack-owned traceability standards: recurring upkeep should not let planning joins and derived trackers drift silently.
 - [repository_review.md](/core/workflows/modules/repository_review.md): repository-review work is the natural workflow companion for this standard.
-- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): maintenance often includes concise doc refresh work rather than only new docs.
+- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): maintenance often includes explicit doc refresh work rather than only new docs.
 
 ## Guidance
 - Keep recurring maintenance local-first and deterministic.

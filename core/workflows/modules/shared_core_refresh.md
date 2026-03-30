@@ -14,6 +14,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
 - Active recipient pack settings path and pack slug
 - Current shared portability, bootstrap, and hosted-pack integration standards
 - Any known donor-only retained history, shared acceptance examples, or command-doc drift that could block a clean extract
+- Any known shared-core tests, docs, or workflow assertions that still name donor-pack validators, workflows, rendered surfaces, or tracking files instead of deriving them from the active pack contract
 
 ## Additional Files to Load
 - [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md): defines the difference between engineering shared-core extract and customer-safe export.
@@ -28,6 +29,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
    - Confirm whether the request allows upstream donor fixes. If the donor shared core is the real source of brittleness, fix the donor shared core first instead of hard-coding recipient-side cleanup.
 2. Normalize donor shared-core portability surfaces.
    - Check whether shared docs, shared acceptance examples, shared validation evidence, and shared traceability lineage are truly donor-neutral.
+   - Treat shared `core/python/tests/**`, shared command docs, and shared workflow docs as part of the portable engineering contract. When they need pack-aware expectations, derive them from activated `pack_settings.json`, declared surfaces, and merged registries instead of hard-coding donor-pack IDs or donor-pack path names.
    - Remove or rewrite donor-specific retained artifacts, donor-only trace lineage, or donor-pack assumptions from shared `core/**` surfaces before staging the extract.
    - Keep the minimal portable root shell needed for governed lookup coherence, but do not treat donor root policy or donor pack roots as part of the reusable shared-core payload.
 3. Stage the engineering extract from the donor.
@@ -46,6 +48,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
    - Confirm the donor extract already passed engineering-core readiness.
    - Run the recipient validation baseline, targeted pack-contract validation, and any repo-local workspace validation required by the active repository contract.
    - Confirm lingering donor hosted-pack registry entries, workspace sources, stale lockfiles, donor-only records, and donor-only traceability joins are gone.
+   - If recipient validation fails because shared-core tests or docs still assert donor-pack validators, donor workflows, or donor tracking surfaces directly, treat that as donor shared-core drift. Fix the donor shared core, restage the extract, and reapply instead of carrying a recipient-only cleanup patch.
    - When changing or hardening this workflow itself, rerun the full extract, apply, and bootstrap cycle at least once more and confirm the second pass lands on the same final recipient state apart from expected transient runtime residue.
 7. Close the workflow surfaces in the same change.
    - Update command docs, workflow docs, standards, and governed indexes when the shared-core extract or bootstrap contract changed materially.
@@ -68,4 +71,5 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
 - Shared `core/` can be refreshed from donor to recipient without manual reasoning through donor pack residue each time.
 - The donor extract path and recipient bootstrap path are both documented and executable.
 - Donor-only hosted-pack wiring, retained artifacts, and donor-only trace lineage no longer survive the refresh.
+- Shared-core tests, docs, and workflow references that survive engineering extract stay pack-neutral and derive pack-aware expectations from the active pack contract.
 - Future requests can route directly to this workflow instead of improvising from generic pack-integration guidance.

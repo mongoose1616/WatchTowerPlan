@@ -1,14 +1,14 @@
 # `watchtower-core validate document-semantics`
 
 ## Summary
-This command validates one governed Markdown document against repo-native semantic rules such as repo-local link integrity, required sections, section order, command-doc source-surface integrity, applied-reference explanation, and family-specific guardrails.
+This command validates one governed Markdown document against repo-native semantic rules such as repo-local link integrity, required sections, section order, command-doc source-surface integrity, applied-reference explanation, and family-specific guardrails for shared and pack-owned workflow modules, workflow roles, and other governed docs.
 
 ## Use When
 - You want to validate governed document structure beyond front matter alone.
 - You want broken repo-local Markdown links to fail before closeout.
 - You want shared or pack-owned command docs to fail closed when their published source surfaces drift from live repository paths.
 - You need a structured semantic validation result for a workflow, script, or agent.
-- You want to confirm that a workflow, standard, foundation doc, decision note, design record, or other governed guidance document still satisfies its document standard.
+- You want to confirm that a workflow module, workflow role, standard, foundation doc, decision note, design record, or other governed guidance document still satisfies its document standard.
 
 ## Command
 | Field | Value |
@@ -51,12 +51,18 @@ uv run watchtower-core validate document-semantics --path core/docs/standards/do
 
 ```sh
 cd core/python
+uv run watchtower-core validate document-semantics --path plan/workflows/roles/planning_author.md --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core validate document-semantics --path /tmp/example.md --validator-id validator.documentation.standard_semantics
 ```
 
 ## Behavior and Outputs
 - The command loads the validator registry and resolves the matching document-semantics validator automatically when the path is repository-local.
 - If `--pack-settings-path` is provided, the command resolves the active validator registry from that pack before selecting validators.
+- Shared and pack-owned workflow modules and workflow roles under active workflow roots are eligible for automatic workflow-semantic validator selection.
 - Repo-local Markdown links are validated fail closed when they point to missing repository targets, use filesystem-absolute checkout paths, or escape the current repository root.
 - Command pages also fail when their `Source Surface` entries drift from the command-table `Source Surface` row or from live repository paths.
 - If `--validator-id` is provided, the command validates against that explicit semantic validator instead of auto-selecting by path.
@@ -82,4 +88,4 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-28T04:20:00Z`
+- `2026-03-29T19:10:00Z`

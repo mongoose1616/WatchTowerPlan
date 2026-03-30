@@ -61,6 +61,26 @@ def test_document_semantics_targets_include_command_docs(tmp_path: Path) -> None
     assert "core/docs/commands/core_python/watchtower_core_validate_portability.md" in targets
 
 
+def test_document_semantics_targets_include_workflow_modules_and_roles(tmp_path: Path) -> None:
+    context, _ = _pack_validation_context(tmp_path)
+    pack_module_path = context.loader.resolve_path(
+        "packs/targets/workflows/modules/example_workflow.md"
+    )
+    pack_role_path = context.loader.resolve_path("packs/targets/workflows/roles/example_role.md")
+    pack_module_path.parent.mkdir(parents=True, exist_ok=True)
+    pack_role_path.parent.mkdir(parents=True, exist_ok=True)
+    pack_module_path.write_text("# Example Workflow\n", encoding="utf-8")
+    pack_role_path.write_text("# Example Role\n", encoding="utf-8")
+    targets = document_semantics_targets(context)
+
+    assert "core/workflows/modules/workflow_system_review.md" in targets
+    assert "core/workflows/roles/workflow_steward.md" in targets
+    assert "packs/targets/workflows/modules/example_workflow.md" in targets
+    assert "packs/targets/workflows/roles/example_role.md" in targets
+    assert "core/workflows/README.md" not in targets
+    assert "plan/workflows/roles/README.md" not in targets
+
+
 def test_markdown_targets_include_pack_owned_reference_docs(tmp_path: Path) -> None:
     context, _ = _pack_validation_context(tmp_path)
     relative_path = "packs/targets/docs/references/example_reference.md"

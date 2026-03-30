@@ -104,7 +104,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 | Planning Question | Canonical Surface That Must Stay Stable |
 |---|---|
 | Current planning state and next action | `coordination_index` plus `watchtower-core plan query coordination` |
-| Compact initiative-family view | `initiative_index` plus `watchtower-core plan query initiatives` |
+| Focused initiative-family view | `initiative_index` plus `watchtower-core plan query initiatives` |
 | Authoritative task execution state and dependency graph | `task_index` plus `watchtower-core plan query tasks` |
 | Durable trace-linked source join and initiative closeout state | `traceability_index` plus `watchtower-core plan query trace` |
 | Project-scoped runtime container context when needed | project machine state plus `watchtower-core plan query project-context` |

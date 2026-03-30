@@ -46,7 +46,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Load `AGENTS.md` first as the repository-wide instruction wrapper.
 - Apply only the global rules from `AGENTS.md` before task routing.
 - After reading `AGENTS.md`, consult the shared routing table and any pack-owned routing tables to determine the minimum relevant workflow documents.
-- Use `watchtower-core route preview` when a compact executable preview helps, but treat it as advisory over the authored routing surfaces rather than as a replacement authority.
+- Use `watchtower-core route preview` when a focused executable preview helps, but treat it as advisory over the authored routing surfaces rather than as a replacement authority.
 - Treat the authoritative routing tables as the only surface that activates workflow documents for one request.
 - Always include the shared core workflow module in routed task sets.
 - Load only the minimum workflow documents required for the matched task type or task types.

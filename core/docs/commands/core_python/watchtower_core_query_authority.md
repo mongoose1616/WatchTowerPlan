@@ -5,7 +5,7 @@ This command searches the shared authority map so engineers and agents can resol
 
 ## Use When
 - You know the class of question you need to answer but not which machine or human surface is authoritative.
-- You need one compact canonical-answer surface for governance questions such as lookup order, command discovery, template selection, or standards lookup.
+- You need one focused canonical-answer surface for governance questions such as lookup order, command discovery, template selection, or standards lookup.
 - You want machine-readable authority resolution for a workflow, script, or agent.
 
 ## Command

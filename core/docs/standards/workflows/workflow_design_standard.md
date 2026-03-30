@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines how workflow documents in this repository should be designed, structured, and bounded.
 
 ## Purpose
-Keep workflow documents small, composable, and explicit so routed task execution stays predictable, reviewable, and aligned with the repository's governed operating model.
+Keep workflow documents bounded, composable, and explicit so routed task execution stays predictable, reviewable, and aligned with the repository's governed operating model.
 
 ## Scope
 - Applies to workflow modules under `*/workflows/modules/` and workflow roles under `*/workflows/roles/`.
@@ -65,7 +65,7 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - Make expected inputs explicit through `Inputs`.
 - Make execution behavior explicit through `Workflow`.
 - Use `Data Structure` and `Outputs` to describe the workflow's internal working shape and real task outcomes, not to justify extra prose in repository artifacts.
-- Prefer the smallest useful repository artifact, response, or change set that satisfies the task.
+- Prefer the least duplicated repository artifact, response, or change set that still records every materially distinct outcome required by the task.
 - Make stop conditions explicit through `Done When`.
 - Prefer composing multiple small workflows over one catch-all workflow that mixes unrelated execution concerns.
 - When the same concrete execution phase recurs across multiple task families, factor it into a reusable shared workflow module instead of copying it into every task-family workflow.
@@ -75,7 +75,7 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - Workflows may reference standards, templates, or canonical docs, but they should not silently replace them.
 - Workflow documents may publish `Additional Files to Load` only when extra repo-local files beyond the routing baseline materially change execution.
 - `Additional Files to Load` should point to the next files an agent or maintainer should actually open, not to generic repo-wide context that routing already guarantees.
-- `Additional Files to Load` bullets should use `source: execution implication` form and remain short enough to keep the module scan-friendly.
+- `Additional Files to Load` bullets should use `source: execution implication` form and include every materially distinct file whose contents change execution.
 - When a workflow depends on governed lookup or authored-document shape, tell the reader to use the relevant query surface such as `watchtower-core query authority`, `watchtower-core query commands`, or `watchtower-core query templates` before raw scanning or improvised structure.
 - When a workflow requires discovery or judgment, make it explicit which steps are observed current-state facts, which steps allow bounded inference, and where local policy or recommendation is being applied.
 - `Additional Files to Load` links should use repository-native Markdown targets such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another repo-relative path the current checkout can resolve.
@@ -93,16 +93,16 @@ Keep workflow documents small, composable, and explicit so routed task execution
 | `Purpose` | Defines the workflow's primary objective | Keep it singular and specific. |
 | `Use When` | Defines the trigger conditions | Make routing or invocation intent clear. |
 | `Inputs` | Defines the information the workflow expects | Include standards or canonical docs when they materially govern execution. |
-| `Composes Modules` | Required for workflow roles | List the reusable workflow modules the role directly orchestrates using repo-local links and brief orchestration implications. |
+| `Composes Modules` | Required for workflow roles | List the reusable workflow modules the role directly orchestrates using repo-local links and explicit orchestration implications. |
 | `Workflow` | Defines the ordered execution behavior | Steps should be concrete and bounded. |
-| `Data Structure` | Defines the internal working structure the workflow expects or produces | Keep it brief and avoid mirroring final-document headings unless the workflow truly depends on them. |
+| `Data Structure` | Defines the internal working structure the workflow expects or produces | Keep it direct and include every materially distinct data element, state boundary, or structure the workflow truly depends on. |
 | `Outputs` | Defines the intended deliverables | List actual changed surfaces or resulting artifacts, not generic meta records. |
 | `Done When` | Defines completion criteria | Make stopping conditions visible. |
 
 ### Optional sections
 | Section | Optional Role | Notes |
 |---|---|---|
-| `Additional Files to Load` | Identifies extra repo-local files to open beyond the routing baseline | Keep it short and use `source: execution implication` bullets. |
+| `Additional Files to Load` | Identifies extra repo-local files to open beyond the routing baseline | Use `source: execution implication` bullets and list as many files as execution actually depends on. |
 
 ### Boundary rules
 - A workflow document should not mix routing logic, repository-wide wrappers, and task execution in one document.
@@ -140,7 +140,7 @@ Keep workflow documents small, composable, and explicit so routed task execution
 - The required sections should be present and materially useful rather than empty headings.
 - Workflow roles should publish a materially useful `Composes Modules` section instead of leaving module orchestration implicit in prose alone.
 - `Composes Modules` entries should point only to governed workflow-module documents.
-- `Data Structure` and `Outputs` should stay concise and should not imply extra deliverables beyond the requested task.
+- `Data Structure` and `Outputs` should include every materially relevant tracked concept or resulting surface and should not imply extra deliverables beyond the requested task.
 - `Additional Files to Load` should appear only when the workflow actually needs task-specific extra files beyond the routing baseline.
 - When `Additional Files to Load` appears, it should point to concrete repo-local files and explain why each file changes execution.
 - `Additional Files to Load` links should stay checkout-portable and must not depend on one machine-local filesystem root.

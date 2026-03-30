@@ -21,6 +21,7 @@ from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_core.validation.errors import ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
+from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.pack_targets import (
     resolve_pack_validation_suite_targets,
 )
@@ -132,6 +133,9 @@ def focused_validation_without_acceptance_result():
             ),
             "step.plan.document_semantics": (
                 "core/workflows/modules/code_validation.md",
+                "core/workflows/roles/workflow_steward.md",
+                "plan/workflows/modules/task_lifecycle_management.md",
+                "plan/workflows/roles/planning_author.md",
                 "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
             ),
             "step.plan.artifacts": (
@@ -160,6 +164,9 @@ def focused_validation_all_result():
             ),
             "step.plan.document_semantics": (
                 "core/workflows/modules/code_validation.md",
+                "core/workflows/roles/workflow_steward.md",
+                "plan/workflows/modules/task_lifecycle_management.md",
+                "plan/workflows/roles/planning_author.md",
                 "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
             ),
             "step.plan.artifacts": (
@@ -305,6 +312,40 @@ def test_validate_all_includes_plan_reference_docs_in_governed_markdown_families
     target = "plan/docs/references/core_swap_integration_assessment_closeout_reference.md"
     assert ("front_matter", target) in observed_targets
     assert ("document_semantics", target) in observed_targets
+
+
+def test_validate_all_includes_workflow_roles_and_plan_workflow_modules_in_document_semantics(
+    focused_validation_all_result,
+) -> None:
+    target_paths = {
+        record.target
+        for record in focused_validation_all_result.records
+        if record.family == "document_semantics"
+    }
+
+    assert "core/workflows/roles/workflow_steward.md" in target_paths
+    assert "plan/workflows/modules/task_lifecycle_management.md" in target_paths
+    assert "plan/workflows/roles/planning_author.md" in target_paths
+
+
+def test_resolve_pack_validation_suite_targets_include_workflow_roles_and_plan_workflows() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    suite = next(
+        suite
+        for suite in loader.load_validation_suite_registry().suites
+        if suite.suite_id == "suite.plan.validation_baseline"
+    )
+    step = next(step for step in suite.steps if step.step_id == "step.plan.document_semantics")
+    context = PackValidationContext.from_loader(
+        loader,
+        pack_settings_path="core/control_plane/manifests/pack_settings.json",
+    )
+
+    targets = resolve_pack_validation_suite_targets(context, step)
+
+    assert "core/workflows/roles/workflow_steward.md" in targets
+    assert "plan/workflows/modules/task_lifecycle_management.md" in targets
+    assert "plan/workflows/roles/planning_author.md" in targets
 
 
 def test_validate_all_reuses_reference_index_build_across_workflow_semantics(

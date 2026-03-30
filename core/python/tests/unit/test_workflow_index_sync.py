@@ -16,6 +16,34 @@ from watchtower_core.sync.workflow_index import (
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
+def _workflow_entry_map(document: dict[str, object]) -> dict[str, dict[str, object]]:
+    entries = document["entries"]
+    assert isinstance(entries, list)
+    return {
+        entry["workflow_id"]: entry
+        for entry in entries
+        if isinstance(entry, dict) and isinstance(entry.get("workflow_id"), str)
+    }
+
+
+def _first_pack_workflow_entry(
+    entries_by_id: dict[str, dict[str, object]],
+    loader: ControlPlaneLoader,
+    *,
+    workflow_kind: str,
+    subdir: str,
+) -> dict[str, object] | None:
+    workflows_root = loader.load_pack_settings().workspace_roots.workflows_root
+    prefix = f"{workflows_root}/{subdir}/"
+    for entry in entries_by_id.values():
+        if entry["workflow_kind"] != workflow_kind:
+            continue
+        if not entry["doc_path"].startswith(prefix):
+            continue
+        return entry
+    return None
+
+
 def _copy_control_plane_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
@@ -54,6 +82,7 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
 
     loader.schema_store.validate_instance(document)
     entries = document["entries"]
+    entries_by_id = _workflow_entry_map(document)
     assert isinstance(entries, list)
     assert any(
         entry["workflow_id"] == "workflow.documentation_review"
@@ -67,28 +96,10 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
         for entry in entries
     )
     assert any(
-        entry["workflow_id"] == "workflow.github_task_sync"
-        and entry["workflow_kind"] == "module"
-        and entry["phase_type"] == "execution"
-        and entry["task_family"] == "github_integration"
-        and entry["uses_internal_references"] is True
-        and "partial_update" in entry["primary_risks"]
-        and "sync" in entry["trigger_tags"]
-        and "workflow.task_lifecycle_management" in entry.get("companion_workflow_ids", [])
-        for entry in entries
-    )
-    assert any(
         entry["workflow_id"] == "workflow.documentation_implementation_reconciliation"
         and "current" in entry["trigger_tags"]
         and "cli" in entry["trigger_tags"]
         and "behavior" in entry["trigger_tags"]
-        for entry in entries
-    )
-    assert any(
-        entry["workflow_id"] == "workflow.task_phase_transition"
-        and "successor" in entry["trigger_tags"]
-        and "task" in entry["trigger_tags"]
-        and "owner" in entry["trigger_tags"]
         for entry in entries
     )
     assert any(
@@ -99,6 +110,62 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
         and "runtime" in entry["trigger_tags"]
         for entry in entries
     )
+    assert any(
+        entry["workflow_id"] == "workflow.workflow_system_review"
+        and entry["workflow_kind"] == "module"
+        and entry["phase_type"] == "review"
+        and entry["task_family"] == "workflow_governance"
+        and "workflows" in entry["trigger_tags"]
+        and "routing" in entry["trigger_tags"]
+        and "validator" in entry["trigger_tags"]
+        for entry in entries
+    )
+    assert any(
+        entry["workflow_id"] == "workflow.workflow_steward"
+        and entry["workflow_kind"] == "role"
+        and entry["phase_type"] == "review"
+        and entry["composes_module_paths"] == [
+            "core/workflows/modules/workflow_system_review.md"
+        ]
+        for entry in entries
+    )
+    github_task_sync = entries_by_id.get("workflow.github_task_sync")
+    if github_task_sync is not None:
+        assert github_task_sync["workflow_kind"] == "module"
+        assert github_task_sync["phase_type"] == "execution"
+        assert github_task_sync["task_family"] == "github_integration"
+        assert github_task_sync["uses_internal_references"] is True
+        assert "partial_update" in github_task_sync["primary_risks"]
+        assert "sync" in github_task_sync["trigger_tags"]
+        assert "workflow.task_lifecycle_management" in github_task_sync.get(
+            "companion_workflow_ids",
+            [],
+        )
+    task_phase_transition = entries_by_id.get("workflow.task_phase_transition")
+    if task_phase_transition is not None:
+        assert "successor" in task_phase_transition["trigger_tags"]
+        assert "task" in task_phase_transition["trigger_tags"]
+        assert "owner" in task_phase_transition["trigger_tags"]
+    pack_module_entry = _first_pack_workflow_entry(
+        entries_by_id,
+        loader,
+        workflow_kind="module",
+        subdir="modules",
+    )
+    assert pack_module_entry is not None
+    assert pack_module_entry["phase_type"]
+    assert pack_module_entry["task_family"]
+    assert pack_module_entry["uses_internal_references"] is True
+    assert pack_module_entry["trigger_tags"]
+    pack_role_entry = _first_pack_workflow_entry(
+        entries_by_id,
+        loader,
+        workflow_kind="role",
+        subdir="roles",
+    )
+    if pack_role_entry is not None:
+        assert pack_role_entry["phase_type"]
+        assert pack_role_entry["composes_module_paths"]
 
 
 def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:

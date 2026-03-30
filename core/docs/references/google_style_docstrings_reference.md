@@ -37,7 +37,7 @@ Provide a practical format for docstrings that need predictable sections such as
 - Keep section names consistent across the repo.
 - Describe actual runtime behavior, not aspirational behavior.
 - Do not add empty sections just because the format allows them.
-- Prefer concise sections over long prose blocks.
+- Prefer focused sections whose length matches the amount of explanation the callable actually needs.
 
 ### Common Sections
 | Section | Use For | Notes |
@@ -49,7 +49,7 @@ Provide a practical format for docstrings that need predictable sections such as
 | `Side Effects` | Mutations, I/O, or externally visible effects | Useful when the callable changes more than its return value. |
 
 ### Common Pitfalls
-- Turning every short docstring into a fully sectioned block when a concise summary would be clearer.
+- Turning every docstring into a fully sectioned block when a simple summary would be clearer.
 - Leaving stale parameter or return descriptions after behavior changes.
 - Mixing section names or capitalization styles across the repo.
 - Using sections to restate type hints instead of explaining behavior or meaning.

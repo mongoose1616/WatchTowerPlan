@@ -51,7 +51,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
   - `entrypoints` for curated high-signal repository surfaces used for navigation and retrieval.
   - `full_tree` for a generated catalog intended to cover the repository tree more completely.
 - Start with `entrypoints` unless a concrete retrieval need justifies the maintenance cost of a full-tree catalog.
-- Keep entry summaries concise and retrieval-oriented rather than copying long README prose.
+- Keep entry summaries clear and retrieval-oriented rather than copying long README prose.
 - Prefer deriving summaries and related-path hints from current repository documentation when that guidance exists.
 - Publish retrieval metadata that helps both humans and agents distinguish authoritative entrypoints from scaffolding or support surfaces.
 - Include optional aliases, tags, and related paths only when they materially improve lookup quality.
@@ -77,7 +77,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 | `path` | Required | Repository-relative file or directory path. |
 | `kind` | Required | Use `file` or `directory`. |
 | `surface_kind` | Required | Short family label such as `workflow`, `standard`, `template`, `control_plane`, or `source`. |
-| `summary` | Required | Concise retrieval-oriented description of why the path matters. |
+| `summary` | Required | Clear retrieval-oriented description of why the path matters. |
 | `parent_path` | Required | Repository-relative parent path or `.` for root-level entries. |
 | `maturity` | Required | Retrieval-oriented authority hint. Use `authoritative`, `supporting`, or `scaffold`. |
 | `priority` | Required | Retrieval-oriented ranking hint. Use `high`, `medium`, or `low`. |

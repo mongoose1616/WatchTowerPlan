@@ -13,7 +13,7 @@ audience: "shared"
 
 # Subject Summary
 
-Describe the reference subject briefly.
+Describe the reference subject in enough detail to make its local use and boundary clear.
 
 ## Usage Guidance
 
@@ -29,4 +29,4 @@ Describe the reference subject briefly.
 
 ## Notes
 
-- Record short local interpretation notes only when they materially help reuse.
+- Record local interpretation notes whenever they materially help reuse or remove ambiguity.

@@ -76,7 +76,7 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 | Field | Requirement | Notes |
 |---|---|---|
 | `acceptance_id` | Required | Stable acceptance identifier from the source acceptance surface. |
-| `summary` | Required | Concise machine-readable statement of the acceptance item. |
+| `summary` | Required | Clear machine-readable statement of the acceptance item. |
 | `source_requirement_ids` | Optional | Requirement IDs that materially justify the acceptance item. |
 | `required_validator_ids` | Optional | Validators expected to support or prove the acceptance item. |
 | `validation_targets` | Optional | Concrete repository surfaces or artifacts that should be checked. |

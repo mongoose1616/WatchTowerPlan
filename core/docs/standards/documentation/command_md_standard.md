@@ -53,7 +53,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Use `## Arguments and Options` even when the current command surface is small; state clearly when no command-specific arguments or options exist yet.
 - When a command supports both human-readable and structured machine output, document the canonical output-mode flag and supported values explicitly.
 - Prefer one `--format` option such as `--format human` or `--format json` over separate bespoke `--human` and `--json` switches.
-- Prefer concise examples that match the actual workspace and onboarding contract.
+- Prefer examples that match the actual workspace and onboarding contract and include enough detail to avoid ambiguity.
 - Record the implementation or source surface so engineers can move from the doc to the responsible code path quickly.
 - Keep command families modular: one directory per command family and one page per command or subcommand.
 - Point root shared-command pages at `watchtower_host.cli` source surfaces when the host owns parser construction or dispatch, and point pack pages at the owning `watchtower_<pack>.cli` surfaces rather than shared helper shims.
@@ -69,10 +69,10 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 ### Required sections for command pages
 | Section | Requirement | Notes |
 |---|---|---|
-| `Summary` | Required | One short explanation of the command and its purpose. |
+| `Summary` | Required | One explanation of the command and its purpose. |
 | `Use When` | Required | When an operator or engineer should reach for this command. |
 | `Command` | Required | Table describing invocation, kind, workspace, and implementation surface. |
-| `Synopsis` | Required | Short usage form in a fenced shell block. |
+| `Synopsis` | Required | Usage form in a fenced shell block. |
 | `Arguments and Options` | Required | List supported args or state clearly when there are none beyond help. |
 | `Examples` | Required | At least one real repository example. |
 | `Behavior and Outputs` | Required | Describe the current output shape, side effects, and exit behavior. |

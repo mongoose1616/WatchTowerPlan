@@ -2,7 +2,7 @@
 
 ## Summary
 
-- State that these checklists are the short final pass before a phase is considered done.
+- State that these checklists are the final closeout pass before a phase is considered done and that they should include every materially distinct check needed for safe phase completion.
 
 ## Global Rules
 
@@ -11,5 +11,5 @@
 
 ## Example Phase Checklist
 
-- List the short phase-specific checks that must pass before closeout.
-- Keep the checklist compact and execution-facing.
+- List every phase-specific check that must pass before closeout.
+- Keep the checklist execution-facing without collapsing distinct checks into one generic line.

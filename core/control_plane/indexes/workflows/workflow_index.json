@@ -1168,6 +1168,129 @@
       ]
     },
     {
+      "workflow_id": "workflow.workflow_system_review",
+      "workflow_kind": "module",
+      "title": "Workflow System Review Workflow",
+      "summary": "Use this workflow to audit the workflow system across shared and pack-owned roots so workflow modules, roles, routing tables, indexes, validators, and runtime query surfaces stay deterministic and aligned.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/workflow_system_review.md",
+      "phase_type": "review",
+      "task_family": "workflow_governance",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "route_drift",
+        "validator_gap"
+      ],
+      "trigger_tags": [
+        "system",
+        "review",
+        "audit",
+        "across",
+        "shared",
+        "pack",
+        "owned",
+        "roots",
+        "modules",
+        "roles",
+        "routing",
+        "tables",
+        "indexes",
+        "validators",
+        "runtime",
+        "query",
+        "surfaces",
+        "stay",
+        "deterministic",
+        "aligned",
+        "core",
+        "docs",
+        "standards",
+        "data",
+        "contracts",
+        "index",
+        "standard",
+        "route",
+        "commands",
+        "python",
+        "watchtower",
+        "workflows",
+        "preview",
+        "validate",
+        "document",
+        "semantics",
+        "role",
+        "validator",
+        "context"
+      ],
+      "companion_workflow_ids": [
+        "workflow.documentation_implementation_reconciliation",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "core/docs/standards/data_contracts/workflow_index_standard.md",
+        "core/docs/standards/data_contracts/route_index_standard.md",
+        "core/docs/commands/core_python/watchtower_core_query_workflows.md",
+        "core/docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/data_contracts/workflow_index_standard.md",
+        "core/docs/standards/data_contracts/route_index_standard.md",
+        "core/docs/commands/core_python/watchtower_core_query_workflows.md",
+        "core/docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.workflow_steward",
+      "workflow_kind": "role",
+      "title": "Workflow Steward Role",
+      "summary": "Use this role to apply a workflow-governance lens so workflow-system audits and repairs preserve route determinism, minimal-context loading, validator and index parity, and same-change companion updates.",
+      "status": "active",
+      "doc_path": "core/workflows/roles/workflow_steward.md",
+      "phase_type": "review",
+      "task_family": "workflow_governance",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "route_drift",
+        "companion_drift"
+      ],
+      "trigger_tags": [
+        "steward",
+        "role",
+        "apply",
+        "governance",
+        "lens",
+        "system",
+        "audits",
+        "repairs",
+        "preserve",
+        "route",
+        "determinism",
+        "minimal",
+        "context",
+        "loading",
+        "validator",
+        "index",
+        "parity",
+        "same",
+        "change",
+        "companion",
+        "updates",
+        "routing"
+      ],
+      "companion_workflow_ids": [
+        "workflow.workflow_system_review",
+        "workflow.task_handoff_review"
+      ],
+      "composes_module_paths": [
+        "core/workflows/modules/workflow_system_review.md"
+      ]
+    },
+    {
       "workflow_id": "workflow.acceptance_evidence_reconciliation",
       "workflow_kind": "module",
       "title": "Acceptance and Evidence Reconciliation Workflow",
@@ -1810,6 +1933,165 @@
         "plan/docs/standards/data_contracts/traceability_index_standard.md",
         "plan/docs/standards/data_contracts/initiative_index_standard.md",
         "core/docs/commands/core_python/watchtower_core_sync.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.planning_author",
+      "workflow_kind": "role",
+      "title": "Planning Author Role",
+      "summary": "Use this role to orchestrate end-to-end planning authoring so initiative intake, technical design, and implementation slicing hand off cleanly without duplicating module logic or carrying unresolved ambiguity forward.",
+      "status": "active",
+      "doc_path": "plan/workflows/roles/planning_author.md",
+      "phase_type": "planning",
+      "task_family": "planning_orchestration",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "handoff_gap",
+        "ambiguity_leak"
+      ],
+      "trigger_tags": [
+        "planning",
+        "author",
+        "role",
+        "orchestrate",
+        "end",
+        "authoring",
+        "initiative",
+        "intake",
+        "technical",
+        "design",
+        "implementation",
+        "slicing",
+        "hand",
+        "off",
+        "cleanly",
+        "without",
+        "duplicating",
+        "module",
+        "logic",
+        "carrying",
+        "unresolved",
+        "ambiguity",
+        "forward",
+        "brief",
+        "slice"
+      ],
+      "companion_workflow_ids": [
+        "workflow.initiative_brief_authoring",
+        "workflow.design_record_planning",
+        "workflow.implementation_slice_planning",
+        "workflow.task_handoff_review"
+      ],
+      "composes_module_paths": [
+        "plan/workflows/modules/initiative_brief_authoring.md",
+        "plan/workflows/modules/design_record_planning.md",
+        "plan/workflows/modules/implementation_slice_planning.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_coordinator",
+      "workflow_kind": "role",
+      "title": "Task Coordinator Role",
+      "summary": "Use this role to orchestrate live task creation, phase transitions, and optional GitHub mirroring so execution state changes stay bounded, queryable, and synchronized across task surfaces.",
+      "status": "active",
+      "doc_path": "plan/workflows/roles/task_coordinator.md",
+      "phase_type": "execution",
+      "task_family": "task_coordination",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "state_drift",
+        "handoff_gap"
+      ],
+      "trigger_tags": [
+        "task",
+        "coordinator",
+        "role",
+        "orchestrate",
+        "live",
+        "creation",
+        "phase",
+        "transitions",
+        "optional",
+        "github",
+        "mirroring",
+        "execution",
+        "state",
+        "changes",
+        "stay",
+        "bounded",
+        "queryable",
+        "synchronized",
+        "across",
+        "surfaces",
+        "coordination",
+        "handoff"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_lifecycle_management",
+        "workflow.task_phase_transition",
+        "workflow.github_task_sync",
+        "workflow.task_handoff_review"
+      ],
+      "composes_module_paths": [
+        "plan/workflows/modules/task_lifecycle_management.md",
+        "plan/workflows/modules/task_phase_transition.md",
+        "plan/workflows/modules/github_task_sync.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.traceability_steward",
+      "workflow_kind": "role",
+      "title": "Traceability Steward Role",
+      "summary": "Use this role to orchestrate trace-bearing decisions, traceability reconciliation, acceptance or evidence coverage, and initiative closeout so traced planning state stays explicit from decision through terminal outcome.",
+      "status": "active",
+      "doc_path": "plan/workflows/roles/traceability_steward.md",
+      "phase_type": "reconciliation",
+      "task_family": "traceability_governance",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "companion_drift",
+        "authority_conflict"
+      ],
+      "trigger_tags": [
+        "traceability",
+        "steward",
+        "role",
+        "orchestrate",
+        "trace",
+        "bearing",
+        "decisions",
+        "reconciliation",
+        "acceptance",
+        "evidence",
+        "coverage",
+        "initiative",
+        "closeout",
+        "traced",
+        "planning",
+        "state",
+        "stays",
+        "explicit",
+        "decision",
+        "through",
+        "terminal",
+        "outcome",
+        "governance"
+      ],
+      "companion_workflow_ids": [
+        "workflow.decision_capture",
+        "workflow.traceability_reconciliation",
+        "workflow.acceptance_evidence_reconciliation",
+        "workflow.initiative_closeout",
+        "workflow.task_handoff_review"
+      ],
+      "composes_module_paths": [
+        "plan/workflows/modules/decision_capture.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
+        "plan/workflows/modules/acceptance_evidence_reconciliation.md",
+        "plan/workflows/modules/initiative_closeout.md"
       ]
     }
   ]

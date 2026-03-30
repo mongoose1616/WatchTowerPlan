@@ -26,10 +26,10 @@ authority: "authoritative"
 > Leave one blank line between the last item in a bullet or numbered list and the next heading.
 > Prefer repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
-> Keep the template compact, but do not mark contract-required sections as optional.
+> Keep the template focused, but do not mark contract-required sections as optional.
 
 ## Summary
-<One short explanation of what this standard governs.>
+<One explanation of what this standard governs.>
 
 ## Purpose
 <Explain why this rule exists.>

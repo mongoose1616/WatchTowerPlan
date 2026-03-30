@@ -9,11 +9,11 @@
 > Treat the routing table as the authority for which workflow documents become active. `## Composes Modules` in a role documents explicit role-to-module orchestration; it does not replace routed activation.
 > Do not list generic workflow standards such as `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, or `workflow_md_standard.md` in `## Additional Files to Load`; they stay implicit in the routing baseline.
 > Use `## Additional Files to Load` only when the module truly needs extra repo-local files beyond the normal routing baseline.
-> When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another concrete repo path, and write each bullet in `source: execution implication` form.
+> When `## Additional Files to Load` is present, list every extra repo-local file whose absence would materially change execution, use repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another concrete repo path, and write each bullet in `source: execution implication` form.
 > Do not use filesystem-absolute checkout paths such as `/home/...` in workflow modules; they are not portable across clones, branches, or worktrees.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
-> Treat `## Data Structure` and `## Outputs` as terse workflow-internal scaffolding. They should not imply extra repository sections, extra summaries, or extra status records unless another governed surface explicitly requires them.
-> If the workflow result is a single document, code change, validation run, or task update, say that plainly and stop.
+> Treat `## Data Structure` and `## Outputs` as workflow-internal scaffolding that should be as detailed as needed to remove ambiguity. They should not imply extra repository sections, extra summaries, or extra status records unless another governed surface explicitly requires them.
+> If the workflow result is a single document, code change, validation run, or task update, say that plainly while still documenting any materially distinct constraints, branches, or outputs needed for correct execution.
 
 ## Purpose
 Use this workflow to <state the single execution objective clearly and concretely>.
@@ -36,19 +36,14 @@ Use this workflow to <state the single execution objective clearly and concretel
 - <Repo-local file to open next>: <What this file changes or constrains in execution.>
 - <Repo-local file to open next>: <What this file changes or constrains in execution.>
 
-<Delete this section when the normal routing baseline already provides enough context. Do not list `AGENTS.md`, the shared routing table, pack-owned routing tables, `core/workflows/modules/core.md`, or the generic workflow standards here. For role-root files, keep `## Composes Modules` separate from these extra context hints.>
+<Delete this section when the normal routing baseline already provides enough context. Keep every extra file whose absence would materially change execution, and omit the section entirely when there are none. Do not list `AGENTS.md`, the shared routing table, pack-owned routing tables, `core/workflows/modules/core.md`, or the generic workflow standards here. For role-root files, keep `## Composes Modules` separate from these extra context hints.>
 
 ## Workflow
-1. <Write the first concrete step.>
-   - <Add a short clarifying detail when the step needs interpretation constraints.>
-2. <Write the next concrete step.>
-   - <Keep steps ordered and actionable rather than descriptive only.>
-   - <Prefer the smallest useful artifact or response that still satisfies the task.>
-3. <Continue until the workflow reaches a clear stop condition.>
+<Write the workflow as an ordered sequence when step order matters. Continue the sequence for as many steps as the workflow requires, and include each materially distinct branch, checkpoint, or handoff needed for correct execution. Add clarifying detail only where interpretation boundaries matter.>
 
 ## Data Structure
 - <Describe the workflow's internal working state or tracked fields.>
-- <Keep this very brief and avoid restating the final artifact outline unless execution depends on it.>
+- <Include every materially distinct tracked field or concept the workflow depends on, and avoid restating the final artifact outline unless execution depends on it.>
 
 ## Outputs
 - <List the concrete resulting surfaces or artifacts.>

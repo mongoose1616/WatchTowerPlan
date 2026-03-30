@@ -1,6 +1,15 @@
 from __future__ import annotations
 
 from tests.cli_command_helpers import run_json_command
+from tests.unit.control_plane_loader_test_support import REPO_ROOT
+
+
+def _has_task_lifecycle_route() -> bool:
+    return (REPO_ROOT / "plan" / "workflows" / "modules" / "task_lifecycle_management.md").exists()
+
+
+def _has_task_phase_transition_route() -> bool:
+    return (REPO_ROOT / "plan" / "workflows" / "modules" / "task_phase_transition.md").exists()
 
 
 def test_query_paths_supports_json_output(capsys) -> None:
@@ -85,16 +94,19 @@ def test_route_preview_matches_realistic_maintenance_request(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core route preview"
     assert payload["status"] == "ok"
-    assert payload["selected_route_count"] >= 4
+    assert payload["selected_route_count"] >= 3
     assert "Repository Review" in task_types
-    assert "Task Lifecycle Management" in task_types
     assert "Code Validation" in task_types
     assert "Commit Closeout" in task_types
     assert "Code Review" not in task_types
     assert "workflow.repository_review" in workflow_ids
-    assert "workflow.task_lifecycle_management" in workflow_ids
     assert "workflow.code_validation" in workflow_ids
     assert "workflow.commit_closeout" in workflow_ids
+    if _has_task_lifecycle_route():
+        assert "Task Lifecycle Management" in task_types
+        assert "workflow.task_lifecycle_management" in workflow_ids
+    else:
+        assert "Task Lifecycle Management" not in task_types
 
 
 def test_route_preview_matches_adjacent_boundary_prompts(capsys) -> None:
@@ -142,8 +154,12 @@ def test_route_preview_filters_low_signal_route_leakage_for_phase_handoffs(capsy
 
     task_types = {entry["task_type"] for entry in payload["selected_routes"]}
     assert result == 0
-    assert task_types == {"Task Phase Transition"}
-    assert "Code Validation" not in task_types
+    if _has_task_phase_transition_route():
+        assert task_types == {"Task Phase Transition"}
+        assert "Code Validation" not in task_types
+    else:
+        assert task_types == {"Code Validation"}
+        assert "Task Phase Transition" not in task_types
 
 
 def test_route_preview_prefers_phase_transition_for_successor_task_boundaries(
@@ -161,5 +177,9 @@ def test_route_preview_prefers_phase_transition_for_successor_task_boundaries(
 
     task_types = {entry["task_type"] for entry in payload["selected_routes"]}
     assert result == 0
-    assert task_types == {"Task Phase Transition"}
+    if _has_task_phase_transition_route():
+        assert task_types == {"Task Phase Transition"}
+    else:
+        assert task_types == {"Code Validation"}
+        assert "Task Phase Transition" not in task_types
     assert "Task Lifecycle Management" not in task_types

@@ -35,7 +35,7 @@ uv run watchtower-core plan query initiatives [--query <text>] [--trace-id <trac
 
 ## Notes
 - Use `watchtower-core plan query coordination` when you want the machine start-here path for current planning state.
-- Use `watchtower-core plan query trace` when you need the canonical traceability record for one trace rather than a compact initiative rendered surface.
+- Use `watchtower-core plan query trace` when you need the canonical traceability record for one trace rather than the initiative rendered surface.
 - Use `watchtower-core plan query authority` when you need to confirm that initiative lookup is the right surface for the question you are asking.
 - Filterless browse now defaults to active initiatives; this command remains the broader initiative query surface for explicit historical or status-specific lookup.
 - This command reads the live initiative-family index under `plan/.wt/indexes/initiative_index.json`.
@@ -64,7 +64,7 @@ uv run watchtower-core plan query initiatives --initiative-status completed --fo
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching trace IDs, current phases, initiative statuses, active owners, open-task counts, and next-step guidance.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, and result records, including `artifact_status`, `initiative_status`, and compact active-task summaries when present.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, and result records, including `artifact_status`, `initiative_status`, and focused active-task summaries when present.
 - With no explicit `--trace-id`, `--query`, `--current-phase`, `--owner`, `--blocked-only`, or `--initiative-status`, the command defaults to `initiative_status=active` so filterless browse stays aligned with the planning start-here model.
 - When that active-default path is applied, the JSON payload includes `default_initiative_status: "active"` to keep the injected browse filter explicit for machine consumers.
 - Use `--initiative-status completed|cancelled|superseded` for terminal-history browse instead of relying on filterless output.
@@ -76,7 +76,7 @@ uv run watchtower-core plan query initiatives --initiative-status completed --fo
 | `watchtower-core plan query` | Parent command group for all plan-owned index-backed lookup commands. |
 | `watchtower-core plan query coordination` | Preferred machine start-here path for current planning state. |
 | `watchtower-core plan query authority` | Resolves when initiative lookup is canonical versus when coordination, traceability, or governance should answer instead. |
-| `watchtower-core plan query trace` | Canonical traceability read path when the initiative summary is too compact. |
+| `watchtower-core plan query trace` | Canonical traceability read path when the initiative summary does not carry enough detail for the question at hand. |
 | `watchtower-core plan sync all` | Rebuilds the live initiative-family index and its rendered companions. |
 | `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
 | `watchtower-core plan query tasks` | Inspects the active or blocked tasks that contribute to initiative phase and ownership. |

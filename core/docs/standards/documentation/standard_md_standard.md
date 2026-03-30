@@ -54,7 +54,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Leave one blank line between the last item in a bullet or numbered list and the next heading.
 - Keep `References` for companion docs, examples, and supporting material that help the reader navigate the repo or verify implementation.
 - When an external topic already has a governed local reference under `core/docs/references/**` or an owning pack's `docs/references/**` root, cite that local reference instead of scattering raw external URLs.
-- Publish an `Operationalization` section using compact metadata bullets so maintainers can see which modes and repository surfaces actively enforce or embody the standard, using exact repo-relative file paths, repo-relative directory paths ending in `/`, or bounded repo-relative glob patterns when the governed surface is a repeating file family.
+- Publish an `Operationalization` section using focused metadata bullets so maintainers can see which modes and repository surfaces actively enforce or embody the standard, using exact repo-relative file paths, repo-relative directory paths ending in `/`, or bounded repo-relative glob patterns when the governed surface is a repeating file family.
 - Do not publish semantically duplicate operationalization surfaces. Use one canonical path form for each governed file or directory so the standard index does not carry redundant entries.
 - Keep `Updated At` aligned with front matter `updated_at`.
 
@@ -66,7 +66,7 @@ Keep standards structured enough that internal and external authority is not onl
 ### Required sections
 | Section | Requirement | Notes |
 |---|---|---|
-| `Summary` | Required | One short explanation of the standard and what it governs. |
+| `Summary` | Required | One explanation of the standard and what it governs. |
 | `Purpose` | Required | Explain why the rule exists. |
 | `Scope` | Required | Define where the rule applies and what it does not cover. |
 | `Use When` | Required | Explain when maintainers should consult the standard. |

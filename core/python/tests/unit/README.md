@@ -22,5 +22,6 @@
 - Use the shared fixtures in `conftest.py` for repeated JSON-writing or similar small helper patterns instead of duplicating one-off utilities.
 - Do not import `tests.fixture_repo_support` from `tests/unit/`. Any test that needs pack materialization, repo bootstrap, sync orchestration, closeout flows, or governed-doc copying belongs in `tests/integration/`.
 - Do not import `watchtower_<pack>` directly from `tests/unit/`. Shared unit tests that need pack context must use synthetic fixture packs or typed loader/runtime seams instead of the live hosted pack package.
+- Pack-aware loader, registry, and index assertions in this suite must derive expected validators, authorities, rendered surfaces, workflows, and tracking paths from activated `pack_settings.json`, declared surfaces, and merged registries instead of hard-coding one repository's concrete pack IDs or filenames.
 - Do not treat the current internal pack as a hidden unit-test dependency. If a shared unit test only passes because the live `plan/` workspace exists, move it to the owning pack root or replace it with synthetic fixture-pack setup.
 - Keep `pytest -q` fast by moving repo-aware scenarios out of this directory instead of adding more helper shortcuts here.

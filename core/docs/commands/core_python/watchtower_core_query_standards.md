@@ -78,7 +78,7 @@ uv run watchtower-core query standards --operationalization-path core/docs/refer
 - The command is read-only and does not mutate repository state.
 - `--operationalization-path` matches exact indexed files, concrete descendant files when a standard operationalizes a directory path such as `<pack-root>/tracking/`, and concrete files matched by indexed glob patterns such as `**/README.md` or `**/AGENTS.md`.
 - `--tag` can retrieve authored shared family tags such as `planning_index_family` when several standards intentionally form one governed subfamily.
-- In `human` mode, the command prints matching standard IDs, categories, owners, titles, summaries, and compact operationalization metadata.
+- In `human` mode, the command prints matching standard IDs, categories, owners, titles, summaries, and focused operationalization metadata.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and indexed retrieval fields such as `owner`, `applies_to`, `reference_doc_paths`, `operationalization_modes`, and `operationalization_paths`.
 - If no entries match the requested filters, the command exits successfully and reports that no standard entries matched.
 

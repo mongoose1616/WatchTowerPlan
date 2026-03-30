@@ -1,7 +1,7 @@
 ---
 id: "std.governance.coordination_tracking"
 title: "Coordination Tracking Standard"
-summary: "This standard defines the repository's compact traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces."
+summary: "This standard defines the repository's derived traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces."
 type: "standard"
 status: "active"
 tags:
@@ -24,21 +24,21 @@ aliases:
 # Coordination Tracking Standard
 
 ## Summary
-This standard defines the repository's compact live coordination tracker so humans can browse current plan state without replacing the live `plan/**` authority surfaces.
+This standard defines the repository's derived live coordination tracker so humans can browse current plan state without replacing the live `plan/**` authority surfaces.
 
 ## Purpose
-- Give humans one compact surface for current state, next follow-up work, and recent closeout context after the live `plan/**` entrypoints route them into deeper initiative or task views.
+- Give humans one derived surface for current state, next follow-up work, and recent closeout context after the live `plan/**` entrypoints route them into deeper initiative or task views.
 - Keep the human coordination view derived from the machine-readable coordination index rather than becoming a second planning authority.
 - Preserve the deeper family trackers as companion views instead of forcing users to guess which tracker to open first.
 
 ## Scope
 - Applies to `plan/tracking/coordination_tracking.md`.
 - Applies to the live plan entrypoint guidance that routes humans to the coordination tracker for current-state questions.
-- Covers compactness, authority boundaries, and rebuild expectations for the human coordination byproduct.
+- Covers structure, authority boundaries, and rebuild expectations for the human coordination byproduct.
 - Does not replace initiative-authored inputs, task state, design records, decision notes, or other traced source artifacts.
 
 ## Use When
-- A contributor needs a compact coordination view after the live `plan/**` surfaces point them to the current plan workspace.
+- A contributor needs a live coordination view after the live `plan/**` surfaces point them to the current plan workspace.
 - Updating human start-here guidance for planning entrypoints.
 - Reviewing whether the repo-level human coordination surface is still proportional and useful.
 
@@ -54,16 +54,16 @@ This standard defines the repository's compact live coordination tracker so huma
 - Route the summary-first start-here experience through `plan/plan_overview.md` and `plan/.wt/indexes/coordination_index.json`.
 - Build the tracker from the coordination index rather than from ad hoc scans of family trackers.
 - Treat the coordination tracker as the human start-here companion to the coordination index, not as the canonical deep-planning answer for one trace.
-- Keep the tracker compact, scan-first, and capped:
+- Keep the tracker scan-friendly while including every materially distinct current-state item needed for navigation:
   - current-state summary
-  - small active-initiative preview
-  - small actionable-task preview
-  - small recent-closeout preview
+  - active-initiative preview
+  - actionable-task preview
+  - recent-closeout preview
 - Link to family-specific trackers instead of duplicating their full content.
 - Treat the `Active Initiatives` section as an active-only preview and route broader historical browsing to the initiative-family tracker or machine initiative query.
-- Keep zero-state text short and explicit.
+- Keep zero-state text explicit enough to explain why no active work is present and where to look next.
 - Do not hand-edit `coordination_tracking.md` as an authored planning record.
-- Keep the tracker smaller than the combined trackers it summarizes.
+- Keep the tracker derived and navigation-first instead of duplicating the full combined trackers it summarizes.
 - Keep the tracker `_Updated At` value aligned with the latest effective initiative state change, including terminal closeout.
 - Use the authority map when a contributor needs to confirm whether coordination or a deeper planning surface is canonical for the question at hand.
 
@@ -97,13 +97,13 @@ This standard defines the repository's compact live coordination tracker so huma
 ## Validation
 - `coordination_tracking.md` should be regenerated, not hand-authored.
 - The tracker should link to repo-local surfaces for deeper detail.
-- The tracker should stay compact and should not grow into a second full tracker family.
-- The `Active Initiatives` section should remain an active-only current-state preview while `Recent Closeouts` stays compact context.
+- The tracker should stay focused on current-state navigation and should not grow into a second full tracker family.
+- The `Active Initiatives` section should remain an active-only current-state preview while `Recent Closeouts` stays limited to the context needed for current navigation.
 - The tracker should remain useful even when no initiative is active.
 - The tracker `_Updated At` value should not trail a later initiative closeout timestamp.
 
 ## Change Control
-- Update this standard when the repository changes the live plan start-here experience or the compact coordination tracker structure.
+- Update this standard when the repository changes the live plan start-here experience or the coordination tracker structure.
 - Update the coordination sync logic, planning README entrypoint guidance, and coordination-index companion standards in the same change set when this tracker changes structurally.
 
 ## References

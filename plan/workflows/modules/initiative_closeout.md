@@ -32,12 +32,12 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
    - Decide whether any remaining open work blocks closeout or must be explicitly allowed as an exception.
    - Use an explicit acceptance-exception override only when the validation gap is intentional and should remain visible at closeout.
 3. Record the initiative outcome.
-   - Set the terminal initiative status.
-   - Record `closed_at`, `closure_reason`, and `superseded_by_trace_id` when required.
+   - Use [watchtower_core_plan_closeout_retained_initiative.md](/plan/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md) as the authoritative closeout mutation path when the task is actually closing a retained initiative.
+   - Set the terminal initiative status and record `closed_at`, `closure_reason`, and `superseded_by_trace_id` when required.
    - Keep initiative outcome separate from artifact lifecycle `status`.
 4. Refresh human and machine mirrors.
-   - Update the traceability index entry.
-   - Refresh the initiative index and initiative tracker that project current initiative status.
+   - Prefer the closeout command's derived-surface rebuild behavior instead of reproducing the mutation by hand.
+   - If same-change companion edits still touched linked mirrors directly, rerun [watchtower_core_plan_sync_traceability_index.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_traceability_index.md), [watchtower_core_plan_sync_initiative_index.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_initiative_index.md), [watchtower_core_plan_sync_task_index.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_task_index.md), and [watchtower_core_plan_sync_github_tasks.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md) as needed.
    - Refresh the decision, design, and implementation trackers that mirror initiative status when those derived surfaces exist for the trace.
 5. Validate the closeout result.
    - Re-run the narrowest meaningful traceability and schema checks for the touched surfaces.

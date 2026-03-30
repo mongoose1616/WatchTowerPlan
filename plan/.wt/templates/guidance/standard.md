@@ -30,8 +30,8 @@ Describe why the standard exists.
 
 ## Examples
 
-- Add short examples only when they materially clarify the rule.
+- Add one or more examples whenever they materially clarify the rule.
 
 ## Notes
 
-- Record short clarifications only when they materially change how the standard should be applied.
+- Record clarifications whenever they materially change how the standard should be applied.

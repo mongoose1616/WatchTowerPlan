@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, scope, structure, and authoring rules for `AGENTS.md` files used at the repository root and within nested directory subtrees.
 
 ## Purpose
-Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin instruction layers for the current directory instead of catch-all manuals, duplicated workflow docs, or meta commentary about how `AGENTS.md` files are written.
+Keep `AGENTS.md` files scoped, high-signal, and trustworthy by making them focused instruction layers for the current directory instead of catch-all manuals, duplicated workflow docs, or meta commentary about how `AGENTS.md` files are written.
 
 ## Scope
 - Applies to root and nested `AGENTS.md` files in this repository.
@@ -40,7 +40,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - [agent_template.md](/core/docs/templates/agent_template.md): authoring scaffold that should stay aligned with this standard.
 
 ## Guidance
-- `AGENTS.md` must act as a thin instruction layer for the current scope.
+- `AGENTS.md` must act as a focused instruction layer for the current scope.
 - Every retained bullet in an `AGENTS.md` file must be a live rule for that scope.
 - `AGENTS.md` must not contain template-authoring language, placeholder text, or generic commentary about how `AGENTS.md` files should be written unless that is itself the local rule being expressed.
 - Root `AGENTS.md` files should define repository-wide instruction boundaries and point to the canonical routing surface.
@@ -70,7 +70,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 
 ## Validation
 - The file should read as active instructions for the current scope, not as template guidance.
-- The file should be concise enough to scan quickly before work begins.
+- The file should be scoped and direct enough that a reader can identify the applicable local rules quickly without losing materially important constraints.
 - Each bullet should express a real rule, boundary, or operating expectation for the scope where the file lives.
 - The file should point to the routing surface instead of trying to reproduce full routing logic.
 - When governed lookup surfaces or templates exist for the scope, the file should direct agents to them before broad scanning or guesswork.
@@ -90,7 +90,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 
 ## Notes
 - `AGENTS.md` is an instruction surface, not a documentation dump.
-- The best `AGENTS.md` files are short, scoped, and obviously tied to the directory they govern.
+- The best `AGENTS.md` files are scoped, specific, and obviously tied to the directory they govern.
 
 ## Updated At
 - `2026-03-27T15:00:00Z`

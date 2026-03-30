@@ -28,4 +28,4 @@ Describe the situation where the pattern applies.
 
 ## Illustrative Example
 
-- Add a short illustrative example when it materially clarifies the pattern.
+- Add one or more illustrative examples whenever they materially clarify the pattern.

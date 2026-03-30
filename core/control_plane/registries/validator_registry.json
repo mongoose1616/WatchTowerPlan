@@ -435,12 +435,17 @@
     {
       "id": "validator.documentation.workflow_semantics",
       "title": "Workflow Semantics Validator",
-      "description": "Validates workflow-module structure, section order, and explained governing-source bullets.",
+      "description": "Validates workflow-module and workflow-role structure, section order, and explained governing-source bullets.",
       "status": "active",
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "core/workflows/modules/**"
+        "core/workflows/modules/**",
+        "core/workflows/roles/**",
+        "plan/workflows/modules/**",
+        "plan/workflows/roles/**",
+        "packs/*/workflows/modules/**",
+        "packs/*/workflows/roles/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },

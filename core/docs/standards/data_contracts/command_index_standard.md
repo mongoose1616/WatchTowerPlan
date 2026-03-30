@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable command indexes stored under `core/control_plane/indexes/commands/`.
 
 ## Purpose
-Provide a compact lookup surface that maps available commands and subcommands to their human-readable command pages and implementation surfaces without forcing command discovery to scan Markdown or package code directly.
+Provide a focused lookup surface that maps available commands and subcommands to their human-readable command pages and implementation surfaces without forcing command discovery to scan Markdown or package code directly.
 
 ## Scope
 - Applies to machine-readable command index artifacts stored under `core/control_plane/indexes/commands/`.
@@ -75,7 +75,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 |---|---|---|
 | `command_id` | Required | Stable machine-usable command identifier. |
 | `command` | Required | Literal command invocation label. |
-| `summary` | Required | Concise description of the command purpose. |
+| `summary` | Required | Clear description of the command purpose. |
 | `kind` | Required | Use `root_command` or `subcommand`. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `workspace` | Required | Stable workspace label such as `core_python`. |

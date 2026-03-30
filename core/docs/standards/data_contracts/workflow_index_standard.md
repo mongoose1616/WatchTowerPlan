@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable workflow indexes stored under `core/control_plane/indexes/workflows/`.
 
 ## Purpose
-Provide a compact lookup and governance surface for workflow modules, workflow roles, their explicit role-to-module composition links, and their task-specific extra context without forcing tools to rescan the shared and pack-owned workflow roots directly for every query, routing, or review task.
+Provide a focused lookup and governance surface for workflow modules, workflow roles, their explicit role-to-module composition links, and their task-specific extra context without forcing tools to rescan the shared and pack-owned workflow roots directly for every query, routing, or review task.
 
 ## Scope
 - Applies to machine-readable workflow index artifacts stored under `core/control_plane/indexes/workflows/`.
@@ -29,7 +29,7 @@ Provide a compact lookup and governance surface for workflow modules, workflow r
 
 ## Use When
 - Adding or materially updating a workflow document under the shared and pack-owned workflow module or workflow role roots.
-- Building query or routing tooling that needs a compact view over workflow documents and their extra files to load.
+- Building query or routing tooling that needs a retrieval-oriented view over workflow documents and their extra files to load.
 - Auditing whether workflows publish only the task-specific extra files that materially change execution.
 
 ## Related Standards and Sources
@@ -78,7 +78,7 @@ Provide a compact lookup and governance surface for workflow modules, workflow r
 | `workflow_id` | Required | Stable workflow identifier derived from the workflow module filename. |
 | `workflow_kind` | Required | Controlled kind label such as `module` or `role`. |
 | `title` | Required | Human-readable workflow title from the document H1. |
-| `summary` | Required | Concise description derived from the workflow `Purpose` section. |
+| `summary` | Required | Clear description derived from the workflow `Purpose` section. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the workflow module. |
 | `phase_type` | Required | Retrieval-oriented workflow phase such as `inspection`, `execution`, `validation`, or `reconciliation`. |

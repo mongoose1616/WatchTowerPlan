@@ -391,6 +391,28 @@
       ]
     },
     {
+      "workflow_id": "workflow.planning_author",
+      "phase_type": "planning",
+      "task_family": "planning_orchestration",
+      "primary_risks": [
+        "handoff_gap",
+        "ambiguity_leak"
+      ],
+      "extra_trigger_tags": [
+        "planning",
+        "author",
+        "brief",
+        "design",
+        "slice"
+      ],
+      "companion_workflow_ids": [
+        "workflow.initiative_brief_authoring",
+        "workflow.design_record_planning",
+        "workflow.implementation_slice_planning",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.initiative_closeout",
       "phase_type": "closeout",
       "task_family": "initiative_closeout",
@@ -591,6 +613,27 @@
       ]
     },
     {
+      "workflow_id": "workflow.task_coordinator",
+      "phase_type": "execution",
+      "task_family": "task_coordination",
+      "primary_risks": [
+        "state_drift",
+        "handoff_gap"
+      ],
+      "extra_trigger_tags": [
+        "task",
+        "coordination",
+        "handoff",
+        "github"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_lifecycle_management",
+        "workflow.task_phase_transition",
+        "workflow.github_task_sync",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.task_scope_definition",
       "phase_type": "scoping",
       "task_family": "scope_management",
@@ -645,6 +688,69 @@
       ],
       "companion_workflow_ids": [
         "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.traceability_steward",
+      "phase_type": "reconciliation",
+      "task_family": "traceability_governance",
+      "primary_risks": [
+        "companion_drift",
+        "authority_conflict"
+      ],
+      "extra_trigger_tags": [
+        "traceability",
+        "governance",
+        "decision",
+        "closeout"
+      ],
+      "companion_workflow_ids": [
+        "workflow.decision_capture",
+        "workflow.traceability_reconciliation",
+        "workflow.acceptance_evidence_reconciliation",
+        "workflow.initiative_closeout",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.workflow_steward",
+      "phase_type": "review",
+      "task_family": "workflow_governance",
+      "primary_risks": [
+        "route_drift",
+        "companion_drift"
+      ],
+      "extra_trigger_tags": [
+        "workflow",
+        "steward",
+        "routing",
+        "validator"
+      ],
+      "companion_workflow_ids": [
+        "workflow.workflow_system_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.workflow_system_review",
+      "phase_type": "review",
+      "task_family": "workflow_governance",
+      "primary_risks": [
+        "route_drift",
+        "validator_gap"
+      ],
+      "extra_trigger_tags": [
+        "workflow",
+        "routing",
+        "role",
+        "index",
+        "validator",
+        "context"
+      ],
+      "companion_workflow_ids": [
+        "workflow.documentation_implementation_reconciliation",
+        "workflow.governed_artifact_reconciliation",
         "workflow.task_handoff_review"
       ]
     }

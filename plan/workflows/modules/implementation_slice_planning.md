@@ -27,26 +27,21 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 - [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): defines the required upstream links from implementation slices into the traced planning chain.
 
 ## Workflow
-1. Review the planning inputs.
-   - Extract goals, scope, non-goals, requirements, acceptance criteria, and design constraints from the initiative brief and design inputs.
-   - Identify missing details, ambiguity, and conflicts across the planning inputs.
-   - Flag anything that blocks implementation-slice planning.
-2. Define the implementation approach.
-   - Translate the approved design into an execution-oriented implementation approach.
-   - Identify which parts of the system will change first and how the work should be staged.
-   - Record execution assumptions, design-dependent decisions, and plan-level tradeoffs where they matter.
-3. Break the work down.
-   - Split the work into milestones, workstreams, or tasks only at the level needed to guide execution.
-   - Separate parallel work from sequential work.
-   - Include testing, documentation, migration, and rollout work where needed, but do not create ceremony-only breakdown rows.
-4. Plan validation.
-   - Map requirements and acceptance criteria to verification steps.
-   - Identify unit, integration, end-to-end, and manual validation needs proportionally to the risk and scope.
-   - Define what must be true before the work is considered complete.
-5. Sequence delivery.
-   - Order the work based on dependencies and risk.
-   - Call out prerequisites, blockers, and handoffs.
-   - Define rollout phases only when the change should ship incrementally or migration timing materially matters.
+1. Confirm the upstream planning boundary.
+   - Use the initiative brief and design record together as the authoritative upstream input set for execution planning.
+   - If either artifact is missing, materially incomplete, contradictory, or still depends on an unresolved architecture or policy choice, return to the upstream planning workflow or merge `decision_capture.md` before creating slices.
+2. Define the execution-oriented implementation approach.
+   - Translate the settled design into an implementation approach that names staging assumptions, design-dependent decisions, and system boundaries that affect execution order.
+   - Identify which parts of the system should change first and why.
+3. Break the work into actionable slices.
+   - Split the work into milestones, workstreams, or tasks only at the level needed to guide execution without creating ceremony-only rows.
+   - Separate sequential dependencies from safe parallel work and include testing, documentation, migration, or rollout work when they are real execution requirements.
+4. Map slices to validation and done criteria.
+   - Tie the work breakdown back to requirements, acceptance criteria, and risk.
+   - Define the unit, integration, end-to-end, or manual validation needed for each major slice and what must be true before the slice is done.
+5. Prepare the downstream task-management handoff.
+   - Order the slices by dependency and risk and make explicit which work items `task_lifecycle_management.md` or `task_phase_transition.md` should create, preserve, or hand off.
+   - If unresolved design ambiguity would cause churn in live task creation, escalate back to design planning or decision capture instead of pushing ambiguity into execution tasks.
 
 ## Data Structure
 - Source design or request
@@ -58,6 +53,7 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 ## Outputs
 - A review-ready `implementation_slice.md`
 - An execution-oriented work breakdown tied to the design or initiative brief
+- Explicit downstream handoff inputs for live task creation and phase transitions
 - Explicit dependencies, risks, and unresolved questions only when they remain material
 
 ## Done When
@@ -66,4 +62,5 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 - Dependencies, sequencing, and validation are documented.
 - Risks, assumptions, and open questions are visible.
 - An engineer can begin execution without needing major missing context filled in verbally.
+- The task-management handoff is explicit enough that live tasks can be created or transitioned without rediscovering slice intent.
 - The plan uses the smallest breakdown that still preserves execution clarity.

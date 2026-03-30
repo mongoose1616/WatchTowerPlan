@@ -18,7 +18,7 @@ authority: "reference"
 This document provides a working reference for architecture decision records as a durable decision-capture pattern.
 
 ## Purpose
-Provide a concise baseline for recording important architectural or policy decisions without leaving rationale scattered across unrelated docs.
+Provide a focused baseline for recording important architectural or policy decisions without leaving rationale scattered across unrelated docs.
 
 ## Scope
 - Covers ADRs as a decision-record pattern.
@@ -40,7 +40,7 @@ Provide a concise baseline for recording important architectural or policy decis
 | Element | Why It Matters | Notes |
 |---|---|---|
 | Decision statement | lets readers understand the call quickly | state the outcome in one sentence |
-| Alternatives considered | preserves the tradeoff space | record rejected options briefly |
+| Alternatives considered | preserves the tradeoff space | record rejected options explicitly enough to preserve why they were not chosen |
 | Consequences | shows what changes next | include affected docs, systems, or workflows |
 | Status | separates proposal from accepted policy | e.g. proposed, accepted, superseded |
 

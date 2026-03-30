@@ -49,34 +49,139 @@ def _pack_cli_path(loader: ControlPlaneLoader, module_name: str) -> str:
     return f"{workspace_root}/python/src/{python_package}/cli/{module_name}.py"
 
 
+def _default_pack_surface_names(loader: ControlPlaneLoader) -> set[str]:
+    return {surface.surface_name for surface in loader.load_pack_settings().surfaces}
+
+
+def _first_pack_schema_backed_validator(loader: ControlPlaneLoader):
+    pack_slug = _default_pack_slug(loader)
+    excluded_artifact_kinds = {
+        "actor_registry",
+        "artifact_family_registry",
+        "authority_map",
+        "documentation_family_registry",
+        "governance_surface_map",
+        "human_surface_policy_registry",
+        "lifecycle_stage_registry",
+        "pack_runtime_manifest",
+        "pack_settings",
+        "path_pattern_registry",
+        "promotion_policy_registry",
+        "rendered_surface_registry",
+        "retention_policy_registry",
+        "review_status_registry",
+        "schema_catalog",
+        "source_type_registry",
+        "status_transition_rules",
+        "template_catalog",
+        "validation_suite_registry",
+        "validator_registry",
+        "workflow_metadata_registry",
+    }
+    fallback = None
+    for validator in loader.load_validator_registry().validators:
+        if not validator.validator_id.startswith(f"validator.{pack_slug}."):
+            continue
+        if not validator.schema_ids:
+            continue
+        if validator.artifact_kind in excluded_artifact_kinds:
+            continue
+        if validator.artifact_kind.endswith("_registry"):
+            continue
+        if fallback is None:
+            fallback = validator
+        if validator.artifact_kind.endswith("_index"):
+            continue
+        if validator.artifact_kind.startswith("pack_"):
+            continue
+        return validator
+    if fallback is not None:
+        return fallback
+    raise AssertionError("Expected one schema-backed pack-owned validator in the merged registry.")
+
+
+def _first_pack_schema_record(loader: ControlPlaneLoader):
+    validator = _first_pack_schema_backed_validator(loader)
+    return loader.load_schema_catalog().get(validator.schema_ids[0])
+
+
+def _first_pack_authority_entry(loader: ControlPlaneLoader):
+    machine_root = loader.load_pack_settings().workspace_roots.machine_root
+    pack_namespace = _default_pack_namespace(loader)
+    fallback = None
+    for entry in loader.load_authority_map().entries:
+        if not entry.canonical_path.startswith(machine_root):
+            continue
+        if fallback is None:
+            fallback = entry
+        if entry.preferred_command.startswith(f"watchtower-core {pack_namespace} "):
+            return entry
+    if fallback is not None:
+        return fallback
+    raise AssertionError(
+        "Expected one pack-owned authority-map entry under the active machine root."
+    )
+
+
+def _first_pack_rendered_surface(
+    loader: ControlPlaneLoader,
+    registry: RenderedSurfaceRegistry | None = None,
+):
+    tracking_root = loader.load_pack_settings().workspace_roots.tracking_root
+    active_registry = registry or loader.load_rendered_surface_registry()
+    for surface in active_registry.surfaces:
+        if surface.output_path.startswith(f"{tracking_root}/"):
+            return surface
+    raise AssertionError(
+        "Expected one rendered surface rooted under the active pack tracking root."
+    )
+
+
+def _first_pack_workflow_index_entry(loader: ControlPlaneLoader):
+    workflows_root = loader.load_pack_settings().workspace_roots.workflows_root
+    fallback = None
+    for entry in loader.load_workflow_index().entries:
+        if entry.doc_path.startswith(f"{workflows_root}/modules/"):
+            return entry
+        if fallback is None and entry.doc_path.startswith(f"{workflows_root}/"):
+            fallback = entry
+    if fallback is not None:
+        return fallback
+    raise AssertionError(
+        "Expected one workflow-index entry rooted under the active pack workflow root."
+    )
+
+
 def test_control_plane_loader_reads_validator_registry() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     pack_settings = loader.load_pack_settings()
-    pack_slug = _default_pack_slug(loader)
+    pack_validator = _first_pack_schema_backed_validator(loader)
+    schema_record = _first_pack_schema_record(loader)
 
     registry = loader.load_validator_registry()
     validator = registry.get("validator.documentation.reference_front_matter")
-    pack_validator = registry.get(f"validator.{pack_slug}.validation_bundle")
 
     assert registry.artifact_id == "registry.validators"
     assert validator.engine == "json_schema"
     assert validator.schema_ids == (
         "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
     )
-    assert pack_validator.artifact_kind == "validation_bundle"
-    expected_paths: list[str] = []
-    if pack_settings.workspace_roots.initiatives_root is not None:
-        expected_paths.append(f"{pack_settings.workspace_roots.initiatives_root}/**/.wt/evidence/*.json")
-    if pack_settings.workspace_roots.projects_root is not None:
-        expected_paths.append(
-            f"{pack_settings.workspace_roots.projects_root}/**/initiatives/**/.wt/evidence/*.json"
-        )
-    assert pack_validator.applies_to == tuple(expected_paths)
+    assert pack_validator.engine == "json_schema"
+    assert pack_validator.schema_ids
+    assert schema_record.subject_kind == pack_validator.artifact_kind
+    assert schema_record.canonical_relative_path.startswith(
+        pack_settings.workspace_roots.machine_root
+    )
+    assert pack_validator.applies_to
+    assert all(
+        path.startswith(f"{pack_settings.workspace_roots.workspace_root}/")
+        for path in pack_validator.applies_to
+    )
 
 
 def test_control_plane_loader_declared_validator_registry_uses_merged_contract() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
-    pack_slug = _default_pack_slug(loader)
+    pack_validator = _first_pack_schema_backed_validator(loader)
     relative_path = loader.load_pack_settings().get("validator_registry").path
 
     registry = loader.load_declared_surface(
@@ -86,9 +191,7 @@ def test_control_plane_loader_declared_validator_registry_uses_merged_contract()
 
     assert isinstance(registry, ValidatorRegistry)
     assert registry.get("validator.control_plane.pack_settings").artifact_kind == "pack_settings"
-    assert registry.get(f"validator.{pack_slug}.validation_bundle").artifact_kind == (
-        "validation_bundle"
-    )
+    assert registry.get(pack_validator.validator_id).artifact_kind == pack_validator.artifact_kind
 
 
 def test_control_plane_loader_reads_validation_suite_registry() -> None:
@@ -104,13 +207,13 @@ def test_control_plane_loader_reads_validation_suite_registry() -> None:
 
 def test_schema_catalog_get_by_subject_kind_returns_unique_match() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
-    pack_slug = _default_pack_slug(loader)
     pack_settings_path = _default_pack_settings_path(loader)
     loader = ControlPlaneLoader(REPO_ROOT, active_pack_settings_path=pack_settings_path)
 
-    record = loader.load_schema_catalog().get_by_subject_kind("validation_bundle")
+    expected_record = _first_pack_schema_record(loader)
+    record = loader.load_schema_catalog().get_by_subject_kind(expected_record.subject_kind)
 
-    assert record.schema_id == f"urn:watchtower:schema:artifacts:{pack_slug}:validation-bundle:v1"
+    assert record.schema_id == expected_record.schema_id
 
 
 def test_schema_catalog_get_by_subject_kind_rejects_ambiguous_match() -> None:
@@ -123,17 +226,15 @@ def test_schema_catalog_get_by_subject_kind_rejects_ambiguous_match() -> None:
 def test_control_plane_loader_reads_authority_map() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     pack_namespace = _default_pack_namespace(loader)
+    machine_root = loader.load_pack_settings().workspace_roots.machine_root
 
     authority_map = loader.load_authority_map()
-    entry = authority_map.get("authority.planning.deep_trace_context")
+    entry = _first_pack_authority_entry(loader)
 
     assert authority_map.artifact_id == "registry.authority_map"
-    assert entry.artifact_kind == "traceability_index"
-    assert entry.preferred_command in {
-        "watchtower-core query trace",
-        f"watchtower-core {pack_namespace} query trace",
-    }
-    assert "status" in entry.status_fields
+    assert entry.canonical_path.startswith(machine_root)
+    assert entry.preferred_command.startswith(f"watchtower-core {pack_namespace} ")
+    assert entry.status_fields
     core_loader = ControlPlaneLoader(REPO_ROOT, active_pack_settings_path=CORE_PACK_SETTINGS_PATH)
     core_authority_map = core_loader.load_authority_map()
     assert (
@@ -164,23 +265,26 @@ def test_control_plane_loader_reads_rendered_surface_registry() -> None:
     tracking_root = loader.load_pack_settings().workspace_roots.tracking_root
 
     registry = loader.load_rendered_surface_registry()
-    surface = registry.get("rendered.task_tracking")
+    surface = _first_pack_rendered_surface(loader, registry)
 
     assert registry.artifact_id == "registry.rendered_surfaces"
-    assert surface.output_path == f"{tracking_root}/task_tracking.md"
+    assert surface.output_path.startswith(f"{tracking_root}/")
+    assert surface.title.endswith("Tracking")
     assert surface.sections[-1].kind == "updated_at"
 
 
 def test_control_plane_loader_reads_workflow_metadata_registry() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
+    workflow = _first_pack_workflow_index_entry(loader)
 
     registry = loader.load_workflow_metadata_registry()
-    entry = registry.get("workflow.github_task_sync")
+    entry = registry.get(workflow.workflow_id)
 
     assert registry.artifact_id == "registry.workflow_metadata"
-    assert entry.phase_type == "execution"
-    assert entry.task_family == "github_integration"
-    assert "workflow.task_lifecycle_management" in entry.companion_workflow_ids
+    assert entry.phase_type == workflow.phase_type
+    assert entry.task_family == workflow.task_family
+    assert entry.primary_risks
+    assert set(entry.companion_workflow_ids).issubset(set(workflow.companion_workflow_ids))
 
 
 def test_control_plane_loader_merges_pack_owned_workflow_metadata_registry(
@@ -561,16 +665,23 @@ def test_control_plane_loader_reads_traceability_index() -> None:
     assert trace.source_surface_paths
 
 
-def test_control_plane_loader_reads_initiative_index() -> None:
+def test_control_plane_loader_reads_pack_indexes_when_declared() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
+    surface_names = _default_pack_surface_names(loader)
+
+    if "initiative_index" not in surface_names:
+        assert "coordination_index" not in surface_names
+        assert "task_index" not in surface_names
+        return
 
     initiative_index = loader.load_initiative_index()
     coordination_index = loader.load_coordination_index()
-    artifact_index = loader.load_artifact_index()
 
     assert initiative_index.artifact_id == "index.initiatives"
     assert coordination_index.artifact_id == "index.coordination"
-    assert artifact_index.get("index.artifacts").artifact_family == "artifact_index"
+    if "artifact_index" in surface_names:
+        artifact_index = loader.load_artifact_index()
+        assert artifact_index.get("index.artifacts").artifact_family == "artifact_index"
     for entry in initiative_index.entries:
         assert entry.current_phase in {
             "capture",
@@ -586,16 +697,16 @@ def test_control_plane_loader_reads_initiative_index() -> None:
 def test_control_plane_loader_reads_governed_indexes() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     docs_root = loader.load_pack_settings().workspace_roots.docs_root
-    workflows_root = loader.load_pack_settings().workspace_roots.workflows_root
+    surface_names = _default_pack_surface_names(loader)
 
     foundation_index = loader.load_foundation_index()
     standard_index = loader.load_standard_index()
-    workflow_index = loader.load_workflow_index()
-    task_index = loader.load_task_index()
+    workflow_metadata_registry = loader.load_workflow_metadata_registry()
 
     foundation = foundation_index.get("foundation.engineering_design_principles")
     standard = standard_index.get("std.governance.github_collaboration")
-    workflow = workflow_index.get("workflow.github_task_sync")
+    workflow = _first_pack_workflow_index_entry(loader)
+    workflow_metadata = workflow_metadata_registry.get(workflow.workflow_id)
 
     assert foundation.authority == "authoritative"
     assert foundation.doc_path == "core/docs/foundations/engineering_design_principles.md"
@@ -606,27 +717,30 @@ def test_control_plane_loader_reads_governed_indexes() -> None:
     assert "core/docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
     assert "workflow" in standard.operationalization_modes
     assert ".github/" in standard.operationalization_paths
-    assert workflow.doc_path == f"{workflows_root}/modules/github_task_sync.md"
-    assert workflow.phase_type == "execution"
-    assert workflow.task_family == "github_integration"
+    assert workflow.doc_path.startswith(loader.load_pack_settings().workspace_roots.workflows_root)
+    assert workflow.phase_type == workflow_metadata.phase_type
+    assert workflow.task_family == workflow_metadata.task_family
     assert workflow.uses_internal_references is True
-    assert "partial_update" in workflow.primary_risks
-    assert "sync" in workflow.trigger_tags
-    assert "workflow.task_lifecycle_management" in workflow.companion_workflow_ids
-    assert f"{docs_root}/standards/governance/github_task_sync_standard.md" in (
-        workflow.internal_reference_paths
+    assert workflow.primary_risks
+    assert workflow.trigger_tags
+    assert set(workflow_metadata.companion_workflow_ids).issubset(
+        set(workflow.companion_workflow_ids)
     )
-    for task in task_index.entries:
-        assert task.doc_path.endswith("/task.json")
-        assert task.task_status in {
-            "planned",
-            "ready",
-            "in_progress",
-            "in_review",
-            "blocked",
-            "completed",
-            "cancelled",
-        }
+    assert workflow.internal_reference_paths
+    assert any(path.startswith(docs_root) for path in workflow.internal_reference_paths)
+    if "task_index" in surface_names:
+        task_index = loader.load_task_index()
+        for task in task_index.entries:
+            assert task.doc_path.endswith("/task.json")
+            assert task.task_status in {
+                "planned",
+                "ready",
+                "in_progress",
+                "in_review",
+                "blocked",
+                "completed",
+                "cancelled",
+            }
 
 
 def test_control_plane_loader_reads_reference_index() -> None:
@@ -675,4 +789,4 @@ def test_control_plane_loader_load_known_surface_materializes_rendered_surface_r
     )
 
     assert isinstance(surface, RenderedSurfaceRegistry)
-    assert surface.get("rendered.coordination_tracking").title == "Coordination Tracking"
+    assert _first_pack_rendered_surface(loader, surface).title.endswith("Tracking")

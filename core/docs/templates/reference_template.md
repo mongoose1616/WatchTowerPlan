@@ -38,7 +38,7 @@ aliases:
 > Delete any section that does not help the document stay focused on one succinct standard, topic, or area.
 
 ## Summary
-<Give a short explanation of what this reference covers and why it exists in this repository.>
+<Give an explanation of what this reference covers and why it exists in this repository.>
 
 ## Purpose
 <Explain what problem this reference solves for maintainers, contributors, or reviewers.>
@@ -59,7 +59,7 @@ aliases:
 - <Related internal standard, template, workflow, or companion reference.>
 
 ## Quick Reference or Distilled Reference
-<Use this section for the dense lookup content the reader actually came for. It should usually let the reader answer the recurring practical questions without immediately leaving the repo for the upstream source. A reference that could be replaced by a short link list has failed this section. Distill enough content that the reader can safely understand the common cases, the important boundaries, and any local interpretation needed here. Tables, syntax, modes, rules, terms, decision points, defaults, edge cases, failure modes, and concise summaries usually belong here.>
+<Use this section for the dense lookup content the reader actually came for. It should usually let the reader answer the recurring practical questions without immediately leaving the repo for the upstream source. A reference that could be replaced by a bare link list has failed this section. Distill enough content that the reader can safely understand the common cases, the important boundaries, and any local interpretation needed here. Tables, syntax, modes, rules, terms, decision points, defaults, edge cases, failure modes, and explanatory summaries usually belong here.>
 
 ### <Rules or Decision Points>
 - <Concrete rule.>

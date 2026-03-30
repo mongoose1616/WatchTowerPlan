@@ -17,3 +17,5 @@
 - Shared reusable workflow modules remain under `core/workflows/modules/`.
 - Shared reusable workflow roles remain under `core/workflows/roles/`.
 - Plan-specific routing, workflow modules, and workflow roles are authoritative here.
+- The active plan-owned role set currently includes `planning_author.md`, `task_coordinator.md`, and `traceability_steward.md`.
+- Narrow module-first routes remain authoritative for specific planning tasks, and broad role routes now cover end-to-end planning authoring, task coordination, and traceability governance when one request spans multiple plan modules.

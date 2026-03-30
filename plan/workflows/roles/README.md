@@ -8,4 +8,5 @@
 - Keep persona- or lens-oriented workflow docs here when plan-local work needs them.
 - Future plan-owned workflow roles must include a `Composes Modules` section that explicitly names the reusable workflow modules the role directly orchestrates.
 - `plan/workflows/ROUTING_TABLE.md` remains the authority for which workflow documents become active for one routed task.
-- No live plan-owned workflow roles are published yet; this root is governed now so future additions follow the same structure as `WatchTowerOversight`.
+- The active plan-owned role set is `planning_author.md`, `task_coordinator.md`, and `traceability_steward.md`.
+- Keep this root thin: role docs should orchestrate modules and escalation boundaries, not copy the module procedures they reference.

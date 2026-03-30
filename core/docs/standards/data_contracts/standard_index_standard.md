@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable standard indexes stored under `core/control_plane/indexes/standards/`.
 
 ## Purpose
-Provide a compact lookup and governance surface for repository standards and best-practice documents without forcing tooling to scan Markdown directly.
+Provide a focused lookup and governance surface for repository standards and best-practice documents without forcing tooling to scan Markdown directly.
 
 ## Scope
 - Applies to machine-readable standard index artifacts stored under `core/control_plane/indexes/standards/`.
@@ -29,7 +29,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 
 ## Use When
 - Adding or materially updating a standard under the shared and pack-owned standards roots.
-- Building query, retrieval, or review tooling that needs a compact view over the standards corpus.
+- Building query, retrieval, or review tooling that needs a retrieval-oriented view over the standards corpus.
 - Auditing whether standards use internal references, external references, and repo-local distilled references consistently.
 
 ## Related Standards and Sources
@@ -54,7 +54,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Keep path-valued `applies_to` entries and derived `related_paths` in canonical repo-relative file-versus-directory form so exact path lookup stays deterministic.
 - Capture the subset of references that materially shape the standard so applied source use is auditable instead of only cited.
 - Capture local reference-doc paths so repo tooling can distinguish raw internal citations from links into shared or owning-pack `docs/references/**` roots.
-- Capture compact operationalization metadata so tooling can answer which modes and repository surfaces currently enforce or embody a standard, using exact repo paths, directories, or bounded repo-relative glob patterns when a standard governs a repeating file family.
+- Capture operationalization metadata so tooling can answer which modes and repository surfaces currently enforce or embody a standard, using exact repo paths, directories, or bounded repo-relative glob patterns when a standard governs a repeating file family.
 - When a standard materially depends on external authority, prefer citing a local governed reference doc in the shared or owning-pack `docs/references/**` roots rather than only raw external URLs.
 - Keep the index aligned with the standards corpus in the same change set.
 
@@ -78,7 +78,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 | `standard_id` | Required | Stable standard identifier from governed front matter. |
 | `category` | Required | Top-level standards category derived from the document path. |
 | `title` | Required | Human-readable standard title. |
-| `summary` | Required | Concise description of the standard. |
+| `summary` | Required | Clear description of the standard. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `owner` | Required | Standard owner from governed front matter. |
 | `doc_path` | Required | Repository-relative path to the standard document. |
@@ -92,7 +92,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 | `applied_reference_paths` | Optional | Internal repository paths explicitly used in `Related Standards and Sources`. |
 | `external_reference_urls` | Optional | External URLs explicitly cited by the standard or transitively inherited from cited local reference docs. |
 | `applied_external_reference_urls` | Optional | External URLs explicitly used in `Related Standards and Sources`, directly or through cited local reference docs. |
-| `operationalization_modes` | Required | Compact lower_snake_case modes such as `validation`, `sync`, or `workflow`. |
+| `operationalization_modes` | Required | Plain lower_snake_case modes such as `validation`, `sync`, or `workflow`. |
 | `operationalization_paths` | Required | Repository paths or bounded repo-relative glob patterns for the operational surfaces named in the standard’s `Operationalization` section. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
@@ -104,7 +104,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Every entry should carry the authored `owner` value and, when present, the full `applies_to` list from standard front matter.
 - Path-valued `applies_to` and derived `related_paths` should preserve canonical repo-relative file-versus-directory syntax.
 - `reference_doc_paths` should point only to governed reference docs under `core/docs/references/` or an owning pack’s `docs/references/` root.
-- `operationalization_modes` should be compact lower_snake_case values, and every `operationalization_path` should resolve to a real repository surface or be a bounded repo-relative glob pattern that matches one or more live repository surfaces.
+- `operationalization_modes` should be plain lower_snake_case values, and every `operationalization_path` should resolve to a real repository surface or be a bounded repo-relative glob pattern that matches one or more live repository surfaces.
 - Standards that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
 - Applied reference fields should reflect the actual `Related Standards and Sources` section rather than inferred prose.
 - Reviewers should reject entries that point to stale standard docs or omit material reference usage already present in the source doc.

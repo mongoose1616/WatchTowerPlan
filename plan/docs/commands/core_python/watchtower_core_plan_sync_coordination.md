@@ -47,7 +47,7 @@ uv run watchtower-core plan sync coordination --output-dir /tmp/watchtower_plan_
 ## Behavior and Outputs
 - The command runs the coordination sync registry group in deterministic order: `task-index`, `traceability-index`, `initiative-index`, `coordination-index`, `task-tracking`, `initiative-tracking`, and `coordination-tracking`.
 - The command is dry-run by default and only reports what would be rebuilt unless `--write` or `--output-dir` is provided.
-- With `--write`, the command updates the canonical task, traceability, initiative, and coordination surfaces in place, including the compact root coordination tracker.
+- With `--write`, the command updates the canonical task, traceability, initiative, and coordination surfaces in place, including the derived root coordination tracker.
 - With `--output-dir`, the command materializes the rebuilt coordination slice into the selected directory while preserving repo-relative paths.
 - In `json` mode, the command returns one result object per rebuilt surface with target name, output path, record count, and write status.
 

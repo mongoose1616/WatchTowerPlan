@@ -21,7 +21,7 @@ aliases:
 > Use this template only when no narrower family-specific template applies.
 > For governed standards, references, foundations, initiative-package authored inputs, decision notes, design records, implementation slices, tasks, workflows, routing tables, command pages, README files, and `AGENTS.md` files, use the dedicated family template instead.
 > Use this template for guides, overview docs, local working references outside governed reference families, and other repository docs that need light structure without a stricter family contract.
-> Prefer the smallest useful section set for the document's actual job.
+> Include every section needed to remove ambiguity for the document's actual job, and omit only sections that add no non-derivable value.
 > Write the document as native to this repository rather than as a description of where the idea came from.
 > Keep the YAML front matter when the document family requires governed metadata or when metadata is operationally useful. Delete it otherwise.
 > If you keep front matter, align the keys and allowed values with [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md) and the matching document-family profile.
@@ -30,7 +30,7 @@ aliases:
 > Delete any optional section that adds no non-derivable information.
 
 ## Summary
-<Give a short plain-language explanation of what this document is for and how it should be used.>
+<Give a plain-language explanation of what this document is for and how it should be used.>
 
 ## Purpose
 <Explain why this document exists and what problem it solves.>

@@ -68,16 +68,16 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - `Additional Files to Load` is optional. It may appear only between `Inputs` and `Workflow` for module-root files, or between `Composes Modules` and `Workflow` for role-root files.
 - Keep the required section names stable so routed use and review stay predictable.
 - `Workflow` should be written as an ordered sequence when step order matters.
-- `Inputs`, `Data Structure`, `Outputs`, and `Done When` should stay compact and task-oriented rather than turning into long narrative sections.
+- `Inputs`, `Data Structure`, `Outputs`, and `Done When` should stay task-oriented and proportional to the real execution detail. Include every materially distinct item needed for unambiguous execution, review, or handoff, but do not pad the sections with repeated narrative.
 - `Composes Modules` is required for role-root files and must cite only governed workflow-module documents using repo-local links plus short orchestration implications.
 - `Composes Modules` makes role-to-module orchestration explicit for audit and query surfaces; it does not replace the routing table as the active workflow-selection authority.
 - `Data Structure` should describe internal working state or tracked fields, not a shadow outline for the final repository artifact.
 - `Outputs` should name the actual resulting surfaces. When the changed document, tracker, code change, or validation result is itself the output, do not pad the workflow with extra record-keeping deliverables.
-- Prefer `1` to `5` bullets in `Inputs`, `Data Structure`, and `Outputs` unless the task genuinely needs more structure.
+- Use as many bullets in `Inputs`, `Data Structure`, and `Outputs` as the workflow needs. Do not target a default count or normalize sibling sections to the same size when the source material differs.
 - `Additional Files to Load` should be omitted when the routing baseline already provides enough context.
 - `Additional Files to Load` should list only repo-local files that a reader or agent should open in addition to the normal routing baseline.
 - `Additional Files to Load` bullets should use `source: execution implication` form so the local effect of each file is explicit.
-- `Additional Files to Load` should stay short, normally `1` to `5` bullets.
+- `Additional Files to Load` should list every extra repo-local file whose absence would materially change execution. Do not cap the list at a default count.
 - `Additional Files to Load` should not repeat repo-wide baseline surfaces such
   as `AGENTS.md`, the authoritative routing tables, `core/workflows/modules/core.md`, or
   generic workflow standards such as
@@ -85,7 +85,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
   `workflow_md_standard.md`.
 - Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
 - Workflow documents should stay structured enough that the derived workflow index can capture their kind, title, purpose summary, and task-specific additional files without manual curation.
-- `Data Structure` and `Outputs` may remain brief when the workflow does not define a stable working structure or durable deliverable, but the headings should still be present.
+- `Data Structure` and `Outputs` may remain minimal only when the workflow truly does not define a stable working structure or durable deliverable, but the headings should still be present.
 - Use repository-native Markdown links when `Additional Files to Load` is present so the files can be captured and queried deterministically.
 - Prefer governed local reference docs under `core/docs/references/**` or an owning pack's `docs/references/**` root instead of raw external URLs when outside authority materially affects the workflow.
 - Do not add front matter to workflow documents unless a narrower standard or validator explicitly requires it.
@@ -125,7 +125,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Role-root files should include a materially useful `Composes Modules` section instead of leaving module orchestration implicit.
 - The file should stay focused on one execution concern rather than mixing multiple unrelated procedures.
 - The workflow body should be actionable and sequence-aware rather than only descriptive.
-- `Data Structure` and `Outputs` should remain brief and should not require standalone meta deliverables unless another governed surface explicitly requires them.
+- `Data Structure` and `Outputs` should capture every materially relevant tracked concept or resulting surface without inventing standalone meta deliverables unless another governed surface explicitly requires them.
 - `Additional Files to Load` should be absent when the workflow does not need extra repo-local context beyond the routing baseline.
 - If `Additional Files to Load` is present, each bullet should identify a concrete repo-local file and explain the execution implication of loading it.
 - Repo-local Markdown links should resolve to existing files or directories under the repository root.

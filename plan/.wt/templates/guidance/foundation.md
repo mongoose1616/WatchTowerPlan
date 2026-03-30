@@ -33,4 +33,4 @@ Describe the durable intent or boundary that this foundation establishes.
 
 ## Notes
 
-- Capture short clarifications only when they materially tighten the boundary.
+- Capture clarifications whenever they materially tighten the boundary or remove ambiguity about how the foundation should be applied.

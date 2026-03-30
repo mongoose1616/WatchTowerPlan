@@ -39,7 +39,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): governs stable artifact naming and keeps code-local naming advice from drifting into governed-ID policy.
 - [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): defines the repository-wide design philosophy that this Python standard operationalizes for code structure.
 - [pep8_reference.md](/core/docs/references/pep8_reference.md): provides the upstream readability baseline for module, class, function, constant, import, and comment style.
-- [pep257_reference.md](/core/docs/references/pep257_reference.md): provides the upstream baseline for concise docstrings on public or non-obvious Python surfaces.
+- [pep257_reference.md](/core/docs/references/pep257_reference.md): provides the upstream baseline for focused docstrings on public or non-obvious Python surfaces.
 - [src_layout_reference.md](/core/docs/references/src_layout_reference.md): reinforces the package-boundary and import-discipline expectations of the `src/` layout used here.
 - [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md): supports the one-file tool-configuration and package-metadata assumptions this standard relies on.
 - [ruff_reference.md](/core/docs/references/ruff_reference.md): supports the lint and import-order rules that keep local style predictable.
@@ -76,7 +76,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
   - `*Helper` for a narrow stateless policy, registry, lookup, or transformation surface.
   - `*Result`, `*Issue`, `*Request`, `*Descriptor`, or `*Record` for explicit data shapes.
   - Avoid vague names such as `helpers`, `utils`, `misc`, `manager`, or `common` unless the module truly centralizes one repeated pattern and no narrower name fits.
-- Keep public module, class, and non-obvious callable docstrings concise and behavior-focused. Do not document trivial private helpers by default, and do not let docstrings drift behind the implementation.
+- Keep public module, class, and non-obvious callable docstrings behavior-focused and sized to the amount of explanation the surface actually needs. Do not document trivial private helpers by default, and do not let docstrings drift behind the implementation.
 - Keep comments rare and useful. Explain intent, invariants, or non-obvious constraints, not line-by-line mechanics.
 - Type reusable and cross-module boundaries first. Public functions, services, and typed records should make inputs and outputs explicit.
 - Keep `Any` at the edges where untyped libraries, JSON payloads, or dynamic external data make it unavoidable. Convert into narrower local shapes quickly instead of letting `Any` spread.
@@ -98,7 +98,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 | Module size | one primary responsibility | Split files before they become mixed-purpose grab bags. |
 | Interface style | explicit arguments and typed return values | Hidden globals and embedded task constants increase maintenance cost. |
 | Naming | role-bearing, specific, and boring | Names should describe responsibility, not implementation history. |
-| Documentation | concise docstrings for public or non-obvious behavior | Use comments only for intent or constraints. |
+| Documentation | focused docstrings for public or non-obvious behavior | Use comments only for intent or constraints. |
 | Tests | targeted unit coverage plus boundary integration coverage | Match the validation scope to the change. |
 
 ## Operationalization

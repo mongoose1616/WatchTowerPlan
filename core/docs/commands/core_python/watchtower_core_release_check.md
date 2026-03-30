@@ -67,7 +67,7 @@ uv run watchtower-core release check --output-root /tmp/rehearsal --include-pack
 - With `--pack-only`, the staged output is an additive pack bundle rather than a standalone repository. The portability scope switches to `pack_bundle`.
 - If git metadata is unavailable, the command does not fail solely for that reason. It records that the dirty-worktree check was unavailable and continues with validation plus export.
 - In `json` mode, the payload includes the worktree summary, selected schema-definition validations, broad validation summary, and nested export plus portability details.
-- In `human` mode, the command prints a compact release summary. Non-zero exit means either the dirty-worktree guard tripped, validation failed, or the staged export failed validation.
+- In `human` mode, the command prints a focused release summary. Non-zero exit means either the dirty-worktree guard tripped, validation failed, or the staged export failed validation.
 
 ## Related Commands
 | Command | Relationship |

@@ -21,7 +21,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for the machine-readable initiative index stored at `plan/.wt/indexes/initiative_index.json`.
 
 ## Purpose
-- Provide one compact machine-readable initiative-family view over the current traced initiative corpus.
+- Provide one focused machine-readable initiative-family view over the current traced initiative corpus.
 - Let agents and engineers answer "what phase is this initiative in, who is working on it, and what is next?" without reparsing multiple family trackers or raw Markdown documents.
 - Keep the initiative view derived so it does not compete with the traceability index, family indexes, or task records as authoritative sources.
 - Keep the initiative layer distinct from the repo-level coordination index that now sits above it as the default machine start-here surface.
@@ -54,7 +54,7 @@ This standard defines the role, structure, and boundary rules for the machine-re
 - Build the initiative index from the traceability index plus current planning and task indexes rather than scanning human trackers.
 - Carry `current_phase`, `next_action`, and `next_surface_path` in every active initiative entry.
 - Carry active owner and open-task rendering for every active initiative with non-terminal tasks.
-- Carry compact `active_task_summaries` for active initiatives with non-terminal tasks so the first machine coordination pass can see task titles, status, priority, ownership, and actionability without reopening the task index immediately.
+- Carry focused `active_task_summaries` for active initiatives with non-terminal tasks so the first machine coordination pass can see every materially distinct task title, status, priority, ownership, and actionability cue without reopening the task index immediately.
 - Do not publish an active initiative entry without linked task IDs.
 - Mirror terminal initiative closeout state from traceability rather than inventing a second closeout authority.
 
@@ -73,7 +73,7 @@ This standard defines the role, structure, and boundary rules for the machine-re
 |---|---|---|
 | `trace_id` | Required | Shared umbrella identifier for the initiative. |
 | `title` | Required | Human-readable initiative title. |
-| `summary` | Required | Concise description of the initiative. |
+| `summary` | Required | Clear description of the initiative. |
 | `artifact_status` | Required | Use the governed lifecycle vocabulary mirrored from traceability for the projected governing artifact. |
 | `initiative_status` | Required | Use the initiative closeout vocabulary mirrored from traceability. |
 | `current_phase` | Required | Use the governed initiative-phase vocabulary. |
@@ -86,7 +86,7 @@ This standard defines the role, structure, and boundary rules for the machine-re
 | `primary_owner` | Conditionally required | Use when exactly one active owner is present. |
 | `active_owners` | Conditionally required | Current owners of open tasks when present and especially when more than one owner is active. |
 | `active_task_ids` | Conditionally required | Non-terminal local task IDs for active initiatives. Required for active initiatives outside `closeout`. |
-| `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `closeout`, including task title, status, priority, owner, doc path, and actionability. |
+| `active_task_summaries` | Conditionally required | Focused active-task summaries for active initiatives outside `closeout`, including task title, status, priority, owner, doc path, and actionability. |
 | `blocked_by_task_ids` | Optional | Blocking task IDs referenced by current active tasks when present. |
 | `source_surface_paths` | Optional | Linked initiative-authored or promoted source surface paths for the initiative. |
 | `governing_document_paths` | Optional | Effective Markdown doc paths for the standards, references, or authored initiative docs that govern current work. |

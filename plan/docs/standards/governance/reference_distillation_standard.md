@@ -104,7 +104,7 @@ This standard defines how externally published source material is distilled into
 - Local mappings point to real repository surfaces rather than abstract placeholders.
 - Unresolved ambiguity, source conflict, or known uncertainty is called out explicitly.
 - Reviewers should reject distillations that are effectively link-only or that omit material ambiguity for a topic where misinterpretation could be risky.
-- The result is concise enough to maintain and useful enough that future contributors do not need to re-derive the same interpretation from scratch.
+- The result is focused enough to maintain while still preserving every materially relevant distinction future contributors would otherwise need to re-derive from scratch.
 
 ## Change Control
 - Update this standard when the repository changes how external source material is distilled or promoted into local policy.

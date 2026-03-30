@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:55:00Z"
+updated_at: "2026-03-29T03:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -73,7 +73,9 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Pack-owned `watchtower_<pack>.testing` modules are internal validation helpers by default, not portable runtime API surface.
 - When shared-core tests need pack context, use synthetic fixture packs or typed loader/runtime seams instead of direct imports of a live hosted pack package.
 - Treat effective pack activation as the first step for any pack-aware test seam. Tests that only need runtime manifest, owned roots, import resolution, or command-namespace behavior should activate the effective pack settings first and should not require a full `PackContext` unless they actually consume pack-governed surfaces.
+- When a shared-core test asserts pack-local validators, authorities, rendered surfaces, workflow metadata, or other control-plane entries, derive the expected records from activated `pack_settings.json`, declared surfaces, and merged registries instead of naming the current donor repository's concrete pack IDs or tracking files.
 - Do not let the live current-repository pack workspace become an accidental shared-core test dependency. If a test only passes because the active hosted-pack workspace exists, either move it under the owning pack root or replace that dependency with synthetic fixture-pack setup.
+- Do not treat `plan/`, `oversight/`, or any other concrete pack root as a shared-core invariant. Portable shared tests must keep passing when another repository bootstraps a different active pack that satisfies the same contract families.
 - Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
 - Small helper shells under `core/python/tools/` may exist to improve human onboarding or interactive use, but they must not replace the documented `uv run` contract.
@@ -156,6 +158,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Reviewers should reject shared-workspace guidance or metadata changes that make the donor repository's hosted-pack set look like a reusable-core invariant instead of current-repository configuration.
 - Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/` and approved pack-owned boundaries.
 - Reviewers should reject package artifacts that install repo-local tests or pack-owned `testing/` helpers as default runtime surface for customer delivery.
+- Reviewers should reject shared-core tests or workspace guidance that hard-code donor-pack validator IDs, workflow IDs, rendered surfaces, or tracking filenames where the assertion should be resolved from the active pack contract.
 
 ## Change Control
 - Update this standard when the Python workspace root, package layout, or standard environment contract changes.
@@ -176,4 +179,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code plus direct pack tests under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/` and `<pack-root>/python/tests/`.
 
 ## Updated At
-- `2026-03-24T22:55:00Z`
+- `2026-03-29T03:35:00Z`

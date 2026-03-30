@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the structure and expected content of `ROUTING_TABLE.md` as the canonical task-to-workflow routing surface for the repository.
 
 ## Purpose
-Keep routing deterministic, minimal, and easy to maintain by giving the repository one compact table that maps request types to the minimum required workflow documents.
+Keep routing deterministic, bounded, and easy to maintain by giving the repository one table that maps request types to the required workflow documents.
 
 ## Scope
 - Applies to the canonical routing table file at the shared routing table and any pack-owned routing tables.
@@ -39,7 +39,7 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 
 ## Guidance
 - `ROUTING_TABLE.md` must be the canonical routing index for workflow selection.
-- The file should stay compact and table-first rather than turning into a long narrative document.
+- The file should stay table-first rather than turning into a long narrative document.
 - Each row should represent one task type with one clear routing outcome.
 - Trigger keywords should be broad enough to be useful but specific enough to avoid frequent false matches.
 - Trigger keywords are examples, not the only allowed routing surface. Routing may infer the nearest task type from the full prompt context.
@@ -47,11 +47,11 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - The routing table should always include the shared core workflow module in routed task sets.
 - Workflow documents that are not selected by routing remain available but inactive.
 - If a task spans multiple task types, routing should union only the minimum relevant module sets.
-- The short instruction block may include compact merge rules for common compound cases such as commit intent, documentation gaps, or reconciliation routes, as long as the file stays table-first.
+- The instruction block may include merge rules for common compound cases such as commit intent, documentation gaps, or reconciliation routes, as long as the file stays table-first.
 - If a task type cannot be routed clearly in one row, it should usually be split into smaller task types.
 
 ## Structure or Data Model
-- Title and one short instruction block.
+- Title and one instruction block.
 - Table with these columns:
   - `Task Type`
   - `Trigger Keywords (Examples)`

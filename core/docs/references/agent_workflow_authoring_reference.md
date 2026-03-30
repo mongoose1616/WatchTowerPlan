@@ -34,7 +34,7 @@ aliases:
 This document provides a working reference for shaping repository workflow documents so they are efficient for LLM and agent use without losing clarity for human maintainers.
 
 ## Purpose
-Give maintainers a compact set of practical rules for writing workflow documents that load only the necessary context, make the next files to open explicit, and avoid token-heavy boilerplate.
+Give maintainers a practical set of rules for writing workflow documents that load only the necessary context, make the next files to open explicit, and avoid token-heavy boilerplate.
 
 ## Scope
 - Covers workflow-document structure, context-loading hints, instruction density, and authority capture for LLM or agent use.
@@ -63,7 +63,7 @@ Give maintainers a compact set of practical rules for writing workflow documents
 - When the file is a workflow role, publish a `Composes Modules` section so the reusable module stack the role directly orchestrates is explicit and queryable.
 - Turn authority capture into execution hints. A workflow should name only the extra repo-local files the agent should open next and explain why each file matters.
 - Prefer local distilled references over raw vendor URLs. If external guidance matters, point the workflow at a governed local reference doc so execution stays repo-native and queryable.
-- Treat `Data Structure` and `Outputs` as internal workflow scaffolding. They should stay terse and should not imply extra repository prose when the final artifact already carries the needed information.
+- Treat `Data Structure` and `Outputs` as internal workflow scaffolding. They should record every materially distinct tracked concept or resulting surface and should not imply extra repository prose when the final artifact already carries the needed information.
 - If the requested change itself is the output, say so directly instead of inventing extra records, summaries, or checklists.
 
 ### Preferred Workflow-Authoring Decisions
@@ -76,7 +76,7 @@ Give maintainers a compact set of practical rules for writing workflow documents
 | What link form should those files use? | Repository-native links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, or `/<pack>/workflows/...` | Keeps the workflow portable across clones, branches, and worktrees instead of binding it to one machine path. |
 | What should happen when no extra files are needed? | Omit the section entirely | Avoids token-heavy filler and false precision. |
 | How should role docs publish module orchestration? | Required `Composes Modules` section | Makes role-to-module composition explicit and queryable without turning the role into a second routing table. |
-| How should `Data Structure` and `Outputs` be written? | As terse internal workflow scaffolding | Prevents them from turning into prompts for extra low-value artifact prose. |
+| How should `Data Structure` and `Outputs` be written? | As internal workflow scaffolding that is as detailed as needed | Prevents them from turning into prompts for extra low-value artifact prose while still capturing materially distinct workflow state. |
 
 ### Anti-Patterns
 - Repeating `AGENTS.md`, the authoritative routing tables, `core/workflows/modules/core.md`, or the generic workflow standards in every workflow document.
@@ -119,15 +119,15 @@ Give maintainers a compact set of practical rules for writing workflow documents
 
 ### Why It Matters Here
 - The repository already has a routed baseline context layer. Workflow documents should only add context that is specific to the active module or role and helpful for immediate execution.
-- Workflow documents are read by both humans and agents, so the file needs to stay short enough to scan while still naming the next specific files to load when that matters.
-- The derived workflow index and query surfaces are most useful when the workflow body points to a small set of real repo-local files instead of generic boilerplate.
+- Workflow documents are read by both humans and agents, so the file needs to stay scannable while still naming the next specific files to load and the materially important execution detail.
+- The derived workflow index and query surfaces are most useful when the workflow body points to the real repo-local files that materially affect execution instead of generic boilerplate.
 
 ## Process or Workflow
 1. Define the workflow's single execution concern first.
 2. Assume the routing baseline already provides `AGENTS.md`, `core/workflows/ROUTING_TABLE.md`, any active pack-owned `ROUTING_TABLE.md`, and `core/workflows/modules/core.md`.
 3. If the file is a workflow role, add `Composes Modules` and list the reusable workflow modules the role directly orchestrates.
 4. Add `Additional Files to Load` only when the module or role truly needs extra repo-local files beyond that baseline.
-5. Keep each additional-load bullet short and explicit in `source: execution implication` form.
+5. Keep each additional-load bullet explicit in `source: execution implication` form and include every extra file that materially changes execution.
 6. Prefer citing governed local reference docs when external authority materially affects the workflow.
 
 ## Examples
