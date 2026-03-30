@@ -30,12 +30,16 @@ def test_public_query_services_cover_generic_governed_surfaces() -> None:
         for entry in command_matches
     )
 
-    workflow_matches = WorkflowQueryService(loader).search(
+    workflow_loader = ControlPlaneLoader(REPO_ROOT)
+    assert workflow_loader._schema_store is None
+
+    workflow_matches = WorkflowQueryService(workflow_loader).search(
         WorkflowSearchParams(query="validation", limit=10)
     )
     assert any(
         entry.doc_path == "core/workflows/modules/code_validation.md" for entry in workflow_matches
     )
+    assert workflow_loader._schema_store is None
 
     authority_matches = AuthorityMapQueryService(loader).search(
         AuthorityMapSearchParams(question_id="authority.governance.workflow_routing")
@@ -77,6 +81,7 @@ def test_public_query_services_cover_pack_surface_and_artifact_family_queries() 
 
 def test_public_route_preview_service_resolves_workflow_paths() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
+    assert loader._schema_store is None
 
     preview = RoutePreviewService(loader).preview(task_type="Code Implementation")
 
@@ -85,3 +90,4 @@ def test_public_route_preview_service_resolves_workflow_paths() -> None:
         workflow.doc_path == "core/workflows/modules/code_implementation.md"
         for workflow in preview.selected_workflows
     )
+    assert loader._schema_store is None

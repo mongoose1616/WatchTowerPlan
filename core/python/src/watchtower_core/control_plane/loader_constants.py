@@ -7,6 +7,7 @@ from typing import TypeVar
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validator_registry.json"
 VALIDATION_SUITE_REGISTRY_PATH = "core/control_plane/registries/validation_suite_registry.json"
 BENCHMARK_SUITE_REGISTRY_PATH = "core/control_plane/registries/benchmark_suite_registry.json"
+SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog.json"
 PACK_REGISTRY_PATH = "core/control_plane/registries/pack_registry.json"
 AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = "core/control_plane/registries/workflow_metadata_registry.json"

@@ -8,6 +8,10 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import RouteIndexEntry, WorkflowIndexEntry
 from watchtower_core.query.common import normalize_text
+from watchtower_core.query.trusted_indexes import (
+    load_trusted_route_index,
+    load_trusted_workflow_index,
+)
 
 _TOKEN_PATTERN = re.compile(r"[a-z0-9]+")
 _IGNORED_TOKENS = {
@@ -100,8 +104,8 @@ class RoutePreviewService:
         if bool(request_text) == bool(task_type):
             raise ValueError("route preview requires exactly one of request_text or task_type.")
 
-        route_index = self._loader.load_route_index()
-        workflow_index = self._loader.load_workflow_index()
+        route_index = load_trusted_route_index(self._loader)
+        workflow_index = load_trusted_workflow_index(self._loader)
         workflows_by_id = {entry.workflow_id: entry for entry in workflow_index.entries}
 
         if task_type is not None:

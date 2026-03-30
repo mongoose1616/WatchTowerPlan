@@ -11,13 +11,13 @@ from watchtower_core.control_plane.loader_constants import (
     CORE_PACK_SETTINGS_PATH,
     PACK_RUNTIME_MANIFEST_FILENAME,
     PACK_SETTINGS_PATH,
+    SCHEMA_CATALOG_ARTIFACT_PATH,
     VALIDATION_SUITE_REGISTRY_PATH,
     VALIDATOR_REGISTRY_PATH,
 )
 from watchtower_core.control_plane.pack_settings_discovery import (
     discover_pack_settings_paths,
 )
-from watchtower_core.control_plane.schemas import SCHEMA_CATALOG_ARTIFACT_PATH
 
 
 def _activate_pack_settings(loader: Any, pack_settings_path: str) -> None:

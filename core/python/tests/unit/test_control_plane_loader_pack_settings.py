@@ -59,6 +59,31 @@ def test_control_plane_loader_reads_pack_registry_and_runtime_manifest(
     assert loader.pack_runtime_manifest_path() == surfaces["pack_runtime_manifest_path"]
 
 
+def test_control_plane_loader_defers_schema_store_until_needed(tmp_path: Path) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    assert loader._schema_store is None
+
+    _ = loader.load_json_object("core/control_plane/indexes/workflows/workflow_index.json")
+
+    assert loader._schema_store is None
+
+    _ = loader.load_schema_catalog()
+
+    assert loader._schema_store is not None
+
+
 def test_control_plane_loader_load_pack_runtime_manifest_activates_minimal_pack_first(
     tmp_path: Path,
 ) -> None:

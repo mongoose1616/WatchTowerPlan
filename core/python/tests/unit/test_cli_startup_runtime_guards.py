@@ -48,7 +48,7 @@ def test_pack_command_group_spec_degrades_to_unavailable_namespace_when_tolerati
     command_namespace = loader.load_pack_runtime_manifest().command_namespace
 
     monkeypatch.setattr(
-        "watchtower_host.cli.registry.load_active_pack_integration",
+        "watchtower_core.pack_integration.runtime.load_active_pack_integration",
         lambda pack_loader: (_ for _ in ()).throw(ModuleNotFoundError("missing pack runtime")),
     )
 
@@ -72,7 +72,7 @@ def test_pack_command_group_spec_propagates_pack_failure_without_tolerance(
     command_namespace = loader.load_pack_runtime_manifest().command_namespace
 
     monkeypatch.setattr(
-        "watchtower_host.cli.registry.load_active_pack_integration",
+        "watchtower_core.pack_integration.runtime.load_active_pack_integration",
         lambda pack_loader: (_ for _ in ()).throw(ModuleNotFoundError("missing pack runtime")),
     )
 

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from watchtower_core.control_plane.loader_cache import (
     _invalidate_parent_directory_state as _invalidate_parent_directory_state_method,
@@ -244,13 +244,15 @@ from watchtower_core.control_plane.loader_typed import (
     load_typed_document as _load_typed_document_public_method,
 )
 from watchtower_core.control_plane.models import PackSettings
-from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 from watchtower_core.control_plane.workspace import (
     ArtifactSource,
     ArtifactStore,
     FileSystemArtifactIO,
     WorkspaceConfig,
 )
+
+if TYPE_CHECKING:
+    from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 
 __all__ = [
     "ACCEPTANCE_CONTRACTS_DIRECTORY",
@@ -327,6 +329,12 @@ class ControlPlaneLoader:
         )
         self.artifact_store = artifact_store or default_io
         self.active_pack_settings_path = active_pack_settings_path
+        self._schema_store = schema_store
+        self._supplemental_schema_documents = tuple(supplemental_schema_documents)
+        self._supplemental_schema_paths = tuple(supplemental_schema_paths)
+        self._supplemental_schema_ids = (
+            schema_store.supplemental_schema_ids if schema_store is not None else None
+        )
         self._active_pack_settings: PackSettings | None = None
         self._active_surface_paths: dict[str, str] = {}
         self._active_schema_catalog_path: str | None = None
@@ -344,13 +352,6 @@ class ControlPlaneLoader:
         self._active_human_surface_policy_registry_path: str | None = None
         self._active_retention_policy_registry_path: str | None = None
         self._active_artifact_index_path: str | None = None
-        self.schema_store = schema_store or SchemaStore.from_workspace(
-            effective_workspace,
-            artifact_source=self.artifact_source,
-            supplemental_schema_documents=supplemental_schema_documents,
-            supplemental_schema_paths=supplemental_schema_paths,
-        )
-        self.supplemental_schema_ids = self.schema_store.supplemental_schema_ids
         self._validated_document_overrides: dict[str, dict[str, Any]] = {}
         self._validated_directory_overrides: dict[str, tuple[tuple[str, dict[str, Any]], ...]] = {}
         self._validated_document_cache: dict[str, dict[str, Any]] = {}
@@ -434,3 +435,34 @@ class ControlPlaneLoader:
     load_typed_directory = _load_typed_directory_public_method
     _load_typed_document = _load_typed_document_method
     _load_typed_directory = _load_typed_directory_method
+
+    @property
+    def schema_store(self) -> SchemaStore:
+        """Return the active schema store, building it lazily when first needed."""
+
+        if self._schema_store is None:
+            from watchtower_core.control_plane.schemas import SchemaStore
+
+            self._schema_store = SchemaStore.from_workspace(
+                self.workspace_config,
+                artifact_source=self.artifact_source,
+                supplemental_schema_documents=self._supplemental_schema_documents,
+                supplemental_schema_paths=self._supplemental_schema_paths,
+            )
+            self._supplemental_schema_ids = self._schema_store.supplemental_schema_ids
+        return self._schema_store
+
+    @schema_store.setter
+    def schema_store(self, value: SchemaStore) -> None:
+        self._schema_store = value
+        self._supplemental_schema_ids = value.supplemental_schema_ids
+
+    @property
+    def supplemental_schema_ids(self) -> tuple[str, ...]:
+        if self._supplemental_schema_ids is None:
+            return self.schema_store.supplemental_schema_ids
+        return self._supplemental_schema_ids
+
+    @supplemental_schema_ids.setter
+    def supplemental_schema_ids(self, value: tuple[str, ...]) -> None:
+        self._supplemental_schema_ids = tuple(value)

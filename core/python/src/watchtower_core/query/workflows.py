@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import WorkflowIndexEntry
 from watchtower_core.query.common import query_score
+from watchtower_core.query.trusted_indexes import load_trusted_workflow_index
 
 
 @dataclass(frozen=True, slots=True)
@@ -33,7 +34,7 @@ class WorkflowQueryService:
     def search(self, params: WorkflowSearchParams) -> tuple[WorkflowIndexEntry, ...]:
         """Return workflow entries matching the requested filters."""
 
-        index = self._loader.load_workflow_index()
+        index = load_trusted_workflow_index(self._loader)
         workflow_id = params.workflow_id.casefold() if params.workflow_id is not None else None
         workflow_kind = (
             params.workflow_kind.casefold() if params.workflow_kind is not None else None

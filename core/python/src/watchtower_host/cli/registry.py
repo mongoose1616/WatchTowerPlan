@@ -9,12 +9,6 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PackRegistryEntry, PackRuntimeManifest
-from watchtower_core.pack_integration.docs import pack_command_docs_root
-from watchtower_core.pack_integration.runtime import load_active_pack_integration
-from watchtower_core.pack_integration.runtime_registry import (
-    effective_pack_registry_entries,
-    find_runtime_pack_registry_entry_by_namespace,
-)
 
 CommandRegistrar = Callable[[argparse._SubParsersAction], object]
 
@@ -44,6 +38,8 @@ class PackCommandGroupDiscovery:
 
     @property
     def doc_root(self) -> str:
+        from watchtower_core.pack_integration.docs import pack_command_docs_root
+
         return pack_command_docs_root(docs_root=self.runtime_manifest.owned_roots.docs_root)
 
 
@@ -188,6 +184,8 @@ def discover_registered_pack_command_groups(
     active_loader = loader or ControlPlaneLoader()
     discoveries: list[PackCommandGroupDiscovery] = []
     seen_names = {spec.name for spec in CORE_COMMAND_GROUP_SPECS}
+    from watchtower_core.pack_integration.runtime_registry import effective_pack_registry_entries
+
     for entry in effective_pack_registry_entries(active_loader):
         pack_loader = active_loader.derive(active_pack_settings_path=entry.pack_settings_path)
         namespace = entry.command_namespace
@@ -239,6 +237,8 @@ def load_pack_command_group_spec(
         runtime_manifest=runtime_manifest,
     )
     try:
+        from watchtower_core.pack_integration.runtime import load_active_pack_integration
+
         loaded = load_active_pack_integration(
             pack_loader,
         )
@@ -304,6 +304,10 @@ def _find_registered_pack_entry(
     command_namespace: str,
     loader: ControlPlaneLoader,
 ) -> PackRegistryEntry | None:
+    from watchtower_core.pack_integration.runtime_registry import (
+        find_runtime_pack_registry_entry_by_namespace,
+    )
+
     return find_runtime_pack_registry_entry_by_namespace(loader, command_namespace)
 
 

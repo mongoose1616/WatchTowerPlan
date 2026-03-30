@@ -12,6 +12,7 @@ from jsonschema import Draft202012Validator
 from referencing import Registry, Resource
 
 from watchtower_core.control_plane.errors import SchemaResolutionError
+from watchtower_core.control_plane.loader_constants import SCHEMA_CATALOG_ARTIFACT_PATH
 from watchtower_core.control_plane.models import SchemaCatalog, SchemaCatalogRecord
 from watchtower_core.control_plane.workspace import (
     ArtifactSource,
@@ -20,7 +21,6 @@ from watchtower_core.control_plane.workspace import (
 )
 
 SCHEMA_CATALOG_SCHEMA_PATH = "core/control_plane/schemas/artifacts/schema_catalog.schema.json"
-SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog.json"
 
 
 @dataclass(frozen=True, slots=True)
