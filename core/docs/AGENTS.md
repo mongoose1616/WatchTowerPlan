@@ -21,7 +21,7 @@
 - Use `watchtower-core query authority` to resolve canonical documentation and standards surfaces before broad scanning, and use `watchtower-core query templates` before drafting or materially restructuring governed docs whose family shape already exists.
 - Write documentation as native guidance for this repository.
 - Use current repository paths, names, and terminology.
-- Keep each document focused on one standard, topic, or area.
+- Keep each document bounded to one primary standard, topic, or area, but include every materially distinct rule, boundary, exception, and example needed for correct use.
 - Prefer companion documents over mixed-purpose catch-all files.
 - Do not describe documents as extracted from predecessor repos, imported snapshots, or filesystem copies.
 - Do not preserve predecessor project names in titles, summaries, headings, tables, or filenames unless the document is explicitly historical or comparative.
@@ -32,6 +32,7 @@
 
 ## Do
 - Keep documentation scoped, current, and easy to scan.
+- Use as many sections, bullets, tables, examples, and explanatory notes as the source material requires. Do not target fixed counts or trim distinct guidance items only to keep documents short or symmetric.
 - Use real repository paths and real repository surfaces when mapping guidance locally.
 - Keep observed facts, local interpretation, and normative repository policy distinguishable when a document depends on external or multi-surface authority.
 - Split documents when one file starts mixing multiple concerns heavily.

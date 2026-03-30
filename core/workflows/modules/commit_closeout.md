@@ -53,9 +53,9 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 
 ## Outputs
 - A repository-compliant Git commit or a validated commit message draft
-- A short record of the standard used to govern the commit
-- A short record of commit validation checks applied
-- A short record of any commit blockers, deferrals, or follow-up work
+- An explicit record of the standard used to govern the commit
+- An explicit record of commit validation checks applied
+- An explicit record of any commit blockers, deferrals, or follow-up work
 
 ## Done When
 - The change set has been evaluated for commit readiness.

@@ -37,7 +37,7 @@ Use this workflow to inventory the repository's major surfaces, authority bounda
 
 ## Outputs
 - A structured repository inventory and coverage map for the active review
-- A short record of hotspots, structural gaps, duplicated areas, or unclear ownership boundaries
+- An explicit record of hotspots, structural gaps, duplicated areas, or unclear ownership boundaries
 
 ## Done When
 - The repository's main surfaces, technology boundaries, and authority boundaries are mapped.

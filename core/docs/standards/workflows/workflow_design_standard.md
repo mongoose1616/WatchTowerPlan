@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-27T15:00:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -30,7 +30,7 @@ Keep workflow documents bounded, composable, and explicit so routed task executi
 ## Use When
 - Creating a new workflow module or workflow role.
 - Reviewing whether an existing workflow document is too broad, too vague, or misplaced.
-- Splitting a large workflow into smaller routed modules or thinner workflow roles.
+- Splitting a large workflow into smaller routed modules or more specialized workflow roles.
 
 ## Related Standards and Sources
 - [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
@@ -81,6 +81,7 @@ Keep workflow documents bounded, composable, and explicit so routed task executi
 - `Additional Files to Load` links should use repository-native Markdown targets such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, or another repo-relative path the current checkout can resolve.
 - Filesystem-absolute targets such as `/home/...` or other machine-local checkout paths are invalid in workflow documents because they break clone, branch, and worktree portability.
 - Steps should be ordered and concrete enough that the workflow can be followed without hidden verbal context.
+- Workflow documents should name every materially distinct branch, exception, handoff, and output that the reader would otherwise have to infer verbally.
 - Workflows should prefer clarify-before-execute behavior when ambiguity materially affects correctness.
 - Workflow steps should call out adjacent-document updates or companion workflow loading when coherence requires it.
 - Workflow documents should be written so they can be merged with other routed documents without contradicting them.
@@ -167,4 +168,4 @@ Keep workflow documents bounded, composable, and explicit so routed task executi
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-27T15:00:00Z`
+- `2026-03-30T05:10:00Z`

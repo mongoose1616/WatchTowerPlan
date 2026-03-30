@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "agents_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-27T15:00:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, scope, structure, and authoring rules for `AGENTS.md` files used at the repository root and within nested directory subtrees.
 
 ## Purpose
-Keep `AGENTS.md` files scoped, high-signal, and trustworthy by making them focused instruction layers for the current directory instead of catch-all manuals, duplicated workflow docs, or meta commentary about how `AGENTS.md` files are written.
+Keep `AGENTS.md` files scoped and trustworthy by making them explicit instruction surfaces for the current directory instead of catch-all manuals, duplicated workflow docs, or meta commentary about how `AGENTS.md` files are written.
 
 ## Scope
 - Applies to root and nested `AGENTS.md` files in this repository.
@@ -40,8 +40,9 @@ Keep `AGENTS.md` files scoped, high-signal, and trustworthy by making them focus
 - [agent_template.md](/core/docs/templates/agent_template.md): authoring scaffold that should stay aligned with this standard.
 
 ## Guidance
-- `AGENTS.md` must act as a focused instruction layer for the current scope.
+- `AGENTS.md` must act as an explicit instruction surface for the current scope.
 - Every retained bullet in an `AGENTS.md` file must be a live rule for that scope.
+- `AGENTS.md` should include every materially distinct local rule, boundary, lookup-order rule, and exception needed to avoid ambiguity in the governed subtree.
 - `AGENTS.md` must not contain template-authoring language, placeholder text, or generic commentary about how `AGENTS.md` files should be written unless that is itself the local rule being expressed.
 - Root `AGENTS.md` files should define repository-wide instruction boundaries and point to the canonical routing surface.
 - Nested `AGENTS.md` files should define only subtree-local rules that materially help work in that subtree.
@@ -70,12 +71,13 @@ Keep `AGENTS.md` files scoped, high-signal, and trustworthy by making them focus
 
 ## Validation
 - The file should read as active instructions for the current scope, not as template guidance.
-- The file should be scoped and direct enough that a reader can identify the applicable local rules quickly without losing materially important constraints.
+- The file should be scoped and direct enough that a reader can identify the applicable local rules without losing materially important constraints.
 - Each bullet should express a real rule, boundary, or operating expectation for the scope where the file lives.
 - The file should point to the routing surface instead of trying to reproduce full routing logic.
 - When governed lookup surfaces or templates exist for the scope, the file should direct agents to them before broad scanning or guesswork.
 - The file should align with the nearest applicable `README.md` and should not contradict directory purpose or ownership boundaries.
 - If the file contains large procedural sections, standards catalogs, or generic filler that could apply anywhere, it should be tightened or split.
+- Reviewers should reject `AGENTS.md` files that trim materially distinct local constraints merely to keep the file short.
 
 ## Change Control
 - Update this standard when the repository-wide `AGENTS.md` model changes.
@@ -93,4 +95,4 @@ Keep `AGENTS.md` files scoped, high-signal, and trustworthy by making them focus
 - The best `AGENTS.md` files are scoped, specific, and obviously tied to the directory they govern.
 
 ## Updated At
-- `2026-03-27T15:00:00Z`
+- `2026-03-30T05:10:00Z`

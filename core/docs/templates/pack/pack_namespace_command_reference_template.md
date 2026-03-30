@@ -5,7 +5,7 @@
 > Treat the page as the human-readable entrypoint for the pack command family and keep examples runnable from the pack-aware workspace.
 
 ## Summary
-<One short explanation of what the pack namespace does.>
+<Explain what the pack namespace does and any materially distinct scope, mode, or workspace boundary the summary needs to signal.>
 
 ## Use When
 - <When an engineer or operator should enter this pack namespace.>

@@ -52,7 +52,7 @@ Use this workflow to define, execute, and assess the validation needed for a cod
 - A structured validation result for the change or target surface
 - A record of how the validation covered the governing-document set in scope
 - A list of checks performed and their outcomes
-- A short record of validation gaps, blockers, or follow-up work
+- An explicit record of validation gaps, blockers, or follow-up work, including every materially distinct unresolved check that still matters
 
 ## Done When
 - The requested validation has been completed or any blocked checks have been explicitly noted.

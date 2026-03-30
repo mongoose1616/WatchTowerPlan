@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "standards"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -55,7 +55,7 @@ Core standards define how shared machine-facing surfaces behave. If these rules 
 ## Across the Repository
 
 - Use route-first and index-first retrieval instead of broad scans.
-- Keep human and agent entrypoints thin, modular, and easy to inspect.
+- Keep human and agent entrypoints scoped, modular, and easy to inspect while still surfacing every materially distinct navigation or authority boundary the reader needs.
 - Treat human family trackers and similar overview pages as projections from stronger authority, not co-equal planning truth.
 - Retire low-value or duplicative entrypoints instead of keeping every historical starting point alive forever.
 - Design workflow modules as single-objective units with explicit triggers, inputs, steps, outputs, validation, and handoff rules.
@@ -89,4 +89,4 @@ Future domain-pack standards should keep packs expressive for their domain witho
 - [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-03-30T05:10:00Z`

@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:55:00Z"
+updated_at: "2026-03-30T04:15:48Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -44,7 +44,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
-- A reference document should optimize for fast lookup, stable terminology, and clear local application.
+- A reference document should optimize for reliable lookup, stable terminology, and clear local application without suppressing materially distinct rules, defaults, edge cases, or local interpretation boundaries.
 - A reference document should cover one clearly bounded standard, framework, format, specification, or working model.
 - Use the reference template when creating new reference documents.
 - When external published guidance materially shapes repository standards or design documents, prefer distilling it into `core/docs/references/**` when the reference is shared or cross-pack, or into the owning pack's `docs/references/**` root when the value is pack-applied.
@@ -67,7 +67,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Omit generic reader-orientation sections such as `Audience` and `Use When` unless a specific reference truly needs them to avoid ambiguity.
 - `Quick Reference or Distilled Reference` should be useful enough that the reader can answer the common practical questions without immediately leaving the repo for the upstream source.
 - `Quick Reference or Distilled Reference` is the core deliverable of a reference document, not filler between the summary and the link list.
-- Prefer concrete lookup density over abstract summary. Use rules, decision points, field tables, syntax, examples, defaults, and pitfalls where they materially help.
+- Prefer concrete lookup substance over abstract summary. Use rules, decision points, field tables, syntax, examples, defaults, pitfalls, and ambiguity notes wherever they materially help the reader interpret or apply the topic correctly.
 - A reference that mostly restates scope and then points the reader to upstream links should be treated as incomplete.
 - Avoid leaving the dense reference section as only a high-level `Core Guidance` summary unless the topic is so small that anything denser would be artificial.
 - For topics with correctness, security, interoperability, parsing, storage, data-loss, or configuration risk, the quick-reference section should surface defaults, unsafe assumptions, disallowed patterns, edge cases, and failure modes explicitly.
@@ -102,7 +102,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - `Operational Surfaces`: `core/docs/references/*_reference.md`; `*/docs/references/*_reference.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `core/docs/templates/reference_template.md`
 
 ## Validation
-- The document should be easy to scan as a lookup artifact.
+- The document should work as a lookup artifact without hiding materially distinct facts behind overly compressed prose.
 - The document should stay focused on one topic and should not sprawl into a survey of loosely related subjects.
 - Governed reference docs under shared or pack-owned references roots should publish canonical upstream links.
 - `Current Repository Status` should use the approved maturity vocabulary so the machine-readable reference index can classify the reference deterministically.
@@ -126,8 +126,8 @@ Keep reference documents focused on durable lookup content by separating reader-
 - [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md)
 
 ## Notes
-- A good reference document helps the reader find stable facts quickly.
+- A good reference document helps the reader find stable facts directly and with enough local detail to avoid guesswork.
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-03-30T04:15:48Z`

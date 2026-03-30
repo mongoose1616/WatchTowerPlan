@@ -1,7 +1,7 @@
 # `.`
 
 ## Description
-`This repository is the reusable WatchTower core plus the first internal plan-domain workspace. Use the root only for repository scope, routing, current-state orientation, and top-level review. Keep the root thin: live plan state belongs under plan/, shared implementation assets belong under core/, authored shared foundations live under core/docs/foundations/, and the mirrored plan-facing foundations view lives under plan/docs/foundations/.`
+`This repository is the reusable WatchTower core plus the first internal plan-domain workspace. Use the root only for repository scope, routing, current-state orientation, and top-level review. Keep the root scoped to those concerns while documenting every materially distinct repository boundary or navigation rule needed to avoid ambiguity: live plan state belongs under plan/, shared implementation assets belong under core/, authored shared foundations live under core/docs/foundations/, and the mirrored plan-facing foundations view lives under plan/docs/foundations/.`
 
 ## Paths
 | Path | Description |

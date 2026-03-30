@@ -13,6 +13,7 @@
 > Do not use filesystem-absolute checkout paths such as `/home/...` in workflow modules; they are not portable across clones, branches, or worktrees.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
 > Treat `## Data Structure` and `## Outputs` as workflow-internal scaffolding that should be as detailed as needed to remove ambiguity. They should not imply extra repository sections, extra summaries, or extra status records unless another governed surface explicitly requires them.
+> Do not normalize sibling sections to the same size or replace materially distinct branches, exceptions, handoffs, or outputs with catch-all placeholders.
 > If the workflow result is a single document, code change, validation run, or task update, say that plainly while still documenting any materially distinct constraints, branches, or outputs needed for correct execution.
 
 ## Purpose

@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T21:30:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -66,7 +66,7 @@ Keep standards structured enough that internal and external authority is not onl
 ### Required sections
 | Section | Requirement | Notes |
 |---|---|---|
-| `Summary` | Required | One explanation of the standard and what it governs. |
+| `Summary` | Required | Explain what the standard governs and surface any materially distinct boundary the summary needs to signal. |
 | `Purpose` | Required | Explain why the rule exists. |
 | `Scope` | Required | Define where the rule applies and what it does not cover. |
 | `Use When` | Required | Explain when maintainers should consult the standard. |
@@ -86,6 +86,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Repo-local Markdown links should resolve to existing files or directories under the repository root.
 - Headings should not appear immediately after a bullet or numbered list item without a blank separator line.
 - Standards that rely on a narrower shared family baseline should keep their family-specific deltas explicit in `Guidance`, `Validation`, and `Change Control` rather than replacing those sections with vague placeholders.
+- Reviewers should reject standards that omit materially distinct rules, exceptions, or enforcement boundaries only to keep the document short or the sections symmetrical.
 - `References` should remain present and should not silently absorb the applied-implication role.
 - `updated_at` in front matter and the `Updated At` body section should match.
 
@@ -101,4 +102,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/core/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-28T21:30:00Z`
+- `2026-03-30T05:10:00Z`

@@ -27,6 +27,7 @@ aliases:
 > If you keep front matter, align the keys and allowed values with [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md) and the matching document-family profile.
 > Prefer repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Delete any front matter keys that the chosen profile does not permit.
+> Do not normalize sibling sections to the same size or target a preferred low count of bullets, tables, or examples. Keep every materially distinct item the document needs.
 > Delete any optional section that adds no non-derivable information.
 
 ## Summary

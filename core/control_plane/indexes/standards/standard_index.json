@@ -627,7 +627,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/agents_md_standard.md",
-      "updated_at": "2026-03-27T15:00:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -666,7 +666,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/command_md_standard.md",
-      "updated_at": "2026-03-24T23:50:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -711,7 +711,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/compact_document_authoring_standard.md",
-      "updated_at": "2026-03-24T22:30:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -802,7 +802,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/foundation_md_standard.md",
-      "updated_at": "2026-03-28T23:55:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -848,7 +848,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/readme_md_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-30T04:15:48Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -883,7 +883,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/reference_md_standard.md",
-      "updated_at": "2026-03-28T23:55:00Z",
+      "updated_at": "2026-03-30T04:15:48Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -964,7 +964,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-28T21:30:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1015,7 +1015,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-28T21:30:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1888,7 +1888,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/governance/reference_distillation_standard.md",
-      "updated_at": "2026-03-28T23:55:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1988,7 +1988,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/front_matter_standard.md",
-      "updated_at": "2026-03-29T00:45:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2484,7 +2484,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-27T15:00:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -3494,7 +3494,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/reference_distillation_standard.md",
-      "updated_at": "2026-03-28T20:00:00Z",
+      "updated_at": "2026-03-30T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

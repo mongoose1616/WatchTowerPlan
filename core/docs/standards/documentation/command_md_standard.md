@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T23:50:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -49,6 +49,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Keep command pages human-readable first, but structured enough that a machine index can route to them reliably.
 - Keep command pages as plain Markdown by default. Do not add front matter unless a later command-family rule explicitly requires it.
 - Keep command docs focused on stable behavior: invocation shape, arguments, examples, outputs, and source surface.
+- Document every materially distinct mode, side effect, output branch, failure boundary, and workspace assumption the command page needs for unambiguous use or review.
 - Link each durable command page from the machine-readable command index and from the relevant command-family README.
 - Use `## Arguments and Options` even when the current command surface is small; state clearly when no command-specific arguments or options exist yet.
 - When a command supports both human-readable and structured machine output, document the canonical output-mode flag and supported values explicitly.
@@ -69,7 +70,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 ### Required sections for command pages
 | Section | Requirement | Notes |
 |---|---|---|
-| `Summary` | Required | One explanation of the command and its purpose. |
+| `Summary` | Required | Explain the command's purpose in as much detail as needed to distinguish its main behavior, scope, or workspace boundary. |
 | `Use When` | Required | When an operator or engineer should reach for this command. |
 | `Command` | Required | Table describing invocation, kind, workspace, and implementation surface. |
 | `Synopsis` | Required | Usage form in a fenced shell block. |
@@ -102,6 +103,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - The documented command should exist in the repository’s current command surface.
 - Example invocations should be runnable or clearly marked as illustrative if the command is not yet implemented.
 - If a command advertises structured output, the documented output mode should match the actual implementation surface.
+- Reviewers should reject command pages that collapse materially distinct modes, side effects, or failure boundaries into vague summary text merely to keep sibling sections the same size.
 - `watchtower-core validate document-semantics --path <command_doc>` should auto-select the command-doc validator and fail when the `Source Surface` section drifts from the command-table `Source Surface` row or from live repository paths.
 - Reviewers should reject command pages that point host-owned root commands at pack source files or pack-owned commands at shared-core helper modules.
 - Reviewers should reject command pages that mix multiple unrelated commands into one document or omit the source surface.
@@ -124,4 +126,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-24T23:50:00Z`
+- `2026-03-30T05:10:00Z`

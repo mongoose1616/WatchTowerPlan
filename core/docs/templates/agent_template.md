@@ -1,13 +1,14 @@
 # AGENTS.md
 
 > Use this template for root-level or nested `AGENTS.md` files.
-> Keep the file scoped and high-signal.
-> Use it as a focused instruction layer for the current directory, not as a full operating manual.
+> Keep the file scoped to the current directory and include every materially distinct local rule needed to avoid ambiguity.
+> Use it as an explicit instruction surface for the current directory, not as a full operating manual.
 > Keep `AGENTS.md` as plain Markdown. Do not add YAML front matter unless a narrower repository rule explicitly requires it.
 > Root files should point to the canonical routing surface.
 > Nested files should add only subtree-local rules and must not weaken parent instructions.
 > When instantiating this template, remove template-authoring language and rewrite the file as active instructions for the current scope.
 > Every retained bullet should be a live rule for the current scope. Replace generic filler with scope-specific instructions or delete the section.
+> Do not target a preferred bullet count. Keep every materially distinct local boundary, lookup-order rule, or exception that the scope actually needs.
 > Delete any section that does not help the current scope.
 
 ## Role

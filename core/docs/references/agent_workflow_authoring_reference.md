@@ -10,7 +10,7 @@ tags:
   - "agents"
   - "prompt_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:05:00Z"
+updated_at: "2026-03-30T04:15:48Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -31,10 +31,10 @@ aliases:
 # Agent Workflow Authoring Reference
 
 ## Summary
-This document provides a working reference for shaping repository workflow documents so they are efficient for LLM and agent use without losing clarity for human maintainers.
+This document provides a working reference for shaping repository workflow documents so they are deterministic for LLM and agent use while preserving every materially distinct execution detail human maintainers need.
 
 ## Purpose
-Give maintainers a practical set of rules for writing workflow documents that load only the necessary context, make the next files to open explicit, and avoid token-heavy boilerplate.
+Give maintainers a practical set of rules for writing workflow documents that load only the necessary context, make the next files to open explicit, and remove repeated baseline boilerplate only when that boilerplate does not change execution.
 
 ## Scope
 - Covers workflow-document structure, context-loading hints, instruction density, and authority capture for LLM or agent use.
@@ -74,7 +74,7 @@ Give maintainers a practical set of rules for writing workflow documents that lo
 | What form should each extra-context bullet use? | `source: execution implication` | Tells the reader or agent why the file matters, not just that it exists. |
 | What should the extra-context section point to? | Repo-local files, especially standards, templates, command docs, and local references | Keeps execution deterministic and aligned with governed repository surfaces. |
 | What link form should those files use? | Repository-native links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, or `/<pack>/workflows/...` | Keeps the workflow portable across clones, branches, and worktrees instead of binding it to one machine path. |
-| What should happen when no extra files are needed? | Omit the section entirely | Avoids token-heavy filler and false precision. |
+| What should happen when no extra files are needed? | Omit the section entirely | Avoids filler and false precision while keeping every material extra file explicit when it does exist. |
 | How should role docs publish module orchestration? | Required `Composes Modules` section | Makes role-to-module composition explicit and queryable without turning the role into a second routing table. |
 | How should `Data Structure` and `Outputs` be written? | As internal workflow scaffolding that is as detailed as needed | Prevents them from turning into prompts for extra low-value artifact prose while still capturing materially distinct workflow state. |
 
@@ -119,7 +119,7 @@ Give maintainers a practical set of rules for writing workflow documents that lo
 
 ### Why It Matters Here
 - The repository already has a routed baseline context layer. Workflow documents should only add context that is specific to the active module or role and helpful for immediate execution.
-- Workflow documents are read by both humans and agents, so the file needs to stay scannable while still naming the next specific files to load and the materially important execution detail.
+- Workflow documents are read by both humans and agents, so the file needs to stay easy to navigate while still naming the next specific files to load and every materially important execution detail.
 - The derived workflow index and query surfaces are most useful when the workflow body points to the real repo-local files that materially affect execution instead of generic boilerplate.
 
 ## Process or Workflow
@@ -159,4 +159,4 @@ Give maintainers a practical set of rules for writing workflow documents that lo
 - The repository standards remain the authority; this document is the distilled working reference that informs them.
 
 ## Updated At
-- `2026-03-24T22:05:00Z`
+- `2026-03-30T04:15:48Z`

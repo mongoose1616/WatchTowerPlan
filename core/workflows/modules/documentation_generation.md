@@ -1,7 +1,7 @@
 # Documentation Generation Workflow
 
 ## Purpose
-Use this workflow to author a new repository document that is accurate, well-structured, correctly classified, and scoped to one succinct standard, topic, or area.
+Use this workflow to author a new repository document that is accurate, well-structured, correctly classified, and scoped to one primary standard, topic, or area without omitting materially distinct detail.
 
 ## Use When
 - A new document is needed for a workflow, standard, guide, reference, README, or planning surface.
@@ -40,13 +40,13 @@ Use this workflow to author a new repository document that is accurate, well-str
 5. Reconcile related docs and review classification.
    - Check whether templates, README files, standards, or companion docs should also be updated.
    - Ensure the new document does not duplicate or contradict an existing canonical document.
-   - Confirm the result is easy to scan, stays within one primary documentation concern, and does not carry low-value boilerplate.
+   - Confirm the result is easy to scan, stays within one primary documentation concern, and includes every materially distinct detail needed for correct use, execution, or review.
 
 ## Data Structure
 - Document goal
 - Document scope boundary
 - Chosen document type
-- Minimal section set
+- Required and material section set
 - Related documents to keep aligned
 
 ## Outputs
@@ -59,5 +59,5 @@ Use this workflow to author a new repository document that is accurate, well-str
 - The content matches the current repository state and source material.
 - The document reflects applicable internal standards, canonical references, and existing repository patterns.
 - The document uses an appropriate structure and does not conflict with existing docs.
-- The document is clearly scoped to one succinct standard, topic, or area.
+- The document is clearly scoped to one primary standard, topic, or area.
 - Low-value template boilerplate has been removed unless the document family explicitly requires it.

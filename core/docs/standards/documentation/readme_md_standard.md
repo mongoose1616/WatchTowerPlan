@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "readme_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-30T04:15:48Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -39,10 +39,10 @@ Keep `README.md` files trustworthy and useful as the first-stop reference for wh
 
 ## Guidance
 - A `README.md` should describe the current directory, not the repository in general and not a neighboring directory.
-- A `README.md` should act as a quick-reference orientation layer before broader scans.
+- A `README.md` should act as the first orientation layer before broader scans.
 - Use exactly one `README.md` per directory.
 - Do not add front matter or lifecycle `status` to a directory README.
-- Keep the document scannable while still naming the materially important entrypoints and boundaries.
+- Keep the document easy to navigate while still naming every materially important entrypoint, grouped path family, and boundary a reader needs to navigate the directory correctly.
 - Include the orientation detail needed for a reader to open the right next path without ambiguity. If readers need a generated query, command index, or companion document for exhaustive lookup, link to it instead of duplicating its contents.
 - The title should be the repository-relative directory path in backticks. Use `# \`.\`` for the repository root.
 - Include a `Description` section that states what belongs in the directory and any important usage boundaries.
@@ -52,7 +52,7 @@ Keep `README.md` files trustworthy and useful as the first-stop reference for wh
 - Inventory sections must use a Markdown table.
 - Inventory tables must use exactly two columns: `Path` and `Description`.
 - Do not use bullet lists or prose paragraphs as the primary inventory format.
-- Default the inventory to the directory's direct entrypoints and most important child paths rather than a recursive dump of everything below it.
+- Inventory the directory's direct entrypoints, grouped path families, and any deeper paths whose omission would make navigation or ownership ambiguous instead of producing a recursive dump of everything below it.
 - Do not enumerate long same-shape families item-by-item when a grouped entrypoint or lookup surface already exists.
 - If a directory contains many siblings with one stable naming pattern, describe the pattern once and list only the anchor files or path families a reader should open first.
 - Include the local `README.md` itself in the inventory table.
@@ -85,7 +85,7 @@ Keep `README.md` files trustworthy and useful as the first-stop reference for wh
 - The README should stay focused on the directory it lives in.
 - The inventory should point to real local files or paths and describe why a reader would care about them.
 - The inventory should be expressed as a Markdown table with the standard two-column shape.
-- The file should be scannable enough to serve as quick context before deeper reading without omitting materially important entrypoints or boundaries.
+- The file should support quick orientation before deeper reading without omitting materially important entrypoints, grouped path families, or boundaries.
 - When the directory has many similar entries, the README should point to the governing naming pattern or lookup surface instead of repeating low-value inventories.
 - The README should not contain front matter, workflow procedure, or broad repository policy that belongs elsewhere.
 
@@ -104,4 +104,4 @@ Keep `README.md` files trustworthy and useful as the first-stop reference for wh
 - If a README needs long procedural content or repository-wide rules, that content probably belongs in a companion document instead.
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-30T04:15:48Z`

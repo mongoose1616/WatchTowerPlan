@@ -6,7 +6,7 @@ Use this workflow to consult authoritative external guidance only when internal 
 ## Use When
 - Internal repository guidance is incomplete for the active task.
 - The task depends on external authority such as official language, framework, protocol, standards-body, security, regulatory, or vendor documentation.
-- The work needs a short record of which external sources materially shaped the result.
+- The work needs an explicit record of which external sources materially shaped the result.
 
 ## Inputs
 - Scoped task brief
@@ -39,7 +39,7 @@ Use this workflow to consult authoritative external guidance only when internal 
 - Remaining uncertainty
 
 ## Outputs
-- A short record of the authoritative external guidance that materially affects the task
+- A source record that captures every materially distinct piece of authoritative external guidance that affects the task
 - Explicit confirmation when no external research was needed
 
 ## Done When

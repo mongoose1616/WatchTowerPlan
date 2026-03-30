@@ -8,7 +8,7 @@
 `<Describe the purpose of this directory, what belongs here, and any important boundaries or usage notes.>`
 
 <!-- Use ## Files for file-oriented directories. Replace it with ## Paths when child directories or path families are the main entrypoints. -->
-<!-- Prefer anchor files and grouped path families over exhaustive same-shape inventories. -->
+<!-- Prefer anchor files and grouped path families over exhaustive same-shape inventories, but do not omit materially distinct entrypoints or boundaries that readers need to navigate correctly. -->
 
 ## Files
 | Path | Description |

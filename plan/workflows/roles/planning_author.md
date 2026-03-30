@@ -5,7 +5,7 @@ Use this role to orchestrate end-to-end planning authoring so initiative intake,
 
 ## Use When
 - One request spans initiative brief authoring, design planning, and implementation-slice planning together.
-- The task needs a thin orchestration layer that sequences the planning artifacts and their handoff boundaries explicitly.
+- The task needs a dedicated orchestration layer that sequences the planning artifacts and their handoff boundaries explicitly.
 - The planning package should stay coherent across multiple planning modules instead of being produced as disconnected documents.
 
 ## Inputs

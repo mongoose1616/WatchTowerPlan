@@ -63,4 +63,4 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 - Risks, assumptions, and open questions are visible.
 - An engineer can begin execution without needing major missing context filled in verbally.
 - The task-management handoff is explicit enough that live tasks can be created or transitioned without rediscovering slice intent.
-- The plan uses the smallest breakdown that still preserves execution clarity.
+- The plan uses the level of breakdown needed to preserve execution clarity, validation intent, dependencies, and handoff boundaries without collapsing materially distinct work.

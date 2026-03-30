@@ -42,7 +42,7 @@ Use this workflow to assess an inventoried repository for coherence, authority a
 
 ## Outputs
 - A structured repository assessment across the main review dimensions
-- A short record of confirmed risks, suspected drift, weak controls, and evidence gaps found during assessment
+- An explicit record of confirmed risks, suspected drift, weak controls, and evidence gaps found during assessment
 
 ## Done When
 - The repository has been assessed across the key review dimensions rather than only one slice.

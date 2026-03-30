@@ -42,7 +42,7 @@ Use this workflow to define the implementation approach and apply the requested 
 ## Outputs
 - A code change aligned with the request, repository standards, and governing design guidance
 - Updated adjacent surfaces when needed to keep the change coherent
-- A short record of the implementation approach, governing-document set, and affected surfaces
+- An explicit record of the implementation approach, governing-document set, affected surfaces, and any materially distinct tradeoff or deviation boundary
 
 ## Done When
 - The requested code change has been implemented.

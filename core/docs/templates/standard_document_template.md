@@ -26,10 +26,11 @@ authority: "authoritative"
 > Leave one blank line between the last item in a bullet or numbered list and the next heading.
 > Prefer repository-native Markdown links such as `/core/docs/...`, `/<pack>/docs/...`, `/core/workflows/...`, `/<pack>/workflows/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
-> Keep the template focused, but do not mark contract-required sections as optional.
+> Keep the document bounded to one primary standard concern, but include every materially distinct rule, exception, enforcement boundary, and companion surface needed for unambiguous use.
+> Do not mark contract-required sections as optional.
 
 ## Summary
-<One explanation of what this standard governs.>
+<Explain what this standard governs and surface any materially distinct boundary the summary needs to signal.>
 
 ## Purpose
 <Explain why this rule exists.>

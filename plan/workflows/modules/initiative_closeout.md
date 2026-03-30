@@ -56,7 +56,7 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 - Updated traceability entry with initiative closeout metadata
 - Updated initiative index and initiative tracker that mirror the terminal initiative state
 - Updated decision, design, and implementation trackers that mirror initiative status
-- A short record of any allowed open-task or validation exceptions that remained at closeout
+- An explicit record of every allowed open-task or validation exception that remained at closeout
 
 ## Done When
 - The target trace has a terminal initiative status recorded explicitly.

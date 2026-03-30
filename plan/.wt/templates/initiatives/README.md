@@ -13,6 +13,6 @@
 
 ## Notes
 
-- Keep this README thin and navigational.
+- Keep this README navigational, but include every materially distinct boundary, handoff, or lookup surface a contributor needs to enter the initiative without guesswork.
 - Point readers to machine authority when that is the real source of truth.
 - Do not turn this file into a second implementation slice.

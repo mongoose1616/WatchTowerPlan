@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-29T00:30:24Z",
+  "updated_at": "2026-03-29T04:05:00Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -135,7 +135,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-28T23:55:00Z",
+      "updated_at": "2026-03-29T00:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -477,7 +477,7 @@
     {
       "guidance_id": "std.governance.coordination_tracking",
       "title": "Coordination Tracking Standard",
-      "summary": "This standard defines the repository's compact traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces.",
+      "summary": "This standard defines the repository's derived traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces.",
       "guidance_family": "standard",
       "status": "active",
       "owner": "repository_maintainer",
@@ -589,7 +589,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
-      "updated_at": "2026-03-27T22:15:00Z",
+      "updated_at": "2026-03-29T04:05:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [

@@ -6,7 +6,7 @@ Use this role to apply a workflow-governance lens so workflow-system audits and 
 ## Use When
 - The task centers on workflow modules, workflow roles, routing tables, workflow indexes, route indexes, or workflow validation coverage.
 - The change spans shared and pack-owned workflow roots and needs a clear shared-versus-pack ownership decision.
-- The review or implementation needs a thin orchestration layer that keeps workflow-system changes explicit instead of scattering governance checks across unrelated docs.
+- The review or implementation needs a dedicated orchestration layer that keeps workflow-system changes explicit instead of scattering governance checks across unrelated docs.
 
 ## Inputs
 - Scoped workflow-system request or review target
@@ -34,5 +34,5 @@ Use this role to apply a workflow-governance lens so workflow-system audits and 
 
 ## Done When
 - The workflow-system change or review keeps shared reusable behavior separate from pack-owned behavior.
-- Role and route surfaces stay thin, explicit, and aligned with the underlying module set.
+- Role and route surfaces stay explicit, composition-oriented, and aligned with the underlying module set.
 - Validator, index, preview, and command-doc parity are explicit rather than assumed.

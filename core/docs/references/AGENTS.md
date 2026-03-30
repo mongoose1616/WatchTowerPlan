@@ -20,7 +20,7 @@
 - Keep shared or cross-pack reference topics here when they support reusable-core behavior, shared standards, or multiple hosted packs.
 - Put pack-applied operator mappings under the owning pack `docs/references/` root, even when the upstream topic also exists here.
 - Always capture the canonical source URL when the document depends on an external authority.
-- Keep each reference focused on one succinct external standard, framework, specification, or published guidance topic.
+- Keep each reference bounded to one external standard, framework, specification, or published guidance topic, but include every materially distinct rule, default, edge case, and ambiguity the repository needs.
 - Use [reference_template.md](/core/docs/templates/reference_template.md) when creating new reference documents.
 
 ## Do
@@ -33,4 +33,4 @@
 - Do not place repo-native standards or purely local reference notes in this directory.
 - Do not move pack-local operator framing into shared core just because the upstream topic is important.
 - Do not omit canonical upstream links when the topic depends on an external source.
-- Do not expand these files into broad multi-topic surveys when a focused reference would be clearer.
+- Do not expand these files into broad multi-topic surveys when a bounded reference would be clearer.

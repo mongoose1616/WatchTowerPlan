@@ -2133,7 +2133,7 @@
       "path": "core/docs/standards/documentation/compact_document_authoring_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
-      "summary": "Defines the repository rule for proportional, high-signal authored documents and generated human-readable outputs.",
+      "summary": "Defines the repository rule for proportional, complete authored documents and generated human-readable outputs.",
       "parent_path": "core/docs/standards/documentation/",
       "maturity": "authoritative",
       "priority": "high",

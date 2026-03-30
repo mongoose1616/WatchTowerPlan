@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-30T00:45:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -276,7 +276,7 @@ Use this as the smallest practical host-facing runtime manifest.
 - Only keep legacy `initiatives_root` or `projects_root` fields when the pack runtime still depends on them.
 
 ### Minimum `integration.py`
-The smallest useful integration module exports one typed `PACK_INTEGRATION` with the four required capabilities.
+The integration module should export one typed `PACK_INTEGRATION` with the four required capabilities.
 
 | Hook | Why It Is Required |
 |---|---|
@@ -395,4 +395,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-30T00:45:00Z`
+- `2026-03-30T05:10:00Z`

@@ -9,4 +9,4 @@
 - Future plan-owned workflow roles must include a `Composes Modules` section that explicitly names the reusable workflow modules the role directly orchestrates.
 - `plan/workflows/ROUTING_TABLE.md` remains the authority for which workflow documents become active for one routed task.
 - The active plan-owned role set is `planning_author.md`, `task_coordinator.md`, and `traceability_steward.md`.
-- Keep this root thin: role docs should orchestrate modules and escalation boundaries, not copy the module procedures they reference.
+- Keep this root scoped to role orchestration: role docs should document every materially distinct module handoff and escalation boundary they own, not copy the module procedures they reference.

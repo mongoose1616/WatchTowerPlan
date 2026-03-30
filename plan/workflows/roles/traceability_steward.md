@@ -6,7 +6,7 @@ Use this role to orchestrate trace-bearing decisions, traceability reconciliatio
 ## Use When
 - One request spans decision capture, traceability reconciliation, acceptance or evidence checks, and closeout readiness.
 - The main risk is stale or ambiguous traced state across multiple planning and governance surfaces.
-- The task needs a thin orchestration layer that keeps trace-bearing changes coherent across the full initiative lifecycle.
+- The task needs a dedicated orchestration layer that keeps trace-bearing changes coherent across the full initiative lifecycle.
 
 ## Inputs
 - Scoped traceability-governance request

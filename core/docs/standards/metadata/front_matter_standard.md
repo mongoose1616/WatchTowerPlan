@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T00:45:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,7 +46,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Front matter is YAML metadata for the document, not a substitute for the document body.
 - Use front matter when the metadata materially improves routing, indexing, ownership tracking, or lifecycle visibility.
 - Do not add front matter to short directory `README.md` files or other small orientation docs unless the metadata has a clear operational use.
-- Do not add front matter to `AGENTS.md` instruction files by default. They are thin instruction overlays, not governed metadata-bearing documents, unless a narrower future rule explicitly introduces a matching profile.
+- Do not add front matter to `AGENTS.md` instruction files by default. They are scoped instruction overlays, not governed metadata-bearing documents, unless a narrower future rule explicitly introduces a matching profile.
 - Keep the key set stable across a document family rather than inventing ad hoc keys per file.
 - Prefer simple scalar values. Use lists only when the metadata is naturally multi-valued, such as `tags`.
 - Quote single-value text fields for consistency.
@@ -78,14 +78,14 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | `id` | Stable machine-usable document identifier | quoted string | Required for governed document families that need stable identity. |
 | `trace_id` | Shared traceability identifier | quoted string | Required for planning families that participate in end-to-end traceability. |
 | `title` | Stable human-readable document name | quoted string | Usually matches the visible title closely. |
-| `summary` | One-line description for listings and indexes | quoted string | Keep it short and specific. |
+| `summary` | One-line description for listings and indexes | quoted string | Use the one-line field to distinguish the document clearly. |
 | `type` | Document family | quoted string | Examples include `reference`, `standard`, and `workflow`. |
 | `status` | Lifecycle state | quoted string | Keep the value controlled and stable. |
 | `task_status` | Task execution state | quoted string | Task-family-specific field for local work state rather than artifact lifecycle. |
 | `tags` | Search or grouping labels | YAML list | Use reusable labels, not prose. |
 | `owner` | Responsible maintainer or role | quoted string | Prefer stable role-like values. |
 | `updated_at` | Last meaningful content update | quoted UTC timestamp | Use the repository timestamp baseline `YYYY-MM-DDTHH:MM:SSZ`. |
-| `audience` | Intended readership | quoted string | Keep values concise and reusable. |
+| `audience` | Intended readership | quoted string | Use controlled reusable values. |
 | `authority` | Retrieval and precedence signal | quoted string | Use controlled values such as `authoritative`, `supporting`, `reference`, or `historical`. |
 | `applies_to` | Concrete repository surfaces or governed concepts | YAML list | Prefer real paths or stable concept identifiers over vague prose; path values should preserve canonical repo-relative file-versus-directory syntax. |
 | `aliases` | Important alternate search terms | YAML list | Use only terms that improve retrieval or disambiguation. |
@@ -161,4 +161,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `core/docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-29T00:45:00Z`
+- `2026-03-30T05:10:00Z`

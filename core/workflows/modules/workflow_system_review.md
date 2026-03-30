@@ -29,7 +29,7 @@ Use this workflow to audit the workflow system across shared and pack-owned root
    - Inventory the in-scope modules, roles, routing rows, workflow metadata, route-index coverage, workflow-index coverage, validator coverage, and query or preview behavior.
    - Record which surfaces are authoritative, which are derived, and which docs merely describe runtime behavior.
 3. Review route and role design quality.
-   - Check trigger specificity, overlap, route determinism, minimum-context loading, and whether broad role routes stay thin instead of duplicating module logic.
+   - Check trigger specificity, overlap, route determinism, minimum-context loading, and whether broad role routes stay composition-oriented instead of duplicating module logic.
    - Check whether reusable behavior belongs in shared core and whether pack-owned workflow docs stay owner-specific instead of re-copying shared logic.
 4. Review machine-readable and validation parity.
    - Check that workflow metadata, workflow index, route index, validator coverage, and pack target enumeration include the same active workflow corpus.

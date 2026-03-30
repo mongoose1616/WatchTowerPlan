@@ -32,7 +32,7 @@ Use this workflow to extract durable local guidance from external source materia
    - Confirm which source version, date, or baseline is being distilled.
    - Separate authoritative statements from local interpretation, commentary, and uncertainty.
 2. Extract the durable local guidance.
-   - Distill the source material into concise rules, mappings, decision points, or lookup content relevant to this repository.
+   - Distill the source material into explicit rules, mappings, decision points, and lookup content relevant to this repository.
    - Answer the recurring practical questions directly in the distillation rather than forcing later readers to reopen the upstream source for every common case.
    - Capture defaults, required or disallowed patterns, decision boundaries, edge cases, and failure modes when those details materially affect safe or correct local use.
    - Preserve the meaning of the source without copying long passages into the local artifact.
@@ -50,7 +50,7 @@ Use this workflow to extract durable local guidance from external source materia
    - Check that source attribution is clear, local mappings are accurate, and unsupported interpretation is avoided.
    - Reject output that mostly acts as a link list instead of a reusable distilled reference.
    - For ambiguous or high-risk topics, confirm that unresolved ambiguity and local interpretation boundaries are explicit.
-   - Confirm the distilled output is concise enough to be maintained and specific enough to be reused.
+   - Confirm the distilled output remains maintainable while still preserving every materially distinct rule, default, edge case, and ambiguity needed for reuse.
 
 ## Data Structure
 - Distillation goal
@@ -64,7 +64,7 @@ Use this workflow to extract durable local guidance from external source materia
 
 ## Outputs
 - A distilled local reference package or clear distillation notes ready for documentation generation
-- A short record of the canonical upstream sources and version-sensitive notes used during distillation
+- A source record capturing the canonical upstream sources and every materially distinct version-sensitive note used during distillation
 - A local mapping from source guidance to repository context
 - A list of version-sensitive notes, gaps, and follow-up work
 

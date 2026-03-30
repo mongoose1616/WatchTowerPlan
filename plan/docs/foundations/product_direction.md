@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:55:00Z"
+updated_at: "2026-03-30T04:15:48Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -54,7 +54,7 @@ Core is the shared system layer of the future product. Its job is to provide the
 - Stay reusable and donor-neutral instead of absorbing challenge-specific, reporting-specific, or other pack-local jobs.
 - May host cross-pack external references when those references support shared functions or multiple hosted packs.
 - Do not absorb pack-applied guidance, domain templates, domain terminology, or pack-specific artifact conventions unless they are truly cross-domain.
-- Remain mostly behind the scenes for operators: strong in product support, thin in direct user-facing workflow language.
+- Remain mostly behind the scenes for operators: strong in product support and not the primary home for direct user-facing workflow language.
 
 ## Full Product Shape
 
@@ -98,4 +98,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](customer_story.md)
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-03-30T04:15:48Z`

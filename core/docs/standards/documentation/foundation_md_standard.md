@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "foundation_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:55:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -51,6 +51,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
   documents, not the family `README.md`, so standards lookup stays aligned with
   the documented scope boundary.
 - Foundation documents may remain narrative and do not need a rigid shared body-heading set beyond the minimum governed sections.
+- Foundation documents should include every materially distinct repository boundary, design stance, or operating implication needed to keep future interpretation or review unambiguous.
 
 ## Structure or Data Model
 ### Placement rules
@@ -79,6 +80,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
   documents but not for `core/docs/foundations/README.md`, which is governed by the
   README standard instead.
 - Reviewers should reject foundation docs that materially govern the repo but remain structurally invisible to indexes and retrieval.
+- Reviewers should reject foundation docs that collapse materially distinct intent boundaries or implications into vague summary language merely to stay short.
 
 ## Change Control
 - Update this standard when the repository changes how foundation documents are governed or indexed.
@@ -93,4 +95,4 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - [README.md](/core/docs/foundations/README.md)
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-03-30T05:10:00Z`

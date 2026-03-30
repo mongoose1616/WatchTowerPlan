@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "reference_distillation"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:55:00Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -48,7 +48,7 @@ This standard defines how externally published source material is distilled into
 - Prefer authoritative primary sources over secondhand summaries when the topic is standards-driven, version-sensitive, or materially affects repository behavior.
 - Always capture the canonical upstream source for externally governed topics.
 - Record the relevant version, baseline, publication date, or last-checked date when the source is time-sensitive or version-sensitive.
-- Keep each distillation focused on one succinct external topic rather than mixing multiple unrelated standards or frameworks into one artifact.
+- Keep each distillation bounded to one external topic or tightly related topic cluster rather than mixing multiple unrelated standards or frameworks into one artifact.
 - Separate three concerns clearly:
   - external source facts or rules
   - local interpretation or mapping
@@ -63,6 +63,7 @@ This standard defines how externally published source material is distilled into
 - Preserve the meaning of the source material without copying long passages into the repository.
 - Use repository-native terminology and examples when mapping the source locally, but do not rewrite the source so aggressively that the original meaning becomes unclear.
 - Distill the practical content that repeated readers will actually need: key terms, required or disallowed patterns, defaults, decision boundaries, edge cases, and common failure modes when the topic warrants them.
+- Do not suppress materially distinct upstream exceptions, ambiguities, or decision branches just to keep the distilled output short.
 - Include a concrete local mapping to real repository surfaces when the distilled guidance affects workflows, standards, templates, architecture, tooling, or implementation patterns.
 - If the upstream source is incomplete, conflicting, ambiguous, or not directly applicable, record the uncertainty explicitly rather than normalizing it into false certainty.
 - If ambiguity remains material after source review, route to clarification or decision capture instead of burying the unresolved interpretation inside the distillation.
@@ -112,4 +113,4 @@ This standard defines how externally published source material is distilled into
 - A good distillation reduces repeat research while keeping the reader one step away from the canonical upstream source when deeper detail is needed.
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-03-30T05:10:00Z`

@@ -3,7 +3,7 @@
   "surface_name": "artifact_index",
   "contract_version": "v1",
   "description": "Cross-family artifact lookup for the live plan workspace.",
-  "updated_at": "2026-03-29T00:30:24Z",
+  "updated_at": "2026-03-29T04:05:00Z",
   "artifacts": [
     {
       "artifact_id": "index.artifacts",
@@ -104,8 +104,8 @@
       "authoritative": true,
       "hidden": true,
       "derived": true,
-      "created_at": "2026-03-28T23:55:00Z",
-      "updated_at": "2026-03-29T00:30:24Z",
+      "created_at": "2026-03-29T04:05:00Z",
+      "updated_at": "2026-03-29T04:05:00Z",
       "title": "Plan Workspace Guidance Index",
       "summary": "Pack-level durable guidance index built from governed plan/docs guidance records.",
       "source_context": "pack.plan",

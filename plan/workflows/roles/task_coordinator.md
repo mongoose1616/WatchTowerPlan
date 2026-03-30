@@ -6,7 +6,7 @@ Use this role to orchestrate live task creation, phase transitions, and optional
 ## Use When
 - The request spans multiple task operations such as lifecycle updates, handoffs, successor-task creation, and GitHub mirroring.
 - The main risk is fragmented execution coordination rather than one isolated task mutation.
-- The task needs a thin orchestration layer that keeps live task state, handoff state, and optional external mirrors aligned.
+- The task needs a dedicated orchestration layer that keeps live task state, handoff state, and optional external mirrors aligned.
 
 ## Inputs
 - Scoped task-coordination request

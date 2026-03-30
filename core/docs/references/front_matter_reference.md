@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T02:46:38Z"
+updated_at: "2026-03-30T05:10:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -58,7 +58,7 @@ Provide a practical guide for deciding when to use front matter, which fields ar
 | Field | Use For | Typical Shape | Notes |
 |---|---|---|---|
 | `title` | Stable human-readable document name | quoted string | Usually matches the visible title closely. |
-| `summary` | One-line description for indexes or listings | quoted string | Keep it short and specific. |
+| `summary` | One-line description for indexes or listings | quoted string | Use the one-line field to distinguish the document clearly. |
 | `type` | Broad document class | quoted string | Examples: `reference`, `standard`, `workflow`, `guide`. |
 | `status` | Lifecycle state | quoted string | Examples: `active`, `draft`, `deprecated`. |
 | `tags` | Search or grouping labels | YAML list | Keep tags controlled and reusable. |
@@ -67,7 +67,7 @@ Provide a practical guide for deciding when to use front matter, which fields ar
 | `audience` | Intended readership | quoted string | Examples: `shared`, `maintainers`, `contributors`. |
 | `authority` | Retrieval precedence signal | quoted string | Examples: `authoritative`, `supporting`, `reference`, `historical`. |
 | `applies_to` | Concrete repository surfaces or concepts | YAML list | Prefer real paths or stable concept identifiers. |
-| `aliases` | Alternate search terms | YAML list | Keep this short and intentional. |
+| `aliases` | Alternate search terms | YAML list | Include only aliases that materially improve retrieval or disambiguation. |
 
 ### Authoring Rules
 - Keep keys stable across similar document types instead of inventing near-duplicates.
@@ -134,4 +134,4 @@ aliases:
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-12T02:46:38Z`
+- `2026-03-30T05:10:00Z`

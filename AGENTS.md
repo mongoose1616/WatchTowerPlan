@@ -4,7 +4,7 @@
 - Treat this file as the repository-wide instruction layer.
 - Apply these rules across the repository unless a more-specific `AGENTS.md` adds tighter local constraints.
 - Use routed workflow modules for task behavior and nested `AGENTS.md` files for subtree-local rules.
-- Keep this file focused on repository-wide authority, routing, and path ownership. Put detailed procedures in workflow modules and local subtree rules in nested `AGENTS.md` files.
+- Keep this file scoped to repository-wide authority, routing, and path ownership. Include every repository-wide rule needed to avoid ambiguity, and put task procedures in workflow modules and subtree-local rules in nested `AGENTS.md` files.
 
 ## Scope
 - Applies to the entire repository unless a more-specific `AGENTS.md` exists below the current path.
@@ -39,6 +39,7 @@
 - When the main question is which surface is canonical, use `watchtower-core query authority` first, then the narrow index-backed query command for the resolved family, then the exact canonical doc or registry, and only then raw repo search such as `rg` when no governed lookup surface exists or when verifying unindexed implementation detail.
 - Before drafting or materially restructuring a governed document, use `watchtower-core query templates` plus the relevant family standard or catalog entry instead of inventing document shape from scratch.
 - Distinguish observed current-state facts from inference, local policy, and open questions when writing analysis, standards, references, workflow outputs, or closeout guidance.
+- For documentation, workflow, and instruction surfaces, include every materially distinct input, assumption, branch, exception, handoff, output, finding, or open question needed for correct interpretation or review. Do not target fixed section counts or compress sibling sections for symmetry.
 - If work is happening under [core/docs](/core/docs), also apply [core/docs/AGENTS.md](/core/docs/AGENTS.md).
 - If work is happening under [plan/docs](/plan/docs), also apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md).
 - If work is happening under [plan](/plan), also apply [plan/AGENTS.md](/plan/AGENTS.md).

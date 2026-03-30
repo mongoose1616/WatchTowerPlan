@@ -8,7 +8,7 @@
 > When a command supports structured output, include at least one `--format json` example.
 
 ## Summary
-<One short explanation of what the command does.>
+<Explain what the command does and any materially distinct scope, mode, or workspace boundary the summary needs to signal.>
 
 ## Use When
 - <When an engineer or operator should use this command.>

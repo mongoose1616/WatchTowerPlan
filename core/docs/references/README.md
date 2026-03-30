@@ -1,7 +1,7 @@
 # `core/docs/references`
 
 ## Description
-`This directory contains working references for external standards, frameworks, specifications, and published guidance that inform shared core or multiple hosted packs. Each reference should include verified canonical upstream links, a dense quick-reference section, and an explicit local mapping to current repository surfaces or clearly marked future-adoption areas. Same-topic pack duplicates are allowed when the pack-local operator mapping or touchpoints differ materially. Do not place repo-native standards or purely local reference notes in this directory.`
+`This directory contains working references for external standards, frameworks, specifications, and published guidance that inform shared core or multiple hosted packs. Each reference should include verified canonical upstream links, a substantive quick-reference section that covers every materially distinct local rule, default, edge case, or ambiguity the topic requires, and an explicit local mapping to current repository surfaces or clearly marked future-adoption areas. Same-topic pack duplicates are allowed when the pack-local operator mapping or touchpoints differ materially. Do not place repo-native standards or purely local reference notes in this directory.`
 
 ## How To Use This Directory
 - Start with the reference file that matches the external topic, not with a broad repo scan.
@@ -19,7 +19,7 @@
 
 ## Notes
 - Reference files follow the stable `<topic>_reference.md` naming pattern.
-- Prefer `watchtower-core query references` when you know the topic but not the exact filename.
+- Prefer `watchtower-core query references` when you know the topic but not the exact filename or when the governed lookup surface will answer the question more directly than manual browsing.
 - Keep shared or cross-pack mappings here. Put pack-applied operator mappings under the owning pack `docs/references/` root even when the upstream topic already exists here.
 - Keep this README focused on orientation. Topic details belong in the individual reference files.
 

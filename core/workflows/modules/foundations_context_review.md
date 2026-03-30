@@ -7,7 +7,7 @@ Use this workflow to load the repository foundation documents that materially sh
 - A design brief, decision record, or pack-owned planning artifact should be aligned with `core/docs/foundations/`.
 - A review or documentation-alignment task explicitly asks whether guidance stays cohesive with repository foundations or scope posture.
 - A planning task depends on explicit product, standards, or technology-direction context.
-- A task needs a short record of which foundation documents materially shaped the output.
+- A task needs an explicit record of which foundation documents materially shaped the output.
 
 ## Inputs
 - Scoped planning, design, or review task brief
@@ -33,7 +33,7 @@ Use this workflow to load the repository foundation documents that materially sh
    - Prefer direct repository foundations over inferred product assumptions.
 2. Extract the governing context.
    - Record the product boundaries, design principles, standards posture, or technology-direction guidance that should shape the task.
-   - Keep the extracted context concise and tied to the active task rather than summarizing the full foundations set.
+   - Keep the extracted context tied to the active task rather than summarizing the full foundations set, but include every materially distinct boundary, principle, or tension the task depends on.
 3. Surface alignment constraints.
    - Note any conflicts, gaps, or tensions between the request and the loaded foundation guidance.
    - Record which foundation docs should be cited or acknowledged in the resulting artifact.
@@ -45,7 +45,7 @@ Use this workflow to load the repository foundation documents that materially sh
 - Alignment risks or conflicts
 
 ## Outputs
-- A short foundation-context brief for the active planning, design, or review task
+- A foundation-context record for the active planning, design, or review task that captures every materially distinct governing boundary
 - A record of which foundation documents materially shaped the work
 
 ## Done When
