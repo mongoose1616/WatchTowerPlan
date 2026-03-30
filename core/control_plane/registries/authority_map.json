@@ -86,9 +86,7 @@
       "preferred_command": "watchtower-core route preview",
       "preferred_human_path": "core/workflows/ROUTING_TABLE.md",
       "fallback_paths": [
-        "plan/workflows/ROUTING_TABLE.md",
         "core/workflows/modules/",
-        "plan/workflows/modules/",
         "core/docs/commands/core_python/watchtower_core_route_preview.md"
       ],
       "aliases": [
@@ -113,7 +111,6 @@
       ],
       "fallback_paths": [
         "core/docs/standards/",
-        "plan/docs/standards/",
         "core/docs/references/"
       ],
       "aliases": [

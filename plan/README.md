@@ -10,20 +10,20 @@
 | `plan/AGENTS.md` | Defines plan-domain instructions for live plan work and authority surfaces. |
 | `plan/plan_overview.md` | Renders the current pack-level plan status board from authoritative machine state. |
 | `plan/.wt/` | Holds the authoritative machine-readable plan-pack root and Stage 1 bootstrap record. |
-| `plan/docs/` | Holds durable promoted plan guidance plus the mirrored foundations family. |
+| `plan/docs/` | Holds durable promoted plan guidance plus the plan-owned foundations copy seeded from `core/docs/foundations/`. |
 | `plan/initiatives/` | Holds pack-wide initiative containers for live work. |
 | `plan/projects/` | Holds project containers and project-scoped initiative roots. |
 | `plan/workflows/` | Holds the plan-domain workflow routing tables, plan-owned workflow modules, and plan-owned workflow roles. |
 
 ## Notes
 - Human start-here: `plan/README.md`, then `plan/plan_overview.md`.
-- Current implementation contract: mirrored foundations under `plan/docs/foundations/`, promoted plan standards under `plan/docs/standards/`, and live plan-pack machine authority under `plan/.wt/**`.
+- Current implementation contract: the plan-owned foundations copy under `plan/docs/foundations/`, promoted plan standards under `plan/docs/standards/`, and live plan-pack machine authority under `plan/.wt/**`.
 - Use local references and helper docs only where they remain consistent with those current authority surfaces.
 - Human workflow start-here: `plan/workflows/README.md`.
 - `plan/.wt/` is the authoritative machine root for new live plan-pack state.
 - `plan/.wt/**` is machine state only; keep Python source, workflow prose, and hand-maintained implementation logic out of that tree.
 - `plan/AGENTS.md` is the local instruction layer for work under `plan/**`.
-- `plan/docs/foundations/` is the mirrored foundations view and must stay byte-identical with `core/docs/foundations/`.
+- `plan/docs/foundations/` is the plan-owned foundations view seeded from `core/docs/foundations/`; refresh the copied files and adapt plan-local wording as needed in the same change set.
 - `plan/python/` is the approved plan-owned Python boundary for narrow repo-local plan behavior that should not live in reusable core.
 - `plan/` is the first internal hosted pack, not a universal downstream bootstrap requirement. Include it in copied repositories or customer handoff only when the recipient intentionally carries the plan pack.
 - Use `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work.

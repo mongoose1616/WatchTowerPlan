@@ -1,7 +1,7 @@
 # `foundations`
 
 ## Description
-`This directory contains the shared foundations corpus for the repository. core/docs/foundations/ is the authored source and plan/docs/foundations/ is the required byte-identical mirror. Update the authored copy in core and refresh the mirror in the same change set. If a downstream working repository edits the shared-core copy, reconcile the same bytes back into WatchTowerPlan/core/docs/foundations/ and WatchTowerPlan/plan/docs/foundations/ before treating the work as complete.`
+`This directory contains the shared foundations corpus for the repository. core/docs/foundations/ is the authored source. If the active hosted pack publishes a mirrored or promoted foundations view, keep that pack-owned surface aligned in the same change set. If a downstream working repository edits the shared-core copy, reconcile the same bytes back into the canonical shared-core source before treating the work as complete.`
 
 ## Audience Routes
 
@@ -10,7 +10,7 @@
 | Engineers and maintainers | `repository_scope.md` | `engineering_design_principles.md`, `engineering_stack_direction.md`, `repository_standards_posture.md` | Use this route when deciding what belongs in this repo and how the governed core should evolve. |
 | Product owners and engineering leads | `repository_scope.md` | `product_direction.md`, `customer_story.md`, `engineering_design_principles.md` | Use this route when future product direction matters, but current repository scope still needs to stay explicit. |
 | Designers and future product reviewers | `product_direction.md` | `customer_story.md`, `repository_scope.md` | Use this route when shaping future product experience while staying grounded in what this repo does and does not own yet. |
-| Repo reviewers and auditors | `repository_scope.md` | `plan/plan_overview.md`, `repository_standards_posture.md` | Use this route when the main question is live repository coherence, authority, and the next active plan-domain action. |
+| Repo reviewers and auditors | `repository_scope.md` | The active pack overview or coordination entrypoint, `repository_standards_posture.md` | Use this route when the main question is live repository coherence, authority, and the next active pack-owned action. |
 
 ## Machine Routes
 
@@ -38,8 +38,9 @@
 ## Mirror Rule
 
 - `core/docs/foundations/` is the authored source.
-- `plan/docs/foundations/` must remain byte-identical to the authored source.
-- Downstream working copies of shared core must sync edited foundation files back into `WatchTowerPlan/core/docs/foundations/` and refresh `WatchTowerPlan/plan/docs/foundations/` in the same workstream.
+- Any pack-owned foundations copy or projection must remain aligned with the authored source when the owning pack contract requires it.
+- Pack-owned foundations copies may adapt local names, paths, or operating context when the pack contract requires a pack-specific rendering of the same foundation topic.
+- Downstream working copies of shared core must sync edited foundation files back into the canonical shared-core source in the same workstream.
 - `docs/foundations/` is retired and must not be recreated as a third foundations family.
 
 ## Paths

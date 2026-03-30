@@ -40,17 +40,17 @@ uv run watchtower-core pack export --output-root /tmp/customer_core --overwrite 
 
 ```sh
 cd core/python
-uv run watchtower-core pack export --output-root /tmp/customer_plan --include-pack plan --overwrite --format json
+uv run watchtower-core pack export --output-root /tmp/customer_pack_repo --include-pack <pack-slug> --overwrite --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack export --output-root /tmp/customer_plan_pack --include-pack plan --pack-only --overwrite --format json
+uv run watchtower-core pack export --output-root /tmp/customer_pack_bundle --include-pack <pack-slug> --pack-only --overwrite --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack export --output-root /tmp/customer_bundle --include-pack plan --include-pack oversight --overwrite --format json
+uv run watchtower-core pack export --output-root /tmp/customer_bundle --include-pack <pack-slug> --include-pack <second-pack-slug> --overwrite --format json
 ```
 
 ## Behavior and Outputs

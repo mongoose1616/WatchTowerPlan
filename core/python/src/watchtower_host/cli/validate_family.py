@@ -70,7 +70,8 @@ def register_validate_family(
             "--format json",
             "uv run watchtower-core validate acceptance --trace-id "
             "trace.governed_acceptance_example --format json",
-            "uv run watchtower-core validate portability --include-pack plan --format json",
+            "uv run watchtower-core validate portability --include-pack <pack-slug> "
+            "--format json",
             "uv run watchtower-core validate portability --root /tmp/shared_core "
             "--engineering-core --format json",
             "uv run watchtower-core validate front-matter --path "
@@ -188,13 +189,14 @@ def register_validate_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate portability",
-            "uv run watchtower-core validate portability --include-pack plan --format json",
+            "uv run watchtower-core validate portability --include-pack <pack-slug> "
+            "--format json",
             "uv run watchtower-core validate portability --root /tmp/shared_core "
             "--engineering-core --format json",
-            "uv run watchtower-core validate portability --root /tmp/customer_plan_pack "
-            "--include-pack plan --pack-only --format json",
+            "uv run watchtower-core validate portability --root /tmp/customer_pack_bundle "
+            "--include-pack <pack-slug> --pack-only --format json",
             "uv run watchtower-core validate portability --root /tmp/customer_export "
-            "--include-pack plan --format json",
+            "--include-pack <pack-slug> --format json",
         ),
         formatter_class=HelpFormatter,
     )

@@ -40,7 +40,7 @@ uv run watchtower-core validate portability
 
 ```sh
 cd core/python
-uv run watchtower-core validate portability --include-pack plan --format json
+uv run watchtower-core validate portability --include-pack <pack-slug> --format json
 ```
 
 ```sh
@@ -50,12 +50,12 @@ uv run watchtower-core validate portability --root /tmp/shared_core --engineerin
 
 ```sh
 cd core/python
-uv run watchtower-core validate portability --root /tmp/customer_plan_pack --include-pack plan --pack-only --format json
+uv run watchtower-core validate portability --root /tmp/customer_pack_bundle --include-pack <pack-slug> --pack-only --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core validate portability --root /tmp/customer_export --include-pack plan --format json
+uv run watchtower-core validate portability --root /tmp/customer_export --include-pack <pack-slug> --format json
 ```
 
 ## Behavior and Outputs

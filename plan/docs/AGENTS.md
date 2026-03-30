@@ -17,12 +17,12 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
-- Treat the mirrored foundations under [plan/docs/foundations/](/plan/docs/foundations/), promoted plan standards under [plan/docs/standards/](/plan/docs/standards/), and [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json) as the controlling contract for promotion targets, durable plan guidance, and endstate document boundaries.
+- Treat the plan-owned foundations copy under [plan/docs/foundations/](/plan/docs/foundations/), promoted plan standards under [plan/docs/standards/](/plan/docs/standards/), and [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json) as the controlling contract for promotion targets, durable plan guidance, and endstate document boundaries.
 - `plan/docs/**` holds approved durable guidance, not live initiative state.
 - Use current initiative-package terminology and current repository paths.
 - Keep each document focused on one durable plan-domain guidance concern.
 - Keep promoted guidance self-contained and readable without turning it into a live tracker or execution log.
-- Keep mirrored foundations under `plan/docs/foundations/**` byte-identical with `core/docs/foundations/**`.
+- Keep plan-owned foundations under `plan/docs/foundations/**` seeded from `core/docs/foundations/**` and refresh plan-specific wording in the same change when the authored source changes materially.
 
 ## Do
 - Keep durable plan guidance scoped, current, and easy to scan.

@@ -376,7 +376,7 @@ def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(
     assert "STALE SNAPSHOT MARKER" not in coordination_tracking_text
 
 
-def test_all_sync_rejects_document_targets_without_entries_list() -> None:
+def test_all_sync_rejects_document_targets_without_record_list() -> None:
     class BrokenDocumentService:
         def build_document(self) -> dict[str, object]:
             return {"id": "index.broken"}
@@ -391,7 +391,10 @@ def test_all_sync_rejects_document_targets_without_entries_list() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = AllSyncService(loader)
 
-    with pytest.raises(RuntimeError, match="broken-index document is missing its entries list"):
+    with pytest.raises(
+        RuntimeError,
+        match="broken-index document is missing its entries or artifacts list",
+    ):
         service._run_document_sync(
             loader=loader,
             target="broken-index",

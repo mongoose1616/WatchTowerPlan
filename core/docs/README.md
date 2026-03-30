@@ -16,7 +16,7 @@
 
 ## Notes
 - Documentation roots and endstate behavior are governed by the authored foundations under `core/docs/foundations/` and the current standards under `core/docs/standards/`.
-- `core/docs/foundations/` is the authored foundations source and `plan/docs/foundations/` is the required byte-identical mirror.
+- `core/docs/foundations/` is the authored shared foundations source. Any pack-owned mirrors or promoted pack-local guidance should be declared in the owning pack registries instead of the shared core template or family catalog.
 - Pack-owned command pages should live under the owning pack docs root instead of shared core docs.
 - Do not place live initiative state or pack-domain execution artifacts here.
 - Root `docs/` is retired; keep shared or core-owned durable documentation here instead.

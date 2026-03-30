@@ -146,7 +146,7 @@ def test_foundation_document_standard_operationalizes_governed_docs_only() -> No
     assert "`core/docs/foundations/`" not in operationalization
 
 
-def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
+def test_root_review_entrypoints_route_to_current_pack_surfaces() -> None:
     root_readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
     foundations_readme = (REPO_ROOT / "core/docs/foundations/README.md").read_text(encoding="utf-8")
     repository_scope = (REPO_ROOT / "core/docs/foundations/repository_scope.md").read_text(
@@ -154,8 +154,8 @@ def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
     )
 
     assert "plan/plan_overview.md" in root_readme
-    assert "plan/plan_overview.md" in foundations_readme
-    assert ("[plan_overview.md](/plan/plan_overview.md)") in repository_scope
+    assert "The active pack overview or coordination entrypoint" in foundations_readme
+    assert "`watchtower-core pack describe --format json`" in repository_scope
     assert "SUMMARY.md" not in root_readme
     assert "SUMMARY.md" not in foundations_readme
     assert "SUMMARY.md" not in repository_scope

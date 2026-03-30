@@ -40,7 +40,7 @@ uv run watchtower-core release check --output-root /tmp/customer_core --overwrit
 
 ```sh
 cd core/python
-uv run watchtower-core release check --output-root /tmp/customer_plan --include-pack plan --overwrite --format json
+uv run watchtower-core release check --output-root /tmp/customer_release --include-pack <pack-slug> --overwrite --format json
 ```
 
 ## Behavior and Outputs

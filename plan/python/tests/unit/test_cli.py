@@ -120,11 +120,11 @@ def test_root_command_prints_help(capsys) -> None:
     )
     assert (
         "uv run watchtower-core pack export --output-root /tmp/customer_export "
-        "--include-pack plan --overwrite --format json" in captured.out
+        "--include-pack <pack-slug> --overwrite --format json" in captured.out
     )
     assert (
-        "uv run watchtower-core pack export --output-root /tmp/customer_plan_pack "
-        "--include-pack plan --pack-only --overwrite --format json" in captured.out
+        "uv run watchtower-core pack export --output-root /tmp/customer_pack_bundle "
+        "--include-pack <pack-slug> --pack-only --overwrite --format json" in captured.out
     )
     assert 'uv run watchtower-core route preview --request "review code and commit"' in captured.out
     assert "uv run watchtower-core query commands --query doctor --format json" in captured.out
@@ -144,12 +144,12 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core sync route-index" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert (
-        "uv run watchtower-core validate portability --include-pack plan --format json"
+        "uv run watchtower-core validate portability --include-pack <pack-slug> --format json"
         in captured.out
     )
     assert (
-        "uv run watchtower-core validate portability --root /tmp/customer_plan_pack "
-        "--include-pack plan --pack-only --format json" in captured.out
+        "uv run watchtower-core validate portability --root /tmp/customer_pack_bundle "
+        "--include-pack <pack-slug> --pack-only --format json" in captured.out
     )
     assert (
         "uv run watchtower-core validate document-semantics --path "
@@ -330,7 +330,7 @@ def test_validate_group_prints_group_specific_help(capsys) -> None:
     assert "uv run watchtower-core validate suite --suite-id" in captured.out
     assert "uv run watchtower-core validate artifact" in captured.out
     assert (
-        "uv run watchtower-core validate portability --include-pack plan --format json"
+        "uv run watchtower-core validate portability --include-pack <pack-slug> --format json"
         in captured.out
     )
 

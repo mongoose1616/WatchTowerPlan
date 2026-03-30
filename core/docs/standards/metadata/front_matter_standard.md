@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:55:00Z"
+updated_at: "2026-03-29T00:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -123,7 +123,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 ## Examples
 - A long-lived reference under `core/docs/references/**` or an owning pack `docs/references/**` root should use the reference front matter profile.
 - A standard under the shared and pack-owned standards roots should use the standard front matter profile.
-- A mirrored foundation document under `core/docs/foundations/**` and the corresponding hosted-pack mirror root such as `<pack>/docs/foundations/**` should use the foundation front matter profile and stay byte-identical across both roots.
+- A foundation document under `core/docs/foundations/**` and the corresponding pack-owned foundations root such as `<pack>/docs/foundations/**` should use the foundation front matter profile, start from the authored shared source, and keep any pack-specific wording aligned with the active pack contract.
 - A command page under `core/docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
 - An initiative-local `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, or `decision_notes.md` should usually remain plain Markdown unless a later governed profile is introduced for that family.
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
@@ -161,4 +161,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `core/docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-03-29T00:45:00Z`

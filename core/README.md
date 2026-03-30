@@ -15,5 +15,5 @@
 ## Notes
 - Current repository contract lives in the authored foundations under `core/docs/foundations/`, the shared standards under `core/docs/standards/`, and the authored machine-readable authority under `core/control_plane/`.
 - Use `core/control_plane/README.md` for machine-contract orientation and `core/python/README.md` for executable implementation entrypoints.
-- `core/docs/foundations/` is the authored foundations source and must be mirrored into `plan/docs/foundations/` in the same change set.
+- Pack-owned foundations mirrors or promoted pack-local guidance belong under the owning pack docs root and must be kept aligned by the owning pack contract rather than hard-coded into shared-core path rules.
 - `core/workflows/` is the only shared workflow root; do not add new routed workflow guidance back under repo-root `workflows/`.

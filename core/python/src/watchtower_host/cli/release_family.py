@@ -37,12 +37,12 @@ def register_release_family(
         epilog=examples(
             "uv run watchtower-core release check --output-root /tmp/customer_core "
             "--overwrite --format json",
-            "uv run watchtower-core release check --output-root /tmp/customer_plan "
-            "--include-pack plan --overwrite --format json",
-            "uv run watchtower-core release check --output-root /tmp/customer_plan_pack "
-            "--include-pack plan --pack-only --overwrite --format json",
+            "uv run watchtower-core release check --output-root /tmp/customer_pack_repo "
+            "--include-pack <pack-slug> --overwrite --format json",
+            "uv run watchtower-core release check --output-root /tmp/customer_pack_bundle "
+            "--include-pack <pack-slug> --pack-only --overwrite --format json",
             "uv run watchtower-core release check --output-root /tmp/rehearsal "
-            "--include-pack plan --schema-path core/control_plane/schemas/interfaces/"
+            "--include-pack <pack-slug> --schema-path core/control_plane/schemas/interfaces/"
             "packs/pack_settings.schema.json --allow-dirty --overwrite --format json",
         ),
         formatter_class=HelpFormatter,
@@ -76,15 +76,15 @@ def register_release_family(
         epilog=examples(
             "uv run watchtower-core release check --output-root /tmp/customer_core "
             "--overwrite --format json",
-            "uv run watchtower-core release check --output-root /tmp/customer_plan "
-            "--include-pack plan --overwrite --format json",
-            "uv run watchtower-core release check --output-root /tmp/customer_plan_pack "
-            "--include-pack plan --pack-only --overwrite --format json",
-            "uv run watchtower-core release check --output-root /tmp/customer_plan "
-            "--include-pack plan --schema-path core/control_plane/schemas/interfaces/"
+            "uv run watchtower-core release check --output-root /tmp/customer_pack_repo "
+            "--include-pack <pack-slug> --overwrite --format json",
+            "uv run watchtower-core release check --output-root /tmp/customer_pack_bundle "
+            "--include-pack <pack-slug> --pack-only --overwrite --format json",
+            "uv run watchtower-core release check --output-root /tmp/customer_release "
+            "--include-pack <pack-slug> --schema-path core/control_plane/schemas/interfaces/"
             "packs/pack_settings.schema.json --overwrite --format json",
             "uv run watchtower-core release check --output-root /tmp/rehearsal "
-            "--include-pack plan --allow-dirty --overwrite --format json",
+            "--include-pack <pack-slug> --allow-dirty --overwrite --format json",
         ),
         formatter_class=HelpFormatter,
     )

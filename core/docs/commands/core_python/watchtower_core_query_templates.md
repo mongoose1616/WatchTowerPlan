@@ -29,7 +29,7 @@ uv run watchtower-core query templates [--query <text>] [--template-id <template
 - `--surface-id <surface_id>`: Exact surface filter such as `surface.documentation.command_reference`.
 - `--authorship-mode <authored|rendered>`: Exact authorship-mode filter.
 - `--llm-guidance-mode <required|advisory|none>`: Exact LLM-guidance-mode filter.
-- `--allowed-root <path>`: Exact allowed-root filter such as `core/docs/standards` or `plan/docs/commands`.
+- `--allowed-root <path>`: Exact allowed-root filter such as `core/docs/standards` or `<pack>/docs/commands`.
 - `--required-section-id <section_id>`: Exact required-section filter such as `operationalization` or `command`.
 - `--required-rendered-surface-id <surface_id>`: Exact required rendered-surface filter when the template binds to rendered companions.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.

@@ -9,7 +9,7 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:55:00Z"
+updated_at: "2026-03-29T00:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -55,7 +55,7 @@ This document is authoritative for current repository ownership. It does not rep
 - The canonical authored `core/` source that downstream WatchTower repositories may consume by copying shared core alone or together with selected hosted packs.
 - The live plan-domain workspace under `plan/`, including `plan/.wt/`, pack-wide initiatives, project-scoped initiatives, and plan-domain workflow surfaces.
 - The first internal hosted-pack runtime under `plan/python/src/watchtower_plan/`, installed through the shared workspace contract.
-- The authored shared foundations under `core/docs/foundations/` and the required mirrored copy under `plan/docs/foundations/`.
+- The authored shared foundations under `core/docs/foundations/` and the required plan-owned copied/adapted view under `plan/docs/foundations/`.
 - The shared external reference corpus under `core/docs/references/` when the reference supports reusable-core behavior, shared standards, or multiple hosted packs.
 - Repository-native workflow routing, execution modules, standards, references, templates, and plan-facing rendered surfaces.
 - Machine-readable authority for schemas, startup manifests, registries, contracts, indexes, supporting fixtures, and retained validation or purge records.
@@ -95,8 +95,8 @@ This document is authoritative for current repository ownership. It does not rep
 - Shared core policy and docs must not assume that consuming repositories retain the current internal `plan/` pack or any other donor-specific pack set.
 - Portable customer/bootstrap handoff is an allowlisted source transfer, not a raw repository snapshot. Retained records, test fixtures, and donor-local plan history stay repo-local unless a release contract explicitly selects them.
 - Live plan execution state stays under `plan/**`, not under documentation roots.
-- Shared foundations are authored in `core/docs/foundations/` and mirrored into `plan/docs/foundations/`.
-- `WatchTowerPlan/core/` remains the canonical authored shared-core source. When a downstream working repository edits `core/**`, the same change must be reconciled back into `WatchTowerPlan/core/**` in the same workstream, and any foundations change must also refresh `WatchTowerPlan/plan/docs/foundations/**` before the work is considered complete.
+- Shared foundations are authored in `core/docs/foundations/` and copied into `plan/docs/foundations/`, where plan-local wording may be adapted as needed.
+- `WatchTowerPlan/core/` remains the canonical authored shared-core source. When a downstream working repository edits `core/**`, the same change must be reconciled back into `WatchTowerPlan/core/**` in the same workstream, and any foundations change must also refresh `WatchTowerPlan/plan/docs/foundations/**` plus the plan-specific wording there before the work is considered complete.
 - Future product narrative can guide planning, but it must not quietly redefine current repo scope.
 - Repo-specific behavior stays explicit instead of leaking into reusable surfaces.
 
@@ -105,4 +105,4 @@ This document is authoritative for current repository ownership. It does not rep
 - [product_direction.md](product_direction.md)
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-03-29T00:45:00Z`

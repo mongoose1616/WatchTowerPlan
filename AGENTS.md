@@ -29,7 +29,7 @@
 - `core/python/` is the canonical shared Python workspace for reusable package code, tests, tooling, and the local virtual environment.
 - `plan/` is the live plan-domain workspace.
 - `plan/.wt/` is the machine-state root for the live plan pack. Keep it machine-only.
-- `plan/docs/` is the durable plan-domain documentation root plus the required mirror of `core/docs/foundations/`.
+- `plan/docs/` is the durable plan-domain documentation root plus the required plan-owned foundations copy seeded from `core/docs/foundations/`.
 - `plan/python/` is the approved plan-owned Python boundary for plan-specific code that should not live in reusable core.
 - `plan/tracking/` and `plan/plan_overview.md` are derived human planning surfaces, not manual authority.
 
@@ -44,7 +44,7 @@
 - If work is happening under [plan](/plan), also apply [plan/AGENTS.md](/plan/AGENTS.md).
 - If work is happening under [core/python](/core/python), also apply [core/python/AGENTS.md](/core/python/AGENTS.md).
 - Use the nearest applicable [README.md](/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
-- Keep durable documentation only in `core/docs/` and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as its required mirror.
+- Keep durable documentation only in `core/docs/` and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as the required plan-owned copied/adapted foundations view seeded from it.
 - Treat `plan/**` as the only live planning workspace. The old docs-backed planning corpus has been purged; do not recreate separate purge-history ledgers for removed traces.
 - Treat [core/control_plane](/core/control_plane/README.md) as the authored, versioned machine-readable authority. Treat `plan/.wt/**` as live machine state for the plan pack. Do not blur those roles.
 - Treat `core/python/` as the canonical shared Python tooling, test, and local virtual-environment workspace. Use `plan/python/**` only for plan-specific code that should not live in reusable core.

@@ -7,7 +7,7 @@
     {
       "family_id": "foundation",
       "entry_status": "active",
-      "summary": "Durable foundation guidance mirrored between the authored core source and the current required pack mirror root.",
+      "summary": "Durable shared foundation guidance authored under core/docs/foundations/.",
       "front_matter_base_schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
       "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
       "template_ids": [
@@ -15,21 +15,13 @@
       ],
       "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-section-spec:v1",
       "allowed_roots": [
-        "core/docs/foundations",
-        "plan/docs/foundations"
+        "core/docs/foundations"
       ],
       "authorship_mode": "authored",
       "required_index_ids": [
         "index.foundations"
       ],
-      "mirror_group_id": "mirror.foundations",
-      "required_mirror_roots": [
-        "core/docs/foundations",
-        "plan/docs/foundations"
-      ],
-      "equivalence_mode": "byte_identical",
-      "mirror_update_mode": "same_change_set",
-      "notes": "The reusable-core foundation family remains one mirrored logical family even when the current repository carries pack-local governance metadata alongside the required mirror."
+      "notes": "Shared core owns the authored foundations source. Pack-owned mirrors or promoted pack-local variants belong in pack-local documentation-family registries instead of the reusable-core registry."
     },
     {
       "family_id": "workflow",
@@ -49,8 +41,8 @@
       "required_index_ids": [
         "index.workflows"
       ],
-      "notes": "Shared reusable workflow modules live under core/workflows/modules and shared workflow roles live under core/workflows/roles; pack-owned workflow guidance lives under the owning pack workflow roots such as plan/workflows."
+      "notes": "Shared reusable workflow modules live under core/workflows/modules and shared workflow roles live under core/workflows/roles; pack-owned workflow guidance belongs in the owning pack workflow roots."
     }
   ],
-  "notes": "This registry governs the reusable-core documentation families that already exist or are intentionally mirrored into current hosted pack roots."
+  "notes": "This registry governs reusable-core documentation families only. Pack-owned documentation families belong in pack-local registries."
 }

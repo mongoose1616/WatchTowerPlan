@@ -241,7 +241,7 @@ def test_pack_commands_support_second_pack_fixture(
         == "watchtower_oversight_fixture.integration"
     )
     assert payload["integration"]["query_runtime_commands"] == ["assessments", "reviews"]
-    assert payload["integration"]["sync_runtime_targets"] == ["oversight-index", "review-index"]
+    assert payload["integration"]["sync_runtime_targets"] == ["all"]
 
 
 def test_pack_commands_support_root_pack_fixture(

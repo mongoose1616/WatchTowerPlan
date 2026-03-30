@@ -157,8 +157,7 @@
       },
       "llm_guidance_mode": "advisory",
       "allowed_roots": [
-        "core/docs/foundations",
-        "plan/docs/foundations"
+        "core/docs/foundations"
       ]
     },
     {
@@ -210,8 +209,7 @@
       "llm_guidance_mode": "advisory",
       "operator_notes": "Use for governed standard and best-practice docs under shared and pack-owned standards roots.",
       "allowed_roots": [
-        "core/docs/standards",
-        "plan/docs/standards"
+        "core/docs/standards"
       ]
     },
     {
@@ -273,8 +271,7 @@
       "llm_guidance_mode": "advisory",
       "operator_notes": "Use for durable reference docs that distill external authority into repo-local lookup guidance.",
       "allowed_roots": [
-        "core/docs/references",
-        "plan/docs/references"
+        "core/docs/references"
       ]
     },
     {
@@ -321,10 +318,9 @@
       "llm_guidance_mode": "advisory",
       "operator_notes": "Use for shared and pack-owned command pages under docs/commands/core_python/.",
       "allowed_roots": [
-        "core/docs/commands",
-        "plan/docs/commands"
+        "core/docs/commands"
       ]
     }
   ],
-  "notes": "This catalog governs reusable-core template assets for core-owned roots, mirrored foundations, and the shared authoring scaffolds that agents should query before drafting governed docs."
+  "notes": "This catalog governs reusable-core template assets for core-owned roots and shared authoring scaffolds. Pack-owned template allowed roots belong in pack-local template catalogs."
 }

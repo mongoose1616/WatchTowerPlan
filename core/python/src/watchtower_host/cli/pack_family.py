@@ -55,7 +55,7 @@ def register_pack_family(
             "uv run watchtower-core pack apply-core --source-root /tmp/shared_core "
             "--write --format json",
             "uv run watchtower-core pack export --output-root /tmp/customer_export "
-            "--include-pack plan --overwrite --format json",
+            "--include-pack <pack-slug> --overwrite --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -280,12 +280,13 @@ def register_pack_family(
         epilog=examples(
             "uv run watchtower-core pack export --output-root /tmp/customer_core "
             "--overwrite --format json",
-            "uv run watchtower-core pack export --output-root /tmp/customer_plan "
-            "--include-pack plan --overwrite --format json",
-            "uv run watchtower-core pack export --output-root /tmp/customer_plan_pack "
-            "--include-pack plan --pack-only --overwrite --format json",
+            "uv run watchtower-core pack export --output-root /tmp/customer_pack_repo "
+            "--include-pack <pack-slug> --overwrite --format json",
+            "uv run watchtower-core pack export --output-root /tmp/customer_pack_bundle "
+            "--include-pack <pack-slug> --pack-only --overwrite --format json",
             "uv run watchtower-core pack export --output-root /tmp/customer_bundle "
-            "--include-pack plan --include-pack oversight --overwrite --format json",
+            "--include-pack <pack-slug> --include-pack <second-pack-slug> "
+            "--overwrite --format json",
         ),
         formatter_class=HelpFormatter,
     )

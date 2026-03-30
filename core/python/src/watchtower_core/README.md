@@ -44,7 +44,7 @@
 - `core/python/src/watchtower_host/README.md`
 - `core/docs/standards/engineering/python_code_design_standard.md`
 - `core/docs/standards/engineering/core_host_pack_python_boundary_standard.md`
-- `plan/python/README.md`
+- The owning pack Python README for pack-native runtime behavior
 
 ## Notes
 - Keep new generic loaders, validators, query helpers, sync helpers, rebuild helpers, adapters, and utilities in `watchtower_core`.

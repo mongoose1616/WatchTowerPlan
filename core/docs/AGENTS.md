@@ -26,7 +26,8 @@
 - Do not describe documents as extracted from predecessor repos, imported snapshots, or filesystem copies.
 - Do not preserve predecessor project names in titles, summaries, headings, tables, or filenames unless the document is explicitly historical or comparative.
 - Keep shared command docs, references, templates, and shared or core-owned standards under `core/docs/**`.
-- Keep authored shared foundations under `core/docs/foundations/**` and keep them byte-identical with `plan/docs/foundations/**`.
+- Keep authored shared foundations under `core/docs/foundations/**`.
+- Keep pack-owned mirrors, promoted guidance, and pack-specific documentation roots under the owning pack docs root and pack-local registries instead of encoding them into shared-core path rules.
 
 ## Do
 - Keep documentation scoped, current, and easy to scan.

@@ -27,7 +27,7 @@ aliases:
 
 # Product Direction
 
-This document defines the intended future WatchTower product shape. For current repository ownership and current implementation scope, [repository_scope.md](repository_scope.md) is authoritative. Read this document when the question is where the broader product is meant to go, not when the question is what `WatchTowerPlan` owns today.
+This document defines the intended future WatchTower product shape. For current repository ownership and current implementation scope, [repository_scope.md](repository_scope.md) is authoritative. Read this document when the question is where the broader product is meant to go, not when the question is what the current core-authoring repository owns today.
 
 ## Audience
 
@@ -37,7 +37,7 @@ This document defines the intended future WatchTower product shape. For current 
 
 ## Current Repository Relationship
 
-- `WatchTowerPlan` currently owns the governed core substrate, host-composition layer, machine-readable control plane, workflow-routing model, and the first internal plan-domain pack.
+- The current core-authoring repository owns the governed core substrate, host-composition layer, machine-readable control plane, workflow-routing model, and the currently hosted first-party pack set.
 - This repository does not yet own the first operator-facing domain-pack implementation.
 - The hosted-pack model is already partially proven here through the current internal pack, hosted-pack scaffolding, and second-pack portability work; future product work should extend that contract rather than re-invent it.
 - One supported downstream adoption mode is to copy the canonical shared `core/` tree from this repository and then carry whichever hosted packs the consuming repository actually needs. That may begin with `core/` alone during integration bring-up or with `core/` plus one or more hosted packs.
@@ -89,7 +89,7 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Customer-safe bootstrap for that consuming repository should be a curated export of shared core plus the selected hosted pack set, not a raw donor repository snapshot.
 - This repository should prepare the reusable substrate and contracts that product work will consume.
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
-- If a downstream working repository edits `core/**` while implementing that reusable substrate, the authored shared-core change must be reconciled back into `WatchTowerPlan/core/**` before closeout.
+- If a downstream working repository edits `core/**` while implementing that reusable substrate, the authored shared-core change must be reconciled back into the canonical shared-core source before closeout.
 
 ## References
 - [repository_scope.md](repository_scope.md)

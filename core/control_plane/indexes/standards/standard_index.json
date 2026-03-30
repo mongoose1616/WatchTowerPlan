@@ -1946,7 +1946,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/front_matter_standard.md",
-      "updated_at": "2026-03-28T23:55:00Z",
+      "updated_at": "2026-03-29T00:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2148,7 +2148,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/operations/customer_release_and_bootstrap_standard.md",
-      "updated_at": "2026-03-28T23:15:00Z",
+      "updated_at": "2026-03-29T00:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

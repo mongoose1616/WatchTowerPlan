@@ -415,7 +415,7 @@ def register_query_knowledge_commands(
     )
     query_templates_parser.add_argument(
         "--allowed-root",
-        help="Exact allowed-root filter such as core/docs/standards or plan/docs/commands.",
+        help="Exact allowed-root filter such as core/docs/standards or <pack>/docs/commands.",
     )
     query_templates_parser.add_argument(
         "--required-section-id",

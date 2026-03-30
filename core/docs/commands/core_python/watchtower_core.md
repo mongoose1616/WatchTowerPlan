@@ -50,7 +50,7 @@ uv run watchtower-core pack describe --format json
 
 ```sh
 cd core/python
-uv run watchtower-core release check --output-root /tmp/customer_plan --include-pack plan --overwrite --format json
+uv run watchtower-core release check --output-root /tmp/customer_release --include-pack <pack-slug> --overwrite --format json
 ```
 
 ```sh

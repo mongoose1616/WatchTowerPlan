@@ -53,7 +53,7 @@
 - Default path: run commands with `uv run ...` from `core/python/`. This uses the workspace environment without requiring manual activation.
 - `uv sync --extra dev` installs `watchtower_core` and any repo-local hosted pack packages declared in the shared workspace metadata.
 - `./.venv/bin/python` is useful after the workspace has already been synced, but it does not replace `uv sync` when the shared workspace metadata changes.
-- In this repository, the shared workspace metadata currently includes one internal hosted pack. In a downstream repository that copies `core/`, the hosted-pack dependencies and local `tool.uv.sources` entries are repo-local configuration and should be updated to match the copied pack set instead of inheriting the donor repo's package list.
+- In any repository, the shared workspace metadata may include one or more hosted packs. In a downstream repository that copies `core/`, the hosted-pack dependencies and local `tool.uv.sources` entries are repo-local configuration and should be updated to match the copied pack set instead of inheriting the donor repo's package list.
 - Keep the test split explicit: `core/python/tests/` is the shared pack-neutral suite, while pack-owned tests live under the owning pack root such as `<pack-root>/python/tests/`.
 - Keep the shared-core suite live-pack-neutral: if a test needs a real `watchtower_<pack>` import or depends on the live current-repository pack workspace being present, move it under the owning pack root or replace it with synthetic fixture-pack setup.
 - During copied-core bring-up, `watchtower-core pack list`, `pack describe`, `pack validate`, selected pack namespaces, and `validate all` can discover a valid local pack from `<pack>/.wt/manifests/pack_settings.json` plus `<pack>/python/src` even before shared workspace wiring is persisted. Treat that as temporary bootstrap compatibility: `watchtower-core pack bootstrap --write` is the step that reconciles the shared hosted-pack registry, shared workspace metadata, and the shared command, repository-path, reference, standard, workflow, and route discovery surfaces for the copied repository.
@@ -99,9 +99,9 @@
 - `uv run watchtower-core pack list --format json`
 - `uv run watchtower-core pack describe --format json`
 - `uv run watchtower-core pack validate --format json`
-- `uv run watchtower-core pack export --output-root /tmp/customer_export --include-pack plan --overwrite --format json`
-- `uv run watchtower-core pack export --output-root /tmp/customer_plan_pack --include-pack plan --pack-only --overwrite --format json`
-- `uv run watchtower-core release check --output-root /tmp/customer_plan --include-pack plan --overwrite --format json`
+- `uv run watchtower-core pack export --output-root /tmp/customer_export --include-pack <pack-slug> --overwrite --format json`
+- `uv run watchtower-core pack export --output-root /tmp/customer_pack_bundle --include-pack <pack-slug> --pack-only --overwrite --format json`
+- `uv run watchtower-core release check --output-root /tmp/customer_release --include-pack <pack-slug> --overwrite --format json`
 - `uv run watchtower-core pack scaffold --pack-slug oversight --pack-root oversight --format json`
 - `uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --format json`
 - `uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json`
@@ -110,8 +110,8 @@
 - `uv run watchtower-core sync repository-paths`
 - `uv run watchtower-core validate all --skip-acceptance`
 - `uv run watchtower-core validate schema --path core/control_plane/schemas/interfaces/packs/pack_settings.schema.json --format json`
-- `uv run watchtower-core validate portability --include-pack plan --format json`
-- `uv run watchtower-core validate portability --root /tmp/customer_plan_pack --include-pack plan --pack-only --format json`
+- `uv run watchtower-core validate portability --include-pack <pack-slug> --format json`
+- `uv run watchtower-core validate portability --root /tmp/customer_pack_bundle --include-pack <pack-slug> --pack-only --format json`
 - `uv run watchtower-core validate suite --suite-id suite.example.validation_baseline --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json --format json`
 - `uv run watchtower-core validate document-semantics --path core/workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
@@ -154,7 +154,7 @@
 - `./tools/verify.sh all` is the canonical broad shared-core pass. It adds the broad shared-core pytest run plus `watchtower-core validate all`.
 - Add `--pack <slug>` to `./tools/verify.sh all` when a hosted-pack Python boundary changed. Use the current repository's hosted-pack slug when the local pass should include one pack-owned Python workspace.
 - `./tools/install_git_hooks.sh --mode fast` materializes `.githooks/pre-push` from the shared templates under `core/python/tools/git_hooks/` and installs it as an optional local guard. Use `--mode all` and optional `--pack <slug>` when you want the hook to run the broader pass on push.
-- Repo-root `./core/python/.venv/bin/mypy core/python/src` commands resolve configuration from [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml) when you do not want to `cd core/python` first.
+- Repo-root `./core/python/.venv/bin/mypy core/python/src` commands resolve configuration from [pyproject.toml](/core/python/pyproject.toml) when you do not want to `cd core/python` first.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad shared-core Python validation pass when a change touches reusable-core, host composition, synthetic pack fixtures, or multi-surface CLI behavior.
 - Use `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` when the change touches one hosted pack directly.

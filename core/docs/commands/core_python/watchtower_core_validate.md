@@ -85,7 +85,7 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 
 ```sh
 cd core/python
-uv run watchtower-core validate portability --include-pack plan --format json
+uv run watchtower-core validate portability --include-pack <pack-slug> --format json
 ```
 
 ## Behavior and Outputs

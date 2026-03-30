@@ -38,11 +38,11 @@ def build_parser(
             "oversight/.wt/manifests/pack_settings.json --replace-hosted-packs "
             "--write --format json",
             "uv run watchtower-core pack export --output-root /tmp/customer_export "
-            "--include-pack plan --overwrite --format json",
-            "uv run watchtower-core pack export --output-root /tmp/customer_plan_pack "
-            "--include-pack plan --pack-only --overwrite --format json",
-            "uv run watchtower-core release check --output-root /tmp/customer_plan "
-            "--include-pack plan --overwrite --format json",
+            "--include-pack <pack-slug> --overwrite --format json",
+            "uv run watchtower-core pack export --output-root /tmp/customer_pack_bundle "
+            "--include-pack <pack-slug> --pack-only --overwrite --format json",
+            "uv run watchtower-core release check --output-root /tmp/customer_release "
+            "--include-pack <pack-slug> --overwrite --format json",
             'uv run watchtower-core route preview --request "review code and commit"',
             "uv run watchtower-core query authority --query canonical --format json",
             "uv run watchtower-core query commands --query doctor --format json",
@@ -58,9 +58,10 @@ def build_parser(
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core sync repository-paths --write",
             "uv run watchtower-core validate all --skip-acceptance",
-            "uv run watchtower-core validate portability --include-pack plan --format json",
-            "uv run watchtower-core validate portability --root /tmp/customer_plan_pack "
-            "--include-pack plan --pack-only --format json",
+            "uv run watchtower-core validate portability --include-pack <pack-slug> "
+            "--format json",
+            "uv run watchtower-core validate portability --root /tmp/customer_pack_bundle "
+            "--include-pack <pack-slug> --pack-only --format json",
             "uv run watchtower-core validate document-semantics --path "
             "core/docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core validate acceptance --trace-id "

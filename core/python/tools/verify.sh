@@ -13,7 +13,7 @@ Modes:
 
 Options:
   --pack <pack_slug>  Also run the hosted-pack typing and test pass for one
-                      top-level pack root such as "plan".
+                      top-level pack root such as "my_pack".
 EOF
 }
 

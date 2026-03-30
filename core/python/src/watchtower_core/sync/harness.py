@@ -246,9 +246,9 @@ class SyncHarness:
         document_override: dict[str, object] | None = None,
     ) -> SyncRecord:
         document = document_override or service.build_document()
-        entries = document.get("entries")
-        if not isinstance(entries, list):
-            raise RuntimeError(f"{target} document is missing its entries list.")
+        records = _document_record_list(document)
+        if records is None:
+            raise RuntimeError(f"{target} document is missing its entries or artifacts list.")
         loader.schema_store.validate_instance(document)
         loader.set_validated_document_override(relative_output_path, document)
         destination = self._resolve_destination(relative_output_path, write, output_dir)
@@ -261,7 +261,7 @@ class SyncHarness:
             relative_output_path=relative_output_path,
             output_path=str(destination.resolve()) if destination is not None else None,
             wrote=wrote,
-            record_count=len(entries),
+            record_count=len(records),
             details={},
         )
 
@@ -355,3 +355,13 @@ class SyncHarness:
             artifact_store=self._loader.artifact_store,
             active_pack_settings_path=active_pack_settings_path,
         )
+
+
+def _document_record_list(document: dict[str, object]) -> list[object] | None:
+    entries = document.get("entries")
+    if isinstance(entries, list):
+        return entries
+    artifacts = document.get("artifacts")
+    if isinstance(artifacts, list):
+        return artifacts
+    return None

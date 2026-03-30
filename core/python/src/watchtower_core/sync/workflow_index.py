@@ -29,6 +29,7 @@ from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
 from watchtower_core.pack_integration.roots import (
+    discover_pack_workspace_roots,
     pack_routing_table_paths,
     pack_workflow_module_roots,
     pack_workflow_role_roots,
@@ -96,9 +97,6 @@ CORE_SHARED_WORKFLOW_ROOTS = (
 )
 CORE_SHARED_WORKFLOW_ALLOWED_REFERENCE_PREFIX = "core/"
 CORE_SHARED_ROLE_ALLOWED_MODULE_ROOT = CORE_WORKFLOW_MODULE_ROOT
-CORE_SHARED_WORKFLOW_DISALLOWED_PATH_PATTERN = re.compile(
-    r"(?<![A-Za-z0-9_])(?:plan/|oversight/|packs/)",
-)
 CORE_SHARED_WORKFLOW_DISALLOWED_LANGUAGE_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"\btrace_id\b", re.IGNORECASE), "trace_id"),
     (re.compile(r"\binitiative\b", re.IGNORECASE), "initiative"),
@@ -291,6 +289,7 @@ def validate_core_shared_workflow_boundary(
     relative_path: str,
     markdown: str,
     *,
+    loader: ControlPlaneLoader,
     internal_reference_paths: tuple[str, ...],
     composes_module_paths: tuple[str, ...],
 ) -> None:
@@ -325,11 +324,12 @@ def validate_core_shared_workflow_boundary(
             f"{CORE_SHARED_ROLE_ALLOWED_MODULE_ROOT}/: {joined}"
         )
 
-    path_match = CORE_SHARED_WORKFLOW_DISALLOWED_PATH_PATTERN.search(markdown)
-    if path_match is not None:
+    for token in _shared_core_disallowed_pack_root_tokens(loader.repo_root, loader=loader):
+        if token not in markdown:
+            continue
         raise ValueError(
             f"{relative_path} shared core workflow docs must not reference pack-owned roots "
-            f"such as {path_match.group(0)!r}; move that repository-local logic into the "
+            f"such as {token!r}; move that repository-local logic into the "
             "owning pack workflow root."
         )
 
@@ -430,6 +430,21 @@ def build_workflow_document_context(
     )
 
 
+def _shared_core_disallowed_pack_root_tokens(
+    repo_root: Path,
+    *,
+    loader: ControlPlaneLoader,
+) -> tuple[str, ...]:
+    tokens = {
+        f"{roots.workspace_root.rstrip('/')}/"
+        for roots in discover_pack_workspace_roots(repo_root, loader=loader)
+        if roots.workspace_root
+    }
+    if any(token.startswith("packs/") for token in tokens):
+        tokens.add("packs/")
+    return tuple(sorted(tokens))
+
+
 def load_workflow_document(
     loader: ControlPlaneLoader,
     relative_path: str,
@@ -496,6 +511,7 @@ def load_workflow_document_with_reference_map(
     validate_core_shared_workflow_boundary(
         relative_path,
         markdown,
+        loader=loader,
         internal_reference_paths=internal_reference_paths,
         composes_module_paths=composes_module_paths,
     )
@@ -510,7 +526,7 @@ def load_workflow_document_with_reference_map(
         *(reference_urls_by_path.get(reference_path, ()) for reference_path in reference_doc_paths)
     )
     external_reference_urls = ordered_unique(direct_external_urls, transitive_external_urls)
-    workflow_id = f"workflow.{Path(relative_path).stem}"
+    workflow_id = _resolve_workflow_id(relative_path, metadata_by_workflow_id)
     try:
         retrieval_metadata = metadata_by_workflow_id[workflow_id]
     except KeyError as exc:
@@ -541,6 +557,29 @@ def load_workflow_document_with_reference_map(
         reference_doc_paths=reference_doc_paths,
         internal_reference_paths=internal_reference_paths,
         external_reference_urls=external_reference_urls,
+    )
+
+
+def _resolve_workflow_id(
+    relative_path: str,
+    metadata_by_workflow_id: dict[str, WorkflowMetadataDefinition],
+) -> str:
+    stem = Path(relative_path).stem
+    default_workflow_id = f"workflow.{stem}"
+    if default_workflow_id in metadata_by_workflow_id:
+        return default_workflow_id
+
+    suffix = f".{stem}"
+    matches = sorted(
+        workflow_id for workflow_id in metadata_by_workflow_id if workflow_id.endswith(suffix)
+    )
+    if len(matches) == 1:
+        return matches[0]
+    if not matches:
+        return default_workflow_id
+    raise ValueError(
+        f"Workflow retrieval metadata is ambiguous for {relative_path}: "
+        + ", ".join(matches)
     )
 
 

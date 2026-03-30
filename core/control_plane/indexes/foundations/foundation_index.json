@@ -248,12 +248,12 @@
     {
       "foundation_id": "foundation.repository_scope",
       "title": "Repository Scope",
-      "summary": "Defines the current repository charter, ownership boundary, and the relationship between WatchTowerPlan and future WatchTower product implementation.",
+      "summary": "Defines the shared-core repository charter, ownership boundary, and the relationship between reusable core and hosted-pack workspaces.",
       "status": "active",
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-28T23:55:00Z",
+      "updated_at": "2026-03-29T00:45:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [

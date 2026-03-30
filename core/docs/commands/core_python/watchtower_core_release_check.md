@@ -41,22 +41,22 @@ uv run watchtower-core release check --output-root /tmp/customer_core --overwrit
 
 ```sh
 cd core/python
-uv run watchtower-core release check --output-root /tmp/customer_plan --include-pack plan --overwrite --format json
+uv run watchtower-core release check --output-root /tmp/customer_pack_repo --include-pack <pack-slug> --overwrite --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core release check --output-root /tmp/customer_plan_pack --include-pack plan --pack-only --overwrite --format json
+uv run watchtower-core release check --output-root /tmp/customer_pack_bundle --include-pack <pack-slug> --pack-only --overwrite --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core release check --output-root /tmp/customer_plan --include-pack plan --schema-path core/control_plane/schemas/interfaces/packs/pack_settings.schema.json --overwrite --format json
+uv run watchtower-core release check --output-root /tmp/customer_release --include-pack <pack-slug> --schema-path core/control_plane/schemas/interfaces/packs/pack_settings.schema.json --overwrite --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core release check --output-root /tmp/rehearsal --include-pack plan --allow-dirty --overwrite --format json
+uv run watchtower-core release check --output-root /tmp/rehearsal --include-pack <pack-slug> --allow-dirty --overwrite --format json
 ```
 
 ## Behavior and Outputs
