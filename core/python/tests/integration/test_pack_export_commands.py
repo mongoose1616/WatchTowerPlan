@@ -670,20 +670,19 @@ def test_pack_export_selected_plan_pack_scrubs_live_history_and_rebuilds_clean_v
     plan_overview = (output_root / "plan/plan_overview.md").read_text(encoding="utf-8")
     assert "/home/j/WatchTowerPlan" not in plan_overview
 
+    plan_indexes_root = output_root / "plan" / ".wt" / "indexes"
     initiative_index = json.loads(
-        (output_root / "plan/.wt/indexes/initiative_index.json").read_text(encoding="utf-8")
+        (plan_indexes_root / "initiative_index.json").read_text(encoding="utf-8")
     )
     assert initiative_index["entries"] == []
 
     project_index = json.loads(
-        (output_root / "plan/.wt/indexes/project_index.json").read_text(encoding="utf-8")
+        (plan_indexes_root / "project_index.json").read_text(encoding="utf-8")
     )
     assert project_index["entries"] == []
 
     coordination_index = json.loads(
-        (output_root / "plan/.wt/indexes/coordination_index.json").read_text(
-            encoding="utf-8"
-        )
+        (plan_indexes_root / "coordination_index.json").read_text(encoding="utf-8")
     )
     assert coordination_index["active_initiative_count"] == 0
     assert coordination_index["actionable_task_count"] == 0
@@ -693,7 +692,7 @@ def test_pack_export_selected_plan_pack_scrubs_live_history_and_rebuilds_clean_v
     assert "plan/initiatives/" not in task_tracking
 
     artifact_index = json.loads(
-        (output_root / "plan/.wt/indexes/artifact_index.json").read_text(encoding="utf-8")
+        (plan_indexes_root / "artifact_index.json").read_text(encoding="utf-8")
     )
     assert not any(
         isinstance(entry.get("path"), str)
