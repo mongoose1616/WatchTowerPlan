@@ -9,6 +9,7 @@ Small shared helpers that keep low-level cross-package utilities out of higher-l
 - `Non-Goals`: New home for repo policy, orchestration, or convenience re-exports.
 
 ## Key Surfaces
+- `exception_formatting.py`: Shared helper for stable human-readable exception detail strings in operator and validation output.
 - `module_exports.py`: Shared package-root lazy-export and fail-closed guard helpers used by runtime namespace `__init__` modules.
 - `timestamps.py`: RFC 3339 UTC timestamp helper.
 

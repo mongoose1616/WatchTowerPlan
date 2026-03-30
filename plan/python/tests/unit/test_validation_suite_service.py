@@ -567,6 +567,28 @@ def test_pack_contract_validation_fails_when_query_runtime_returns_empty_command
     assert any(issue.code == "pack_query_runtime_invalid" for issue in result.issues)
 
 
+def test_pack_contract_validation_fails_when_query_runtime_hook_raises_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    plan_integration = _current_plan_integration_module()
+    bad_descriptor = replace(
+        plan_integration.PACK_INTEGRATION,
+        query_runtime=lambda: (_ for _ in ()).throw(RuntimeError("boom")),
+    )
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        lambda **_kwargs: (SimpleNamespace(PACK_INTEGRATION=bad_descriptor), "workspace"),
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    issue = next(issue for issue in result.issues if issue.code == "pack_query_runtime_error")
+    assert issue.location == "watchtower_plan.integration"
+    assert "RuntimeError: boom" in issue.message
+
+
 def test_pack_contract_validation_fails_when_sync_targets_returns_invalid_runtime(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

@@ -39,6 +39,7 @@ from watchtower_core.pack_integration.scaffold import (
     PackScaffoldRequest,
     scaffold_hosted_pack,
 )
+from watchtower_core.utils.exception_formatting import format_exception_detail
 from watchtower_core.validation.pack_contract import (
     PACK_CONTRACT_VALIDATOR_ID,
     PackContractValidationService,
@@ -102,7 +103,7 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
         descriptor = getattr(module, "PACK_INTEGRATION", None)
         integration_importable = True
     except Exception as exc:  # pragma: no cover - fail-closed operator path
-        integration_error = _format_operator_exception(exc)
+        integration_error = format_exception_detail(exc)
 
     if integration_importable:
         try:
@@ -113,7 +114,7 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
                 ).commands
             )
         except Exception as exc:  # pragma: no cover - fail-closed operator path
-            query_runtime_error = _format_operator_exception(exc)
+            query_runtime_error = format_exception_detail(exc)
         try:
             sync_runtime_targets = list(
                 load_pack_sync_runtime(
@@ -122,7 +123,7 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
                 ).targets
             )
         except Exception as exc:  # pragma: no cover - fail-closed operator path
-            sync_runtime_error = _format_operator_exception(exc)
+            sync_runtime_error = format_exception_detail(exc)
 
     payload = {
         "command": "watchtower-core pack describe",
@@ -830,13 +831,6 @@ def _render_pack_registry_entry(entry: PackRegistryEntry) -> None:
         f"namespace={entry.command_namespace} "
         f"distribution={entry.python_distribution}{default_suffix}"
     )
-
-
-def _format_operator_exception(exc: BaseException) -> str:
-    message = str(exc)
-    if message:
-        return f"{type(exc).__name__}: {message}"
-    return type(exc).__name__
 
 
 __all__ = [

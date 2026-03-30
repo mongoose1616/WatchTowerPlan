@@ -10,6 +10,7 @@ from typing import Literal
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.workflow_catalog import WorkflowCatalogHelper
 from watchtower_core.routing import RoutingEngine, RoutingSelection
+from watchtower_core.utils.exception_formatting import format_exception_detail
 
 WorkflowStepStatus = Literal["completed", "mode_blocked", "gate_blocked", "failed"]
 WorkflowModeCheck = Callable[
@@ -187,7 +188,7 @@ class WorkflowExecutionHarness:
                 output = runner(step) if runner is not None else None
             except Exception as exc:
                 succeeded = False
-                detail = str(exc) or type(exc).__name__
+                detail = format_exception_detail(exc)
                 record(
                     "workflow_failed",
                     workflow_id=step.workflow_id,

@@ -205,6 +205,28 @@ def test_pack_describe_reports_runtime_hook_errors_without_masking_import_succes
     assert "all" in payload["integration"]["sync_runtime_targets"]
 
 
+def test_pack_describe_reports_runtime_hook_exception_types(
+    capsys,
+    monkeypatch,
+) -> None:
+    plan_integration = _current_plan_integration_module()
+    bad_descriptor = replace(
+        plan_integration.PACK_INTEGRATION,
+        query_runtime=lambda: (_ for _ in ()).throw(RuntimeError("boom")),
+    )
+    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+
+    result = main(["pack", "describe", "--pack", "plan", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["integration"]["importable"] is True
+    assert payload["integration"]["error"] is None
+    assert payload["integration"]["query_runtime_commands"] is None
+    assert payload["integration"]["query_runtime_error"] == "RuntimeError: boom"
+
+
 def test_pack_commands_support_second_pack_fixture(
     tmp_path: Path,
     monkeypatch,

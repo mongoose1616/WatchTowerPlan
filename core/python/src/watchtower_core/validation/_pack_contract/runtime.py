@@ -16,6 +16,7 @@ from watchtower_core.pack_integration.runtime import (
     validate_pack_sync_runtime,
     validate_pack_validation_runtime,
 )
+from watchtower_core.utils.exception_formatting import format_exception_detail
 from watchtower_core.validation.models import ValidationIssue
 
 
@@ -218,7 +219,10 @@ def runtime_hook_issues(
         return (
             ValidationIssue(
                 code=error_code,
-                message=f"Pack integration hook raised an error: {exc}",
+                message=(
+                    "Pack integration hook raised an error: "
+                    f"{format_exception_detail(exc)}"
+                ),
                 location=integration_module,
             ),
         )

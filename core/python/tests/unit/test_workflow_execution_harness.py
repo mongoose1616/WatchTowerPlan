@@ -108,4 +108,4 @@ def test_workflow_execution_harness_records_runner_failures_without_crashing_cha
     )
     assert result.succeeded is False
     assert failed.status == "failed"
-    assert failed.reason == "runner failed"
+    assert failed.reason == "RuntimeError: runner failed"

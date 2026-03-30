@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import importlib
+import json
 import re
 from pathlib import Path
 from shutil import copy2, copytree
@@ -77,6 +79,13 @@ def materialize_externalized_plan_validation_suite(
         register_with_core_python_workspace=register_with_core_python_workspace,
     )
     materialize_externalized_plan_python(pack_root / "python")
+    runtime_manifest_path = pack_root / ".wt" / "manifests" / "pack_runtime_manifest.json"
+    runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
+    runtime_manifest["declared_capabilities"] = list(_current_plan_declared_capabilities())
+    runtime_manifest_path.write_text(
+        f"{json.dumps(runtime_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
     return surfaces
 
 
@@ -104,3 +113,8 @@ def _discover_repo_root(start: Path) -> Path:
         if (parent / "core/control_plane").is_dir() and (parent / "core/python").is_dir():
             return parent
     raise ValueError(f"Could not discover repo root for fixture destination: {start}")
+
+
+def _current_plan_declared_capabilities() -> tuple[str, ...]:
+    integration_module = importlib.import_module("watchtower_plan.integration")
+    return tuple(integration_module.PACK_INTEGRATION.declared_capabilities)
