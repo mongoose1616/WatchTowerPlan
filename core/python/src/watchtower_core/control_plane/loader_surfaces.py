@@ -860,7 +860,7 @@ def load_declared_surface(
     surface_loader = _declared_surface_loaders(loader).get(surface_name)
     if surface_loader is not None:
         return surface_loader(relative_path)
-    return loader.load_known_surface(relative_path)
+    return loader.load_validated_document(relative_path)
 
 
 def load_known_surface(loader: Any, relative_path: str) -> object:

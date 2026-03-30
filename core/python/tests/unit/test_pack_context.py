@@ -129,3 +129,43 @@ def test_pack_context_skips_missing_rebuildable_derived_surface_until_built() ->
 
     assert "route_index" not in context.indexes
     assert context.status_registry.get("accepted").entry_status == "active"
+
+
+def test_pack_context_loads_unknown_declared_surface_as_validated_document() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    base_settings = json.loads(
+        (REPO_ROOT / CORE_PACK_SETTINGS_PATH).read_text(encoding="utf-8")
+    )
+
+    with tempfile.TemporaryDirectory(dir=REPO_ROOT) as tmp_dir:
+        tmp_path = Path(tmp_dir)
+        custom_registry_path = tmp_path / "custom_status_registry.json"
+        shutil.copy2(
+            REPO_ROOT / "core/control_plane/registries/status_registry.json",
+            custom_registry_path,
+        )
+
+        custom_settings = dict(base_settings)
+        custom_settings["surfaces"] = [dict(entry) for entry in base_settings["surfaces"]]
+        custom_settings["surfaces"].append(
+            {
+                "surface_name": "custom_status_registry",
+                "surface_kind": "registry",
+                "path": custom_registry_path.relative_to(REPO_ROOT).as_posix(),
+                "authority": "authoritative",
+                "visibility": "hidden",
+            }
+        )
+        custom_settings_path = tmp_path / "pack_settings.json"
+        custom_settings_path.write_text(
+            f"{json.dumps(custom_settings, indent=2)}\n",
+            encoding="utf-8",
+        )
+
+        context = loader.load_pack_context(
+            custom_settings_path.relative_to(REPO_ROOT).as_posix()
+        )
+
+    loaded_surface = context.registries["custom_status_registry"]
+    assert isinstance(loaded_surface, dict)
+    assert loaded_surface["surface_name"] == "status_registry"
