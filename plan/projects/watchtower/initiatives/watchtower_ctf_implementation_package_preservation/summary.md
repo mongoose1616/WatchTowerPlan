@@ -36,8 +36,6 @@ Captures the full CTF implementation package inside the governed WatchTower init
 
 ## Evidence References
 - `evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle`: `completed`
-- Trace evidence ref: `evidence.watchtower_ctf_implementation_package_preservation.handoff_readiness`
-- Acceptance contract ref: `contract.acceptance.watchtower_ctf_package_preservation`
 
 ## Unresolved Follow-Ups
 - No unresolved follow-up items remain.

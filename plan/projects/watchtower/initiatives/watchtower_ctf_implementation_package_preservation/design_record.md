@@ -66,11 +66,12 @@ This initiative uses a two-layer preservation design: an immutable transformed m
 
 The preserved package is now the active engineer handoff package for WatchTower implementation planning. This same-initiative design deliberately avoids a successor planning package because splitting the preserved contract from the execution-facing task graph would reintroduce ambiguity about which surface governs the next engineer action.
 
-The handoff design therefore adds three machine-readable layers above the preserved docs:
+The handoff design therefore keeps two machine-readable layers above the preserved docs in the current repo state:
 
-- one acceptance contract under `core/control_plane/contracts/acceptance/` so the durable `ac.watchtower_ctf_package_preservation.*` criteria can be loaded without reparsing prose;
-- one durable validation-evidence record under `core/control_plane/records/validation_evidence/` so handoff-readiness proof survives beyond transient command output; and
-- one phase-aligned same-initiative live task chain so initiative, task, readiness, and coordination surfaces all point at the next implementation step rather than a bootstrap placeholder.
+- one initiative-local validation bundle under `.wt/evidence/` so handoff-readiness proof stays attached to the initiative package instead of depending on shared-core retained evidence; and
+- one phase-aligned same-initiative live task chain so initiative, task, readiness, coordination, and traceability surfaces all point at the next implementation step rather than a bootstrap placeholder.
+
+The earlier shared-core acceptance contract and shared-core durable evidence were retired after the WatchTower handoff completed. The retained acceptance source now stays in `initiative_brief.md`, while the current machine-readable proof path is the initiative-local validation bundle plus the rebuilt traceability index.
 
 Current repo lifecycle vocabulary still renders `ready_for_execution` as initiative phase `capture` until the first execution-starting task transition occurs. This initiative does not fake that transition during the hardening pass. Instead, it makes the handoff execution-facing by publishing a first `ready` task, explicit dependencies for later tasks, complete trace joins, and a concrete next-action surface for engineers.
 

@@ -14,8 +14,8 @@
       "owner": "repository_maintainer",
       "target_phase": "readiness",
       "expected_output_paths": [
-        "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
-        "core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/evidence/validation_bundle.handoff_readiness.json",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ]
     },

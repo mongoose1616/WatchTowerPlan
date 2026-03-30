@@ -61,9 +61,7 @@
         "readiness"
       ],
       "expected_output_paths": [
-        "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json",
         "plan/.wt/indexes/coordination_index.json",
         "plan/.wt/indexes/initiative_index.json",
         "plan/.wt/indexes/task_index.json",
@@ -74,6 +72,7 @@
         "plan/.wt/templates/initiatives/phase_output_manifest.md",
         "plan/docs/patterns/initiative_engineer_handoff_support_pattern.md",
         "plan/docs/standards/governance/initiative_engineer_handoff_support_standard.md",
+        "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/evidence/validation_bundle.handoff_readiness.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/.wt/initiative.json",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/README.md",
         "plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/artifact_specimens.md",

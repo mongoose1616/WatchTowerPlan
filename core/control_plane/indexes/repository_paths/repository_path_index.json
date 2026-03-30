@@ -218,16 +218,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json",
-      "kind": "file",
-      "surface_kind": "control_plane_contract",
-      "summary": "Durable acceptance contract for the WatchTower CTF implementation-package preservation initiative, covering preserved source parity, canonicalization, handoff tasking, and acceptance/evidence trace joins.",
-      "parent_path": "core/control_plane/contracts/acceptance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/indexes/",
       "kind": "directory",
       "surface_kind": "control_plane_indexes",
@@ -838,16 +828,6 @@
       "kind": "file",
       "surface_kind": "control_plane_record",
       "summary": "Durable generic validation-evidence example paired with the governed acceptance contract example in the engineering repository; portable exports intentionally scrub it.",
-      "parent_path": "core/control_plane/records/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/validation_evidence/watchtower_ctf_implementation_package_preservation_handoff_readiness.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Durable handoff-readiness evidence for the WatchTower CTF implementation-package preservation initiative, covering source parity, canonical doc normalization, task-chain readiness, and acceptance reconciliation.",
       "parent_path": "core/control_plane/records/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",

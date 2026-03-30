@@ -59,7 +59,7 @@ Captures the full CTF implementation package inside the governed WatchTower init
 - Evidence bundle count: `1`
 - Closeout shell count: `1`
 - Promotion shell count: `1`
-- Acceptance contract refs: `1`
+- Acceptance contract refs: `0`
 
 ## Linked Outputs
 - Authored input: [initiative_brief.md](/plan/projects/watchtower/initiatives/watchtower_ctf_implementation_package_preservation/initiative_brief.md)

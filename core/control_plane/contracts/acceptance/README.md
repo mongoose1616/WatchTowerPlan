@@ -11,4 +11,3 @@
 |---|---|
 | `core/control_plane/contracts/acceptance/README.md` | Describes the purpose of the acceptance contracts directory and its current contents. |
 | `core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json` | Durable generic acceptance-contract example used by command docs, standards, and validation tests in the engineering repository; portable exports intentionally scrub it. |
-| `core/control_plane/contracts/acceptance/watchtower_ctf_package_preservation_acceptance.json` | Durable acceptance contract for the WatchTower CTF implementation-package preservation initiative, covering preserved source parity, canonicalization, handoff tasking, and acceptance/evidence trace joins. |

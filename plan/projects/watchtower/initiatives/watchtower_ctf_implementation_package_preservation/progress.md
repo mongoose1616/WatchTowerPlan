@@ -29,6 +29,6 @@ _No active tasks._
 ## Evidence or Validation State
 - `machine_valid`: `True`
 - Evidence bundles: `1`
-- Acceptance contract refs: `1`
-- Trace-linked evidence refs: `1`
+- Acceptance contract refs: `0`
+- Trace-linked evidence refs: `0`
 - `evidence.watchtower_ctf_implementation_package_preservation.handoff_validation_bundle`: `completed`
