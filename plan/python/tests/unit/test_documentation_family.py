@@ -52,10 +52,7 @@ def test_core_documentation_family_registry_loads_by_explicit_path() -> None:
     workflow = helper.family("workflow")
 
     assert foundation.template_ids == ("template.core.guidance.foundation",)
-    assert foundation.required_mirror_roots == (
-        "core/docs/foundations",
-        "plan/docs/foundations",
-    )
+    assert foundation.required_mirror_roots == ()
     assert workflow.allowed_roots == (
         "core/workflows/modules",
         "core/workflows/roles",

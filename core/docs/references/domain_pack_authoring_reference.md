@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-25T03:10:00Z"
+updated_at: "2026-03-30T00:45:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -80,6 +80,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.
 - Keep `integration_module` under the pack’s declared `python_package`; jumping out into unrelated packages weakens copy-out portability.
 - Keep pack-settings surfaces pack-local unless they intentionally consume shared `core/control_plane/**` machine authority.
+- Treat shared-core docs, references, workflow guidance, and instructions as the authored source for reusable pack behavior. If a pack-local guidance fix would also apply to another hosted pack or copied-core repository, update the shared-core source first and then keep the pack-owned surface as the adapted overlay.
 - Treat effective pack activation as Phase 0 for any pack-aware runtime path. Host and reusable-core runtime helpers should resolve the effective pack settings path before reading runtime manifests, owned roots, or default-pack machine outputs.
 - Build the full typed `PackContext` only when the caller needs declared pack-governed surfaces such as schema catalogs, validator registries, validation suites, policy registries, or other declared governance helpers. Minimal runtime-only pack fixtures may intentionally stop short of that full surface set.
 - Keep pack-local validator registries limited to pack-owned validators. Do not copy shared core validator entries into a pack-local validator registry unless the entry is intentionally identical and temporary copied-core residue.
@@ -123,6 +124,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 4. Publish the pack-owned command docs.
    - Add the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
    - Keep pack-specific command docs under the pack’s docs root instead of shared core docs.
+   - When the missing guidance would apply to more than one hosted pack, update the shared-core source in `core/docs/**` or `core/workflows/**` before adding the pack-owned adaptation.
 5. Register the pack with host composition.
    - Prefer `uv run watchtower-core pack bootstrap --pack-settings-path <pack>/.wt/manifests/pack_settings.json --write --format json` once the pack-owned surfaces exist.
    - Use the dry-run bootstrap output when you need to review the shared changes before writing them.
@@ -393,4 +395,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-25T03:10:00Z`
+- `2026-03-30T00:45:00Z`

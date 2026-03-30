@@ -232,11 +232,6 @@ class InitiativeBootstrapCoordinator:
             self._context.pack_loader().artifact_store.write_json_object(
                 relative_path, document
             )
-        readiness = self._readiness.validate_initiative(
-            location,
-            write=True,
-            require_approved=False,
-        )
         self._context.sync_derived_surfaces(location)
         readiness = self._readiness.validate_initiative(
             location,

@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
 from shutil import copytree, rmtree
+from tempfile import mkdtemp
 
 from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
@@ -24,8 +26,9 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
-def _build_fixture_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+@lru_cache(maxsize=1)
+def _fixture_baseline_repo() -> Path:
+    repo_root = Path(mkdtemp(prefix="watchtower_project_workspace_service_"))
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "plan", repo_root / "plan")
     for path in (repo_root / "plan" / "initiatives").iterdir():
@@ -43,6 +46,12 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
         else:
             path.unlink()
     (repo_root / "core" / "python").mkdir(parents=True)
+    return repo_root
+
+
+def _build_fixture_repo(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(_fixture_baseline_repo(), repo_root)
     return repo_root
 
 

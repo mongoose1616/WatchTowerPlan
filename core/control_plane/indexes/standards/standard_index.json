@@ -1202,7 +1202,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-      "updated_at": "2026-03-25T03:10:00Z",
+      "updated_at": "2026-03-30T00:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1264,7 +1264,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-28T23:55:00Z",
+      "updated_at": "2026-03-30T00:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

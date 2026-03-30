@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-25T03:10:00Z"
+updated_at: "2026-03-30T00:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -51,6 +51,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Pack-owned workflow roles must include explicit `Composes Modules` sections and keep those links aligned with the derived workflow index in the same change set.
 - Keep `.wt/` reserved for machine state, manifests, registries, policies, and indexes. Do not put Python source or hand-maintained prose there.
 - Build pack-native Python around features and domain flows, not mirrored copies of reusable-core package taxonomy.
+- Treat shared-core docs, references, workflow modules, and instructions as the authored source for reusable pack guidance. If a pack-local workaround would also apply to another hosted pack or copied-core repository, strengthen the shared-core guidance first and keep the pack-owned change limited to pack-local adaptation.
 - Keep pack contract paths repository-relative and portable. Absolute paths and parent traversal in pack manifests or settings are invalid.
 - Publish a pack-owned `python/pyproject.toml` and `python/src/watchtower_<pack>/` package so copy-out portability does not depend on repository-root import tricks.
 - Publish typed query and sync runtimes through the pack integration descriptor rather than placeholder hooks or ad hoc tuples.
@@ -99,6 +100,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Reviewers should reject scaffold flows that silently mutate shared host composition surfaces before the new pack package is installable.
 - Reviewers should reject bootstrap flows that update only `pack_registry.json` or only `core/python/pyproject.toml` without the companion shared workspace change.
 - Reviewers should reject pack-authoring guidance that treats a raw donor repository snapshot as the portable pack deliverable.
+- Reviewers should reject pack-local guidance patches that become the only place a reusable hosted-pack rule is documented when the same rule should live in shared core.
 
 ## Change Control
 - Update this standard when the repository changes the expected hosted-pack root shape, portability contract, or pack-owned Python guidance.
@@ -113,4 +115,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-25T03:10:00Z`
+- `2026-03-30T00:45:00Z`

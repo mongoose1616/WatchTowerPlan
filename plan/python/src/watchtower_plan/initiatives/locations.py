@@ -196,8 +196,9 @@ class InitiativeLocationManager:
     def sync_derived_surfaces(self, location: InitiativeLocation) -> None:
         if location.project_slug is not None:
             ProjectWorkspaceService(self.fresh_loader()).sync(write=True)
-        PlanWorkspaceService(self.fresh_loader()).sync(write=True)
-        CoordinationSyncService(self.fresh_loader()).run(write=True)
+        loader = self.fresh_loader()
+        PlanWorkspaceService(loader).sync(write=True)
+        CoordinationSyncService(loader).run_workspace_follow_up_outputs(write=True)
 
 
 __all__ = [

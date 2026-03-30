@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:55:00Z"
+updated_at: "2026-03-30T00:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -55,6 +55,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - Prefer explicit `--format` arguments with `human` and `json` modes when a command serves both operators and agents.
 - Keep query helpers read-oriented and side-effect free. Keep derived-artifact rebuild or materialization logic in dedicated `sync/` surfaces.
 - Update human-readable and machine-readable companion surfaces in the same change set when one depends on the other. Examples include docs plus indexes, command pages plus command-index entries, and schemas plus examples and catalog records.
+- When a hosted-pack change exposes a reusable documentation, reference, or instruction gap, strengthen the shared-core source in `core/docs/**` or `core/workflows/**` first and keep pack-owned docs limited to pack-local overlays or adapted projections.
 - Reuse shared schema fragments, typed models, and existing governed IDs instead of duplicating field rules across surfaces.
 - When external guidance materially shapes repository policy or design, distill it into a governed shared or owning-pack references root based on ownership and have standards or designs cite the local reference doc in addition to, or instead of, raw vendor URLs.
 - When governing standards or references materially constrain one change, keep the resulting task, design, validation, or handoff surfaces explicit enough that a reviewer can tell which documents were followed without reverse-engineering the decision from code alone.
@@ -94,6 +95,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - Reviewers should reject implementation or validation work that materially depends on governing standards, references, or design docs that were never identified, reviewed, or made explicit during the task.
 - Reviewers should reject changes that hardcode values where a reusable argument-driven interface is expected.
 - Reviewers should reject changes that leave companion machine-readable or human-readable surfaces stale.
+- Reviewers should reject pack-local documentation or instruction changes that compensate for a reusable shared-core guidance gap when the rule should apply across hosted packs.
 - Reviewers should reject mixed-purpose modules when the behavior can be separated cleanly into a narrower service or artifact family.
 
 ## Change Control
@@ -114,4 +116,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-03-30T00:45:00Z`

@@ -203,7 +203,6 @@ def _project_container_baseline_repo() -> Path:
     )
     loader = ControlPlaneLoader(repo_root)
     _bootstrap_project(loader)
-    ProjectWorkspaceService(loader).sync(write=True)
     return repo_root
 
 
@@ -214,7 +213,6 @@ def _approved_project_scoped_baseline_repo() -> Path:
         prefix="watchtower_approved_project_scoped_",
     )
     loader = ControlPlaneLoader(repo_root)
-    ProjectWorkspaceService(loader).sync(write=True)
     service = InitiativePackageService(loader)
     service.bootstrap_project_scoped(
         "watchtower",
@@ -253,15 +251,11 @@ def _build_approved_packwide_repo(
 
 
 def _build_project_container_repo(tmp_path: Path) -> Path:
-    repo_root = _copy_cached_repo(_project_container_baseline_repo(), tmp_path)
-    ProjectWorkspaceService(ControlPlaneLoader(repo_root)).sync(write=True)
-    return repo_root
+    return _copy_cached_repo(_project_container_baseline_repo(), tmp_path)
 
 
 def _build_approved_project_scoped_repo(tmp_path: Path) -> Path:
-    repo_root = _copy_cached_repo(_approved_project_scoped_baseline_repo(), tmp_path)
-    ProjectWorkspaceService(ControlPlaneLoader(repo_root)).sync(write=True)
-    return repo_root
+    return _copy_cached_repo(_approved_project_scoped_baseline_repo(), tmp_path)
 
 
 def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:

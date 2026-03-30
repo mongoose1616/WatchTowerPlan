@@ -28,6 +28,7 @@
 - Keep shared command docs, references, templates, and shared or core-owned standards under `core/docs/**`.
 - Keep authored shared foundations under `core/docs/foundations/**`.
 - Keep pack-owned mirrors, promoted guidance, and pack-specific documentation roots under the owning pack docs root and pack-local registries instead of encoding them into shared-core path rules.
+- When a pack-local docs, reference, or instruction change would also apply to another hosted pack or copied-core repository, strengthen the shared-core source in `core/docs/**` first and keep the pack-owned change limited to pack-local adaptation.
 
 ## Do
 - Keep documentation scoped, current, and easy to scan.

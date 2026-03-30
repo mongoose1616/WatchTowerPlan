@@ -130,8 +130,6 @@ class InitiativeReadinessCoordinator:
                 PlanWorkspaceService(
                     self._context.fresh_loader()
                 ).sync_discrepancy_index(write=True)
-            else:
-                self._context.sync_derived_surfaces(location)
         open_discrepancies = self._discrepancies.open_discrepancy_documents(location)
         if open_discrepancies:
             issues.extend(
@@ -237,7 +235,8 @@ class InitiativeReadinessCoordinator:
                     actor_id="actor.watchtower_core",
                     recorded_at=str(initiative_document["updated_at"]),
                 )
-            self._context.sync_derived_surfaces(location)
+            if not derived_surface_issues:
+                self._context.sync_derived_surfaces(location)
 
         return InitiativeReadinessResult(
             initiative_id=initiative_id,
@@ -300,11 +299,6 @@ class InitiativeReadinessCoordinator:
                 actor_id=approver_actor_id,
                 recorded_at=updated_at,
             )
-            readiness = self.validate_initiative(
-                location,
-                write=True,
-                require_approved=False,
-            )
             self._context.sync_derived_surfaces(location)
             readiness = self.validate_initiative(
                 location,
@@ -341,9 +335,15 @@ class InitiativeReadinessCoordinator:
         self._discrepancies.assert_default_authorized_maintainer(approver_actor_id)
         readiness = self.validate_initiative(
             location,
-            write=write,
+            write=False,
             require_approved=False,
         )
+        if write and not readiness.passed:
+            readiness = self.validate_initiative(
+                location,
+                write=True,
+                require_approved=False,
+            )
         if not readiness.passed:
             joined = "; ".join(readiness.issue_messages)
             raise ValueError(f"Initiative package is not ready for approval: {joined}")
