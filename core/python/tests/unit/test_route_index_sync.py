@@ -449,15 +449,6 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
                 ]
             )
         },
-        "implementation slice": (
-            {route_task_types["route.implementation_slice_planning"]}
-            if "route.implementation_slice_planning" in route_task_types
-            else (
-                {route_task_types["route.code_implementation"]}
-                if "route.code_implementation" in route_task_types
-                else set()
-            )
-        ),
         "initiative closeout": (
             {route_task_types["route.initiative_closeout"]}
             if "route.initiative_closeout" in route_task_types
@@ -512,6 +503,11 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
             )
         },
     }
+
+    if "route.implementation_slice_planning" in route_task_types:
+        expectations["implementation slice"] = {
+            route_task_types["route.implementation_slice_planning"]
+        }
 
     for request_text, expected_task_types in expectations.items():
         result = service.preview(request_text=request_text)

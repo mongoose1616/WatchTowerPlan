@@ -168,7 +168,9 @@ def _first_pack_standard_entry(loader: ControlPlaneLoader):
             return entry
     if fallback is not None:
         return fallback
-    raise AssertionError("Expected one standard-index entry rooted under the active pack docs root.")
+    raise AssertionError(
+        "Expected one standard-index entry rooted under the active pack docs root."
+    )
 
 
 def _first_pack_reference_entry(loader: ControlPlaneLoader):
@@ -176,7 +178,9 @@ def _first_pack_reference_entry(loader: ControlPlaneLoader):
     for entry in loader.load_reference_index().entries:
         if entry.doc_path.startswith(f"{docs_root}/references/"):
             return entry
-    raise AssertionError("Expected one reference-index entry rooted under the active pack docs root.")
+    raise AssertionError(
+        "Expected one reference-index entry rooted under the active pack docs root."
+    )
 
 
 def test_control_plane_loader_reads_validator_registry() -> None:
@@ -767,7 +771,6 @@ def test_control_plane_loader_reads_governed_indexes() -> None:
     surface_names = _default_pack_surface_names(loader)
 
     foundation_index = loader.load_foundation_index()
-    standard_index = loader.load_standard_index()
     workflow_metadata_registry = loader.load_workflow_metadata_registry()
 
     foundation = foundation_index.get("foundation.engineering_design_principles")

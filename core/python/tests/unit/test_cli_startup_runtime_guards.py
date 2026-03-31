@@ -7,9 +7,9 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_host.cli.main import _command_group_specs_for_argv
 from watchtower_host.cli.registry import (
     CORE_COMMAND_GROUP_SPECS,
+    _specialized_selected_subcommand_registrar,
     find_registered_pack_command_group,
     load_pack_command_group_spec,
-    _specialized_selected_subcommand_registrar,
 )
 
 
@@ -123,7 +123,8 @@ def test_specialized_selected_subcommand_registrar_passes_requested_subcommand()
     assert calls == ["sync"]
 
 
-def test_specialized_selected_subcommand_registrar_passes_requested_subcommand_through_kwargs() -> None:
+def test_specialized_selected_subcommand_registrar_passes_requested_subcommand_through_kwargs(
+) -> None:
     calls: list[str | None] = []
 
     def _registrar(subparsers: object, **kwargs: object) -> None:
