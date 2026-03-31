@@ -57,7 +57,9 @@ def _first_pack_standard_entry(
             return entry
     if fallback is not None:
         return fallback
-    raise AssertionError("Expected one standard-index entry rooted under the active pack docs root.")
+    raise AssertionError(
+        "Expected one standard-index entry rooted under the active pack docs root."
+    )
 
 
 def test_standard_index_sync_builds_schema_valid_document() -> None:
@@ -70,14 +72,15 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     entries = document["entries"]
     assert isinstance(entries, list)
     pack_standard_entry = _first_pack_standard_entry(loader, entries)
-    assert pack_standard_entry["doc_path"].startswith(f"{_default_pack_docs_root(loader)}/standards/")
+    docs_root = _default_pack_docs_root(loader)
+    assert pack_standard_entry["doc_path"].startswith(f"{docs_root}/standards/")
     assert pack_standard_entry["owner"]
     assert pack_standard_entry.get("operationalization_modes")
     if pack_standard_entry.get("operationalization_paths"):
         assert all(pack_standard_entry["operationalization_paths"])
     if pack_standard_entry.get("reference_doc_paths"):
         assert any(
-            path.startswith(f"{_default_pack_docs_root(loader)}/references/")
+            path.startswith(f"{docs_root}/references/")
             or path.startswith("core/docs/references/")
             for path in pack_standard_entry["reference_doc_paths"]
         )
