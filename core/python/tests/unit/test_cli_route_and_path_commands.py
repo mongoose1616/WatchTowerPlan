@@ -1,15 +1,21 @@
 from __future__ import annotations
 
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from tests.cli_command_helpers import run_json_command
 from tests.unit.control_plane_loader_test_support import REPO_ROOT
 
 
+def _active_pack_workflow_module_path(module_name: str) -> str:
+    workflows_root = ControlPlaneLoader(REPO_ROOT).load_pack_settings().workspace_roots.workflows_root
+    return f"{workflows_root}/modules/{module_name}.md"
+
+
 def _has_task_lifecycle_route() -> bool:
-    return (REPO_ROOT / "plan" / "workflows" / "modules" / "task_lifecycle_management.md").exists()
+    return (REPO_ROOT / _active_pack_workflow_module_path("task_lifecycle_management")).exists()
 
 
 def _has_task_phase_transition_route() -> bool:
-    return (REPO_ROOT / "plan" / "workflows" / "modules" / "task_phase_transition.md").exists()
+    return (REPO_ROOT / _active_pack_workflow_module_path("task_phase_transition")).exists()
 
 
 def test_query_paths_supports_json_output(capsys) -> None:

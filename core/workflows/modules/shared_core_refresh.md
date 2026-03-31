@@ -30,6 +30,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
 2. Normalize donor shared-core portability surfaces.
    - Check whether shared docs, shared acceptance examples, shared validation evidence, and shared traceability lineage are truly donor-neutral.
    - Treat shared `core/python/tests/**`, shared command docs, and shared workflow docs as part of the portable engineering contract. When they need pack-aware expectations, derive them from activated `pack_settings.json`, declared surfaces, and merged registries instead of hard-coding donor-pack IDs or donor-pack path names.
+   - Scan shared-core tests for direct live-pack-root assumptions such as `REPO_ROOT / "plan"`, raw copies from one donor pack root, or unguarded expectations that only pass when the donor's current hosted pack exists. Move those cases to the owning pack root, replace them with fixture-pack setup, or gate them explicitly before staging the extract.
    - Remove or rewrite donor-specific retained artifacts, donor-only trace lineage, or donor-pack assumptions from shared `core/**` surfaces before staging the extract.
    - Keep the minimal portable root shell needed for governed lookup coherence, but do not treat donor root policy or donor pack roots as part of the reusable shared-core payload.
 3. Stage the engineering extract from the donor.
@@ -49,6 +50,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
    - Run the recipient validation baseline, targeted pack-contract validation, and any repo-local workspace validation required by the active repository contract.
    - Confirm lingering donor hosted-pack registry entries, workspace sources, stale lockfiles, donor-only records, and donor-only traceability joins are gone.
    - If recipient validation fails because shared-core tests or docs still assert donor-pack validators, donor workflows, or donor tracking surfaces directly, treat that as donor shared-core drift. Fix the donor shared core, restage the extract, and reapply instead of carrying a recipient-only cleanup patch.
+   - Treat any shared-core test failure caused by a missing live donor pack root as donor shared-core drift too. Shared-core suites must not require the donor repository's internal pack layout unless the scenario is explicitly pack-owned or explicitly gated.
    - When changing or hardening this workflow itself, rerun the full extract, apply, and bootstrap cycle at least once more and confirm the second pass lands on the same final recipient state apart from expected transient runtime residue.
 7. Close the workflow surfaces in the same change.
    - Update command docs, workflow docs, standards, and governed indexes when the shared-core extract or bootstrap contract changed materially.

@@ -627,6 +627,9 @@ def test_pack_export_selected_plan_pack_scrubs_live_history_and_rebuilds_clean_v
     monkeypatch: pytest.MonkeyPatch,
     capsys,
 ) -> None:
+    if not (REPO_ROOT / "plan").is_dir():
+        pytest.skip("Live plan pack root is not present in this repository.")
+
     repo_root = materialize_validation_repo_subset(
         tmp_path,
         include_shared_discovery_sources=True,

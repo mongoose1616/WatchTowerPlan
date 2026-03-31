@@ -84,3 +84,28 @@ def test_shared_core_test_suites_do_not_depend_on_live_plan_rendered_surfaces() 
                 )
 
     assert not violations, "\n".join(violations)
+
+
+def test_shared_core_test_suites_do_not_depend_on_live_plan_pack_root() -> None:
+    violations: list[str] = []
+    disallowed_literals = (
+        'REPO_ROOT / "plan"',
+        "REPO_ROOT / 'plan'",
+    )
+    allowed_explicit_gate = "Live plan pack root is not present in this repository."
+
+    for path in sorted(SHARED_TEST_ROOT.rglob("*.py")):
+        if path.name in {"__init__.py", "conftest.py", "test_unit_suite_boundary.py"}:
+            continue
+        relative_path = path.relative_to(SHARED_TEST_ROOT).as_posix()
+        text = path.read_text(encoding="utf-8")
+        if allowed_explicit_gate in text:
+            continue
+        for literal in disallowed_literals:
+            if literal in text:
+                violations.append(
+                    f"{relative_path}: depends on live plan pack root {literal!r} "
+                    "instead of a fixture, pack-owned test root, or explicit gate"
+                )
+
+    assert not violations, "\n".join(violations)
