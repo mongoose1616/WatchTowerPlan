@@ -70,7 +70,7 @@ The expected future outputs are practical and concrete:
 3. Reviewable validation and closeout evidence
 4. A reusable recap of what changed and why
 
-Those outputs are future product targets, not proof that the full product implementation already lives in `WatchTowerPlan`.
+Those outputs are future product targets, not proof that the full product implementation already lives in this repository.
 
 ## What Using the Future Product Should Feel Like
 
@@ -95,7 +95,7 @@ Trust in the future product should come from visible properties:
 
 ## How It Relates to This Repository
 
-- `WatchTowerPlan` is preparing the governed substrate that future product work will consume.
+- This repository is preparing the governed substrate that future product work will consume.
 - This narrative should influence planning and architecture decisions here.
 - This narrative should not be read as proof that the product implementation already lives in this repo.
 

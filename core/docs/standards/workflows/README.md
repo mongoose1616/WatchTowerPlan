@@ -1,7 +1,7 @@
 # `core/docs/standards/workflows`
 
 ## Description
-`This directory contains standards for workflow design, routing, and workflow-governance behavior in the planning repository. Use it for rules that shape how workflow modules are authored, classified, loaded, and maintained.`
+`This directory contains standards for workflow design, routing, and workflow-governance behavior in the repository. Use it for rules that shape how workflow modules are authored, classified, loaded, and maintained.`
 
 ## Files
 | Path | Description |

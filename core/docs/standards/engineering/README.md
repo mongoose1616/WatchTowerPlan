@@ -1,7 +1,7 @@
 # `core/docs/standards/engineering`
 
 ## Description
-`This directory contains engineering standards that govern code, automation, tooling, testing, style, and project layout for this planning repository. Use it for normative engineering rules that should shape repository implementation and contributor behavior.`
+`This directory contains engineering standards that govern code, automation, tooling, testing, style, and project layout for this repository. Use it for normative engineering rules that should shape repository implementation and contributor behavior.`
 
 ## Files
 | Path | Description |

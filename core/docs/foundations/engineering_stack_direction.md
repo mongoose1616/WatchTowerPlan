@@ -39,7 +39,7 @@ This repository is a governed docs-plus-runtime system that currently owns reusa
 
 ## Current Shape
 
-Today the repository has a substantial governed documentation corpus, reusable Python runtime, host-composition layer, hosted-pack integration contract, and plan-pack orchestration layer. The docs, workflows, control plane, and Python workspace all matter; none of them should be described as incidental scaffolding anymore.
+Today the repository has a substantial governed documentation corpus, reusable Python runtime, host-composition layer, hosted-pack integration contract, and hosted first-party pack orchestration layer. The docs, workflows, control plane, and Python workspace all matter; none of them should be described as incidental scaffolding anymore.
 
 | Technology | Current Use | Main Surfaces | Human-Relevant Notes |
 |---|---|---|---|
@@ -52,11 +52,11 @@ Today the repository has a substantial governed documentation corpus, reusable P
 | Hatchling | Python build backend | `core/python/pyproject.toml` | Keeps packaging minimal and standard. |
 | pytest | Test runner baseline for Python code | `core/python/pyproject.toml`, `core/python/tests/**` | Standard test surface for the consolidated Python workspace. |
 
-- Durable documentation lives under `core/docs/` and `plan/docs/` according to ownership.
+- Durable documentation lives under `core/docs/` and the owning pack docs roots according to ownership.
 - Routed task behavior lives under the shared and pack-owned workflow roots.
 - Shared implementation assets live under `core/`.
 - `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` are the active Python runtime layers in the current architecture.
-- `core/control_plane/registries/pack_registry.json`, `plan/.wt/manifests/pack_runtime_manifest.json`, and pack-contract validation are part of the effective operating stack because they define and validate hosted-pack composition.
+- `core/control_plane/registries/pack_registry.json`, `<pack>/.wt/manifests/pack_runtime_manifest.json`, and pack-contract validation are part of the effective operating stack because they define and validate hosted-pack composition.
 
 ## Preferred Building Blocks
 

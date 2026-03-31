@@ -35,7 +35,7 @@
           "step_kind": "artifact"
         }
       ],
-      "notes": "The shared-core suite is not the live plan-pack baseline. Active repo validation selects the suite declared by the active pack manifest."
+      "notes": "The shared-core suite is not the live hosted-pack baseline. Active repo validation selects the suite declared by the active pack manifest."
     }
   ]
 }

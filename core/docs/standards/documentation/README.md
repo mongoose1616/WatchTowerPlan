@@ -1,7 +1,7 @@
 # `core/docs/standards/documentation`
 
 ## Description
-`This directory contains standards for documentation surfaces used in the planning repository. Use it for rules about how repository documents should be structured, scoped, named, and maintained.`
+`This directory contains standards for documentation surfaces used in the repository. Use it for rules about how repository documents should be structured, scoped, named, and maintained.`
 
 ## Files
 | Path | Description |
