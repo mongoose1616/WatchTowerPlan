@@ -9,6 +9,7 @@ from watchtower_host.cli.registry import (
     CORE_COMMAND_GROUP_SPECS,
     find_registered_pack_command_group,
     load_pack_command_group_spec,
+    _specialized_selected_subcommand_registrar,
 )
 
 
@@ -99,3 +100,41 @@ def test_pack_describe_reports_import_error_type_in_json_payload(
     assert payload["command"] == "watchtower-core pack describe"
     assert payload["integration"]["importable"] is False
     assert payload["integration"]["error"] == "ModuleNotFoundError: missing pack runtime"
+
+
+def test_specialized_selected_subcommand_registrar_passes_requested_subcommand() -> None:
+    calls: list[str | None] = []
+
+    def _registrar(
+        subparsers: object,
+        *,
+        selected_subcommand: str | None = None,
+    ) -> None:
+        del subparsers
+        calls.append(selected_subcommand)
+
+    specialized = _specialized_selected_subcommand_registrar(
+        _registrar,
+        selected_subcommand="sync",
+    )
+
+    specialized(object())  # type: ignore[arg-type]
+
+    assert calls == ["sync"]
+
+
+def test_specialized_selected_subcommand_registrar_passes_requested_subcommand_through_kwargs() -> None:
+    calls: list[str | None] = []
+
+    def _registrar(subparsers: object, **kwargs: object) -> None:
+        del subparsers
+        calls.append(kwargs.get("selected_subcommand"))  # type: ignore[arg-type]
+
+    specialized = _specialized_selected_subcommand_registrar(
+        _registrar,
+        selected_subcommand="sync",
+    )
+
+    specialized(object())  # type: ignore[arg-type]
+
+    assert calls == ["sync"]

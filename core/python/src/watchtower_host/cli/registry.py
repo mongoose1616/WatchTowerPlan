@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import inspect
 import json
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -261,8 +262,8 @@ def load_pack_command_group_spec(
                 f"{discovery.runtime_manifest.integration_module}"
             )
         specialized_registrar = registrar
-        if command_namespace == "plan" and selected_subcommand is not None:
-            specialized_registrar = _specialized_plan_registrar(
+        if selected_subcommand is not None and _supports_selected_subcommand(registrar):
+            specialized_registrar = _specialized_selected_subcommand_registrar(
                 registrar,
                 selected_subcommand=selected_subcommand,
             )
@@ -336,7 +337,20 @@ def _unavailable_pack_command_group(
     )
 
 
-def _specialized_plan_registrar(
+def _supports_selected_subcommand(registrar: CommandRegistrar) -> bool:
+    try:
+        signature = inspect.signature(registrar)
+    except (TypeError, ValueError):
+        return False
+    if "selected_subcommand" in signature.parameters:
+        return True
+    return any(
+        parameter.kind is inspect.Parameter.VAR_KEYWORD
+        for parameter in signature.parameters.values()
+    )
+
+
+def _specialized_selected_subcommand_registrar(
     registrar: CommandRegistrar,
     *,
     selected_subcommand: str,
