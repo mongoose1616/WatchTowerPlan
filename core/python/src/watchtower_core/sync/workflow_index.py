@@ -140,6 +140,9 @@ class WorkflowDocumentContext:
 
     metadata_by_workflow_id: dict[str, WorkflowMetadataDefinition]
     reference_urls_by_path: dict[str, tuple[str, ...]]
+    routing_table_paths: tuple[str, ...]
+    workflow_module_roots: tuple[str, ...]
+    shared_core_disallowed_pack_root_tokens: tuple[str, ...]
 
 
 def _workflow_kind_for_path(relative_path: str) -> str:
@@ -189,6 +192,7 @@ def validate_workflow_additional_load_section(
     *,
     repo_root: Path,
     source_path: Path | None = None,
+    routing_table_paths: tuple[str, ...] | None = None,
 ) -> tuple[str, ...]:
     """Validate and return task-specific extra files to load for one workflow."""
     if section is None:
@@ -235,7 +239,11 @@ def validate_workflow_additional_load_section(
         if path
         in (
             WORKFLOW_STATIC_DISALLOWED_ADDITIONAL_LOAD_PATHS
-            | set(pack_routing_table_paths(repo_root))
+            | set(
+                routing_table_paths
+                if routing_table_paths is not None
+                else pack_routing_table_paths(repo_root)
+            )
         )
     ]
     if disallowed_paths:
@@ -292,6 +300,7 @@ def validate_core_shared_workflow_boundary(
     loader: ControlPlaneLoader,
     internal_reference_paths: tuple[str, ...],
     composes_module_paths: tuple[str, ...],
+    disallowed_pack_root_tokens: tuple[str, ...] | None = None,
 ) -> None:
     """Fail closed when shared core workflow docs depend on pack-owned surfaces."""
 
@@ -324,7 +333,11 @@ def validate_core_shared_workflow_boundary(
             f"{CORE_SHARED_ROLE_ALLOWED_MODULE_ROOT}/: {joined}"
         )
 
-    for token in _shared_core_disallowed_pack_root_tokens(loader.repo_root, loader=loader):
+    for token in (
+        disallowed_pack_root_tokens
+        if disallowed_pack_root_tokens is not None
+        else _shared_core_disallowed_pack_root_tokens(loader.repo_root, loader=loader)
+    ):
         if token not in markdown:
             continue
         raise ValueError(
@@ -350,6 +363,7 @@ def validate_workflow_composes_modules_section(
     workflow_kind: str,
     loader: ControlPlaneLoader,
     source_path: Path | None = None,
+    workflow_module_roots: tuple[str, ...] | None = None,
 ) -> tuple[str, ...]:
     """Validate and return explicit role-to-module composition links."""
     if workflow_kind != "role":
@@ -394,8 +408,12 @@ def validate_workflow_composes_modules_section(
         )
 
     module_roots = (
-        CORE_WORKFLOW_MODULE_ROOT,
-        *pack_workflow_module_roots(loader.repo_root, loader=loader),
+        workflow_module_roots
+        if workflow_module_roots is not None
+        else (
+            CORE_WORKFLOW_MODULE_ROOT,
+            *pack_workflow_module_roots(loader.repo_root, loader=loader),
+        )
     )
     invalid_paths = [
         path
@@ -426,6 +444,15 @@ def build_workflow_document_context(
             build_reference_urls_by_path(loader)
             if reference_urls_by_path is None
             else reference_urls_by_path
+        ),
+        routing_table_paths=pack_routing_table_paths(loader.repo_root, loader=loader),
+        workflow_module_roots=(
+            CORE_WORKFLOW_MODULE_ROOT,
+            *pack_workflow_module_roots(loader.repo_root, loader=loader),
+        ),
+        shared_core_disallowed_pack_root_tokens=_shared_core_disallowed_pack_root_tokens(
+            loader.repo_root,
+            loader=loader,
         ),
     )
 
@@ -458,6 +485,11 @@ def load_workflow_document(
         relative_path,
         metadata_by_workflow_id=workflow_context.metadata_by_workflow_id,
         reference_urls_by_path=workflow_context.reference_urls_by_path,
+        routing_table_paths=workflow_context.routing_table_paths,
+        workflow_module_roots=workflow_context.workflow_module_roots,
+        shared_core_disallowed_pack_root_tokens=(
+            workflow_context.shared_core_disallowed_pack_root_tokens
+        ),
     )
 
 
@@ -467,6 +499,9 @@ def load_workflow_document_with_reference_map(
     *,
     metadata_by_workflow_id: dict[str, WorkflowMetadataDefinition],
     reference_urls_by_path: dict[str, tuple[str, ...]],
+    routing_table_paths: tuple[str, ...] | None = None,
+    workflow_module_roots: tuple[str, ...] | None = None,
+    shared_core_disallowed_pack_root_tokens: tuple[str, ...] | None = None,
 ) -> WorkflowDocument:
     """Load and validate one workflow document using a prebuilt reference-url map."""
     path = loader.repo_root / relative_path
@@ -495,12 +530,14 @@ def load_workflow_document_with_reference_map(
         workflow_kind=workflow_kind,
         loader=loader,
         source_path=path,
+        workflow_module_roots=workflow_module_roots,
     )
     internal_reference_paths = validate_workflow_additional_load_section(
         relative_path,
         sections.get(WORKFLOW_ADDITIONAL_LOAD_SECTION),
         repo_root=loader.repo_root,
         source_path=path,
+        routing_table_paths=routing_table_paths,
     )
     title_suffix = _workflow_title_suffix(workflow_kind)
     if not title.endswith(title_suffix):
@@ -514,6 +551,7 @@ def load_workflow_document_with_reference_map(
         loader=loader,
         internal_reference_paths=internal_reference_paths,
         composes_module_paths=composes_module_paths,
+        disallowed_pack_root_tokens=shared_core_disallowed_pack_root_tokens,
     )
 
     summary = extract_first_paragraph(sections["Purpose"])
@@ -653,6 +691,11 @@ class WorkflowIndexSyncService:
                     relative_path,
                     metadata_by_workflow_id=workflow_context.metadata_by_workflow_id,
                     reference_urls_by_path=workflow_context.reference_urls_by_path,
+                    routing_table_paths=workflow_context.routing_table_paths,
+                    workflow_module_roots=workflow_context.workflow_module_roots,
+                    shared_core_disallowed_pack_root_tokens=(
+                        workflow_context.shared_core_disallowed_pack_root_tokens
+                    ),
                 )
                 if workflow.workflow_id in seen_workflow_ids:
                     raise ValueError(

@@ -7,9 +7,12 @@ from textwrap import dedent
 
 import pytest
 
+import watchtower_core.sync.workflow_index as workflow_index_module
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.sync.workflow_index import (
     WorkflowIndexSyncService,
+    build_workflow_document_context,
+    load_workflow_document,
     validate_workflow_additional_load_section,
 )
 
@@ -179,6 +182,61 @@ def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:
     assert written_path == output_path
     written_document = json.loads(output_path.read_text(encoding="utf-8"))
     assert written_document["id"] == "index.workflows"
+
+
+def test_load_workflow_document_reuses_cached_pack_root_context(monkeypatch) -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    call_counts = {"routing": 0, "module_roots": 0, "disallowed_tokens": 0}
+
+    real_routing_paths = workflow_index_module.pack_routing_table_paths
+    real_workflow_module_roots = workflow_index_module.pack_workflow_module_roots
+    real_disallowed_tokens = workflow_index_module._shared_core_disallowed_pack_root_tokens
+
+    def _wrap_routing_paths(*args, **kwargs):
+        call_counts["routing"] += 1
+        return real_routing_paths(*args, **kwargs)
+
+    def _wrap_workflow_module_roots(*args, **kwargs):
+        call_counts["module_roots"] += 1
+        return real_workflow_module_roots(*args, **kwargs)
+
+    def _wrap_disallowed_tokens(*args, **kwargs):
+        call_counts["disallowed_tokens"] += 1
+        return real_disallowed_tokens(*args, **kwargs)
+
+    monkeypatch.setattr(
+        workflow_index_module,
+        "pack_routing_table_paths",
+        _wrap_routing_paths,
+    )
+    monkeypatch.setattr(
+        workflow_index_module,
+        "pack_workflow_module_roots",
+        _wrap_workflow_module_roots,
+    )
+    monkeypatch.setattr(
+        workflow_index_module,
+        "_shared_core_disallowed_pack_root_tokens",
+        _wrap_disallowed_tokens,
+    )
+
+    context = build_workflow_document_context(loader)
+    load_workflow_document(
+        loader,
+        "core/workflows/modules/workflow_system_review.md",
+        context=context,
+    )
+    load_workflow_document(
+        loader,
+        "core/workflows/roles/workflow_steward.md",
+        context=context,
+    )
+
+    assert call_counts == {
+        "routing": 1,
+        "module_roots": 1,
+        "disallowed_tokens": 1,
+    }
 
 
 def test_validate_workflow_additional_load_section_accepts_task_specific_files() -> None:
