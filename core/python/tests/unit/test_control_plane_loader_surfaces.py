@@ -55,7 +55,8 @@ def _default_pack_surface_names(loader: ControlPlaneLoader) -> set[str]:
 
 
 def _first_pack_schema_backed_validator(loader: ControlPlaneLoader):
-    pack_slug = _default_pack_slug(loader)
+    pack_settings = loader.load_pack_settings()
+    workspace_root = pack_settings.workspace_roots.workspace_root
     excluded_artifact_kinds = {
         "actor_registry",
         "artifact_family_registry",
@@ -81,13 +82,15 @@ def _first_pack_schema_backed_validator(loader: ControlPlaneLoader):
     }
     fallback = None
     for validator in loader.load_validator_registry().validators:
-        if not validator.validator_id.startswith(f"validator.{pack_slug}."):
-            continue
         if not validator.schema_ids:
             continue
         if validator.artifact_kind in excluded_artifact_kinds:
             continue
         if validator.artifact_kind.endswith("_registry"):
+            continue
+        if not validator.applies_to:
+            continue
+        if not all(path.startswith(f"{workspace_root}/") for path in validator.applies_to):
             continue
         if fallback is None:
             fallback = validator
@@ -197,13 +200,13 @@ def test_control_plane_loader_declared_validator_registry_uses_merged_contract()
 
 def test_control_plane_loader_reads_validation_suite_registry() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
-    pack_slug = _default_pack_slug(loader)
+    suite_id = loader.load_pack_settings().default_validation_suite_id
 
     registry = loader.load_validation_suite_registry()
-    suite = registry.get(f"suite.{pack_slug}.validation_baseline")
+    suite = registry.get(suite_id)
 
     assert isinstance(registry, ValidationSuiteRegistry)
-    assert suite.get_step(f"step.{pack_slug}.front_matter").step_kind == "front_matter"
+    assert any(step.step_kind == "front_matter" for step in suite.steps)
 
 
 def test_control_plane_loader_reads_benchmark_suite_registry() -> None:

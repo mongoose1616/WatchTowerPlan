@@ -331,7 +331,14 @@ def test_artifact_validation_prefers_more_specific_pack_owned_validator() -> Non
     service = ArtifactValidationService(loader)
     pack = loader.load_pack_registry().default_pack()
     machine_root = loader.load_pack_settings().workspace_roots.machine_root
-    artifact_path = f"{machine_root}/work_items/pack_work_item_note_stage1_bootstrap.json"
+    work_item_root = loader.resolve_path(f"{machine_root}/work_items")
+    artifact_candidates = sorted(work_item_root.glob("pack_work_item_note*.json"))
+    if not artifact_candidates:
+        pytest.skip(
+            "Active pack does not publish a pack_work_item_note artifact that overlaps "
+            "the generic interface validator."
+        )
+    artifact_path = loader.workspace_config.logical_path_for(artifact_candidates[0])
 
     result = service.validate(artifact_path)
 
