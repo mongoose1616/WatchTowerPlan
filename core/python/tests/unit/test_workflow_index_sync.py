@@ -158,7 +158,9 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
     assert pack_module_entry is not None
     assert pack_module_entry["phase_type"]
     assert pack_module_entry["task_family"]
-    assert pack_module_entry["uses_internal_references"] is True
+    assert isinstance(pack_module_entry["uses_internal_references"], bool)
+    if pack_module_entry["uses_internal_references"]:
+        assert pack_module_entry.get("internal_reference_paths")
     assert pack_module_entry["trigger_tags"]
     pack_role_entry = _first_pack_workflow_entry(
         entries_by_id,

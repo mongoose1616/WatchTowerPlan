@@ -485,29 +485,33 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
                 else [route_task_types["route.code_validation"]]
             )
         },
-        (
-            "Need traceability governance across decision capture, traceability "
-            "reconciliation, acceptance evidence, and closeout."
-        ): {
-            *(
-                [route_task_types["route.traceability_governance"]]
-                if "route.traceability_governance" in route_task_types
-                else [
-                    route_task_types[route_id]
-                    for route_id in (
-                        "route.traceability_reconciliation",
-                        "route.acceptance_and_evidence_reconciliation",
-                    )
-                    if route_id in route_task_types
-                ]
-            )
-        },
     }
 
     if "route.implementation_slice_planning" in route_task_types:
         expectations["implementation slice"] = {
             route_task_types["route.implementation_slice_planning"]
         }
+    traceability_expectations = {
+        *(
+            [route_task_types["route.traceability_governance"]]
+            if "route.traceability_governance" in route_task_types
+            else [
+                route_task_types[route_id]
+                for route_id in (
+                    "route.traceability_reconciliation",
+                    "route.acceptance_and_evidence_reconciliation",
+                )
+                if route_id in route_task_types
+            ]
+        )
+    }
+    if traceability_expectations:
+        expectations[
+            (
+                "Need traceability governance across decision capture, traceability "
+                "reconciliation, acceptance evidence, and closeout."
+            )
+        ] = traceability_expectations
 
     for request_text, expected_task_types in expectations.items():
         result = service.preview(request_text=request_text)

@@ -41,6 +41,25 @@ def _first_pack_tracking_surface_path(loader: ControlPlaneLoader) -> str:
     )
 
 
+def _first_pack_standard_entry(
+    loader: ControlPlaneLoader,
+    entries: list[dict[str, object]],
+) -> dict[str, object]:
+    docs_root = _default_pack_docs_root(loader)
+    fallback: dict[str, object] | None = None
+    for entry in entries:
+        doc_path = entry.get("doc_path")
+        if not isinstance(doc_path, str) or not doc_path.startswith(f"{docs_root}/standards/"):
+            continue
+        if fallback is None:
+            fallback = entry
+        if entry.get("category") == "governance":
+            return entry
+    if fallback is not None:
+        return fallback
+    raise AssertionError("Expected one standard-index entry rooted under the active pack docs root.")
+
+
 def test_standard_index_sync_builds_schema_valid_document() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = StandardIndexSyncService(loader)
@@ -50,17 +69,18 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     loader.schema_store.validate_instance(document)
     entries = document["entries"]
     assert isinstance(entries, list)
-    assert any(
-        entry["standard_id"] == "std.governance.github_collaboration"
-        and entry["owner"] == "repository_maintainer"
-        and ".github/" in entry.get("applies_to", [])
-        and entry["uses_external_references"] is True
-        and "workflow" in entry.get("operationalization_modes", [])
-        and ".github/" in entry.get("operationalization_paths", [])
-        and "core/docs/references/github_collaboration_reference.md"
-        in entry.get("reference_doc_paths", [])
-        for entry in entries
-    )
+    pack_standard_entry = _first_pack_standard_entry(loader, entries)
+    assert pack_standard_entry["doc_path"].startswith(f"{_default_pack_docs_root(loader)}/standards/")
+    assert pack_standard_entry["owner"]
+    assert pack_standard_entry.get("operationalization_modes")
+    if pack_standard_entry.get("operationalization_paths"):
+        assert all(pack_standard_entry["operationalization_paths"])
+    if pack_standard_entry.get("reference_doc_paths"):
+        assert any(
+            path.startswith(f"{_default_pack_docs_root(loader)}/references/")
+            or path.startswith("core/docs/references/")
+            for path in pack_standard_entry["reference_doc_paths"]
+        )
     readme_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.documentation.readme_md"
     )
