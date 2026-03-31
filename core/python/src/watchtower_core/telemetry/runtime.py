@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import sys
+import tempfile
 from collections.abc import Iterator, Mapping, Sequence
 from contextlib import contextmanager
 from contextvars import ContextVar, Token
@@ -14,7 +16,12 @@ from pathlib import Path
 from typing import IO, Literal
 from uuid import uuid4
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import (
+    CORE_PACK_SETTINGS_PATH,
+    PACK_REGISTRY_PATH,
+    ControlPlaneLoader,
+)
+from watchtower_core.control_plane.models import PackRegistry, PackSettings
 from watchtower_core.telemetry.config import TelemetryConfig
 
 _ACTIVE_SESSION: ContextVar[TelemetrySession | None] = ContextVar(
@@ -47,6 +54,7 @@ class TelemetrySession:
     output_path: Path | None = None
     pack_settings_path: str | None = None
     machine_root: str | None = None
+    _staging_output_path: Path | None = None
     _writer: IO[str] | None = None
     _disabled_reason: str | None = None
     _active_token: Token[TelemetrySession | None] | None = None
@@ -130,7 +138,6 @@ class TelemetrySession:
         try:
             self._writer.write(json.dumps(_json_safe(record), sort_keys=True))
             self._writer.write("\n")
-            self._writer.flush()
         except Exception as exc:
             self._disable(f"telemetry_write_failed:{type(exc).__name__}")
 
@@ -150,10 +157,22 @@ class TelemetrySession:
         self._close()
 
     def _close(self) -> None:
-        if self._writer is None:
+        if self._writer is not None:
+            self._writer.close()
+            self._writer = None
+        if self._staging_output_path is None:
             return
-        self._writer.close()
-        self._writer = None
+        try:
+            if self._disabled_reason is None and self.output_path is not None:
+                shutil.move(str(self._staging_output_path), str(self.output_path))
+            elif self._staging_output_path.exists():
+                self._staging_output_path.unlink()
+        except Exception as exc:
+            self._disabled_reason = self._disabled_reason or (
+                f"telemetry_promote_failed:{type(exc).__name__}"
+            )
+        finally:
+            self._staging_output_path = None
 
 
 @dataclass(slots=True)
@@ -256,6 +275,8 @@ def create_telemetry_session(
     run_id = _new_id()
     pack_settings_path: str | None = None
     machine_root: str | None = None
+    writer: IO[str]
+    staging_output_path: Path | None = None
     try:
         output_dir, pack_settings_path, machine_root = _resolve_output_dir(
             loader,
@@ -264,7 +285,18 @@ def create_telemetry_session(
         )
         output_dir.mkdir(parents=True, exist_ok=True)
         output_path = output_dir / _output_filename(started_at, run_id)
-        writer = output_path.open("w", encoding="utf-8")
+        if config.output_dir_override is None:
+            temp_writer = tempfile.NamedTemporaryFile(
+                mode="w",
+                encoding="utf-8",
+                delete=False,
+                suffix=".jsonl",
+            )
+            writer = temp_writer
+            staging_output_path = Path(temp_writer.name)
+        else:
+            writer = output_path.open("w", encoding="utf-8")
+            staging_output_path = None
     except Exception as exc:
         return TelemetrySession(
             config=config,
@@ -286,6 +318,7 @@ def create_telemetry_session(
         output_path=output_path,
         pack_settings_path=pack_settings_path,
         machine_root=machine_root,
+        _staging_output_path=staging_output_path,
         _writer=writer,
     )
     session._emit_record(
@@ -363,15 +396,30 @@ def _resolve_output_dir(
             None,
         )
 
-    pack_settings_path = loader.activate_pack_settings()
-    pack_settings = loader.load_pack_settings(pack_settings_path)
+    pack_settings_path = _default_pack_settings_path_for_telemetry(loader)
+    pack_settings = PackSettings.from_document(loader.load_json_object(pack_settings_path))
     machine_root = pack_settings.workspace_roots.machine_root
-    machine_root_path = loader.resolve_path(machine_root)
+    machine_root_path = loader.workspace_config.resolve_path(machine_root)
     return (
         machine_root_path / "runtime" / "telemetry" / started_at.strftime("%Y/%m/%d"),
         pack_settings_path,
         machine_root,
     )
+
+
+def _default_pack_settings_path_for_telemetry(loader: ControlPlaneLoader) -> str:
+    if loader.active_pack_settings_path is not None:
+        return loader.active_pack_settings_path
+    try:
+        pack_registry = PackRegistry.from_document(loader.load_json_object(PACK_REGISTRY_PATH))
+        pack_settings_path = pack_registry.default_pack().pack_settings_path
+        loader.load_json_object(pack_settings_path)
+        return pack_settings_path
+    except Exception:
+        discovered = loader._discover_default_pack_settings_path()
+        if discovered is not None:
+            return discovered
+        return CORE_PACK_SETTINGS_PATH
 
 
 def _output_filename(started_at: datetime, run_id: str) -> str:

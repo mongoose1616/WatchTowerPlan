@@ -2,6 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import watchtower_plan.validation.document_semantics as document_semantics_module
+
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.validation import DocumentSemanticsValidationService
 
 from tests.unit.document_semantics_fixtures import (
@@ -12,7 +15,6 @@ from tests.unit.document_semantics_fixtures import (
     write_standard_fixture,
     write_standard_reference_rule_fixture,
 )
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 
 def test_document_semantics_validation_accepts_existing_repo_local_markdown_link(
@@ -91,6 +93,59 @@ def test_document_semantics_validation_accepts_local_reference_doc_in_related_so
 
     assert result.passed is True
     assert result.issue_count == 0
+
+
+def test_document_semantics_validation_caches_governed_reference_doc_roots(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repo_root = copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "core" / "docs" / "README.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
+    write_repo_file(support_target)
+    write_reference_fixture(reference_path, support_target=support_target)
+    first_standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
+    second_standard_path = (
+        repo_root / "core/docs/standards/documentation/example_standard_second.md"
+    )
+    write_standard_reference_rule_fixture(
+        first_standard_path,
+        related_lines=(
+            f"- [example_reference.md]({repo_markdown_link(reference_path)}): governed local reference.",
+        ),
+        reference_lines=(f"- [README.md]({repo_markdown_link(support_target)})",),
+    )
+    write_standard_reference_rule_fixture(
+        second_standard_path,
+        related_lines=(
+            f"- [example_reference.md]({repo_markdown_link(reference_path)}): governed local reference.",
+        ),
+        reference_lines=(f"- [README.md]({repo_markdown_link(support_target)})",),
+    )
+
+    call_count = 0
+    real_helper = document_semantics_module.governed_reference_doc_roots
+
+    def _wrapped_reference_doc_roots(*args, **kwargs):
+        nonlocal call_count
+        call_count += 1
+        return real_helper(*args, **kwargs)
+
+    monkeypatch.setattr(
+        document_semantics_module,
+        "governed_reference_doc_roots",
+        _wrapped_reference_doc_roots,
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    first_result = service.validate("core/docs/standards/documentation/example_standard.md")
+    second_result = service.validate(
+        "core/docs/standards/documentation/example_standard_second.md"
+    )
+
+    assert first_result.passed is True
+    assert second_result.passed is True
+    assert call_count == 1
 
 
 def test_document_semantics_validation_rejects_noncanonical_directory_operationalization_path(

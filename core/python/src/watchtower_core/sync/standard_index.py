@@ -30,6 +30,7 @@ from watchtower_core.documentation.governed_documents import (
 from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
+from watchtower_core.documentation.reference_semantics import governed_reference_doc_roots
 from watchtower_core.documentation.standards import (
     STANDARD_OPERATIONALIZATION_SECTION,
     collect_standard_reference_metadata,
@@ -73,6 +74,7 @@ class StandardIndexSyncService:
         self._loader = loader
         self._repo_root = loader.repo_root
         self._reference_urls_by_path: dict[str, tuple[str, ...]] | None = None
+        self._reference_doc_roots: tuple[str, ...] | None = None
 
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> StandardIndexSyncService:
@@ -171,6 +173,7 @@ class StandardIndexSyncService:
                 references_section=sections["References"],
                 loader=self._loader,
                 reference_urls_by_path=reference_urls_by_path,
+                reference_doc_roots=self._governed_reference_doc_roots(),
             )
 
             related_paths = ordered_unique(
@@ -240,6 +243,17 @@ class StandardIndexSyncService:
         }
         self._loader.schema_store.validate_instance(artifact)
         return artifact
+
+    def _governed_reference_doc_roots(self) -> tuple[str, ...]:
+        cached = self._reference_doc_roots
+        if cached is not None:
+            return cached
+        roots = governed_reference_doc_roots(
+            self._repo_root,
+            loader=self._loader,
+        )
+        self._reference_doc_roots = roots
+        return roots
 
     def write_document(self, document: dict[str, object], destination: Path | None = None) -> Path:
         """Write the generated standard index to disk."""

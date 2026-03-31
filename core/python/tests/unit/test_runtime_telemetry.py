@@ -10,6 +10,7 @@ from watchtower_core.telemetry import (
     add_operation_attributes,
     create_telemetry_session,
 )
+from watchtower_core.telemetry import runtime as telemetry_runtime
 
 
 def test_telemetry_config_reads_environment_flags() -> None:
@@ -47,6 +48,22 @@ def test_telemetry_session_fails_open_when_override_path_is_a_file(
     assert session.disabled_reason is not None
 
 
+def test_resolve_output_dir_uses_fast_default_pack_path_without_schema_store() -> None:
+    loader = ControlPlaneLoader()
+
+    output_dir, pack_settings_path, machine_root = telemetry_runtime._resolve_output_dir(
+        loader,
+        TelemetryConfig(enabled=True, emit_stderr=False, output_dir_override=None),
+        telemetry_runtime._utc_now(),
+    )
+
+    assert loader._schema_store is None
+    assert pack_settings_path is not None
+    assert pack_settings_path.endswith("pack_settings.json")
+    assert machine_root is not None
+    assert f"{machine_root}/runtime/telemetry/" in str(output_dir)
+
+
 def test_telemetry_session_records_nested_operations(tmp_path: Path) -> None:
     session = create_telemetry_session(
         ControlPlaneLoader(),
@@ -80,6 +97,50 @@ def test_telemetry_session_records_nested_operations(tmp_path: Path) -> None:
     assert records[2]["operation_kind"] == "cli_command"
     assert records[2]["attributes"]["cli_output_format"] == "json"
     assert records[3]["status"] == "ok"
+
+
+def test_telemetry_session_promotes_default_sink_output_on_finish(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    def _fake_resolve_output_dir(
+        loader: ControlPlaneLoader,
+        config: TelemetryConfig,
+        started_at,
+    ) -> tuple[Path, str | None, str | None]:
+        return (
+            tmp_path / started_at.strftime("%Y/%m/%d"),
+            "packs/fixture/.wt/manifests/pack_settings.json",
+            "packs/fixture/.wt",
+        )
+
+    monkeypatch.setattr(telemetry_runtime, "_resolve_output_dir", _fake_resolve_output_dir)
+
+    session = create_telemetry_session(
+        ControlPlaneLoader(),
+        ["doctor"],
+        environ={
+            "WATCHTOWER_TELEMETRY": "on",
+            "WATCHTOWER_TELEMETRY_STDERR": "off",
+        },
+    )
+
+    with session.activate():
+        with session.operation("cli_stage", "parser_build"):
+            pass
+    session.finish(status="ok", exit_code=0)
+
+    assert session.output_path is not None
+    assert session.output_path.exists()
+    records = [
+        json.loads(line)
+        for line in session.output_path.read_text(encoding="utf-8").splitlines()
+    ]
+    assert [record["record_type"] for record in records] == [
+        "run_started",
+        "operation_result",
+        "run_finished",
+    ]
 
 
 def test_telemetry_session_disables_cleanly_when_writer_fails(tmp_path: Path) -> None:

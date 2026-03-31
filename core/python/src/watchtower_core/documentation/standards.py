@@ -79,6 +79,7 @@ def collect_standard_reference_metadata(
     references_section: str,
     loader: ControlPlaneLoader | None = None,
     reference_urls_by_path: Mapping[str, tuple[str, ...]] | None = None,
+    reference_doc_roots: tuple[str, ...] | None = None,
 ) -> StandardReferenceMetadata:
     """Collect reference-accounting metadata for one standard document."""
     applied_reference_paths = ordered_unique(
@@ -99,12 +100,22 @@ def collect_standard_reference_metadata(
     reference_doc_paths = tuple(
         value
         for value in internal_reference_paths
-        if is_governed_reference_doc_path(value, repo_root, loader=loader)
+        if is_governed_reference_doc_path(
+            value,
+            repo_root,
+            loader=loader,
+            reference_doc_roots=reference_doc_roots,
+        )
     )
     applied_reference_doc_paths = tuple(
         value
         for value in applied_reference_paths
-        if is_governed_reference_doc_path(value, repo_root, loader=loader)
+        if is_governed_reference_doc_path(
+            value,
+            repo_root,
+            loader=loader,
+            reference_doc_roots=reference_doc_roots,
+        )
     )
 
     direct_external_urls = ordered_unique(

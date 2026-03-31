@@ -29,6 +29,7 @@ from watchtower_core.documentation.governed_documents import (
 from watchtower_core.documentation.reference_semantics import (
     REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION,
     REFERENCE_LOCAL_MAPPING_SECTION,
+    governed_reference_doc_roots,
     parse_reference_local_mapping,
 )
 from watchtower_core.documentation.standards import (
@@ -131,6 +132,7 @@ class DocumentSemanticsValidationService:
         self._loader = loader
         self._workflow_document_context: WorkflowDocumentContext | None = None
         self._initiative_template_section_cache: dict[str, tuple[str, ...]] = {}
+        self._reference_doc_roots: tuple[str, ...] | None = None
 
     def validate(
         self, path: str | Path, validator_id: str | None = None
@@ -448,6 +450,8 @@ class DocumentSemanticsValidationService:
             source_path=resolved_path,
             related_section=sections["Related Standards and Sources"],
             references_section=sections["References"],
+            loader=self._loader,
+            reference_doc_roots=self._governed_reference_doc_roots(),
         )
 
     def _validate_initiative_handoff_document(
@@ -523,6 +527,17 @@ class DocumentSemanticsValidationService:
             )
         self._initiative_template_section_cache[filename] = titles
         return titles
+
+    def _governed_reference_doc_roots(self) -> tuple[str, ...]:
+        cached = self._reference_doc_roots
+        if cached is not None:
+            return cached
+        roots = governed_reference_doc_roots(
+            self._loader.repo_root,
+            loader=self._loader,
+        )
+        self._reference_doc_roots = roots
+        return roots
 
     def _template_required_section_groups(
         self,

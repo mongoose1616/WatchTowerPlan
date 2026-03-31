@@ -46,12 +46,17 @@ def is_governed_reference_doc_path(
     repo_root: Path,
     *,
     loader: ControlPlaneLoader | None = None,
+    reference_doc_roots: tuple[str, ...] | None = None,
 ) -> bool:
     """Return whether one repo-relative path names a governed reference document."""
 
     return any(
         _path_is_or_descends_from_root(relative_path, root)
-        for root in governed_reference_doc_roots(repo_root, loader=loader)
+        for root in (
+            reference_doc_roots
+            if reference_doc_roots is not None
+            else governed_reference_doc_roots(repo_root, loader=loader)
+        )
     )
 
 
