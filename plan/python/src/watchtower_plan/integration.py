@@ -6,16 +6,11 @@ from typing import Any
 
 from watchtower_core.pack_integration import (
     PackIntegration,
+    PackExportCleanupRequest,
+    PackExportCleanupResult,
     PackQueryRuntime,
     PackSyncRuntime,
     PackValidationRuntime,
-)
-from watchtower_core.validation.pack_targets import (
-    resolve_pack_validation_suite_targets,
-)
-from watchtower_plan.export_cleanup import scrub_plan_export
-from watchtower_plan.validation.document_semantics import (
-    DocumentSemanticsValidationService,
 )
 
 
@@ -73,10 +68,25 @@ def _sync_targets(*args: Any, **kwargs: Any) -> PackSyncRuntime:
 def _validation_provider(*args: Any, **kwargs: Any) -> PackValidationRuntime:
     """Return the plan-pack validation runtime declared through the contract."""
 
+    from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
+    from watchtower_plan.validation.document_semantics import (
+        DocumentSemanticsValidationService,
+    )
+
     return PackValidationRuntime(
         document_semantics_factory=DocumentSemanticsValidationService,
         suite_target_resolver=resolve_pack_validation_suite_targets,
     )
+
+
+def _export_cleanup(
+    request: PackExportCleanupRequest,
+) -> PackExportCleanupResult:
+    """Run the plan-pack export cleanup hook lazily."""
+
+    from watchtower_plan.export_cleanup import scrub_plan_export
+
+    return scrub_plan_export(request)
 
 
 PACK_INTEGRATION = PackIntegration(
@@ -105,7 +115,7 @@ PACK_INTEGRATION = PackIntegration(
     query_runtime=_query_runtime,
     sync_targets=_sync_targets,
     validation_provider=_validation_provider,
-    export_cleanup=scrub_plan_export,
+    export_cleanup=_export_cleanup,
 )
 
 

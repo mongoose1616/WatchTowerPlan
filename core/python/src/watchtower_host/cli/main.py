@@ -89,6 +89,9 @@ def _command_group_specs_for_argv(
         first_token,
         loader=loader,
         tolerate_import_errors=True,
+        selected_subcommand=(
+            argv[1] if len(argv) >= 2 and not argv[1].startswith("-") else None
+        ),
     )
     if selected_pack is None:
         return CORE_COMMAND_GROUP_SPECS

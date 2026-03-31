@@ -207,6 +207,28 @@ def test_control_plane_loader_prefers_registry_default_pack_settings_path(
     assert loader.default_pack_settings_path() == oversight_surfaces["pack_settings_path"]
 
 
+def test_control_plane_loader_resolves_registry_default_pack_path_without_schema_store(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    oversight_surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    assert loader._schema_store is None
+
+    assert loader.default_pack_settings_path() == oversight_surfaces["pack_settings_path"]
+    assert loader._schema_store is None
+
+
 def test_control_plane_loader_fallback_prefers_root_pack_before_nested_pack(
     tmp_path: Path,
 ) -> None:
@@ -324,7 +346,7 @@ def test_pack_registry_runtime_view_ignores_recoverable_pack_activation_errors(
     assert any(entry.pack_slug == "fixture" for entry in runtime_view.entries)
 
 
-def test_pack_registry_runtime_view_propagates_unexpected_pack_activation_errors(
+def test_pack_registry_runtime_view_propagates_unexpected_default_pack_resolution_errors(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -332,10 +354,14 @@ def test_pack_registry_runtime_view_propagates_unexpected_pack_activation_errors
     materialize_pack_validation_suite(repo_root / "fixture", default_repo_pack=True)
     loader = ControlPlaneLoader(repo_root)
 
-    def _raise_unexpected_pack_activation(*args: object, **kwargs: object) -> str:
+    def _raise_unexpected_default_pack_resolution(*args: object, **kwargs: object) -> str:
         raise RuntimeError("boom")
 
-    monkeypatch.setattr(loader, "activate_pack_settings", _raise_unexpected_pack_activation)
+    monkeypatch.setattr(
+        loader,
+        "default_pack_settings_path",
+        _raise_unexpected_default_pack_resolution,
+    )
 
     with pytest.raises(RuntimeError, match="boom"):
         load_pack_registry_runtime_view(loader)

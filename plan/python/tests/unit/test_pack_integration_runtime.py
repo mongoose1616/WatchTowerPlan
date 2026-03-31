@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib
 import json
+import sys
 from dataclasses import replace
 from pathlib import Path
 
@@ -67,6 +68,33 @@ def _current_plan_integration_module():
     return importlib.import_module("watchtower_plan.integration")
 
 
+def test_plan_integration_import_keeps_heavy_modules_lazy(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    modules_to_clear = (
+        "watchtower_plan.integration",
+        "watchtower_plan.export_cleanup",
+        "watchtower_plan.validation",
+        "watchtower_plan.validation.document_semantics",
+        "watchtower_core.validation.pack_targets",
+    )
+    for module_name in modules_to_clear:
+        monkeypatch.delitem(sys.modules, module_name, raising=False)
+
+    integration = importlib.import_module("watchtower_plan.integration")
+
+    assert "watchtower_plan.export_cleanup" not in sys.modules
+    assert "watchtower_plan.validation.document_semantics" not in sys.modules
+    assert "watchtower_core.validation.pack_targets" not in sys.modules
+    assert integration.PACK_INTEGRATION.export_cleanup is not None
+    assert integration.PACK_INTEGRATION.validation_provider is not None
+
+    _ = integration.PACK_INTEGRATION.validation_provider()
+
+    assert "watchtower_plan.validation.document_semantics" in sys.modules
+    assert "watchtower_core.validation.pack_targets" in sys.modules
+
+
 def test_load_pack_validation_runtime_uses_repo_pack_contract() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
@@ -100,6 +128,17 @@ def test_load_active_pack_integration_uses_pack_settings_surface(tmp_path: Path)
     assert loaded.integration.python_package == "watchtower_plan"
     assert "export_cleanup" in loaded.integration.declared_capabilities
     assert loaded.integration.export_cleanup is not None
+
+
+def test_load_active_pack_integration_keeps_loader_pack_activation_lazy() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    assert loader.active_pack_settings_path is None
+
+    loaded = load_active_pack_integration(loader)
+
+    assert loaded.registry_entry.pack_slug == "plan"
+    assert loader.active_pack_settings_path is None
 
 
 def test_load_active_pack_integration_records_pack_runtime_telemetry(tmp_path: Path) -> None:

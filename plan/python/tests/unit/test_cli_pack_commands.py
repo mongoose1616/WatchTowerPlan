@@ -41,6 +41,7 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.pack_integration import PackQueryRuntime
 from watchtower_host.cli.introspection import iter_host_command_parser_specs
 from watchtower_host.cli.main import main
+from watchtower_host.cli.parser import build_parser
 from watchtower_host.cli.registry import load_command_group_specs, load_pack_command_group_spec
 
 
@@ -169,6 +170,80 @@ def test_pack_validate_supports_json_output(capsys) -> None:
     assert payload["pack"] == "plan"
     assert payload["passed"] is True
     assert payload["validator_id"] == "validator.pack.contract"
+
+
+def test_plan_closeout_cli_import_keeps_runtime_services_lazy(
+    monkeypatch,
+) -> None:
+    modules_to_clear = (
+        "watchtower_plan.cli.closeout",
+        "watchtower_plan.initiatives.bootstrap",
+        "watchtower_plan.initiatives.closeout",
+        "watchtower_plan.closeout.initiative",
+        "watchtower_plan.closeout.initiative_package",
+    )
+    for module_name in modules_to_clear:
+        monkeypatch.delitem(sys.modules, module_name, raising=False)
+
+    importlib.import_module("watchtower_plan.cli.closeout")
+
+    assert "watchtower_plan.initiatives.bootstrap" not in sys.modules
+    assert "watchtower_plan.initiatives.closeout" not in sys.modules
+    assert "watchtower_plan.closeout.initiative" not in sys.modules
+    assert "watchtower_plan.closeout.initiative_package" not in sys.modules
+
+
+def test_plan_namespace_import_keeps_bootstrap_handlers_lazy(
+    monkeypatch,
+) -> None:
+    modules_to_clear = (
+        "watchtower_plan.cli.namespace",
+        "watchtower_plan.cli.handlers",
+        "watchtower_plan.initiatives.bootstrap",
+        "watchtower_plan.initiatives.discrepancies",
+        "watchtower_plan.initiatives.locations",
+    )
+    for module_name in modules_to_clear:
+        monkeypatch.delitem(sys.modules, module_name, raising=False)
+
+    importlib.import_module("watchtower_plan.cli.namespace")
+
+    assert "watchtower_plan.cli.handlers" not in sys.modules
+    assert "watchtower_plan.initiatives.bootstrap" not in sys.modules
+    assert "watchtower_plan.initiatives.discrepancies" not in sys.modules
+    assert "watchtower_plan.initiatives.locations" not in sys.modules
+
+
+def test_plan_sync_parser_build_keeps_unrelated_plan_modules_lazy(
+    monkeypatch,
+) -> None:
+    modules_to_clear = (
+        "watchtower_plan.cli.namespace",
+        "watchtower_plan.cli.closeout",
+        "watchtower_plan.cli.query",
+        "watchtower_plan.cli.query_lookup_handlers",
+        "watchtower_plan.cli.tasks",
+        "watchtower_plan.cli.handlers",
+    )
+    for module_name in modules_to_clear:
+        monkeypatch.delitem(sys.modules, module_name, raising=False)
+
+    plan_spec = load_pack_command_group_spec(
+        "plan",
+        loader=ControlPlaneLoader(REPO_ROOT),
+        selected_subcommand="sync",
+    )
+
+    assert plan_spec is not None
+
+    _ = build_parser((plan_spec,))
+
+    assert "watchtower_plan.cli.sync" in sys.modules
+    assert "watchtower_plan.cli.closeout" not in sys.modules
+    assert "watchtower_plan.cli.query" not in sys.modules
+    assert "watchtower_plan.cli.query_lookup_handlers" not in sys.modules
+    assert "watchtower_plan.cli.tasks" not in sys.modules
+    assert "watchtower_plan.cli.handlers" not in sys.modules
 
 
 def test_pack_describe_reports_unknown_pack_as_json_error(capsys) -> None:

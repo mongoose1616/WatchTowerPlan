@@ -9,12 +9,14 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader_constants import (
     BENCHMARK_SUITE_REGISTRY_PATH,
     CORE_PACK_SETTINGS_PATH,
+    PACK_REGISTRY_PATH,
     PACK_RUNTIME_MANIFEST_FILENAME,
     PACK_SETTINGS_PATH,
     SCHEMA_CATALOG_ARTIFACT_PATH,
     VALIDATION_SUITE_REGISTRY_PATH,
     VALIDATOR_REGISTRY_PATH,
 )
+from watchtower_core.control_plane.models import PackRegistry, PackSettings
 from watchtower_core.control_plane.pack_settings_discovery import (
     discover_pack_settings_paths,
 )
@@ -264,11 +266,14 @@ def _registered_default_pack_settings_path(loader: Any) -> str | None:
     """Return the valid registry-default pack settings path when one exists."""
 
     try:
-        pack_settings_path = cast(
-            str,
-            loader.load_pack_registry().default_pack().pack_settings_path,
-        )
-        loader.load_pack_settings(pack_settings_path)
+        pack_registry = PackRegistry.from_document(loader.load_json_object(PACK_REGISTRY_PATH))
+        default_entry = pack_registry.default_pack()
+        pack_settings_path = default_entry.pack_settings_path
+        pack_settings = PackSettings.from_document(loader.load_json_object(pack_settings_path))
+        if pack_settings.pack_id != default_entry.pack_id:
+            raise ValueError(
+                "Pack registry default points to pack settings for a different pack ID."
+            )
     except (ArtifactLoadError, KeyError, ValueError):
         return None
     return pack_settings_path

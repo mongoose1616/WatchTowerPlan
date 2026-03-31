@@ -86,7 +86,7 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
     seen_namespaces: set[str] = set()
     seen_settings_paths: set[str] = set()
     try:
-        active_pack_settings_path = loader.activate_pack_settings()
+        active_pack_settings_path = loader.default_pack_settings_path()
     except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
         active_pack_settings_path = None
 
@@ -112,10 +112,11 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
         if settings_path in seen_settings_paths:
             continue
         try:
-            pack_loader = loader.derive(active_pack_settings_path=settings_path)
-            pack_loader.activate_pack_settings()
-            pack_settings = pack_loader.load_pack_settings()
-            runtime_manifest = pack_loader.load_pack_runtime_manifest()
+            pack_loader = loader.derive(active_pack_settings_path=None)
+            pack_settings = pack_loader.load_pack_settings(settings_path)
+            runtime_manifest = pack_loader.load_pack_runtime_manifest(
+                relative_path=pack_loader.pack_runtime_manifest_path(settings_path)
+            )
         except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS:
             continue
         if (
@@ -224,7 +225,9 @@ def _authored_entry_error(loader: Any, entry: PackRegistryEntry) -> str | None:
             f"pack settings path could not be loaded: {entry.pack_settings_path} ({exc})"
         )
     try:
-        entry_loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
+        entry_loader.load_pack_runtime_manifest(
+            relative_path=entry_loader.pack_runtime_manifest_path(entry.pack_settings_path)
+        )
     except RECOVERABLE_PACK_DISCOVERY_EXCEPTIONS as exc:
         return (
             f"Hosted-pack registry entry for {entry.pack_slug!r} is unusable because its "

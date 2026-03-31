@@ -17,8 +17,6 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import telemetry_operation
-from watchtower_plan import InitiativePackageService
-from watchtower_plan.closeout import InitiativeCloseoutService
 
 IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/closeout.py"
 
@@ -184,6 +182,8 @@ def register_plan_closeout_commands(
 
 
 def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
+    from watchtower_plan import InitiativePackageService
+
     service = InitiativePackageService(ControlPlaneLoader())
     with telemetry_operation(
         "plan_closeout",
@@ -274,6 +274,8 @@ def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
 
 
 def _run_closeout_retained_initiative(args: argparse.Namespace) -> int:
+    from watchtower_plan.closeout import InitiativeCloseoutService
+
     service = InitiativeCloseoutService(ControlPlaneLoader())
     with telemetry_operation(
         "plan_closeout",

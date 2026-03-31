@@ -6,6 +6,7 @@ import argparse
 import json
 from collections.abc import Callable
 from dataclasses import dataclass
+from typing import Any
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PackRegistryEntry, PackRuntimeManifest
@@ -223,6 +224,7 @@ def load_pack_command_group_spec(
     loader: ControlPlaneLoader | None = None,
     *,
     tolerate_import_errors: bool = False,
+    selected_subcommand: str | None = None,
 ) -> CommandGroupSpec | None:
     """Load one pack command group, optionally degrading gracefully on import failure."""
 
@@ -258,9 +260,15 @@ def load_pack_command_group_spec(
                 "Pack integration descriptor is missing the command_registration hook: "
                 f"{discovery.runtime_manifest.integration_module}"
             )
+        specialized_registrar = registrar
+        if command_namespace == "plan" and selected_subcommand is not None:
+            specialized_registrar = _specialized_plan_registrar(
+                registrar,
+                selected_subcommand=selected_subcommand,
+            )
         return CommandGroupSpec(
             name=discovery.name,
-            registrar=registrar,
+            registrar=specialized_registrar,
             doc_root=discovery.doc_root,
             implementation_path=(
                 loaded.integration.command_implementation_path
@@ -326,6 +334,18 @@ def _unavailable_pack_command_group(
         implementation_path=None,
         notes=message,
     )
+
+
+def _specialized_plan_registrar(
+    registrar: CommandRegistrar,
+    *,
+    selected_subcommand: str,
+) -> CommandRegistrar:
+    def _registrar(subparsers: argparse._SubParsersAction) -> None:
+        registrar_any: Any = registrar
+        registrar_any(subparsers, selected_subcommand=selected_subcommand)
+
+    return _registrar
 
 
 def _unavailable_pack_registrar(command_namespace: str, message: str) -> CommandRegistrar:

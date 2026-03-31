@@ -48,20 +48,18 @@ def load_active_pack_integration(
         "load_active_pack_integration",
         attributes={"pack_settings_path": pack_settings_path},
     ) as operation:
-        effective_pack_settings_path = loader.activate_pack_settings(pack_settings_path)
-        pack_settings = loader.load_pack_settings(effective_pack_settings_path)
-        runtime_manifest = loader.load_pack_runtime_manifest(
-            pack_settings_path=effective_pack_settings_path
-        )
-        runtime_view = load_pack_registry_runtime_view(loader)
-        try:
-            registry_entry = runtime_view.get_by_pack_id(pack_settings.pack_id)
-        except KeyError:
-            registry_entry = synthesize_pack_registry_entry(
-                pack_settings_path=effective_pack_settings_path,
-                pack_settings=pack_settings,
-                runtime_manifest=runtime_manifest,
+        effective_pack_settings_path, pack_settings, runtime_manifest = (
+            _load_pack_runtime_contracts(
+                loader,
+                pack_settings_path=pack_settings_path,
             )
+        )
+        registry_entry = _resolve_active_registry_entry(
+            loader=loader,
+            effective_pack_settings_path=effective_pack_settings_path,
+            pack_settings=pack_settings,
+            runtime_manifest=runtime_manifest,
+        )
         descriptor = _load_pack_integration_descriptor(runtime_manifest, loader.repo_root)
         loaded = LoadedPackIntegration(
             pack_settings=pack_settings,
@@ -87,10 +85,11 @@ def load_registered_pack_integrations(
     with telemetry_operation("pack_runtime", "load_registered_pack_integrations") as operation:
         loaded: list[LoadedPackIntegration] = []
         for entry in effective_pack_registry_entries(loader):
-            pack_loader = loader.derive(active_pack_settings_path=entry.pack_settings_path)
-            pack_loader.activate_pack_settings()
-            pack_settings = pack_loader.load_pack_settings()
-            runtime_manifest = pack_loader.load_pack_runtime_manifest()
+            pack_loader = loader.derive(active_pack_settings_path=None)
+            _, pack_settings, runtime_manifest = _load_pack_runtime_contracts(
+                pack_loader,
+                pack_settings_path=entry.pack_settings_path,
+            )
             descriptor = _load_pack_integration_descriptor(runtime_manifest, pack_loader.repo_root)
             loaded.append(
                 LoadedPackIntegration(
@@ -108,6 +107,51 @@ def load_registered_pack_integrations(
                 pack_slugs=[item.registry_entry.pack_slug for item in result],
             )
         return result
+
+
+def _load_pack_runtime_contracts(
+    loader: ControlPlaneLoader,
+    *,
+    pack_settings_path: str,
+) -> tuple[str, PackSettings, PackRuntimeManifest]:
+    """Load validated pack settings and runtime manifest without activating pack-local schemas."""
+
+    effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
+    pack_settings = loader.load_pack_settings(effective_pack_settings_path)
+    runtime_manifest = loader.load_pack_runtime_manifest(
+        relative_path=loader.pack_runtime_manifest_path(effective_pack_settings_path)
+    )
+    return effective_pack_settings_path, pack_settings, runtime_manifest
+
+
+def _resolve_active_registry_entry(
+    *,
+    loader: ControlPlaneLoader,
+    effective_pack_settings_path: str,
+    pack_settings: PackSettings,
+    runtime_manifest: PackRuntimeManifest,
+) -> PackRegistryEntry:
+    """Return the authored registry entry for one active pack or synthesize a runtime-only one."""
+
+    try:
+        authored_entry = loader.load_pack_registry().get_by_pack_id(pack_settings.pack_id)
+    except KeyError:
+        authored_entry = None
+    if (
+        authored_entry is not None
+        and authored_entry.pack_settings_path == effective_pack_settings_path
+    ):
+        return authored_entry
+
+    runtime_view = load_pack_registry_runtime_view(loader)
+    try:
+        return runtime_view.get_by_pack_id(pack_settings.pack_id)
+    except KeyError:
+        return synthesize_pack_registry_entry(
+            pack_settings_path=effective_pack_settings_path,
+            pack_settings=pack_settings,
+            runtime_manifest=runtime_manifest,
+        )
 
 
 def load_pack_validation_runtime(
