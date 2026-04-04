@@ -464,7 +464,7 @@ def _matches_same_pack(
     candidate_entry: dict[str, object],
 ) -> bool:
     return any(
-        existing_entry.get(key) == candidate_entry[key]
+        candidate_entry.get(key) is not None and existing_entry.get(key) == candidate_entry.get(key)
         for key in (
             "pack_id",
             "pack_slug",
@@ -499,7 +499,13 @@ def _validate_bootstrapped_pack(
     )
     if result.passed:
         return True
-    issue_summary = "; ".join(f"{issue.code}: {issue.message}" for issue in result.issues[:5])
+    issue_summary_items = [
+        f"{issue.code}: {issue.message}" for issue in result.issues[:5]
+    ]
+    remaining_issue_count = len(result.issues) - len(issue_summary_items)
+    if remaining_issue_count > 0:
+        issue_summary_items.append(f"... and {remaining_issue_count} more")
+    issue_summary = "; ".join(issue_summary_items)
     raise ValueError(
         "Hosted-pack bootstrap failed validation after applying shared workspace wiring: "
         f"{issue_summary}"

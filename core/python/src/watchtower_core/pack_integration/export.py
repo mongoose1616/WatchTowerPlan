@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-import contextlib
 import filecmp
 import json
+import logging
 import os
 import shutil
 import subprocess
@@ -69,6 +69,7 @@ _DEV_FILE_SUFFIXES = (
     ".pyo",
     ".whl",
 )
+_LOGGER = logging.getLogger(__name__)
 _INTERNAL_REFERENCE_SUFFIXES = (
     "_assessment_closeout_reference.md",
     "_comparison_closeout_reference.md",
@@ -1073,9 +1074,15 @@ def _atomic_write_text(path: Path, content: str) -> None:
         with os.fdopen(fd, "w", encoding="utf-8") as handle:
             handle.write(content)
         os.replace(tmp_path, path)
-    except BaseException:
-        with contextlib.suppress(OSError):
+    except Exception:
+        try:
             os.unlink(tmp_path)
+        except OSError:
+            _LOGGER.warning(
+                "Failed to remove temporary export file after a write error: %s",
+                tmp_path,
+                exc_info=True,
+            )
         raise
 
 
