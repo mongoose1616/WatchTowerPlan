@@ -7,11 +7,13 @@ from tests.pack_fixture_support import (
     materialize_validation_repo_subset,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import ValidationSuiteStepDefinition
 from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.pack_targets import (
     artifact_targets,
     document_semantics_targets,
     front_matter_targets,
+    resolve_pack_validation_suite_targets,
 )
 
 
@@ -90,6 +92,24 @@ def test_markdown_targets_include_pack_owned_reference_docs(tmp_path: Path) -> N
 
     assert relative_path in front_matter_targets(context)
     assert relative_path in document_semantics_targets(context)
+
+
+def test_suite_target_resolver_honors_explicit_front_matter_validator(tmp_path: Path) -> None:
+    context, _ = _pack_validation_context(tmp_path)
+    step = ValidationSuiteStepDefinition(
+        step_id="step.targets.standard_front_matter",
+        title="Validate shared standards front matter",
+        description="Only enumerate targets that belong to the selected validator.",
+        step_kind="front_matter",
+        validator_id="validator.documentation.standard_front_matter",
+    )
+
+    targets = resolve_pack_validation_suite_targets(context, step)
+
+    assert targets is not None
+    assert "core/docs/standards/documentation/workflow_md_standard.md" in targets
+    assert "core/docs/references/commonmark_reference.md" not in targets
+    assert "core/docs/foundations/product_direction.md" not in targets
 
 
 def test_artifact_targets_exclude_schema_definitions_and_keep_artifacts(

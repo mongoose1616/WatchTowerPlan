@@ -36,8 +36,11 @@ class CoreDocumentSemanticsValidationService:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._foundation_doc_paths: frozenset[str] | None = None
+        self._foundation_doc_error: ValueError | JsonSchemaValidationError | None = None
         self._reference_doc_paths: frozenset[str] | None = None
+        self._reference_doc_error: ValueError | JsonSchemaValidationError | None = None
         self._standard_doc_paths: frozenset[str] | None = None
+        self._standard_doc_error: ValueError | JsonSchemaValidationError | None = None
         self._workflow_context: WorkflowDocumentContext | None = None
 
     def validate(
@@ -114,52 +117,75 @@ class CoreDocumentSemanticsValidationService:
         )
 
     def _validate_foundation_document(self, relative_target_path: str) -> None:
-        if self._foundation_doc_paths is None:
-            document = FoundationIndexSyncService(self._loader).build_document()
-            entries = document.get("entries")
-            if not isinstance(entries, list):
-                entries = []
-            self._foundation_doc_paths = frozenset(
-                entry["doc_path"]
-                for entry in entries
-                if isinstance(entry, dict) and isinstance(entry.get("doc_path"), str)
-            )
-        if relative_target_path not in self._foundation_doc_paths:
+        if relative_target_path not in self._load_foundation_doc_paths():
             raise ValueError(
                 f"{relative_target_path} did not validate as a governed foundation doc."
             )
 
     def _validate_reference_document(self, relative_target_path: str) -> None:
-        if self._reference_doc_paths is None:
-            document = ReferenceIndexSyncService(self._loader).build_document()
-            entries = document.get("entries")
-            if not isinstance(entries, list):
-                entries = []
-            self._reference_doc_paths = frozenset(
-                entry["doc_path"]
-                for entry in entries
-                if isinstance(entry, dict) and isinstance(entry.get("doc_path"), str)
-            )
-        if relative_target_path not in self._reference_doc_paths:
+        if relative_target_path not in self._load_reference_doc_paths():
             raise ValueError(
                 f"{relative_target_path} did not validate as a governed reference doc."
             )
 
     def _validate_standard_document(self, relative_target_path: str) -> None:
-        if self._standard_doc_paths is None:
-            document = StandardIndexSyncService(self._loader).build_document()
-            entries = document.get("entries")
-            if not isinstance(entries, list):
-                entries = []
-            self._standard_doc_paths = frozenset(
-                entry["doc_path"]
-                for entry in entries
-                if isinstance(entry, dict) and isinstance(entry.get("doc_path"), str)
-            )
-        if relative_target_path not in self._standard_doc_paths:
+        if relative_target_path not in self._load_standard_doc_paths():
             raise ValueError(
                 f"{relative_target_path} did not validate as a governed standard doc."
             )
+
+    def _load_foundation_doc_paths(self) -> frozenset[str]:
+        if self._foundation_doc_paths is not None:
+            return self._foundation_doc_paths
+        if self._foundation_doc_error is not None:
+            raise self._foundation_doc_error
+
+        try:
+            document = FoundationIndexSyncService(self._loader).build_document()
+        except (ValueError, JsonSchemaValidationError) as exc:
+            self._foundation_doc_error = exc
+            raise
+        self._foundation_doc_paths = self._doc_paths_from_index(document)
+        return self._foundation_doc_paths
+
+    def _load_reference_doc_paths(self) -> frozenset[str]:
+        if self._reference_doc_paths is not None:
+            return self._reference_doc_paths
+        if self._reference_doc_error is not None:
+            raise self._reference_doc_error
+
+        try:
+            document = ReferenceIndexSyncService(self._loader).build_document()
+        except (ValueError, JsonSchemaValidationError) as exc:
+            self._reference_doc_error = exc
+            raise
+        self._reference_doc_paths = self._doc_paths_from_index(document)
+        return self._reference_doc_paths
+
+    def _load_standard_doc_paths(self) -> frozenset[str]:
+        if self._standard_doc_paths is not None:
+            return self._standard_doc_paths
+        if self._standard_doc_error is not None:
+            raise self._standard_doc_error
+
+        try:
+            document = StandardIndexSyncService(self._loader).build_document()
+        except (ValueError, JsonSchemaValidationError) as exc:
+            self._standard_doc_error = exc
+            raise
+        self._standard_doc_paths = self._doc_paths_from_index(document)
+        return self._standard_doc_paths
+
+    @staticmethod
+    def _doc_paths_from_index(document: dict[str, object]) -> frozenset[str]:
+        entries = document.get("entries")
+        if not isinstance(entries, list):
+            entries = []
+        return frozenset(
+            entry["doc_path"]
+            for entry in entries
+            if isinstance(entry, dict) and isinstance(entry.get("doc_path"), str)
+        )
 
     def _workflow_context_or_build(self) -> WorkflowDocumentContext:
         if self._workflow_context is None:

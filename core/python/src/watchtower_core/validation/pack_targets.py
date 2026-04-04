@@ -6,7 +6,10 @@ from collections.abc import Callable
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import ValidationSuiteStepDefinition
+from watchtower_core.control_plane.models import (
+    ValidationSuiteStepDefinition,
+    ValidatorDefinition,
+)
 from watchtower_core.validation.common import artifact_pattern_match_score
 from watchtower_core.validation.context import PackValidationContext
 
@@ -26,7 +29,20 @@ def resolve_pack_validation_suite_targets(
     builder = _STEP_TARGET_BUILDERS.get(step.step_kind)
     if builder is None:
         return None
-    return builder(context)
+    if step.validator_id is None:
+        return builder(context)
+
+    try:
+        validator = context.validator_registry.get(step.validator_id)
+    except KeyError:
+        return builder(context)
+
+    return _targets_for_validator(
+        context.loader,
+        validator=validator,
+        default_extension=".json" if step.step_kind == "artifact" else ".md",
+        exclude_workflow_targets=step.step_kind == "front_matter",
+    )
 
 
 def front_matter_targets(context: PackValidationContext) -> tuple[str, ...]:
@@ -152,6 +168,42 @@ def _targets_for_validators(
                     continue
                 seen.add(relative_path)
                 ordered_paths.append(relative_path)
+    return tuple(ordered_paths)
+
+
+def _targets_for_validator(
+    loader: ControlPlaneLoader,
+    *,
+    validator: ValidatorDefinition,
+    default_extension: str,
+    exclude_workflow_targets: bool = False,
+) -> tuple[str, ...]:
+    ordered_paths: list[str] = []
+    seen: set[str] = set()
+    for pattern in validator.applies_to:
+        for relative_path in _paths_for_pattern(
+            loader,
+            pattern,
+            default_extension=default_extension,
+        ):
+            if validator.engine == "json_schema" and (
+                artifact_pattern_match_score(relative_path, pattern) is None
+            ):
+                continue
+            if not _include_validation_target(
+                relative_path,
+                exclude_workflow_targets=exclude_workflow_targets,
+            ):
+                continue
+            if (
+                validator.artifact_kind == "documentation_front_matter"
+                and "workflows" in Path(relative_path).parts
+            ):
+                continue
+            if relative_path in seen:
+                continue
+            seen.add(relative_path)
+            ordered_paths.append(relative_path)
     return tuple(ordered_paths)
 
 
