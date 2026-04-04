@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-30T05:10:00Z"
+updated_at: "2026-04-04T21:20:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -88,6 +88,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - When the pack owns workflow roles, require each role doc to include a `Composes Modules` section that lists the reusable workflow-module docs the role directly orchestrates.
 - Treat pack-owned live indexes such as `task_index` and `initiative_index` as optional capabilities. Generic host commands should read them only when the active pack declares those surfaces.
 - Keep pack-local semantic validation thin. Import shared helpers such as `watchtower_core.documentation.standards`, `watchtower_core.documentation.reference_semantics`, and `watchtower_core.sync.workflow_index` instead of forking donor copies into modules like `watchtower_<pack>.standards`.
+- Keep pack-owned deterministic sync services cache-aware by implementing `sync_cache_inputs()` and reusing `watchtower_core.sync.cache` instead of inventing a pack-local cache format.
 - Publish the pack namespace command entry page inside the pack-owned docs root so host introspection and pack-interface validation can find it without special cases.
 - Expect pack-interface validation to scan live source roots when present; pack code must stay free of `watchtower_host` imports and reusable core must stay free of pack imports.
 - Use `domain_roots` for optional pack-native roots that are not part of the shared workspace baseline.
@@ -121,6 +122,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
    - Add `<pack>/python/src/watchtower_<pack>/__init__.py`.
    - Add `<pack>/python/src/watchtower_<pack>/integration.py` exporting `PACK_INTEGRATION`.
    - Keep the integration module inside the declared `python_package`.
+   - When the pack owns deterministic document sync services, implement `sync_cache_inputs()` and use the shared helpers in `watchtower_core.sync.cache` so warm runs can reuse canonical outputs safely.
 4. Publish the pack-owned command docs.
    - Add the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
    - Keep pack-specific command docs under the pack’s docs root instead of shared core docs.
@@ -141,6 +143,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
    - Run at least one namespaced CLI proof such as `uv run watchtower-core <namespace> --help` or parser-introspection coverage.
    - When the host-pack contract changes materially, prove the change against a second pack or synthetic second-pack fixture rather than validating only the default pack.
    - When pack-owned document semantics or standard parsing changes materially, prove the change through shared helper imports rather than by copying shared parser modules into the pack.
+   - Verify that pack-owned runtime sync caches land under `<pack>/.wt/runtime/sync_cache/` and that portable export flows do not ship those manifests.
 
 ### Starter Template Set
 | Template | Use |
@@ -395,4 +398,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-30T05:10:00Z`
+- `2026-04-04T21:20:00Z`

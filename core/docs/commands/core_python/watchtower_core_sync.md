@@ -49,6 +49,10 @@ uv run watchtower-core sync route-index --write --format json
 - The group itself is routing help; the selected leaf command owns dry-run defaults, write behavior, and artifact-specific output.
 - Root `sync` owns only reusable-core shared surfaces.
 - Pack-owned sync operations now live under the owning pack namespace such as `watchtower-core <pack-namespace> sync ...`.
+- Cache-aware leaf sync commands may return `cache_status` and `cache_input_count` in JSON output so automation can tell warm-cache hits from rebuilds.
+- Warm runs may reuse the canonical artifact when the declared sync inputs and canonical output hash are unchanged.
+- Runtime sync cache manifests live under `<machine_root>/runtime/sync_cache/` when an active or default pack machine root is available, or under `core/python/.cache/watchtower/sync_cache/` as the reusable-core fallback.
+- Portable export and staged bootstrap flows may rebuild sync surfaces while still disabling runtime cache emission into the staged artifact.
 - Use narrower root leaf commands when one shared governed family changed and you do not need the pack-owned rebuild flows.
 - Open the specific leaf command page or CLI help when you need exact flags, dependency order, or output-file details.
 
@@ -66,4 +70,4 @@ uv run watchtower-core sync route-index --write --format json
 - `core/python/src/watchtower_core/sync/`
 
 ## Updated At
-- `2026-03-13T15:05:00Z`
+- `2026-04-04T21:20:00Z`

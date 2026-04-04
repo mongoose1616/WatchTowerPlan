@@ -7,6 +7,12 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 from watchtower_plan.workspace.service import (
     PLAN_INITIATIVE_INDEX_PATH,
     PlanWorkspaceService,
@@ -24,15 +30,31 @@ PHASE_ORDER = {
 class InitiativeIndexSyncService:
     """Build and write the initiative index from current planning and task surfaces."""
 
+    OUTPUT_PATH = INITIATIVE_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
 
     @classmethod
-    def from_repo_root(
-        cls, repo_root: Path | None = None
-    ) -> InitiativeIndexSyncService:
+    def from_repo_root(cls, repo_root: Path | None = None) -> InitiativeIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                "plan/python/src/watchtower_plan/sync",
+                "plan/python/src/watchtower_plan/workspace",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_machine_manifests=True,
+                    include_machine_registries=True,
+                    include_python_sources=True,
+                    include_workspace_sources=True,
+                ),
+            )
+        )
 
     def build_document(self) -> dict[str, object]:
         return PlanWorkspaceService(self._loader).build_initiative_index_document()

@@ -64,6 +64,8 @@ def test_pack_extract_core_stages_engineering_shared_core(
     pyproject_text = (output_root / "core/python/pyproject.toml").read_text(encoding="utf-8")
     assert donor_pack.python_distribution not in pyproject_text
     assert not (output_root / "core/python/uv.lock").exists()
+    assert not (output_root / "core/python/.cache").exists()
+    assert not any(path.name == "sync_cache" for path in output_root.rglob("*"))
 
     assert (
         output_root
@@ -515,6 +517,8 @@ def test_pack_export_selected_pack_scrubs_internal_release_residue(
     assert traceability["entries"] == []
     assert (output_root / "packs/recipient/.wt/runtime").is_dir()
     assert not any((output_root / "packs/recipient/.wt/runtime").iterdir())
+    assert not (output_root / "core/python/.cache").exists()
+    assert not any(path.name == "sync_cache" for path in output_root.rglob("*"))
     assert (output_root / "packs/recipient/python/tests").is_dir()
     assert not any((output_root / "packs/recipient/python/tests").iterdir())
     assert (
@@ -625,6 +629,8 @@ def test_pack_export_pack_only_scrubs_selected_pack_without_shared_core(
     assert (output_root / "packs/recipient").is_dir()
     assert (output_root / "packs/recipient/.wt/runtime").is_dir()
     assert not any((output_root / "packs/recipient/.wt/runtime").iterdir())
+    assert not (output_root / "core/python/.cache").exists()
+    assert not any(path.name == "sync_cache" for path in output_root.rglob("*"))
     assert (output_root / "packs/recipient/python/tests").is_dir()
     assert not any((output_root / "packs/recipient/python/tests").iterdir())
     assert (

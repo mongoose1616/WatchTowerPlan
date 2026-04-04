@@ -292,7 +292,7 @@
       "summary": "Reference for structuring a domain pack so it integrates cleanly with reusable core and a host-owned CLI.",
       "status": "active",
       "doc_path": "core/docs/references/domain_pack_authoring_reference.md",
-      "updated_at": "2026-03-30T05:10:00Z",
+      "updated_at": "2026-04-04T21:20:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -307,6 +307,7 @@
         "core/docs/references/python_plugin_discovery_reference.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/runtime_telemetry_standard.md",
@@ -314,6 +315,7 @@
       ],
       "applied_by_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/runtime_telemetry_standard.md",
@@ -1630,9 +1632,11 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
+        "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [

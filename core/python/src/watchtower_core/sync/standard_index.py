@@ -37,6 +37,12 @@ from watchtower_core.documentation.standards import (
     parse_standard_operationalization,
 )
 from watchtower_core.pack_integration.roots import pack_standard_doc_roots
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 from watchtower_core.sync.path_support import existing_paths
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
@@ -70,6 +76,8 @@ def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, An
 class StandardIndexSyncService:
     """Build and write the standard index from governed standards."""
 
+    OUTPUT_PATH = STANDARD_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
@@ -79,6 +87,24 @@ class StandardIndexSyncService:
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> StandardIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                "core/docs/standards",
+                "core/docs/references",
+                "core/python/src/watchtower_core/adapters",
+                "core/python/src/watchtower_core/documentation",
+                "core/python/src/watchtower_core/pack_integration",
+                "core/python/src/watchtower_core/sync",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_reference_docs=True,
+                    include_standard_docs=True,
+                ),
+            )
+        )
 
     def set_reference_urls_by_path(
         self,

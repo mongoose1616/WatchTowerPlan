@@ -32,6 +32,12 @@ from watchtower_core.documentation.markdown_semantics import (
 from watchtower_core.documentation.reference_semantics import (
     is_governed_reference_doc_path,
 )
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 from watchtower_core.sync.path_support import existing_paths
 from watchtower_core.sync.reference_index import iter_citation_audit_documents
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
@@ -67,6 +73,8 @@ def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, An
 class FoundationIndexSyncService:
     """Build and write the foundation index from governed foundation documents."""
 
+    OUTPUT_PATH = FOUNDATION_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
@@ -75,6 +83,28 @@ class FoundationIndexSyncService:
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> FoundationIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                "core/docs/foundations",
+                "core/docs/references",
+                "core/docs/standards",
+                "core/workflows/modules",
+                "core/workflows/roles",
+                "core/python/src/watchtower_core/adapters",
+                "core/python/src/watchtower_core/documentation",
+                "core/python/src/watchtower_core/pack_integration",
+                "core/python/src/watchtower_core/sync",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_reference_docs=True,
+                    include_standard_docs=True,
+                    include_workflows=True,
+                ),
+            )
+        )
 
     def set_reference_urls_by_path(
         self,

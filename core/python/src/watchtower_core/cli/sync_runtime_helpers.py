@@ -14,6 +14,11 @@ from watchtower_core.cli.handler_common import (
     _task_filter_kwargs,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.sync.cache import (
+    finalize_document_sync_cache,
+    prepare_document_sync_cache,
+    validate_prepared_document_sync_cache,
+)
 from watchtower_core.telemetry import telemetry_operation
 
 
@@ -52,6 +57,7 @@ def run_document_sync_command(
     service: DocumentSyncService,
 ) -> int:
     """Run one document-oriented sync command."""
+    loader = getattr(service, "_loader", None)
     with telemetry_operation(
         "sync_command",
         command_name,
@@ -61,7 +67,24 @@ def run_document_sync_command(
             "output": str(args.output) if args.output is not None else None,
         },
     ) as operation:
-        document = service.build_document()
+        prepared_cache = None
+        if isinstance(loader, ControlPlaneLoader):
+            try:
+                relative_output_path = _service_relative_output_path(service)
+            except RuntimeError:
+                relative_output_path = None
+            if relative_output_path is not None:
+                prepared_cache = prepare_document_sync_cache(
+                    loader,
+                    service,
+                    relative_output_path=relative_output_path,
+                )
+                prepared_cache = validate_prepared_document_sync_cache(loader, prepared_cache)
+        document = (
+            prepared_cache.document if prepared_cache is not None else None
+        ) or service.build_document()
+        if isinstance(loader, ControlPlaneLoader):
+            loader.schema_store.validate_instance(document)
         entries = document.get("entries")
         if not isinstance(entries, list):
             raise RuntimeError(
@@ -75,12 +98,20 @@ def run_document_sync_command(
             target = _resolve_output_path(args.output)
             destination = str(service.write_document(document, target))
             wrote = True
+        if prepared_cache is not None:
+            finalize_document_sync_cache(prepared_cache, document=document)
         if operation is not None:
             operation.set_result(
                 status="ok",
                 entry_count=entry_count,
                 wrote=wrote,
                 artifact_path=destination,
+                cache_status=(
+                    prepared_cache.cache_status if prepared_cache is not None else "disabled"
+                ),
+                cache_input_count=(
+                    prepared_cache.input_file_count if prepared_cache is not None else 0
+                ),
             )
 
     payload: dict[str, object] = {
@@ -89,11 +120,27 @@ def run_document_sync_command(
         "entry_count": entry_count,
         "wrote": wrote,
         "artifact_path": destination,
+        "cache_status": prepared_cache.cache_status if prepared_cache is not None else "disabled",
+        "cache_input_count": (prepared_cache.input_file_count if prepared_cache is not None else 0),
     }
     if args.include_document:
         payload["document"] = document
 
     def _render_human() -> None:
+        if prepared_cache is not None and prepared_cache.cache_status == "hit":
+            if wrote:
+                print(
+                    "Reused cached "
+                    f"{artifact_label} with {entry_count} entries and wrote it to "
+                    f"{destination}."
+                )
+                return
+            print(f"Reused cached {artifact_label} with {entry_count} entries in dry-run mode.")
+            print(
+                "Use --write to refresh the canonical artifact or --output <path> to write "
+                "elsewhere."
+            )
+            return
         if wrote:
             print(
                 "Rebuilt "
@@ -109,6 +156,14 @@ def run_document_sync_command(
         payload_factory=lambda: payload,
         render_human=_render_human,
     )
+
+
+def _service_relative_output_path(service: DocumentSyncService) -> str:
+    for attr in ("OUTPUT_PATH", "_output_path"):
+        value = getattr(service, attr, None)
+        if isinstance(value, str) and value:
+            return value
+    raise RuntimeError("Document sync service does not declare a canonical output path.")
 
 
 def load_tracking_sync_service(module_name: str, class_name: str) -> Any:
@@ -223,6 +278,10 @@ def run_multi_target_sync(
                 "wrote": record.wrote,
                 "record_count": record.record_count,
                 "details": record.details,
+                "drift_detected": getattr(record, "drift_detected", False),
+                "drift_reason": getattr(record, "drift_reason", None),
+                "cache_status": getattr(record, "cache_status", None),
+                "cache_input_count": getattr(record, "cache_input_count", 0),
             }
             for record in result.records
         ],
@@ -236,7 +295,16 @@ def run_multi_target_sync(
         )
         print(f"Ran {human_label} across {len(result.records)} targets in {mode}.")
         for record in result.records:
-            print(f"- {record.target} [{record.artifact_kind}] record_count={record.record_count}")
+            drift_label = (
+                f" drift={record.drift_reason}"
+                if getattr(record, "drift_detected", False)
+                and getattr(record, "drift_reason", None) is not None
+                else ""
+            )
+            print(
+                f"- {record.target} [{record.artifact_kind}] "
+                f"record_count={record.record_count}{drift_label}"
+            )
             if record.output_path is not None:
                 print(f"  Wrote to {record.output_path}")
 

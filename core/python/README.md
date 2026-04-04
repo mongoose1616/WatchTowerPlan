@@ -160,6 +160,8 @@
 ### Notes
 - `uv run ...` is the default workflow for this repository.
 - Runtime telemetry is default-on for `watchtower-core` commands. The default sink is `<machine_root>/runtime/telemetry/`.
+- Cache-aware deterministic sync commands persist disposable cache manifests under `<machine_root>/runtime/sync_cache/` when a pack-local machine root is active, or under `core/python/.cache/watchtower/sync_cache/` as the reusable-core fallback.
+- Sync cache manifests are local runtime residue. They are safe to delete and should never be copied into staged exports or customer-facing bundles.
 - Use `WATCHTOWER_TELEMETRY=off` to disable runtime telemetry, `WATCHTOWER_TELEMETRY_STDERR=off` to suppress the one-line stderr summary, and `WATCHTOWER_TELEMETRY_DIR=<path>` to redirect the JSONL sink.
 - Command payloads and exit codes remain unchanged on stdout; telemetry emits only operational JSONL files plus one concise stderr summary per invocation.
 - Deliberate retained performance measurement is separate from telemetry. Use `watchtower-core benchmark run` and the governed benchmark-suite registry when you need repeatable benchmark evidence.

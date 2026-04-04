@@ -11,6 +11,12 @@ from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.documentation.command_semantics import (
     load_command_doc_source_surfaces,
 )
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 from watchtower_host.cli.introspection import iter_host_command_parser_specs
 
 COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
@@ -66,6 +72,8 @@ def _entry_to_document(entry: CommandIndexEntry) -> dict[str, object]:
 class CommandIndexSyncService:
     """Build and write the command index from host-composed CLI metadata."""
 
+    OUTPUT_PATH = COMMAND_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
@@ -73,6 +81,23 @@ class CommandIndexSyncService:
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> CommandIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                "core/docs/commands",
+                "core/python/src/watchtower_host/cli",
+                "core/python/src/watchtower_core/cli",
+                "core/python/src/watchtower_core/documentation",
+                "core/python/src/watchtower_core/pack_integration",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_command_docs=True,
+                    include_python_sources=True,
+                ),
+            )
+        )
 
     def build_document(self) -> dict[str, object]:
         existing_index = self._loader.load_command_index()

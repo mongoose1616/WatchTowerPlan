@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -13,6 +14,12 @@ from watchtower_core.control_plane.workspace import (
     FileSystemArtifactIO,
     OverlayArtifactSource,
     WorkspaceConfig,
+)
+from watchtower_core.sync.cache import (
+    SyncCacheStatus,
+    finalize_document_sync_cache,
+    prepare_document_sync_cache,
+    validate_prepared_document_sync_cache,
 )
 from watchtower_core.telemetry import telemetry_operation
 
@@ -44,6 +51,10 @@ class SyncRecord:
     wrote: bool
     record_count: int
     details: dict[str, int]
+    drift_detected: bool = False
+    drift_reason: str | None = None
+    cache_status: SyncCacheStatus | None = None
+    cache_input_count: int = 0
 
 
 @dataclass(frozen=True, slots=True)
@@ -230,6 +241,8 @@ class SyncHarness:
                     wrote=record.wrote,
                     record_count=record.record_count,
                     output_path=record.output_path,
+                    cache_status=record.cache_status,
+                    cache_input_count=record.cache_input_count,
                 )
             return record
 
@@ -245,7 +258,21 @@ class SyncHarness:
         output_dir: Path | None,
         document_override: dict[str, object] | None = None,
     ) -> SyncRecord:
-        document = document_override or service.build_document()
+        prepared_cache = (
+            prepare_document_sync_cache(
+                loader,
+                service,
+                relative_output_path=relative_output_path,
+            )
+            if document_override is None
+            else None
+        )
+        prepared_cache = validate_prepared_document_sync_cache(loader, prepared_cache)
+        document = (
+            document_override
+            or (prepared_cache.document if prepared_cache is not None else None)
+            or service.build_document()
+        )
         records = _document_record_list(document)
         if records is None:
             raise RuntimeError(f"{target} document is missing its entries or artifacts list.")
@@ -253,8 +280,14 @@ class SyncHarness:
         loader.set_validated_document_override(relative_output_path, document)
         destination = self._resolve_destination(relative_output_path, write, output_dir)
         wrote = destination is not None
+        drift_detected, drift_reason = self._document_drift_state(
+            document,
+            self._repo_root / relative_output_path,
+        )
         if destination is not None:
             service.write_document(document, destination)
+        if prepared_cache is not None:
+            finalize_document_sync_cache(prepared_cache, document=document)
         return SyncRecord(
             target=target,
             artifact_kind=artifact_kind,
@@ -263,6 +296,10 @@ class SyncHarness:
             wrote=wrote,
             record_count=len(records),
             details={},
+            drift_detected=drift_detected,
+            drift_reason=drift_reason,
+            cache_status=("disabled" if prepared_cache is None else prepared_cache.cache_status),
+            cache_input_count=(0 if prepared_cache is None else prepared_cache.input_file_count),
         )
 
     def _run_tracking_sync(
@@ -279,6 +316,10 @@ class SyncHarness:
         result = service.build_document()
         destination = self._resolve_destination(relative_output_path, write, output_dir)
         wrote = destination is not None
+        drift_detected, drift_reason = self._tracking_drift_state(
+            result,
+            self._repo_root / relative_output_path,
+        )
         if destination is not None:
             service.write_document(result, destination)
 
@@ -296,6 +337,10 @@ class SyncHarness:
             wrote=wrote,
             record_count=record_count,
             details=details,
+            drift_detected=drift_detected,
+            drift_reason=drift_reason,
+            cache_status=None,
+            cache_input_count=0,
         )
 
     def _resolve_destination(
@@ -355,6 +400,39 @@ class SyncHarness:
             artifact_store=self._loader.artifact_store,
             active_pack_settings_path=active_pack_settings_path,
         )
+
+    def _document_drift_state(
+        self,
+        document: dict[str, object],
+        canonical_path: Path,
+    ) -> tuple[bool, str | None]:
+        if not canonical_path.exists():
+            return True, "missing_output"
+        try:
+            current_document = json.loads(canonical_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            return True, "invalid_output"
+        if current_document != document:
+            return True, "content_mismatch"
+        return False, None
+
+    def _tracking_drift_state(
+        self,
+        result: object,
+        canonical_path: Path,
+    ) -> tuple[bool, str | None]:
+        content = getattr(result, "content", None)
+        if not isinstance(content, str):
+            return False, None
+        if not canonical_path.exists():
+            return True, "missing_output"
+        try:
+            current_content = canonical_path.read_text(encoding="utf-8")
+        except OSError:
+            return True, "invalid_output"
+        if current_content != content:
+            return True, "content_mismatch"
+        return False, None
 
 
 def _document_record_list(document: dict[str, object]) -> list[object] | None:

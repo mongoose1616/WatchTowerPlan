@@ -9,6 +9,7 @@
 | `core/docs/standards/engineering/README.md` | Describes the purpose of the engineering standards directory and indexes the standards stored here. |
 | `core/docs/standards/engineering/cli_help_text_standard.md` | Defines the minimum detail, examples, and usability expectations for repository CLI help text. |
 | `core/docs/standards/engineering/core_host_pack_python_boundary_standard.md` | Defines the required split between reusable core, host composition, and pack-native Python ownership. |
+| `core/docs/standards/engineering/deterministic_sync_cache_standard.md` | Defines when deterministic sync services may persist incremental cache manifests and where that runtime state must live. |
 | `core/docs/standards/engineering/domain_pack_authoring_standard.md` | Defines the pack-owned root shape and authoring rules for hosted packs. |
 | `core/docs/standards/engineering/engineering_best_practices_standard.md` | Defines repository-specific engineering best practices for implementation, validation, and synchronized human or machine updates. |
 | `core/docs/standards/engineering/git_commit_standard.md` | Defines the repository-standard Git commit message policy for human and assistant contributors. |

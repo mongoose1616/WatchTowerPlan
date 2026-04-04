@@ -34,6 +34,12 @@ from watchtower_core.pack_integration.roots import (
     pack_workflow_module_roots,
     pack_workflow_role_roots,
 )
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
 WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
@@ -382,9 +388,7 @@ def validate_workflow_composes_modules_section(
         )
 
     bullets = [
-        line.strip()
-        for line in (section or "").splitlines()
-        if line.strip().startswith("- ")
+        line.strip() for line in (section or "").splitlines() if line.strip().startswith("- ")
     ]
     resolved_paths: list[str] = []
     for bullet in bullets:
@@ -541,9 +545,7 @@ def load_workflow_document_with_reference_map(
     )
     title_suffix = _workflow_title_suffix(workflow_kind)
     if not title.endswith(title_suffix):
-        raise ValueError(
-            f"{relative_path} {workflow_kind} title must end with {title_suffix!r}."
-        )
+        raise ValueError(f"{relative_path} {workflow_kind} title must end with {title_suffix!r}.")
 
     validate_core_shared_workflow_boundary(
         relative_path,
@@ -616,8 +618,7 @@ def _resolve_workflow_id(
     if not matches:
         return default_workflow_id
     raise ValueError(
-        f"Workflow retrieval metadata is ambiguous for {relative_path}: "
-        + ", ".join(matches)
+        f"Workflow retrieval metadata is ambiguous for {relative_path}: " + ", ".join(matches)
     )
 
 
@@ -644,6 +645,8 @@ def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, An
 class WorkflowIndexSyncService:
     """Build and write the workflow index from workflow documents."""
 
+    OUTPUT_PATH = WORKFLOW_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
@@ -652,6 +655,27 @@ class WorkflowIndexSyncService:
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> WorkflowIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                "core/docs/references",
+                "core/workflows/ROUTING_TABLE.md",
+                "core/workflows/modules",
+                "core/workflows/roles",
+                "core/control_plane/registries/workflow_metadata_registry.json",
+                "core/python/src/watchtower_core/adapters",
+                "core/python/src/watchtower_core/documentation",
+                "core/python/src/watchtower_core/pack_integration",
+                "core/python/src/watchtower_core/sync",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_reference_docs=True,
+                    include_workflows=True,
+                ),
+            )
+        )
 
     def set_reference_urls_by_path(
         self,

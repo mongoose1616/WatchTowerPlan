@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T04:10:00Z"
+updated_at: "2026-04-04T21:20:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -39,6 +39,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md): governs the broader pack-owned root shape and packaging expectations.
 - [repository_portability_standard.md](/core/docs/standards/engineering/repository_portability_standard.md): defines the donor-neutral bootstrap and release-scrub contract that sits above integration wiring.
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): defines the dependency direction and ownership split between reusable core, host composition, and pack-native Python.
+- [deterministic_sync_cache_standard.md](/core/docs/standards/engineering/deterministic_sync_cache_standard.md): defines the runtime cache contract pack-owned deterministic sync services should reuse.
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md): gives the practical checklist, worked file set, and extension guidance that operationalize this standard.
 - [core/docs/templates/pack/README.md](/core/docs/templates/pack/README.md): provides the starter templates that should remain aligned with this minimum contract.
 
@@ -98,6 +99,8 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Reuse shared documentation, standard-parsing, and workflow-index helpers from `watchtower_core` instead of copying donor implementations into pack-local helper modules.
 - Keep CLI parser construction, root command-family composition, pack discovery, and dispatch in `watchtower_host`; pack code must not import `watchtower_host`.
 - Keep optional operational runtime outputs such as telemetry under `<pack>/.wt/runtime/` so they remain pack-local machine state rather than shared-core authority.
+- Keep pack-owned deterministic sync cache manifests under `<pack>/.wt/runtime/sync_cache/` and out of `core/control_plane/` or other authored authority roots.
+- When a pack publishes deterministic document sync services, implement `sync_cache_inputs()` and reuse the shared `watchtower_core.sync.cache` contract instead of inventing a pack-specific cache format.
 - When new pack-local Python introduces new machine or human surfaces, update the companion manifests, command docs, workflows, tracking surfaces, domain-root declarations, and tests in the same change set.
 - Prefer `watchtower-core pack scaffold` to create pack-owned starter surfaces and `watchtower-core pack bootstrap` to update the shared registry and shared workspace registration together.
 - Treat copied-core adoption as source transfer plus explicit reconciliation. Do not copy donor `.venv`, local editable-install metadata, caches, or pack `.wt/runtime/**` outputs and expect them to be part of the hosted-pack contract.
@@ -139,7 +142,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 
 ## Change Control
 - Update this standard when the minimum hosted-pack surface set, required capabilities, or pack-extension ownership rules change materially.
-- Update [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md), [core/docs/templates/pack/README.md](/core/docs/templates/pack/README.md), pack templates, pack-interface schemas, and pack-contract validation in the same change set when the minimum contract changes materially.
+- Update [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md), [deterministic_sync_cache_standard.md](/core/docs/standards/engineering/deterministic_sync_cache_standard.md), [core/docs/templates/pack/README.md](/core/docs/templates/pack/README.md), pack templates, pack-interface schemas, and pack-contract validation in the same change set when the minimum contract changes materially.
 
 ## References
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md)
@@ -148,4 +151,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-29T04:10:00Z`
+- `2026-04-04T21:20:00Z`

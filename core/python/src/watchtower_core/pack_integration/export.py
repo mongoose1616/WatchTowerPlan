@@ -281,6 +281,7 @@ def export_hosted_repository(
                         write=True,
                         sync_workspace=False,
                         replace_hosted_packs=index == 0,
+                        enable_runtime_cache=False,
                     ),
                 )
                 changed_paths.update(result.changed_paths)
@@ -289,7 +290,7 @@ def export_hosted_repository(
             changed_paths.update(_scrub_all_hosted_pack_wiring(output_root))
             workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
 
-        rebuild_shared_discovery_surfaces(output_root)
+        rebuild_shared_discovery_surfaces(output_root, enable_runtime_cache=False)
         changed_paths.update(
             {
                 "core/control_plane/indexes/commands/command_index.json",
@@ -363,7 +364,7 @@ def extract_engineering_core(
     changed_paths = _scrub_all_hosted_pack_wiring(output_root)
     workspace_lock_removed = False
     if changed_paths:
-        rebuild_shared_discovery_surfaces(output_root)
+        rebuild_shared_discovery_surfaces(output_root, enable_runtime_cache=False)
         changed_paths.update(
             {
                 "core/control_plane/indexes/commands/command_index.json",
@@ -1183,7 +1184,11 @@ def _scrub_developer_residue(output_root: Path) -> list[str]:
     for candidate in sorted(output_root.rglob("*")):
         if not candidate.exists():
             continue
-        if candidate.is_dir() and candidate.name in _DEV_DIRECTORY_NAMES:
+        if candidate.is_dir() and (
+            candidate.name in _DEV_DIRECTORY_NAMES
+            or candidate.relative_to(output_root).as_posix() == "core/python/.cache"
+            or (candidate.name == "sync_cache" and candidate.parent.name == "runtime")
+        ):
             shutil.rmtree(candidate)
             scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
             continue

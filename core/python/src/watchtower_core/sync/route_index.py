@@ -14,6 +14,12 @@ from watchtower_core.pack_integration.roots import (
     pack_workflow_module_roots,
     pack_workflow_role_roots,
 )
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 
 CORE_ROUTING_TABLE_DOCUMENT_PATH = "core/workflows/ROUTING_TABLE.md"
 ROUTE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/routes/route_index.json"
@@ -68,6 +74,8 @@ def _extract_route_table(markdown: str) -> str:
 class RouteIndexSyncService:
     """Build and write the route index from the routing table."""
 
+    OUTPUT_PATH = ROUTE_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
@@ -75,6 +83,22 @@ class RouteIndexSyncService:
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> RouteIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                "core/workflows/ROUTING_TABLE.md",
+                "core/workflows/modules",
+                "core/workflows/roles",
+                "core/python/src/watchtower_core/pack_integration",
+                "core/python/src/watchtower_core/sync",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_workflows=True,
+                ),
+            )
+        )
 
     def build_document(self) -> dict[str, object]:
         entries: list[dict[str, object]] = []

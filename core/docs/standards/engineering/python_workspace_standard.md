@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-04-04T14:35:00Z"
+updated_at: "2026-04-04T21:20:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -59,6 +59,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Prefer `uv run` for tests, linting, typechecking, CLI execution, and package-local Python invocations.
 - Treat `uv run ...` as the default human and agent execution path. Manual virtual-environment activation is optional and mainly for interactive shell work.
 - Treat `core/python/.venv/` as the canonical local environment. Do not create alternate virtual environments for normal repository work.
+- For agent or automation execution, use the documented workspace entrypoint directly: prefer `uv run ...`; when a direct interpreter or tool binary is required after the workspace is synced, use `./.venv/bin/python` or `./.venv/bin/<tool>` from `core/python/`.
+- Do not probe generic aliases such as `python`, `python3`, `pip`, or bare tool names before the documented workspace entrypoints, and do not treat their absence as a workflow issue when the documented workspace entrypoints exist.
 - When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
 - Keep reusable-core Python source under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain Python source under the owning pack root such as `<pack-root>/python/src/watchtower_<pack>/`.
 - Install pack-owned packages through the shared `core/python` workspace contract; do not rely on repo-local `sys.path` mutation to import `watchtower_<pack>` or other hosted pack packages.
@@ -79,8 +81,12 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Do not reach into one live pack root from shared-core tests through expressions such as `REPO_ROOT / "plan"` or direct copies from that root unless the test is explicitly gated for that pack-owned scenario. Shared-core tests should prove portable behavior through synthetic fixtures, typed loader seams, or active-pack-derived metadata before depending on a concrete live pack root.
 - Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
+- A repo-local setup helper such as `./tools/setup_dev_env.sh` may automate `uv python install`, `uv sync --extra dev`, and a `watchtower-core doctor` smoke check for first-run onboarding or agent bootstrap, but it must preserve `uv run ...` as the normal daily execution contract.
 - Small helper shells under `core/python/tools/` may exist to improve human onboarding or interactive use, but they must not replace the documented `uv run` contract.
 - Ignore local caches, wheels, build outputs, virtual environments, and `*.egg-info` directories. Do not treat them as governed repository artifacts.
+- Keep pack-local deterministic sync cache manifests under `<pack>/.wt/runtime/sync_cache/` when an active or default pack machine root is available.
+- Use `core/python/.cache/watchtower/sync_cache/` only as the reusable-core fallback when no pack-local machine root is available.
+- Treat `core/python/.cache/watchtower/` as disposable local runtime residue, not authored machine authority.
 - Do not place generated Python artifacts directly under `core/`.
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
 - Keep the first core package surfaces focused on control-plane loading, validation, explicit boundary-layer guardrails, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
@@ -156,15 +162,17 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - `./tools/verify.sh <fast|all> --fail-fast` should be the preferred wrapper when a remediation or refactor loop needs pytest-driven validation to stop on the first failure.
 - `./.venv/bin/python -m pytest tests/unit tests/integration -q` should be the explicit broad shared-core Python test pass before closeout when repository-aware integration behavior changed.
 - `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` should be the pack-owned Python test pass when a change touches one hosted pack directly.
-- `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
+- `core/python/README.md` should explain one-command bootstrap via `./tools/setup_dev_env.sh`, daily `uv run` usage, and when manual activation or helper shells are appropriate.
+- Reviewers should reject agent-facing Python guidance or task procedures that start by probing `python`, `python3`, `pip`, or bare tool names instead of using the documented workspace entrypoints.
 - Reviewers should reject shared-workspace guidance or metadata changes that make the donor repository's hosted-pack set look like a reusable-core invariant instead of current-repository configuration.
 - Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/` and approved pack-owned boundaries.
+- Reviewers should reject sync cache manifests written under `core/control_plane/` or other authored authority roots instead of pack-local runtime space or the shared Python fallback cache root.
 - Reviewers should reject package artifacts that install repo-local tests or pack-owned `testing/` helpers as default runtime surface for customer delivery.
 - Reviewers should reject shared-core tests or workspace guidance that hard-code donor-pack validator IDs, workflow IDs, rendered surfaces, or tracking filenames where the assertion should be resolved from the active pack contract.
 
 ## Change Control
 - Update this standard when the Python workspace root, package layout, or standard environment contract changes.
-- Update `core/README.md`, `core/python/README.md`, `core/python/AGENTS.md`, [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md), and the repository path index in the same change set when the Python workspace entrypoints change materially.
+- Update `core/README.md`, `core/python/README.md`, `core/python/AGENTS.md`, [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md), [deterministic_sync_cache_standard.md](/core/docs/standards/engineering/deterministic_sync_cache_standard.md), and the repository path index in the same change set when the Python workspace entrypoints or runtime cache contract change materially.
 - Update affected design records when the package boundaries for validators, query, sync, rebuild, routing, workflow execution, or control-plane loading change materially.
 
 ## References
@@ -181,4 +189,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code plus direct pack tests under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/` and `<pack-root>/python/tests/`.
 
 ## Updated At
-- `2026-04-04T14:35:00Z`
+- `2026-04-04T21:20:00Z`

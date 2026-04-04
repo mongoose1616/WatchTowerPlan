@@ -40,6 +40,12 @@ from watchtower_core.pack_integration.roots import (
     pack_workflow_module_roots,
     pack_workflow_role_roots,
 )
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 
 REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.json"
 REFERENCE_FRONT_MATTER_SCHEMA_ID = (
@@ -71,6 +77,8 @@ def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, An
 class ReferenceIndexSyncService:
     """Build and write the reference index from governed reference documents."""
 
+    OUTPUT_PATH = REFERENCE_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
@@ -79,6 +87,28 @@ class ReferenceIndexSyncService:
     def from_repo_root(cls, repo_root: Path | None = None) -> ReferenceIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                "core/docs/foundations",
+                "core/docs/references",
+                "core/docs/standards",
+                "core/workflows/modules",
+                "core/workflows/roles",
+                "core/python/src/watchtower_core/adapters",
+                "core/python/src/watchtower_core/documentation",
+                "core/python/src/watchtower_core/pack_integration",
+                "core/python/src/watchtower_core/sync",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_reference_docs=True,
+                    include_standard_docs=True,
+                    include_workflows=True,
+                ),
+            )
+        )
+
     def build_document(self) -> dict[str, object]:
         existing_entries = _load_existing_entries(self._loader)
         citation_maps = self._build_citation_maps()
@@ -86,7 +116,6 @@ class ReferenceIndexSyncService:
 
         reference_documents = self._reference_documents()
         for path in reference_documents:
-
             relative_path = path.relative_to(self._repo_root).as_posix()
             front_matter = load_front_matter(path)
             self._loader.schema_store.validate_instance(

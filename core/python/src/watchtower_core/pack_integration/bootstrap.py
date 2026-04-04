@@ -24,6 +24,11 @@ from watchtower_core.pack_integration.workspace_registration import (
     core_python_workspace_registration,
     render_core_python_workspace_pyproject,
 )
+from watchtower_core.sync.cache import (
+    finalize_document_sync_cache,
+    prepare_document_sync_cache,
+    validate_prepared_document_sync_cache,
+)
 
 COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
@@ -52,6 +57,7 @@ class PackBootstrapRequest:
     sync_workspace: bool = True
     sync_extras: tuple[str, ...] = ()
     replace_hosted_packs: bool = False
+    enable_runtime_cache: bool = True
 
 
 @dataclass(frozen=True, slots=True)
@@ -209,7 +215,10 @@ def bootstrap_hosted_pack(
         if core_python_pyproject_changed:
             pyproject_path.write_text(updated_pyproject_text, encoding="utf-8")
         if pack_registry_changed:
-            rebuild_shared_discovery_surfaces(repo_root)
+            rebuild_shared_discovery_surfaces(
+                repo_root,
+                enable_runtime_cache=request.enable_runtime_cache,
+            )
         if request.sync_workspace and core_python_pyproject_changed:
             _run_workspace_sync(
                 repo_root,
@@ -238,9 +247,7 @@ def bootstrap_hosted_pack(
             pack_sync_ran = True
             changed_paths.extend(pack_sync_result.relative_output_paths)
         elif (
-            pack_sync_declares_all
-            and core_python_pyproject_changed
-            and not request.sync_workspace
+            pack_sync_declares_all and core_python_pyproject_changed and not request.sync_workspace
         ):
             pack_sync_required = True
         if workspace_sync_ran or not core_python_pyproject_changed:
@@ -419,9 +426,7 @@ def _scrubbed_pack_slugs(
         )
         if entry_key in updated_keys or _matches_same_pack(entry, candidate_entry):
             continue
-        scrubbed.append(
-            str(entry.get("pack_slug", entry.get("pack_id", "<unknown-pack>")))
-        )
+        scrubbed.append(str(entry.get("pack_slug", entry.get("pack_id", "<unknown-pack>"))))
     return tuple(scrubbed)
 
 
@@ -499,9 +504,7 @@ def _validate_bootstrapped_pack(
     )
     if result.passed:
         return True
-    issue_summary_items = [
-        f"{issue.code}: {issue.message}" for issue in result.issues[:5]
-    ]
+    issue_summary_items = [f"{issue.code}: {issue.message}" for issue in result.issues[:5]]
     remaining_issue_count = len(result.issues) - len(issue_summary_items)
     if remaining_issue_count > 0:
         issue_summary_items.append(f"... and {remaining_issue_count} more")
@@ -549,10 +552,7 @@ def _run_workspace_sync(repo_root: Path, *, extras: tuple[str, ...] = ()) -> Non
     stderr = completed.stderr.strip()
     stdout = completed.stdout.strip()
     detail = stderr or stdout or "uv sync failed without output."
-    raise ValueError(
-        "Hosted-pack bootstrap could not sync the shared workspace: "
-        f"{detail}"
-    )
+    raise ValueError(f"Hosted-pack bootstrap could not sync the shared workspace: {detail}")
 
 
 def _resolve_uv_executable() -> str:
@@ -598,8 +598,7 @@ def _run_pack_local_sync_all(
     if completed.returncode != 0:
         detail = _cli_command_error_detail(completed)
         raise ValueError(
-            "Hosted-pack bootstrap could not run the pack-local sync-all command: "
-            f"{detail}"
+            f"Hosted-pack bootstrap could not run the pack-local sync-all command: {detail}"
         )
     stdout = completed.stdout.strip()
     if not stdout:
@@ -627,9 +626,7 @@ def _run_pack_local_sync_all(
         if not isinstance(relative_output_path, str) or not relative_output_path:
             continue
         relative_output_paths.append(relative_output_path)
-    return PackLocalSyncAllResult(
-        relative_output_paths=tuple(dict.fromkeys(relative_output_paths))
-    )
+    return PackLocalSyncAllResult(relative_output_paths=tuple(dict.fromkeys(relative_output_paths)))
 
 
 def _cli_command_error_detail(completed: subprocess.CompletedProcess[str]) -> str:
@@ -680,7 +677,38 @@ def _restore_workspace_files(
         path.write_text(original_text, encoding="utf-8")
 
 
-def rebuild_shared_discovery_surfaces(repo_root: Path) -> None:
+def _rebuild_document_sync_surface(
+    loader: ControlPlaneLoader,
+    service: object,
+    *,
+    relative_output_path: str,
+    enable_runtime_cache: bool,
+) -> None:
+    prepared_cache = (
+        prepare_document_sync_cache(
+            loader,
+            service,
+            relative_output_path=relative_output_path,
+        )
+        if enable_runtime_cache
+        else None
+    )
+    prepared_cache = validate_prepared_document_sync_cache(loader, prepared_cache)
+    document = (
+        prepared_cache.document if prepared_cache is not None else None
+    ) or service.build_document()
+    loader.schema_store.validate_instance(document)
+    if prepared_cache is None or prepared_cache.cache_status != "hit":
+        service.write_document(document)
+    if prepared_cache is not None:
+        finalize_document_sync_cache(prepared_cache, document=document)
+
+
+def rebuild_shared_discovery_surfaces(
+    repo_root: Path,
+    *,
+    enable_runtime_cache: bool = True,
+) -> None:
     from watchtower_core.sync.reference_index import ReferenceIndexSyncService
     from watchtower_core.sync.repository_paths import RepositoryPathIndexSyncService
     from watchtower_core.sync.route_index import RouteIndexSyncService
@@ -691,34 +719,56 @@ def rebuild_shared_discovery_surfaces(repo_root: Path) -> None:
     command_index_service_class = command_index_module.CommandIndexSyncService
     loader = ControlPlaneLoader(repo_root)
     command_index_service = command_index_service_class(loader)
-    command_index_document = command_index_service.build_document()
-    command_index_service.write_document(command_index_document)
+    _rebuild_document_sync_surface(
+        loader,
+        command_index_service,
+        relative_output_path=COMMAND_INDEX_ARTIFACT_PATH,
+        enable_runtime_cache=enable_runtime_cache,
+    )
 
     repository_path_service = RepositoryPathIndexSyncService(loader)
-    repository_path_document = repository_path_service.build_document()
-    repository_path_service.write_document(repository_path_document)
+    _rebuild_document_sync_surface(
+        loader,
+        repository_path_service,
+        relative_output_path=REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
+        enable_runtime_cache=enable_runtime_cache,
+    )
 
     reference_index_service = ReferenceIndexSyncService(loader)
-    reference_index_document = reference_index_service.build_document()
-    reference_index_service.write_document(reference_index_document)
+    _rebuild_document_sync_surface(
+        loader,
+        reference_index_service,
+        relative_output_path=REFERENCE_INDEX_ARTIFACT_PATH,
+        enable_runtime_cache=enable_runtime_cache,
+    )
 
     standard_index_service = StandardIndexSyncService(loader)
-    standard_index_document = standard_index_service.build_document()
-    standard_index_service.write_document(standard_index_document)
+    _rebuild_document_sync_surface(
+        loader,
+        standard_index_service,
+        relative_output_path=STANDARD_INDEX_ARTIFACT_PATH,
+        enable_runtime_cache=enable_runtime_cache,
+    )
 
     workflow_index_service = WorkflowIndexSyncService(loader)
-    workflow_index_document = workflow_index_service.build_document()
-    workflow_index_service.write_document(workflow_index_document)
+    _rebuild_document_sync_surface(
+        loader,
+        workflow_index_service,
+        relative_output_path=WORKFLOW_INDEX_ARTIFACT_PATH,
+        enable_runtime_cache=enable_runtime_cache,
+    )
 
     route_index_service = RouteIndexSyncService(loader)
-    route_index_document = route_index_service.build_document()
-    route_index_service.write_document(route_index_document)
+    _rebuild_document_sync_surface(
+        loader,
+        route_index_service,
+        relative_output_path=ROUTE_INDEX_ARTIFACT_PATH,
+        enable_runtime_cache=enable_runtime_cache,
+    )
 
 
 def _snapshot_optional_texts(paths: tuple[Path, ...]) -> dict[Path, str | None]:
-    return {
-        path: (path.read_text(encoding="utf-8") if path.exists() else None) for path in paths
-    }
+    return {path: (path.read_text(encoding="utf-8") if path.exists() else None) for path in paths}
 
 
 def _validate_relative_path(relative_path: str) -> str:

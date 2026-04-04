@@ -16,6 +16,12 @@ from watchtower_core.control_plane.models import (
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.pack_integration.docs import pack_command_docs_root
 from watchtower_core.pack_integration.roots import discover_pack_workspace_roots
+from watchtower_core.sync.cache import (
+    SyncCacheInputSpec,
+    discover_pack_sync_cache_paths,
+    module_relative_path,
+    ordered_sync_cache_paths,
+)
 
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.json"
@@ -244,6 +250,8 @@ def _filter_existing_related_paths(
 class RepositoryPathIndexSyncService:
     """Build and write the curated repository path index from README inventories."""
 
+    OUTPUT_PATH = REPOSITORY_PATH_INDEX_ARTIFACT_PATH
+
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
@@ -251,6 +259,30 @@ class RepositoryPathIndexSyncService:
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> RepositoryPathIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+
+    def sync_cache_inputs(self) -> SyncCacheInputSpec:
+        readme_paths = tuple(
+            path.relative_to(self._repo_root).as_posix()
+            for path in sorted(self._repo_root.rglob("README.md"))
+            if not any(part.startswith(".") for part in path.relative_to(self._repo_root).parts)
+        )
+        return SyncCacheInputSpec(
+            tracked_paths=ordered_sync_cache_paths(
+                module_relative_path(self._repo_root, __file__),
+                readme_paths,
+                "core/python/src/watchtower_core/pack_integration",
+                discover_pack_sync_cache_paths(
+                    self._loader,
+                    include_command_docs=True,
+                    include_reference_docs=True,
+                    include_standard_docs=True,
+                    include_workflows=True,
+                    include_python_sources=True,
+                    include_workspace_sources=True,
+                    include_tracking=True,
+                ),
+            )
+        )
 
     def build_document(self) -> dict[str, object]:
         existing_entries = _load_existing_entries(self._loader)

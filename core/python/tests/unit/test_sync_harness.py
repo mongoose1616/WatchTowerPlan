@@ -62,3 +62,25 @@ def test_sync_harness_tracking_details_ignore_retired_planning_count_fields() ->
         "actionable_task_count": 1,
         "recent_closed_count": 0,
     }
+
+
+def test_sync_harness_document_drift_state_reports_missing_and_mismatch(
+    tmp_path: Path,
+) -> None:
+    harness = SyncHarness(ControlPlaneLoader(REPO_ROOT))
+    canonical_path = tmp_path / "example_index.json"
+    document = {"entries": [{"id": "entry.example"}]}
+
+    assert harness._document_drift_state(document, canonical_path) == (True, "missing_output")
+
+    canonical_path.write_text(f"{document}\n", encoding="utf-8")
+    assert harness._document_drift_state(document, canonical_path) == (True, "invalid_output")
+
+    canonical_path.write_text('{"entries": [{"id": "entry.example"}]}\n', encoding="utf-8")
+    assert harness._document_drift_state(document, canonical_path) == (False, None)
+
+    canonical_path.write_text('{"entries": [{"id": "entry.changed"}]}\n', encoding="utf-8")
+    assert harness._document_drift_state(document, canonical_path) == (
+        True,
+        "content_mismatch",
+    )

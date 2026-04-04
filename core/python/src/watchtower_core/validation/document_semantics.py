@@ -11,6 +11,10 @@ from watchtower_core.documentation.command_semantics import validate_command_doc
 from watchtower_core.documentation.markdown_semantics import (
     validate_repo_local_markdown_links,
 )
+from watchtower_core.sync.cache import (
+    finalize_document_sync_cache,
+    prepare_document_sync_cache,
+)
 from watchtower_core.sync.foundation_index import FoundationIndexSyncService
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.sync.standard_index import StandardIndexSyncService
@@ -130,9 +134,7 @@ class CoreDocumentSemanticsValidationService:
 
     def _validate_standard_document(self, relative_target_path: str) -> None:
         if relative_target_path not in self._load_standard_doc_paths():
-            raise ValueError(
-                f"{relative_target_path} did not validate as a governed standard doc."
-            )
+            raise ValueError(f"{relative_target_path} did not validate as a governed standard doc.")
 
     def _load_foundation_doc_paths(self) -> frozenset[str]:
         if self._foundation_doc_paths is not None:
@@ -141,7 +143,11 @@ class CoreDocumentSemanticsValidationService:
             raise self._foundation_doc_error
 
         try:
-            document = FoundationIndexSyncService(self._loader).build_document()
+            service = FoundationIndexSyncService(self._loader)
+            document = self._load_or_build_cached_document(
+                service,
+                relative_output_path=service.OUTPUT_PATH,
+            )
         except (ValueError, JsonSchemaValidationError) as exc:
             self._foundation_doc_error = exc
             raise
@@ -155,7 +161,11 @@ class CoreDocumentSemanticsValidationService:
             raise self._reference_doc_error
 
         try:
-            document = ReferenceIndexSyncService(self._loader).build_document()
+            service = ReferenceIndexSyncService(self._loader)
+            document = self._load_or_build_cached_document(
+                service,
+                relative_output_path=service.OUTPUT_PATH,
+            )
         except (ValueError, JsonSchemaValidationError) as exc:
             self._reference_doc_error = exc
             raise
@@ -169,12 +179,34 @@ class CoreDocumentSemanticsValidationService:
             raise self._standard_doc_error
 
         try:
-            document = StandardIndexSyncService(self._loader).build_document()
+            service = StandardIndexSyncService(self._loader)
+            document = self._load_or_build_cached_document(
+                service,
+                relative_output_path=service.OUTPUT_PATH,
+            )
         except (ValueError, JsonSchemaValidationError) as exc:
             self._standard_doc_error = exc
             raise
         self._standard_doc_paths = self._doc_paths_from_index(document)
         return self._standard_doc_paths
+
+    def _load_or_build_cached_document(
+        self,
+        service: FoundationIndexSyncService | ReferenceIndexSyncService | StandardIndexSyncService,
+        *,
+        relative_output_path: str,
+    ) -> dict[str, object]:
+        prepared_cache = prepare_document_sync_cache(
+            self._loader,
+            service,
+            relative_output_path=relative_output_path,
+        )
+        document = (
+            prepared_cache.document if prepared_cache.document is not None else None
+        ) or service.build_document()
+        self._loader.schema_store.validate_instance(document)
+        finalize_document_sync_cache(prepared_cache, document=document)
+        return document
 
     @staticmethod
     def _doc_paths_from_index(document: dict[str, object]) -> frozenset[str]:

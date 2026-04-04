@@ -10,6 +10,7 @@ Sync namespace for the reusable generic harness plus repo-shared governed-index 
 
 ## Key Surfaces
 - `__init__.py`: Export-safe root for the generic sync harness and fail-closed guidance for repo-specific sync services.
+- `cache.py`: Shared incremental cache contract for deterministic document sync services plus pack-root-aware cache-path helpers.
 - `harness.py`: Shared sync target contracts, result models, overlay-aware runtime loader, and dependency-ordered orchestration helpers.
 - `reference_index.py`, `foundation_index.py`, `standard_index.py`, and `workflow_index.py`: Repo-shared governed-doc and workflow index rebuild services consumed by hosted packs.
 - `reference_resolution.py`: Shared reference-resolution helpers for governed-doc rebuild reuse.
@@ -24,6 +25,9 @@ Sync namespace for the reusable generic harness plus repo-shared governed-index 
 
 ## Notes
 - Keep reusable harness behavior, dependency ordering, shared reference-resolution helpers, and repo-shared rebuild targets here.
+- Keep deterministic sync cache manifests in pack-local runtime state or the shared Python fallback cache, never under authored control-plane roots.
+- Keep cached document reuse schema-validating and fail-soft: if the current schema rejects a cached canonical document, treat it as a cache miss and rebuild.
 - Keep host-composed command-index rebuilding under `watchtower_host.cli.command_index`, because it depends on the host parser tree rather than reusable-core runtime alone.
 - Keep pack-owned sync packages such as `watchtower_<pack>.sync` narrow and limited to pack-local write targets, joins, and orchestration that depend on the current pack layout.
+- Keep staged export and extract flows cache-clean: disable runtime sync-cache persistence during those rebuilds and scrub any `sync_cache` or fallback `.cache` residue from staged outputs.
 - Do not create pack-flavored copies of the generic sync harness, shared rebuild targets, or reusable sync result models.

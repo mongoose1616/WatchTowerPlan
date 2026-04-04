@@ -666,7 +666,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/command_md_standard.md",
-      "updated_at": "2026-04-04T03:05:00Z",
+      "updated_at": "2026-04-04T17:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1195,6 +1195,82 @@
       ]
     },
     {
+      "standard_id": "std.engineering.deterministic_sync_cache",
+      "category": "engineering",
+      "title": "Deterministic Sync Cache Standard",
+      "summary": "This standard defines when deterministic sync and index rebuild surfaces may persist incremental cache metadata and where that runtime state must live.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
+      "updated_at": "2026-04-04T22:45:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "operationalization_modes": [
+        "sync",
+        "validation",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/sync/cache.py",
+        "core/python/src/watchtower_core/sync/harness.py",
+        "core/python/src/watchtower_core/cli/sync_runtime_helpers.py",
+        "core/python/src/watchtower_core/pack_integration/bootstrap.py",
+        "core/python/src/watchtower_core/pack_integration/export.py",
+        "core/python/.gitignore",
+        "core/python/src/watchtower_core/sync/README.md"
+      ],
+      "reference_doc_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/uv_reference.md"
+      ],
+      "internal_reference_paths": [
+        "core/python/",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/uv_reference.md"
+      ],
+      "applied_reference_paths": [
+        "core/python/",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md",
+        "core/docs/standards/engineering/repository_portability_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/uv_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html",
+        "https://docs.astral.sh/uv/",
+        "https://docs.astral.sh/uv/getting-started/installation/",
+        "https://docs.astral.sh/uv/reference/installer/",
+        "https://docs.astral.sh/uv/concepts/projects/layout/",
+        "https://docs.astral.sh/uv/reference/settings/#cache-dir"
+      ],
+      "applied_external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html",
+        "https://docs.astral.sh/uv/",
+        "https://docs.astral.sh/uv/getting-started/installation/",
+        "https://docs.astral.sh/uv/reference/installer/",
+        "https://docs.astral.sh/uv/concepts/projects/layout/",
+        "https://docs.astral.sh/uv/reference/settings/#cache-dir"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "sync_cache",
+        "performance"
+      ]
+    },
+    {
       "standard_id": "std.engineering.domain_pack_authoring",
       "category": "engineering",
       "title": "Domain Pack Authoring Standard",
@@ -1407,7 +1483,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-      "updated_at": "2026-03-29T04:10:00Z",
+      "updated_at": "2026-04-04T21:20:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1431,6 +1507,7 @@
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/templates/pack/README.md"
       ],
@@ -1439,6 +1516,7 @@
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/engineering/repository_portability_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/templates/pack/README.md"
       ],
@@ -1622,7 +1700,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-29T03:35:00Z",
+      "updated_at": "2026-04-04T21:20:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1739,7 +1817,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/repository_portability_standard.md",
-      "updated_at": "2026-04-04T03:05:00Z",
+      "updated_at": "2026-04-04T22:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2316,7 +2394,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-28T23:15:00Z",
+      "updated_at": "2026-04-04T20:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
