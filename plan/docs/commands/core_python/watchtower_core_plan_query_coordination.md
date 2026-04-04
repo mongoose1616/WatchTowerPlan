@@ -82,7 +82,6 @@ uv run watchtower-core plan query coordination --initiative-status completed --t
 | `watchtower-core plan query initiatives` | Broader initiative-family lookup surface, including closed-history inspection. |
 | `watchtower-core plan sync all` | Rebuilds the live coordination index and its dependent rendered surfaces. |
 | `watchtower-core plan query tasks` | Inspects the full task records behind the focused active-task summaries. |
-| `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/query.py`
@@ -91,4 +90,4 @@ uv run watchtower-core plan query coordination --initiative-status completed --t
 - `plan/.wt/indexes/coordination_index.json`
 
 ## Updated At
-- `2026-03-17T19:13:00Z`
+- `2026-04-04T03:30:00Z`

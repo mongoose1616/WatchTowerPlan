@@ -78,7 +78,6 @@ uv run watchtower-core plan query initiatives --initiative-status completed --fo
 | `watchtower-core plan query authority` | Resolves when initiative lookup is canonical versus when coordination, traceability, or governance should answer instead. |
 | `watchtower-core plan query trace` | Canonical traceability read path when the initiative summary does not carry enough detail for the question at hand. |
 | `watchtower-core plan sync all` | Rebuilds the live initiative-family index and its rendered companions. |
-| `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
 | `watchtower-core plan query tasks` | Inspects the active or blocked tasks that contribute to initiative phase and ownership. |
 
 ## Source Surface
@@ -88,4 +87,4 @@ uv run watchtower-core plan query initiatives --initiative-status completed --fo
 - `plan/.wt/indexes/initiative_index.json`
 
 ## Updated At
-- `2026-03-17T19:13:00Z`
+- `2026-04-04T03:30:00Z`

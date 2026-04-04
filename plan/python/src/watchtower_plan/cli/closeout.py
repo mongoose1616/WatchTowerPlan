@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from textwrap import dedent
+from typing import Any
 
 from watchtower_core.cli.common import (
     HelpFormatter,
@@ -19,6 +20,28 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import telemetry_operation
 
 IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/closeout.py"
+InitiativePackageService: type[Any] | None = None
+InitiativeCloseoutService: type[Any] | None = None
+
+
+def _initiative_package_service_type() -> type[Any]:
+    global InitiativePackageService
+    if InitiativePackageService is None:
+        from watchtower_plan import InitiativePackageService as initiative_package_service
+
+        InitiativePackageService = initiative_package_service
+    return InitiativePackageService
+
+
+def _initiative_closeout_service_type() -> type[Any]:
+    global InitiativeCloseoutService
+    if InitiativeCloseoutService is None:
+        from watchtower_plan.closeout import (
+            InitiativeCloseoutService as initiative_closeout_service,
+        )
+
+        InitiativeCloseoutService = initiative_closeout_service
+    return InitiativeCloseoutService
 
 
 def register_plan_closeout_commands(
@@ -182,9 +205,7 @@ def register_plan_closeout_commands(
 
 
 def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
-    from watchtower_plan import InitiativePackageService
-
-    service = InitiativePackageService(ControlPlaneLoader())
+    service = _initiative_package_service_type()(ControlPlaneLoader())
     with telemetry_operation(
         "plan_closeout",
         "plan_closeout_initiative",
@@ -274,9 +295,7 @@ def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
 
 
 def _run_closeout_retained_initiative(args: argparse.Namespace) -> int:
-    from watchtower_plan.closeout import InitiativeCloseoutService
-
-    service = InitiativeCloseoutService(ControlPlaneLoader())
+    service = _initiative_closeout_service_type()(ControlPlaneLoader())
     with telemetry_operation(
         "plan_closeout",
         "plan_closeout_retained_initiative",
