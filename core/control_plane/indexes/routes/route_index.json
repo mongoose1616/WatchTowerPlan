@@ -193,6 +193,72 @@
       ]
     },
     {
+      "route_id": "route.review_remediation",
+      "task_type": "Review Remediation",
+      "trigger_keywords": [
+        "fix findings",
+        "remediate findings",
+        "fix review findings",
+        "address review findings",
+        "fix audit findings",
+        "fix review report",
+        "remediate report findings",
+        "fix pasted findings"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.review_remediation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/review_remediation.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.review_remediation_loop",
+      "task_type": "Review Remediation Loop",
+      "trigger_keywords": [
+        "fix loop",
+        "review fix loop",
+        "fix the findings",
+        "rerun the same review",
+        "keep fixing until clean",
+        "iterate review and fix",
+        "findings fix loop",
+        "until clean"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.review_remediation",
+        "workflow.review_remediation_loop",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/review_remediation.md",
+        "core/workflows/modules/review_remediation_loop.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.code_validation",
       "task_type": "Code Validation",
       "trigger_keywords": [
@@ -574,6 +640,43 @@
         "core/workflows/modules/internal_context_review.md",
         "core/workflows/modules/external_guidance_research.md",
         "core/workflows/modules/reference_distillation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.adversarial_repository_review",
+      "task_type": "Adversarial Repository Review",
+      "trigger_keywords": [
+        "adversarial review",
+        "adversarial audit",
+        "contradiction-oriented audit",
+        "full-spectrum audit",
+        "false-green audit",
+        "challenge the validators",
+        "prove the validators fail closed"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.internal_context_review",
+        "workflow.repository_inventory_review",
+        "workflow.external_guidance_research",
+        "workflow.repository_assessment",
+        "workflow.adversarial_reviewer",
+        "workflow.repository_review",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/repository_inventory_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/repository_assessment.md",
+        "core/workflows/roles/adversarial_reviewer.md",
+        "core/workflows/modules/repository_review.md",
+        "core/workflows/modules/code_validation.md",
         "core/workflows/modules/task_handoff_review.md"
       ]
     },

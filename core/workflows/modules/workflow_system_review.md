@@ -36,7 +36,7 @@ Use this workflow to audit the workflow system across shared and pack-owned root
    - Check that route-preview, query, and validation command docs still describe current runtime behavior precisely.
 5. Synthesize findings and remediation.
    - Distinguish observed gaps, overlapping routes, missing roles, stale validators, index drift, command-doc drift, and ownership-boundary problems explicitly.
-   - Classify each issue as same-change repair, follow-up work, or an intentional exception with rationale.
+   - Record each issue with severity, affected workflow or machine surfaces, observed evidence, why it matters, recommended repair, and whether it is same-change repair, follow-up work, or an intentional exception with rationale.
 6. Close with proof of the revised workflow posture.
    - Confirm the narrowest meaningful route-preview, workflow-query, validation, and index rebuild checks for the touched workflow-system surfaces.
    - Summarize how the resulting workflow system is clearer, deeper, and less ambiguous than the prior state.
@@ -47,7 +47,7 @@ Use this workflow to audit the workflow system across shared and pack-owned root
 - Validation and route-preview proof for the touched workflow-system surfaces
 
 ## Outputs
-- A workflow-system review with explicit gaps, overlaps, and standards drift
+- A findings-first workflow-system review with explicit gaps, overlaps, and standards drift
 - A remediation sequence for workflow docs, routes, validators, indexes, or command surfaces
 - Validation and route-behavior proof for the reviewed workflow-system changes
 

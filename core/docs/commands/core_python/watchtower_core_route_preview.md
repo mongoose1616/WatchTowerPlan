@@ -46,6 +46,16 @@ uv run watchtower-core route preview --request "review the WatchTower report and
 
 ```sh
 cd core/python
+uv run watchtower-core route preview --request "fix the findings from this review and rerun the same review until clean" --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core route preview --request "run a full-spectrum adversarial audit of the repository" --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior and lookup surfaces" --format json
 ```
 
@@ -82,6 +92,8 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - Selected workflow-role records in the JSON payload include `composes_module_paths` so explicit role-to-module orchestration remains auditable alongside the routed workflow set.
 - Free-form request matching is deterministic and advisory. It scores exact phrases first, then falls back to canonicalized trigger-keyword coverage so realistic maintenance requests and adjacent-route prompts do not require verbatim routing-table phrasing.
 - When one route is materially stronger than the others, the preview keeps only the dominant route plus any materially strong secondary matches instead of leaking in low-signal single-word matches. Successor-task handoff prompts stay on `Task Phase Transition` even though that workflow later opens the lifecycle rules as supporting context.
+- Review-remediation prompts that focus on fixing findings or rerunning the same review until clean now route to dedicated remediation task types instead of falling through to repository review or no match.
+- Explicit adversarial audit prompts now route to `Adversarial Repository Review`, which adds a stronger contradiction-oriented proof lens without making ordinary repository reviews adversarial by default.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of falling through to no match or a broad repository review.
 - Foundations-aware documentation-alignment prompts can now select the explicit `Foundations Alignment Review` task type, which combines foundations context loading with documentation refresh.
 - Adjacent route boundaries worth remembering:
@@ -107,4 +119,4 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - `core/control_plane/indexes/routes/route_index.json`
 
 ## Updated At
-- `2026-03-24T22:05:00Z`
+- `2026-04-04T19:40:00Z`

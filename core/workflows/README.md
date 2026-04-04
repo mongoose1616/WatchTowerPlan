@@ -15,6 +15,7 @@
 ## Notes
 - Workflow-root boundaries and routing behavior are governed by `core/docs/foundations/repository_scope.md`, `core/docs/standards/workflows/routing_and_context_loading_standard.md`, and the authoritative routing tables.
 - Shared reusable workflow modules live under `core/workflows/modules/` and should stay donor-neutral enough for multiple WatchTower repos or packs to reuse without local rewrites.
-- Shared reusable workflow roles live under `core/workflows/roles/`; the active shared role set currently includes `workflow_steward.md`.
+- Shared reusable workflow roles live under `core/workflows/roles/`; the active shared role set currently includes `workflow_steward.md` and `adversarial_reviewer.md`.
 - `Workflow System Review` is the shared audit route for workflow modules, workflow roles, routing tables, indexes, and validator coverage.
+- `Review Remediation` and `Review Remediation Loop` are the shared repair routes for turning existing findings into fixes, then optionally rerunning the same review family until clean or blocked.
 - Pack-owned routing and orchestration live under the owning pack workflow roots and may reference shared modules from this root instead of copying them.

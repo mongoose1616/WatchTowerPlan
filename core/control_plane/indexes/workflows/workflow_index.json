@@ -951,7 +951,7 @@
       "workflow_id": "workflow.repository_review",
       "workflow_kind": "module",
       "title": "Repository Review Workflow",
-      "summary": "Use this workflow to synthesize an existing repository review into evidence-backed findings, remediation guidance, and explicit stop-condition evidence.",
+      "summary": "Use this workflow to synthesize an existing repository review into a findings-first, evidence-backed report with remediation guidance and explicit stop-condition proof.",
       "status": "active",
       "doc_path": "core/workflows/modules/repository_review.md",
       "phase_type": "review",
@@ -967,20 +967,145 @@
         "review",
         "synthesize",
         "existing",
+        "findings",
+        "first",
         "evidence",
         "backed",
-        "findings",
+        "report",
+        "with",
         "remediation",
         "guidance",
         "explicit",
         "stop",
         "condition",
+        "proof",
         "audit"
       ],
       "companion_workflow_ids": [
         "workflow.repository_inventory_review",
         "workflow.repository_assessment",
         "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.review_remediation",
+      "workflow_kind": "module",
+      "title": "Review Remediation Workflow",
+      "summary": "Use this workflow to turn an existing review findings set into owning-surface fixes, aligned companion updates, and explicit validation proof without forcing a fresh broad review first.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/review_remediation.md",
+      "phase_type": "execution",
+      "task_family": "review_remediation",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "partial_update",
+        "stale_findings"
+      ],
+      "trigger_tags": [
+        "review",
+        "remediation",
+        "turn",
+        "existing",
+        "findings",
+        "set",
+        "owning",
+        "surface",
+        "fixes",
+        "aligned",
+        "companion",
+        "updates",
+        "explicit",
+        "validation",
+        "proof",
+        "without",
+        "forcing",
+        "fresh",
+        "broad",
+        "first",
+        "core",
+        "docs",
+        "standards",
+        "validations",
+        "repository",
+        "standard",
+        "engineering",
+        "git",
+        "commit",
+        "remediate",
+        "report",
+        "fix"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/engineering/git_commit_standard.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/engineering/git_commit_standard.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.review_remediation_loop",
+      "workflow_kind": "module",
+      "title": "Review Remediation Loop Workflow",
+      "summary": "Use this workflow to alternate seeded or fresh review findings with remediation passes until the chosen review comes back clean, only blocked, or explicitly iteration-capped.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/review_remediation_loop.md",
+      "phase_type": "execution",
+      "task_family": "review_remediation",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "stalled_iteration",
+        "route_mismatch"
+      ],
+      "trigger_tags": [
+        "review",
+        "remediation",
+        "loop",
+        "alternate",
+        "seeded",
+        "fresh",
+        "findings",
+        "with",
+        "passes",
+        "until",
+        "chosen",
+        "comes",
+        "back",
+        "clean",
+        "only",
+        "blocked",
+        "explicitly",
+        "iteration",
+        "capped",
+        "core",
+        "docs",
+        "standards",
+        "operations",
+        "repository",
+        "maintenance",
+        "standard",
+        "rerun"
+      ],
+      "companion_workflow_ids": [
+        "workflow.review_remediation",
+        "workflow.code_review",
+        "workflow.documentation_review",
+        "workflow.repository_review",
+        "workflow.workflow_system_review",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "core/docs/standards/operations/repository_maintenance_loop_standard.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/operations/repository_maintenance_loop_standard.md"
       ]
     },
     {
@@ -1246,6 +1371,64 @@
         "core/docs/commands/core_python/watchtower_core_query_workflows.md",
         "core/docs/commands/core_python/watchtower_core_route_preview.md",
         "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.adversarial_reviewer",
+      "workflow_kind": "role",
+      "title": "Adversarial Reviewer Role",
+      "summary": "Use this role to apply a contradiction-oriented, false-green-resistant review lens so repository audits challenge claimed protections, prove adjacent boundaries, and surface issues that a proportional default review might leave untested.",
+      "status": "active",
+      "doc_path": "core/workflows/roles/adversarial_reviewer.md",
+      "phase_type": "review",
+      "task_family": "repository_review",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "false_confidence",
+        "hidden_contradiction"
+      ],
+      "trigger_tags": [
+        "adversarial",
+        "reviewer",
+        "role",
+        "apply",
+        "contradiction",
+        "oriented",
+        "false",
+        "green",
+        "resistant",
+        "review",
+        "lens",
+        "repository",
+        "audits",
+        "challenge",
+        "claimed",
+        "protections",
+        "prove",
+        "adjacent",
+        "boundaries",
+        "surface",
+        "issues",
+        "that",
+        "proportional",
+        "default",
+        "might",
+        "leave",
+        "untested"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_inventory_review",
+        "workflow.repository_assessment",
+        "workflow.repository_review",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "composes_module_paths": [
+        "core/workflows/modules/repository_inventory_review.md",
+        "core/workflows/modules/repository_assessment.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/repository_review.md"
       ]
     },
     {

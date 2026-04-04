@@ -30,7 +30,7 @@ Use this workflow to evaluate a code change for correctness, regression risk, ma
    - Review tests, negative coverage, validation strategy, fixtures, and release-risk controls relative to the change risk.
    - Check whether docs, configs, schemas, examples, migrations, or operational guidance were updated when the code change makes them part of the behavior boundary.
 4. Build the findings register.
-   - Record findings by severity and confidence with file or code evidence, impacted scenarios, and the recommended next action.
+   - Record findings by severity and confidence with owning surface, affected paths, governing sources when relevant, observed evidence, why the issue matters, recommended remediation, validation gap, and likely slice boundary.
    - Separate confirmed bugs, broader risks, intentional tradeoffs, open questions, and follow-up validation gaps.
 5. Run a confirmation pass.
    - Re-check the highest-risk paths from a different angle, focusing on touched files, unchanged code that can be broken indirectly, and any surfaces the first pass nearly skipped.
@@ -44,12 +44,12 @@ Use this workflow to evaluate a code change for correctness, regression risk, ma
 - Open questions and follow-up recommendations
 
 ## Outputs
-- A structured code-review report for the change set
+- A findings-first structured code-review report for the change set
 - An explicit coverage boundary plus prioritized findings, risks, and open questions
 - Follow-up validation or remediation recommendations when they are still needed
 
 ## Done When
 - The change set has been reviewed against the requested behavior, repository standards, and the high-risk adjacent surfaces in scope.
 - Findings are tied to code evidence, internal standards, or authoritative external guidance.
-- The review clearly distinguishes confirmed issues, broader risks, intentional tradeoffs, and open questions.
+- The review clearly distinguishes confirmed issues, broader risks, intentional tradeoffs, open questions, and any still-unverified boundaries.
 - A confirmation pass has finished and any remaining blind spots are explicit rather than hidden.

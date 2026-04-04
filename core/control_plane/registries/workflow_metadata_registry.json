@@ -42,6 +42,28 @@
       ]
     },
     {
+      "workflow_id": "workflow.adversarial_reviewer",
+      "phase_type": "review",
+      "task_family": "repository_review",
+      "primary_risks": [
+        "false_confidence",
+        "hidden_contradiction"
+      ],
+      "extra_trigger_tags": [
+        "adversarial",
+        "contradiction",
+        "false_green",
+        "challenge"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_inventory_review",
+        "workflow.repository_assessment",
+        "workflow.repository_review",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.code_implementation",
       "phase_type": "execution",
       "task_family": "engineering",
@@ -75,6 +97,48 @@
       ],
       "companion_workflow_ids": [
         "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.review_remediation",
+      "phase_type": "execution",
+      "task_family": "review_remediation",
+      "primary_risks": [
+        "partial_update",
+        "stale_findings"
+      ],
+      "extra_trigger_tags": [
+        "findings",
+        "remediate",
+        "report",
+        "fix"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.review_remediation_loop",
+      "phase_type": "execution",
+      "task_family": "review_remediation",
+      "primary_risks": [
+        "stalled_iteration",
+        "route_mismatch"
+      ],
+      "extra_trigger_tags": [
+        "loop",
+        "rerun",
+        "clean",
+        "findings"
+      ],
+      "companion_workflow_ids": [
+        "workflow.review_remediation",
+        "workflow.code_review",
+        "workflow.documentation_review",
+        "workflow.repository_review",
+        "workflow.workflow_system_review",
         "workflow.task_handoff_review"
       ]
     },

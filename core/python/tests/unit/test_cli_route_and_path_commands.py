@@ -102,19 +102,63 @@ def test_route_preview_matches_realistic_maintenance_request(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core route preview"
     assert payload["status"] == "ok"
-    assert payload["selected_route_count"] >= 3
-    assert "Repository Review" in task_types
-    assert "Code Validation" in task_types
-    assert "Commit Closeout" in task_types
-    assert "Code Review" not in task_types
-    assert "workflow.repository_review" in workflow_ids
+    assert "Review Remediation" in task_types
+    assert "Repository Review" not in task_types
+    assert "workflow.review_remediation" in workflow_ids
     assert "workflow.code_validation" in workflow_ids
-    assert "workflow.commit_closeout" in workflow_ids
     if _has_task_lifecycle_route():
         assert "Task Lifecycle Management" in task_types
         assert "workflow.task_lifecycle_management" in workflow_ids
     else:
         assert "Task Lifecycle Management" not in task_types
+
+
+def test_route_preview_matches_review_remediation_loop_requests(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "fix the findings from this review and rerun the same review until clean",
+        ],
+    )
+
+    assert result == 0
+    assert {entry["task_type"] for entry in payload["selected_routes"]} == {
+        "Review Remediation Loop"
+    }
+    assert {
+        entry["workflow_id"] for entry in payload["selected_workflows"]
+    } >= {
+        "workflow.review_remediation",
+        "workflow.review_remediation_loop",
+        "workflow.code_validation",
+    }
+
+
+def test_route_preview_matches_adversarial_repository_audits(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "run a full-spectrum adversarial audit of the repository",
+        ],
+    )
+
+    assert result == 0
+    assert {entry["task_type"] for entry in payload["selected_routes"]} == {
+        "Adversarial Repository Review"
+    }
+    assert {
+        entry["workflow_id"] for entry in payload["selected_workflows"]
+    } >= {
+        "workflow.adversarial_reviewer",
+        "workflow.repository_review",
+        "workflow.code_validation",
+    }
 
 
 def test_route_preview_matches_adjacent_boundary_prompts(capsys) -> None:

@@ -1,7 +1,7 @@
 # Repository Review Workflow
 
 ## Purpose
-Use this workflow to synthesize an existing repository review into evidence-backed findings, remediation guidance, and explicit stop-condition evidence.
+Use this workflow to synthesize an existing repository review into a findings-first, evidence-backed report with remediation guidance and explicit stop-condition proof.
 
 ## Use When
 - A repository review has already established review criteria, internal context, repository inventory, and assessment results.
@@ -23,8 +23,8 @@ Use this workflow to synthesize an existing repository review into evidence-back
    - When the review continues a stable theme from earlier passes, keep one review thread, one master findings register, and one closeout boundary instead of starting a new thread for each adjacent same-theme issue.
    - Separate confirmed facts, strong inferences, tentative concerns, and unresolved unknowns.
 2. Build the findings register.
-   - Consolidate the inventory and assessment results into distinct findings by category, severity, confidence, and affected surfaces.
-   - Tie each finding to repository evidence, impacted workflows or users, and whether the issue is same-change repairable or explicit follow-up work.
+   - Consolidate the inventory and assessment results into distinct findings by category, severity, confidence, ownership target, and affected surfaces.
+   - Tie each finding to repository evidence, governing sources when they apply, impacted workflows or users, why the issue matters, recommended remediation, validation needs, and whether the issue is same-change repairable or explicit follow-up work.
 3. Build the remediation sequence.
    - Prioritize issues by severity, repository risk, and user or operator impact.
    - Convert major findings into concrete remediation tasks, prerequisites, and non-recommended simplifications when a tempting refactor would violate foundations or governance.
@@ -32,7 +32,7 @@ Use this workflow to synthesize an existing repository review into evidence-back
    - Re-check the highest-risk areas from a different angle, including direct dependencies, derived surfaces, and review boundaries that could still hide issues.
    - If the active review loop finds a new actionable issue inside the same scope, add it to the findings register and repeat the synthesis.
 5. Prepare the durable review report.
-   - Summarize the scope, standards applied, coverage boundary, findings, remediation plan, and confirmation-pass result in a shape a later contributor can use without replaying the investigation.
+   - Start with the findings ordered by severity, then summarize the scope, standards applied, coverage boundary, remediation plan, and confirmation-pass result in a shape a later contributor can use without replaying the investigation.
 
 ## Data Structure
 - Review scope and coverage map
@@ -44,7 +44,7 @@ Use this workflow to synthesize an existing repository review into evidence-back
 - Confirmation-pass results
 
 ## Outputs
-- A durable repository review report
+- A durable findings-first repository review report
 - A prioritized list of findings, risks, and systemic patterns
 - A remediation plan plus explicit confirmation-pass or remaining-gap status
 
@@ -52,5 +52,5 @@ Use this workflow to synthesize an existing repository review into evidence-back
 - The repository review has been synthesized into a durable report.
 - Findings are tied to explicit standards, clear reasoning, or primary-source guidance.
 - Stale, inconsistent, risky, or unsupported areas are identified.
-- The team has a prioritized path to bring the repository into a coherent and maintainable state.
+- The team has a prioritized path to bring the repository into a coherent and maintainable state without replaying the review.
 - A confirmation pass has finished and either no new actionable issues remain in scope or the remaining gaps are explicit.

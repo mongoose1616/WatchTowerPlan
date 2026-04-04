@@ -27,7 +27,7 @@ Use this workflow to evaluate documentation or standards for accuracy, structure
    - Verify that related command docs, workflow docs, standards, templates, examples, validators, indexes, registries, and query or sync paths describe or enforce the same behavior.
    - If the main issue is implementation-versus-documentation drift or governed-artifact drift, add the dedicated reconciliation workflow instead of handling it only implicitly here.
 4. Build the findings register.
-   - Record findings by severity and confidence with document or artifact evidence, impacted readers or workflows, and the recommended next action.
+   - Record findings by severity and confidence with owning document or artifact family, affected paths, governing sources, observed evidence, why the issue matters, recommended remediation, validation gap, and likely same-change boundary.
    - Separate confirmed issues, intentional explicitness, open questions, and follow-up validation gaps.
 5. Run a confirmation pass.
    - Re-review the highest-risk documents and their direct companion surfaces from a fresh angle for missed stale examples, lookup gaps, or enforcement mismatches.
@@ -41,7 +41,7 @@ Use this workflow to evaluate documentation or standards for accuracy, structure
 - Open questions and follow-up recommendations
 
 ## Outputs
-- A structured documentation or standards review report for the selected scope
+- A findings-first structured documentation or standards review report for the selected scope
 - An explicit coverage boundary plus prioritized findings, risks, and open questions
 - Follow-up refresh or reconciliation recommendations when they are still needed
 

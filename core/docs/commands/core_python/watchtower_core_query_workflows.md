@@ -53,6 +53,16 @@ uv run watchtower-core query workflows --query "successor tasks"
 
 ```sh
 cd core/python
+uv run watchtower-core query workflows --query "fix findings"
+```
+
+```sh
+cd core/python
+uv run watchtower-core query workflows --query "adversarial audit"
+```
+
+```sh
+cd core/python
 uv run watchtower-core query workflows --phase-type reconciliation
 ```
 
@@ -73,6 +83,7 @@ uv run watchtower-core query workflows --reference-path core/docs/references/git
 - Trigger terms come from workflow titles, purpose summaries, retrieval metadata, and task-specific additional-load files, so adjacent route lookups such as `current cli behavior` and `successor tasks` can resolve without exact module names.
 - Workflow-role results publish `composes_module_paths` so role-to-module orchestration is explicit without turning the query surface into a second routing table.
 - Use workflow lookup to distinguish adjacent boundaries before opening the raw module docs: behavior docs versus implementation drift, schema-family coherence, traced planning drift, task-record lifecycle work, and task-phase handoff work.
+- Queries for remediation loops or adversarial audits resolve to dedicated workflow entries instead of forcing the caller to infer those behaviors from generic review modules.
 - If no entries match the requested filters, the command exits successfully and reports that no workflow entries matched.
 
 ## Related Commands
@@ -90,4 +101,4 @@ uv run watchtower-core query workflows --reference-path core/docs/references/git
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At
-- `2026-03-28T23:55:00Z`
+- `2026-04-04T19:40:00Z`

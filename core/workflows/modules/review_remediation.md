@@ -1,0 +1,63 @@
+# Review Remediation Workflow
+
+## Purpose
+Use this workflow to turn an existing review findings set into owning-surface fixes, aligned companion updates, and explicit validation proof without forcing a fresh broad review first.
+
+## Use When
+- Actionable findings already exist in pasted text, a saved report, or the current task context.
+- A review report should be remediated in the owning surfaces rather than merely summarized.
+- The task needs one focused remediation pass before a later handoff, commit-closeout step, or iterative re-review loop.
+
+## Inputs
+- Scoped remediation request
+- Existing review findings, review report, or explicit current-context findings for the same repository scope
+- Current repository state for the cited and analogous surfaces
+- Governing standards, references, command docs, and canonical docs that constrain the affected surfaces
+- Any explicit originating review route, task type, or workflow identity when it is already known
+
+## Additional Files to Load
+- [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md): defines the broad validation baseline that should close remediation work after issue-family fixes land.
+- [git_commit_standard.md](/core/docs/standards/engineering/git_commit_standard.md): defines commit-slice and message expectations when the request explicitly includes commit creation or the active route later merges commit closeout.
+
+## Workflow
+1. Recover the seed findings set.
+   - Prefer explicit pasted findings or a cited saved report over paraphrase.
+   - If no pasted or file-backed findings exist but the current task context already carries explicit findings, normalize the latest relevant findings set instead of forcing a fresh review first.
+   - If a finding is too summary-only to fix safely, reopen the cited surfaces until the issue can be restated with concrete paths, boundary evidence, or governing-surface references.
+2. Normalize the findings into a remediation ledger.
+   - Record one stable issue family for each materially distinct problem, with severity, confidence, ownership target, affected paths or surfaces, governing sources, observed evidence, why it matters, recommended remediation, validation needs, and likely slice boundary.
+   - Merge findings only when the evidence, owning surface, remediation path, and validation story are genuinely the same.
+   - Distinguish actionable findings from blocked items, explicit unknowns, and already-cleared observations instead of flattening them into one bucket.
+3. Choose the owning repair surface and related update scope.
+   - Fix each issue in the owning surface rather than only in the first file the review cited.
+   - Search analogous surfaces for the same pattern and decide whether the issue is local, reusable, or cross-boundary before editing.
+   - Expand the same-change scope when companion docs, tests, schemas, validators, indexes, or command surfaces would otherwise become stale.
+4. Execute remediation by issue family.
+   - Land the narrowest durable fix that removes the root cause instead of only patching the immediate symptom.
+   - If a finding reveals a missing validator, test, standard, or authoring instruction, strengthen that surface in the same pass when it is part of the same behavior boundary.
+   - Keep complete fixes, partial fixes, and blocked items explicit in the ledger as the work progresses.
+5. Validate the repaired state.
+   - Run the narrowest relevant checks after each issue family or logical slice, then run the broader applicable validation baseline for the touched surfaces.
+   - Separate confirmed passing proof from blocked checks, flaky results, environment limits, and still-unverified areas.
+   - If a validation gap remains material, keep it open in the ledger instead of treating the remediation as fully closed.
+6. Prepare closeout and downstream use.
+   - If the task explicitly includes commit intent or the route later merges commit closeout, keep the remediation grouped into logical, reviewable slices and hand the result to the commit-closeout workflow.
+   - Otherwise, keep the slice plan explicit enough that the next contributor can commit or continue the work without reconstructing the remediation logic from scratch.
+
+## Data Structure
+- Seed findings source and any originating review identity recovered from the request, saved report, or current context
+- Remediation ledger keyed by stable issue family with severity, confidence, ownership target, evidence, affected surfaces, remediation status, and validation needs
+- Same-change companion update map for docs, tests, validators, schemas, indexes, registries, or command surfaces touched by the remediation
+- Logical slice or commit plan, including whether the current task is only preparing slices or also closing them out
+
+## Outputs
+- Remediated owning surfaces and same-change companion updates for the actionable findings in scope
+- Validation results tied back to the remediated issue families
+- An explicit remediation ledger showing fixed, partially fixed, blocked, cleared, and still-unverified findings
+- A logical slice plan or commit-closeout-ready boundary when the task needs downstream commit handling
+
+## Done When
+- Every actionable finding in scope has been remediated or explicitly marked blocked with rationale.
+- Owning surfaces and required companion surfaces no longer contradict the repaired state.
+- The remediation has passing proof for the relevant checks or an explicit record of the remaining validation gap.
+- The next contributor can see what was fixed, what remains open, and how the work should be sliced without replaying the entire investigation.
