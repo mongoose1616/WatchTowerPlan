@@ -116,7 +116,7 @@ def _iter_repo_local_host_command_parser_specs(
     # reflects the target source tree rather than stale watchtower_host modules.
     with _repo_local_watchtower_host_imports(repo_root):
         introspection_module = import_module("watchtower_host.cli.introspection")
-        iter_specs = getattr(introspection_module, "iter_host_command_parser_specs")
+        iter_specs = introspection_module.iter_host_command_parser_specs
         return tuple(iter_specs(loader))
 
 

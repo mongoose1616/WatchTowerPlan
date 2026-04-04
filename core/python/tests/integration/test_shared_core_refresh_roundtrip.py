@@ -236,11 +236,15 @@ def _run_shared_core_refresh_cycle(
     assert sync_command_index_payload["command"] == "watchtower-core sync command-index"
     assert sync_command_index_payload["status"] == "ok"
 
-    command_index = json.loads(
-        (
-            recipient_root / "core" / "control_plane" / "indexes" / "commands" / "command_index.json"
-        ).read_text(encoding="utf-8")
+    command_index_path = (
+        recipient_root
+        / "core"
+        / "control_plane"
+        / "indexes"
+        / "commands"
+        / "command_index.json"
     )
+    command_index = json.loads(command_index_path.read_text(encoding="utf-8"))
     indexed_commands = {
         entry["command"]
         for entry in command_index["entries"]
