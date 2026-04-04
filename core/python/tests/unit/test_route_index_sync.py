@@ -347,7 +347,8 @@ def test_route_preview_service_matches_realistic_maintenance_request() -> None:
 
     task_types = {match.task_type for match in result.selected_routes}
     workflow_ids = {workflow.workflow_id for workflow in result.selected_workflows}
-    assert route_task_types["route.repository_review"] in task_types
+    assert route_task_types["route.review_remediation"] in task_types
+    assert route_task_types["route.repository_review"] not in task_types
     assert route_task_types["route.code_validation"] in task_types
     assert route_task_types["route.commit_closeout"] in task_types
     if "route.task_lifecycle_management" in route_task_types:
@@ -356,7 +357,8 @@ def test_route_preview_service_matches_realistic_maintenance_request() -> None:
         assert "Task Lifecycle Management" not in task_types
     assert "Code Review" not in task_types
     assert "Task Phase Transition" not in task_types
-    assert "workflow.repository_review" in workflow_ids
+    assert "workflow.review_remediation" in workflow_ids
+    assert "workflow.repository_review" not in workflow_ids
     assert "workflow.code_validation" in workflow_ids
     assert "workflow.commit_closeout" in workflow_ids
     if "route.task_lifecycle_management" in route_task_types:
@@ -413,19 +415,20 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
             route_task_types["route.documentation_refresh"],
             route_task_types["route.foundations_alignment_review"],
         },
-        (
-            "Review one last time /external/repository/report and the files inside for "
-            "final review. The loop will be: read one file, verify the issues that "
-            "are captured are accurate and still validate, if they are, start as "
-            "many initiative as needed to fix it, use the standard end to end task "
-            "cycle."
-        ): {
-            route_task_types["route.repository_review"],
-            route_task_types["route.code_validation"],
-            *(
-                [route_task_types["route.task_lifecycle_management"]]
-                if "route.task_lifecycle_management" in route_task_types
-                else []
+            (
+                "Review one last time /external/repository/report and the files inside for "
+                "final review. The loop will be: read one file, verify the issues that "
+                "are captured are accurate and still validate, if they are, start as "
+                "many initiative as needed to fix it, use the standard end to end task "
+                "cycle."
+            ): {
+                route_task_types["route.review_remediation"],
+                route_task_types["route.review_remediation_loop"],
+                route_task_types["route.code_validation"],
+                *(
+                    [route_task_types["route.task_lifecycle_management"]]
+                    if "route.task_lifecycle_management" in route_task_types
+                    else []
             ),
         },
         "build check": {route_task_types["route.code_validation"]},

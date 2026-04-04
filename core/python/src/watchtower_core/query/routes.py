@@ -64,6 +64,17 @@ _TASK_LIFECYCLE_GENERIC_KEYWORDS = {
     "create tracked tasks",
     "tasks",
 }
+_REVIEW_REMEDIATION_TASK_TYPES = {
+    "Review Remediation",
+    "Review Remediation Loop",
+}
+_REVIEW_REMEDIATION_SIGNAL_TOKENS = {
+    "finding",
+    "fix",
+    "issue",
+    "remediate",
+    "report",
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -285,16 +296,26 @@ def _apply_boundary_filters(
     matches: list[RoutePreviewMatch],
     request_tokens: tuple[str, ...],
 ) -> list[RoutePreviewMatch]:
-    if "successor" not in request_tokens:
-        return matches
+    filtered = matches
 
-    filtered: list[RoutePreviewMatch] = []
-    for match in matches:
-        if match.task_type == "Task Lifecycle Management" and set(match.matched_keywords).issubset(
-            _TASK_LIFECYCLE_GENERIC_KEYWORDS
-        ):
-            continue
-        filtered.append(match)
+    if "successor" in request_tokens:
+        filtered = [
+            match
+            for match in filtered
+            if not (
+                match.task_type == "Task Lifecycle Management"
+                and set(match.matched_keywords).issubset(_TASK_LIFECYCLE_GENERIC_KEYWORDS)
+            )
+        ]
+
+    if (
+        any(match.task_type in _REVIEW_REMEDIATION_TASK_TYPES for match in filtered)
+        and _REVIEW_REMEDIATION_SIGNAL_TOKENS.intersection(request_tokens)
+    ):
+        filtered = [
+            match for match in filtered if match.task_type != "Repository Review"
+        ]
+
     return filtered
 
 
