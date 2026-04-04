@@ -1654,6 +1654,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/core_python/watchtower_core_git.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for local branch and worktree hygiene commands.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_git_hygiene.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Evaluates local branch and worktree old-state status and can apply conservative cleanup.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/commands/core_python/watchtower_core_pack_apply_core.md",
       "kind": "file",
       "surface_kind": "command_doc",

@@ -291,6 +291,38 @@
       ]
     },
     {
+      "route_id": "route.branch_hygiene_review",
+      "task_type": "Branch Hygiene Review",
+      "trigger_keywords": [
+        "branch hygiene",
+        "git hygiene",
+        "branch cleanup",
+        "worktree cleanup",
+        "stale branches",
+        "stale worktrees",
+        "old branches",
+        "old worktrees",
+        "delete local branches",
+        "remove worktrees"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.branch_hygiene_review",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/branch_hygiene_review.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.clarification",
       "task_type": "Clarification",
       "trigger_keywords": [

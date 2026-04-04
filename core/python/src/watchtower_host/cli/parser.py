@@ -29,6 +29,7 @@ def build_parser(
             "uv run watchtower-core doctor",
             "uv run watchtower-core benchmark run --format json",
             "uv run watchtower-core telemetry delete --older-than-days 7 --format json",
+            "uv run watchtower-core git hygiene --format json",
             "uv run watchtower-core pack list --format json",
             "uv run watchtower-core pack describe --format json",
             "uv run watchtower-core pack validate --format json",

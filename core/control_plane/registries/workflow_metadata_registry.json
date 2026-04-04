@@ -164,6 +164,27 @@
       ]
     },
     {
+      "workflow_id": "workflow.branch_hygiene_review",
+      "phase_type": "execution",
+      "task_family": "git_hygiene",
+      "primary_risks": [
+        "stale_local_state",
+        "unsafe_cleanup"
+      ],
+      "extra_trigger_tags": [
+        "branch",
+        "worktree",
+        "cleanup",
+        "git",
+        "hygiene"
+      ],
+      "companion_workflow_ids": [
+        "workflow.current_state_inspection",
+        "workflow.commit_closeout",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.commit_closeout",
       "phase_type": "closeout",
       "task_family": "commit_management",

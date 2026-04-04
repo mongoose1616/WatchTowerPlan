@@ -5,6 +5,55 @@
   "status": "active",
   "entries": [
     {
+      "workflow_id": "workflow.branch_hygiene_review",
+      "workflow_kind": "module",
+      "title": "Branch Hygiene Review Workflow",
+      "summary": "Use this workflow to evaluate whether local branches and temporary worktrees are still active landing paths, and to apply or defer cleanup explicitly using the repository-standard old-state rules.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/branch_hygiene_review.md",
+      "phase_type": "execution",
+      "task_family": "git_hygiene",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "stale_local_state",
+        "unsafe_cleanup"
+      ],
+      "trigger_tags": [
+        "branch",
+        "hygiene",
+        "review",
+        "evaluate",
+        "whether",
+        "local",
+        "branches",
+        "temporary",
+        "worktrees",
+        "are",
+        "still",
+        "active",
+        "landing",
+        "paths",
+        "apply",
+        "defer",
+        "cleanup",
+        "explicitly",
+        "using",
+        "repository",
+        "standard",
+        "old",
+        "state",
+        "rules",
+        "worktree",
+        "git"
+      ],
+      "companion_workflow_ids": [
+        "workflow.current_state_inspection",
+        "workflow.commit_closeout",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.clarification",
       "workflow_kind": "module",
       "title": "Clarification Workflow",

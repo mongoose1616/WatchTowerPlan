@@ -8,6 +8,7 @@
 - Use `watchtower_core_benchmark.md` when the main question is deliberate performance benchmarking rather than operational telemetry.
 - Use `watchtower_core_telemetry.md` when the main question is runtime telemetry cleanup or sink hygiene.
 - Use `watchtower_core_route.md` when the main question is how a request maps to workflow documents.
+- Use `watchtower_core_git.md` when the main question is stale branch review, worktree cleanup, or local git hygiene automation.
 - Use `watchtower_core_query.md` when the main question is which shared read-only lookup surface to use.
 - Use `watchtower_core_query_authority.md` when the first question is which governed surface is canonical.
 - Use `watchtower_core_query_templates.md` before drafting or materially restructuring governed docs whose shape is already defined.
@@ -30,6 +31,8 @@
 | `core/docs/commands/core_python/watchtower_core.md` | Human-readable page for the root `watchtower-core` command and shared CLI behavior. |
 | `core/docs/commands/core_python/watchtower_core_benchmark.md` | Entry page for governed reusable-core benchmark commands. |
 | `core/docs/commands/core_python/watchtower_core_benchmark_run.md` | Runs one governed benchmark suite and can retain the resulting benchmark record. |
+| `core/docs/commands/core_python/watchtower_core_git.md` | Entry page for local branch and worktree hygiene commands. |
+| `core/docs/commands/core_python/watchtower_core_git_hygiene.md` | Evaluates local branch and worktree old-state status and can apply conservative cleanup. |
 | `core/docs/commands/core_python/watchtower_core_telemetry.md` | Entry page for local runtime telemetry cleanup commands. |
 | `core/docs/commands/core_python/watchtower_core_telemetry_delete.md` | Deletes or previews retained runtime telemetry files under one telemetry root. |
 | `core/docs/commands/core_python/watchtower_core_route.md` | Entry page for advisory route preview commands. |

@@ -1,7 +1,7 @@
 # `watchtower-core`
 
 ## Summary
-This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, telemetry cleanup, benchmarking, hosted-pack inspection, release gating, pack-owned orchestration, query, sync, and validation flows.
+This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, local git hygiene, routing, telemetry cleanup, benchmarking, hosted-pack inspection, release gating, pack-owned orchestration, query, sync, and validation flows.
 
 ## Use When
 - You need the top-level command map before choosing a narrower command group.
@@ -23,7 +23,7 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to a command group such as `doctor`, `route`, `benchmark`, `telemetry`, `pack`, `release`, `<pack-namespace>`, `query`, `sync`, or `validate`.
+- `<command>`: Dispatch to a command group such as `doctor`, `git`, `route`, `benchmark`, `telemetry`, `pack`, `release`, `<pack-namespace>`, `query`, `sync`, or `validate`.
 - `-h`, `--help`: Show the root command help text.
 - No root-only flags exist beyond help and subcommand selection.
 
@@ -41,6 +41,11 @@ uv run watchtower-core route preview --request "do a documentation review of the
 ```sh
 cd core/python
 uv run watchtower-core benchmark run --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core git hygiene --format json
 ```
 
 ```sh
@@ -91,6 +96,7 @@ uv run watchtower-core validate all --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core route` | Advisory route preview for turning a request into workflow documents. |
+| `watchtower-core git` | Local branch and temporary-worktree hygiene evaluation plus conservative cleanup. |
 | `watchtower-core benchmark` | Governed reusable-core performance benchmarking and retained benchmark record generation. |
 | `watchtower-core telemetry` | Governed dry-run-first cleanup for local runtime telemetry sinks under one resolved pack machine root. |
 | `watchtower-core pack` | Inspects hosted-pack registry entries, runtime manifests, and pack-contract validation. |
@@ -106,4 +112,4 @@ uv run watchtower-core validate all --format json
 - `core/python/src/watchtower_host/cli/registry.py`
 
 ## Updated At
-- `2026-03-31T07:15:00Z`
+- `2026-04-04T22:50:00Z`

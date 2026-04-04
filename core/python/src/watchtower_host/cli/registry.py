@@ -51,6 +51,7 @@ QUERY_RECORDS_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_records_f
 BENCHMARK_FAMILY_PATH = "core/python/src/watchtower_host/cli/benchmark_family.py"
 PACK_FAMILY_HANDLERS_PATH = "core/python/src/watchtower_host/cli/pack_handlers.py"
 TELEMETRY_FAMILY_PATH = "core/python/src/watchtower_host/cli/telemetry_family.py"
+GIT_FAMILY_PATH = "core/python/src/watchtower_host/cli/git_family.py"
 
 
 def _register_doctor_family(subparsers: argparse._SubParsersAction) -> None:
@@ -81,6 +82,12 @@ def _register_telemetry_family(subparsers: argparse._SubParsersAction) -> None:
     from watchtower_host.cli.telemetry_family import register_telemetry_family
 
     register_telemetry_family(subparsers)
+
+
+def _register_git_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.git_family import register_git_family
+
+    register_git_family(subparsers)
 
 
 def _register_pack_family(subparsers: argparse._SubParsersAction) -> None:
@@ -136,6 +143,15 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         implementation_path=TELEMETRY_FAMILY_PATH,
         subcommand_implementation_paths=(
             ("delete", "core/python/src/watchtower_host/cli/telemetry_handlers.py"),
+        ),
+    ),
+    CommandGroupSpec(
+        name="git",
+        registrar=_register_git_family,
+        doc_root="core/docs/commands/core_python",
+        implementation_path=GIT_FAMILY_PATH,
+        subcommand_implementation_paths=(
+            ("hygiene", "core/python/src/watchtower_host/cli/git_handlers.py"),
         ),
     ),
     CommandGroupSpec(

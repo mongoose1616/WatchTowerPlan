@@ -10,6 +10,7 @@ Small shared helpers that keep low-level cross-package utilities out of higher-l
 
 ## Key Surfaces
 - `exception_formatting.py`: Shared helper for stable human-readable exception detail strings in operator and validation output.
+- `git_hygiene.py`: Local git branch and worktree evaluation helpers used by hygiene-oriented CLI commands.
 - `module_exports.py`: Shared package-root lazy-export and fail-closed guard helpers used by runtime namespace `__init__` modules.
 - `timestamps.py`: RFC 3339 UTC timestamp helper.
 

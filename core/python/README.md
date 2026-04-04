@@ -93,6 +93,7 @@
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
 - `uv run watchtower-core benchmark run --format json`
+- `uv run watchtower-core git hygiene --format json`
 - `uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior"`
 - `uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json`
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json`
@@ -131,6 +132,7 @@
 ## Command Docs
 - Start with [README.md](/core/docs/commands/core_python/README.md) for command-doc navigation.
 - Open [watchtower_core.md](/core/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
+- Open [watchtower_core_git.md](/core/docs/commands/core_python/watchtower_core_git.md) when you need stale branch review, worktree cleanup, or the local git hygiene command family.
 - Open [watchtower_core_route.md](/core/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
 - Open [watchtower_core_validate_suite.md](/core/docs/commands/core_python/watchtower_core_validate_suite.md) when you need the pack-declared suite runtime and `--pack-settings-path` behavior.
 - Use the group pages for deeper browsing:
@@ -176,6 +178,7 @@
 - Use `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` when the change touches one hosted pack directly.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration ../../<pack-root>/python/tests -q` when one change spans both shared core and one hosted pack.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before shared root sync commands, pack-owned sync-all commands, or `validate all`.
+- `uv run watchtower-core git hygiene --format json` is the read-first local branch and worktree cleanup review path, and `--apply` stays limited to conservative cleanup actions.
 - `uv run watchtower-core pack export --output-root <staged-export> --include-pack <slug> --overwrite --format json` is the one-command repository-bundle export path for customer/bootstrap handoff. When the selected pack declares `export_cleanup`, the staged export may also rebuild clean pack-local derived surfaces after pack-local history is scrubbed.
 - `uv run watchtower-core pack export --output-root <pack-bundle> --include-pack <slug> --pack-only --overwrite --format json` stages a scrubbed additive pack bundle without shared core.
 - `uv run watchtower-core release check --output-root <path> ... --format json` is the preferred local release gate when you want dirty-worktree protection, the broad validation baseline, changed-schema checks, and final staged export creation in one command.

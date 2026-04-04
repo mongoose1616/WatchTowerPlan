@@ -97,6 +97,48 @@
       "notes": "Current behavior is a minimal scaffold-level smoke check with no mutation."
     },
     {
+      "command_id": "command.watchtower_core.git",
+      "command": "watchtower-core git",
+      "summary": "Inspect local branch and worktree hygiene using the repository's current git-workflow policy.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_git.md",
+      "synopsis": "uv run watchtower-core git [-h] <git_command> ...",
+      "implementation_path": "core/python/src/watchtower_host/cli/git_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "git"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.git.hygiene",
+      "command": "watchtower-core git hygiene",
+      "summary": "Evaluate local branches and worktrees against the repository's origin-aware branch and cleanup policy.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_git_hygiene.md",
+      "synopsis": "uv run watchtower-core git hygiene [-h] [--repo-root REPO_ROOT] [--base-ref BASE_REF] [--inactive-days INACTIVE_DAYS] [--override-path OVERRIDE_PATH] [--apply] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/git_handlers.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.git",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "git",
+        "hygiene"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.pack",
       "command": "watchtower-core pack",
       "summary": "Inspect hosted pack registry entries, scaffold new hosted packs, bootstrap shared registry and workspace wiring, and validate pack-interface contracts against the governed pack registry plus runtime manifest.",

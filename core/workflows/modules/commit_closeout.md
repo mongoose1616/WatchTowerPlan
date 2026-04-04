@@ -13,6 +13,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 - Completed change set
 - `git status` and staged diff context
 - Current branch identity when the work is happening on a bounded branch
+- Current worktree identity when the change is happening from a non-primary or temporary worktree
 - Relevant task summary, acceptance criteria, or rationale for the change
 - Current repository-local task or trace outcome when the change is non-trivial
 - Internal standards and canonical references applied
@@ -28,6 +29,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 1. Inspect the change set and confirm commit readiness.
    - Review `git status`, staged files, and the staged diff.
    - When the work is on a bounded branch, review `git branch --show-current` and confirm the branch name still reflects the git-workflow standard's origin-aware branch contract instead of a stale or ambiguous source context.
+   - When the work is happening from a non-primary or temporary worktree, review `git worktree list` and confirm whether that worktree still needs to exist after the current closeout boundary.
    - Verify that the intended change set is complete enough to close out.
    - Check whether unresolved errors, validation failures, or decision blockers should prevent committing.
    - Confirm that the commit represents one logical change or split the work before proceeding.
@@ -43,10 +45,16 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
    - Confirm the message accurately matches the staged change set.
    - Use the validated message to create the Git commit when requested.
    - If commit creation is deferred or fails, record the prepared message or failure clearly.
+4. Record branch and worktree cleanup status.
+   - Apply the git-workflow standard's old-state evaluation before deciding whether local cleanup is now expected. Duration is only one signal; also inspect merge state, unique remaining diff, staged or uncommitted work, active review or handoff state, supersession by another branch, and any recorded defer reason.
+   - When automation helps, preview the decision with `uv run watchtower-core git hygiene --format json` and use `--apply` only when the conservative action set matches the intended closeout boundary.
+   - If the bounded branch or temporary worktree is no longer needed after the current closeout boundary, clean it up when safe and in scope.
+   - If review, merge, comparison, or handoff still depends on that local branch or worktree, record the explicit deferred-cleanup reason instead of leaving the status implicit.
 
 ## Data Structure
 - Change set summary
 - Current branch identity and readiness status when applicable
+- Current worktree identity and cleanup status when applicable
 - Commit readiness status
 - Governing commit standard
 - Chosen type and scope
@@ -59,10 +67,12 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 - A repository-compliant Git commit or a validated commit message draft
 - An explicit record of the standard used to govern the commit
 - An explicit record of commit validation checks applied
+- An explicit record of branch or worktree cleanup status when those local surfaces are part of the closeout boundary
 - An explicit record of any commit blockers, deferrals, or follow-up work
 
 ## Done When
 - The change set has been evaluated for commit readiness.
 - The Git commit standard has been applied to the commit message.
 - A valid commit has been created or the commit has been explicitly deferred or blocked with a recorded reason.
+- Branch and worktree cleanup status is explicit when those local surfaces are part of the closeout boundary.
 - The closeout result is clear enough for downstream handoff or follow-up.
