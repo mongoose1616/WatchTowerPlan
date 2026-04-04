@@ -89,7 +89,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manif
 - `list` reports the effective hosted-pack runtime view. In steady state that matches the shared registry; during copied-core bring-up it may also include runtime-only packs discovered from valid local manifests.
 - `describe` combines the effective runtime entry plus the pack-owned runtime manifest for one hosted pack.
 - `extract-core` stages a donor-neutral shared-core bundle for engineering reuse and validates it against the engineering-core portability contract.
-- `apply-core` validates one staged engineering extract and applies its `core/` tree into the current repository while preserving recipient-local `.venv` and cache residue.
+- `apply-core` validates one staged engineering extract, applies its `core/` tree into the current repository, preserves recipient-local `.venv` and cache residue, and rehydrates live recipient hosted-pack registry and workspace wiring so donor-specific environment state does not replace local pack wiring.
 - `export` stages either a portability-clean repository bundle or a portability-clean pack-only bundle, depending on whether `--pack-only` is used.
 - `release check` remains the preferred one-shot local gate when you want dirty-worktree protection and broad validation wrapped around export instead of calling `export` directly.
 - `scaffold` renders the pack-owned starter files for one new hosted pack without mutating shared host surfaces.
@@ -118,4 +118,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manif
 - `core/control_plane/registries/pack_registry.json`
 
 ## Updated At
-- `2026-04-04T17:10:00Z`
+- `2026-04-04T22:10:00Z`

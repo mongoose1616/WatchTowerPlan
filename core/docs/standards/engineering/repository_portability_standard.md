@@ -11,7 +11,7 @@ tags:
   - "release"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-04-04T03:05:00Z"
+updated_at: "2026-04-04T22:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -56,7 +56,7 @@ Keep downstream adoption and customer handoff safe by defining the difference be
   - Core-plus-selected-pack bootstrap output for a consuming repository that intentionally carries one or more hosted packs.
   - Pack-only bundle output for additive handoff into a compatible consuming repository that already has shared core or will receive it separately.
 - `watchtower-core pack extract-core --output-root <path> ...` is the preferred donor-side path for engineering repo-to-repo `core/` refresh. It stages shared `core/` plus the minimal portable root shell, strips donor hosted-pack wiring, preserves shared engineering surfaces such as `core/python/tests/**`, and validates the staged result against the engineering shared-core portability contract.
-- `watchtower-core pack apply-core --source-root <path> --write` is the preferred recipient-side apply path for engineering repo-to-repo `core/` refresh. It replaces governed `core/**` content from the staged extract while preserving recipient-local developer residue such as `.venv` and cache directories.
+- `watchtower-core pack apply-core --source-root <path> --write` is the preferred recipient-side apply path for engineering repo-to-repo `core/` refresh. It replaces governed `core/**` content from the staged extract while preserving recipient-local developer residue such as `.venv` and cache directories and rehydrating live recipient hosted-pack registry and workspace wiring.
 - Shared-core tests, docs, and workflow metadata that survive engineering extract must remain donor-neutral. When those surfaces need pack-aware expectations, derive them from activated `pack_settings.json`, declared surfaces, merged registries, and repository-relative pack roots instead of hard-coding one donor pack's validator IDs, workflow IDs, rendered-surface IDs, or tracking filenames.
 - Shared-core tests must not assume that one concrete donor pack root such as `plan/` exists in every consuming repository. If a scenario truly depends on one live pack root, keep that test under the owning pack root or gate it explicitly so the shared-core suite still passes when another repository refreshes `core/` without that pack.
 - Core-only bootstrap may retain shared `core/` source and root routing material, but it must not leave shared registry, workspace, or discovery metadata pointing at omitted donor packs.
@@ -64,6 +64,7 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - Core-plus-selected-pack bootstrap may retain only the selected pack roots plus the shared metadata updated to exactly that pack set.
 - Pack-only bundle output may retain only the selected pack roots. It must not include shared `core/`, and the recipient must run `watchtower-core pack bootstrap` after copying the bundle into a compatible core repository.
 - `watchtower-core pack bootstrap --replace-hosted-packs --write` reconciles the selected pack set into the shared hosted-pack registry, shared `core/python` workspace metadata, shared discovery indexes, and the selected pack's deterministic `sync all` slice when the pack declares it and the workspace is ready. It does not by itself purge donor records, tests, fixtures, internal assessments, or customer-release artifacts.
+- Engineering shared-core refresh must keep donor-neutral shared source transfer separate from recipient-local hosted-pack environment state. Live recipient hosted-pack registry entries and live `core/python` pack workspace registrations should survive `apply-core`; donor-specific registry entries, donor-specific workspace sources, stale lockfiles, and dead local registrations should not.
 - Treat `watchtower-core pack bootstrap --replace-hosted-packs --write --sync-extra dev` as the normal recipient-side follow-on after copying an engineering shared-core extract into place, unless the recipient intentionally defers workspace sync.
 - If a recipient repository still fails after `apply-core` because a shared-core test or doc names donor-pack surfaces directly, treat that as a donor shared-core portability defect first. Fix the donor shared core and regenerate the extract instead of carrying recipient-only normalization.
 - `watchtower-core pack export --output-root <path> ...` is the preferred staged handoff path because it copies only allowlisted source roots, scrubs default customer-release exclusions, runs any declared pack-owned `export_cleanup` hooks needed to remove pack-local live history, replace scrubbed-but-still-governed files with empty valid placeholders when docs or validators still reference them, or rebuild clean derived surfaces, reconciles the staged shared pack set when shared core is present, and then validates the staged output.
@@ -132,4 +133,4 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 
 ## Updated At
-- `2026-04-04T03:05:00Z`
+- `2026-04-04T22:10:00Z`

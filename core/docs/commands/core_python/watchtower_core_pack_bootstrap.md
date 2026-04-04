@@ -99,10 +99,10 @@ uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manif
 Use this start-up flow when a recipient repository copied `core/` exactly from a donor repository and now needs to replace the donor's hosted-pack wiring with its own pack.
 
 1. In the donor repository, prefer `watchtower-core pack extract-core --output-root <path> --overwrite --format json` instead of a raw `core/` copy when you control the source repository.
-2. In the recipient repository, run `watchtower-core pack apply-core --source-root <path> --write --format json` to replace the local `core/` tree from the staged extract while preserving local `.venv` and cache residue.
+2. In the recipient repository, run `watchtower-core pack apply-core --source-root <path> --write --format json` to replace the local `core/` tree from the staged extract while preserving local `.venv` and cache residue and rehydrating any live recipient pack wiring already present in the repository.
 3. Confirm `uv` is installed and available on `PATH`. If not, install it first by following [uv_reference.md](/core/docs/references/uv_reference.md) or the onboarding steps in [core/python/README.md](/core/python/README.md), then verify with `uv --version`.
 4. Author or scaffold the recipient pack root and confirm its `pack_settings.json` plus `pack_runtime_manifest.json` are valid.
-5. Run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --sync-extra dev --format json`.
+5. Run `watchtower-core pack bootstrap --pack-settings-path <recipient>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --sync-extra dev --format json`. Even though `apply-core` rehydrates live recipient pack registry and workspace wiring, bootstrap remains the authoritative step for shared validation, exact pack replacement, workspace sync, and pack-local `sync all`.
 6. On the normal path, bootstrap now materializes the recipient pack's declared `sync all` slice automatically after shared workspace reconciliation. No extra manual pack-local sync step should be needed.
 7. If copied-core validation still fails because a shared-core test or doc names donor-pack validators, workflows, rendered surfaces, or tracking files directly, stop and fix the donor shared core before continuing. `pack bootstrap` only reconciles recipient hosted-pack wiring; it does not convert donor-specific shared-core assertions into recipient-owned ones.
 8. If the recipient pack publishes a pack-owned foundations view such as `<pack>/docs/foundations/**`, copy `core/docs/foundations/**` into that pack-owned root and adapt the pack-local wording before final validation.
@@ -128,4 +128,4 @@ Use this start-up flow when a recipient repository copied `core/` exactly from a
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-04-04T17:10:00Z`
+- `2026-04-04T22:10:00Z`

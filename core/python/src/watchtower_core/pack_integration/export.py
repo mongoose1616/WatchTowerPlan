@@ -22,7 +22,13 @@ from watchtower_core.pack_integration.runtime import load_active_pack_integratio
 from watchtower_core.pack_integration.workspace_registration import (
     CORE_PYPROJECT_RELATIVE_PATH,
     CORE_UV_LOCK_RELATIVE_PATH,
+    CorePythonWorkspaceRegistration,
+    hosted_pack_workspace_registrations,
     reconcile_core_python_workspace_pyproject,
+)
+from watchtower_core.sync.cache import (
+    finalize_document_sync_cache,
+    prepare_document_sync_cache,
 )
 from watchtower_core.sync.foundation_index import FoundationIndexSyncService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
@@ -191,7 +197,24 @@ class EngineeringCoreApplyResult:
     changed_paths: tuple[str, ...]
     deleted_paths: tuple[str, ...]
     preserved_paths: tuple[str, ...]
+    rehydrated_paths: tuple[str, ...]
     wrote: bool
+
+
+@dataclass(frozen=True, slots=True)
+class _RecipientHostedPackState:
+    """Recipient-local hosted-pack state that must survive shared-core apply."""
+
+    pack_registry_entries: tuple[dict[str, object], ...] = ()
+    workspace_registrations: tuple[CorePythonWorkspaceRegistration, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class _RecipientHostedPackRehydrationResult:
+    """Summary of recipient-local hosted-pack state restored after apply."""
+
+    changed_paths: tuple[str, ...]
+    rehydrated_paths: tuple[str, ...]
 
 
 def export_hosted_repository(
@@ -233,9 +256,7 @@ def export_hosted_repository(
         output_root,
         selected_pack_roots=tuple(selected_pack_roots),
     )
-    export_scope = (
-        PACK_BUNDLE_EXPORT_SCOPE if request.pack_only else REPOSITORY_EXPORT_SCOPE
-    )
+    export_scope = PACK_BUNDLE_EXPORT_SCOPE if request.pack_only else REPOSITORY_EXPORT_SCOPE
     cleanup_scrubbed_paths, cleanup_changed_paths = _run_pack_export_cleanup_hooks(
         repo_root=resolved_repo_root,
         output_root=output_root,
@@ -272,7 +293,7 @@ def export_hosted_repository(
             changed_paths.update(_scrub_all_hosted_pack_wiring(output_root))
             workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
 
-        rebuild_shared_discovery_surfaces(output_root)
+        rebuild_shared_discovery_surfaces(output_root, enable_runtime_cache=False)
         changed_paths.update(
             {
                 "core/control_plane/indexes/commands/command_index.json",
@@ -283,7 +304,7 @@ def export_hosted_repository(
                 "core/control_plane/indexes/routes/route_index.json",
             }
         )
-        _rebuild_foundation_index(output_root)
+        _rebuild_foundation_index(output_root, enable_runtime_cache=False)
         changed_paths.add("core/control_plane/indexes/foundations/foundation_index.json")
 
         export_loader = ControlPlaneLoader(output_root)
@@ -306,9 +327,7 @@ def export_hosted_repository(
         scope=export_scope,
     )
     default_pack_slug = (
-        None
-        if request.pack_only or not normalized_pack_slugs
-        else normalized_pack_slugs[0]
+        None if request.pack_only or not normalized_pack_slugs else normalized_pack_slugs[0]
     )
     return PackExportResult(
         output_root=str(output_root),
@@ -348,7 +367,7 @@ def extract_engineering_core(
     changed_paths = _scrub_all_hosted_pack_wiring(output_root)
     workspace_lock_removed = False
     if changed_paths:
-        rebuild_shared_discovery_surfaces(output_root)
+        rebuild_shared_discovery_surfaces(output_root, enable_runtime_cache=False)
         changed_paths.update(
             {
                 "core/control_plane/indexes/commands/command_index.json",
@@ -359,7 +378,7 @@ def extract_engineering_core(
                 "core/control_plane/indexes/routes/route_index.json",
             }
         )
-        _rebuild_foundation_index(output_root)
+        _rebuild_foundation_index(output_root, enable_runtime_cache=False)
         changed_paths.add("core/control_plane/indexes/foundations/foundation_index.json")
         if CORE_PYPROJECT_RELATIVE_PATH in changed_paths:
             workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
@@ -391,8 +410,7 @@ def apply_engineering_core_extract(
     source_core_root = source_root / "core"
     if not source_core_root.is_dir():
         raise ValueError(
-            "Engineering core apply source is missing the staged core/ directory: "
-            f"{source_root}"
+            f"Engineering core apply source is missing the staged core/ directory: {source_root}"
         )
 
     readiness_result = PortabilityValidationService().validate(
@@ -406,11 +424,20 @@ def apply_engineering_core_extract(
         )
 
     target_core_root = resolved_repo_root / "core"
+    recipient_state = _load_recipient_hosted_pack_state(resolved_repo_root)
     changed_paths, deleted_paths, preserved_paths = _apply_core_tree(
         source_core_root=source_core_root,
         target_core_root=target_core_root,
         write=request.write,
     )
+    rehydrated_paths: tuple[str, ...] = ()
+    if request.write:
+        rehydration = _rehydrate_recipient_hosted_pack_state(
+            repo_root=resolved_repo_root,
+            recipient_state=recipient_state,
+        )
+        changed_paths = tuple(sorted(set(changed_paths) | set(rehydration.changed_paths)))
+        rehydrated_paths = rehydration.rehydrated_paths
     return EngineeringCoreApplyResult(
         source_root=str(source_root),
         source_core_root=str(source_core_root),
@@ -419,8 +446,169 @@ def apply_engineering_core_extract(
         changed_paths=changed_paths,
         deleted_paths=deleted_paths,
         preserved_paths=preserved_paths,
+        rehydrated_paths=rehydrated_paths,
         wrote=request.write,
     )
+
+
+def _load_recipient_hosted_pack_state(repo_root: Path) -> _RecipientHostedPackState:
+    pack_registry_entries: tuple[dict[str, object], ...] = ()
+    pack_registry_path = repo_root / PACK_REGISTRY_PATH
+    if pack_registry_path.exists():
+        document = json.loads(pack_registry_path.read_text(encoding="utf-8"))
+        raw_packs = document.get("packs")
+        if not isinstance(raw_packs, list):
+            raise ValueError("Recipient pack registry document is missing its packs list.")
+        normalized_entries: list[dict[str, object]] = []
+        for entry in raw_packs:
+            if not isinstance(entry, dict):
+                raise ValueError("Recipient pack registry contains a non-object pack entry.")
+            if _pack_registry_entry_points_to_live_surface(repo_root, entry):
+                normalized_entries.append(dict(entry))
+        pack_registry_entries = tuple(normalized_entries)
+
+    workspace_registrations: tuple[CorePythonWorkspaceRegistration, ...] = ()
+    pyproject_path = repo_root / CORE_PYPROJECT_RELATIVE_PATH
+    if pyproject_path.exists():
+        workspace_registrations = tuple(
+            registration
+            for registration in hosted_pack_workspace_registrations(
+                pyproject_path.read_text(encoding="utf-8")
+            )
+            if _workspace_registration_points_to_live_surface(
+                repo_root=repo_root,
+                registration=registration,
+            )
+        )
+
+    return _RecipientHostedPackState(
+        pack_registry_entries=pack_registry_entries,
+        workspace_registrations=workspace_registrations,
+    )
+
+
+def _rehydrate_recipient_hosted_pack_state(
+    *,
+    repo_root: Path,
+    recipient_state: _RecipientHostedPackState,
+) -> _RecipientHostedPackRehydrationResult:
+    changed_paths: set[str] = set()
+    rehydrated_paths: set[str] = set()
+
+    if recipient_state.pack_registry_entries:
+        if _restore_pack_registry_entries(
+            repo_root=repo_root,
+            pack_registry_entries=recipient_state.pack_registry_entries,
+        ):
+            changed_paths.add(PACK_REGISTRY_PATH)
+            rehydrated_paths.add(PACK_REGISTRY_PATH)
+
+    if recipient_state.workspace_registrations:
+        if _restore_workspace_registrations(
+            repo_root=repo_root,
+            registrations=recipient_state.workspace_registrations,
+        ):
+            changed_paths.add(CORE_PYPROJECT_RELATIVE_PATH)
+            rehydrated_paths.add(CORE_PYPROJECT_RELATIVE_PATH)
+
+    if PACK_REGISTRY_PATH in changed_paths:
+        rebuild_shared_discovery_surfaces(repo_root)
+        changed_paths.update(
+            {
+                "core/control_plane/indexes/commands/command_index.json",
+                "core/control_plane/indexes/repository_paths/repository_path_index.json",
+                "core/control_plane/indexes/references/reference_index.json",
+                "core/control_plane/indexes/standards/standard_index.json",
+                "core/control_plane/indexes/workflows/workflow_index.json",
+                "core/control_plane/indexes/routes/route_index.json",
+            }
+        )
+        _rebuild_foundation_index(repo_root)
+        changed_paths.add("core/control_plane/indexes/foundations/foundation_index.json")
+
+    return _RecipientHostedPackRehydrationResult(
+        changed_paths=tuple(sorted(changed_paths)),
+        rehydrated_paths=tuple(sorted(rehydrated_paths)),
+    )
+
+
+def _restore_pack_registry_entries(
+    *,
+    repo_root: Path,
+    pack_registry_entries: tuple[dict[str, object], ...],
+) -> bool:
+    pack_registry_path = repo_root / PACK_REGISTRY_PATH
+    if not pack_registry_path.exists():
+        raise ValueError(
+            "Recipient repository is missing core/control_plane/registries/pack_registry.json."
+        )
+
+    document = json.loads(pack_registry_path.read_text(encoding="utf-8"))
+    updated_document = {
+        **document,
+        "packs": _sorted_pack_registry_entries(pack_registry_entries),
+    }
+    if updated_document == document:
+        return False
+    _atomic_write_text(pack_registry_path, f"{json.dumps(updated_document, indent=2)}\n")
+    return True
+
+
+def _restore_workspace_registrations(
+    *,
+    repo_root: Path,
+    registrations: tuple[CorePythonWorkspaceRegistration, ...],
+) -> bool:
+    pyproject_path = repo_root / CORE_PYPROJECT_RELATIVE_PATH
+    if not pyproject_path.exists():
+        raise ValueError("Recipient repository is missing core/python/pyproject.toml.")
+
+    pyproject_text = pyproject_path.read_text(encoding="utf-8")
+    updated_text, changed = reconcile_core_python_workspace_pyproject(
+        pyproject_text,
+        retained_registrations=registrations,
+    )
+    if not changed:
+        return False
+    _atomic_write_text(pyproject_path, updated_text)
+    return True
+
+
+def _sorted_pack_registry_entries(
+    pack_registry_entries: tuple[dict[str, object], ...],
+) -> list[dict[str, object]]:
+    return sorted(
+        [dict(entry) for entry in pack_registry_entries],
+        key=lambda entry: (
+            not bool(entry.get("default_repo_pack", False)),
+            str(entry.get("pack_slug", entry.get("pack_id", ""))).casefold(),
+        ),
+    )
+
+
+def _pack_registry_entry_points_to_live_surface(
+    repo_root: Path,
+    entry: dict[str, object],
+) -> bool:
+    pack_settings_path = entry.get("pack_settings_path")
+    pack_runtime_manifest_path = entry.get("pack_runtime_manifest_path")
+    if not isinstance(pack_settings_path, str) or not pack_settings_path:
+        return False
+    if not (repo_root / pack_settings_path).is_file():
+        return False
+    if isinstance(pack_runtime_manifest_path, str) and pack_runtime_manifest_path:
+        return (repo_root / pack_runtime_manifest_path).is_file()
+    return True
+
+
+def _workspace_registration_points_to_live_surface(
+    *,
+    repo_root: Path,
+    registration: CorePythonWorkspaceRegistration,
+) -> bool:
+    core_python_root = repo_root / "core" / "python"
+    resolved_source = (core_python_root / registration.uv_source_path).resolve()
+    return resolved_source.exists() and resolved_source.is_relative_to(repo_root.resolve())
 
 
 def _copy_portable_surfaces(
@@ -463,8 +651,7 @@ def _copy_portable_surfaces(
         source = repo_root / relative_path
         if not source.exists():
             raise ValueError(
-                "Portable export is missing a required source surface: "
-                f"{relative_path}."
+                f"Portable export is missing a required source surface: {relative_path}."
             )
         destination = output_root / relative_path
         if source.is_dir():
@@ -649,9 +836,8 @@ def _scrub_export_root(
             scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
             continue
         relative_path = candidate.relative_to(output_root).as_posix()
-        if (
-            "docs/references/" in relative_path
-            and candidate.name.endswith(_INTERNAL_REFERENCE_SUFFIXES)
+        if "docs/references/" in relative_path and candidate.name.endswith(
+            _INTERNAL_REFERENCE_SUFFIXES
         ):
             candidate.unlink()
             scrubbed_paths.append(relative_path)
@@ -879,7 +1065,11 @@ def _scrub_nonportable_acceptance_lineage(output_root: Path) -> list[str]:
             scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
 
     traceability_path = (
-        output_root / "core" / "control_plane" / "indexes" / "traceability"
+        output_root
+        / "core"
+        / "control_plane"
+        / "indexes"
+        / "traceability"
         / "traceability_index.json"
     )
     if not traceability_path.exists():
@@ -912,7 +1102,11 @@ def _scrub_nonportable_traceability_entries(
     allowed_roots: tuple[str, ...],
 ) -> list[str]:
     traceability_path = (
-        output_root / "core" / "control_plane" / "indexes" / "traceability"
+        output_root
+        / "core"
+        / "control_plane"
+        / "indexes"
+        / "traceability"
         / "traceability_index.json"
     )
     if not traceability_path.exists():
@@ -964,7 +1158,11 @@ def _scrub_nonportable_engineering_acceptance_lineage(output_root: Path) -> list
             scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
 
     traceability_path = (
-        output_root / "core" / "control_plane" / "indexes" / "traceability"
+        output_root
+        / "core"
+        / "control_plane"
+        / "indexes"
+        / "traceability"
         / "traceability_index.json"
     )
     if traceability_path.exists():
@@ -1345,11 +1543,29 @@ def _remove_workspace_lock(output_root: Path, changed_paths: set[str]) -> bool:
     return True
 
 
-def _rebuild_foundation_index(output_root: Path) -> None:
+def _rebuild_foundation_index(
+    output_root: Path,
+    *,
+    enable_runtime_cache: bool = True,
+) -> None:
     loader = ControlPlaneLoader(output_root)
     service = FoundationIndexSyncService(loader)
-    document = service.build_document()
-    service.write_document(document)
+    prepared_cache = (
+        prepare_document_sync_cache(
+            loader,
+            service,
+            relative_output_path=service.OUTPUT_PATH,
+        )
+        if enable_runtime_cache
+        else None
+    )
+    document = (
+        prepared_cache.document if prepared_cache is not None else None
+    ) or service.build_document()
+    if prepared_cache is None or prepared_cache.cache_status != "hit":
+        service.write_document(document)
+    if prepared_cache is not None:
+        finalize_document_sync_cache(prepared_cache, document=document)
 
 
 def _validate_exported_pack(
@@ -1374,8 +1590,7 @@ def _prepare_output_root(*, output_root: Path, overwrite: bool) -> None:
             raise ValueError(f"Export output path must be a directory: {output_root}")
         if not overwrite:
             raise ValueError(
-                "Export output root already exists. Pass --overwrite to replace it: "
-                f"{output_root}"
+                f"Export output root already exists. Pass --overwrite to replace it: {output_root}"
             )
         shutil.rmtree(output_root)
     output_root.mkdir(parents=True, exist_ok=True)

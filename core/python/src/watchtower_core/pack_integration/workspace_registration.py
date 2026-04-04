@@ -83,6 +83,28 @@ def parse_core_python_workspace_state(pyproject_text: str) -> CorePythonWorkspac
     )
 
 
+def hosted_pack_workspace_registrations(
+    pyproject_text: str,
+) -> tuple[CorePythonWorkspaceRegistration, ...]:
+    """Return the hosted-pack workspace registrations authored in one pyproject."""
+
+    state = parse_core_python_workspace_state(pyproject_text)
+    return tuple(
+        sorted(
+            (
+                CorePythonWorkspaceRegistration(
+                    dependency=name,
+                    uv_source_path=path,
+                    editable=editable,
+                )
+                for name, path, editable in state.uv_sources
+                if _is_hosted_pack_uv_source(name, path)
+            ),
+            key=lambda registration: registration.dependency.casefold(),
+        )
+    )
+
+
 def render_core_python_workspace_pyproject(
     pyproject_text: str,
     registration: CorePythonWorkspaceRegistration,
@@ -107,7 +129,7 @@ def render_core_python_workspace_pyproject(
         pack_dependency_names = {
             name
             for name, path, _editable in state.uv_sources
-            if name.startswith("watchtower-") and path.startswith("..")
+            if _is_hosted_pack_uv_source(name, path)
         }
 
         dev_dependencies = tuple(
@@ -153,7 +175,7 @@ def reconcile_core_python_workspace_pyproject(
     pack_dependency_names = {
         name
         for name, path, _editable in state.uv_sources
-        if name.startswith("watchtower-") and path.startswith("..")
+        if _is_hosted_pack_uv_source(name, path)
     }
     dev_dependencies = tuple(
         sorted(
@@ -191,6 +213,10 @@ def ensure_core_python_workspace_registration(
     if changed:
         pyproject_path.write_text(updated_text, encoding="utf-8")
     return changed
+
+
+def _is_hosted_pack_uv_source(name: str, path: str) -> bool:
+    return name.startswith("watchtower-") and path.startswith("..")
 
 
 def _rewrite_dev_dependencies(pyproject_text: str, dependencies: tuple[str, ...]) -> str:

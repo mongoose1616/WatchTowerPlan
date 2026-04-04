@@ -44,7 +44,7 @@ uv run watchtower-core pack extract-core --output-root /tmp/shared_core --overwr
 - Rebuilds the shared discovery indexes when hosted-pack wiring changes during the scrub so the staged `core/` remains internally coherent.
 - Validates the staged output against the engineering-core portability contract before returning success.
 - If shared-core tests, command docs, or workflow docs still name donor-pack validators, workflows, rendered surfaces, or tracking files directly, treat that as donor shared-core drift. Fix the donor shared core and restage the extract instead of hand-editing the staged output or normalizing it only in the recipient.
-- Use `watchtower-core pack apply-core --source-root <path> --write --format json` in the recipient repository to replace the local `core/` tree from this staged extract while preserving recipient-local `.venv` and cache residue.
+- Use `watchtower-core pack apply-core --source-root <path> --write --format json` in the recipient repository to replace the local `core/` tree from this staged extract while preserving recipient-local `.venv`, cache residue, and live recipient pack wiring.
 - Then run `watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json`; that bootstrap pass materializes the recipient pack's declared `sync all` slice when the workspace is ready.
 - Exits non-zero when staging or readiness validation fails. The staged output is left on disk for inspection.
 
@@ -64,4 +64,4 @@ uv run watchtower-core pack extract-core --output-root /tmp/shared_core --overwr
 - `core/python/src/watchtower_core/validation/portability.py`
 
 ## Updated At
-- `2026-03-29T03:35:00Z`
+- `2026-04-04T22:10:00Z`

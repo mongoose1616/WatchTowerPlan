@@ -224,6 +224,10 @@ _EXPORTS: dict[str, tuple[str, str]] = {
         "watchtower_core.pack_integration.workspace_registration",
         "ensure_core_python_workspace_registration",
     ),
+    "hosted_pack_workspace_registrations": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "hosted_pack_workspace_registrations",
+    ),
     "load_core_python_workspace_state": (
         "watchtower_core.pack_integration.workspace_registration",
         "load_core_python_workspace_state",
@@ -288,6 +292,7 @@ __all__ = [
     "export_hosted_repository",
     "core_python_workspace_registration",
     "ensure_core_python_workspace_registration",
+    "hosted_pack_workspace_registrations",
     "load_core_python_workspace_state",
     "pack_command_docs_root",
     "pack_command_entry_doc_path",

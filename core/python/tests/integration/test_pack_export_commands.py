@@ -188,6 +188,85 @@ def test_pack_apply_core_replaces_local_core_and_preserves_dev_residue(
     assert not stale_path.exists()
 
 
+def test_pack_apply_core_rehydrates_live_recipient_pack_wiring(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    donor_repo_root = materialize_validation_repo_subset(
+        tmp_path / "donor_fixture",
+        include_shared_discovery_sources=True,
+    )
+    recipient_root = materialize_validation_repo_subset(
+        tmp_path / "recipient_fixture",
+        include_shared_discovery_sources=True,
+    )
+    recipient_surfaces = materialize_pack_validation_suite(
+        recipient_root / "packs" / "recipient",
+        pack_slug="recipient",
+        registry_mode="replace_default",
+        default_repo_pack=True,
+    )
+    output_root = tmp_path / "shared_core"
+
+    monkeypatch.chdir(donor_repo_root / "core" / "python")
+    result = main(
+        [
+            "pack",
+            "extract-core",
+            "--output-root",
+            str(output_root),
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+    )
+    extract_payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert extract_payload["passed"] is True
+
+    monkeypatch.chdir(recipient_root / "core" / "python")
+    result = main(
+        [
+            "pack",
+            "apply-core",
+            "--source-root",
+            str(output_root),
+            "--write",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core pack apply-core"
+    assert payload["source_readiness"]["passed"] is True
+    assert payload["wrote"] is True
+    assert payload["rehydrated_paths"] == [
+        "core/control_plane/registries/pack_registry.json",
+        "core/python/pyproject.toml",
+    ]
+    assert "core/control_plane/indexes/commands/command_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/routes/route_index.json" in payload["changed_paths"]
+
+    pack_registry = json.loads(
+        (
+            recipient_root / "core" / "control_plane" / "registries" / "pack_registry.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert [entry["pack_slug"] for entry in pack_registry["packs"]] == ["recipient"]
+    assert (
+        pack_registry["packs"][0]["pack_settings_path"] == recipient_surfaces["pack_settings_path"]
+    )
+
+    pyproject_text = (recipient_root / "core" / "python" / "pyproject.toml").read_text(
+        encoding="utf-8"
+    )
+    assert "watchtower-recipient-fixture" in pyproject_text
+    assert "watchtower-plan" not in pyproject_text
+
+
 def test_pack_apply_core_rejects_missing_staged_core_directory(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

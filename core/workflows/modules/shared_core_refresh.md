@@ -41,8 +41,11 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
    - Prefer `cd core/python && uv run watchtower-core pack apply-core --source-root <extract-root> --write --format json` in the recipient repository instead of a raw copy command.
    - Keep the recipient root shell authoritative unless the task explicitly includes root-shell reconciliation too.
    - The apply step should replace governed shared-core content while preserving recipient-local `.venv`, caches, and similar local scratch surfaces.
+   - Treat live recipient hosted-pack registry entries and `core/python` workspace registrations as recipient-local environment state that should be rehydrated after the donor-neutral extract is applied. Do not let donor-specific pack wiring replace those local surfaces during refresh.
+   - Ignore stale recipient-local pack registrations that no longer point at live local manifests or workspace roots instead of preserving dead donor residue.
 5. Bootstrap the recipient pack into the refreshed shared core.
    - Run `cd core/python && uv run watchtower-core pack bootstrap --pack-settings-path <recipient-pack-settings> --replace-hosted-packs --write --sync-extra dev --format json` unless the recipient intentionally needs a different extra set.
+   - `apply-core` may already rehydrate the recipient's live pack registry and workspace metadata, but bootstrap remains the authoritative step for exact shared-pack replacement, shared validation, workspace sync, and pack-local `sync all`.
    - Expect the normal bootstrap path to rebuild both the shared discovery indexes and the recipient pack's declared `sync all` slice when the pack publishes that target.
    - Use `--no-sync-workspace` only when a fixture or staged environment intentionally needs deferred sync, then follow immediately with the explicit `uv sync` command, the recipient `watchtower-core <namespace> sync all --write --format json` pass when declared, and `watchtower-core pack validate`.
 6. Validate the refreshed recipient state.
@@ -66,6 +69,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
 ## Outputs
 - A repeatable donor-side engineering shared-core extract flow
 - A recipient-side bootstrap sequence that reloads the local hosted pack cleanly after shared-core refresh
+- A refresh path that keeps donor-neutral shared core separate from recipient-local hosted-pack environment state
 - Updated workflow, command, and standards guidance for future shared-core refresh requests
 - Validation evidence or command results showing the refreshed path worked
 

@@ -591,6 +591,7 @@ def _run_pack_apply_core(args: argparse.Namespace) -> int:
         "changed_paths": list(result.changed_paths),
         "deleted_paths": list(result.deleted_paths),
         "preserved_paths": list(result.preserved_paths),
+        "rehydrated_paths": list(result.rehydrated_paths),
         "wrote": result.wrote,
         "next_steps": next_steps,
     }
@@ -605,6 +606,8 @@ def _run_pack_apply_core(args: argparse.Namespace) -> int:
         print(f"Changed Paths: {len(result.changed_paths)}")
         print(f"Deleted Paths: {len(result.deleted_paths)}")
         print(f"Preserved Paths: {len(result.preserved_paths)}")
+        if result.rehydrated_paths:
+            print(f"Rehydrated Paths: {len(result.rehydrated_paths)}")
         if result.deleted_paths:
             print("Deleted Paths:")
             for path in result.deleted_paths:
@@ -612,6 +615,10 @@ def _run_pack_apply_core(args: argparse.Namespace) -> int:
         if result.preserved_paths:
             print("Preserved Paths:")
             for path in result.preserved_paths:
+                print(f"- {path}")
+        if result.rehydrated_paths:
+            print("Rehydrated Paths:")
+            for path in result.rehydrated_paths:
                 print(f"- {path}")
         if next_steps:
             print("Next Steps:")
