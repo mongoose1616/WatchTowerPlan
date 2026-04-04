@@ -557,6 +557,28 @@
       ]
     },
     {
+      "workflow_id": "workflow.performance_benchmarking",
+      "phase_type": "validation",
+      "task_family": "performance_benchmarking",
+      "primary_risks": [
+        "baseline_mismatch",
+        "false_confidence"
+      ],
+      "extra_trigger_tags": [
+        "benchmark",
+        "baseline",
+        "performance",
+        "compare",
+        "evidence"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.test_suite_optimization",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.initiative_brief_authoring",
       "phase_type": "planning",
       "task_family": "initiative_brief_authoring",

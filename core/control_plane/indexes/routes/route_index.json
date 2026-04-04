@@ -77,6 +77,41 @@
       ]
     },
     {
+      "route_id": "route.performance_benchmarking",
+      "task_type": "Performance Benchmarking",
+      "trigger_keywords": [
+        "benchmark",
+        "benchmarking",
+        "performance benchmark",
+        "performance baseline",
+        "benchmark baseline",
+        "benchmark evidence",
+        "retained benchmark",
+        "compare benchmark",
+        "benchmark record",
+        "benchmark suite",
+        "benchmark runner"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.performance_benchmarking",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/performance_benchmarking.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.domain_pack_integration",
       "task_type": "Domain Pack Integration",
       "trigger_keywords": [
