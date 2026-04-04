@@ -1088,8 +1088,6 @@
         "docs",
         "standards",
         "operations",
-        "repository",
-        "maintenance",
         "standard",
         "rerun"
       ],
@@ -1102,10 +1100,10 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "core/docs/standards/operations/repository_maintenance_loop_standard.md"
+        "core/docs/standards/operations/review_remediation_loop_standard.md"
       ],
       "internal_reference_paths": [
-        "core/docs/standards/operations/repository_maintenance_loop_standard.md"
+        "core/docs/standards/operations/review_remediation_loop_standard.md"
       ]
     },
     {

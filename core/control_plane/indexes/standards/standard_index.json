@@ -666,7 +666,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/command_md_standard.md",
-      "updated_at": "2026-04-04T03:05:00Z",
+      "updated_at": "2026-04-04T17:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1622,7 +1622,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-29T03:35:00Z",
+      "updated_at": "2026-04-04T14:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2289,6 +2289,7 @@
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/operations/review_remediation_loop_standard.md",
         "core/workflows/modules/repository_review.md",
         "core/workflows/modules/documentation_refresh.md",
         "core/workflows/modules/review_remediation.md",
@@ -2299,6 +2300,7 @@
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/operations/review_remediation_loop_standard.md",
         "core/workflows/modules/repository_review.md",
         "core/workflows/modules/documentation_refresh.md"
       ],
@@ -2309,6 +2311,67 @@
       ]
     },
     {
+      "standard_id": "std.operations.review_remediation_loop",
+      "category": "operations",
+      "title": "Review Remediation Loop Standard",
+      "summary": "This standard defines the operating contract for seeded or fresh review-remediation loops, including baseline capture, rerun discipline, stop conditions, and closeout proof.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/operations/review_remediation_loop_standard.md",
+      "updated_at": "2026-04-04T20:00:58Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation",
+        "validation"
+      ],
+      "operationalization_paths": [
+        "core/workflows/modules/review_remediation.md",
+        "core/workflows/modules/review_remediation_loop.md",
+        "core/workflows/modules/commit_closeout.md",
+        "core/docs/standards/operations/repository_maintenance_loop_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md"
+      ],
+      "applies_to": [
+        "core/docs/",
+        "pack_owned_docs",
+        "core/workflows/",
+        "pack_owned_workflows",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "related_paths": [
+        "core/docs/",
+        "core/workflows/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/operations/repository_maintenance_loop_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/engineering/git_workflow_standard.md",
+        "core/docs/standards/engineering/git_commit_standard.md",
+        "core/workflows/modules/review_remediation.md",
+        "core/workflows/modules/review_remediation_loop.md",
+        "core/workflows/modules/commit_closeout.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/operations/repository_maintenance_loop_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/standards/engineering/git_workflow_standard.md",
+        "core/docs/standards/engineering/git_commit_standard.md",
+        "core/workflows/modules/review_remediation.md",
+        "core/workflows/modules/review_remediation_loop.md",
+        "core/workflows/modules/commit_closeout.md"
+      ],
+      "tags": [
+        "standard",
+        "operations",
+        "review_remediation"
+      ]
+    },
+    {
       "standard_id": "std.validations.repository_validation",
       "category": "validations",
       "title": "Repository Validation Standard",
@@ -2316,7 +2379,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-28T23:15:00Z",
+      "updated_at": "2026-04-04T17:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

@@ -2490,6 +2490,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/standards/operations/review_remediation_loop_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the stricter loop controls for seeded review remediation, rerun discipline, dirty-worktree handling, and closeout proof.",
+      "parent_path": "core/docs/standards/operations/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/standards/validations/",
       "kind": "directory",
       "surface_kind": "standards",
@@ -3364,7 +3374,7 @@
       "path": "core/python/tools/install_git_hooks.sh",
       "kind": "file",
       "surface_kind": "python_workspace_file",
-      "summary": "Materializes the repository-local `.githooks/` path from shared templates and configures which verification mode it should run.",
+      "summary": "Materializes the repository-local `.githooks/` path from shared templates and configures which verification mode, hosted-pack target, and optional fail-fast behavior it should run.",
       "parent_path": "core/python/tools/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3374,7 +3384,7 @@
       "path": "core/python/tools/verify.sh",
       "kind": "file",
       "surface_kind": "python_workspace_file",
-      "summary": "Runs the canonical local verification flow for fast and broad shared-core validation, with optional hosted-pack coverage.",
+      "summary": "Runs the canonical local verification flow for fast and broad shared-core validation, with optional hosted-pack mypy, Ruff, and pytest coverage plus optional fail-fast pytest behavior.",
       "parent_path": "core/python/tools/",
       "maturity": "supporting",
       "priority": "medium",
