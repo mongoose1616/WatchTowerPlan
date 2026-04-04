@@ -3,7 +3,12 @@
 from __future__ import annotations
 
 import json
+import sys
+from collections.abc import Iterator
+from contextlib import contextmanager
+from importlib import import_module, invalidate_caches
 from pathlib import Path
+from typing import Any
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CommandIndexEntry
@@ -17,7 +22,6 @@ from watchtower_core.sync.cache import (
     module_relative_path,
     ordered_sync_cache_paths,
 )
-from watchtower_host.cli.introspection import iter_host_command_parser_specs
 
 COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
 
@@ -69,6 +73,53 @@ def _entry_to_document(entry: CommandIndexEntry) -> dict[str, object]:
     return document
 
 
+@contextmanager
+def _repo_local_watchtower_host_imports(repo_root: Path) -> Iterator[None]:
+    source_root = (repo_root / "core" / "python" / "src").resolve()
+    if not source_root.is_dir():
+        raise ValueError(
+            "Command-index rebuild requires a readable core/python source root under the "
+            f"target repository: {source_root}"
+        )
+
+    saved_modules = {
+        name: module
+        for name, module in sys.modules.items()
+        if name == "watchtower_host" or name.startswith("watchtower_host.")
+    }
+    original_sys_path = list(sys.path)
+    original_dont_write_bytecode = sys.dont_write_bytecode
+    for name in tuple(saved_modules):
+        sys.modules.pop(name, None)
+
+    invalidate_caches()
+    sys.dont_write_bytecode = True
+    sys.path.insert(0, str(source_root))
+    try:
+        yield
+    finally:
+        for name in tuple(sys.modules):
+            if name == "watchtower_host" or name.startswith("watchtower_host."):
+                sys.modules.pop(name, None)
+        sys.path[:] = original_sys_path
+        sys.dont_write_bytecode = original_dont_write_bytecode
+        sys.modules.update(saved_modules)
+        invalidate_caches()
+
+
+def _iter_repo_local_host_command_parser_specs(
+    repo_root: Path,
+    loader: ControlPlaneLoader,
+) -> tuple[Any, ...]:
+    # Shared-core apply/bootstrap can replace target source files beneath an already-running
+    # process. Reimport host CLI composition from the target repo root so the command index
+    # reflects the target source tree rather than stale watchtower_host modules.
+    with _repo_local_watchtower_host_imports(repo_root):
+        introspection_module = import_module("watchtower_host.cli.introspection")
+        iter_specs = getattr(introspection_module, "iter_host_command_parser_specs")
+        return tuple(iter_specs(loader))
+
+
 class CommandIndexSyncService:
     """Build and write the command index from host-composed CLI metadata."""
 
@@ -103,7 +154,7 @@ class CommandIndexSyncService:
         existing_index = self._loader.load_command_index()
         existing_entries = {entry.command_id: entry for entry in existing_index.entries}
         derived_entries: dict[str, CommandIndexEntry] = {}
-        for spec in iter_host_command_parser_specs(self._loader):
+        for spec in _iter_repo_local_host_command_parser_specs(self._repo_root, self._loader):
             doc_path = self._repo_root / spec.doc_path
             if not doc_path.exists():
                 raise ValueError(

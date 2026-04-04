@@ -11,6 +11,9 @@ from tests.pack_fixture_support import (
     materialize_validation_repo_subset,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.validation.document_semantics import (
+    CoreDocumentSemanticsValidationService,
+)
 from watchtower_host.cli.main import main
 
 REHOSTED_PACK_SLUG = "rehosted"
@@ -218,6 +221,42 @@ def _run_shared_core_refresh_cycle(
     assert bootstrap_payload["pack_slug"] == REHOSTED_PACK_SLUG
     assert bootstrap_payload["replace_hosted_packs"] is True
     assert bootstrap_payload["scrubbed_pack_slugs"] == []
+
+    sync_command_index_result, sync_command_index_payload = _run_cli_json(
+        [
+            "sync",
+            "command-index",
+            "--write",
+            "--format",
+            "json",
+        ],
+        capsys,
+    )
+    assert sync_command_index_result == 0
+    assert sync_command_index_payload["command"] == "watchtower-core sync command-index"
+    assert sync_command_index_payload["status"] == "ok"
+
+    command_index = json.loads(
+        (
+            recipient_root / "core" / "control_plane" / "indexes" / "commands" / "command_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    indexed_commands = {
+        entry["command"]
+        for entry in command_index["entries"]
+        if isinstance(entry, dict) and isinstance(entry.get("command"), str)
+    }
+    assert "watchtower-core git" in indexed_commands
+    assert "watchtower-core git hygiene" in indexed_commands
+
+    document_semantics = CoreDocumentSemanticsValidationService(ControlPlaneLoader(recipient_root))
+    for command_doc in (
+        "core/docs/commands/core_python/watchtower_core.md",
+        "core/docs/commands/core_python/watchtower_core_git.md",
+        "core/docs/commands/core_python/watchtower_core_git_hygiene.md",
+    ):
+        validation_result = document_semantics.validate(command_doc)
+        assert validation_result.passed is True, validation_result.issues
 
     validate_result, validate_payload = _run_cli_json(
         [
