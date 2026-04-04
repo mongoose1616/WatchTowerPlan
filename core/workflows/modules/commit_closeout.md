@@ -12,6 +12,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 - Scoped closeout brief
 - Completed change set
 - `git status` and staged diff context
+- Current branch identity when the work is happening on a bounded branch
 - Relevant task summary, acceptance criteria, or rationale for the change
 - Current repository-local task or trace outcome when the change is non-trivial
 - Internal standards and canonical references applied
@@ -19,12 +20,14 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 - Open questions about scope, breaking-change status, or related footers
 
 ## Additional Files to Load
+- [git_workflow_standard.md](/core/docs/standards/engineering/git_workflow_standard.md): defines the bounded-branch naming and lifecycle checks that should still hold before closeout.
 - [git_commit_message_guidance_reference.md](/core/docs/references/git_commit_message_guidance_reference.md): defines the local commit-message shape this workflow should preserve when writing the final commit.
 - [conventional_commits_reference.md](/core/docs/references/conventional_commits_reference.md): provides the commit prefix guidance used when a conventional commit style is helpful.
 
 ## Workflow
 1. Inspect the change set and confirm commit readiness.
    - Review `git status`, staged files, and the staged diff.
+   - When the work is on a bounded branch, review `git branch --show-current` and confirm the branch name still reflects the git-workflow standard's origin-aware branch contract instead of a stale or ambiguous source context.
    - Verify that the intended change set is complete enough to close out.
    - Check whether unresolved errors, validation failures, or decision blockers should prevent committing.
    - Confirm that the commit represents one logical change or split the work before proceeding.
@@ -43,6 +46,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 
 ## Data Structure
 - Change set summary
+- Current branch identity and readiness status when applicable
 - Commit readiness status
 - Governing commit standard
 - Chosen type and scope

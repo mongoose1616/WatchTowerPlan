@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T22:30:00Z"
+updated_at: "2026-04-04T22:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -127,6 +127,7 @@ workflow.
 ## Process
 1. Gather context.
    - Run `git status` and `git diff --cached` to confirm staged files and dependencies.
+   - When the change is on a bounded branch, run `git branch --show-current` and confirm the branch still matches the origin-aware naming contract from [git_workflow_standard.md](/core/docs/standards/engineering/git_workflow_standard.md).
    - Review prior commits for continuity when the change extends ongoing work.
 2. Select type and scope.
    - Map the dominant effect of the diff to the allowed types.
@@ -176,6 +177,7 @@ workflow.
 - Footers capture breaking changes, issues, approvals, and collaborators using `Token: value` format.
 - Traced or non-trivial changes should publish `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason`.
 - Reviewers should reject commit metadata that introduces a second opaque identifier layer when a stable repository `trace_id` or task identifier already exists.
+- Commit closeout on a bounded branch should not ignore a stale or ambiguous branch name that no longer satisfies [git_workflow_standard.md](/core/docs/standards/engineering/git_workflow_standard.md).
 - Commit text is reviewed for spelling, case, and placeholder removal before commit or before being shared for review.
 
 ## Examples
@@ -265,4 +267,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-24T22:30:00Z`
+- `2026-04-04T22:10:00Z`

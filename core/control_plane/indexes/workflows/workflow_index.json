@@ -183,6 +183,9 @@
         "requested",
         "core",
         "docs",
+        "standards",
+        "engineering",
+        "standard",
         "references",
         "guidance",
         "reference",
@@ -193,6 +196,7 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
+        "core/docs/standards/engineering/git_workflow_standard.md",
         "core/docs/references/git_commit_message_guidance_reference.md",
         "core/docs/references/conventional_commits_reference.md"
       ],
@@ -201,6 +205,7 @@
         "core/docs/references/conventional_commits_reference.md"
       ],
       "internal_reference_paths": [
+        "core/docs/standards/engineering/git_workflow_standard.md",
         "core/docs/references/git_commit_message_guidance_reference.md",
         "core/docs/references/conventional_commits_reference.md"
       ],

@@ -1388,7 +1388,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/git_commit_standard.md",
-      "updated_at": "2026-03-24T22:30:00Z",
+      "updated_at": "2026-04-04T22:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1436,11 +1436,11 @@
       "standard_id": "std.engineering.git_workflow",
       "category": "engineering",
       "title": "Git Workflow Standard",
-      "summary": "This standard defines repository-standard local git workflow behavior, including branch naming, branch lifecycle, and local sync expectations for human and assistant contributors.",
+      "summary": "This standard defines repository-standard local git workflow behavior, including origin-aware branch naming, branch lifecycle, and local sync expectations for human and assistant contributors.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/git_workflow_standard.md",
-      "updated_at": "2026-03-24T22:30:00Z",
+      "updated_at": "2026-04-04T22:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
