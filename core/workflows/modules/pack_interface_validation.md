@@ -34,6 +34,10 @@ Use this workflow to validate that a hosted pack publishes the required machine 
    - Check that reusable core does not import the pack and the pack does not import host internals.
    - Check that the pack is importable from its own `<pack>/python/src` path or installed package root rather than only from repository-root import assumptions.
    - When the host-pack contract changed materially, prove it against at least one non-default or synthetic second-pack fixture instead of validating only the current default pack.
+   - Treat clean-room interoperability and staged artifacts as first-class proof surfaces, not optional extras.
+   - Check for hidden coupling to local paths, local caches, donor pack sets, or repo-specific state that would break portability.
+   - Build staged exports or disposable copies and inspect them for leaked caches, local paths, stale copied core, machine-state contamination, or missing owned surfaces.
+   - Distinguish `baseline_core`, `repo_core_drift`, `pack_owned`, and `cross_boundary` issues when reporting portability findings.
 
 ## Data Structure
 - In-scope pack list

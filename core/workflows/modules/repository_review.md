@@ -32,7 +32,19 @@ Use this workflow to synthesize an existing repository review into a findings-fi
    - Re-check the highest-risk areas from a different angle, including direct dependencies, derived surfaces, and review boundaries that could still hide issues.
    - If the active review loop finds a new actionable issue inside the same scope, add it to the findings register and repeat the synthesis.
 5. Prepare the durable review report.
-   - Start with the findings ordered by severity, then summarize the scope, standards applied, coverage boundary, remediation plan, and confirmation-pass result in a shape a later contributor can use without replaying the investigation.
+   - Start with the findings ordered by severity, then include structured summaries a later contributor can use without replaying the investigation:
+     - Executive summary
+     - Shared-core versus pack-boundary summary
+     - Standards-and-references summary
+     - Code-quality and naming summary
+     - Validation/harness summary
+     - Performance/refactor summary
+     - Coverage summary
+     - Commands/checks executed
+     - Workflow simulations performed
+     - Confirming evidence and cleared or downgraded candidate issues
+     - Proposed remediation slices or commit groupings
+     - Residual risks and unverified areas
 
 ## Data Structure
 - Review scope and coverage map

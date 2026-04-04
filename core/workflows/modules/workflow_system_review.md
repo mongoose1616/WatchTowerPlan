@@ -28,6 +28,7 @@ Use this workflow to audit the workflow system across shared and pack-owned root
 2. Build the current-state workflow map.
    - Inventory the in-scope modules, roles, routing rows, workflow metadata, route-index coverage, workflow-index coverage, validator coverage, and query or preview behavior.
    - Record which surfaces are authoritative, which are derived, and which docs merely describe runtime behavior.
+   - Treat the workflow system as one coherent runtime and documentation surface, not as isolated markdown files. Verify route behavior through the repository's route-preview and workflow-query surfaces where available.
 3. Review route and role design quality.
    - Check trigger specificity, overlap, route determinism, minimum-context loading, and whether broad role routes stay composition-oriented instead of duplicating module logic.
    - Check whether reusable behavior belongs in shared core and whether pack-owned workflow docs stay owner-specific instead of re-copying shared logic.
@@ -37,6 +38,8 @@ Use this workflow to audit the workflow system across shared and pack-owned root
 5. Synthesize findings and remediation.
    - Distinguish observed gaps, overlapping routes, missing roles, stale validators, index drift, command-doc drift, and ownership-boundary problems explicitly.
    - Record each issue with severity, affected workflow or machine surfaces, observed evidence, why it matters, recommended repair, and whether it is same-change repair, follow-up work, or an intentional exception with rationale.
+   - If a workflow-system gap reveals a missing standard, reference, or template, create or repair it in the correct owning surface using the repository's existing authoring rules.
+   - Update companion validators, indexes, preview docs, and command docs when workflow behavior changes.
 6. Close with proof of the revised workflow posture.
    - Confirm the narrowest meaningful route-preview, workflow-query, validation, and index rebuild checks for the touched workflow-system surfaces.
    - Summarize how the resulting workflow system is clearer, deeper, and less ambiguous than the prior state.

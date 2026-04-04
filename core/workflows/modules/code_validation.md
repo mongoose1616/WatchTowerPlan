@@ -29,9 +29,13 @@ Use this workflow to define, execute, and assess the validation needed for a cod
 2. Execute validation.
    - Run the relevant automated and manual checks.
    - Include the checks that the governing standards or references imply, not only the fastest convenient checks.
+   - Prefer fail-closed validation and explicit negative tests over optimistic green-path checks.
+   - When validators, indexes, schemas, or command surfaces claim to guard against representative failures, perform challenge tests: introduce representative defects in disposable copies or isolated fixtures and verify the claimed validation surfaces fail closed.
+   - Perform mutation-style checks where practical: intentionally create small but representative faults and test whether the relevant validator catches them. If a validator misses a representative failure, report that as a distinct false-green finding.
    - Capture failures, warnings, flaky behavior, and blocked checks clearly.
    - Record any governing-document requirement that could not be validated directly in the current pass.
    - Re-run targeted checks when needed to confirm whether an issue is real.
+   - Distinguish failures already caught from failures escaping current validation and failures requiring new harnesses.
 3. Assess results.
    - Determine whether the change satisfies the requested behavior and the governing standards, references, or design docs in scope.
    - Separate confirmed failures from environment issues, unknowns, or unverified areas.

@@ -21,10 +21,16 @@ Use this workflow to evaluate documentation or standards for accuracy, structure
    - Identify the in-scope docs plus the companion templates, examples, command pages, references, indexes, validators, loaders, and query or sync surfaces that operationalize or expose them.
    - Record intentionally excluded surfaces and any remaining blind spots so the review boundary is explicit.
 2. Inspect document quality and family compliance.
+   - Treat every important documentation claim as untrusted until verified against implementation or machine-readable authority.
    - Check accuracy against the current repository state, document mode or classification, required sections, link targets, naming, structure, and mixed-purpose or stale content.
    - For standards, compare the document guidance to the examples, templates, and operational surfaces that are supposed to enforce it.
+   - Cite contradictions explicitly when docs disagree with code, command output, workflow behavior, schemas, or validators.
+   - Distinguish observed facts, inferred risks, open questions, and recommendations.
 3. Check operationalization and cross-surface coherence.
    - Verify that related command docs, workflow docs, standards, templates, examples, validators, indexes, registries, and query or sync paths describe or enforce the same behavior.
+   - Check command docs against live CLI/help output. Execute representative documented commands or examples far enough to confirm operability.
+   - Identify missing standards, references, or templates that should exist under current authoring instructions and report each as a distinct finding naming the existing owning instruction family or template path.
+   - Synchronize naming conventions and terminology across docs, runtime code, commands, workflows, schemas, and tests.
    - If the main issue is implementation-versus-documentation drift or governed-artifact drift, add the dedicated reconciliation workflow instead of handling it only implicitly here.
 4. Build the findings register.
    - Record findings by severity and confidence with owning document or artifact family, affected paths, governing sources, observed evidence, why the issue matters, recommended remediation, validation gap, and likely same-change boundary.

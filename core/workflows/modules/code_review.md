@@ -23,15 +23,23 @@ Use this workflow to evaluate a code change for correctness, regression risk, ma
 1. Build the review coverage map.
    - Identify the touched files, direct dependencies, direct consumers, public interfaces, data or state boundaries, config or migration surfaces, and companion docs or tests that could change behavior.
    - Record what is intentionally out of scope or still unknown so the review does not hide blind spots.
-2. Inspect behavior and failure modes.
+2. Inspect behavior, failure modes, and code quality.
    - Check requested behavior, invariants, edge cases, failure handling, compatibility, state transitions, concurrency, security, and performance where they are relevant to the change.
    - Compare the implementation shape to the intended design and established local patterns.
+   - Check for correctness bugs, abstraction debt, duplication, complexity, brittle logic, dead code, unsafe assumptions, naming drift, and style inconsistencies.
+   - Inspect representative high-risk code paths directly for quality, naming consistency, and performance issues even when automated checks pass.
+   - Verify whether implementation behavior conforms to the repository's active standards, contracts, and naming rules, not just whether it runs.
+   - Search analogous surfaces for repeated patterns instead of treating a cited file as a one-off when an issue reflects a reusable pattern.
 3. Check validation and companion surfaces.
    - Review tests, negative coverage, validation strategy, fixtures, and release-risk controls relative to the change risk.
    - Check whether docs, configs, schemas, examples, migrations, or operational guidance were updated when the code change makes them part of the behavior boundary.
+   - If a code issue reveals a missing standard, reference, or validator, note the gap as a distinct finding and name the existing owning instruction family or template path that should be used to create it.
+   - Verify performance-sensitive changes with the available comparative proof path or explicitly note the remaining proof gap if no benchmark harness exists.
 4. Build the findings register.
    - Record findings by severity and confidence with owning surface, affected paths, governing sources when relevant, observed evidence, why the issue matters, recommended remediation, validation gap, and likely slice boundary.
+   - Classify each finding by ownership target when shared-core and pack boundaries are relevant: `baseline_core`, `repo_core_drift`, `pack_owned`, or `cross_boundary`.
    - Separate confirmed bugs, broader risks, intentional tradeoffs, open questions, and follow-up validation gaps.
+   - For code-quality findings, cite the exact implementation path and line references and explain the concrete maintenance, correctness, performance, or operability consequence.
 5. Run a confirmation pass.
    - Re-check the highest-risk paths from a different angle, focusing on touched files, unchanged code that can be broken indirectly, and any surfaces the first pass nearly skipped.
    - If the active task is a same-scope review loop and a new actionable issue appears, add it to the findings register and repeat until a confirmation pass finds no new issues.
