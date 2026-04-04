@@ -139,6 +139,8 @@
         "workflow.documentation_review",
         "workflow.repository_review",
         "workflow.workflow_system_review",
+        "workflow.standards_alignment_review",
+        "workflow.validation_harness_review",
         "workflow.task_handoff_review"
       ]
     },
@@ -815,6 +817,55 @@
       "companion_workflow_ids": [
         "workflow.documentation_implementation_reconciliation",
         "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.standards_alignment_review",
+      "phase_type": "review",
+      "task_family": "governance_review",
+      "primary_risks": [
+        "stale_authority",
+        "weak_enforcement",
+        "missing_authority"
+      ],
+      "extra_trigger_tags": [
+        "standards",
+        "alignment",
+        "reference",
+        "governance",
+        "enforcement",
+        "template",
+        "compliance"
+      ],
+      "companion_workflow_ids": [
+        "workflow.documentation_review",
+        "workflow.code_validation",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.validation_harness_review",
+      "phase_type": "review",
+      "task_family": "engineering_validation",
+      "primary_risks": [
+        "false_confidence",
+        "coverage_gap",
+        "fail_open"
+      ],
+      "extra_trigger_tags": [
+        "validator",
+        "harness",
+        "false_green",
+        "mutation",
+        "challenge",
+        "coverage",
+        "hardening"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.standards_alignment_review",
         "workflow.task_handoff_review"
       ]
     }

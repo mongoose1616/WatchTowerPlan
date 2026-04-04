@@ -2250,6 +2250,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/standards/engineering/deterministic_sync_cache_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines when deterministic sync services may persist incremental cache manifests and where that runtime state must live.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -3364,7 +3374,7 @@
       "path": "core/python/tools/install_git_hooks.sh",
       "kind": "file",
       "surface_kind": "python_workspace_file",
-      "summary": "Materializes the repository-local `.githooks/` path from shared templates and configures which verification mode it should run.",
+      "summary": "Materializes the repository-local `.githooks/` path from shared templates and configures which verification mode, hosted-pack target, and optional fail-fast behavior it should run.",
       "parent_path": "core/python/tools/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3374,7 +3384,7 @@
       "path": "core/python/tools/verify.sh",
       "kind": "file",
       "surface_kind": "python_workspace_file",
-      "summary": "Runs the canonical local verification flow for fast and broad shared-core validation, with optional hosted-pack coverage.",
+      "summary": "Runs the canonical local verification flow for fast and broad shared-core validation, with optional hosted-pack mypy, Ruff, and pytest coverage plus optional fail-fast pytest behavior.",
       "parent_path": "core/python/tools/",
       "maturity": "supporting",
       "priority": "medium",

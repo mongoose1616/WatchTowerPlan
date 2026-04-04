@@ -681,6 +681,80 @@
       ]
     },
     {
+      "route_id": "route.standards_alignment_review",
+      "task_type": "Standards Alignment Review",
+      "trigger_keywords": [
+        "standards alignment",
+        "standards audit",
+        "reference alignment",
+        "governed surface audit",
+        "governance audit",
+        "missing standards",
+        "stale standards",
+        "enforcement gaps",
+        "standards enforcement",
+        "reference compliance",
+        "template compliance"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.standards_alignment_review",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/standards_alignment_review.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.validation_harness_review",
+      "task_type": "Validation Harness Review",
+      "trigger_keywords": [
+        "validation harness",
+        "harness review",
+        "validator audit",
+        "false-green audit",
+        "coverage gaps",
+        "mutation testing",
+        "challenge tests",
+        "harness hardening",
+        "validator weakness",
+        "test coverage audit",
+        "validation coverage"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.validation_harness_review",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/validation_harness_review.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.repository_review",
       "task_type": "Repository Review",
       "trigger_keywords": [

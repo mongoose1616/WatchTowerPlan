@@ -1099,6 +1099,8 @@
         "workflow.documentation_review",
         "workflow.repository_review",
         "workflow.workflow_system_review",
+        "workflow.standards_alignment_review",
+        "workflow.validation_harness_review",
         "workflow.task_handoff_review"
       ],
       "related_paths": [
@@ -1176,6 +1178,71 @@
         "core/docs/commands/core_python/watchtower_core_pack_extract_core.md",
         "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
         "core/docs/commands/core_python/watchtower_core_validate_portability.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.standards_alignment_review",
+      "workflow_kind": "module",
+      "title": "Standards Alignment Review Workflow",
+      "summary": "Use this workflow to audit and remediate standards, references, templates, and governed authoring surfaces so published governance contracts stay current, correctly owned, machine-enforced where practical, and aligned with implementation.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/standards_alignment_review.md",
+      "phase_type": "review",
+      "task_family": "governance_review",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "stale_authority",
+        "weak_enforcement",
+        "missing_authority"
+      ],
+      "trigger_tags": [
+        "standards",
+        "alignment",
+        "review",
+        "audit",
+        "remediate",
+        "references",
+        "templates",
+        "governed",
+        "authoring",
+        "surfaces",
+        "published",
+        "governance",
+        "contracts",
+        "stay",
+        "current",
+        "correctly",
+        "owned",
+        "machine",
+        "enforced",
+        "where",
+        "practical",
+        "aligned",
+        "with",
+        "implementation",
+        "core",
+        "docs",
+        "validations",
+        "repository",
+        "validation",
+        "standard",
+        "reference",
+        "enforcement",
+        "template",
+        "compliance"
+      ],
+      "companion_workflow_ids": [
+        "workflow.documentation_review",
+        "workflow.code_validation",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "core/docs/standards/validations/repository_validation_standard.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/validations/repository_validation_standard.md"
       ]
     },
     {
@@ -1295,6 +1362,67 @@
         "workflow.code_implementation",
         "workflow.code_validation",
         "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.validation_harness_review",
+      "workflow_kind": "module",
+      "title": "Validation Harness Review Workflow",
+      "summary": "Use this workflow to audit and harden validators, validation suites, tests, regression harnesses, and coverage gaps so claimed protections fail closed and false-green behavior is detected and eliminated.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/validation_harness_review.md",
+      "phase_type": "review",
+      "task_family": "engineering_validation",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "false_confidence",
+        "coverage_gap",
+        "fail_open"
+      ],
+      "trigger_tags": [
+        "validation",
+        "harness",
+        "review",
+        "audit",
+        "harden",
+        "validators",
+        "suites",
+        "tests",
+        "regression",
+        "harnesses",
+        "coverage",
+        "gaps",
+        "claimed",
+        "protections",
+        "fail",
+        "closed",
+        "false",
+        "green",
+        "behavior",
+        "detected",
+        "eliminated",
+        "core",
+        "docs",
+        "standards",
+        "validations",
+        "repository",
+        "standard",
+        "validator",
+        "mutation",
+        "challenge",
+        "hardening"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.standards_alignment_review",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "core/docs/standards/validations/repository_validation_standard.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/validations/repository_validation_standard.md"
       ]
     },
     {
