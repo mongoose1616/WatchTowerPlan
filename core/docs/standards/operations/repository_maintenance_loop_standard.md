@@ -49,6 +49,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): recurring maintenance should preserve source-of-truth boundaries and synchronized updates.
 - [engineering_best_practices_standard.md](/core/docs/standards/engineering/engineering_best_practices_standard.md): maintenance should favor deterministic local behavior and same-change-set updates.
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md): maintenance work should use the baseline validation loop before closeout.
+- [review_remediation_loop_standard.md](/core/docs/standards/operations/review_remediation_loop_standard.md): defines the stricter loop controls when maintenance starts from existing findings or must rerun the same review until the scope is clean.
 - Pack-owned traceability standards: recurring upkeep should not let planning joins and derived trackers drift silently.
 - [repository_review.md](/core/workflows/modules/repository_review.md): repository-review work is the natural workflow companion for this standard.
 - [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): maintenance often includes explicit doc refresh work rather than only new docs.
@@ -58,6 +59,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - Prefer fixing drift in the same change set where it is found when the fix is bounded and low-risk.
 - When maintenance starts from an existing review report or current-context findings, prefer the dedicated review-remediation workflow instead of forcing a new first-pass review.
 - When the maintenance task is explicitly iterative, keep one stable originating review family and one iteration ledger through the review-remediation loop instead of restarting the loop semantics every pass.
+- When the maintenance task is explicitly iterative, apply the narrower [review_remediation_loop_standard.md](/core/docs/standards/operations/review_remediation_loop_standard.md) for baseline capture, rerun-review discipline, stop conditions, and closeout proof.
 - During maintenance passes, check these areas explicitly:
   - stale planning and design docs
   - generated indexes and trackers
@@ -96,6 +98,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [repository_review.md](/core/workflows/modules/repository_review.md)
 - [review_remediation.md](/core/workflows/modules/review_remediation.md)
 - [review_remediation_loop.md](/core/workflows/modules/review_remediation_loop.md)
+- [review_remediation_loop_standard.md](/core/docs/standards/operations/review_remediation_loop_standard.md)
 - [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md)
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md)
 - [README.md](/core/docs/README.md)
