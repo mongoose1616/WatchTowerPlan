@@ -7,6 +7,7 @@ import filecmp
 import json
 import os
 import shutil
+import subprocess
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
@@ -445,8 +446,12 @@ def _copy_portable_surfaces(
             if not source.is_dir():
                 continue
             destination = output_root / relative_path
-            destination.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(source, destination, ignore=_copytree_ignore)
+            _copy_directory_surface(
+                repo_root=repo_root,
+                source=source,
+                destination=destination,
+                relative_path=relative_path,
+            )
             copied_paths.append(relative_path)
 
     required_relative_paths = list(selected_pack_roots)
@@ -461,10 +466,15 @@ def _copy_portable_surfaces(
                 f"{relative_path}."
             )
         destination = output_root / relative_path
-        destination.parent.mkdir(parents=True, exist_ok=True)
         if source.is_dir():
-            shutil.copytree(source, destination, ignore=_copytree_ignore)
+            _copy_directory_surface(
+                repo_root=repo_root,
+                source=source,
+                destination=destination,
+                relative_path=relative_path,
+            )
         else:
+            destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(source, destination)
         copied_paths.append(relative_path)
     return copied_paths
@@ -479,8 +489,77 @@ def _copy_engineering_core_surface(
     if not source.is_dir():
         raise ValueError("Engineering core extract requires a donor core/ directory.")
     destination = output_root / "core"
-    shutil.copytree(source, destination, ignore=_copytree_ignore)
+    _copy_directory_surface(
+        repo_root=repo_root,
+        source=source,
+        destination=destination,
+        relative_path="core",
+    )
     return ["core"]
+
+
+def _copy_directory_surface(
+    *,
+    repo_root: Path,
+    source: Path,
+    destination: Path,
+    relative_path: str,
+) -> None:
+    if _copy_git_tracked_directory(
+        repo_root=repo_root,
+        output_root=destination.parent,
+        relative_path=relative_path,
+    ):
+        return
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(source, destination, ignore=_copytree_ignore)
+
+
+def _copy_git_tracked_directory(
+    *,
+    repo_root: Path,
+    output_root: Path,
+    relative_path: str,
+) -> bool:
+    tracked_paths = _git_tracked_relative_paths(repo_root, relative_path)
+    if tracked_paths is None:
+        return False
+
+    root_destination = output_root / relative_path
+    root_destination.mkdir(parents=True, exist_ok=True)
+    for tracked_path in tracked_paths:
+        source_entry = repo_root / tracked_path
+        destination = output_root / tracked_path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_entry, destination)
+    return True
+
+
+def _git_tracked_relative_paths(
+    repo_root: Path,
+    relative_path: str,
+) -> tuple[str, ...] | None:
+    try:
+        completed = subprocess.run(
+            ["git", "-C", str(repo_root), "rev-parse", "--show-toplevel"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except FileNotFoundError:
+        return None
+    if completed.returncode != 0:
+        return None
+
+    listed = subprocess.run(
+        ["git", "-C", str(repo_root), "ls-files", "-z", "--", relative_path],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if listed.returncode != 0:
+        return None
+    return tuple(path for path in listed.stdout.split("\0") if path)
 
 
 def _copytree_ignore(current_root: str, names: list[str]) -> set[str]:

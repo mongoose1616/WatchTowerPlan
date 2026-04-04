@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 from shutil import copy2, copytree, ignore_patterns
 from typing import Any, cast
@@ -525,26 +526,90 @@ def materialize_validation_repo_subset(
         repo_root / "core" / "python" / "src" / "watchtower_host",
     )
     if include_shared_discovery_sources:
-        copytree(
-            REPO_ROOT / "core",
-            repo_root / "core",
-            dirs_exist_ok=True,
-            ignore=ignore_patterns(
-                ".venv",
-                "__pycache__",
-                ".pytest_cache",
-                ".ruff_cache",
-                ".mypy_cache",
-            ),
-        )
-        for source_path in REPO_ROOT.iterdir():
-            if not source_path.is_file():
-                continue
-            copy2(source_path, repo_root / source_path.name)
-        github_root = REPO_ROOT / ".github"
-        if github_root.exists():
-            copytree(github_root, repo_root / ".github", dirs_exist_ok=True)
+        if not _copy_git_tracked_tree(REPO_ROOT, repo_root, "core"):
+            copytree(
+                REPO_ROOT / "core",
+                repo_root / "core",
+                dirs_exist_ok=True,
+                ignore=ignore_patterns(
+                    ".venv",
+                    "__pycache__",
+                    ".pytest_cache",
+                    ".ruff_cache",
+                    ".mypy_cache",
+                ),
+            )
+            for source_path in REPO_ROOT.iterdir():
+                if not source_path.is_file():
+                    continue
+                copy2(source_path, repo_root / source_path.name)
+            github_root = REPO_ROOT / ".github"
+            if github_root.exists():
+                copytree(github_root, repo_root / ".github", dirs_exist_ok=True)
+        else:
+            _copy_git_tracked_root_files(REPO_ROOT, repo_root)
+            _copy_git_tracked_tree(REPO_ROOT, repo_root, ".github")
     return repo_root
+
+
+def _copy_git_tracked_root_files(source_root: Path, destination_root: Path) -> None:
+    tracked_paths = _git_tracked_relative_paths(source_root, ".")
+    if tracked_paths is None:
+        return
+    for tracked_path in tracked_paths:
+        source_path = source_root / tracked_path
+        if not source_path.is_file() or "/" in tracked_path:
+            continue
+        destination = destination_root / tracked_path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        copy2(source_path, destination)
+
+
+def _copy_git_tracked_tree(
+    source_root: Path,
+    destination_root: Path,
+    relative_path: str,
+) -> bool:
+    tracked_paths = _git_tracked_relative_paths(source_root, relative_path)
+    if tracked_paths is None:
+        return False
+
+    (destination_root / relative_path).mkdir(parents=True, exist_ok=True)
+    for tracked_path in tracked_paths:
+        source_path = source_root / tracked_path
+        if not source_path.is_file():
+            continue
+        destination = destination_root / tracked_path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        copy2(source_path, destination)
+    return True
+
+
+def _git_tracked_relative_paths(
+    repo_root: Path,
+    relative_path: str,
+) -> tuple[str, ...] | None:
+    try:
+        completed = subprocess.run(
+            ["git", "-C", str(repo_root), "rev-parse", "--show-toplevel"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except FileNotFoundError:
+        return None
+    if completed.returncode != 0:
+        return None
+
+    listed = subprocess.run(
+        ["git", "-C", str(repo_root), "ls-files", "-z", "--", relative_path],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if listed.returncode != 0:
+        return None
+    return tuple(path for path in listed.stdout.split("\0") if path)
 
 
 def materialize_externalized_fixture_python(

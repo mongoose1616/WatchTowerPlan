@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 from pathlib import Path
 from shutil import copytree
 
@@ -84,6 +86,44 @@ def test_pack_extract_core_stages_engineering_shared_core(
         path.startswith("core/")
         for path in traceability["entries"][0]["source_surface_paths"]
     )
+
+
+def test_pack_extract_core_excludes_untracked_donor_files(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    env = os.environ.copy()
+    env.setdefault("GIT_CONFIG_NOSYSTEM", "1")
+    subprocess.run(["git", "init", "-q"], cwd=repo_root, check=True, env=env)
+    subprocess.run(["git", "add", "."], cwd=repo_root, check=True, env=env)
+
+    injected_path = repo_root / "core" / "python" / "local_extract_probe.txt"
+    injected_path.write_text("probe\n", encoding="utf-8")
+    output_root = tmp_path / "shared_core"
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "extract-core",
+            "--output-root",
+            str(output_root),
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["passed"] is True
+    assert payload["readiness"]["passed"] is True
+    assert not (output_root / "core" / "python" / "local_extract_probe.txt").exists()
 
 
 def test_pack_apply_core_replaces_local_core_and_preserves_dev_residue(
