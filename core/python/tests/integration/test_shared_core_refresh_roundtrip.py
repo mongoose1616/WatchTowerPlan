@@ -28,6 +28,7 @@ _TRANSIENT_PATH_PARTS = {
     "build",
     "dist",
     "pip-wheel-metadata",
+    "runtime",
 }
 
 
@@ -117,7 +118,19 @@ def test_shared_core_refresh_round_trip_is_idempotent_across_repeated_cycles(
     )
     second_snapshot = _snapshot_refresh_state(recipient_root)
 
-    assert second_snapshot == first_snapshot
+    _, _ = _run_shared_core_refresh_cycle(
+        tmp_path=tmp_path,
+        cycle_name="third",
+        donor_repo_root=donor_repo_root,
+        recipient_root=recipient_root,
+        recipient_surfaces=recipient_surfaces,
+        monkeypatch=monkeypatch,
+        capsys=capsys,
+    )
+    third_snapshot = _snapshot_refresh_state(recipient_root)
+
+    assert first_snapshot != second_snapshot
+    assert third_snapshot == second_snapshot
 
 
 def _run_shared_core_refresh_cycle(
