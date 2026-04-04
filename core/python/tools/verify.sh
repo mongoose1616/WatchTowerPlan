@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail
 
 usage() {
   cat <<'EOF'
@@ -12,8 +12,8 @@ Modes:
   all   Broad shared-core pass plus watchtower-core validate all.
 
 Options:
-  --pack <pack_slug>  Also run the hosted-pack typing and test pass for one
-                      top-level pack root such as "my_pack".
+  --pack <pack_slug>  Also run the hosted-pack typing, lint, and test pass
+                      for one top-level pack root such as "my_pack".
   --fail-fast        Stop pytest-driven validation on the first failure. Use
                      this for faster remediation and refactor loops.
 EOF
@@ -23,7 +23,13 @@ run_step() {
   local label="$1"
   shift
   printf '\n[%s]\n' "$label"
-  "$@"
+  if "$@"; then
+    return 0
+  else
+    local status=$?
+    failed_steps+=("$label (exit $status)")
+  fi
+  return 0
 }
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
@@ -38,6 +44,7 @@ mode="$1"
 shift
 pack_slug=""
 fail_fast=0
+failed_steps=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -109,5 +116,14 @@ fi
 
 if [[ -n "$pack_slug" ]]; then
   run_step "mypy ($pack_slug)" uv run mypy src "$pack_src"
+  run_step "ruff ($pack_slug)" uv run ruff check "$pack_src" "$pack_tests"
   run_step "pytest ($pack_slug)" uv run python -m pytest "${pytest_args[@]}" "$pack_tests"
+fi
+
+if [[ ${#failed_steps[@]} -gt 0 ]]; then
+  printf '\nVerification failed in %d step(s):\n' "${#failed_steps[@]}" >&2
+  for failed_step in "${failed_steps[@]}"; do
+    printf -- '- %s\n' "$failed_step" >&2
+  done
+  exit 1
 fi

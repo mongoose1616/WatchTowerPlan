@@ -8,6 +8,7 @@ import os
 import shutil
 import sys
 import tempfile
+import time
 from collections.abc import Iterator, Mapping, Sequence
 from contextlib import contextmanager
 from contextvars import ContextVar, Token
@@ -39,6 +40,10 @@ def _utc_now() -> datetime:
     return datetime.now(UTC)
 
 
+def _monotonic_ns() -> int:
+    return time.monotonic_ns()
+
+
 def _new_id() -> str:
     return uuid4().hex[:10]
 
@@ -50,6 +55,7 @@ class TelemetrySession:
     config: TelemetryConfig
     run_id: str
     started_at: datetime
+    started_monotonic_ns: int
     command_name: str
     repo_root: Path
     output_path: Path | None = None
@@ -114,7 +120,10 @@ class TelemetrySession:
             return
         self._finished = True
         finished_at = _utc_now()
-        duration_ms = _duration_ms(self.started_at, finished_at)
+        duration_ms = _duration_ms_from_monotonic(
+            self.started_monotonic_ns,
+            _monotonic_ns(),
+        )
         record: dict[str, object] = {
             "record_type": "run_finished",
             "telemetry_run_id": self.run_id,
@@ -188,6 +197,7 @@ class TelemetryOperation:
     operation_id: str = field(default_factory=_new_id)
     parent_operation_id: str | None = None
     started_at: datetime = field(default_factory=_utc_now)
+    started_monotonic_ns: int = field(default_factory=_monotonic_ns)
     _active_token: Token[TelemetryOperation | None] | None = None
     _status: str | None = None
     _record_error: BaseException | None = None
@@ -208,6 +218,7 @@ class TelemetryOperation:
             _ACTIVE_OPERATION.reset(self._active_token)
             self._active_token = None
         finished_at = _utc_now()
+        finished_monotonic_ns = _monotonic_ns()
         record_error = self._record_error
         if record_error is None and self._status is None and exc is not None:
             record_error = exc
@@ -222,7 +233,10 @@ class TelemetryOperation:
             "status": status,
             "started_at": _format_timestamp(self.started_at),
             "finished_at": _format_timestamp(finished_at),
-            "duration_ms": _duration_ms(self.started_at, finished_at),
+            "duration_ms": _duration_ms_from_monotonic(
+                self.started_monotonic_ns,
+                finished_monotonic_ns,
+            ),
             "attributes": self.attributes,
         }
         if record_error is not None:
@@ -263,12 +277,14 @@ def create_telemetry_session(
     env = environ or os.environ
     config = TelemetryConfig.from_env(env)
     started_at = _utc_now()
+    started_monotonic_ns = _monotonic_ns()
     command_name = _command_name_from_argv(argv)
     if not config.enabled:
         return TelemetrySession(
             config=config,
             run_id=_new_id(),
             started_at=started_at,
+            started_monotonic_ns=started_monotonic_ns,
             command_name=command_name,
             repo_root=loader.repo_root,
             _disabled_reason="telemetry_disabled",
@@ -304,6 +320,7 @@ def create_telemetry_session(
             config=config,
             run_id=run_id,
             started_at=started_at,
+            started_monotonic_ns=started_monotonic_ns,
             command_name=command_name,
             repo_root=loader.repo_root,
             pack_settings_path=pack_settings_path,
@@ -315,6 +332,7 @@ def create_telemetry_session(
         config=config,
         run_id=run_id,
         started_at=started_at,
+        started_monotonic_ns=started_monotonic_ns,
         command_name=command_name,
         repo_root=loader.repo_root,
         output_path=output_path,
@@ -450,8 +468,8 @@ def _format_timestamp(value: datetime) -> str:
     return value.astimezone(UTC).isoformat().replace("+00:00", "Z")
 
 
-def _duration_ms(started_at: datetime, finished_at: datetime) -> int:
-    return int((finished_at - started_at).total_seconds() * 1000)
+def _duration_ms_from_monotonic(started_ns: int, finished_ns: int) -> int:
+    return max(0, (finished_ns - started_ns) // 1_000_000)
 
 
 def _json_safe(value: object) -> object:

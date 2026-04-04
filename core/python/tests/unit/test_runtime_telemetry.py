@@ -2,9 +2,12 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import UTC, datetime
 from pathlib import Path
 from types import SimpleNamespace
 from typing import IO, cast
+
+import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import (
@@ -104,14 +107,59 @@ def test_telemetry_session_records_nested_operations(tmp_path: Path) -> None:
     assert records[3]["status"] == "ok"
 
 
+def test_telemetry_uses_monotonic_durations_when_wall_clock_moves_backward(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    wall_times = iter(
+        (
+            datetime(2026, 4, 4, 12, 0, 2, tzinfo=UTC),
+            datetime(2026, 4, 4, 12, 0, 0, tzinfo=UTC),
+            datetime(2026, 4, 4, 11, 59, 59, tzinfo=UTC),
+        )
+    )
+    monotonic_ns = iter((1_000_000_000, 2_500_000_000, 3_000_000_000))
+
+    monkeypatch.setattr(telemetry_runtime, "_utc_now", lambda: next(wall_times))
+    monkeypatch.setattr(telemetry_runtime, "_monotonic_ns", lambda: next(monotonic_ns))
+
+    session = create_telemetry_session(
+        ControlPlaneLoader(),
+        ["doctor"],
+        environ={
+            "WATCHTOWER_TELEMETRY": "on",
+            "WATCHTOWER_TELEMETRY_STDERR": "off",
+            "WATCHTOWER_TELEMETRY_DIR": str(tmp_path),
+        },
+    )
+
+    with session.activate():
+        operation = session.operation("cli_stage", "parser_build")
+        operation.started_at = datetime(2026, 4, 4, 12, 0, 1, tzinfo=UTC)
+        operation.started_monotonic_ns = 2_000_000_000
+        with operation:
+            pass
+    session.finish(status="ok", exit_code=0)
+
+    assert session.output_path is not None
+    records = [
+        json.loads(line)
+        for line in session.output_path.read_text(encoding="utf-8").splitlines()
+    ]
+    assert records[1]["duration_ms"] == 500
+    assert records[2]["duration_ms"] == 2000
+    assert records[1]["finished_at"] < records[1]["started_at"]
+    assert records[2]["finished_at"] < records[2]["started_at"]
+
+
 def test_telemetry_session_promotes_default_sink_output_on_finish(
     tmp_path: Path,
-    monkeypatch,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     def _fake_resolve_output_dir(
         loader: ControlPlaneLoader,
         config: TelemetryConfig,
-        started_at,
+        started_at: datetime,
     ) -> tuple[Path, str | None, str | None]:
         return (
             tmp_path / started_at.strftime("%Y/%m/%d"),
@@ -222,7 +270,7 @@ def test_telemetry_cleanup_service_dry_run_matches_old_files_and_empty_dirs(
 
 def test_telemetry_cleanup_service_excludes_active_session_output(
     tmp_path: Path,
-    monkeypatch,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     telemetry_root = tmp_path / "telemetry"
     day_dir = telemetry_root / "2026" / "03" / "01"
