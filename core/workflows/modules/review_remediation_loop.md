@@ -35,7 +35,9 @@ Use this workflow to alternate seeded or fresh review findings with remediation 
    - Keep issue-family status, companion updates, validation needs, and slice boundaries current as the remediation progresses.
 5. Re-run validation and the originating review.
    - Run the narrowest relevant checks after each logical remediation slice and the broader applicable validation baseline after the iteration-level fixes are complete.
+   - If the loop targets a different repository but needs reusable shared-core fixes in the canonical shared-core root, keep the canonical validation boundary limited to shared-core proof. Record unrelated pack-specific validation failures as out-of-scope backlog instead of letting them derail the current repository loop.
    - Re-run the same originating review workflow against the updated repository state and treat recurring or newly introduced findings as first-class results.
+   - When the same issue recurs, identify the root cause: incomplete fix, weak validation, wrong ownership target, or insufficient review prompt. If a missing validator, test, or standard caused the same class of issue to recur, strengthen that surface in the next fix slice rather than repeatedly patching symptoms.
 6. Evaluate the stop conditions.
    - Stop clean when the rerun review returns zero actionable findings.
    - Stop blocked when only blocked or explicitly unverified items remain and those limits are explained clearly.
@@ -44,6 +46,7 @@ Use this workflow to alternate seeded or fresh review findings with remediation 
 7. Prepare closeout and downstream use.
    - Record the final loop status, the latest validated state, residual issues, and the exact review family used for reruns.
    - If commit closeout is in scope, keep the iteration slices explicit and hand the result to the commit-closeout workflow rather than hiding commit decisions inside the loop.
+   - Record any recommendations to strengthen the chosen review prompt or review workflow if the loop exposed weaknesses in the review coverage.
 
 ## Data Structure
 - Stable originating review identity and loop mode (`seeded_findings` or `fresh_review`)

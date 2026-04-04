@@ -31,16 +31,40 @@ Use this workflow to turn an existing review findings set into owning-surface fi
 3. Choose the owning repair surface and related update scope.
    - Fix each issue in the owning surface rather than only in the first file the review cited.
    - Search analogous surfaces for the same pattern and decide whether the issue is local, reusable, or cross-boundary before editing.
+   - Decide whether each item is a canonical shared-core fix, repo-local core drift that must be reconciled, a pack-owned fix, a cross-boundary interoperability fix, a missing standard/reference/template/harness that must be authored, or a blocked item that cannot be fixed safely yet.
+   - Reusable shared-core defects belong in the canonical shared-core root, even when discovered while reviewing another repository. Do not land a reusable shared-core fix only inside another repository's `core/`.
+   - Pack-specific behavior, docs, workflows, tests, machine state, and runtime wiring belong under the pack root.
+   - Cross-boundary issues may touch both shared core and the pack root, but keep the pieces explicit and interoperable rather than blending them into one ambiguous change.
    - Expand the same-change scope when companion docs, tests, schemas, validators, indexes, or command surfaces would otherwise become stale.
 4. Execute remediation by issue family.
    - Land the narrowest durable fix that removes the root cause instead of only patching the immediate symptom.
    - If a finding reveals a missing validator, test, standard, or authoring instruction, strengthen that surface in the same pass when it is part of the same behavior boundary.
    - Keep complete fixes, partial fixes, and blocked items explicit in the ledger as the work progresses.
-5. Validate the repaired state.
+   - Update all related surfaces in the same pass:
+     - Documentation: command docs, standards, foundations docs, READMEs, overview docs, examples, naming guidance, and references.
+     - Workflows: workflow docs, routing tables, workflow indexes, route previews, and workflow-adjacent guidance.
+     - Tests: add or update tests for the corrected behavior, interoperability boundaries, and newly enforced constraints.
+     - Validation/tooling: strengthen validators, checks, or automation where feasible to prevent recurrence.
+     - Schemas/contracts: tighten JSON Schema, contract surfaces, or machine-readable authority when a finding reveals missing constraints or permissive structures.
+     - Standards/references: publish missing standards or references when the repository relies on norms not actually documented in the owning docs surface.
+     - Naming and style: synchronize naming conventions across runtime code, schemas, docs, workflows, tests, and command surfaces when one finding exposes drift.
+     - Indexes/registries/rendered artifacts: refresh derived views, indexes, registries, manifests, and generated artifacts that depend on changed source surfaces.
+5. Apply prevention and hardening.
+   - If a finding exposes a standards gap, update the governing standard or machine-enforceable policy.
+   - If a finding exposes a validator gap in shared reusable behavior, strengthen the canonical validator and then reconcile consuming repos as needed.
+   - If a convention is only documented, add enforcement where practical rather than leaving it as prose-only guidance.
+   - If a workflow, checklist, or review process allowed the issue to persist, update the relevant workflow or checklist to close that gap.
+   - If existing tests or validators are missing, weak, or absent for a high-risk area, create the narrowest durable harness that proves the fix and can fail on regression.
+   - If performance or maintainability problems are part of the finding, refactor enough to remove the root cause rather than applying a cosmetic patch.
+6. Validate the repaired state.
    - Run the narrowest relevant checks after each issue family or logical slice, then run the broader applicable validation baseline for the touched surfaces.
+   - Use the repository's documented sync/rebuild entrypoints after mutations that affect derived indexes, registries, manifests, or rendered views.
+   - Run quality checks when the repository publishes them: `ruff check`, `ruff format --check`, `mypy`, `uv run pytest`, plus repo-native validation suites, schema checks, portability checks, export/bootstrap checks, or pack-specific validation commands relevant to the touched surfaces.
+   - When the originating review targets a different repository but reusable shared-core fixes must land first in the canonical shared-core root, validate those canonical slices as shared-core work. Do not treat unrelated pack-specific validation failures as blockers for repo-external shared-core remediation.
+   - When performance-sensitive code changes, run the available benchmark or comparative proof path. If no such harness exists, add a regression guard where practical and call out the remaining gap explicitly.
    - Separate confirmed passing proof from blocked checks, flaky results, environment limits, and still-unverified areas.
    - If a validation gap remains material, keep it open in the ledger instead of treating the remediation as fully closed.
-6. Prepare closeout and downstream use.
+7. Prepare closeout and downstream use.
    - If the task explicitly includes commit intent or the route later merges commit closeout, keep the remediation grouped into logical, reviewable slices and hand the result to the commit-closeout workflow.
    - Otherwise, keep the slice plan explicit enough that the next contributor can commit or continue the work without reconstructing the remediation logic from scratch.
 

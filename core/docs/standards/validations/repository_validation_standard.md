@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-04-04T17:00:00Z"
+updated_at: "2026-04-04T20:55:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -80,6 +80,7 @@ This standard defines the baseline validation expectations for repository change
   - `./tools/verify.sh all --pack <pack-root>`
   - `./.venv/bin/ruff check ../../<pack-root>/python/src ../../<pack-root>/python/tests`
   - `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q`
+- When a remediation task targets a non-`WatchTowerPlan` repository but must land reusable canonical shared-core fixes in `WatchTowerPlan/core`, validate the canonical slice with the shared-core baseline unless the slice also changes `plan/**`. Do not expand that proof path to `./tools/verify.sh all --pack plan` or other plan-pack validation just because the canonical owner repo is `WatchTowerPlan`.
 - When one change spans both shared core and a hosted pack, run both the shared-core suite and the affected pack-owned test root before closeout.
 - Keep validation evidence split the same way the suites are split: shared-core validation should prove `core/python/tests/` remains pack-neutral, while pack-owned validation should cover direct `watchtower_<pack>` behavior from the owning pack root.
 - When a change is docs-only and does not affect the Python workspace, narrower validation may be sufficient if the touched surfaces remain within governed Markdown or derived-index boundaries.
@@ -117,4 +118,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-04-04T17:00:00Z`
+- `2026-04-04T20:55:00Z`
