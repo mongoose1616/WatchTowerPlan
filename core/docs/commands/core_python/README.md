@@ -6,6 +6,7 @@
 ## Notes
 - Start with `watchtower_core.md` for the root command and shared options.
 - Use `watchtower_core_benchmark.md` when the main question is deliberate performance benchmarking rather than operational telemetry.
+- Use `watchtower_core_telemetry.md` when the main question is runtime telemetry cleanup or sink hygiene.
 - Use `watchtower_core_route.md` when the main question is how a request maps to workflow documents.
 - Use `watchtower_core_query.md` when the main question is which shared read-only lookup surface to use.
 - Use `watchtower_core_query_authority.md` when the first question is which governed surface is canonical.
@@ -29,6 +30,8 @@
 | `core/docs/commands/core_python/watchtower_core.md` | Human-readable page for the root `watchtower-core` command and shared CLI behavior. |
 | `core/docs/commands/core_python/watchtower_core_benchmark.md` | Entry page for governed reusable-core benchmark commands. |
 | `core/docs/commands/core_python/watchtower_core_benchmark_run.md` | Runs one governed benchmark suite and can retain the resulting benchmark record. |
+| `core/docs/commands/core_python/watchtower_core_telemetry.md` | Entry page for local runtime telemetry cleanup commands. |
+| `core/docs/commands/core_python/watchtower_core_telemetry_delete.md` | Deletes or previews retained runtime telemetry files under one telemetry root. |
 | `core/docs/commands/core_python/watchtower_core_route.md` | Entry page for advisory route preview commands. |
 | `core/docs/commands/core_python/watchtower_core_query.md` | Entry page for shared governed query commands such as authority resolution, command discovery, repository paths, templates, standards, references, foundations, workflows, acceptance, evidence, and benchmarks. |
 | `core/docs/commands/core_python/watchtower_core_query_benchmarks.md` | Searches retained benchmark records captured by the reusable-core benchmarking runtime. |

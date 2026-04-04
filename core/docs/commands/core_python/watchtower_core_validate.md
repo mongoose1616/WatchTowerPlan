@@ -109,7 +109,7 @@ uv run watchtower-core validate portability --include-pack <pack-slug> --format 
 | `watchtower-core validate portability` | Validates a repo root or staged export against the release/bootstrap portability contract. |
 | `watchtower-core release check` | Runs the local release gate that wraps this validation family with dirty-worktree protection and final export staging. |
 | `watchtower-core` | Root command that dispatches to this command group. |
-| `watchtower-core <pack-namespace> query trace` | Helpful after validation when you need to inspect the related pack-owned trace and evidence surfaces. |
+| `watchtower-core query evidence` | Helpful after validation when you need to inspect the related evidence surfaces. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/validate_family.py`
@@ -117,4 +117,4 @@ uv run watchtower-core validate portability --include-pack <pack-slug> --format 
 - `core/python/src/watchtower_core/validation/`
 
 ## Updated At
-- `2026-03-25T02:15:00Z`
+- `2026-04-04T02:45:00Z`

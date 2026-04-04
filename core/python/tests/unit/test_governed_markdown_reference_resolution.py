@@ -10,6 +10,7 @@ from watchtower_core.documentation.governed_documents import (
     GovernedDocument,
     collect_reference_indicators,
 )
+from watchtower_core.documentation.reference_semantics import parse_reference_local_mapping
 from watchtower_core.sync.foundation_index import FoundationIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -214,3 +215,97 @@ def test_foundation_index_sync_extracts_document_relative_reference_paths(
         "core/docs/references/example_reference.md",
         "core/docs/README.md",
     ]
+
+
+def test_parse_reference_local_mapping_requires_touchpoints_for_supporting_authority(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    reference_path = repo_root / "core/docs/references/example_reference.md"
+    reference_path.parent.mkdir(parents=True, exist_ok=True)
+    reference_path.write_text(
+        dedent(
+            """\
+            ---
+            id: "ref.example"
+            title: "Example Reference"
+            summary: "Exercises supporting-authority touchpoint enforcement."
+            type: "reference"
+            status: "active"
+            tags:
+              - "reference"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-11T17:38:00Z"
+            audience: "shared"
+            authority: "supporting"
+            ---
+
+            # Example Reference
+
+            ## Canonical Upstream
+            - [Example upstream](https://example.com/reference)
+
+            ## Quick Reference or Distilled Reference
+            One compact reference fixture.
+
+            ## Local Mapping in This Repository
+            ### Current Repository Status
+            - Supporting authority for current repository docs, standards,
+              commands, or control-plane surfaces.
+
+            ### Why It Matters Here
+            - Keep one explicit repo-local touchpoint for the reference fixture.
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    try:
+        parse_reference_local_mapping(
+            "core/docs/references/example_reference.md",
+            dedent(
+                """\
+                ### Current Repository Status
+                - Supporting authority for current repository docs, standards,
+                  commands, or control-plane surfaces.
+
+                ### Why It Matters Here
+                - Keep one explicit repo-local touchpoint for the reference fixture.
+                """
+            ),
+            repo_root=repo_root,
+            source_path=reference_path,
+        )
+    except ValueError as exc:
+        assert "Current Touchpoints is required" in str(exc)
+    else:  # pragma: no cover - defensive regression guard
+        raise AssertionError("Expected supporting-authority references to require touchpoints.")
+
+
+def test_parse_reference_local_mapping_allows_candidate_without_touchpoints(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    reference_path = repo_root / "core/docs/references/example_reference.md"
+    reference_path.parent.mkdir(parents=True, exist_ok=True)
+
+    result = parse_reference_local_mapping(
+        "core/docs/references/example_reference.md",
+        dedent(
+            """\
+            ### Current Repository Status
+            - Candidate reference. No active standard or workflow in this repository
+              links this file directly yet.
+
+            ### Why It Matters Here
+            - Keep one explicit repo-local touchpoint for the reference fixture.
+            """
+        ),
+        repo_root=repo_root,
+        source_path=reference_path,
+    )
+
+    assert result.repository_status == "candidate_future_guidance"
+    assert result.current_touchpoints_present is False
+    assert result.related_paths == ()

@@ -11,7 +11,7 @@ tags:
   - "release"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T04:10:00Z"
+updated_at: "2026-04-04T03:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -60,12 +60,13 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - Shared-core tests, docs, and workflow metadata that survive engineering extract must remain donor-neutral. When those surfaces need pack-aware expectations, derive them from activated `pack_settings.json`, declared surfaces, merged registries, and repository-relative pack roots instead of hard-coding one donor pack's validator IDs, workflow IDs, rendered-surface IDs, or tracking filenames.
 - Shared-core tests must not assume that one concrete donor pack root such as `plan/` exists in every consuming repository. If a scenario truly depends on one live pack root, keep that test under the owning pack root or gate it explicitly so the shared-core suite still passes when another repository refreshes `core/` without that pack.
 - Core-only bootstrap may retain shared `core/` source and root routing material, but it must not leave shared registry, workspace, or discovery metadata pointing at omitted donor packs.
+- Core-only bootstrap must also rewrite root navigation docs such as `README.md` and `AGENTS.md` when they would otherwise route the recipient toward omitted pack roots.
 - Core-plus-selected-pack bootstrap may retain only the selected pack roots plus the shared metadata updated to exactly that pack set.
 - Pack-only bundle output may retain only the selected pack roots. It must not include shared `core/`, and the recipient must run `watchtower-core pack bootstrap` after copying the bundle into a compatible core repository.
 - `watchtower-core pack bootstrap --replace-hosted-packs --write` reconciles the selected pack set into the shared hosted-pack registry, shared `core/python` workspace metadata, shared discovery indexes, and the selected pack's deterministic `sync all` slice when the pack declares it and the workspace is ready. It does not by itself purge donor records, tests, fixtures, internal assessments, or customer-release artifacts.
 - Treat `watchtower-core pack bootstrap --replace-hosted-packs --write --sync-extra dev` as the normal recipient-side follow-on after copying an engineering shared-core extract into place, unless the recipient intentionally defers workspace sync.
 - If a recipient repository still fails after `apply-core` because a shared-core test or doc names donor-pack surfaces directly, treat that as a donor shared-core portability defect first. Fix the donor shared core and regenerate the extract instead of carrying recipient-only normalization.
-- `watchtower-core pack export --output-root <path> ...` is the preferred staged handoff path because it copies only allowlisted source roots, scrubs default customer-release exclusions, runs any declared pack-owned `export_cleanup` hooks needed to remove pack-local live history or rebuild clean derived surfaces, reconciles the staged shared pack set when shared core is present, and then validates the staged output.
+- `watchtower-core pack export --output-root <path> ...` is the preferred staged handoff path because it copies only allowlisted source roots, scrubs default customer-release exclusions, runs any declared pack-owned `export_cleanup` hooks needed to remove pack-local live history, replace scrubbed-but-still-governed files with empty valid placeholders when docs or validators still reference them, or rebuild clean derived surfaces, reconciles the staged shared pack set when shared core is present, and then validates the staged output.
 - Follow the customer release and bootstrap checklist when the goal is a real handoff rather than only a local portability diagnosis. The normal sequence is broad repo validation, explicit schema-definition checks when needed, then a fresh staged export.
 - Treat portability validation of an actively used workspace as diagnostic, not as a release substitute. Working repositories can accumulate fresh telemetry, caches, or runtime residue after bootstrap or validation runs; the final customer/bootstrap artifact should come from a fresh `watchtower-core pack export` pass.
 - Exclude the following families from customer release and customer bootstrap by default unless the recipient explicitly needs them:
@@ -78,6 +79,8 @@ Keep downstream adoption and customer handoff safe by defining the difference be
   - Donor project maps, donor repository references, internal comparison or assessment closeout references, and any content that leaks machine-local absolute filesystem paths.
   - Hosted pack roots that are not part of the selected recipient pack set.
 - Customer-facing docs, manifests, and registries must use repository-relative paths or neutral placeholders. Filesystem-absolute donor checkout paths are invalid portability input.
+- Portable exports must not leave a governed doc pointing at a scrubbed governed file unless the export also rewrites the doc or leaves a schema-valid placeholder at that path.
+- Portable repository bundles must remove `core/python/uv.lock` instead of shipping donor lock state.
 - When retained validation evidence is excluded, the paired shared acceptance-contract examples and acceptance-linked traceability entries must be excluded too. Any remaining traceability entries in a repository bundle must point only at shared `core/` or the selected pack roots. Portable bundles may therefore carry an empty `core/control_plane/indexes/traceability/traceability_index.json` when no live portable trace lineage remains.
 - Shared core docs and metadata may mention the current internal pack as an example, but they must not make that pack look like a consuming-repository invariant.
 - Treat packaged outputs as curated deliverables. Wheels, sdists, starter bundles, and repo-copy flows may all need different inclusion rules; none should silently inherit internal-only test or history surfaces.
@@ -129,4 +132,4 @@ Keep downstream adoption and customer handoff safe by defining the difference be
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 
 ## Updated At
-- `2026-03-29T04:10:00Z`
+- `2026-04-04T03:05:00Z`

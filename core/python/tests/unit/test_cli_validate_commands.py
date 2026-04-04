@@ -638,6 +638,56 @@ def test_validate_all_reports_unbootstrapped_root_pack_without_crashing(
     }
 
 
+def test_validate_all_reports_validator_coverage_gap_when_validator_is_removed(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    validator_registry_path = repo_root / "core/control_plane/registries/validator_registry.json"
+    validator_registry = json.loads(validator_registry_path.read_text(encoding="utf-8"))
+    validator_registry["validators"] = [
+        validator
+        for validator in validator_registry["validators"]
+        if validator["id"] != "validator.control_plane.acceptance_contract"
+    ]
+    validator_registry_path.write_text(
+        json.dumps(validator_registry, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    monkeypatch.chdir(repo_root / "core" / "python")
+    result = main(
+        [
+            "validate",
+            "all",
+            "--skip-front-matter",
+            "--skip-document-semantics",
+            "--skip-acceptance",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    pack_contract_result = next(
+        result_record
+        for result_record in payload["results"]
+        if result_record["family"] == "pack_contract"
+    )
+    issue_codes = {issue["code"] for issue in pack_contract_result["issues"]}
+    issue_locations = {issue["location"] for issue in pack_contract_result["issues"]}
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate all"
+    assert payload["passed"] is False
+    assert "validator_coverage_missing" in issue_codes
+    assert (
+        "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json"
+        in issue_locations
+    )
+
+
 def test_validate_portability_supports_json_output_for_clean_root(
     tmp_path: Path,
     capsys,

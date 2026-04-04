@@ -11,7 +11,7 @@ tags:
   - "bootstrap"
   - "portability"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T04:10:00Z"
+updated_at: "2026-04-04T03:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -63,6 +63,7 @@ This standard defines the shared release and bootstrap checklist for customer-sa
 - When the change touched one or more `*.schema.json` files, run `watchtower-core validate schema --path <schema> --format json` for each changed schema in addition to the broad repository gate.
 - Rebuild the final handoff bundle immediately before release. A working repository can accumulate telemetry, caches, or runtime residue after validation.
 - Expect `pack export` to apply any selected pack's declared `export_cleanup` hook before portability validation when that pack needs pack-owned live-history scrub or clean-state derived-surface rebuilds.
+- Expect the staged export to remain self-consistent after scrub. If a governed command doc, manifest, or validator still references a scrubbed governed file, the export path must either rewrite that reference or leave an empty schema-valid placeholder behind.
 - Expect the final export to omit internal acceptance-contract examples, retained validation evidence, and any traceability entry that either depends on scrubbed evidence or still points outside the staged shared-core and selected-pack roots.
 - Pack-only bundles are additive handoff surfaces, not standalone repositories. After copy, the recipient still needs compatible shared core plus `watchtower-core pack bootstrap` and `watchtower-core pack validate`. If the recipient intentionally bootstraps with `--no-sync-workspace` and shared workspace wiring changed, follow immediately with the deferred pack-local `sync all` step once `uv sync` finishes.
 - When the bootstrapped pack publishes a pack-owned foundations view such as `<pack>/docs/foundations/**`, refresh that tree from `core/docs/foundations/**` during bootstrap bring-up and adapt the pack-local wording before treating the bootstrap as complete.
@@ -114,4 +115,4 @@ This standard defines the shared release and bootstrap checklist for customer-sa
 - [watchtower_core_validate_schema.md](/core/docs/commands/core_python/watchtower_core_validate_schema.md)
 
 ## Updated At
-- `2026-03-29T04:10:00Z`
+- `2026-04-04T03:05:00Z`

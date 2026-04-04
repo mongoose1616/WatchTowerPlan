@@ -2,14 +2,21 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
+
 from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import (
+    CORE_PACK_SETTINGS_PATH,
     PACK_SETTINGS_PATH,
     ControlPlaneLoader,
 )
 from watchtower_core.pack_integration.runtime_registry import synthesize_pack_registry_entry
 from watchtower_core.telemetry import telemetry_operation
 from watchtower_core.validation._pack_contract.boundaries import dependency_boundary_issues
+from watchtower_core.validation._pack_contract.integrity import (
+    pack_registry_integrity_issues,
+    validator_coverage_issues,
+)
 from watchtower_core.validation._pack_contract.manifest import (
     command_doc_issues,
     manifest_path_issues,
@@ -32,8 +39,15 @@ PACK_CONTRACT_VALIDATOR_ID = "validator.pack.contract"
 class PackContractValidationService:
     """Validate that a pack publishes the governed surfaces core expects."""
 
-    def __init__(self, loader: ControlPlaneLoader) -> None:
+    def __init__(
+        self,
+        loader: ControlPlaneLoader,
+        *,
+        extra_issue_provider: Callable[[ControlPlaneLoader, str], tuple[ValidationIssue, ...]]
+        | None = None,
+    ) -> None:
         self._loader = loader
+        self._extra_issue_provider = extra_issue_provider
 
     def validate(self, pack_settings_path: str = PACK_SETTINGS_PATH) -> ValidationResult:
         """Validate one pack settings surface and its declared validation context."""
@@ -48,6 +62,57 @@ class PackContractValidationService:
                     self._loader,
                     pack_settings_path=pack_settings_path,
                 )
+            except (ControlPlaneError, ValueError) as exc:
+                result = ValidationResult(
+                    validator_id=PACK_CONTRACT_VALIDATOR_ID,
+                    target_path=pack_settings_path,
+                    engine="python",
+                    schema_ids=(),
+                    passed=False,
+                    issues=(
+                        ValidationIssue(
+                            code="pack_contract_invalid",
+                            message=str(exc),
+                            location=pack_settings_path,
+                        ),
+                    ),
+                )
+                if operation is not None:
+                    operation.set_result(
+                        status="failed",
+                        issue_count=result.issue_count,
+                        passed=result.passed,
+                        target_path=result.target_path,
+                        validator_id=result.validator_id,
+                    )
+                return result
+
+            if context.pack_settings_path == CORE_PACK_SETTINGS_PATH:
+                issues.extend(pack_registry_integrity_issues(context.loader))
+                issues.extend(validator_coverage_issues(context))
+                if self._extra_issue_provider is not None:
+                    issues.extend(
+                        self._extra_issue_provider(context.loader, context.pack_settings_path)
+                    )
+                result = ValidationResult(
+                    validator_id=PACK_CONTRACT_VALIDATOR_ID,
+                    target_path=pack_settings_path,
+                    engine="python",
+                    schema_ids=(),
+                    passed=not issues,
+                    issues=tuple(issues),
+                )
+                if operation is not None:
+                    operation.set_result(
+                        status="ok" if result.passed else "failed",
+                        issue_count=result.issue_count,
+                        passed=result.passed,
+                        target_path=result.target_path,
+                        validator_id=result.validator_id,
+                    )
+                return result
+
+            try:
                 pack_registry = context.loader.load_pack_registry()
                 runtime_manifest = context.loader.load_pack_runtime_manifest(
                     pack_settings_path=context.pack_settings_path
@@ -140,14 +205,20 @@ class PackContractValidationService:
                 )
             )
             issues.extend(registry_collision_issues(pack_registry, registry_entry))
+            issues.extend(pack_registry_integrity_issues(context.loader))
             issues.extend(manifest_path_issues(context, runtime_manifest))
             issues.extend(owned_root_issues(context, runtime_manifest))
             issues.extend(surface_path_issues(context))
             issues.extend(command_doc_issues(context, runtime_manifest))
             issues.extend(core_python_workspace_issues(context, runtime_manifest))
             issues.extend(validation_suite_issues(context, runtime_manifest))
+            issues.extend(validator_coverage_issues(context))
             issues.extend(integration_issues(runtime_manifest, repo_root=context.loader.repo_root))
             issues.extend(dependency_boundary_issues(context, runtime_manifest))
+            if self._extra_issue_provider is not None:
+                issues.extend(
+                    self._extra_issue_provider(context.loader, context.pack_settings_path)
+                )
 
             result = ValidationResult(
                 validator_id=PACK_CONTRACT_VALIDATOR_ID,

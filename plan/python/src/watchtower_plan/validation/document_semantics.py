@@ -4,48 +4,17 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from watchtower_core.adapters import (
-    extract_external_urls,
-    extract_markdown_links,
-    extract_sections,
-    extract_title,
-    extract_updated_at_from_section,
-    load_front_matter,
-    load_markdown_body,
-)
+from watchtower_core.adapters import extract_sections, extract_title, load_markdown_body
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
-from watchtower_core.documentation.front_matter_paths import (
-    normalize_front_matter_applies_to,
-)
-from watchtower_core.documentation.command_semantics import validate_command_document
+from watchtower_core.documentation.governed_documents import validate_required_section_order
 from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
-from watchtower_core.documentation.governed_documents import (
-    validate_explained_bullet_section,
-    validate_required_section_order,
-)
-from watchtower_core.documentation.reference_semantics import (
-    REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION,
-    REFERENCE_LOCAL_MAPPING_SECTION,
-    governed_reference_doc_roots,
-    parse_reference_local_mapping,
-)
-from watchtower_core.documentation.standards import (
-    STANDARD_OPERATIONALIZATION_SECTION,
-    collect_standard_reference_metadata,
-    parse_standard_operationalization,
-)
-from watchtower_core.sync.foundation_index import FOUNDATION_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.reference_index import REFERENCE_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.standard_index import STANDARD_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.workflow_index import (
-    WorkflowDocumentContext,
-    build_workflow_document_context,
-    load_workflow_document,
-)
 from watchtower_core.validation.common import matches_applies_to, resolve_target_path
+from watchtower_core.validation.document_semantics import (
+    CoreDocumentSemanticsValidationService,
+)
 from watchtower_core.validation.errors import (
     ValidationExecutionError,
     ValidationSelectionError,
@@ -123,6 +92,15 @@ INITIATIVE_TERMINAL_DISCREPANCY_STATUSES = frozenset(
 INITIATIVE_EMPTY_SCOPE_FALLBACK_LINE = (
     "No explicit non-goals or deferred scope items are recorded."
 )
+_CORE_VALIDATOR_IDS = frozenset(
+    {
+        "validator.documentation.command_semantics",
+        "validator.documentation.reference_semantics",
+        "validator.documentation.foundation_semantics",
+        "validator.documentation.standard_semantics",
+        "validator.documentation.workflow_semantics",
+    }
+)
 
 
 class DocumentSemanticsValidationService:
@@ -130,17 +108,15 @@ class DocumentSemanticsValidationService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
-        self._workflow_document_context: WorkflowDocumentContext | None = None
+        self._core_service = CoreDocumentSemanticsValidationService(loader)
         self._initiative_template_section_cache: dict[str, tuple[str, ...]] = {}
-        self._reference_doc_roots: tuple[str, ...] | None = None
 
     def validate(
         self, path: str | Path, validator_id: str | None = None
     ) -> ValidationResult:
         """Validate one Markdown document through registry-backed semantic rules."""
-        resolved_path, target_path, relative_target_path = resolve_target_path(
-            self._loader, path
-        )
+
+        resolved_path, target_path, relative_target_path = resolve_target_path(self._loader, path)
         validator = self._resolve_validator(relative_target_path, validator_id)
 
         try:
@@ -184,9 +160,7 @@ class DocumentSemanticsValidationService:
             try:
                 validator = registry.get(validator_id)
             except KeyError as exc:
-                raise ValidationSelectionError(
-                    f"Unknown validator ID: {validator_id}"
-                ) from exc
+                raise ValidationSelectionError(f"Unknown validator ID: {validator_id}") from exc
             return self._validate_registry_record(validator)
 
         if relative_target_path is None:
@@ -210,18 +184,14 @@ class DocumentSemanticsValidationService:
                 f"No active document-semantics validator applies to {relative_target_path}."
             )
         if len(candidates) > 1:
-            candidate_ids = ", ".join(
-                sorted(candidate.validator_id for candidate in candidates)
-            )
+            candidate_ids = ", ".join(sorted(candidate.validator_id for candidate in candidates))
             raise ValidationSelectionError(
                 "Multiple document-semantics validators apply to "
                 f"{relative_target_path}: {candidate_ids}"
             )
         return self._validate_registry_record(candidates[0])
 
-    def _validate_registry_record(
-        self, validator: ValidatorDefinition
-    ) -> ValidatorDefinition:
+    def _validate_registry_record(self, validator: ValidatorDefinition) -> ValidatorDefinition:
         if validator.status != "active":
             raise ValidationSelectionError(
                 f"Validator is not active and cannot be selected: {validator.validator_id}"
@@ -249,209 +219,25 @@ class DocumentSemanticsValidationService:
                 "Document-semantics validation requires a repository-local path."
             )
 
-        self._validate_repo_local_markdown_links(
-            relative_target_path,
-            resolved_path,
-            load_markdown_body(resolved_path),
-        )
+        if validator_id in _CORE_VALIDATOR_IDS:
+            result = self._core_service.validate(
+                relative_target_path,
+                validator_id=validator_id,
+            )
+            if not result.passed:
+                if result.issues:
+                    raise ValidationExecutionError(result.issues[0].message)
+                raise ValidationExecutionError(
+                    f"Core document-semantics validation failed for {relative_target_path}."
+                )
+            return
 
-        if validator_id == "validator.documentation.reference_semantics":
-            self._validate_reference_document(relative_target_path, resolved_path)
-            return
-        if validator_id == "validator.documentation.foundation_semantics":
-            self._validate_foundation_document(relative_target_path, resolved_path)
-            return
-        if validator_id == "validator.documentation.standard_semantics":
-            self._validate_standard_document(relative_target_path, resolved_path)
-            return
-        if validator_id == "validator.documentation.workflow_semantics":
-            load_workflow_document(
-                self._loader,
-                relative_target_path,
-                context=self._workflow_validation_context(),
-            )
-            return
-        if validator_id == "validator.documentation.command_semantics":
-            validate_command_document(
-                relative_path=relative_target_path,
-                resolved_path=resolved_path,
-                repo_root=self._loader.repo_root,
-            )
-            return
         if validator_id == INITIATIVE_HANDOFF_DOCUMENT_SEMANTICS_VALIDATOR_ID:
-            self._validate_initiative_handoff_document(
-                relative_target_path,
-                resolved_path,
-            )
+            self._validate_initiative_handoff_document(relative_target_path, resolved_path)
             return
 
         raise ValidationExecutionError(
             f"Unsupported document-semantics validator: {validator_id}"
-        )
-
-    def _workflow_validation_context(self) -> WorkflowDocumentContext:
-        """Return the reusable workflow-loading context for this validation run."""
-
-        if self._workflow_document_context is None:
-            self._workflow_document_context = build_workflow_document_context(
-                self._loader
-            )
-        return self._workflow_document_context
-
-    def _validate_reference_document(
-        self, relative_path: str, resolved_path: Path
-    ) -> None:
-        front_matter = load_front_matter(resolved_path)
-        self._loader.schema_store.validate_instance(
-            front_matter,
-            schema_id=REFERENCE_FRONT_MATTER_SCHEMA_ID,
-        )
-        normalize_front_matter_applies_to(
-            front_matter,
-            relative_path=relative_path,
-            repo_root=self._loader.repo_root,
-        )
-        markdown = load_markdown_body(resolved_path)
-        sections = extract_sections(markdown)
-        required_sections = (
-            "Canonical Upstream",
-            "Quick Reference or Distilled Reference",
-            REFERENCE_LOCAL_MAPPING_SECTION,
-            "References",
-            "Updated At",
-        )
-        self._validate_title_and_required_sections(
-            relative_path,
-            markdown,
-            sections,
-            front_matter_title=str(front_matter["title"]),
-            required_sections=required_sections,
-        )
-        if (
-            extract_updated_at_from_section(sections["Updated At"])
-            != front_matter["updated_at"]
-        ):
-            raise ValueError(
-                f"{relative_path} Updated At section does not match front matter updated_at."
-            )
-        if not extract_external_urls(sections["Canonical Upstream"]):
-            raise ValueError(
-                f"{relative_path} Canonical Upstream section does not publish any external URL."
-            )
-        local_mapping = parse_reference_local_mapping(
-            relative_path,
-            sections[REFERENCE_LOCAL_MAPPING_SECTION],
-            repo_root=self._loader.repo_root,
-            source_path=resolved_path,
-        )
-        if (
-            local_mapping.repository_status != "candidate_future_guidance"
-            and not local_mapping.current_touchpoints_present
-        ):
-            raise ValueError(
-                f"{relative_path} {REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION} is required "
-                "when the reference is current active support or supporting authority."
-            )
-        if (
-            local_mapping.repository_status != "candidate_future_guidance"
-            and not local_mapping.related_paths
-        ):
-            raise ValueError(
-                f"{relative_path} {REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION} must publish "
-                "at least one real repository touchpoint."
-            )
-
-    def _validate_foundation_document(
-        self, relative_path: str, resolved_path: Path
-    ) -> None:
-        front_matter = load_front_matter(resolved_path)
-        self._loader.schema_store.validate_instance(
-            front_matter,
-            schema_id=FOUNDATION_FRONT_MATTER_SCHEMA_ID,
-        )
-        normalize_front_matter_applies_to(
-            front_matter,
-            relative_path=relative_path,
-            repo_root=self._loader.repo_root,
-        )
-        markdown = load_markdown_body(resolved_path)
-        sections = extract_sections(markdown)
-        required_sections = ("References", "Updated At")
-        self._validate_title_and_required_sections(
-            relative_path,
-            markdown,
-            sections,
-            front_matter_title=str(front_matter["title"]),
-            required_sections=required_sections,
-        )
-        if (
-            extract_updated_at_from_section(sections["Updated At"])
-            != front_matter["updated_at"]
-        ):
-            raise ValueError(
-                f"{relative_path} Updated At section does not match front matter updated_at."
-            )
-
-    def _validate_standard_document(
-        self, relative_path: str, resolved_path: Path
-    ) -> None:
-        front_matter = load_front_matter(resolved_path)
-        self._loader.schema_store.validate_instance(
-            front_matter,
-            schema_id=STANDARD_FRONT_MATTER_SCHEMA_ID,
-        )
-        normalize_front_matter_applies_to(
-            front_matter,
-            relative_path=relative_path,
-            repo_root=self._loader.repo_root,
-        )
-        markdown = load_markdown_body(resolved_path)
-        sections = extract_sections(markdown)
-        required_sections = (
-            "Summary",
-            "Purpose",
-            "Scope",
-            "Use When",
-            "Related Standards and Sources",
-            "Guidance",
-            STANDARD_OPERATIONALIZATION_SECTION,
-            "Validation",
-            "Change Control",
-            "References",
-            "Updated At",
-        )
-        self._validate_title_and_required_sections(
-            relative_path,
-            markdown,
-            sections,
-            front_matter_title=str(front_matter["title"]),
-            required_sections=required_sections,
-        )
-        validate_explained_bullet_section(
-            relative_path,
-            "Related Standards and Sources",
-            sections["Related Standards and Sources"],
-        )
-        parse_standard_operationalization(
-            relative_path,
-            sections.get(STANDARD_OPERATIONALIZATION_SECTION),
-            self._loader.repo_root,
-        )
-        if (
-            extract_updated_at_from_section(sections["Updated At"])
-            != front_matter["updated_at"]
-        ):
-            raise ValueError(
-                f"{relative_path} Updated At section does not match front matter updated_at."
-            )
-        collect_standard_reference_metadata(
-            relative_path=relative_path,
-            repo_root=self._loader.repo_root,
-            source_path=resolved_path,
-            related_section=sections["Related Standards and Sources"],
-            references_section=sections["References"],
-            loader=self._loader,
-            reference_doc_roots=self._governed_reference_doc_roots(),
         )
 
     def _validate_initiative_handoff_document(
@@ -484,9 +270,7 @@ class DocumentSemanticsValidationService:
                 minimum_count=1,
             )
         else:
-            required_section_groups = INITIATIVE_GENERIC_REQUIRED_SECTION_GROUPS.get(
-                filename
-            )
+            required_section_groups = INITIATIVE_GENERIC_REQUIRED_SECTION_GROUPS.get(filename)
             if required_section_groups is None:
                 raise ValidationExecutionError(
                     f"Unsupported initiative handoff semantics target: {relative_path}"
@@ -527,17 +311,6 @@ class DocumentSemanticsValidationService:
             )
         self._initiative_template_section_cache[filename] = titles
         return titles
-
-    def _governed_reference_doc_roots(self) -> tuple[str, ...]:
-        cached = self._reference_doc_roots
-        if cached is not None:
-            return cached
-        roots = governed_reference_doc_roots(
-            self._loader.repo_root,
-            loader=self._loader,
-        )
-        self._reference_doc_roots = roots
-        return roots
 
     def _template_required_section_groups(
         self,
@@ -580,17 +353,13 @@ class DocumentSemanticsValidationService:
         decision_notes_path = initiative_root / "decision_notes.md"
         if decision_notes_path.exists():
             required_docs.insert(2, "decision_notes.md")
-        missing_docs = [
-            name for name in required_docs if name not in read_order_section
-        ]
+        missing_docs = [name for name in required_docs if name not in read_order_section]
         if missing_docs:
             joined = ", ".join(missing_docs)
             raise ValueError(
                 f"{relative_path} Read Order is missing required canonical docs: {joined}"
             )
-        canonical_doc_positions = [
-            read_order_section.index(name) for name in required_docs[:-1]
-        ]
+        canonical_doc_positions = [read_order_section.index(name) for name in required_docs[:-1]]
         implementation_slice_position = read_order_section.index("implementation_slice.md")
         if any(position > implementation_slice_position for position in canonical_doc_positions):
             ordered_docs = ", ".join(required_docs[:-1])
@@ -657,30 +426,6 @@ class DocumentSemanticsValidationService:
                     "or terminal discrepancies as current risk lines."
                 )
 
-    def _validate_title_and_required_sections(
-        self,
-        relative_path: str,
-        markdown: str,
-        sections: dict[str, str],
-        *,
-        front_matter_title: str,
-        required_sections: tuple[str, ...],
-    ) -> None:
-        validate_blank_line_before_heading_after_list(relative_path, markdown)
-        visible_title = extract_title(markdown)
-        if visible_title != front_matter_title:
-            raise ValueError(
-                f"{relative_path} H1 title does not match front matter title: "
-                f"{visible_title!r} != {front_matter_title!r}"
-            )
-        missing_sections = [
-            title for title in required_sections if title not in sections
-        ]
-        if missing_sections:
-            joined = ", ".join(missing_sections)
-            raise ValueError(f"{relative_path} is missing required sections: {joined}")
-        validate_required_section_order(relative_path, sections, required_sections)
-
     def _bullet_lines(self, section_text: str | None) -> tuple[str, ...]:
         if section_text is None:
             return ()
@@ -706,10 +451,7 @@ class DocumentSemanticsValidationService:
         matched_sections: list[str] = []
         missing_sections: list[str] = []
         for section_group in required_section_groups:
-            matched_title = next(
-                (title for title in section_group if title in sections),
-                None,
-            )
+            matched_title = next((title for title in section_group if title in sections), None)
             if matched_title is None:
                 missing_sections.append(" / ".join(section_group))
                 continue
@@ -720,109 +462,3 @@ class DocumentSemanticsValidationService:
         resolved_order = tuple(matched_sections)
         validate_required_section_order(relative_path, sections, resolved_order)
         return resolved_order
-
-    def _validate_repo_local_markdown_links(
-        self,
-        relative_path: str,
-        resolved_path: Path,
-        markdown: str,
-    ) -> None:
-        repo_root = self._loader.repo_root.resolve()
-        in_fence = False
-
-        for line_number, line in enumerate(markdown.splitlines(), start=1):
-            stripped = line.strip()
-            if stripped.startswith("```") or stripped.startswith("~~~"):
-                in_fence = not in_fence
-                continue
-            if in_fence:
-                continue
-            for target in extract_markdown_links(line):
-                target_path, target_style = (
-                    self._resolve_repo_local_markdown_link_target(
-                        target,
-                        repo_root=repo_root,
-                        source_path=resolved_path,
-                    )
-                )
-                if target_style is None:
-                    continue
-                if target_style == "filesystem_absolute":
-                    raise ValueError(
-                        f"{relative_path} repo-local Markdown link on line {line_number} "
-                        f"uses a filesystem-absolute checkout path: {target}. Use "
-                        "repository-native '/...' or document-relative links instead."
-                    )
-                if target_style == "outside_repo":
-                    raise ValueError(
-                        f"{relative_path} repo-local Markdown link on line {line_number} "
-                        f"escapes the current repository root: {target}"
-                    )
-                if target_path is None or target_path.exists():
-                    continue
-                normalized = target_path.relative_to(repo_root).as_posix()
-                raise ValueError(
-                    f"{relative_path} repo-local Markdown link on line {line_number} "
-                    f"points to a missing target: {target} -> {normalized}"
-                )
-
-    def _resolve_repo_local_markdown_link_target(
-        self,
-        target: str,
-        *,
-        repo_root: Path,
-        source_path: Path,
-    ) -> tuple[Path | None, str | None]:
-        stripped = target.strip()
-        if not stripped or stripped.startswith(("http://", "https://", "mailto:", "#")):
-            return None, None
-
-        without_fragment = stripped.split("#", 1)[0].split("?", 1)[0].strip()
-        if not without_fragment:
-            return None, None
-
-        repo_top_level_names = {
-            ".github",
-            "AGENTS.md",
-            "README.md",
-            "core",
-            "docs",
-            "workflows",
-        }
-        repo_top_level_names.update(child.name for child in repo_root.iterdir())
-
-        if without_fragment.startswith("/"):
-            repo_relative_candidate = without_fragment.lstrip("/")
-            if repo_relative_candidate:
-                first_part = Path(repo_relative_candidate).parts[0]
-                if first_part in repo_top_level_names:
-                    return (
-                        repo_root / repo_relative_candidate
-                    ).resolve(), "repo_root_relative"
-
-            absolute_candidate = Path(without_fragment).resolve()
-            try:
-                absolute_candidate.relative_to(repo_root)
-            except ValueError:
-                return absolute_candidate, "outside_repo"
-            return absolute_candidate, "filesystem_absolute"
-
-        candidate = Path(without_fragment)
-        source_candidate = (source_path.parent / candidate).resolve()
-        repo_candidate = (repo_root / candidate).resolve()
-
-        candidate_paths: list[Path] = []
-        for resolved in (source_candidate, repo_candidate):
-            try:
-                resolved.relative_to(repo_root)
-            except ValueError:
-                continue
-            if resolved not in candidate_paths:
-                candidate_paths.append(resolved)
-
-        for resolved in candidate_paths:
-            if resolved.exists():
-                return resolved, "relative"
-        if candidate_paths:
-            return candidate_paths[0], "relative"
-        return source_candidate, "outside_repo"

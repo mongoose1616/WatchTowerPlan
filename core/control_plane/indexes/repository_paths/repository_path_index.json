@@ -1774,6 +1774,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/core_python/watchtower_core_telemetry.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for local runtime telemetry cleanup commands.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_telemetry_delete.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Deletes or previews retained runtime telemetry files under one telemetry root.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/commands/core_python/watchtower_core_validate.md",
       "kind": "file",
       "surface_kind": "command_doc",

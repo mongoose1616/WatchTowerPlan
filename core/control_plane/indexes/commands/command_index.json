@@ -1745,6 +1745,48 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.telemetry",
+      "command": "watchtower-core telemetry",
+      "summary": "Inspect and clean local runtime telemetry machine state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_telemetry.md",
+      "synopsis": "uv run watchtower-core telemetry [-h] <telemetry_command> ...",
+      "implementation_path": "core/python/src/watchtower_host/cli/telemetry_family.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "telemetry"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.telemetry.delete",
+      "command": "watchtower-core telemetry delete",
+      "summary": "Delete retained runtime telemetry files under one resolved telemetry root.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_telemetry_delete.md",
+      "synopsis": "uv run watchtower-core telemetry delete [-h] [--pack-settings-path PACK_SETTINGS_PATH] [--telemetry-root TELEMETRY_ROOT] (--older-than-days OLDER_THAN_DAYS | --before BEFORE | --all) [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/telemetry_handlers.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.telemetry",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "telemetry",
+        "delete"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.validate",
       "command": "watchtower-core validate",
       "summary": "Run validation commands against governed repository artifacts and document surfaces.",

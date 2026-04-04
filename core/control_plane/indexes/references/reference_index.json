@@ -1617,7 +1617,7 @@
       "summary": "This document provides a working reference for installing and using `uv` as a Python packaging, environment, and dependency-management tool.",
       "status": "active",
       "doc_path": "core/docs/references/uv_reference.md",
-      "updated_at": "2026-03-24T21:49:49Z",
+      "updated_at": "2026-04-04T03:20:00Z",
       "repository_status": "active_support",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -1636,10 +1636,10 @@
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
+        "core/python/uv.lock",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
-        "core/python/uv.lock",
         "core/docs/commands/core_python/watchtower_core_doctor.md"
       ],
       "tags": [

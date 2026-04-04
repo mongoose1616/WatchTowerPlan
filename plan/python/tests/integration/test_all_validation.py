@@ -99,8 +99,7 @@ def _write_invalid_standard_fixture(path: Path) -> None:
             - Added to pin validate-all coverage.
 
             ## Related Standards and Sources
-            - [validate_all_standard_semantics.md]({STANDARD_SEMANTICS_DOC_PATH}):
-              keeps the fixture self-contained while exercising missing-section validation.
+            - [validate_all_standard_semantics.md]({STANDARD_SEMANTICS_DOC_PATH}): keeps the fixture self-contained while exercising missing-section validation.
 
             ## Operationalization
             - `Modes`: `documentation`
@@ -111,9 +110,6 @@ def _write_invalid_standard_fixture(path: Path) -> None:
 
             ## Change Control
             - Update the validator and fixture together if the required sections change.
-
-            ## References
-            - [validate_all_standard_semantics.md]({STANDARD_SEMANTICS_DOC_PATH})
 
             ## Updated At
             - `2026-03-11T17:05:00Z`
@@ -261,7 +257,7 @@ def test_validate_all_records_selection_errors_as_failed_results(
     assert result.records[0].result.issues[0].code == "validation_step_error"
 
 
-def test_validate_all_reports_missing_standard_guidance_section(
+def test_validate_all_reports_missing_standard_references_section(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
@@ -279,7 +275,7 @@ def test_validate_all_reports_missing_standard_guidance_section(
     assert result.records[0].family == "document_semantics"
     assert result.records[0].target == relative_path
     assert result.records[0].result.validator_id == "validator.documentation.standard_semantics"
-    assert "missing required sections: Guidance" in result.records[0].result.issues[0].message
+    assert "missing required sections: References" in result.records[0].result.issues[0].message
 
 
 def test_validate_all_artifacts_include_live_control_plane_targets(

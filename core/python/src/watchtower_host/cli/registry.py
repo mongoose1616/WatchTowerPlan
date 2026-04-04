@@ -50,6 +50,7 @@ QUERY_KNOWLEDGE_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_knowled
 QUERY_RECORDS_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_records_family.py"
 BENCHMARK_FAMILY_PATH = "core/python/src/watchtower_host/cli/benchmark_family.py"
 PACK_FAMILY_HANDLERS_PATH = "core/python/src/watchtower_host/cli/pack_handlers.py"
+TELEMETRY_FAMILY_PATH = "core/python/src/watchtower_host/cli/telemetry_family.py"
 
 
 def _register_doctor_family(subparsers: argparse._SubParsersAction) -> None:
@@ -74,6 +75,12 @@ def _register_benchmark_family(subparsers: argparse._SubParsersAction) -> None:
     from watchtower_host.cli.benchmark_family import register_benchmark_family
 
     register_benchmark_family(subparsers)
+
+
+def _register_telemetry_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.telemetry_family import register_telemetry_family
+
+    register_telemetry_family(subparsers)
 
 
 def _register_pack_family(subparsers: argparse._SubParsersAction) -> None:
@@ -120,6 +127,15 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         implementation_path=BENCHMARK_FAMILY_PATH,
         subcommand_implementation_paths=(
             ("run", "core/python/src/watchtower_host/cli/benchmark_handlers.py"),
+        ),
+    ),
+    CommandGroupSpec(
+        name="telemetry",
+        registrar=_register_telemetry_family,
+        doc_root="core/docs/commands/core_python",
+        implementation_path=TELEMETRY_FAMILY_PATH,
+        subcommand_implementation_paths=(
+            ("delete", "core/python/src/watchtower_host/cli/telemetry_handlers.py"),
         ),
     ),
     CommandGroupSpec(

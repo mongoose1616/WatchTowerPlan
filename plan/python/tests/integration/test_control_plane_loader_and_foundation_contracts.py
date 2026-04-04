@@ -168,6 +168,7 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
     reusable_core_query_docs = {
         "watchtower_core_query_acceptance.md",
         "watchtower_core_query_authority.md",
+        "watchtower_core_query_benchmarks.md",
         "watchtower_core_query_commands.md",
         "watchtower_core_query_evidence.md",
         "watchtower_core_query_foundations.md",

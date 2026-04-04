@@ -5,7 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.control_plane.loader import (
+    CORE_PACK_SETTINGS_PATH,
+    PACK_SETTINGS_PATH,
+    ControlPlaneLoader,
+)
 from watchtower_core.control_plane.models import (
     PackRegistryEntry,
     PackRuntimeManifest,
@@ -24,6 +28,12 @@ from watchtower_core.pack_integration.runtime_registry import (
     synthesize_pack_registry_entry,
 )
 from watchtower_core.telemetry import telemetry_operation
+from watchtower_core.validation.document_semantics import (
+    CoreDocumentSemanticsValidationService,
+)
+from watchtower_core.validation.pack_targets import (
+    resolve_pack_validation_suite_targets,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -166,6 +176,20 @@ def load_pack_validation_runtime(
         "load_pack_validation_runtime",
         attributes={"pack_settings_path": pack_settings_path},
     ) as operation:
+        effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
+        if effective_pack_settings_path == CORE_PACK_SETTINGS_PATH:
+            validated = validate_pack_validation_runtime(
+                _core_validation_runtime(),
+                integration_module="watchtower_core.validation.document_semantics",
+            )
+            if operation is not None:
+                operation.set_result(
+                    status="ok",
+                    pack_slug="core_shared",
+                    integration_module="watchtower_core.validation.document_semantics",
+                )
+            return validated
+
         loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
         provider = loaded.integration.validation_provider
         if provider is None:
@@ -308,7 +332,21 @@ def validate_pack_validation_runtime(
             "Pack validation_provider must return a callable suite_target_resolver when "
             f"declared: {integration_module}"
         )
+    if runtime.pack_contract_issue_provider is not None and not callable(
+        runtime.pack_contract_issue_provider
+    ):
+        raise ValueError(
+            "Pack validation_provider must return a callable pack_contract_issue_provider when "
+            f"declared: {integration_module}"
+        )
     return runtime
+
+
+def _core_validation_runtime() -> PackValidationRuntime:
+    return PackValidationRuntime(
+        document_semantics_factory=CoreDocumentSemanticsValidationService,
+        suite_target_resolver=resolve_pack_validation_suite_targets,
+    )
 
 
 def validate_pack_query_runtime(

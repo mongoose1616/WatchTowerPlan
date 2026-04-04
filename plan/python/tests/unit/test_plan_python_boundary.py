@@ -23,6 +23,9 @@ from watchtower_core.query.common import DataclassSearchAdapter
 from watchtower_core.query.rendered_search import RenderedSearchFilters
 from watchtower_core.sync.rendered_tracking import RenderedTrackingSyncService
 from watchtower_core.validation.all import ValidationAllService
+from watchtower_core.validation.document_semantics import (
+    CoreDocumentSemanticsValidationService,
+)
 from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
 from watchtower_host.cli.command_index import CommandIndexSyncService
 
@@ -166,6 +169,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "acceptance.py",
         "artifact_families.py",
         "authority.py",
+        "benchmarks.py",
         "commands.py",
         "common.py",
         "evidence.py",
@@ -178,6 +182,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "standards.py",
         "templates.py",
         "traceability.py",
+        "trusted_indexes.py",
         "workflows.py",
     ]
     assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "sync").glob("*.py")) == [
@@ -200,6 +205,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "artifact.py",
         "common.py",
         "context.py",
+        "document_semantics.py",
         "errors.py",
         "front_matter.py",
         "models.py",
@@ -309,7 +315,6 @@ def test_plan_package_does_not_import_host_runtime_modules() -> None:
         "watchtower_plan.sync.command_index",
         "watchtower_plan.sync.repository_paths",
         "watchtower_plan.sync.route_index",
-        "watchtower_core.validation.document_semantics",
         "watchtower_core.validation.registry",
         "watchtower_core.workflow_execution.initiative_packages",
         "watchtower_plan.validation.all",
@@ -332,6 +337,10 @@ def test_plan_python_boundary_owners_remain_available() -> None:
     assert CommandQueryService.__module__ == "watchtower_core.query.commands"
     assert CommandIndexSyncService.__module__ == "watchtower_host.cli.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
+    assert (
+        CoreDocumentSemanticsValidationService.__module__
+        == "watchtower_core.validation.document_semantics"
+    )
     assert RenderedSearchFilters.__module__ == "watchtower_core.query.rendered_search"
     assert RenderedTrackingSyncService.__module__ == "watchtower_core.sync.rendered_tracking"
     assert (

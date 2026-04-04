@@ -80,6 +80,14 @@ def parse_reference_local_mapping(
     status_body = subsections[REFERENCE_CURRENT_REPOSITORY_STATUS_SUBSECTION]
     repository_status = parse_reference_repository_status(relative_path, status_body)
     touchpoints_body = subsections.get(REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION)
+    if (
+        repository_status != "candidate_future_guidance"
+        and touchpoints_body is None
+    ):
+        raise ValueError(
+            f"{relative_path} {REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION} is required when "
+            "Current Repository Status is supporting authority or active support."
+        )
     related_paths = (
         extract_repo_path_references(
             touchpoints_body,

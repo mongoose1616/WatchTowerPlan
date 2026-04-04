@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "uv"
 owner: "repository_maintainer"
-updated_at: "2026-03-24T21:49:49Z"
+updated_at: "2026-04-04T03:20:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -35,7 +35,7 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
-- [uv.lock](/core/python/uv.lock)
+- `core/python/uv.lock` in the live engineering repository; portable exports intentionally exclude the lockfile.
 - [watchtower_core_doctor.md](/core/docs/commands/core_python/watchtower_core_doctor.md)
 
 ## Quick Reference or Distilled Reference
@@ -72,7 +72,7 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
-- [uv.lock](/core/python/uv.lock)
+- `core/python/uv.lock` in the live engineering repository; portable exports intentionally exclude the lockfile.
 - [watchtower_core_doctor.md](/core/docs/commands/core_python/watchtower_core_doctor.md)
 
 ### Why It Matters Here
@@ -88,7 +88,7 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
-- [uv.lock](/core/python/uv.lock)
+- `core/python/uv.lock` in the live engineering repository; portable exports intentionally exclude the lockfile.
 - [watchtower_core_doctor.md](/core/docs/commands/core_python/watchtower_core_doctor.md)
 
 ## Notes
@@ -96,4 +96,4 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-24T21:49:49Z`
+- `2026-04-04T03:20:00Z`

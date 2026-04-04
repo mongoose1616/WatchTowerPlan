@@ -12,8 +12,12 @@ from watchtower_core.cli.handler_common import (
     _resolve_output_path,
     _run_value_error_operation,
 )
-from watchtower_core.control_plane.errors import SchemaResolutionError
-from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
+from watchtower_core.control_plane.loader import (
+    CORE_PACK_SETTINGS_PATH,
+    PACK_SETTINGS_PATH,
+    ControlPlaneLoader,
+)
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
 from watchtower_core.telemetry import telemetry_operation
@@ -39,9 +43,7 @@ from watchtower_core.validation.portability import (
 ValidationServiceFactory = Callable[[ControlPlaneLoader], Any]
 ValidationRunner = Callable[[Any, argparse.Namespace], ValidationResult]
 ValidationLoaderFactory = Callable[[argparse.Namespace], ControlPlaneLoader]
-ValidationTelemetryAttributesFactory = Callable[
-    [argparse.Namespace], dict[str, object | None]
-]
+ValidationTelemetryAttributesFactory = Callable[[argparse.Namespace], dict[str, object | None]]
 
 
 def _run_validate_front_matter(args: argparse.Namespace) -> int:
@@ -54,14 +56,25 @@ def _run_validate_front_matter(args: argparse.Namespace) -> int:
 
 
 def _run_validate_document_semantics(args: argparse.Namespace) -> int:
+    pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
+
+    def _service_factory(loader: ControlPlaneLoader) -> Any:
+        loader.activate_pack_settings(pack_settings_path)
+        return load_pack_validation_runtime(
+            loader,
+            pack_settings_path=pack_settings_path,
+        ).document_semantics_factory(loader)
+
     return _run_validation_command(
         args,
         command_name="watchtower-core validate document-semantics",
         success_message="Document semantics validated successfully.",
-        service_factory=lambda loader: load_pack_validation_runtime(
-            loader,
-            pack_settings_path=getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH,
-        ).document_semantics_factory(loader),
+        service_factory=_service_factory,
+        handled_exceptions=(
+            SchemaResolutionError,
+            ValidationExecutionError,
+            ValidationSelectionError,
+        ),
     )
 
 
@@ -118,6 +131,7 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
         loader,
         document_semantics_factory=validation_runtime.document_semantics_factory,
         target_resolver=validation_runtime.suite_target_resolver,
+        pack_contract_issue_provider=validation_runtime.pack_contract_issue_provider,
     )
     try:
         result = service.run(
@@ -166,11 +180,21 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
 def _run_validate_all(args: argparse.Namespace) -> int:
     pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
     loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
-    validation_runtime = load_pack_validation_runtime(
-        loader,
-        pack_settings_path=pack_settings_path,
-    )
-    suite_id = loader.load_pack_settings(pack_settings_path).default_validation_suite_id
+    try:
+        validation_runtime = load_pack_validation_runtime(
+            loader,
+            pack_settings_path=pack_settings_path,
+        )
+        suite_id = loader.load_pack_settings(pack_settings_path).default_validation_suite_id
+    except (ArtifactLoadError, FileNotFoundError, ValueError):
+        validation_runtime = load_pack_validation_runtime(
+            loader,
+            pack_settings_path=CORE_PACK_SETTINGS_PATH,
+        )
+        suite_id = loader.load_pack_settings(
+            CORE_PACK_SETTINGS_PATH,
+        ).default_validation_suite_id
+        pack_settings_path = CORE_PACK_SETTINGS_PATH
     included_families = tuple(
         family
         for family in VALIDATION_ALL_FAMILIES
@@ -191,6 +215,7 @@ def _run_validate_all(args: argparse.Namespace) -> int:
         pack_settings_path=pack_settings_path,
         document_semantics_factory=validation_runtime.document_semantics_factory,
         suite_target_resolver=validation_runtime.suite_target_resolver,
+        pack_contract_issue_provider=validation_runtime.pack_contract_issue_provider,
     )
     result = _run_value_error_operation(
         args,

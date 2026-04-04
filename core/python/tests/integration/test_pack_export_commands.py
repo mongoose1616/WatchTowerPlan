@@ -256,6 +256,43 @@ def test_pack_export_core_only_scrubs_donor_hosted_pack_wiring(
     assert not (output_root / "core/python/uv.lock").exists()
 
 
+def test_pack_export_core_only_bundle_passes_validate_all(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    output_root = tmp_path / "customer_core"
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "export",
+            "--output-root",
+            str(output_root),
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["passed"] is True
+
+    monkeypatch.chdir(output_root / "core" / "python")
+    result = main(["validate", "all", "--format", "json"])
+
+    validate_payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert validate_payload["command"] == "watchtower-core validate all"
+    assert validate_payload["passed"] is True
+
+
 def test_pack_export_selected_pack_scrubs_internal_release_residue(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

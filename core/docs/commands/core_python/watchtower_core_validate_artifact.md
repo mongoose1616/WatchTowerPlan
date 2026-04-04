@@ -97,7 +97,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 | `watchtower-core validate` | Parent command group for governed validation operations. |
 | `watchtower-core validate front-matter` | Validates governed Markdown front matter rather than JSON artifacts. |
 | `watchtower-core validate schema` | Validates JSON Schema definition files instead of JSON artifact instances. |
-| `watchtower-core <pack-namespace> query trace` | Useful after validation when you need the related source-surface, task, acceptance, or evidence context. |
+| `watchtower-core query acceptance` | Useful after validation when you need the related acceptance or evidence context. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/validate_family.py`
@@ -108,4 +108,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-25T00:40:00Z`
+- `2026-04-04T02:45:00Z`

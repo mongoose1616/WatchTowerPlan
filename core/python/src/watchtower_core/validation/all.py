@@ -10,6 +10,7 @@ from watchtower_core.validation.acceptance import AcceptanceReconciliationServic
 from watchtower_core.validation.models import ValidationResult
 from watchtower_core.validation.suite import (
     DocumentSemanticsFactory,
+    PackContractIssueProvider,
     ValidationSuiteService,
     ValidationSuiteTargetResolver,
 )
@@ -115,6 +116,7 @@ class ValidationAllService:
         pack_settings_path: str = PACK_SETTINGS_PATH,
         document_semantics_factory: DocumentSemanticsFactory | None = None,
         suite_target_resolver: ValidationSuiteTargetResolver | None = None,
+        pack_contract_issue_provider: PackContractIssueProvider | None = None,
     ) -> None:
         self._loader = loader
         self._suite_id = suite_id
@@ -123,6 +125,7 @@ class ValidationAllService:
             loader,
             document_semantics_factory=document_semantics_factory,
             target_resolver=suite_target_resolver,
+            pack_contract_issue_provider=pack_contract_issue_provider,
         )
         self._acceptance = AcceptanceReconciliationService(loader)
 

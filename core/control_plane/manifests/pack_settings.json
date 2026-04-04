@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Pack settings load root for the reusable shared-core boundary.",
-  "updated_at": "2026-03-29T12:30:00Z",
+  "updated_at": "2026-04-04T00:00:00Z",
   "pack_id": "pack.core_shared",
   "surfaces": [
     {
@@ -122,9 +122,7 @@
     "docs_root": "core/docs",
     "workflows_root": "core/workflows",
     "tracking_root": "core/control_plane/indexes",
-    "initiatives_root": "packs/core/initiatives",
-    "projects_root": "packs/core/projects",
-    "overview_path": "packs/core/overview.md"
+    "overview_path": "core/docs/foundations/README.md"
   },
   "default_validation_suite_id": "suite.core.shared_validation_baseline"
 }

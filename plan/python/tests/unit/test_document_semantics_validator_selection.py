@@ -13,6 +13,7 @@ from tests.unit.document_semantics_fixtures import (
     REPO_ROOT,
     copy_control_plane_repo,
     repo_markdown_link,
+    write_reference_fixture,
     write_repo_file,
     write_standard_fixture,
 )
@@ -130,9 +131,11 @@ def test_document_semantics_validation_rejects_heading_after_list_without_blank_
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
     standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
+    support_target = repo_root / "core/docs/README.md"
     related_target = repo_root / "core/docs/references/example_reference.md"
     reference_target = repo_root / "core/docs/templates/supporting_template.md"
-    write_repo_file(related_target)
+    write_repo_file(support_target)
+    write_reference_fixture(related_target, support_target=support_target)
     write_repo_file(reference_target)
     write_standard_fixture(
         standard_path,

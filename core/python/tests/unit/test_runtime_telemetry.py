@@ -1,15 +1,20 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
+from types import SimpleNamespace
 from typing import IO, cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import (
+    TelemetryCleanupService,
     TelemetryConfig,
+    TelemetryDeleteRequest,
     add_operation_attributes,
     create_telemetry_session,
 )
+from watchtower_core.telemetry import cleanup as telemetry_cleanup
 from watchtower_core.telemetry import runtime as telemetry_runtime
 
 
@@ -178,3 +183,75 @@ def test_telemetry_session_disables_cleanly_when_writer_fails(tmp_path: Path) ->
     assert session.enabled is False
     assert session.disabled_reason == "telemetry_write_failed:OSError"
     assert broken_writer.closed is True
+
+
+def test_telemetry_cleanup_service_dry_run_matches_old_files_and_empty_dirs(
+    tmp_path: Path,
+) -> None:
+    telemetry_root = tmp_path / "telemetry"
+    old_day = telemetry_root / "2026" / "03" / "01"
+    new_day = telemetry_root / "2026" / "03" / "31"
+    old_day.mkdir(parents=True)
+    new_day.mkdir(parents=True)
+    old_file = old_day / "old.jsonl"
+    new_file = new_day / "new.jsonl"
+    old_file.write_text("{}\n", encoding="utf-8")
+    new_file.write_text("{}\n", encoding="utf-8")
+    ten_days_ago = telemetry_runtime._utc_now().timestamp() - (10 * 24 * 60 * 60)
+    os.utime(old_file, (ten_days_ago, ten_days_ago))
+
+    result = TelemetryCleanupService(ControlPlaneLoader()).delete(
+        TelemetryDeleteRequest(
+            telemetry_root=telemetry_root,
+            older_than_days=7,
+            write=False,
+        )
+    )
+
+    assert result.telemetry_root == telemetry_root.resolve()
+    assert result.selection_mode == "older_than_days"
+    assert result.write is False
+    assert result.matched_file_count == 1
+    assert result.deleted_file_count == 0
+    assert result.matched_directory_count == 1
+    assert str(old_file.resolve()) in result.matched_file_paths
+    assert any(path.endswith("/2026/03/01") for path in result.pruned_directory_paths)
+    assert new_file.exists()
+    assert old_file.exists()
+
+
+def test_telemetry_cleanup_service_excludes_active_session_output(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    telemetry_root = tmp_path / "telemetry"
+    day_dir = telemetry_root / "2026" / "03" / "01"
+    day_dir.mkdir(parents=True)
+    active_file = day_dir / "active.jsonl"
+    stale_file = day_dir / "stale.jsonl"
+    active_file.write_text("{}\n", encoding="utf-8")
+    stale_file.write_text("{}\n", encoding="utf-8")
+    ten_days_ago = telemetry_runtime._utc_now().timestamp() - (10 * 24 * 60 * 60)
+    os.utime(active_file, (ten_days_ago, ten_days_ago))
+    os.utime(stale_file, (ten_days_ago, ten_days_ago))
+
+    monkeypatch.setattr(
+        telemetry_cleanup,
+        "current_session",
+        lambda: SimpleNamespace(output_path=active_file),
+    )
+
+    result = TelemetryCleanupService(ControlPlaneLoader()).delete(
+        TelemetryDeleteRequest(
+            telemetry_root=telemetry_root,
+            delete_all=True,
+            write=True,
+        )
+    )
+
+    assert result.matched_file_count == 1
+    assert result.deleted_file_count == 1
+    assert result.deleted_bytes > 0
+    assert active_file.exists()
+    assert not stale_file.exists()
+    assert result.active_session_output_path == str(active_file.resolve())

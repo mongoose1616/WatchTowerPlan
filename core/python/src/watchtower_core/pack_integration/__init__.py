@@ -30,6 +30,7 @@ if TYPE_CHECKING:
         CorePythonWorkspaceRegistration,
         reconcile_core_python_workspace_pyproject,
     )
+    from watchtower_core.validation.models import ValidationIssue
     from watchtower_core.validation.suite import (
         DocumentSemanticsValidationService,
         ValidationSuiteTargetResolver,
@@ -86,6 +87,10 @@ PackLifecycleHook = Callable[..., object]
 PackDocumentSemanticsFactory = Callable[
     ["ControlPlaneLoader"], "DocumentSemanticsValidationService"
 ]
+PackContractIssueProvider = Callable[
+    ["ControlPlaneLoader", str],
+    tuple["ValidationIssue", ...],
+]
 
 
 @dataclass(frozen=True, slots=True)
@@ -108,6 +113,7 @@ class PackValidationRuntime:
 
     document_semantics_factory: PackDocumentSemanticsFactory
     suite_target_resolver: ValidationSuiteTargetResolver | None = None
+    pack_contract_issue_provider: PackContractIssueProvider | None = None
 
 
 @dataclass(frozen=True, slots=True)

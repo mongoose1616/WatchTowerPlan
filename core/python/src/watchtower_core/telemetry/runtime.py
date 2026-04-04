@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 import shutil
 import sys
@@ -144,7 +145,8 @@ class TelemetrySession:
     def _emit_stderr_summary(self, *, status: str, duration_ms: int) -> None:
         if not self.enabled or not self.config.emit_stderr:
             return
-        assert self.output_path is not None
+        if self.output_path is None:
+            return
         print(
             "[telemetry] "
             f"{self.command_name} status={status} duration_ms={duration_ms} "
@@ -389,20 +391,37 @@ def _resolve_output_dir(
     config: TelemetryConfig,
     started_at: datetime,
 ) -> tuple[Path, str | None, str | None]:
-    if config.output_dir_override is not None:
-        return (
-            config.output_dir_override / started_at.strftime("%Y/%m/%d"),
-            None,
-            None,
-        )
+    telemetry_root, pack_settings_path, machine_root = resolve_telemetry_root(
+        loader,
+        output_dir_override=config.output_dir_override,
+    )
+    return (
+        telemetry_root / started_at.strftime("%Y/%m/%d"),
+        pack_settings_path,
+        machine_root,
+    )
 
-    pack_settings_path = _default_pack_settings_path_for_telemetry(loader)
-    pack_settings = PackSettings.from_document(loader.load_json_object(pack_settings_path))
+
+def resolve_telemetry_root(
+    loader: ControlPlaneLoader,
+    *,
+    output_dir_override: Path | None = None,
+    pack_settings_path: str | None = None,
+) -> tuple[Path, str | None, str | None]:
+    """Resolve the telemetry root directory for one active pack or override."""
+
+    if output_dir_override is not None:
+        return (output_dir_override.resolve(), None, None)
+
+    resolved_pack_settings_path = pack_settings_path or _default_pack_settings_path_for_telemetry(
+        loader
+    )
+    pack_settings = PackSettings.from_document(loader.load_json_object(resolved_pack_settings_path))
     machine_root = pack_settings.workspace_roots.machine_root
     machine_root_path = loader.workspace_config.resolve_path(machine_root)
     return (
-        machine_root_path / "runtime" / "telemetry" / started_at.strftime("%Y/%m/%d"),
-        pack_settings_path,
+        machine_root_path / "runtime" / "telemetry",
+        resolved_pack_settings_path,
         machine_root,
     )
 
@@ -415,7 +434,8 @@ def _default_pack_settings_path_for_telemetry(loader: ControlPlaneLoader) -> str
         pack_settings_path = pack_registry.default_pack().pack_settings_path
         loader.load_json_object(pack_settings_path)
         return pack_settings_path
-    except Exception:
+    except (FileNotFoundError, KeyError, ValueError) as exc:
+        logging.getLogger(__name__).debug("telemetry pack settings discovery fallback: %s", exc)
         discovered = loader._discover_default_pack_settings_path()
         if discovered is not None:
             return discovered
@@ -454,5 +474,6 @@ __all__ = [
     "add_operation_attributes",
     "create_telemetry_session",
     "current_session",
+    "resolve_telemetry_root",
     "telemetry_operation",
 ]

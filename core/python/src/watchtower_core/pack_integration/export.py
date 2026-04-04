@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import contextlib
 import filecmp
 import json
+import os
 import shutil
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
@@ -251,7 +254,6 @@ def export_hosted_repository(
         )
     else:
         if selected_pack_settings_paths:
-            any_pyproject_change = False
             for index, pack_settings_path in enumerate(selected_pack_settings_paths):
                 result = bootstrap_hosted_pack(
                     output_root,
@@ -263,11 +265,7 @@ def export_hosted_repository(
                     ),
                 )
                 changed_paths.update(result.changed_paths)
-                any_pyproject_change = (
-                    any_pyproject_change or result.core_python_pyproject_changed
-                )
-            if any_pyproject_change:
-                workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
+            workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
         else:
             changed_paths.update(_scrub_all_hosted_pack_wiring(output_root))
             workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
@@ -820,9 +818,9 @@ def _scrub_nonportable_acceptance_lineage(output_root: Path) -> list[str]:
     if filtered_entries == entries:
         return scrubbed_paths
 
-    traceability_path.write_text(
+    _atomic_write_text(
+        traceability_path,
         f"{json.dumps({**document, 'entries': filtered_entries}, indent=2)}\n",
-        encoding="utf-8",
     )
     scrubbed_paths.append(traceability_path.relative_to(output_root).as_posix())
     return scrubbed_paths
@@ -863,9 +861,9 @@ def _scrub_nonportable_traceability_entries(
     if filtered_entries == entries:
         return []
 
-    traceability_path.write_text(
+    _atomic_write_text(
+        traceability_path,
         f"{json.dumps({**document, 'entries': filtered_entries}, indent=2)}\n",
-        encoding="utf-8",
     )
     return [traceability_path.relative_to(output_root).as_posix()]
 
@@ -897,9 +895,9 @@ def _scrub_nonportable_engineering_acceptance_lineage(output_root: Path) -> list
                 entry for entry in entries if traceability_entry_is_shared_core_portable(entry)
             ]
             if filtered_entries != entries:
-                traceability_path.write_text(
+                _atomic_write_text(
+                    traceability_path,
                     f"{json.dumps({**document, 'entries': filtered_entries}, indent=2)}\n",
-                    encoding="utf-8",
                 )
                 scrubbed_paths.append(traceability_path.relative_to(output_root).as_posix())
 
@@ -970,21 +968,286 @@ def _scrub_all_hosted_pack_wiring(output_root: Path) -> set[str]:
         document = json.loads(pack_registry_path.read_text(encoding="utf-8"))
         updated_document = {**document, "packs": []}
         if updated_document != document:
-            pack_registry_path.write_text(
+            _atomic_write_text(
+                pack_registry_path,
                 f"{json.dumps(updated_document, indent=2)}\n",
-                encoding="utf-8",
             )
             changed_paths.add(PACK_REGISTRY_PATH)
 
     pyproject_path = output_root / CORE_PYPROJECT_RELATIVE_PATH
     if pyproject_path.exists():
         pyproject_text = pyproject_path.read_text(encoding="utf-8")
-        updated_text, changed = reconcile_core_python_workspace_pyproject(pyproject_text)
-        if changed:
-            pyproject_path.write_text(updated_text, encoding="utf-8")
+        updated_text, _ = reconcile_core_python_workspace_pyproject(pyproject_text)
+        updated_text = _strip_hosted_pack_coverage_sources(updated_text)
+        if updated_text != pyproject_text:
+            _atomic_write_text(pyproject_path, updated_text)
             changed_paths.add(CORE_PYPROJECT_RELATIVE_PATH)
 
+    changed_paths.update(_rewrite_core_only_root_docs(output_root))
     return changed_paths
+
+
+def _atomic_write_text(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_path = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+        os.replace(tmp_path, path)
+    except BaseException:
+        with contextlib.suppress(OSError):
+            os.unlink(tmp_path)
+        raise
+
+
+def _strip_hosted_pack_coverage_sources(pyproject_text: str) -> str:
+    lines = pyproject_text.splitlines()
+    try:
+        section_start = lines.index("[tool.coverage.run]")
+        source_start = lines.index("source = [", section_start + 1)
+    except ValueError:
+        return pyproject_text
+
+    source_end = source_start + 1
+    while source_end < len(lines) and lines[source_end] != "]":
+        source_end += 1
+    if source_end >= len(lines):
+        return pyproject_text
+
+    filtered_source_lines = [
+        line
+        for line in lines[source_start + 1 : source_end]
+        if "/python/src/watchtower_" not in line or "../../" not in line
+    ]
+    updated_lines = [
+        *lines[: source_start + 1],
+        *filtered_source_lines,
+        *lines[source_end:],
+    ]
+    return "\n".join(updated_lines) + ("\n" if pyproject_text.endswith("\n") else "")
+
+
+def _rewrite_core_only_root_docs(output_root: Path) -> set[str]:
+    changed_paths: set[str] = set()
+    root_doc_updates = {
+        "README.md": _core_only_root_readme(),
+        "AGENTS.md": _core_only_root_agents(),
+    }
+    for relative_path, content in root_doc_updates.items():
+        path = output_root / relative_path
+        if not path.exists():
+            continue
+        if path.read_text(encoding="utf-8") == content:
+            continue
+        _atomic_write_text(path, content)
+        changed_paths.add(relative_path)
+    return changed_paths
+
+
+def _core_only_root_readme() -> str:
+    return "\n".join(
+        (
+            "# `.`",
+            "",
+            "## Description",
+            (
+                "`This repository contains the reusable WatchTower core. Use the root for "
+                "repository scope, shared-core orientation, and customer-bootstrap handoff "
+                "into core/.`"
+            ),
+            "",
+            "## Paths",
+            "| Path | Description |",
+            "|---|---|",
+            (
+                "| `README.md` | Describes the purpose of the repository root and the main "
+                "entrypoints stored here. |"
+            ),
+            (
+                "| `AGENTS.md` | Defines the repository-wide wrapper instructions and "
+                "routes work into shared reusable-core workflow surfaces. |"
+            ),
+            (
+                "| `.github/` | Holds GitHub-hosted collaboration scaffolding such as "
+                "issue forms and the pull request template. |"
+            ),
+            (
+                "| `core/` | Holds shared implementation assets, shared docs, and the "
+                "authored control-plane tree. |"
+            ),
+            "",
+            "## Notes",
+            (
+                "- Current repository contract: shared standards under "
+                "`core/docs/standards/`, shared command docs under "
+                "`core/docs/commands/`, and authored machine authority under "
+                "`core/control_plane/`."
+            ),
+            (
+                "- Treat supporting references and helper docs as secondary guidance "
+                "that must stay consistent with those current authority surfaces."
+            ),
+            "- Shared workflow start-here: `core/workflows/README.md`",
+            "- Authored machine authority start-here: `core/control_plane/README.md`",
+            "- Shared Python workspace start-here: `core/python/README.md`",
+            (
+                "- Portable customer bootstrap is an allowlisted export of shared "
+                "`core/`. Treat `cd core/python && uv run watchtower-core pack export "
+                "--output-root <path> --overwrite --format json` as the canonical "
+                "handoff path for a core-only delivery."
+            ),
+            "",
+        )
+    )
+
+
+def _core_only_root_agents() -> str:
+    return "\n".join(
+        (
+            "# AGENTS.md",
+            "",
+            "## Role",
+            "- Treat this file as the repository-wide instruction layer.",
+            (
+                "- Apply these rules across the repository unless a more-specific "
+                "`AGENTS.md` adds tighter local constraints."
+            ),
+            (
+                "- Keep this file focused on repository-wide authority, routing, and "
+                "ownership. Put detailed procedures in workflow modules and local "
+                "subtree rules in nested `AGENTS.md` files."
+            ),
+            "",
+            "## Scope",
+            (
+                "- Applies to the entire repository unless a more-specific `AGENTS.md` "
+                "exists below the current path."
+            ),
+            (
+                "- A nested `AGENTS.md` adds local guidance for its subtree rather than "
+                "replacing this file."
+            ),
+            (
+                "- More-specific `AGENTS.md` files must not weaken repository-wide "
+                "safety, governance, or framing rules."
+            ),
+            "",
+            "## Routing",
+            "- Read this file first.",
+            (
+                "- For reusable-core or generic engineering work, use "
+                "`core/workflows/ROUTING_TABLE.md` and load "
+                "`core/workflows/modules/core.md` plus only the additional modules "
+                "required by the matched task type."
+            ),
+            (
+                "- If the request explicitly includes commit creation or closeout "
+                "intent, merge `core/workflows/modules/commit_closeout.md` into the "
+                "dominant route or use the Commit Closeout route alone when commit "
+                "creation is the only requested task."
+            ),
+            (
+                "- If the request explicitly includes the keyword `no_route`, bypass "
+                "routing-table lookup and handle the task directly with only the "
+                "immediately relevant local context."
+            ),
+            "- Do not turn this file into a second routing table.",
+            "",
+            "## Repository Map",
+            "- `core/` is the shared implementation and authored machine-governed asset root.",
+            (
+                "- `core/control_plane/` is the canonical authored machine-readable "
+                "authority for shared schemas, registries, contracts, policies, "
+                "examples, and indexes."
+            ),
+            "- `core/docs/` is the shared and core-owned durable documentation root.",
+            (
+                "- `core/python/` is the canonical shared Python workspace for reusable "
+                "package code, tests, tooling, and the local virtual environment."
+            ),
+            "",
+            "## Local Rules",
+            "- Treat `core/control_plane/**` as the authored shared machine-readable authority.",
+            (
+                "- When guidance disagrees, prefer current machine-readable authority "
+                "for deterministic state and rules, then current foundations and "
+                "standards, then supporting references and helper docs."
+            ),
+            (
+                "- When the main question is which surface is canonical, use "
+                "`watchtower-core query authority` first and only fall back to raw "
+                "repo search when no governed lookup surface exists."
+            ),
+            (
+                "- Use the nearest applicable `README.md` as the quick reference for "
+                "directory purpose and file inventory before broader scans."
+            ),
+            (
+                "- Use raw file discovery such as `rg --files` mainly to locate "
+                "bootstrap instruction surfaces like `AGENTS.md`, `ROUTING_TABLE.md`, "
+                "and the nearest `README.md`, or to answer a narrow path or text "
+                "question after governed lookup is exhausted. Do not treat raw repo "
+                "search as the default substitute for `watchtower-core` query or route "
+                "surfaces."
+            ),
+            "- If work is happening under `core/docs/**`, also apply `core/docs/AGENTS.md`.",
+            "- If work is happening under `core/python/**`, also apply `core/python/AGENTS.md`.",
+            "- Keep durable documentation in `core/docs/`.",
+            "- Keep shared reusable behavior in `core/**`.",
+            (
+                "- Treat `watchtower-core pack export` as the canonical "
+                "customer-release and customer-bootstrap handoff path. Do not treat a "
+                "raw worktree or a manually cleaned working repository as a shippable "
+                "artifact."
+            ),
+            (
+                "- Keep docs, indexes, registries, manifests, validation surfaces, and "
+                "rendered views aligned in the same change set when one depends on "
+                "another."
+            ),
+            "",
+            "## Do",
+            "- Follow the routed workflow modules for task execution.",
+            (
+                "- Keep implementation choices aligned to the current foundations, "
+                "standards, and machine-readable authority surfaces when companion "
+                "guidance disagrees or is incomplete."
+            ),
+            (
+                "- Prefer structured command output such as `--format json` for agent "
+                "or workflow use when a command supports it."
+            ),
+            (
+                "- Update adjacent indexes, trackers, examples, and validation "
+                "surfaces when a governed document or control-plane artifact changes "
+                "materially."
+            ),
+            "",
+            "## Do Not",
+            (
+                "- Do not bypass the domain-owned routing table under "
+                "`core/workflows/ROUTING_TABLE.md` when selecting workflow modules."
+            ),
+            (
+                "- Do not present inference, recommendation, or open questions as if "
+                "they were observed current-state facts."
+            ),
+            (
+                "- Do not place durable documentation outside `core/docs/`, or "
+                "workflow procedures outside `core/workflows/`."
+            ),
+            (
+                "- Do not store mutable runtime state, caches, or transient event "
+                "streams under `core/control_plane/`."
+            ),
+            (
+                "- Do not leave companion machine-readable lookup or validation "
+                "surfaces stale when their governing human or machine authority "
+                "changed in the same task."
+            ),
+            "",
+        )
+    )
 
 
 def _remove_workspace_lock(output_root: Path, changed_paths: set[str]) -> bool:

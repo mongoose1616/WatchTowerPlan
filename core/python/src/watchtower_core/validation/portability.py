@@ -44,8 +44,17 @@ _DEV_FILE_SUFFIXES = (
     ".whl",
 )
 _ABSOLUTE_PATH_PATTERNS = (
-    re.compile(r"(?<![A-Za-z0-9_])/(?:home|Users|mnt|opt|private|srv|tmp|var)/[^\s`\"')]+"),
+    re.compile(r"(?<![A-Za-z0-9_])/(?:home|mnt|opt|private|srv|tmp|Users|var)/[^\s`\"')]+"),
     re.compile(r"(?<![A-Za-z0-9_])[A-Za-z]:\\\\[^\s`\"')]+"),
+)
+_USER_HOME_PREFIXES = (
+    "/home/",
+    "/users/",
+)
+_WINDOWS_USER_HOME_PATTERN = re.compile(r"^[a-z]:/users/[^/]+(?:/.*)?$")
+_REPO_LOCAL_NAME_TOKENS = (
+    "/watchtower",
+    "/watchtowerplan",
 )
 _INTERNAL_REFERENCE_SUFFIXES = (
     "_assessment_closeout_reference.md",
@@ -772,6 +781,8 @@ class PortabilityValidationService:
                 candidate = match.group(0)
                 if self._is_neutral_placeholder_path(candidate):
                     continue
+                if not self._is_nonportable_absolute_path(candidate):
+                    continue
                 return candidate
         return None
 
@@ -789,13 +800,25 @@ class PortabilityValidationService:
         )
 
     def _is_neutral_placeholder_path(self, candidate: str) -> bool:
+        normalized = candidate.replace("\\\\", "\\")
+        lowered = normalized.replace("\\", "/").lower()
         return (
-            candidate.startswith("/tmp/")
-            or candidate.startswith("/private/tmp/")
-            or candidate.startswith("/home/...")
-            or candidate.startswith("C:\\...")
-            or "..." in candidate
+            lowered.startswith("/tmp/")
+            or lowered.startswith("/private/tmp/")
+            or lowered.startswith("/path/to/")
+            or lowered.startswith("/home/...")
+            or lowered.startswith("c:/...")
+            or "<" in normalized
+            or "..." in normalized
         )
+
+    def _is_nonportable_absolute_path(self, candidate: str) -> bool:
+        lowered = candidate.replace("\\\\", "\\").replace("\\", "/").lower()
+        if lowered.startswith(_USER_HOME_PREFIXES):
+            return True
+        if _WINDOWS_USER_HOME_PATTERN.match(lowered) is not None:
+            return True
+        return any(token in lowered for token in _REPO_LOCAL_NAME_TOKENS)
 
     def _load_pack_registry_entries(self, pack_registry_path: Path) -> list[dict[str, str]]:
         if not pack_registry_path.exists():

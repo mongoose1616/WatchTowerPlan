@@ -52,7 +52,6 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 |---|---|
 | `watchtower-core query acceptance` | Lets you inspect the acceptance contract that the evidence should cover. |
 | `watchtower-core validate acceptance` | Performs semantic reconciliation across initiative acceptance, contracts, evidence, and traceability. |
-| `watchtower-core <pack-namespace> query trace` | Shows the joined traceability record that should list the same evidence IDs. |
 
 ## Source Surface
 - `core/python/src/watchtower_host/cli/query_records_family.py`
@@ -61,4 +60,4 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 - `core/control_plane/records/validation_evidence/`
 
 ## Updated At
-- `2026-03-25T02:55:00Z`
+- `2026-04-04T02:45:00Z`

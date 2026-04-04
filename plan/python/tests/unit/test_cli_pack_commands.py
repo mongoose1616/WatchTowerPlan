@@ -453,8 +453,13 @@ def test_pack_list_discovers_unbootstrapped_root_pack_in_copied_core_repo(
 
     payload = json.loads(capsys.readouterr().out)
     assert result == 0
-    assert {entry["pack_slug"] for entry in payload["results"]} == {"oversight"}
-    assert payload["results"][0]["default_repo_pack"] is True
+    oversight = next(entry for entry in payload["results"] if entry["pack_slug"] == "oversight")
+    plan = next(entry for entry in payload["results"] if entry["pack_slug"] == "plan")
+
+    assert oversight["default_repo_pack"] is True
+    assert "usable" not in oversight
+    assert plan["usable"] is False
+    assert "Hosted-pack registry entry for 'plan' is unusable" in plan["warning"]
 
 
 def test_pack_describe_discovers_unbootstrapped_root_pack_in_copied_core_repo(

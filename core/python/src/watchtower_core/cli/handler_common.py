@@ -64,6 +64,7 @@ def _emit_collection_query_results[EntryT](
     payload_results_factory: Callable[[], Sequence[object]],
     render_entry: Callable[[EntryT], None],
     extra_payload: Mapping[str, object] | None = None,
+    render_trailer: Callable[[], None] | None = None,
 ) -> int:
     """Emit one standard collection-query payload or human summary."""
 
@@ -94,6 +95,8 @@ def _emit_collection_query_results[EntryT](
     print(f"Found {len(entries)} {noun} entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
         render_entry(entry)
+    if render_trailer is not None:
+        render_trailer()
     return 0
 
 

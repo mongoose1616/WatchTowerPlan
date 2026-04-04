@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "cli_help"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T03:50:00Z"
+updated_at: "2026-04-04T03:05:00Z"
 audience: "shared"
 authority: "authoritative"
 aliases:
@@ -87,7 +87,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 
 ## Examples
 - `watchtower-core --help` should show a short orientation paragraph plus common examples such as `doctor`, `query commands`, and `sync repository-paths`.
-- `watchtower-core query --help` should explain the difference between `paths`, `commands`, and `trace` instead of only listing them.
+- `watchtower-core query --help` should explain the difference between `paths`, `commands`, and `evidence` instead of only listing them.
 - `watchtower-core <pack-namespace> --help` should live in the pack-owned CLI namespace and explain how that pack's bootstrap, query, sync, task, and closeout commands differ.
 - `watchtower-core sync repository-paths --help` should state that the command is dry-run by default and that `--write` updates the canonical artifact.
 
@@ -112,4 +112,4 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [core/docs/templates/command_reference_template.md](/core/docs/templates/command_reference_template.md)
 
 ## Updated At
-- `2026-03-21T03:50:00Z`
+- `2026-04-04T03:05:00Z`

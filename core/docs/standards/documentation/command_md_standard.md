@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-30T05:10:00Z"
+updated_at: "2026-04-04T03:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -58,6 +58,8 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Record the implementation or source surface so engineers can move from the doc to the responsible code path quickly.
 - Keep command families modular: one directory per command family and one page per command or subcommand.
 - Point root shared-command pages at `watchtower_host.cli` source surfaces when the host owns parser construction or dispatch, and point pack pages at the owning `watchtower_<pack>.cli` surfaces rather than shared helper shims.
+- Keep `Related Commands` entries tied to live command surfaces. Full invocations may include legal positional choices or options after that surface, and the shared `<pack-namespace>` placeholder is allowed only for generic pack-owned meta routes such as `query`, `sync`, or `bootstrap`.
+- Do not repeat the same command surface multiple times in `Related Commands`; choose distinct nearby routes instead of duplicate rows with reworded descriptions.
 
 ## Structure or Data Model
 ### Placement rules
@@ -105,6 +107,8 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - If a command advertises structured output, the documented output mode should match the actual implementation surface.
 - Reviewers should reject command pages that collapse materially distinct modes, side effects, or failure boundaries into vague summary text merely to keep sibling sections the same size.
 - `watchtower-core validate document-semantics --path <command_doc>` should auto-select the command-doc validator and fail when the `Source Surface` section drifts from the command-table `Source Surface` row or from live repository paths.
+- `watchtower-core validate document-semantics --path <command_doc>` should also fail when `Related Commands` rows drift to nonexistent command surfaces or to invalid positional-family values such as removed subcommands.
+- `watchtower-core validate document-semantics --path <command_doc>` should also fail when `Related Commands` repeats the same command surface more than once.
 - Reviewers should reject command pages that point host-owned root commands at pack source files or pack-owned commands at shared-core helper modules.
 - Reviewers should reject command pages that mix multiple unrelated commands into one document or omit the source surface.
 
@@ -126,4 +130,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-30T05:10:00Z`
+- `2026-04-04T03:05:00Z`

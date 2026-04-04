@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+import shlex
 from datetime import datetime
 from pathlib import Path
 
@@ -16,6 +18,7 @@ from watchtower_core.adapters.markdown import (
 from watchtower_core.documentation.governed_documents import validate_required_section_order
 from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
+    validate_repo_local_markdown_links,
 )
 
 COMMAND_REQUIRED_SECTIONS = (
@@ -37,6 +40,8 @@ _COMMAND_TABLE_REQUIRED_FIELDS = (
     "Source Surface",
 )
 _UTC_TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
+_PACK_NAMESPACE_PLACEHOLDER = "<pack-namespace>"
+_PACK_NAMESPACE_META_FAMILIES = frozenset({"bootstrap", "query", "sync"})
 
 
 def load_command_doc_source_surfaces(doc_path: Path) -> tuple[str, str]:
@@ -77,6 +82,12 @@ def validate_command_document(
     markdown = load_markdown_body(resolved_path)
     sections = extract_sections(markdown)
     validate_blank_line_before_heading_after_list(relative_path, markdown)
+    validate_repo_local_markdown_links(
+        relative_path,
+        markdown,
+        repo_root=repo_root,
+        source_path=resolved_path,
+    )
     _validate_required_sections(relative_path, sections)
     title = extract_title(markdown)
     if not title.startswith("`") or not title.endswith("`"):
@@ -105,9 +116,7 @@ def validate_command_document(
             f"{visible_command!r} != {invocation!r}"
         )
 
-    table_source_surface, primary_source_surface = load_command_doc_source_surfaces(
-        resolved_path
-    )
+    table_source_surface, primary_source_surface = load_command_doc_source_surfaces(resolved_path)
     if table_source_surface != primary_source_surface:
         raise ValueError(
             f"{relative_path} Source Surface section must lead with the same path published "
@@ -125,6 +134,11 @@ def validate_command_document(
         raise ValueError(
             f"{relative_path} Related Commands section must publish at least one table row."
         )
+    _validate_related_command_references(
+        relative_path,
+        related_rows,
+        repo_root=repo_root,
+    )
 
     try:
         datetime.strptime(
@@ -165,8 +179,7 @@ def _validate_source_surface_paths(
             candidate.relative_to(repo_root)
         except ValueError as exc:
             raise ValueError(
-                f"{relative_path} Source Surface path escapes the repository root: "
-                f"{source_surface}"
+                f"{relative_path} Source Surface path escapes the repository root: {source_surface}"
             ) from exc
         if candidate.exists():
             continue
@@ -174,6 +187,123 @@ def _validate_source_surface_paths(
             f"{relative_path} Source Surface path does not exist in the repository: "
             f"{source_surface}"
         )
+
+
+def _validate_related_command_references(
+    relative_path: str,
+    related_rows: list[dict[str, str]],
+    *,
+    repo_root: Path,
+) -> None:
+    known_commands = tuple(
+        sorted(
+            _load_known_commands_from_index(repo_root),
+            key=lambda command: len(command.split()),
+            reverse=True,
+        )
+    )
+    seen_surfaces: set[str] = set()
+    for row in related_rows:
+        command_cell = row.get("Command", "")
+        for reference in _iter_related_command_references(command_cell):
+            if "watchtower-core" not in reference:
+                continue
+            normalized_reference = reference[reference.index("watchtower-core") :].strip()
+            matched_surface = _resolve_known_command_surface(
+                normalized_reference,
+                known_commands,
+            )
+            if matched_surface is None:
+                raise ValueError(
+                    f"{relative_path} Related Commands references an unknown command surface: "
+                    f"{reference}"
+                )
+            if matched_surface in seen_surfaces:
+                raise ValueError(
+                    f"{relative_path} Related Commands repeats the same command surface more "
+                    f"than once: {matched_surface}"
+                )
+            seen_surfaces.add(matched_surface)
+
+
+def _iter_related_command_references(command_cell: str) -> tuple[str, ...]:
+    references = tuple(reference.strip() for reference in extract_code_spans(command_cell))
+    if references:
+        return references
+    normalized_cell = command_cell.strip()
+    if "watchtower-core" not in normalized_cell:
+        return ()
+    return (normalized_cell,)
+
+
+def _reference_matches_known_command_surface(
+    normalized_reference: str,
+    known_commands: tuple[str, ...],
+) -> bool:
+    return _resolve_known_command_surface(normalized_reference, known_commands) is not None
+
+
+def _resolve_known_command_surface(
+    normalized_reference: str,
+    known_commands: tuple[str, ...],
+) -> str | None:
+    tokens = _split_cli_tokens(normalized_reference)
+    if not tokens or tokens[0] != "watchtower-core":
+        return None
+    if _is_pack_namespace_meta_reference(tokens):
+        canonical_tokens = list(tokens[: min(len(tokens), 3)])
+        if len(tokens) > 3 and not tokens[3].startswith("-"):
+            canonical_tokens.append(tokens[3])
+        return " ".join(canonical_tokens)
+
+    for command in known_commands:
+        command_tokens = tuple(command.split())
+        if tokens[: len(command_tokens)] != command_tokens:
+            continue
+        remainder = tokens[len(command_tokens) :]
+        if not remainder:
+            return command
+        if remainder[0].startswith("-"):
+            return command
+    return None
+
+
+def _is_pack_namespace_meta_reference(tokens: tuple[str, ...]) -> bool:
+    if len(tokens) < 2 or tokens[1] != _PACK_NAMESPACE_PLACEHOLDER:
+        return False
+    if len(tokens) == 2:
+        return True
+    return tokens[2] in _PACK_NAMESPACE_META_FAMILIES
+
+
+def _split_cli_tokens(invocation: str) -> tuple[str, ...]:
+    try:
+        return tuple(shlex.split(invocation))
+    except ValueError:
+        return tuple(invocation.split())
+
+
+def _load_known_commands_from_index(repo_root: Path) -> frozenset[str]:
+    command_index_path = (
+        repo_root / "core" / "control_plane" / "indexes" / "commands" / "command_index.json"
+    )
+    try:
+        document = json.loads(command_index_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError) as exc:
+        raise ValueError(
+            "Command semantics validation requires a readable command index at "
+            f"{command_index_path.relative_to(repo_root).as_posix()}."
+        ) from exc
+    entries = document.get("entries", [])
+    if not isinstance(entries, list):
+        raise ValueError("Command index is missing its entries list.")
+    return frozenset(
+        command
+        for entry in entries
+        if isinstance(entry, dict)
+        for command in (entry.get("command"),)
+        if isinstance(command, str) and command
+    )
 
 
 __all__ = [

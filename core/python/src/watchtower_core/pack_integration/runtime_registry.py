@@ -24,6 +24,7 @@ class PackRegistryRuntimeView:
 
     entries: tuple[PackRegistryEntry, ...]
     invalid_entries: tuple[PackRegistryEntry, ...] = ()
+    invalid_entry_details: tuple[tuple[PackRegistryEntry, str], ...] = ()
     invalid_authored_entries: tuple[tuple[str, str], ...] = ()
 
     def get_by_pack_id(self, pack_id: str) -> PackRegistryEntry:
@@ -155,6 +156,12 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
             )
         ),
         invalid_entries=tuple(invalid_typed_entries),
+        invalid_entry_details=tuple(
+            (entry, message)
+            for entry in invalid_typed_entries
+            for message in (_authored_entry_error(loader, entry),)
+            if message is not None
+        ),
         invalid_authored_entries=tuple(invalid_entries),
     )
     loader._typed_document_cache[_RUNTIME_VIEW_CACHE_KEY] = runtime_view

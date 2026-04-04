@@ -42,6 +42,7 @@ ValidationSuiteTargetResolver = Callable[
     [PackValidationContext, ValidationSuiteStepDefinition],
     tuple[str, ...] | None,
 ]
+PackContractIssueProvider = Callable[[ControlPlaneLoader, str], tuple[ValidationIssue, ...]]
 
 
 class ValidationSuiteService:
@@ -53,12 +54,14 @@ class ValidationSuiteService:
         *,
         document_semantics_factory: DocumentSemanticsFactory | None = None,
         target_resolver: ValidationSuiteTargetResolver | None = None,
+        pack_contract_issue_provider: PackContractIssueProvider | None = None,
     ) -> None:
         self._loader = loader
         self._document_semantics_factory = (
             document_semantics_factory or _default_document_semantics_factory
         )
         self._target_resolver = target_resolver
+        self._pack_contract_issue_provider = pack_contract_issue_provider
 
     def run(
         self,
@@ -88,7 +91,10 @@ class ValidationSuiteService:
             artifact: ArtifactValidationService | None = None
             front_matter: FrontMatterValidationService | None = None
             document_semantics: DocumentSemanticsValidationService | None = None
-            pack_contract = PackContractValidationService(context.loader)
+            pack_contract = PackContractValidationService(
+                context.loader,
+                extra_issue_provider=self._pack_contract_issue_provider,
+            )
 
             allowed_step_kinds = (
                 set(included_step_kinds) if included_step_kinds is not None else None

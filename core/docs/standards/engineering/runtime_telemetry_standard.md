@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "runtime_telemetry"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T12:30:00Z"
+updated_at: "2026-04-04T03:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -25,13 +25,14 @@ Give the repository one deliberate runtime-observability baseline so operators a
 ## Scope
 - Applies to reusable-core telemetry runtime code, host-owned CLI lifecycle instrumentation, and pack-owned command or orchestration paths that emit runtime telemetry.
 - Applies to runtime telemetry storage under pack machine roots such as `<pack-root>/.wt/runtime/telemetry/`.
-- Covers enablement defaults, environment-variable control, stderr summaries, JSONL event records, and failure posture.
+- Covers enablement defaults, environment-variable control, stderr summaries, JSONL event records, failure posture, and dry-run-first cleanup of retained telemetry sinks.
 - Does not define OTEL exporters, cross-process trace propagation, deliberate benchmark methodology, retained benchmark evidence, or performance-regression policy.
 
 ## Use When
 - Adding or changing runtime timing or error tracing behavior.
 - Choosing where runtime telemetry files should live.
 - Instrumenting CLI, sync, validation, pack-runtime, or pack-owned orchestration code.
+- Cleaning retained telemetry JSONL files without using ad hoc filesystem deletion.
 
 ## Related Standards and Sources
 - [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md): establishes that local runtime telemetry is now an active implementation baseline while OTEL remains a later candidate.
@@ -54,6 +55,7 @@ Give the repository one deliberate runtime-observability baseline so operators a
 - Keep runtime telemetry identifiers separate from planning `trace_id`. When planning identity is already available, attach it only as optional context.
 - Instrument public service or orchestration boundaries rather than every low-level helper.
 - Treat runtime telemetry JSONL as operational runtime state, not as a governed durable artifact family.
+- Use a dry-run-first cleanup path that stays inside the resolved telemetry root and only deletes matched telemetry JSONL files plus any now-empty dated directories beneath that root.
 - Do not treat telemetry JSONL as retained benchmark evidence. Use the performance benchmarking standard and retained benchmark-record family for deliberate repeatable performance measurement.
 
 ## Structure or Data Model
@@ -73,6 +75,7 @@ Give the repository one deliberate runtime-observability baseline so operators a
 | file format | JSONL / NDJSON |
 | file ownership | pack-local operational runtime state |
 | git behavior | ignored |
+| cleanup command | `watchtower-core telemetry delete` |
 
 ### Event contract
 | Record type | Purpose |
@@ -91,12 +94,13 @@ Give the repository one deliberate runtime-observability baseline so operators a
 
 ## Operationalization
 - `Modes`: `runtime`; `documentation`; `validation`
-- `Operational Surfaces`: `core/python/src/watchtower_core/telemetry/`; `core/python/src/watchtower_host/cli/`; `core/docs/references/domain_pack_authoring_reference.md`; `.gitignore`
+- `Operational Surfaces`: `core/python/src/watchtower_core/telemetry/`; `core/python/src/watchtower_host/cli/`; `core/docs/commands/core_python/watchtower_core_telemetry.md`; `core/docs/references/domain_pack_authoring_reference.md`; `.gitignore`
 
 ## Validation
 - Reviewers should reject runtime telemetry changes that alter existing stdout payload contracts without an explicit separately approved command-contract change.
 - Reviewers should reject runtime telemetry sinks that escape the active pack machine root by default.
 - Reviewers should reject telemetry failures that can break normal command execution.
+- Reviewers should reject cleanup paths that reach outside the resolved telemetry root or delete non-telemetry governed artifacts.
 - Reviewers should reject telemetry changes that silently widen this surface into benchmark methodology or retained performance evidence ownership.
 - Representative commands should prove both enabled and disabled paths through unit or integration coverage.
 
@@ -118,4 +122,4 @@ Give the repository one deliberate runtime-observability baseline so operators a
 - [w3c_trace_context_reference.md](/core/docs/references/w3c_trace_context_reference.md)
 
 ## Updated At
-- `2026-03-29T12:30:00Z`
+- `2026-04-04T03:05:00Z`

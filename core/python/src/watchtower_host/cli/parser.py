@@ -28,6 +28,7 @@ def build_parser(
         epilog=examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core benchmark run --format json",
+            "uv run watchtower-core telemetry delete --older-than-days 7 --format json",
             "uv run watchtower-core pack list --format json",
             "uv run watchtower-core pack describe --format json",
             "uv run watchtower-core pack validate --format json",
@@ -60,8 +61,7 @@ def build_parser(
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core sync repository-paths --write",
             "uv run watchtower-core validate all --skip-acceptance",
-            "uv run watchtower-core validate portability --include-pack <pack-slug> "
-            "--format json",
+            "uv run watchtower-core validate portability --include-pack <pack-slug> --format json",
             "uv run watchtower-core validate portability --root /tmp/customer_pack_bundle "
             "--include-pack <pack-slug> --pack-only --format json",
             "uv run watchtower-core validate document-semantics --path "

@@ -287,6 +287,9 @@ def test_reference_index_sync_tracks_role_workflow_citations(tmp_path: Path) -> 
             ### Current Repository Status
             - Supporting authority for workflow-role citation extraction.
 
+            ### Current Touchpoints
+            - [architecture_reviewer.md](../../workflows/roles/architecture_reviewer.md)
+
             ### Why It Matters Here
             - Keep one explicit workflow-role citation target in scope.
 

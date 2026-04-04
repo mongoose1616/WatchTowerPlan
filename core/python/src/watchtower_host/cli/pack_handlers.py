@@ -30,9 +30,11 @@ from watchtower_core.pack_integration.importing import import_pack_integration_m
 from watchtower_core.pack_integration.runtime import (
     load_pack_query_runtime,
     load_pack_sync_runtime,
+    load_pack_validation_runtime,
 )
 from watchtower_core.pack_integration.runtime_registry import (
     effective_pack_registry_entries,
+    load_pack_registry_runtime_view,
     resolve_runtime_pack_registry_entry,
 )
 from watchtower_core.pack_integration.scaffold import (
@@ -48,7 +50,9 @@ from watchtower_core.validation.pack_contract import (
 
 def _run_pack_list(args: argparse.Namespace) -> int:
     loader = ControlPlaneLoader()
+    runtime_view = load_pack_registry_runtime_view(loader)
     entries = effective_pack_registry_entries(loader)
+    invalid_entries = runtime_view.invalid_entry_details
 
     return _emit_collection_query_results(
         args,
@@ -56,21 +60,44 @@ def _run_pack_list(args: argparse.Namespace) -> int:
         entries=entries,
         noun="hosted pack",
         empty_message="No hosted packs are registered.",
-        payload_results_factory=lambda: [
-            {
-                "pack_id": entry.pack_id,
-                "pack_slug": entry.pack_slug,
-                "command_namespace": entry.command_namespace,
-                "pack_settings_path": entry.pack_settings_path,
-                "pack_runtime_manifest_path": entry.pack_runtime_manifest_path,
-                "python_distribution": entry.python_distribution,
-                "python_package": entry.python_package,
-                "default_repo_pack": entry.default_repo_pack,
-                "notes": entry.notes,
-            }
-            for entry in entries
-        ],
+        payload_results_factory=lambda: (
+            [
+                {
+                    "pack_id": entry.pack_id,
+                    "pack_slug": entry.pack_slug,
+                    "command_namespace": entry.command_namespace,
+                    "pack_settings_path": entry.pack_settings_path,
+                    "pack_runtime_manifest_path": entry.pack_runtime_manifest_path,
+                    "python_distribution": entry.python_distribution,
+                    "python_package": entry.python_package,
+                    "default_repo_pack": entry.default_repo_pack,
+                    "notes": entry.notes,
+                }
+                for entry in entries
+            ]
+            + [
+                {
+                    "pack_id": entry.pack_id,
+                    "pack_slug": entry.pack_slug,
+                    "command_namespace": entry.command_namespace,
+                    "pack_settings_path": entry.pack_settings_path,
+                    "pack_runtime_manifest_path": entry.pack_runtime_manifest_path,
+                    "python_distribution": entry.python_distribution,
+                    "python_package": entry.python_package,
+                    "default_repo_pack": entry.default_repo_pack,
+                    "notes": entry.notes,
+                    "warning": message,
+                    "usable": False,
+                }
+                for entry, message in invalid_entries
+            ]
+        ),
         render_entry=_render_pack_registry_entry,
+        render_trailer=(
+            (lambda: _render_invalid_pack_registry_entries(invalid_entries))
+            if invalid_entries
+            else None
+        ),
     )
 
 
@@ -234,7 +261,14 @@ def _run_pack_validate(args: argparse.Namespace) -> int:
     if resolved_pack_settings_path is None:
         return 1
     pack_settings_path = resolved_pack_settings_path
-    result = PackContractValidationService(loader).validate(pack_settings_path)
+    validation_runtime = load_pack_validation_runtime(
+        loader,
+        pack_settings_path=pack_settings_path,
+    )
+    result = PackContractValidationService(
+        loader,
+        extra_issue_provider=validation_runtime.pack_contract_issue_provider,
+    ).validate(pack_settings_path)
     payload = {
         "command": "watchtower-core pack validate",
         "status": "ok",
@@ -831,6 +865,14 @@ def _render_pack_registry_entry(entry: PackRegistryEntry) -> None:
         f"namespace={entry.command_namespace} "
         f"distribution={entry.python_distribution}{default_suffix}"
     )
+
+
+def _render_invalid_pack_registry_entries(
+    invalid_entries: tuple[tuple[PackRegistryEntry, str], ...],
+) -> None:
+    print("Registry warnings:")
+    for entry, message in invalid_entries:
+        print(f"- {entry.pack_slug} ({entry.pack_settings_path}): {message}")
 
 
 __all__ = [
