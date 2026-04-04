@@ -4,6 +4,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from tests.cli_command_helpers import run_json_command
+from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_host.cli import telemetry_handlers
 from watchtower_host.cli.main import main
 
@@ -57,3 +58,34 @@ def test_telemetry_help_lists_delete_leaf(capsys) -> None:
     help_text = capsys.readouterr().out
     assert result == 0
     assert "delete" in help_text
+
+
+def test_telemetry_delete_maps_pack_settings_load_errors_to_command_error(
+    monkeypatch,
+    capsys,
+) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def delete(self, request: object) -> SimpleNamespace:
+            raise ArtifactLoadError("Could not load governed artifact at missing pack settings")
+
+    monkeypatch.setattr(telemetry_handlers, "TelemetryCleanupService", FakeService)
+    monkeypatch.setattr(telemetry_handlers, "ControlPlaneLoader", lambda: object())
+
+    result, payload = run_json_command(
+        capsys,
+        [
+            "telemetry",
+            "delete",
+            "--all",
+            "--pack-settings-path",
+            "missing/.wt/manifests/pack_settings.json",
+        ],
+    )
+
+    assert result == 1
+    assert payload["command"] == "watchtower-core telemetry delete"
+    assert payload["status"] == "error"
+    assert "missing pack settings" in payload["message"]

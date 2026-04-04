@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-04-04T03:05:00Z"
+updated_at: "2026-04-04T17:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -55,6 +55,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - When a command supports both human-readable and structured machine output, document the canonical output-mode flag and supported values explicitly.
 - Prefer one `--format` option such as `--format human` or `--format json` over separate bespoke `--human` and `--json` switches.
 - Prefer examples that match the actual workspace and onboarding contract and include enough detail to avoid ambiguity.
+- When an example argument points at a repo-local governed surface such as `--pack-settings-path`, use a real repository path or mark the example as illustrative with an explicit placeholder.
 - Record the implementation or source surface so engineers can move from the doc to the responsible code path quickly.
 - Keep command families modular: one directory per command family and one page per command or subcommand.
 - Point root shared-command pages at `watchtower_host.cli` source surfaces when the host owns parser construction or dispatch, and point pack pages at the owning `watchtower_<pack>.cli` surfaces rather than shared helper shims.
@@ -77,7 +78,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 | `Command` | Required | Table describing invocation, kind, workspace, and implementation surface. |
 | `Synopsis` | Required | Usage form in a fenced shell block. |
 | `Arguments and Options` | Required | List supported args or state clearly when there are none beyond help. |
-| `Examples` | Required | At least one real repository example. |
+| `Examples` | Required | Include at least one real repository example when the command can run against the current repo state; otherwise use clearly marked illustrative examples for repo-specific hosted-pack paths or other unavailable local state. |
 | `Behavior and Outputs` | Required | Describe the current output shape, side effects, and exit behavior. |
 | `Related Commands` | Required | Point to nearby commands or command-family docs. |
 | `Source Surface` | Required | Point to the implementation surface that owns the command. |
@@ -104,6 +105,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Command pages should contain the required sections in the documented order.
 - The documented command should exist in the repository’s current command surface.
 - Example invocations should be runnable or clearly marked as illustrative if the command is not yet implemented.
+- `watchtower-core validate document-semantics --path <command_doc>` should fail when one concrete example publishes a repo-local governed path that does not exist in the current repository.
 - If a command advertises structured output, the documented output mode should match the actual implementation surface.
 - Reviewers should reject command pages that collapse materially distinct modes, side effects, or failure boundaries into vague summary text merely to keep sibling sections the same size.
 - `watchtower-core validate document-semantics --path <command_doc>` should auto-select the command-doc validator and fail when the `Source Surface` section drifts from the command-table `Source Surface` row or from live repository paths.
@@ -130,4 +132,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-04-04T03:05:00Z`
+- `2026-04-04T17:00:00Z`

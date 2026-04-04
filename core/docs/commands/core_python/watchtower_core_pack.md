@@ -74,12 +74,14 @@ uv run watchtower-core pack scaffold --pack-slug oversight --pack-root oversight
 
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --write --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json
 ```
 
 ## Behavior and Outputs
@@ -116,4 +118,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - `core/control_plane/registries/pack_registry.json`
 
 ## Updated At
-- `2026-03-28T04:20:00Z`
+- `2026-04-04T17:10:00Z`

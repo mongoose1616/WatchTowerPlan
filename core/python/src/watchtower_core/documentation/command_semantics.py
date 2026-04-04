@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import json
+import re
 import shlex
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from watchtower_core.adapters.markdown import (
     extract_code_spans,
@@ -42,6 +43,8 @@ _COMMAND_TABLE_REQUIRED_FIELDS = (
 _UTC_TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 _PACK_NAMESPACE_PLACEHOLDER = "<pack-namespace>"
 _PACK_NAMESPACE_META_FAMILIES = frozenset({"bootstrap", "query", "sync"})
+_FENCED_CODE_BLOCK_PATTERN = re.compile(r"```(?:[^\n`]*)\n(?P<body>.*?)\n```", re.DOTALL)
+_REPO_LOCAL_EXAMPLE_OPTIONS = frozenset({"--pack-settings-path"})
 
 
 def load_command_doc_source_surfaces(doc_path: Path) -> tuple[str, str]:
@@ -128,6 +131,11 @@ def validate_command_document(
         raise ValueError(f"{relative_path} Synopsis section must include a fenced code block.")
     if "```" not in sections["Examples"]:
         raise ValueError(f"{relative_path} Examples section must include at least one code block.")
+    _validate_repo_local_example_paths(
+        relative_path,
+        sections["Examples"],
+        repo_root=repo_root,
+    )
 
     related_rows = parse_markdown_table(sections["Related Commands"])
     if not related_rows:
@@ -224,6 +232,85 @@ def _validate_related_command_references(
                     f"than once: {matched_surface}"
                 )
             seen_surfaces.add(matched_surface)
+
+
+def _validate_repo_local_example_paths(
+    relative_path: str,
+    examples_section: str,
+    *,
+    repo_root: Path,
+) -> None:
+    for code_block in _iter_fenced_code_blocks(examples_section):
+        for line in code_block.splitlines():
+            _validate_repo_local_example_line(
+                relative_path,
+                line,
+                repo_root=repo_root,
+            )
+
+
+def _iter_fenced_code_blocks(section: str) -> tuple[str, ...]:
+    return tuple(
+        match.group("body").strip()
+        for match in _FENCED_CODE_BLOCK_PATTERN.finditer(section)
+    )
+
+
+def _validate_repo_local_example_line(
+    relative_path: str,
+    line: str,
+    *,
+    repo_root: Path,
+) -> None:
+    stripped = line.strip()
+    if not stripped or stripped.startswith("#") or stripped.startswith("cd "):
+        return
+    try:
+        tokens = shlex.split(stripped)
+    except ValueError as exc:
+        raise ValueError(
+            f"{relative_path} Examples contains an invalid shell example line: {stripped}"
+        ) from exc
+    for index, token in enumerate(tokens):
+        option, inline_value = _split_cli_option(token)
+        if option not in _REPO_LOCAL_EXAMPLE_OPTIONS:
+            continue
+        value = inline_value
+        if value is None:
+            if index + 1 >= len(tokens):
+                raise ValueError(
+                    f"{relative_path} Examples option {option} is missing its value."
+                )
+            value = tokens[index + 1].strip()
+        if _is_illustrative_cli_value(value) or Path(value).is_absolute():
+            continue
+        normalized = PurePosixPath(value.rstrip("/"))
+        if not normalized.parts or normalized.is_absolute() or ".." in normalized.parts:
+            raise ValueError(
+                f"{relative_path} Examples uses an invalid repo-local path for {option}: {value}"
+            )
+        if not (repo_root / normalized.as_posix()).exists():
+            raise ValueError(
+                f"{relative_path} Examples uses missing repo-local path for {option}: {value}"
+            )
+
+
+def _split_cli_option(token: str) -> tuple[str, str | None]:
+    if "=" not in token:
+        return token, None
+    option, value = token.split("=", 1)
+    return option, value
+
+
+def _is_illustrative_cli_value(value: str) -> bool:
+    return (
+        "<" in value
+        or ">" in value
+        or "${" in value
+        or value.startswith("$")
+        or value.startswith("~")
+        or value == "..."
+    )
 
 
 def _iter_related_command_references(command_cell: str) -> tuple[str, ...]:

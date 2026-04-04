@@ -40,7 +40,8 @@ uv run watchtower-core pack validate --format json
 
 ```sh
 cd core/python
-uv run watchtower-core pack validate --pack-settings-path oversight/.wt/manifests/pack_settings.json --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack validate --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --format json
 ```
 
 ## Behavior and Outputs
@@ -69,4 +70,4 @@ uv run watchtower-core pack validate --pack-settings-path oversight/.wt/manifest
 - `core/python/src/watchtower_core/pack_integration/runtime_registry.py`
 
 ## Updated At
-- `2026-03-23T01:55:00Z`
+- `2026-04-04T17:10:00Z`

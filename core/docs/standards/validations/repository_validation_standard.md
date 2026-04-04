@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-04-04T14:35:00Z"
+updated_at: "2026-04-04T17:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -78,6 +78,7 @@ This standard defines the baseline validation expectations for repository change
   - `./.venv/bin/python -m pytest tests/unit tests/integration -q`
 - When a pack-owned Python boundary changes, run the owning pack test root as part of the baseline, for example:
   - `./tools/verify.sh all --pack <pack-root>`
+  - `./.venv/bin/ruff check ../../<pack-root>/python/src ../../<pack-root>/python/tests`
   - `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q`
 - When one change spans both shared core and a hosted pack, run both the shared-core suite and the affected pack-owned test root before closeout.
 - Keep validation evidence split the same way the suites are split: shared-core validation should prove `core/python/tests/` remains pack-neutral, while pack-owned validation should cover direct `watchtower_<pack>` behavior from the owning pack root.
@@ -101,6 +102,7 @@ This standard defines the baseline validation expectations for repository change
 - Generated trackers and indexes should not be validated against stale source state.
 - Python helper changes should not close out without typecheck, lint, and test coverage unless the exception is explicit.
 - Reviewers should reject hosted-pack boundary changes that bypass pack-interface validation after altering manifests, integration hooks, or dependency direction.
+- Reviewers should reject pack-owned Python changes that claim the canonical `./tools/verify.sh all --pack <pack-root>` pass ran when hosted-pack Ruff was skipped or failed.
 - Reviewers should reject validation updates that only prove the happy path when the changed code clearly owns fail-closed behavior, error mapping, or edge-case handling.
 
 ## Change Control
@@ -115,4 +117,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-04-04T14:35:00Z`
+- `2026-04-04T17:00:00Z`

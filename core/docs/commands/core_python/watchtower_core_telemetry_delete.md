@@ -45,7 +45,8 @@ uv run watchtower-core telemetry delete --before 2026-03-01 --format json
 
 ```sh
 cd core/python
-uv run watchtower-core telemetry delete --all --pack-settings-path offensive_security/.wt/manifests/pack_settings.json --write --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core telemetry delete --all --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --write --format json
 ```
 
 ## Behavior and Outputs
@@ -71,4 +72,4 @@ uv run watchtower-core telemetry delete --all --pack-settings-path offensive_sec
 - `core/python/src/watchtower_core/telemetry/cleanup.py`
 
 ## Updated At
-- `2026-03-31T07:15:00Z`
+- `2026-04-04T17:00:00Z`

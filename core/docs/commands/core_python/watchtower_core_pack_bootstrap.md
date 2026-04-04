@@ -35,27 +35,32 @@ uv run watchtower-core pack bootstrap --pack-settings-path <path> [--write] [--n
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --write --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --no-sync-workspace --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --write --no-sync-workspace --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --sync-extra dev --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --write --sync-extra dev --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json
+# Illustrative: substitute a real hosted-pack settings path from this repo.
+uv run watchtower-core pack bootstrap --pack-settings-path <pack-root>/.wt/manifests/pack_settings.json --replace-hosted-packs --write --format json
 ```
 
 ## Behavior and Outputs
@@ -123,4 +128,4 @@ Use this start-up flow when a recipient repository copied `core/` exactly from a
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-29T03:35:00Z`
+- `2026-04-04T17:10:00Z`

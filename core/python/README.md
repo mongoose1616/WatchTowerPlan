@@ -26,10 +26,8 @@
 ## Onboarding
 ### Quick Start
 1. `cd core/python`
-2. Install `uv` if it is not already available on `PATH`.
-3. `uv python install`
-4. `uv sync --extra dev`
-5. `uv run watchtower-core doctor`
+2. `./tools/setup_dev_env.sh`
+3. If `uv` is not already available on `PATH`, follow the install guidance printed by the script or use one of the install methods below, then rerun `./tools/setup_dev_env.sh`.
 
 ### Install `uv`
 - macOS and Linux standalone installer:
@@ -53,7 +51,10 @@
 ### Daily Use
 - Default path: run commands with `uv run ...` from `core/python/`. This uses the workspace environment without requiring manual activation.
 - `uv sync --extra dev` installs `watchtower_core` and any repo-local hosted pack packages declared in the shared workspace metadata.
+- `./tools/setup_dev_env.sh` is the one-command bootstrap and repair path for humans and agents. It runs the standard workspace bootstrap flow and a `watchtower-core doctor` smoke check when the required tooling is available.
 - `./.venv/bin/python` is useful after the workspace has already been synced, but it does not replace `uv sync` when the shared workspace metadata changes.
+- Agent and automation rule: use the documented workspace entrypoint directly. Prefer `uv run ...`; when a direct interpreter or tool binary is required after the workspace has already been synced, use `./.venv/bin/python` or `./.venv/bin/<tool>` from `core/python/`.
+- Do not probe `python`, `python3`, `pip`, or bare tool names first, and do not treat their absence as an actionable issue once the documented workspace entrypoint is available.
 - In any repository, the shared workspace metadata may include one or more hosted packs. In a downstream repository that copies `core/`, the hosted-pack dependencies and local `tool.uv.sources` entries are repo-local configuration and should be updated to match the copied pack set instead of inheriting the donor repo's package list.
 - Keep the test split explicit: `core/python/tests/` is the shared pack-neutral suite, while pack-owned tests live under the owning pack root such as `<pack-root>/python/tests/`.
 - Keep the shared-core suite live-pack-neutral: if a test needs a real `watchtower_<pack>` import or depends on the live current-repository pack workspace being present, move it under the owning pack root or replace it with synthetic fixture-pack setup.
@@ -165,7 +166,7 @@
 - `./tools/verify.sh fast` is the canonical narrow local loop for shared-core work. It wraps the current `mypy`, Ruff, and unit-pytest baseline.
 - `./tools/verify.sh all` is the canonical broad shared-core pass. It adds the broad shared-core pytest run plus `watchtower-core validate all`.
 - Add `--fail-fast` to either `./tools/verify.sh` mode when you want pytest-driven checks to stop on the first failure during remediation or refactor loops.
-- Add `--pack <slug>` to `./tools/verify.sh all` when a hosted-pack Python boundary changed. Use the current repository's hosted-pack slug when the local pass should include one pack-owned Python workspace.
+- Add `--pack <slug>` to `./tools/verify.sh all` when a hosted-pack Python boundary changed. The pack-aware pass adds hosted-pack mypy, Ruff, and pytest coverage for the selected pack root.
 - `./tools/install_git_hooks.sh --mode fast` materializes `.githooks/pre-push` from the shared templates under `core/python/tools/git_hooks/` and installs it as an optional local guard. Use `--mode all`, optional `--pack <slug>`, and optional `--fail-fast` when you want the hook to run the broader pass on push and stop on the first pytest failure.
 - Repo-root `./core/python/.venv/bin/mypy core/python/src` commands resolve configuration from [pyproject.toml](/core/python/pyproject.toml) when you do not want to `cd core/python` first.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.

@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 
 from watchtower_core.cli.handler_common import _emit_command_error, _emit_detail_result
+from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import TelemetryCleanupService, TelemetryDeleteRequest
 
@@ -23,7 +24,7 @@ def _run_telemetry_delete(args: argparse.Namespace) -> int:
                 write=bool(args.write),
             )
         )
-    except (OSError, ValueError) as exc:
+    except (ArtifactLoadError, OSError, ValueError) as exc:
         return _emit_command_error(
             args,
             "watchtower-core telemetry delete",

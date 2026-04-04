@@ -49,3 +49,29 @@ def test_validate_command_document_allows_distinct_pack_namespace_sync_subcomman
         resolved_path=resolved_path,
         repo_root=repo_root,
     )
+
+
+def test_validate_command_document_rejects_missing_pack_settings_example_paths(
+    tmp_path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    relative_path = "core/docs/commands/core_python/watchtower_core_telemetry_delete.md"
+    resolved_path = repo_root / relative_path
+
+    markdown = resolved_path.read_text(encoding="utf-8")
+    markdown = markdown.replace(
+        "<pack-root>/.wt/manifests/pack_settings.json",
+        "missing_pack/.wt/manifests/pack_settings.json",
+        1,
+    )
+    resolved_path.write_text(markdown, encoding="utf-8")
+
+    with pytest.raises(ValueError, match="missing repo-local path for --pack-settings-path"):
+        validate_command_document(
+            relative_path=relative_path,
+            resolved_path=resolved_path,
+            repo_root=repo_root,
+        )

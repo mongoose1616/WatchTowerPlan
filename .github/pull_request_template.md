@@ -11,7 +11,7 @@
 ## Validation
 - [ ] `cd core/python && ./tools/verify.sh fast`
 - [ ] `cd core/python && ./tools/verify.sh all`
-- [ ] `cd core/python && ./tools/verify.sh all --pack plan` when the change touches `plan/python/**`
+- [ ] `cd core/python && ./tools/verify.sh all --pack plan` when the change touches `plan/python/**` and hosted-pack mypy, Ruff, and pytest must all pass
 - [ ] Other validation run and summarized below when required
 
 ## Governed Surfaces
