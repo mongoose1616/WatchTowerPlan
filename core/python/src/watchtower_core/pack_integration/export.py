@@ -26,10 +26,6 @@ from watchtower_core.pack_integration.workspace_registration import (
     hosted_pack_workspace_registrations,
     reconcile_core_python_workspace_pyproject,
 )
-from watchtower_core.sync.cache import (
-    finalize_document_sync_cache,
-    prepare_document_sync_cache,
-)
 from watchtower_core.sync.foundation_index import FoundationIndexSyncService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 from watchtower_core.validation.pack_contract import PackContractValidationService
@@ -293,7 +289,7 @@ def export_hosted_repository(
             changed_paths.update(_scrub_all_hosted_pack_wiring(output_root))
             workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
 
-        rebuild_shared_discovery_surfaces(output_root, enable_runtime_cache=False)
+        rebuild_shared_discovery_surfaces(output_root)
         changed_paths.update(
             {
                 "core/control_plane/indexes/commands/command_index.json",
@@ -304,7 +300,7 @@ def export_hosted_repository(
                 "core/control_plane/indexes/routes/route_index.json",
             }
         )
-        _rebuild_foundation_index(output_root, enable_runtime_cache=False)
+        _rebuild_foundation_index(output_root)
         changed_paths.add("core/control_plane/indexes/foundations/foundation_index.json")
 
         export_loader = ControlPlaneLoader(output_root)
@@ -367,7 +363,7 @@ def extract_engineering_core(
     changed_paths = _scrub_all_hosted_pack_wiring(output_root)
     workspace_lock_removed = False
     if changed_paths:
-        rebuild_shared_discovery_surfaces(output_root, enable_runtime_cache=False)
+        rebuild_shared_discovery_surfaces(output_root)
         changed_paths.update(
             {
                 "core/control_plane/indexes/commands/command_index.json",
@@ -378,7 +374,7 @@ def extract_engineering_core(
                 "core/control_plane/indexes/routes/route_index.json",
             }
         )
-        _rebuild_foundation_index(output_root, enable_runtime_cache=False)
+        _rebuild_foundation_index(output_root)
         changed_paths.add("core/control_plane/indexes/foundations/foundation_index.json")
         if CORE_PYPROJECT_RELATIVE_PATH in changed_paths:
             workspace_lock_removed = _remove_workspace_lock(output_root, changed_paths)
@@ -1543,29 +1539,11 @@ def _remove_workspace_lock(output_root: Path, changed_paths: set[str]) -> bool:
     return True
 
 
-def _rebuild_foundation_index(
-    output_root: Path,
-    *,
-    enable_runtime_cache: bool = True,
-) -> None:
+def _rebuild_foundation_index(output_root: Path) -> None:
     loader = ControlPlaneLoader(output_root)
     service = FoundationIndexSyncService(loader)
-    prepared_cache = (
-        prepare_document_sync_cache(
-            loader,
-            service,
-            relative_output_path=service.OUTPUT_PATH,
-        )
-        if enable_runtime_cache
-        else None
-    )
-    document = (
-        prepared_cache.document if prepared_cache is not None else None
-    ) or service.build_document()
-    if prepared_cache is None or prepared_cache.cache_status != "hit":
-        service.write_document(document)
-    if prepared_cache is not None:
-        finalize_document_sync_cache(prepared_cache, document=document)
+    document = service.build_document()
+    service.write_document(document)
 
 
 def _validate_exported_pack(
