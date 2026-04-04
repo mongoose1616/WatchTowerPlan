@@ -27,7 +27,7 @@ class _FakeSchemaStore:
 
 
 class _FakeLoader:
-    def __init__(self, repo_root: Path, *, machine_root: str = "plan/.wt") -> None:
+    def __init__(self, repo_root: Path, *, machine_root: str = "fixture_pack/.wt") -> None:
         self.repo_root = repo_root
         self.workspace_config = WorkspaceConfig(
             repo_root=repo_root,
@@ -35,7 +35,7 @@ class _FakeLoader:
             python_workspace_root=repo_root / "core" / "python",
         )
         self.schema_store = _FakeSchemaStore()
-        self.active_pack_settings_path = "plan/.wt/manifests/pack_settings.json"
+        self.active_pack_settings_path = "fixture_pack/.wt/manifests/pack_settings.json"
         self._machine_root = machine_root
 
     def default_pack_settings_path(self) -> str:

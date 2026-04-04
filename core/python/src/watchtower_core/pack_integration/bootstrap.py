@@ -7,9 +7,11 @@ import os
 import shutil
 import subprocess
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from importlib import import_module
 from pathlib import Path, PurePosixPath
+from typing import cast
 
 from watchtower_core.control_plane.loader import (
     PACK_REGISTRY_PATH,
@@ -29,6 +31,7 @@ from watchtower_core.sync.cache import (
     prepare_document_sync_cache,
     validate_prepared_document_sync_cache,
 )
+from watchtower_core.sync.harness import DocumentSyncService
 
 COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
@@ -679,7 +682,7 @@ def _restore_workspace_files(
 
 def _rebuild_document_sync_surface(
     loader: ControlPlaneLoader,
-    service: object,
+    service: DocumentSyncService,
     *,
     relative_output_path: str,
     enable_runtime_cache: bool,
@@ -716,7 +719,10 @@ def rebuild_shared_discovery_surfaces(
     from watchtower_core.sync.workflow_index import WorkflowIndexSyncService
 
     command_index_module = import_module("watchtower_host.cli.command_index")
-    command_index_service_class = command_index_module.CommandIndexSyncService
+    command_index_service_class = cast(
+        Callable[[ControlPlaneLoader], DocumentSyncService],
+        command_index_module.CommandIndexSyncService,
+    )
     loader = ControlPlaneLoader(repo_root)
     command_index_service = command_index_service_class(loader)
     _rebuild_document_sync_surface(
