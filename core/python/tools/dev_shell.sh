@@ -11,8 +11,12 @@ core/python/.venv is not available yet.
 
 Run the workspace bootstrap first:
   cd ${workspace_root}
+  ./tools/setup_dev_env.sh
+
+Manual equivalent:
   uv python install
   uv sync --extra dev
+  uv run watchtower-core doctor
 
 Then re-run:
   ./tools/dev_shell.sh

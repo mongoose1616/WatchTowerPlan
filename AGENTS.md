@@ -40,6 +40,7 @@
 - Before drafting or materially restructuring a governed document, use `watchtower-core query templates` plus the relevant family standard or catalog entry instead of inventing document shape from scratch.
 - Distinguish observed current-state facts from inference, local policy, and open questions when writing analysis, standards, references, workflow outputs, or closeout guidance.
 - For documentation, workflow, and instruction surfaces, include every materially distinct input, assumption, branch, exception, handoff, output, finding, or open question needed for correct interpretation or review. Do not target fixed section counts or compress sibling sections for symmetry.
+- When executable repository work needs Python or CLI tooling, use the documented `core/python` workspace entrypoint directly: prefer `cd core/python && uv run ...`; when a direct interpreter or tool binary is required after the workspace is synced, use `cd core/python && ./.venv/bin/python ...` or `cd core/python && ./.venv/bin/<tool> ...`.
 - If work is happening under [core/docs](/core/docs), also apply [core/docs/AGENTS.md](/core/docs/AGENTS.md).
 - If work is happening under [plan/docs](/plan/docs), also apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md).
 - If work is happening under [plan](/plan), also apply [plan/AGENTS.md](/plan/AGENTS.md).
@@ -84,5 +85,6 @@
 - Do not add unapproved parallel Python package roots or alternate virtual-environment conventions outside `core/python/`. The approved exception is the plan-domain package root under `plan/python/**`.
 - Do not put hand-maintained prose, workflow guidance, or Python source inside `.wt/` trees.
 - Do not duplicate generic reusable logic into `plan/python/**` just to make it plan-flavored.
+- Do not probe generic aliases such as `python`, `python3`, `pip`, or bare tool names first, and do not narrate their absence as a blocker or fallback when the documented `core/python` entrypoint is available.
 - Do not treat a live portability scan over an actively used workspace as a substitute for a fresh staged export when the intent is customer handoff.
 - Do not leave companion machine-readable lookup or validation surfaces stale when their governing human or machine authority changed in the same task.
