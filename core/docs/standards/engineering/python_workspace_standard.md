@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-29T03:35:00Z"
+updated_at: "2026-04-04T14:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -153,6 +153,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Python source should be importable through the canonical package path.
 - Reusable-core packages should remain clean under the stricter `mypy` override declared in `core/python/pyproject.toml`, including `adapters/`, `validation/`, `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/`.
 - `uv run pytest -q`, `uv run ruff check .`, and `uv run mypy src` should be the default narrow validation entrypoints for normal shared Python workspace work unless a narrower command is more appropriate.
+- `./tools/verify.sh <fast|all> --fail-fast` should be the preferred wrapper when a remediation or refactor loop needs pytest-driven validation to stop on the first failure.
 - `./.venv/bin/python -m pytest tests/unit tests/integration -q` should be the explicit broad shared-core Python test pass before closeout when repository-aware integration behavior changed.
 - `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` should be the pack-owned Python test pass when a change touches one hosted pack directly.
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
@@ -180,4 +181,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code plus direct pack tests under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/` and `<pack-root>/python/tests/`.
 
 ## Updated At
-- `2026-03-29T03:35:00Z`
+- `2026-04-04T14:35:00Z`

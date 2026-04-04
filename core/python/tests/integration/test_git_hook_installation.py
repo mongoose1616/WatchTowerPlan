@@ -32,6 +32,7 @@ def test_install_git_hooks_script_materializes_repo_local_hooks(tmp_path: Path) 
             "all",
             "--pack",
             "fixture",
+            "--fail-fast",
         ],
         cwd=repo_root / "core/python",
         check=True,
@@ -73,7 +74,76 @@ def test_install_git_hooks_script_materializes_repo_local_hooks(tmp_path: Path) 
         text=True,
         env=env,
     ).stdout.strip()
+    verify_fail_fast = subprocess.run(
+        ["git", "config", "--bool", "--get", "watchtower.verifyFailFast"],
+        cwd=repo_root,
+        check=True,
+        capture_output=True,
+        text=True,
+        env=env,
+    ).stdout.strip()
 
     assert hooks_path == ".githooks"
     assert verify_mode == "all"
     assert verify_pack == "fixture"
+    assert verify_fail_fast == "true"
+
+
+def test_pre_push_hook_passes_fail_fast_flag_to_verify_script(tmp_path: Path) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    env = os.environ.copy()
+    env.setdefault("GIT_CONFIG_NOSYSTEM", "1")
+
+    subprocess.run(
+        ["git", "init", "-q"],
+        cwd=repo_root,
+        check=True,
+        env=env,
+    )
+
+    subprocess.run(
+        [
+            "bash",
+            "./tools/install_git_hooks.sh",
+            "--mode",
+            "all",
+            "--pack",
+            "fixture",
+            "--fail-fast",
+        ],
+        cwd=repo_root / "core/python",
+        check=True,
+        env=env,
+    )
+
+    verify_stub = repo_root / "core/python/tools/verify.sh"
+    captured_args_path = repo_root / "verify_args.txt"
+    verify_stub.write_text(
+        "\n".join(
+            (
+                "#!/usr/bin/env bash",
+                "set -euo pipefail",
+                f'printf "%s\\n" "$@" > "{captured_args_path}"',
+                "",
+            )
+        ),
+        encoding="utf-8",
+    )
+    verify_stub.chmod(0o755)
+
+    subprocess.run(
+        ["bash", ".githooks/pre-push"],
+        cwd=repo_root,
+        check=True,
+        env=env,
+    )
+
+    assert captured_args_path.read_text(encoding="utf-8").splitlines() == [
+        "all",
+        "--pack",
+        "fixture",
+        "--fail-fast",
+    ]

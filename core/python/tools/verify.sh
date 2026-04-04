@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: ./tools/verify.sh <fast|all> [--pack <pack_slug>]
+Usage: ./tools/verify.sh <fast|all> [--pack <pack_slug>] [--fail-fast]
 
 Run the canonical local verification flow from core/python.
 
@@ -14,6 +14,8 @@ Modes:
 Options:
   --pack <pack_slug>  Also run the hosted-pack typing and test pass for one
                       top-level pack root such as "my_pack".
+  --fail-fast        Stop pytest-driven validation on the first failure. Use
+                     this for faster remediation and refactor loops.
 EOF
 }
 
@@ -35,6 +37,7 @@ fi
 mode="$1"
 shift
 pack_slug=""
+fail_fast=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -45,6 +48,10 @@ while [[ $# -gt 0 ]]; do
       fi
       pack_slug="$2"
       shift 2
+      ;;
+    --fail-fast)
+      fail_fast=1
+      shift
       ;;
     -h|--help)
       usage
@@ -88,14 +95,19 @@ cd "$workspace_root"
 run_step "mypy (core)" uv run mypy src
 run_step "ruff (core)" uv run ruff check src tests/unit tests/integration
 
+pytest_args=(-q)
+if [[ "$fail_fast" == "1" ]]; then
+  pytest_args+=("--maxfail=1")
+fi
+
 if [[ "$mode" == "fast" ]]; then
-  run_step "pytest (core unit)" uv run pytest -q
+  run_step "pytest (core unit)" uv run pytest "${pytest_args[@]}"
 else
-  run_step "pytest (core broad)" uv run python -m pytest tests/unit tests/integration -q
+  run_step "pytest (core broad)" uv run python -m pytest "${pytest_args[@]}" tests/unit tests/integration
   run_step "validate all" uv run watchtower-core validate all
 fi
 
 if [[ -n "$pack_slug" ]]; then
   run_step "mypy ($pack_slug)" uv run mypy src "$pack_src"
-  run_step "pytest ($pack_slug)" uv run python -m pytest "$pack_tests" -q
+  run_step "pytest ($pack_slug)" uv run python -m pytest "${pytest_args[@]}" "$pack_tests"
 fi

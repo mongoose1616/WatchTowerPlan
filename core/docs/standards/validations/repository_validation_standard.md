@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-28T23:15:00Z"
+updated_at: "2026-04-04T14:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -68,6 +68,7 @@ This standard defines the baseline validation expectations for repository change
 - Treat `pytest -q` as the fast unit-only local loop for `core/python/tests/unit/`.
 - Treat `./tools/verify.sh fast` from `core/python/` as the canonical shared-core narrow local wrapper around the current `mypy`, Ruff, and unit-pytest loop.
 - Treat `./tools/verify.sh all` from `core/python/` as the canonical broad shared-core wrapper around the current typecheck, lint, broad pytest, and `watchtower-core validate all` baseline.
+- Add `--fail-fast` to `./tools/verify.sh` when a remediation, evaluation, or refactor loop should stop on the first pytest failure instead of waiting for the full suite.
 - When validators, loaders, sync flows, or closeout logic change, cover at least one failure mode or boundary condition in addition to the happy path.
 - When `core/python/**` changes, the normal workspace validation baseline is:
   - `./tools/verify.sh fast`
@@ -114,4 +115,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-28T23:15:00Z`
+- `2026-04-04T14:35:00Z`

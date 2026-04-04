@@ -73,10 +73,15 @@
 
 ### Common Commands
 - `./tools/verify.sh fast`
+- `./tools/verify.sh fast --fail-fast`
 - `./tools/verify.sh all`
+- `./tools/verify.sh all --fail-fast`
 - `./tools/verify.sh all --pack <pack-slug>`
+- `./tools/verify.sh all --pack <pack-slug> --fail-fast`
 - `./tools/install_git_hooks.sh --mode fast`
+- `./tools/install_git_hooks.sh --mode fast --fail-fast`
 - `./tools/install_git_hooks.sh --mode all --pack <pack-slug>`
+- `./tools/install_git_hooks.sh --mode all --pack <pack-slug> --fail-fast`
 - `uv run pytest -q`
 - `./.venv/bin/python -m pytest tests/unit tests/integration -q`
 - `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q`
@@ -159,8 +164,9 @@
 - Deliberate retained performance measurement is separate from telemetry. Use `watchtower-core benchmark run` and the governed benchmark-suite registry when you need repeatable benchmark evidence.
 - `./tools/verify.sh fast` is the canonical narrow local loop for shared-core work. It wraps the current `mypy`, Ruff, and unit-pytest baseline.
 - `./tools/verify.sh all` is the canonical broad shared-core pass. It adds the broad shared-core pytest run plus `watchtower-core validate all`.
+- Add `--fail-fast` to either `./tools/verify.sh` mode when you want pytest-driven checks to stop on the first failure during remediation or refactor loops.
 - Add `--pack <slug>` to `./tools/verify.sh all` when a hosted-pack Python boundary changed. Use the current repository's hosted-pack slug when the local pass should include one pack-owned Python workspace.
-- `./tools/install_git_hooks.sh --mode fast` materializes `.githooks/pre-push` from the shared templates under `core/python/tools/git_hooks/` and installs it as an optional local guard. Use `--mode all` and optional `--pack <slug>` when you want the hook to run the broader pass on push.
+- `./tools/install_git_hooks.sh --mode fast` materializes `.githooks/pre-push` from the shared templates under `core/python/tools/git_hooks/` and installs it as an optional local guard. Use `--mode all`, optional `--pack <slug>`, and optional `--fail-fast` when you want the hook to run the broader pass on push and stop on the first pytest failure.
 - Repo-root `./core/python/.venv/bin/mypy core/python/src` commands resolve configuration from [pyproject.toml](/core/python/pyproject.toml) when you do not want to `cd core/python` first.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad shared-core Python validation pass when a change touches reusable-core, host composition, synthetic pack fixtures, or multi-surface CLI behavior.

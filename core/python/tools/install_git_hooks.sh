@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: ./tools/install_git_hooks.sh [--mode <fast|all>] [--pack <pack_slug>]
+Usage: ./tools/install_git_hooks.sh [--mode <fast|all>] [--pack <pack_slug>] [--fail-fast]
 
 Install the repository-local pre-push hook path and configure which
 verification mode it should run.
@@ -15,6 +15,7 @@ hook_template_root="$repo_root/core/python/tools/git_hooks"
 hook_root="$repo_root/.githooks"
 mode="fast"
 pack_slug=""
+fail_fast=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -33,6 +34,10 @@ while [[ $# -gt 0 ]]; do
       fi
       pack_slug="$2"
       shift 2
+      ;;
+    --fail-fast)
+      fail_fast=1
+      shift
       ;;
     -h|--help)
       usage
@@ -72,9 +77,17 @@ if [[ -n "$pack_slug" ]]; then
 else
   git -C "$repo_root" config --unset watchtower.verifyPack >/dev/null 2>&1 || true
 fi
+if [[ "$fail_fast" == "1" ]]; then
+  git -C "$repo_root" config watchtower.verifyFailFast true
+else
+  git -C "$repo_root" config --unset watchtower.verifyFailFast >/dev/null 2>&1 || true
+fi
 
 printf 'Installed .githooks/pre-push with mode=%s' "$mode"
 if [[ -n "$pack_slug" ]]; then
   printf ' pack=%s' "$pack_slug"
+fi
+if [[ "$fail_fast" == "1" ]]; then
+  printf ' fail_fast=true'
 fi
 printf '\n'

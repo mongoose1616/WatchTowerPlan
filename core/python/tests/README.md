@@ -19,3 +19,4 @@
 - When using `tests/pack_fixture_support.py`, let the helper derive pack identity from the temporary pack root unless the test is explicitly proving override behavior.
 - Pack-owned tests that exercise `watchtower_<pack>` behavior, repo-local workspace state, or pack-native orchestration belong under the owning pack root.
 - Tests that require live pack-owned rendered surface IDs, initiative indexes, or pack-owned evidence/tracking state do not belong here even if they only import `watchtower_core`.
+- Use `cd core/python && ./tools/verify.sh <fast|all> --fail-fast` when you want pytest-driven validation to stop on the first failure during remediation work.

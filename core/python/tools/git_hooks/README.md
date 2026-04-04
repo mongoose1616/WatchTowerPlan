@@ -11,5 +11,6 @@
 
 ## Notes
 - Install this hook path with `cd core/python && ./tools/install_git_hooks.sh`.
-- The hook reads `watchtower.verifyMode` and optional `watchtower.verifyPack` from local Git config.
+- Add `--fail-fast` during installation when you want the hook-driven pytest checks to stop on the first failure.
+- The hook reads `watchtower.verifyMode`, optional `watchtower.verifyPack`, and optional `watchtower.verifyFailFast` from local Git config.
 - Set `WATCHTOWER_SKIP_VERIFY=1` for one push when you need to bypass the local hook intentionally.

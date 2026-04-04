@@ -23,6 +23,7 @@
 - `core/python/.venv/` remains the current shared local environment for repository work.
 - The shared `core/python` workspace installs `watchtower-plan` as an editable local package; do not fall back to repo-local `sys.path` mutation to reach this source tree.
 - When `plan/python/**` changes, run `cd core/python && ./tools/verify.sh all --pack plan` as the canonical broad local validation pass.
+- Add `--fail-fast` during remediation or refactor loops when you want the shared-core broad suite and the plan-owned pack suite to stop on the first pytest failure.
 - Keep plan-owned tests under `plan/python/tests/` instead of `core/python/tests/`.
 - Keep pack-specific test helpers under `watchtower_plan.testing` or `plan/python/tests/`; do not reintroduce direct `watchtower_plan` imports into the shared `core/python/tests/` suite.
 - `plan/python/tests/` and `watchtower_plan.testing` are internal validation surfaces by default. Do not treat them as customer-release runtime surface unless the recipient explicitly needs the plan test harness.
