@@ -2254,7 +2254,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/operations/repository_maintenance_loop_standard.md",
-      "updated_at": "2026-03-23T16:35:00Z",
+      "updated_at": "2026-04-04T19:40:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2264,6 +2264,8 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/repository_review.md",
+        "core/workflows/modules/review_remediation.md",
+        "core/workflows/modules/review_remediation_loop.md",
         "core/workflows/modules/documentation_refresh.md",
         "core/python/src/watchtower_core/validation/all.py"
       ],
@@ -2289,6 +2291,8 @@
         "core/docs/standards/validations/repository_validation_standard.md",
         "core/workflows/modules/repository_review.md",
         "core/workflows/modules/documentation_refresh.md",
+        "core/workflows/modules/review_remediation.md",
+        "core/workflows/modules/review_remediation_loop.md",
         "core/docs/README.md"
       ],
       "applied_reference_paths": [

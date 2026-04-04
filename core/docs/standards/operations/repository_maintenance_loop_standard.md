@@ -9,7 +9,7 @@ tags:
   - "operations"
   - "maintenance"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:35:00Z"
+updated_at: "2026-04-04T19:40:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -56,6 +56,8 @@ This standard defines the recurring local repository-maintenance loop for keepin
 ## Guidance
 - Keep recurring maintenance local-first and deterministic.
 - Prefer fixing drift in the same change set where it is found when the fix is bounded and low-risk.
+- When maintenance starts from an existing review report or current-context findings, prefer the dedicated review-remediation workflow instead of forcing a new first-pass review.
+- When the maintenance task is explicitly iterative, keep one stable originating review family and one iteration ledger through the review-remediation loop instead of restarting the loop semantics every pass.
 - During maintenance passes, check these areas explicitly:
   - stale planning and design docs
   - generated indexes and trackers
@@ -71,6 +73,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 | Step | Purpose |
 |---|---|
 | Inspect | Read the current repo state, current indexes, and current standards before making judgments. |
+| Review or Recover Findings | Produce a fresh review or recover an existing findings set before edits start. |
 | Refresh | Update stale docs, trackers, indexes, or companion surfaces in one bounded pass. |
 | Rebuild | Regenerate derived local surfaces after authoritative sources change. |
 | Validate | Run the baseline validation loop before closeout. |
@@ -78,7 +81,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 
 ## Operationalization
 - `Modes`: `workflow`; `validation`; `documentation`
-- `Operational Surfaces`: `core/workflows/modules/repository_review.md`; `core/workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`
+- `Operational Surfaces`: `core/workflows/modules/repository_review.md`; `core/workflows/modules/review_remediation.md`; `core/workflows/modules/review_remediation_loop.md`; `core/workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`
 
 ## Validation
 - Maintenance work should not leave derived trackers or indexes stale after authoritative source changes.
@@ -91,9 +94,11 @@ This standard defines the recurring local repository-maintenance loop for keepin
 
 ## References
 - [repository_review.md](/core/workflows/modules/repository_review.md)
+- [review_remediation.md](/core/workflows/modules/review_remediation.md)
+- [review_remediation_loop.md](/core/workflows/modules/review_remediation_loop.md)
 - [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md)
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md)
 - [README.md](/core/docs/README.md)
 
 ## Updated At
-- `2026-03-23T16:35:00Z`
+- `2026-04-04T19:40:00Z`
