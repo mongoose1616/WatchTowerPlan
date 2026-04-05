@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Lightweight pre-push gate: mypy + ruff only (~0.2 s).
+# Full test suites are run manually via verify.sh before pushing.
 set -euo pipefail
 
 if [[ "${WATCHTOWER_SKIP_VERIFY:-0}" == "1" ]]; then
@@ -6,16 +8,21 @@ if [[ "${WATCHTOWER_SKIP_VERIFY:-0}" == "1" ]]; then
 fi
 
 repo_root="$(git rev-parse --show-toplevel)"
-mode="$(git config --get watchtower.verifyMode || echo fast)"
-pack_slug="$(git config --get watchtower.verifyPack || true)"
-fail_fast="$(git config --bool --get watchtower.verifyFailFast || echo false)"
+cd "$repo_root/core/python"
 
-command=("$repo_root/core/python/tools/verify.sh" "$mode")
-if [[ -n "$pack_slug" ]]; then
-  command+=("--pack" "$pack_slug")
-fi
-if [[ "$fail_fast" == "true" ]]; then
-  command+=("--fail-fast")
+failed=0
+
+printf '[mypy]\n'
+if ! uv run mypy src; then
+  failed=1
 fi
 
-"${command[@]}"
+printf '[ruff]\n'
+if ! uv run ruff check src tests/unit tests/integration; then
+  failed=1
+fi
+
+if [[ "$failed" -ne 0 ]]; then
+  printf '\npre-push: lint/type check failed — push blocked.\n' >&2
+  exit 1
+fi

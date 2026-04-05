@@ -3251,20 +3251,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "core/python/tools/git_hooks/",
-      "kind": "directory",
-      "surface_kind": "python_workspace",
-      "summary": "Holds the shared templates used to materialize one repository-local `.githooks/` guard path.",
-      "parent_path": "core/python/tools/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
       "path": "core/python/tools/install_git_hooks.sh",
       "kind": "file",
       "surface_kind": "python_workspace_file",
-      "summary": "Materializes the repository-local `.githooks/` path from shared templates and configures which verification mode, hosted-pack target, and optional fail-fast behavior it should run.",
+      "summary": "Activates the tracked `.githooks/` directory by setting `core.hooksPath`. Run once per clone.",
       "parent_path": "core/python/tools/",
       "maturity": "supporting",
       "priority": "medium",

@@ -546,9 +546,16 @@ def materialize_validation_repo_subset(
             github_root = REPO_ROOT / ".github"
             if github_root.exists():
                 copytree(github_root, repo_root / ".github", dirs_exist_ok=True)
+            githooks_root = REPO_ROOT / ".githooks"
+            if githooks_root.exists():
+                copytree(githooks_root, repo_root / ".githooks", dirs_exist_ok=True)
         else:
             _copy_git_tracked_root_files(REPO_ROOT, repo_root)
             _copy_git_tracked_tree(REPO_ROOT, repo_root, ".github")
+            if not _copy_git_tracked_tree(REPO_ROOT, repo_root, ".githooks"):
+                githooks_root = REPO_ROOT / ".githooks"
+                if githooks_root.exists():
+                    copytree(githooks_root, repo_root / ".githooks", dirs_exist_ok=True)
     return repo_root
 
 
