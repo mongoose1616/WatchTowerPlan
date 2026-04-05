@@ -20,6 +20,10 @@ if TYPE_CHECKING:
         PackExportResult,
         PackExportValidationSummary,
     )
+    from watchtower_core.pack_integration.factory import (
+        PackIntegrationConfig,
+        PackValidationConfig,
+    )
     from watchtower_core.pack_integration.scaffold import (
         PackScaffoldRequest,
         PackScaffoldResult,
@@ -29,10 +33,6 @@ if TYPE_CHECKING:
         CORE_UV_LOCK_RELATIVE_PATH,
         CorePythonWorkspaceRegistration,
         reconcile_core_python_workspace_pyproject,
-    )
-    from watchtower_core.pack_integration.factory import (
-        PackIntegrationConfig,
-        PackValidationConfig,
     )
     from watchtower_core.validation.models import ValidationIssue
     from watchtower_core.validation.suite import (
