@@ -13,11 +13,11 @@ from watchtower_core.integrations.github import (
     GitHubLabelSpec,
     GitHubProjectContext,
 )
-from watchtower_plan.tasks import PlanTaskStateDocument, load_task_document
-from watchtower_plan.workspace.service import PlanWorkspaceService
+from watchtower_core.utils import utc_timestamp_now
 from watchtower_plan.query.tasks import TaskQueryService, TaskSearchParams
 from watchtower_plan.sync.coordination import CoordinationSyncService
-from watchtower_core.utils import utc_timestamp_now
+from watchtower_plan.tasks import PlanTaskStateDocument, load_task_document
+from watchtower_plan.workspace.service import PlanWorkspaceService
 
 PROJECT_STATUS_BY_TASK_STATUS = {
     "planned": "Planned",

@@ -11,11 +11,6 @@ from watchtower_core.control_plane.loader import (
     VALIDATION_EVIDENCE_DIRECTORY,
     ControlPlaneLoader,
 )
-from watchtower_core.sync.reference_index import ReferenceIndexSyncService
-from watchtower_core.sync.reference_resolution import (
-    reference_urls_by_path_from_index_document,
-)
-from watchtower_plan.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
 from watchtower_core.sync.harness import (
     ReferenceAwareSyncService,
     SyncHarness,
@@ -26,6 +21,11 @@ from watchtower_core.sync.harness import (
 from watchtower_core.sync.harness import (
     SyncResult as AllSyncResult,
 )
+from watchtower_core.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.sync.reference_resolution import (
+    reference_urls_by_path_from_index_document,
+)
+from watchtower_plan.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
 
 REFERENCE_RESOLUTION_TARGETS = frozenset(
     {"reference-index", "foundation-index", "standard-index", "workflow-index"}

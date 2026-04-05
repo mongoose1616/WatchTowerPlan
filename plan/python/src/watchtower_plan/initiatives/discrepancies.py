@@ -18,14 +18,13 @@ from watchtower_core.control_plane.event_stream import (
     EventStreamWriteRequest,
 )
 from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
-from watchtower_plan.projects import ProjectWorkspaceService
-from watchtower_plan.workspace.constants import PLAN_PACK_SETTINGS_PATH
-from watchtower_plan.workspace.service import PlanWorkspaceService
-
 from watchtower_plan.initiatives.locations import (
     InitiativeLocation,
     InitiativeLocationManager,
 )
+from watchtower_plan.projects import ProjectWorkspaceService
+from watchtower_plan.workspace.constants import PLAN_PACK_SETTINGS_PATH
+from watchtower_plan.workspace.service import PlanWorkspaceService
 
 
 class InitiativeDiscrepancyCoordinator:

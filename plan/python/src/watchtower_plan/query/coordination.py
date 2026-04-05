@@ -7,11 +7,11 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CoordinationIndex, InitiativeIndexEntry
 from watchtower_core.query.rendered_search import rendered_search_filters_from_params
-from watchtower_plan.workspace.service import PlanWorkspaceService
 from watchtower_plan.query.initiatives import (
     InitiativeQueryService,
     InitiativeSearchParams,
 )
+from watchtower_plan.workspace.service import PlanWorkspaceService
 
 CoordinationSearchParams = InitiativeSearchParams
 

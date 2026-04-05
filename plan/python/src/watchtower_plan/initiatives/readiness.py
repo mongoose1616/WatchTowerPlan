@@ -5,10 +5,8 @@ from __future__ import annotations
 import json
 from typing import Any, cast
 
+from watchtower_core.utils.timestamps import utc_timestamp_now
 from watchtower_core.validation import ArtifactValidationService, ValidationResult
-from watchtower_plan.projects import ProjectWorkspaceService
-from watchtower_plan.workspace.service import PlanWorkspaceService
-
 from watchtower_plan.governing_documents import (
     effective_initiative_governing_document_paths,
 )
@@ -21,7 +19,8 @@ from watchtower_plan.initiatives.models import (
     InitiativePackageResult,
     InitiativeReadinessResult,
 )
-from watchtower_core.utils.timestamps import utc_timestamp_now
+from watchtower_plan.projects import ProjectWorkspaceService
+from watchtower_plan.workspace.service import PlanWorkspaceService
 
 
 class InitiativeReadinessCoordinator:
@@ -69,7 +68,8 @@ class InitiativeReadinessCoordinator:
         for result in artifact_results:
             if not result.passed:
                 issues.append(
-                    f"{result.target_path} failed {result.validator_id} with {result.issue_count} issue(s)."
+                    f"{result.target_path} failed {result.validator_id} with "
+                    f"{result.issue_count} issue(s)."
                 )
 
         if location.scope_type == "project_scoped":
@@ -231,7 +231,10 @@ class InitiativeReadinessCoordinator:
                     initiative_id=initiative_id,
                     trace_id=trace_id,
                     event_type="ready_for_review_marked",
-                    summary="The initiative package passed capture validation and is ready for review.",
+                    summary=(
+                        "The initiative package passed capture validation and is "
+                        "ready for review."
+                    ),
                     actor_id="actor.watchtower_core",
                     recorded_at=str(initiative_document["updated_at"]),
                 )
@@ -295,7 +298,10 @@ class InitiativeReadinessCoordinator:
                 initiative_id=str(initiative_document["initiative_id"]),
                 trace_id=str(initiative_document["trace_id"]),
                 event_type="authored_inputs_confirmed",
-                summary="An authorized maintainer confirmed the authored intake documents into machine state.",
+                summary=(
+                    "An authorized maintainer confirmed the authored intake "
+                    "documents into machine state."
+                ),
                 actor_id=approver_actor_id,
                 recorded_at=updated_at,
             )

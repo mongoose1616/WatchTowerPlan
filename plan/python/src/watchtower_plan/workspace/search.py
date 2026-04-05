@@ -7,7 +7,6 @@ from watchtower_core.query.common import (
     normalize_text,
     query_score,
 )
-
 from watchtower_plan.workspace.constants import PRIORITY_ORDER
 from watchtower_plan.workspace.models import (
     PlanCloseoutIndexEntry,

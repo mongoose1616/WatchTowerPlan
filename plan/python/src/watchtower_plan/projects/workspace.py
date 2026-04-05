@@ -26,18 +26,18 @@ from watchtower_core.rebuild import (
     RenderedViewBuilder,
     RenderedViewSpec,
 )
-from watchtower_plan.workspace.artifacts import (
-    PLAN_ARTIFACT_INDEX_PATH,
-    ArtifactIndexService,
-)
+from watchtower_core.utils.timestamps import utc_timestamp_now
+from watchtower_core.validation import ValidationResult
 from watchtower_plan.projects.context import (
     PLAN_PACK_SETTINGS_PATH,
     ProjectContext,
     load_project_context,
     validate_project_machine_state,
 )
-from watchtower_core.utils.timestamps import utc_timestamp_now
-from watchtower_core.validation import ValidationResult
+from watchtower_plan.workspace.artifacts import (
+    PLAN_ARTIFACT_INDEX_PATH,
+    ArtifactIndexService,
+)
 
 PLAN_PROJECT_INDEX_PATH = "plan/.wt/indexes/project_index.json"
 PROJECT_SURFACE_ID = "rendered.project.project"
@@ -536,11 +536,19 @@ class ProjectWorkspaceService:
                 or _has_blocking_reasons(initiative)
             )
             initiative_lines = tuple(
-                f"- `{initiative['initiative_id']}`: `{initiative['lifecycle_stage']}` / `{initiative['review_status']}`"
+                (
+                    f"- `{initiative['initiative_id']}`: "
+                    f"`{initiative['lifecycle_stage']}` / "
+                    f"`{initiative['review_status']}`"
+                )
                 for initiative in snapshot.child_initiatives
             ) or ("- None.",)
             active_initiative_lines = tuple(
-                f"- `{initiative['initiative_id']}`: `{initiative['lifecycle_stage']}` / `{initiative['review_status']}`"
+                (
+                    f"- `{initiative['initiative_id']}`: "
+                    f"`{initiative['lifecycle_stage']}` / "
+                    f"`{initiative['review_status']}`"
+                )
                 for initiative in active_initiatives
             ) or ("- No active child initiatives.",)
             repository_summary_lines = tuple(
@@ -599,7 +607,8 @@ class ProjectWorkspaceService:
                             "purpose_and_scope": (
                                 "## Purpose and Scope",
                                 str(project["summary"]),
-                                "- Planning role: own the project container and its initiative root.",
+                                "- Planning role: own the project container and "
+                                "its initiative root.",
                             ),
                             "current_state": (
                                 "## Current State",
@@ -618,8 +627,14 @@ class ProjectWorkspaceService:
                             ),
                             "key_references_or_docs": (
                                 "## Key References or Docs",
-                                f"- [repositories.md](/{self._project_path(project_slug, 'repositories.md')})",
-                                f"- [summary.md](/{self._project_path(project_slug, 'summary.md')})",
+                                (
+                                    "- [repositories.md](/"
+                                    f"{self._project_path(project_slug, 'repositories.md')})"
+                                ),
+                                (
+                                    "- [summary.md](/"
+                                    f"{self._project_path(project_slug, 'summary.md')})"
+                                ),
                             ),
                         },
                     ),
@@ -671,7 +686,8 @@ class ProjectWorkspaceService:
                                 "## Open Risks",
                                 *(
                                     tuple(
-                                        f"- `{initiative['initiative_id']}` is blocked or waiting on follow-up."
+                                        f"- `{initiative['initiative_id']}` is "
+                                        "blocked or waiting on follow-up."
                                         for initiative in blocked_initiatives
                                     )
                                     or ("- No active blocked initiatives.",)

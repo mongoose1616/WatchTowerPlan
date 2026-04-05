@@ -9,7 +9,6 @@ from watchtower_core.adapters import extract_sections, load_markdown_body, rende
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.rebuild import RenderedViewBuilder, RenderedViewSpec
-
 from watchtower_plan.governing_documents import (
     effective_initiative_governing_document_paths,
 )
@@ -85,9 +84,15 @@ class PlanWorkspaceRenderer:
             if isinstance(entry, dict)
         )
         navigation_links = (
-            f"- [initiative_tracking.md](/{self._workspace_paths.tracking_path('initiative_tracking.md')})",
+            (
+                "- [initiative_tracking.md](/"
+                f"{self._workspace_paths.tracking_path('initiative_tracking.md')})"
+            ),
             f"- [task_tracking.md](/{self._workspace_paths.tracking_path('task_tracking.md')})",
-            f"- [coordination_tracking.md](/{self._workspace_paths.tracking_path('coordination_tracking.md')})",
+            (
+                "- [coordination_tracking.md](/"
+                f"{self._workspace_paths.tracking_path('coordination_tracking.md')})"
+            ),
             f"- [README.md](/{self._workspace_paths.docs_path('README.md')})",
             "- [README.md](/core/docs/README.md)",
             f"- [ROUTING_TABLE.md](/{self._workspace_paths.workflows_path('ROUTING_TABLE.md')})",
@@ -99,8 +104,14 @@ class PlanWorkspaceRenderer:
                     "plan_domain_summary": (
                         f"- `coordination_mode`: `{coordination_document['coordination_mode']}`",
                         f"- `summary`: {coordination_document['summary']}",
-                        f"- `recommended_next_action`: {coordination_document['recommended_next_action']}",
-                        f"- `recommended_surface_path`: `{coordination_document['recommended_surface_path']}`",
+                        (
+                            "- `recommended_next_action`: "
+                            f"{coordination_document['recommended_next_action']}"
+                        ),
+                        (
+                            "- `recommended_surface_path`: "
+                            f"`{coordination_document['recommended_surface_path']}`"
+                        ),
                     ),
                     "active_pack_wide_initiatives": (
                         (
@@ -197,6 +208,10 @@ class PlanWorkspaceRenderer:
                 readiness=readiness,
             )
             resolved_next_surface_path = next_surface_path(snapshot, readiness)
+            next_surface_link = render_repo_link(
+                resolved_next_surface_path,
+                label=Path(resolved_next_surface_path).name,
+            )
             root = snapshot.initiative_root
             rendered_views = self._rendered_views.build_views(
                 (
@@ -254,7 +269,7 @@ class PlanWorkspaceRenderer:
                             "blockers": blocker_lines,
                             "next_actions": (
                                 f"- {next_action(snapshot, readiness, self._vocabulary)}",
-                                f"- Next surface: {render_repo_link(resolved_next_surface_path, label=Path(resolved_next_surface_path).name)}",
+                                f"- Next surface: {next_surface_link}",
                             ),
                             "evidence_or_validation_state": initiative_evidence_validation_lines(
                                 snapshot,
@@ -521,7 +536,8 @@ def initiative_blocker_lines(
         )
     if not lines:
         return (
-            "- No active blockers, unresolved dependencies, or open discrepancy risks are recorded.",
+            "- No active blockers, unresolved dependencies, or open discrepancy "
+            "risks are recorded.",
         )
     return tuple(lines)
 
@@ -566,19 +582,40 @@ def initiative_linked_output_lines(
             "Authored input" if path in authored_input_paths else "Governing document"
         )
         lines.append(f"- {label}: {render_repo_link(path, label=Path(path).name)}")
+    plan_link = render_repo_link(f"{snapshot.initiative_root}/plan.md", label="plan.md")
+    progress_link = render_repo_link(
+        f"{snapshot.initiative_root}/progress.md",
+        label="progress.md",
+    )
+    summary_link = render_repo_link(
+        f"{snapshot.initiative_root}/summary.md",
+        label="summary.md",
+    )
     lines.extend(
         (
-            f"- Rendered plan: {render_repo_link(f'{snapshot.initiative_root}/plan.md', label='plan.md')}",
-            f"- Rendered progress: {render_repo_link(f'{snapshot.initiative_root}/progress.md', label='progress.md')}",
-            f"- Rendered summary: {render_repo_link(f'{snapshot.initiative_root}/summary.md', label='summary.md')}",
+            f"- Rendered plan: {plan_link}",
+            f"- Rendered progress: {progress_link}",
+            f"- Rendered summary: {summary_link}",
         )
     )
     if snapshot.project_root is not None:
+        project_link = render_repo_link(
+            f"{snapshot.project_root}/project.md",
+            label="project.md",
+        )
+        repositories_link = render_repo_link(
+            f"{snapshot.project_root}/repositories.md",
+            label="repositories.md",
+        )
+        project_summary_link = render_repo_link(
+            f"{snapshot.project_root}/summary.md",
+            label="summary.md",
+        )
         lines.extend(
             (
-                f"- Project surface: {render_repo_link(f'{snapshot.project_root}/project.md', label='project.md')}",
-                f"- Project repositories: {render_repo_link(f'{snapshot.project_root}/repositories.md', label='repositories.md')}",
-                f"- Project summary: {render_repo_link(f'{snapshot.project_root}/summary.md', label='summary.md')}",
+                f"- Project surface: {project_link}",
+                f"- Project repositories: {repositories_link}",
+                f"- Project summary: {project_summary_link}",
             )
         )
     if not lines:
@@ -657,7 +694,8 @@ def initiative_promotion_lines(
     lines: list[str] = []
     for document in snapshot.promotion_documents:
         lines.append(
-            f"- `{document['id']}`: `{document['status']}` / approval `{document.get('approval_state', 'pending')}`"
+            f"- `{document['id']}`: `{document['status']}` / approval "
+            f"`{document.get('approval_state', 'pending')}`"
         )
         for candidate in document.get("candidates", ()):
             if not isinstance(candidate, dict):
@@ -667,7 +705,8 @@ def initiative_promotion_lines(
                 target_repo_path = repo_root / target_path
                 if target_repo_path.exists():
                     lines.append(
-                        f"- Candidate target: {render_repo_link(target_path, label=Path(target_path).name)}"
+                        "- Candidate target: "
+                        f"{render_repo_link(target_path, label=Path(target_path).name)}"
                     )
                 else:
                     lines.append(
@@ -709,7 +748,8 @@ def initiative_unresolved_follow_up_lines(
         if str(document.get("status")) == "resolved":
             continue
         lines.append(
-            f"- Open discrepancy `{document['discrepancy_id']}`: `{document['severity']}` `{document['category']}`"
+            f"- Open discrepancy `{document['discrepancy_id']}`: "
+            f"`{document['severity']}` `{document['category']}`"
         )
     if not lines:
         return ("- No unresolved follow-up items remain.",)

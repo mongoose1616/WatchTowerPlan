@@ -5,19 +5,18 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
-from typing import Any, TypeAlias, cast
+from typing import Any, cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanInitiativeLocation
+from watchtower_plan.initiatives.models import InitiativeBootstrapParams
 from watchtower_plan.projects import ProjectWorkspaceService
 from watchtower_plan.sync.coordination import CoordinationSyncService
 from watchtower_plan.workspace.constants import PLAN_PACK_SETTINGS_PATH
 from watchtower_plan.workspace.service import PlanWorkspaceService
 
-from watchtower_plan.initiatives.models import InitiativeBootstrapParams
-
-InitiativeLocation: TypeAlias = PlanInitiativeLocation
+type InitiativeLocation = PlanInitiativeLocation
 
 
 class InitiativeLocationManager:

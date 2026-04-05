@@ -3,7 +3,6 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.testing.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_minimal_plan_pack,
@@ -12,6 +11,8 @@ from watchtower_plan.validation import DocumentSemanticsValidationService
 from watchtower_plan.validation.document_semantics import (
     INITIATIVE_HANDOFF_DOCUMENT_SEMANTICS_VALIDATOR_ID,
 )
+
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 PROJECT_INITIATIVE_PACKAGE_ROOT = (
@@ -153,7 +154,11 @@ def test_initiative_handoff_semantics_rejects_cold_start_read_order_that_skips_c
     target_path.write_text(
         target_path.read_text(encoding="utf-8").replace(
             "Example content for Read Order.",
-            "1. Read `README.md`.\n2. Read `implementation_slice.md`.\n3. Read `phase_output_manifest.md`.",
+            (
+                "1. Read `README.md`.\n"
+                "2. Read `implementation_slice.md`.\n"
+                "3. Read `phase_output_manifest.md`."
+            ),
         ),
         encoding="utf-8",
     )
@@ -225,7 +230,10 @@ def test_initiative_handoff_semantics_rejects_rendered_plan_fallback_and_resolve
         )
         .replace(
             "Example content for Dependencies and Risks.",
-            "- Discrepancy `discrepancy.example.resolved`: `high` `stale_rendered_surface` / `resolved`. Old resolved drift.",
+            (
+                "- Discrepancy `discrepancy.example.resolved`: `high` "
+                "`stale_rendered_surface` / `resolved`. Old resolved drift."
+            ),
         ),
         encoding="utf-8",
     )

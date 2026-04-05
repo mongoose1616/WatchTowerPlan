@@ -187,6 +187,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
     ]
     assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "sync").glob("*.py")) == [
         "__init__.py",
+        "cache.py",
         "foundation_index.py",
         "harness.py",
         "path_support.py",

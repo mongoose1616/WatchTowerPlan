@@ -246,7 +246,10 @@ def test_task_update_write_preserves_governed_companion_paths_when_task_status_c
         write=True,
     )
 
-    contract_relative_path = "core/control_plane/contracts/acceptance/task_lifecycle_service_path_repair_acceptance.json"
+    contract_relative_path = (
+        "core/control_plane/contracts/acceptance/"
+        "task_lifecycle_service_path_repair_acceptance.json"
+    )
     evidence_relative_path = (
         "core/control_plane/records/validation_evidence/"
         "task_lifecycle_service_path_repair_planning_baseline.json"

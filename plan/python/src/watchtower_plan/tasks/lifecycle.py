@@ -8,11 +8,11 @@ from watchtower_core.documentation.front_matter_paths import (
     normalize_governed_applies_to_values,
 )
 from watchtower_core.utils import utc_timestamp_now
-from watchtower_plan.sync.coordination import CoordinationSyncService
 from watchtower_plan.governing_documents import (
     effective_initiative_governing_document_paths,
     normalize_governing_document_paths,
 )
+from watchtower_plan.sync.coordination import CoordinationSyncService
 from watchtower_plan.tasks.models import (
     TaskCreateParams,
     TaskMutationResult,

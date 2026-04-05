@@ -318,8 +318,8 @@ def test_command_index_sync_uses_doc_source_surface_for_unavailable_pack_specs(
     service = CommandIndexSyncService(loader)
 
     monkeypatch.setattr(
-        "watchtower_host.cli.command_index.iter_host_command_parser_specs",
-        lambda _loader: (
+        "watchtower_host.cli.command_index._iter_repo_local_host_command_parser_specs",
+        lambda _repo_root, _loader: (
             CommandParserSpec(
                 command_id="command.watchtower_core",
                 command="watchtower-core",

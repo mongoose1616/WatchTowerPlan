@@ -81,7 +81,8 @@ def test_document_semantics_validation_auto_selects_command_validator() -> None:
     assert result.issue_count == 0
 
 
-def test_document_semantics_validation_auto_selects_reference_validator_for_plan_owned_doc() -> None:
+def test_document_semantics_validation_auto_selects_reference_validator_for_plan_owned_doc(
+) -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
     result = service.validate(
@@ -93,7 +94,8 @@ def test_document_semantics_validation_auto_selects_reference_validator_for_plan
     assert result.issue_count == 0
 
 
-def test_document_semantics_validation_auto_selects_initiative_handoff_validator_for_canonical_doc() -> None:
+def test_document_semantics_validation_auto_selects_initiative_handoff_validator_for_canonical_doc(
+) -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
     result = service.validate(
@@ -106,7 +108,8 @@ def test_document_semantics_validation_auto_selects_initiative_handoff_validator
     assert result.issue_count == 0
 
 
-def test_document_semantics_validation_auto_selects_initiative_handoff_validator_for_rendered_surface() -> None:
+def test_document_semantics_validation_selects_handoff_validator_for_rendered_surface(
+) -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
     result = service.validate(

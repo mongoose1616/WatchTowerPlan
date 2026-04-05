@@ -263,7 +263,10 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
     update_parser.add_argument(
         "--clear-governing-docs",
         action="store_true",
-        help="Remove the current task-specific governing-document list and inherit initiative guidance.",
+        help=(
+            "Remove the current task-specific governing-document list and inherit "
+            "initiative guidance."
+        ),
     )
     update_parser.add_argument(
         "--related-id",

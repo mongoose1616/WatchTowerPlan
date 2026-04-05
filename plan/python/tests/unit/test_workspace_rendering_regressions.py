@@ -164,7 +164,10 @@ def test_initiative_dependency_and_risk_lines_skip_resolved_discrepancies() -> N
 
     lines = initiative_dependency_and_risk_lines(snapshot, readiness=_readiness())
 
-    assert lines == ("- No current blockers, dependencies, or open discrepancy risks are recorded.",)
+    assert lines == (
+        "- No current blockers, dependencies, or open discrepancy risks are "
+        "recorded.",
+    )
 
 
 def test_initiative_promotion_lines_do_not_link_missing_candidate_targets(tmp_path: Path) -> None:
@@ -176,7 +179,10 @@ def test_initiative_promotion_lines_do_not_link_missing_candidate_targets(tmp_pa
         ),
         promotion_documents=(
             {
-                "id": "promotion.watchtower_ctf_implementation_package_preservation.bootstrap_shell",
+                "id": (
+                    "promotion.watchtower_ctf_implementation_package_preservation."
+                    "bootstrap_shell"
+                ),
                 "status": "planned",
                 "approval_state": "pending",
                 "candidates": [

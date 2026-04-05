@@ -7,19 +7,22 @@ from shutil import copy2, copytree
 
 import yaml
 
-from watchtower_core.adapters import split_semicolon_list
-from watchtower_core.adapters.markdown import extract_code_spans, extract_sections, load_markdown_body
+from watchtower_core.adapters import extract_metadata_bullets, split_semicolon_list
+from watchtower_core.adapters.markdown import (
+    extract_code_spans,
+    extract_sections,
+    load_markdown_body,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.operationalization_paths import (
     expand_pack_placeholder_operationalization_paths,
     operationalization_path_is_glob,
 )
+from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.documentation.standards import (
     STANDARD_OPERATIONALIZATION_PATHS_LABEL,
     STANDARD_OPERATIONALIZATION_SECTION,
 )
-from watchtower_core.adapters import extract_metadata_bullets
-from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageResult,
@@ -94,7 +97,10 @@ def materialize_standard_operationalization_targets(
     repo_root: Path,
     source_repo_root: Path | None = None,
 ) -> None:
-    for docs_root in (repo_root / "core" / "docs" / "standards", repo_root / "plan" / "docs" / "standards"):
+    for docs_root in (
+        repo_root / "core" / "docs" / "standards",
+        repo_root / "plan" / "docs" / "standards",
+    ):
         if not docs_root.exists():
             continue
         for path in docs_root.rglob("*.md"):
@@ -118,7 +124,10 @@ def materialize_command_doc_source_surfaces(
     repo_root: Path,
     source_repo_root: Path | None = None,
 ) -> None:
-    for docs_root in (repo_root / "core" / "docs" / "commands", repo_root / "plan" / "docs" / "commands"):
+    for docs_root in (
+        repo_root / "core" / "docs" / "commands",
+        repo_root / "plan" / "docs" / "commands",
+    ):
         if not docs_root.exists():
             continue
         for path in docs_root.rglob("*.md"):

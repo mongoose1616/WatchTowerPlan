@@ -4,10 +4,6 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.cli.query_presenters import (
-    authority_entry_payload as _authority_entry_payload,
-    print_authority_entry as _print_authority_entry,
-)
 from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
     _emit_command_error,
@@ -16,6 +12,12 @@ from watchtower_core.cli.handler_common import (
     _run_value_error_operation,
     _task_dependency_payload,
     _task_filter_kwargs,
+)
+from watchtower_core.cli.query_presenters import (
+    authority_entry_payload as _authority_entry_payload,
+)
+from watchtower_core.cli.query_presenters import (
+    print_authority_entry as _print_authority_entry,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ArtifactIndexEntry

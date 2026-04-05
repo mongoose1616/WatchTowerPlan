@@ -2,11 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import watchtower_core.validation.document_semantics as core_document_semantics_module
-
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.validation import DocumentSemanticsValidationService
 
+import watchtower_core.validation.document_semantics as core_document_semantics_module
 from tests.unit.document_semantics_fixtures import (
     copy_control_plane_repo,
     repo_markdown_link,
@@ -15,6 +13,7 @@ from tests.unit.document_semantics_fixtures import (
     write_standard_fixture,
     write_standard_reference_rule_fixture,
 )
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 
 def test_document_semantics_validation_accepts_existing_repo_local_markdown_link(

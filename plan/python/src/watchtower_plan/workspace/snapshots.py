@@ -3,18 +3,18 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 from watchtower_core.control_plane.loader import (
     ACCEPTANCE_CONTRACTS_DIRECTORY,
-    ControlPlaneLoader,
     VALIDATION_EVIDENCE_DIRECTORY,
+    ControlPlaneLoader,
 )
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.utils.timestamps import utc_timestamp_now
-
 from watchtower_plan.workspace.support import ordered_unique_strings
 
 

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-
 from watchtower_plan.initiatives.bootstrap import InitiativeBootstrapCoordinator
 from watchtower_plan.initiatives.closeout import InitiativeCloseoutCoordinator
 from watchtower_plan.initiatives.discrepancies import InitiativeDiscrepancyCoordinator

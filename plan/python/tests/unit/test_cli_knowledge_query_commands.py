@@ -1,9 +1,8 @@
 from __future__ import annotations
 
+from tests.cli_command_helpers import run_json_command
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.query import StandardQueryService, StandardSearchParams
-
-from tests.cli_command_helpers import run_json_command
 
 
 def test_query_commands_supports_json_output(capsys) -> None:

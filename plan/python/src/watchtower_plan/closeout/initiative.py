@@ -11,9 +11,9 @@ from watchtower_core.control_plane.loader import (
 from watchtower_core.control_plane.models import InitiativeIndexEntry
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
-from watchtower_plan.workspace.service import PlanTaskIndexEntry, PlanWorkspaceService
 from watchtower_plan.sync.all import AllSyncRecord
 from watchtower_plan.sync.coordination import CoordinationSyncService
+from watchtower_plan.workspace.service import PlanTaskIndexEntry, PlanWorkspaceService
 
 TERMINAL_INITIATIVE_STATUSES = {"completed", "superseded", "cancelled", "abandoned"}
 TERMINAL_TASK_STATUSES = {"completed", "cancelled"}

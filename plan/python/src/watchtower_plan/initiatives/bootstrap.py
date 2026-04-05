@@ -14,16 +14,6 @@ from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.control_plane.promotion_policy import PromotionPolicyHelper
 from watchtower_core.evidence import EvidenceBundleEntrySpec, EvidenceBundleHelper
 from watchtower_core.utils.timestamps import utc_timestamp_now
-from watchtower_plan.projects import ProjectWorkspaceService
-from watchtower_plan.promotion import (
-    default_mirror_target_paths,
-    default_target_family_for_source_kind,
-    default_target_path,
-    source_artifact_kind_for_path,
-)
-from watchtower_plan.tasks.support import slugify_file_stem
-from watchtower_plan.workspace.constants import PLAN_PACK_SETTINGS_PATH
-
 from watchtower_plan.governing_documents import normalize_governing_document_paths
 from watchtower_plan.initiatives.discrepancies import InitiativeDiscrepancyCoordinator
 from watchtower_plan.initiatives.locations import (
@@ -37,6 +27,15 @@ from watchtower_plan.initiatives.models import (
     InitiativeTaskSpec,
 )
 from watchtower_plan.initiatives.readiness import InitiativeReadinessCoordinator
+from watchtower_plan.projects import ProjectWorkspaceService
+from watchtower_plan.promotion import (
+    default_mirror_target_paths,
+    default_target_family_for_source_kind,
+    default_target_path,
+    source_artifact_kind_for_path,
+)
+from watchtower_plan.tasks.support import slugify_file_stem
+from watchtower_plan.workspace.constants import PLAN_PACK_SETTINGS_PATH
 
 
 class InitiativeBootstrapCoordinator:
@@ -81,11 +80,13 @@ class InitiativeBootstrapCoordinator:
         initiative_root = self._context.initiative_root(location)
         if initiative_root.exists():
             raise ValueError(
-                f"Initiative root already exists: {initiative_root.relative_to(self._context.pack_loader().repo_root)}"
+                "Initiative root already exists: "
+                f"{initiative_root.relative_to(self._context.pack_loader().repo_root)}"
             )
         if self._context.initiative_identity_exists(initiative_id, params.trace_id):
             raise ValueError(
-                "initiative_id and trace_id must remain globally unique across pack-wide and project-scoped initiatives."
+                "initiative_id and trace_id must remain globally unique across "
+                "pack-wide and project-scoped initiatives."
             )
         if location.scope_type == "project_scoped":
             project_validation = ProjectWorkspaceService(
@@ -264,10 +265,15 @@ class InitiativeBootstrapCoordinator:
         task_specs: tuple[InitiativeTaskSpec, ...],
     ) -> dict[str, str]:
         initiative_slug = location.initiative_slug
-        task_lines = "\n".join(
-            (
-                f"- `{task.task_id or PlanPathIdHelper.canonical_task_id(initiative_slug, task.slug or slugify_file_stem(task.title))}`: {task.summary}"
+
+        def _task_identifier(task: InitiativeTaskSpec) -> str:
+            return task.task_id or PlanPathIdHelper.canonical_task_id(
+                initiative_slug,
+                task.slug or slugify_file_stem(task.title),
             )
+
+        task_lines = "\n".join(
+            f"- `{_task_identifier(task)}`: {task.summary}"
             for task in task_specs
         )
         documents = {
@@ -301,12 +307,22 @@ class InitiativeBootstrapCoordinator:
                     summary,
                     "",
                     "## Initial Design Boundary",
-                    f"- The initiative package is machine-first and local to `{location.initiative_root_relative}/.wt/`.",
-                    "- Authored intake docs remain editable inputs but require explicit machine confirmation.",
-                    "- Readiness must fail closed on missing capture, blocking deferred items, open discrepancies, or missing approval.",
+                    (
+                        "- The initiative package is machine-first and local to "
+                        f"`{location.initiative_root_relative}/.wt/`."
+                    ),
+                    (
+                        "- Authored intake docs remain editable inputs but require "
+                        "explicit machine confirmation."
+                    ),
+                    (
+                        "- Readiness must fail closed on missing capture, blocking "
+                        "deferred items, open discrepancies, or missing approval."
+                    ),
                     *(
                         (
-                            "- The project container must stay valid and current before a project-scoped initiative may execute.",
+                            "- The project container must stay valid and current "
+                            "before a project-scoped initiative may execute.",
                         )
                         if location.scope_type == "project_scoped"
                         else ()
@@ -327,7 +343,10 @@ class InitiativeBootstrapCoordinator:
                     task_lines,
                     "",
                     "## Gate",
-                    "- No execution starts until the initiative package is approved and marked `ready_for_execution`.",
+                    (
+                        "- No execution starts until the initiative package is "
+                        "approved and marked `ready_for_execution`."
+                    ),
                     "",
                 )
             ),
@@ -557,12 +576,18 @@ class InitiativeBootstrapCoordinator:
             "title": "Bootstrap Closeout Shell",
             "status": "planned",
             "updated_at": updated_at,
-            "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+            "expected_outcome": (
+                "Close out the initiative with validated capture, readiness, and "
+                "follow-up accounting."
+            ),
             "acceptance_ids": [
                 PlanPathIdHelper.canonical_acceptance_id(initiative_slug, "bootstrap")
             ],
             "evidence_ids": [evidence_id],
-            "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+            "follow_up_handling": (
+                "Record unresolved work as deferred items or bounded follow-up "
+                "initiatives before closeout."
+            ),
             "promotion_review_required": True,
             "terminal_state_options": ["completed", "superseded", "cancelled"],
         }

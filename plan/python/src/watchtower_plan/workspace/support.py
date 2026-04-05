@@ -9,7 +9,6 @@ from typing import Any
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeActiveTaskSummary
 from watchtower_core.control_plane.terminology import TerminologyHelper
-
 from watchtower_plan.workspace.constants import (
     PHASE_ORDER,
     PLAN_PACK_SETTINGS_PATH,

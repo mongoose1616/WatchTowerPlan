@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
+from watchtower_core.utils.timestamps import utc_timestamp_now
 from watchtower_plan.closeout.initiative_package import (
     CloseoutArtifactDocument,
     InitiativePackageCloseoutHelper,
 )
-from watchtower_core.utils.timestamps import utc_timestamp_now
-
 from watchtower_plan.initiatives.discrepancies import InitiativeDiscrepancyCoordinator
 from watchtower_plan.initiatives.locations import (
     InitiativeLocation,
@@ -42,7 +41,8 @@ class InitiativeCloseoutCoordinator:
     ) -> InitiativeTerminalCloseoutResult:
         if initiative_status not in {"completed", "superseded", "cancelled"}:
             raise ValueError(
-                "Terminal closeout requires initiative_status in completed, superseded, or cancelled."
+                "Terminal closeout requires initiative_status in completed, "
+                "superseded, or cancelled."
             )
         if initiative_status == "superseded" and not superseded_by_trace_id:
             raise ValueError(
@@ -62,7 +62,8 @@ class InitiativeCloseoutCoordinator:
             superseded_by_trace_id
         ):
             raise ValueError(
-                f"Superseded-by trace_id does not exist in the live plan workspace: {superseded_by_trace_id}"
+                "Superseded-by trace_id does not exist in the live plan "
+                f"workspace: {superseded_by_trace_id}"
             )
         current_stage = str(initiative_document["lifecycle_stage"])
         if current_stage in {"capture_incomplete", "ready_for_review"}:

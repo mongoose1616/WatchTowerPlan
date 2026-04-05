@@ -16,8 +16,6 @@ from watchtower_core.integrations.github import (
     GitHubClient,
     GitHubProjectContext,
 )
-from watchtower_plan.tasks import PlanTaskStateDocument, update_task_document
-from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
 from watchtower_plan.sync.github_task_sync_support import (
     issue_labels,
     load_project_context,
@@ -30,6 +28,8 @@ from watchtower_plan.sync.github_task_sync_support import (
     task_state_updates,
     validate_existing_bindings,
 )
+from watchtower_plan.tasks import PlanTaskStateDocument, update_task_document
+from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
 
 
 @dataclass(frozen=True, slots=True)

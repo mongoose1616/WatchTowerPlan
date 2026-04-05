@@ -170,7 +170,8 @@ def validate_project_machine_state(
         )
         if str(project_document["initiative_root"]) != initiative_root:
             issues.append(
-                "Project record initiative_root does not match the canonical project initiatives path."
+                "Project record initiative_root does not match the canonical "
+                "project initiatives path."
             )
         repository_refs = _string_tuple(project_document.get("linked_repository_refs"))
         map_ids = tuple(
@@ -179,13 +180,15 @@ def validate_project_machine_state(
         )
         if tuple(repository_refs) != map_ids:
             issues.append(
-                "Project record linked_repository_refs do not match project_repository_map repositories."
+                "Project record linked_repository_refs do not match "
+                "project_repository_map repositories."
             )
 
     for result in artifact_results:
         if not result.passed:
             issues.append(
-                f"{result.target_path} failed {result.validator_id} with {result.issue_count} issue(s)."
+                f"{result.target_path} failed {result.validator_id} with "
+                f"{result.issue_count} issue(s)."
             )
 
     machine_root_issues = HumanSurfacePolicyHelper.from_loader(

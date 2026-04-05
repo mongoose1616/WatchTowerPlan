@@ -9,11 +9,10 @@ from typing import Any
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
-from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
-
 from watchtower_plan.governing_documents import (
     effective_task_governing_document_paths,
 )
+from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
 
 TASK_STATE_SCHEMA_ID = "urn:watchtower:schema:artifacts:plan:task-state:v1"
 

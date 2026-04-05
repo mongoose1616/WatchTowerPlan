@@ -20,16 +20,15 @@ from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.evidence import EvidenceBundleHelper
 from watchtower_core.rebuild import RebuildOutput
-
+from watchtower_plan.governing_documents import (
+    effective_initiative_governing_document_paths,
+    effective_task_governing_document_paths,
+)
 from watchtower_plan.rendering import serialize_initiative_entry
 from watchtower_plan.workspace.constants import (
     PHASE_ORDER,
     PRIORITY_ORDER,
     TERMINAL_TASK_STATUSES,
-)
-from watchtower_plan.governing_documents import (
-    effective_initiative_governing_document_paths,
-    effective_task_governing_document_paths,
 )
 from watchtower_plan.workspace.models import (
     PlanCloseoutIndexEntry,
@@ -989,7 +988,8 @@ class PlanWorkspaceDocumentBuilder:
                 front_matter = load_front_matter(path)
             except FrontMatterParseError as exc:
                 raise ValueError(
-                    f"{relative_path} must carry governed front matter for guidance indexing: {exc.message}"
+                    f"{relative_path} must carry governed front matter for "
+                    f"guidance indexing: {exc.message}"
                 ) from exc
             guidance_id = front_matter.get("id")
             title = front_matter.get("title")
@@ -1015,7 +1015,8 @@ class PlanWorkspaceDocumentBuilder:
             if missing_fields:
                 joined = ", ".join(missing_fields)
                 raise ValueError(
-                    f"{relative_path} is missing required guidance-index front matter fields: {joined}"
+                    f"{relative_path} is missing required guidance-index front "
+                    f"matter fields: {joined}"
                 )
             entries.append(
                 PlanGuidanceIndexEntry(
@@ -1174,7 +1175,10 @@ class PlanWorkspaceDocumentBuilder:
                 and any(entry.blocked_task_count > 0 for entry in active_entries)
                 else "active_work"
             )
-            summary = "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work."
+            summary = (
+                "Active plan-workspace initiatives exist and the coordination "
+                "surface points to the current pack-wide next work."
+            )
             next_action_value = focus_entry.next_action
             surface_path = focus_entry.next_surface_path
         return {

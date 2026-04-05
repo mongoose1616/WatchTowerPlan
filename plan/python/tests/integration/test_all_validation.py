@@ -19,9 +19,9 @@ from watchtower_core.control_plane.loader import (
 )
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
+from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.errors import ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
-from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.pack_targets import (
     resolve_pack_validation_suite_targets,
 )
@@ -99,7 +99,9 @@ def _write_invalid_standard_fixture(path: Path) -> None:
             - Added to pin validate-all coverage.
 
             ## Related Standards and Sources
-            - [validate_all_standard_semantics.md]({STANDARD_SEMANTICS_DOC_PATH}): keeps the fixture self-contained while exercising missing-section validation.
+            - [validate_all_standard_semantics.md]({STANDARD_SEMANTICS_DOC_PATH}):
+              keeps the fixture self-contained while exercising missing-section
+              validation.
 
             ## Operationalization
             - `Modes`: `documentation`
