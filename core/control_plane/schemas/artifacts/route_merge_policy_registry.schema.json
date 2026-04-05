@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:route-merge-policy-registry:v1",
+  "title": "Route Merge Policy Registry",
+  "description": "Authored registry of route merge and suppression rules applied after base route scoring and overlay attachment.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:route-merge-policy-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.route_merge_policies"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/routeMergePolicyEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "priorityValue": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "routeMergePolicyEntry": {
+      "type": "object",
+      "required": [
+        "rule_id",
+        "entry_status",
+        "title",
+        "priority",
+        "suppress_task_types"
+      ],
+      "properties": {
+        "rule_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "entry_status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "$ref": "#/$defs/priorityValue"
+        },
+        "when_any_task_types_present": {
+          "$ref": "#/$defs/stringList"
+        },
+        "when_all_task_types_present": {
+          "$ref": "#/$defs/stringList"
+        },
+        "when_request_terms_present_any": {
+          "$ref": "#/$defs/stringList"
+        },
+        "unless_request_terms_present_any": {
+          "$ref": "#/$defs/stringList"
+        },
+        "suppress_task_types": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -40,3 +40,17 @@ def test_routing_engine_fails_closed_on_ambiguous_selection_inputs() -> None:
 
     with pytest.raises(ValueError, match="exactly one"):
         engine.select(request_text="review code", task_type="Code Review")
+
+
+def test_routing_engine_returns_assisted_module_suggestions_for_unmatched_requests() -> None:
+    result = RoutingEngine(ControlPlaneLoader(REPO_ROOT)).select_for_request(
+        "improve the workflow stuff"
+    )
+
+    assert result.selected_routes == ()
+    assert {
+        suggestion.workflow_id for suggestion in result.assisted_module_suggestions
+    } >= {
+        "workflow.workflow_steward",
+        "workflow.workflow_system_review",
+    }

@@ -8,6 +8,8 @@ from typing import TYPE_CHECKING, Any, cast
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader_constants import (
     _KEEP_ACTIVE_PACK_SETTINGS,
+    _MERGED_ROUTE_MERGE_POLICY_REGISTRY_CACHE_PREFIX,
+    _MERGED_ROUTE_OVERLAY_REGISTRY_CACHE_PREFIX,
     _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
     _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX,
     _PACK_CONTEXT_CACHE_PREFIX,
@@ -118,6 +120,8 @@ def _invalidate_typed_document_state(loader: Any, relative_path: str) -> None:
         if cache_key.startswith(
             (
                 f"{_PACK_CONTEXT_CACHE_PREFIX}::",
+                f"{_MERGED_ROUTE_OVERLAY_REGISTRY_CACHE_PREFIX}::",
+                f"{_MERGED_ROUTE_MERGE_POLICY_REGISTRY_CACHE_PREFIX}::",
                 f"{_MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX}::",
                 f"{_MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX}::",
             )

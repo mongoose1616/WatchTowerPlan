@@ -754,6 +754,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/registries/route_merge_policy_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Publishes governed route-suppression and normalization rules applied after route scoring and overlay attachment.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/route_overlay_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Publishes governed overlay intent rules that attach compatible workflow roles or companion routes during route preview.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/registries/schema_catalog.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",

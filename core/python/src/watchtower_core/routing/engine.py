@@ -5,7 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.query.routes import RoutePreviewMatch, RoutePreviewResult, RoutePreviewService
+from watchtower_core.query.routes import (
+    AssistedWorkflowSuggestion,
+    RoutePreviewMatch,
+    RoutePreviewResult,
+    RoutePreviewService,
+)
 
 RoutingSelection = RoutePreviewResult
 
@@ -44,6 +49,7 @@ class RoutingEngine:
 
 
 __all__ = [
+    "AssistedWorkflowSuggestion",
     "RoutePreviewMatch",
     "RoutePreviewResult",
     "RoutingEngine",

@@ -6,6 +6,8 @@ from collections.abc import Callable
 from typing import Any, cast
 
 from watchtower_core.control_plane.loader_constants import (
+    _MERGED_ROUTE_MERGE_POLICY_REGISTRY_CACHE_PREFIX,
+    _MERGED_ROUTE_OVERLAY_REGISTRY_CACHE_PREFIX,
     _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
     _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX,
     _PACK_CONTEXT_CACHE_PREFIX,
@@ -25,6 +27,8 @@ from watchtower_core.control_plane.loader_constants import (
     RENDERED_SURFACE_REGISTRY_PATH,
     REPOSITORY_PATH_INDEX_PATH,
     ROUTE_INDEX_PATH,
+    ROUTE_MERGE_POLICY_REGISTRY_PATH,
+    ROUTE_OVERLAY_REGISTRY_PATH,
     STANDARD_INDEX_PATH,
     STATUS_REGISTRY_PATH,
     TRACEABILITY_INDEX_PATH,
@@ -63,6 +67,8 @@ from watchtower_core.control_plane.models import (
     RetentionPolicyRegistry,
     ReviewStatusRegistry,
     RouteIndex,
+    RouteMergePolicyRegistry,
+    RouteOverlayRegistry,
     SchemaCatalog,
     SourceTypeRegistry,
     StandardIndex,
@@ -349,6 +355,100 @@ def load_workflow_metadata_registry(loader: Any) -> WorkflowMetadataRegistry:
         ),
     )
     merged_registry = WorkflowMetadataRegistry.merge(core_registry, pack_registry)
+    loader._typed_document_cache[cache_key] = merged_registry
+    return merged_registry
+
+
+def load_route_overlay_registry(loader: Any) -> RouteOverlayRegistry:
+    """Load the current route-overlay registry."""
+
+    current_path = loader._current_surface_path(
+        "route_overlay_registry",
+        ROUTE_OVERLAY_REGISTRY_PATH,
+        default_path=ROUTE_OVERLAY_REGISTRY_PATH,
+    )
+    if current_path == ROUTE_OVERLAY_REGISTRY_PATH:
+        return cast(
+            RouteOverlayRegistry,
+            loader._load_typed_document(
+                current_path,
+                RouteOverlayRegistry.from_document,
+            ),
+        )
+
+    cache_key = "::".join(
+        (
+            _MERGED_ROUTE_OVERLAY_REGISTRY_CACHE_PREFIX,
+            ROUTE_OVERLAY_REGISTRY_PATH,
+            current_path,
+        )
+    )
+    cached = loader._typed_document_cache.get(cache_key)
+    if cached is not None:
+        return cast(RouteOverlayRegistry, cached)
+
+    core_registry = cast(
+        RouteOverlayRegistry,
+        loader._load_typed_document(
+            ROUTE_OVERLAY_REGISTRY_PATH,
+            RouteOverlayRegistry.from_document,
+        ),
+    )
+    pack_registry = cast(
+        RouteOverlayRegistry,
+        loader._load_typed_document(
+            current_path,
+            RouteOverlayRegistry.from_document,
+        ),
+    )
+    merged_registry = RouteOverlayRegistry.merge(core_registry, pack_registry)
+    loader._typed_document_cache[cache_key] = merged_registry
+    return merged_registry
+
+
+def load_route_merge_policy_registry(loader: Any) -> RouteMergePolicyRegistry:
+    """Load the current route-merge policy registry."""
+
+    current_path = loader._current_surface_path(
+        "route_merge_policy_registry",
+        ROUTE_MERGE_POLICY_REGISTRY_PATH,
+        default_path=ROUTE_MERGE_POLICY_REGISTRY_PATH,
+    )
+    if current_path == ROUTE_MERGE_POLICY_REGISTRY_PATH:
+        return cast(
+            RouteMergePolicyRegistry,
+            loader._load_typed_document(
+                current_path,
+                RouteMergePolicyRegistry.from_document,
+            ),
+        )
+
+    cache_key = "::".join(
+        (
+            _MERGED_ROUTE_MERGE_POLICY_REGISTRY_CACHE_PREFIX,
+            ROUTE_MERGE_POLICY_REGISTRY_PATH,
+            current_path,
+        )
+    )
+    cached = loader._typed_document_cache.get(cache_key)
+    if cached is not None:
+        return cast(RouteMergePolicyRegistry, cached)
+
+    core_registry = cast(
+        RouteMergePolicyRegistry,
+        loader._load_typed_document(
+            ROUTE_MERGE_POLICY_REGISTRY_PATH,
+            RouteMergePolicyRegistry.from_document,
+        ),
+    )
+    pack_registry = cast(
+        RouteMergePolicyRegistry,
+        loader._load_typed_document(
+            current_path,
+            RouteMergePolicyRegistry.from_document,
+        ),
+    )
+    merged_registry = RouteMergePolicyRegistry.merge(core_registry, pack_registry)
     loader._typed_document_cache[cache_key] = merged_registry
     return merged_registry
 
@@ -738,6 +838,14 @@ def _declared_surface_loaders(loader: Any) -> dict[str, Callable[[str], object]]
             relative_path,
             WorkflowMetadataRegistry.from_document,
         ),
+        "route_overlay_registry": lambda relative_path: loader._load_typed_document(
+            relative_path,
+            RouteOverlayRegistry.from_document,
+        ),
+        "route_merge_policy_registry": lambda relative_path: loader._load_typed_document(
+            relative_path,
+            RouteMergePolicyRegistry.from_document,
+        ),
         "documentation_family_registry": lambda relative_path: loader._load_typed_document(
             relative_path,
             DocumentationFamilyRegistry.from_document,
@@ -892,6 +1000,8 @@ def load_known_surface(loader: Any, relative_path: str) -> object:
         AUTHORITY_MAP_PATH: loader.load_authority_map,
         RENDERED_SURFACE_REGISTRY_PATH: loader.load_rendered_surface_registry,
         WORKFLOW_METADATA_REGISTRY_PATH: loader.load_workflow_metadata_registry,
+        ROUTE_OVERLAY_REGISTRY_PATH: loader.load_route_overlay_registry,
+        ROUTE_MERGE_POLICY_REGISTRY_PATH: loader.load_route_merge_policy_registry,
         GOVERNANCE_SURFACE_MAP_PATH: loader.load_governance_surface_map,
         PATH_PATTERN_REGISTRY_PATH: loader.load_path_pattern_registry,
         STATUS_REGISTRY_PATH: loader.load_status_registry,

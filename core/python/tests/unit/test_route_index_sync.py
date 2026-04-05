@@ -333,6 +333,74 @@ def test_route_preview_service_scores_request_text() -> None:
     assert "workflow.commit_closeout" in workflow_ids
 
 
+def test_route_preview_service_keeps_commit_closeout_as_companion_route() -> None:
+    service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.preview(
+        request_text="adversarial refactor and optimization and commit"
+    )
+
+    task_types = {match.task_type for match in result.selected_routes}
+    workflow_ids = {workflow.workflow_id for workflow in result.selected_workflows}
+    assert task_types == {"Code Implementation", "Commit Closeout"}
+    assert "workflow.code_implementation" in workflow_ids
+    assert "workflow.commit_closeout" in workflow_ids
+    assert "workflow.adversarial_reviewer" in workflow_ids
+
+
+def test_route_preview_service_keeps_closeout_and_overlay_routes_flexible() -> None:
+    service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
+    expectations = {
+        "documentation and fix loop and commit": {
+            "routes": {
+                "Documentation Review",
+                "Review Remediation Loop",
+                "Commit Closeout",
+            },
+            "workflows": {
+                "workflow.documentation_review",
+                "workflow.review_remediation_loop",
+                "workflow.commit_closeout",
+            },
+        },
+        "adversarial telemetry, benchmark review and fix and commit": {
+            "routes": {
+                "Performance Benchmarking",
+                "Review Remediation",
+                "Commit Closeout",
+            },
+            "workflows": {
+                "workflow.performance_benchmarking",
+                "workflow.review_remediation",
+                "workflow.commit_closeout",
+                "workflow.adversarial_reviewer",
+            },
+        },
+        "adversarial project coherence and fix loop and commit": {
+            "routes": {
+                "Repository Review",
+                "Review Remediation Loop",
+                "Commit Closeout",
+            },
+            "workflows": {
+                "workflow.repository_review",
+                "workflow.review_remediation_loop",
+                "workflow.commit_closeout",
+                "workflow.adversarial_reviewer",
+            },
+        },
+    }
+
+    for request_text, expected in expectations.items():
+        result = service.preview(request_text=request_text)
+        assert expected["routes"].issubset(
+            {match.task_type for match in result.selected_routes}
+        )
+        assert expected["workflows"].issubset(
+            {workflow.workflow_id for workflow in result.selected_workflows}
+        )
+
+
 def test_route_preview_service_matches_realistic_maintenance_request() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = RoutePreviewService(loader)
@@ -374,21 +442,19 @@ def test_route_preview_service_merges_adversarial_fix_loops() -> None:
 
     result = service.preview(request_text="do an adversarial and fix loop")
 
-    assert {match.task_type for match in result.selected_routes} == {
-        route_task_types["route.adversarial_repository_review"],
-        route_task_types["route.review_remediation_loop"],
-    }
+    task_types = {match.task_type for match in result.selected_routes}
+    assert route_task_types["route.adversarial_repository_review"] not in task_types
+    assert route_task_types["route.review_remediation_loop"] in task_types
     assert {workflow.workflow_id for workflow in result.selected_workflows} >= {
         "workflow.adversarial_reviewer",
         "workflow.review_remediation",
         "workflow.review_remediation_loop",
-        "workflow.repository_review",
         "workflow.code_validation",
     }
-    assert result.warnings == (
-        "Multiple routes matched the request. The preview returned the merged workflow "
-        "set for all positive matches.",
-    )
+    assert "workflow.repository_review" not in {
+        workflow.workflow_id for workflow in result.selected_workflows
+    }
+    assert result.warnings == ()
 
 
 def test_route_preview_service_keeps_adversarial_mentions_out_of_doc_reviews() -> None:
@@ -402,6 +468,164 @@ def test_route_preview_service_keeps_adversarial_mentions_out_of_doc_reviews() -
 
     assert {match.task_type for match in result.selected_routes} == {
         route_task_types["route.documentation_review"]
+    }
+    assert "workflow.adversarial_reviewer" not in {
+        workflow.workflow_id for workflow in result.selected_workflows
+    }
+
+
+def test_route_preview_service_pairs_adversarial_role_with_review_and_fix_routes() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = RoutePreviewService(loader)
+    route_task_types = _route_task_types(loader)
+    expectations = {
+        "run an adversarial code review": {
+            "routes": {
+                route_task_types["route.code_review"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.code_review",
+            },
+        },
+        "run an adversarial documentation review": {
+            "routes": {
+                route_task_types["route.documentation_review"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.documentation_review",
+            },
+        },
+        "run an adversarial workflow system review": {
+            "routes": {
+                route_task_types["route.workflow_system_review"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.workflow_steward",
+                "workflow.workflow_system_review",
+            },
+        },
+        "run an adversarial standards audit": {
+            "routes": {
+                route_task_types["route.standards_alignment_review"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.standards_alignment_review",
+            },
+        },
+        "run an adversarial validation harness review": {
+            "routes": {
+                route_task_types["route.validation_harness_review"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.validation_harness_review",
+            },
+        },
+        "i want a adversarial telemetry, benchmark review and fix": {
+            "routes": {
+                route_task_types["route.performance_benchmarking"],
+                route_task_types["route.review_remediation"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.performance_benchmarking",
+                "workflow.review_remediation",
+            },
+        },
+        "i want a adversarial refactor and optimization": {
+            "routes": {
+                route_task_types["route.code_implementation"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.code_implementation",
+            },
+        },
+        "do an adversarial stale test cleanup": {
+            "routes": {
+                route_task_types["route.test_suite_optimization"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.test_suite_optimization",
+            },
+        },
+        "i want a adversarial project coherence and fix loop": {
+            "routes": {
+                route_task_types["route.repository_review"],
+                route_task_types["route.review_remediation_loop"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.repository_review",
+                "workflow.review_remediation_loop",
+            },
+        },
+        "do an adversarial repository review and fix loop": {
+            "routes": {
+                route_task_types["route.adversarial_repository_review"],
+                route_task_types["route.review_remediation_loop"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.repository_review",
+                "workflow.review_remediation_loop",
+            },
+        },
+    }
+
+    for request_text, expected in expectations.items():
+        result = service.preview(request_text=request_text)
+        task_types = {match.task_type for match in result.selected_routes}
+        workflow_ids = {workflow.workflow_id for workflow in result.selected_workflows}
+        assert expected["routes"].issubset(task_types)
+        if request_text != "do an adversarial repository review and fix loop":
+            assert route_task_types["route.adversarial_repository_review"] not in task_types
+        if request_text == "do an adversarial repository review and fix loop":
+            assert route_task_types["route.repository_review"] not in task_types
+        assert expected["workflows"].issubset(workflow_ids)
+
+
+def test_route_preview_service_pairs_fix_loops_with_documentation_and_repository_reviews() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = RoutePreviewService(loader)
+    route_task_types = _route_task_types(loader)
+    expectations = {
+        "i want a documentation and fix loop": {
+            route_task_types["route.documentation_review"],
+            route_task_types["route.review_remediation_loop"],
+        },
+        "i want a docs audit and fix loop": {
+            route_task_types["route.documentation_review"],
+            route_task_types["route.review_remediation_loop"],
+        },
+        "i want a project coherence and fix loop": {
+            route_task_types["route.repository_review"],
+            route_task_types["route.review_remediation_loop"],
+        },
+    }
+
+    for request_text, expected_routes in expectations.items():
+        result = service.preview(request_text=request_text)
+        assert expected_routes.issubset(
+            {match.task_type for match in result.selected_routes}
+        )
+
+
+def test_route_preview_service_keeps_fix_loops_specific_when_loop_route_is_selected() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = RoutePreviewService(loader)
+
+    result = service.preview(
+        request_text="fix the findings from this review and rerun the same review until clean"
+    )
+
+    assert {match.task_type for match in result.selected_routes} == {
+        "Review Remediation Loop"
     }
 
 
@@ -460,15 +684,8 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
                 "many initiative as needed to fix it, use the standard end to end task "
                 "cycle."
             ): {
-                route_task_types["route.review_remediation"],
                 route_task_types["route.review_remediation_loop"],
-                route_task_types["route.code_validation"],
-                *(
-                    [route_task_types["route.task_lifecycle_management"]]
-                    if "route.task_lifecycle_management" in route_task_types
-                    else []
-            ),
-        },
+            },
         "build check": {route_task_types["route.code_validation"]},
         "stale command docs": {
             route_task_types["route.documentation_implementation_reconciliation"]
@@ -532,6 +749,18 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
         expectations["implementation slice"] = {
             route_task_types["route.implementation_slice_planning"]
         }
+    expectations[
+        (
+            "Review one last time /external/repository/report and the files inside for "
+            "final review. The loop will be: read one file, verify the issues that "
+            "are captured are accurate and still validate, if they are, start as "
+            "many initiative as needed to fix it, use the standard end to end task "
+            "cycle."
+        )
+    ] = {
+        route_task_types["route.review_remediation_loop"],
+        route_task_types["route.task_lifecycle_management"],
+    }
     traceability_expectations = {
         *(
             [route_task_types["route.traceability_governance"]]

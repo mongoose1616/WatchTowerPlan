@@ -5,6 +5,7 @@ from __future__ import annotations
 from watchtower_core.utils.module_exports import lazy_module_getattr
 
 __all__ = [
+    "AssistedWorkflowSuggestion",
     "AcceptanceContractQueryService",
     "AcceptanceContractSearchParams",
     "ArtifactFamilyPathResolution",
@@ -39,6 +40,7 @@ __all__ = [
 ]
 
 _EXPORT_MODULES = {
+    "AssistedWorkflowSuggestion": "watchtower_core.query.routes",
     "AcceptanceContractQueryService": "watchtower_core.query.acceptance",
     "AcceptanceContractSearchParams": "watchtower_core.query.acceptance",
     "ArtifactFamilyPathResolution": "watchtower_core.query.artifact_families",

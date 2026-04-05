@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1",
+  "title": "Route Overlay Registry",
+  "description": "Authored registry of route overlays that add compatible workflow roles or companion routes without enumerating every routed permutation.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.route_overlays"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/routeOverlayEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "routeOverlayTriggerMode": {
+      "type": "string",
+      "enum": [
+        "anywhere",
+        "modifier_before_anchor"
+      ]
+    },
+    "routeOverlayEntry": {
+      "type": "object",
+      "required": [
+        "overlay_id",
+        "entry_status",
+        "title",
+        "trigger_terms",
+        "trigger_mode"
+      ],
+      "properties": {
+        "overlay_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "entry_status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_terms": {
+          "$ref": "#/$defs/stringList"
+        },
+        "trigger_mode": {
+          "$ref": "#/$defs/routeOverlayTriggerMode"
+        },
+        "anchor_terms": {
+          "$ref": "#/$defs/stringList"
+        },
+        "compatible_task_types": {
+          "$ref": "#/$defs/stringList"
+        },
+        "excluded_task_types": {
+          "$ref": "#/$defs/stringList"
+        },
+        "attached_workflow_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/idPattern"
+          }
+        },
+        "attached_route_task_types": {
+          "$ref": "#/$defs/stringList"
+        },
+        "retain_dominant_compatible_route": {
+          "type": "boolean"
+        },
+        "minimum_route_score": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "trigger_mode": {
+                "const": "modifier_before_anchor"
+              }
+            },
+            "required": [
+              "trigger_mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "anchor_terms"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "retain_dominant_compatible_route": {
+                "const": true
+              }
+            },
+            "required": [
+              "retain_dominant_compatible_route"
+            ]
+          },
+          "then": {
+            "required": [
+              "attached_route_task_types"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

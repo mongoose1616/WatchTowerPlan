@@ -11,6 +11,10 @@ SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog.jso
 PACK_REGISTRY_PATH = "core/control_plane/registries/pack_registry.json"
 AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = "core/control_plane/registries/workflow_metadata_registry.json"
+ROUTE_OVERLAY_REGISTRY_PATH = "core/control_plane/registries/route_overlay_registry.json"
+ROUTE_MERGE_POLICY_REGISTRY_PATH = (
+    "core/control_plane/registries/route_merge_policy_registry.json"
+)
 PACK_SETTINGS_PATH = "__active_pack_settings__"
 CORE_PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
 PACK_RUNTIME_MANIFEST_FILENAME = "pack_runtime_manifest.json"
@@ -38,3 +42,7 @@ _KEEP_ACTIVE_PACK_SETTINGS = object()
 _PACK_CONTEXT_CACHE_PREFIX = "__pack_context__"
 _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX = "__merged_validator_registry__"
 _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX = "__merged_workflow_metadata_registry__"
+_MERGED_ROUTE_OVERLAY_REGISTRY_CACHE_PREFIX = "__merged_route_overlay_registry__"
+_MERGED_ROUTE_MERGE_POLICY_REGISTRY_CACHE_PREFIX = (
+    "__merged_route_merge_policy_registry__"
+)

@@ -13,6 +13,8 @@ from watchtower_core.control_plane.loader import CORE_PACK_SETTINGS_PATH, Contro
 from watchtower_core.control_plane.models import (
     BenchmarkSuiteRegistry,
     RenderedSurfaceRegistry,
+    RouteMergePolicyRegistry,
+    RouteOverlayRegistry,
     SchemaCatalog,
     TemplateCatalog,
     ValidationSuiteRegistry,
@@ -335,6 +337,30 @@ def test_control_plane_loader_reads_workflow_metadata_registry() -> None:
     assert set(entry.companion_workflow_ids).issubset(set(workflow.companion_workflow_ids))
 
 
+def test_control_plane_loader_reads_route_overlay_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT, active_pack_settings_path=CORE_PACK_SETTINGS_PATH)
+
+    registry = loader.load_route_overlay_registry()
+    entry = registry.get("route.overlay_adversarial_lens")
+
+    assert isinstance(registry, RouteOverlayRegistry)
+    assert registry.artifact_id == "registry.route_overlays"
+    assert "workflow.adversarial_reviewer" in entry.attached_workflow_ids
+    assert "Repository Review" in entry.compatible_task_types
+
+
+def test_control_plane_loader_reads_route_merge_policy_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT, active_pack_settings_path=CORE_PACK_SETTINGS_PATH)
+
+    registry = loader.load_route_merge_policy_registry()
+    entry = registry.get("route.merge_review_remediation_loop_suppresses_single_pass")
+
+    assert isinstance(registry, RouteMergePolicyRegistry)
+    assert registry.artifact_id == "registry.route_merge_policies"
+    assert entry.priority == 10
+    assert entry.suppress_task_types == ("Review Remediation",)
+
+
 def test_control_plane_loader_merges_pack_owned_workflow_metadata_registry(
     tmp_path,
 ) -> None:
@@ -447,6 +473,206 @@ def test_control_plane_loader_merges_pack_owned_workflow_metadata_registry(
     assert registry.get("workflow.review_execution_baseline").task_family == (
         "oversight_review_execution"
     )
+
+
+def test_control_plane_loader_merges_pack_owned_route_overlay_registry(tmp_path) -> None:
+    repo_root = copy_validation_repo_subset(tmp_path)
+    pack_root = repo_root / "packs" / "oversight"
+    machine_root = pack_root / ".wt"
+    machine_root.mkdir(parents=True)
+    overlay_path = machine_root / "registries" / "route_overlay_registry.json"
+    overlay_path.parent.mkdir(parents=True)
+    overlay_path.write_text(
+        json.dumps(
+            {
+                "$schema": (
+                    "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1"
+                ),
+                "id": "registry.route_overlays",
+                "title": "Pack Route Overlay Registry",
+                "status": "active",
+                "entries": [
+                    {
+                        "overlay_id": "route.overlay_pack_example",
+                        "entry_status": "active",
+                        "title": "Pack Example Overlay",
+                        "trigger_terms": ["pack example"],
+                        "trigger_mode": "anywhere",
+                        "attached_workflow_ids": ["workflow.review_execution_baseline"],
+                    }
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    pack_settings_path = machine_root / "manifests" / "pack_settings.json"
+    pack_settings_path.parent.mkdir(parents=True)
+    pack_settings_path.write_text(
+        json.dumps(
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+                "surface_name": "pack_settings",
+                "contract_version": "v1",
+                "description": "Pack settings for route overlay merge tests.",
+                "updated_at": "2026-04-05T03:40:00Z",
+                "pack_id": "pack.oversight",
+                "surfaces": [
+                    {
+                        "surface_name": "schema_catalog",
+                        "surface_kind": "index",
+                        "path": "core/control_plane/registries/schema_catalog.json",
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    },
+                    {
+                        "surface_name": "validator_registry",
+                        "surface_kind": "registry",
+                        "path": "core/control_plane/registries/validator_registry.json",
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    },
+                    {
+                        "surface_name": "route_overlay_registry",
+                        "surface_kind": "registry",
+                        "path": "packs/oversight/.wt/registries/route_overlay_registry.json",
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    },
+                ],
+                "workspace_roots": {
+                    "workspace_root": "packs/oversight",
+                    "machine_root": "packs/oversight/.wt",
+                    "docs_root": "packs/oversight/docs",
+                    "workflows_root": "packs/oversight/workflows",
+                    "tracking_root": "packs/oversight/tracking",
+                    "initiatives_root": "packs/oversight/initiatives",
+                    "projects_root": "packs/oversight/projects",
+                    "overview_path": "packs/oversight/overview.md",
+                },
+                "default_validation_suite_id": "suite.oversight.validation_baseline",
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path="packs/oversight/.wt/manifests/pack_settings.json",
+    )
+
+    registry = loader.load_route_overlay_registry()
+
+    assert registry.get("route.overlay_adversarial_lens").title == "Adversarial Lens Overlay"
+    assert registry.get("route.overlay_pack_example").attached_workflow_ids == (
+        "workflow.review_execution_baseline",
+    )
+
+
+def test_control_plane_loader_merges_pack_owned_route_merge_policy_registry(
+    tmp_path,
+) -> None:
+    repo_root = copy_validation_repo_subset(tmp_path)
+    pack_root = repo_root / "packs" / "oversight"
+    machine_root = pack_root / ".wt"
+    machine_root.mkdir(parents=True)
+    policy_path = machine_root / "registries" / "route_merge_policy_registry.json"
+    policy_path.parent.mkdir(parents=True)
+    policy_path.write_text(
+        json.dumps(
+            {
+                "$schema": (
+                    "urn:watchtower:schema:artifacts:registries:"
+                    "route-merge-policy-registry:v1"
+                ),
+                "id": "registry.route_merge_policies",
+                "title": "Pack Route Merge Policy Registry",
+                "status": "active",
+                "entries": [
+                    {
+                        "rule_id": "route.merge_pack_example",
+                        "entry_status": "active",
+                        "title": "Pack Example Merge Rule",
+                        "priority": 50,
+                        "when_all_task_types_present": ["Code Review"],
+                        "suppress_task_types": ["Commit Closeout"],
+                    }
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    pack_settings_path = machine_root / "manifests" / "pack_settings.json"
+    pack_settings_path.parent.mkdir(parents=True)
+    pack_settings_path.write_text(
+        json.dumps(
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+                "surface_name": "pack_settings",
+                "contract_version": "v1",
+                "description": "Pack settings for route merge policy tests.",
+                "updated_at": "2026-04-05T03:42:00Z",
+                "pack_id": "pack.oversight",
+                "surfaces": [
+                    {
+                        "surface_name": "schema_catalog",
+                        "surface_kind": "index",
+                        "path": "core/control_plane/registries/schema_catalog.json",
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    },
+                    {
+                        "surface_name": "validator_registry",
+                        "surface_kind": "registry",
+                        "path": "core/control_plane/registries/validator_registry.json",
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    },
+                    {
+                        "surface_name": "route_merge_policy_registry",
+                        "surface_kind": "registry",
+                        "path": (
+                            "packs/oversight/.wt/registries/"
+                            "route_merge_policy_registry.json"
+                        ),
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    },
+                ],
+                "workspace_roots": {
+                    "workspace_root": "packs/oversight",
+                    "machine_root": "packs/oversight/.wt",
+                    "docs_root": "packs/oversight/docs",
+                    "workflows_root": "packs/oversight/workflows",
+                    "tracking_root": "packs/oversight/tracking",
+                    "initiatives_root": "packs/oversight/initiatives",
+                    "projects_root": "packs/oversight/projects",
+                    "overview_path": "packs/oversight/overview.md",
+                },
+                "default_validation_suite_id": "suite.oversight.validation_baseline",
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path="packs/oversight/.wt/manifests/pack_settings.json",
+    )
+
+    registry = loader.load_route_merge_policy_registry()
+
+    assert registry.get(
+        "route.merge_review_remediation_loop_suppresses_single_pass"
+    ).priority == 10
+    assert registry.get("route.merge_pack_example").priority == 50
 
 
 def test_control_plane_loader_reads_repository_path_index() -> None:

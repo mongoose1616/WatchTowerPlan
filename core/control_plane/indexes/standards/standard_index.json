@@ -364,7 +364,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/route_index_standard.md",
-      "updated_at": "2026-03-24T19:05:00Z",
+      "updated_at": "2026-04-05T06:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -380,12 +380,16 @@
         "*/workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
+        "core/control_plane/registries/route_overlay_registry.json",
+        "core/control_plane/registries/route_merge_policy_registry.json",
         "core/docs/standards/workflows/routing_and_context_loading_standard.md",
         "core/docs/standards/data_contracts/workflow_index_standard.md",
         "core/docs/standards/data_contracts/format_selection_standard.md",
         "core/workflows/ROUTING_TABLE.md"
       ],
       "applied_reference_paths": [
+        "core/control_plane/registries/route_overlay_registry.json",
+        "core/control_plane/registries/route_merge_policy_registry.json",
         "core/docs/standards/workflows/routing_and_context_loading_standard.md",
         "core/docs/standards/data_contracts/workflow_index_standard.md",
         "core/docs/standards/data_contracts/format_selection_standard.md",
@@ -2567,7 +2571,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/routing_and_context_loading_standard.md",
-      "updated_at": "2026-03-27T15:00:00Z",
+      "updated_at": "2026-04-05T06:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

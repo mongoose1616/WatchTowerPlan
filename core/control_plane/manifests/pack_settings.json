@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Pack settings load root for the reusable shared-core boundary.",
-  "updated_at": "2026-04-04T00:00:00Z",
+  "updated_at": "2026-04-05T04:20:00Z",
   "pack_id": "pack.core_shared",
   "surfaces": [
     {
@@ -80,6 +80,20 @@
       "surface_name": "workflow_metadata_registry",
       "surface_kind": "registry",
       "path": "core/control_plane/registries/workflow_metadata_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "route_overlay_registry",
+      "surface_kind": "registry",
+      "path": "core/control_plane/registries/route_overlay_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "route_merge_policy_registry",
+      "surface_kind": "registry",
+      "path": "core/control_plane/registries/route_merge_policy_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
     },

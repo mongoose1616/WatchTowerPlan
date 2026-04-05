@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-27T15:00:00Z"
+updated_at: "2026-04-05T06:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,6 +47,9 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Apply only the global rules from `AGENTS.md` before task routing.
 - After reading `AGENTS.md`, consult the shared routing table and any pack-owned routing tables to determine the minimum relevant workflow documents.
 - Use `watchtower-core route preview` when a focused executable preview helps, but treat it as advisory over the authored routing surfaces rather than as a replacement authority.
+- Treat `route_overlay_registry.json` and `route_merge_policy_registry.json` as the governed machine-readable layer for modifier intents such as adversarial lenses, closeout companions, and route-suppression normalization. Do not re-encode those behaviors as expanding hardcoded route permutations or private Python-only policy tables.
+- When governed overlays attach companion task types, allow route-preview consumers to synthesize those companion routes from the route index even if the free-form scorer did not independently hit the companion route, as long as the overlay intent itself matched deterministically.
+- If route preview cannot select any governed route, it may emit workflow-index-derived advisory module suggestions for agent-assisted loading, but those suggestions remain secondary hints and must not be treated as authoritative route activation.
 - Treat the authoritative routing tables as the only surface that activates workflow documents for one request.
 - Always include the shared core workflow module in routed task sets.
 - Load only the minimum workflow documents required for the matched task type or task types.
@@ -105,11 +108,11 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - `AGENTS.md`, the routing table, and the workflow documents should not duplicate each other's responsibilities.
 - When workflow roles publish `Composes Modules`, the listed module paths should stay coherent with the routed workflow stacks that normally pair with those roles.
 - Routing changes should be reflected in all three layers when needed.
-- Route-preview and route-index surfaces should stay aligned with `AGENTS.md`, the routing table, and workflow metadata when routing behavior changes.
+- Route-preview, route-index, route-overlay, and route-merge-policy surfaces should stay aligned with `AGENTS.md`, the routing table, and workflow metadata when routing behavior changes.
 
 ## Change Control
 - Update this standard when the repository changes how routing or context loading works.
-- Update `AGENTS.md`, `ROUTING_TABLE.md`, and related workflow standards together when load order or routing semantics change.
+- Update `AGENTS.md`, `ROUTING_TABLE.md`, route overlay and merge registries, and related workflow standards together when load order or routing semantics change.
 
 ## References
 - [agents_md_standard.md](/core/docs/standards/documentation/agents_md_standard.md)
@@ -123,4 +126,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-27T15:00:00Z`
+- `2026-04-05T06:15:00Z`

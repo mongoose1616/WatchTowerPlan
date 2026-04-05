@@ -12,7 +12,12 @@ def test_route_preview_prints_no_match_guidance(monkeypatch, capsys) -> None:
             self.loader = loader
 
         def preview(self, *, request_text: str, task_type: str | None) -> SimpleNamespace:
-            return SimpleNamespace(selected_routes=(), selected_workflows=(), warnings=())
+            return SimpleNamespace(
+                selected_routes=(),
+                selected_workflows=(),
+                warnings=(),
+                assisted_module_suggestions=(),
+            )
 
     monkeypatch.setattr(route_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(route_handlers, "RoutePreviewService", FakeService)
@@ -53,6 +58,7 @@ def test_route_preview_supports_human_route_output(monkeypatch, capsys) -> None:
                     ),
                 ),
                 warnings=("Prefer a bounded scope.",),
+                assisted_module_suggestions=(),
             )
 
     monkeypatch.setattr(route_handlers, "ControlPlaneLoader", lambda: object())
@@ -113,6 +119,7 @@ def test_route_preview_supports_role_workflow_output(monkeypatch, capsys) -> Non
                     ),
                 ),
                 warnings=(),
+                assisted_module_suggestions=(),
             )
 
     monkeypatch.setattr(route_handlers, "ControlPlaneLoader", lambda: object())
@@ -125,3 +132,45 @@ def test_route_preview_supports_role_workflow_output(monkeypatch, capsys) -> Non
     assert "Workflow System Review" in captured.out
     assert "workflow.workflow_steward" in captured.out
     assert "workflow.workflow_system_review" in captured.out
+
+
+def test_route_preview_prints_agent_assisted_module_suggestions(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def preview(self, *, request_text: str, task_type: str | None) -> SimpleNamespace:
+            return SimpleNamespace(
+                selected_routes=(),
+                selected_workflows=(),
+                warnings=(
+                    "Advisory workflow suggestions were included for "
+                    "agent-assisted module loading.",
+                ),
+                assisted_module_suggestions=(
+                    SimpleNamespace(
+                        workflow_id="workflow.workflow_system_review",
+                        workflow_kind="module",
+                        title="Workflow System Review Workflow",
+                        doc_path="core/workflows/modules/workflow_system_review.md",
+                        phase_type="review",
+                        task_family="workflow_governance",
+                        score=17,
+                        matched_signals=("workflow system review", "workflow governance"),
+                        suggested_load_paths=(
+                            "core/workflows/modules/workflow_system_review.md",
+                        ),
+                    ),
+                ),
+            )
+
+    monkeypatch.setattr(route_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(route_handlers, "RoutePreviewService", FakeService)
+
+    result = route_handlers._run_route_preview(route_args())
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Advisory workflow suggestions:" in captured.out
+    assert "workflow.workflow_system_review" in captured.out
+    assert "load=core/workflows/modules/workflow_system_review.md" in captured.out

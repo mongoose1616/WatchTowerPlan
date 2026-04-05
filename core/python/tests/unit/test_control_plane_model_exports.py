@@ -12,6 +12,8 @@ from watchtower_core.control_plane.models import (
     PackRuntimeManifest,
     PackSettings,
     RetentionPolicyRegistry,
+    RouteMergePolicyRegistry,
+    RouteOverlayRegistry,
     StatusRegistry,
     TaskIndex,
     ValidationSuiteRegistry,
@@ -243,6 +245,59 @@ def test_control_plane_models_export_validation_suite_registry_types() -> None:
         .get_step("step.example.pack_contract")
         .step_kind
         == "pack_contract"
+    )
+
+
+def test_control_plane_models_export_route_overlay_and_merge_policy_registries() -> None:
+    overlay_registry = RouteOverlayRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1",
+            "id": "registry.route_overlays",
+            "title": "Example Route Overlay Registry",
+            "status": "active",
+            "entries": [
+                {
+                    "overlay_id": "route.overlay_example",
+                    "entry_status": "active",
+                    "title": "Example Overlay",
+                    "trigger_terms": ["example"],
+                    "trigger_mode": "modifier_before_anchor",
+                    "anchor_terms": ["review"],
+                    "compatible_task_types": ["Code Review"],
+                    "attached_workflow_ids": ["workflow.example"],
+                }
+            ],
+        }
+    )
+    merge_policy_registry = RouteMergePolicyRegistry.from_document(
+        {
+            "$schema": (
+                "urn:watchtower:schema:artifacts:registries:"
+                "route-merge-policy-registry:v1"
+            ),
+            "id": "registry.route_merge_policies",
+            "title": "Example Route Merge Policy Registry",
+            "status": "active",
+            "entries": [
+                {
+                    "rule_id": "route.merge_example",
+                    "entry_status": "active",
+                    "title": "Example Merge Rule",
+                    "priority": 10,
+                    "when_all_task_types_present": ["Code Review", "Commit Closeout"],
+                    "suppress_task_types": ["Commit Closeout"],
+                }
+            ],
+        }
+    )
+
+    assert overlay_registry.get("route.overlay_example").trigger_mode == "modifier_before_anchor"
+    assert overlay_registry.get("route.overlay_example").attached_workflow_ids == (
+        "workflow.example",
+    )
+    assert merge_policy_registry.get("route.merge_example").priority == 10
+    assert merge_policy_registry.get("route.merge_example").suppress_task_types == (
+        "Commit Closeout",
     )
 
 

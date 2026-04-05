@@ -50,6 +50,12 @@ from watchtower_core.control_plane.models.catalog_rendered import (
     RenderedSurfaceRegistry,
     RenderedSurfaceSectionDefinition,
 )
+from watchtower_core.control_plane.models.catalog_routing import (
+    RouteMergePolicyDefinition,
+    RouteMergePolicyRegistry,
+    RouteOverlayDefinition,
+    RouteOverlayRegistry,
+)
 
 __all__ = [
     "ArtifactFamilyEntry",
@@ -79,6 +85,10 @@ __all__ = [
     "RetentionPolicyRegistry",
     "ReviewStatusEntry",
     "ReviewStatusRegistry",
+    "RouteMergePolicyDefinition",
+    "RouteMergePolicyRegistry",
+    "RouteOverlayDefinition",
+    "RouteOverlayRegistry",
     "SchemaCatalog",
     "SchemaCatalogRecord",
     "SourceTypeEntry",

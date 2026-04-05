@@ -79,8 +79,9 @@ class WorkflowCatalogHelper:
         )
 
     def compatible_workflows(self, workflow_id: str) -> tuple[WorkflowIndexEntry, ...]:
-        """Return workflows that share at least one route with the target workflow."""
+        """Return workflows that share a route or a declared companion pairing."""
 
+        metadata = self.metadata(workflow_id)
         route_bindings = self.routes_for_workflow(workflow_id)
         compatible_ids = sorted(
             {
@@ -88,6 +89,11 @@ class WorkflowCatalogHelper:
                 for route in route_bindings
                 for required_workflow_id in route.required_workflow_ids
                 if required_workflow_id != workflow_id
+            }
+            | {
+                companion_id
+                for companion_id in metadata.companion_workflow_ids
+                if companion_id != workflow_id
             }
         )
         return tuple(self.workflow(candidate_id) for candidate_id in compatible_ids)

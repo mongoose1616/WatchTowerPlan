@@ -14,7 +14,9 @@
         "add feature",
         "fix bug",
         "change behavior",
-        "write code"
+        "write code",
+        "refactor optimization",
+        "refactor and optimize"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -47,6 +49,8 @@
         "refactor tests",
         "trim tests",
         "stale tests",
+        "stale test cleanup",
+        "test cleanup",
         "legacy tests",
         "migration tests",
         "transition shims",
@@ -238,7 +242,9 @@
         "fix audit findings",
         "fix review report",
         "remediate report findings",
-        "fix pasted findings"
+        "fix pasted findings",
+        "review and fix",
+        "audit and fix"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -265,6 +271,8 @@
       "trigger_keywords": [
         "fix loop",
         "review fix loop",
+        "review and fix loop",
+        "audit and fix loop",
         "fix the findings",
         "rerun the same review",
         "keep fixing until clean",
@@ -496,7 +504,9 @@
         "document review",
         "documentation audit",
         "docs audit",
-        "standards review"
+        "standards review",
+        "documentation fix",
+        "docs fix"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -833,6 +843,9 @@
         "health assessment",
         "repository health assessment",
         "coherence review",
+        "project coherence",
+        "repository coherence",
+        "repo coherence",
         "best practices review",
         "watchtower report",
         "unused workflow modules",

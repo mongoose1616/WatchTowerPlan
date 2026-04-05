@@ -1,0 +1,118 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:route-merge-policy-registry:v1",
+  "id": "registry.route_merge_policies",
+  "title": "Route Merge Policy Registry",
+  "status": "active",
+  "entries": [
+    {
+      "rule_id": "route.merge_review_remediation_loop_suppresses_single_pass",
+      "entry_status": "active",
+      "title": "Review Remediation Loop Suppresses Single-Pass Review Remediation",
+      "priority": 10,
+      "when_all_task_types_present": [
+        "Review Remediation Loop",
+        "Review Remediation"
+      ],
+      "suppress_task_types": [
+        "Review Remediation"
+      ]
+    },
+    {
+      "rule_id": "route.merge_review_remediation_focus_suppresses_repository_review",
+      "entry_status": "active",
+      "title": "Review Remediation Focus Suppresses Repository Review",
+      "priority": 20,
+      "when_all_task_types_present": [
+        "Repository Review"
+      ],
+      "when_any_task_types_present": [
+        "Review Remediation",
+        "Review Remediation Loop"
+      ],
+      "when_request_terms_present_any": [
+        "finding",
+        "fix",
+        "issue",
+        "remediate",
+        "report"
+      ],
+      "unless_request_terms_present_any": [
+        "repo review",
+        "repository review",
+        "project",
+        "coherence",
+        "health",
+        "watchtower"
+      ],
+      "suppress_task_types": [
+        "Repository Review"
+      ]
+    },
+    {
+      "rule_id": "route.merge_generic_adversarial_fix_loops_suppress_repository_audits",
+      "entry_status": "active",
+      "title": "Generic Adversarial Fix Loops Suppress Repository Audit Inference",
+      "priority": 25,
+      "when_all_task_types_present": [
+        "Adversarial Repository Review"
+      ],
+      "when_any_task_types_present": [
+        "Review Remediation",
+        "Review Remediation Loop"
+      ],
+      "unless_request_terms_present_any": [
+        "full-spectrum",
+        "project",
+        "coherence",
+        "repo",
+        "repository",
+        "watchtower"
+      ],
+      "suppress_task_types": [
+        "Adversarial Repository Review"
+      ],
+      "notes": "Avoids inferring the dedicated adversarial repository-audit route from generic adversarial fix-loop phrasing unless the request explicitly signals repository scope."
+    },
+    {
+      "rule_id": "route.merge_overlay_capable_requests_suppress_adversarial_repository_review",
+      "entry_status": "active",
+      "title": "Overlay-Capable Requests Suppress Adversarial Repository Review",
+      "priority": 30,
+      "when_all_task_types_present": [
+        "Adversarial Repository Review"
+      ],
+      "when_any_task_types_present": [
+        "Code Review",
+        "Documentation Review",
+        "Workflow System Review",
+        "Standards Alignment Review",
+        "Validation Harness Review",
+        "Performance Benchmarking",
+        "Code Implementation",
+        "Test Suite Optimization",
+        "Repository Review"
+      ],
+      "unless_request_terms_present_any": [
+        "repo",
+        "repository"
+      ],
+      "suppress_task_types": [
+        "Adversarial Repository Review"
+      ]
+    },
+    {
+      "rule_id": "route.merge_adversarial_repository_review_suppresses_repository_review",
+      "entry_status": "active",
+      "title": "Adversarial Repository Review Suppresses Repository Review",
+      "priority": 40,
+      "when_all_task_types_present": [
+        "Adversarial Repository Review",
+        "Repository Review"
+      ],
+      "suppress_task_types": [
+        "Repository Review"
+      ]
+    }
+  ],
+  "notes": "Route merge policies normalize overlapping route selections after score-based base-route matching and overlay attachment."
+}

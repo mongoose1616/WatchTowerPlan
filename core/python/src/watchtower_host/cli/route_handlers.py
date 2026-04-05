@@ -12,6 +12,9 @@ from watchtower_core.query.routes import RoutePreviewService
 def _run_route_preview(args: argparse.Namespace) -> int:
     service = RoutePreviewService(ControlPlaneLoader())
     result = service.preview(request_text=args.request, task_type=args.task_type)
+    assisted_module_suggestions = tuple(
+        getattr(result, "assisted_module_suggestions", ())
+    )
     payload = {
         "command": "watchtower-core route preview",
         "status": "ok",
@@ -41,6 +44,20 @@ def _run_route_preview(args: argparse.Namespace) -> int:
             }
             for workflow in result.selected_workflows
         ],
+        "assisted_module_suggestions": [
+            {
+                "workflow_id": suggestion.workflow_id,
+                "workflow_kind": suggestion.workflow_kind,
+                "title": suggestion.title,
+                "doc_path": suggestion.doc_path,
+                "phase_type": suggestion.phase_type,
+                "task_family": suggestion.task_family,
+                "score": suggestion.score,
+                "matched_signals": list(suggestion.matched_signals),
+                "suggested_load_paths": list(suggestion.suggested_load_paths),
+            }
+            for suggestion in assisted_module_suggestions
+        ],
         "warnings": list(result.warnings),
     }
 
@@ -51,6 +68,23 @@ def _run_route_preview(args: argparse.Namespace) -> int:
                 "Use --task-type for an explicit route or refine the request "
                 "using routing-table terms."
             )
+            if assisted_module_suggestions:
+                print("Advisory workflow suggestions:")
+                for suggestion in assisted_module_suggestions:
+                    matched = (
+                        ", ".join(suggestion.matched_signals)
+                        if suggestion.matched_signals
+                        else "heuristic"
+                    )
+                    load_paths = ", ".join(suggestion.suggested_load_paths)
+                    print(
+                        f"- {suggestion.workflow_id} "
+                        f"[{suggestion.workflow_kind}, {suggestion.phase_type}, "
+                        f"{suggestion.task_family}] score={suggestion.score} "
+                        f"matched={matched} load={load_paths}"
+                    )
+            for warning in result.warnings:
+                print(f"Warning: {warning}")
             return
 
         print("Selected routes:")

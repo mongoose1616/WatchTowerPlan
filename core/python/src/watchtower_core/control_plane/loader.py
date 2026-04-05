@@ -45,6 +45,8 @@ from watchtower_core.control_plane.loader_constants import (
     RENDERED_SURFACE_REGISTRY_PATH,
     REPOSITORY_PATH_INDEX_PATH,
     ROUTE_INDEX_PATH,
+    ROUTE_MERGE_POLICY_REGISTRY_PATH,
+    ROUTE_OVERLAY_REGISTRY_PATH,
     STANDARD_INDEX_PATH,
     STATUS_REGISTRY_PATH,
     TRACEABILITY_INDEX_PATH,
@@ -190,6 +192,12 @@ from watchtower_core.control_plane.loader_surfaces import (
     load_route_index as _load_route_index_method,
 )
 from watchtower_core.control_plane.loader_surfaces import (
+    load_route_merge_policy_registry as _load_route_merge_policy_registry_method,
+)
+from watchtower_core.control_plane.loader_surfaces import (
+    load_route_overlay_registry as _load_route_overlay_registry_method,
+)
+from watchtower_core.control_plane.loader_surfaces import (
     load_schema_catalog as _load_schema_catalog_method,
 )
 from watchtower_core.control_plane.loader_surfaces import (
@@ -272,6 +280,8 @@ __all__ = [
     "REFERENCE_INDEX_PATH",
     "RENDERED_SURFACE_REGISTRY_PATH",
     "REPOSITORY_PATH_INDEX_PATH",
+    "ROUTE_MERGE_POLICY_REGISTRY_PATH",
+    "ROUTE_OVERLAY_REGISTRY_PATH",
     "ROUTE_INDEX_PATH",
     "STANDARD_INDEX_PATH",
     "STATUS_REGISTRY_PATH",
@@ -387,6 +397,8 @@ class ControlPlaneLoader:
     load_authority_map = _load_authority_map_method
     load_rendered_surface_registry = _load_rendered_surface_registry_method
     load_workflow_metadata_registry = _load_workflow_metadata_registry_method
+    load_route_overlay_registry = _load_route_overlay_registry_method
+    load_route_merge_policy_registry = _load_route_merge_policy_registry_method
     load_documentation_family_registry = _load_documentation_family_registry_method
     load_template_catalog = _load_template_catalog_method
     load_artifact_family_registry = _load_artifact_family_registry_method

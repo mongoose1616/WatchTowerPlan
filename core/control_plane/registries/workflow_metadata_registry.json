@@ -42,9 +42,29 @@
       ]
     },
     {
+      "workflow_id": "workflow.adversarial_lens",
+      "phase_type": "review",
+      "task_family": "adversarial_lens",
+      "primary_risks": [
+        "false_confidence",
+        "overlay_drift"
+      ],
+      "extra_trigger_tags": [
+        "adversarial",
+        "contradiction",
+        "false_green",
+        "challenge"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.review_remediation",
+        "workflow.review_remediation_loop"
+      ]
+    },
+    {
       "workflow_id": "workflow.adversarial_reviewer",
       "phase_type": "review",
-      "task_family": "repository_review",
+      "task_family": "adversarial_lens",
       "primary_risks": [
         "false_confidence",
         "hidden_contradiction"
@@ -56,9 +76,19 @@
         "challenge"
       ],
       "companion_workflow_ids": [
+        "workflow.code_implementation",
+        "workflow.code_review",
+        "workflow.documentation_review",
+        "workflow.performance_benchmarking",
         "workflow.repository_inventory_review",
         "workflow.repository_assessment",
         "workflow.repository_review",
+        "workflow.review_remediation",
+        "workflow.review_remediation_loop",
+        "workflow.standards_alignment_review",
+        "workflow.test_suite_optimization",
+        "workflow.validation_harness_review",
+        "workflow.workflow_system_review",
         "workflow.code_validation",
         "workflow.task_handoff_review"
       ]

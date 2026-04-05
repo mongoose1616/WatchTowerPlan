@@ -1,0 +1,156 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1",
+  "id": "registry.route_overlays",
+  "title": "Route Overlay Registry",
+  "status": "active",
+  "entries": [
+    {
+      "overlay_id": "route.overlay_adversarial_lens",
+      "entry_status": "active",
+      "title": "Adversarial Lens Overlay",
+      "trigger_terms": [
+        "adversarial",
+        "contradiction-oriented",
+        "false-green",
+        "full-spectrum"
+      ],
+      "trigger_mode": "modifier_before_anchor",
+      "anchor_terms": [
+        "audit",
+        "benchmark",
+        "clean",
+        "cleanup",
+        "findings",
+        "fix",
+        "loop",
+        "optimization",
+        "optimize",
+        "refactor",
+        "remediate",
+        "remediation",
+        "rerun",
+        "review",
+        "test",
+        "tests",
+        "telemetry"
+      ],
+      "compatible_task_types": [
+        "Code Review",
+        "Documentation Review",
+        "Workflow System Review",
+        "Standards Alignment Review",
+        "Validation Harness Review",
+        "Performance Benchmarking",
+        "Code Implementation",
+        "Test Suite Optimization",
+        "Review Remediation",
+        "Review Remediation Loop",
+        "Repository Review"
+      ],
+      "attached_workflow_ids": [
+        "workflow.adversarial_reviewer"
+      ],
+      "notes": "Applies the contradiction-oriented role overlay to compatible review, remediation, benchmarking, and implementation routes without forcing the dedicated repository-audit permutation."
+    },
+    {
+      "overlay_id": "route.overlay_commit_closeout_intent",
+      "entry_status": "active",
+      "title": "Commit Closeout Intent Overlay",
+      "trigger_terms": [
+        "git commit",
+        "create commit",
+        "group commit",
+        "grouped commit",
+        "atomic commit",
+        "commit pass",
+        "commit changes",
+        "commit updates",
+        "finalize commit",
+        "commit",
+        "commits",
+        "commit closeout",
+        "close out change set"
+      ],
+      "trigger_mode": "anywhere",
+      "attached_route_task_types": [
+        "Commit Closeout"
+      ],
+      "retain_dominant_compatible_route": true,
+      "minimum_route_score": 12,
+      "notes": "Treats explicit commit intent as a retained closeout companion instead of allowing it to displace the dominant substantive route."
+    },
+    {
+      "overlay_id": "route.overlay_review_remediation_intent",
+      "entry_status": "active",
+      "title": "Review Remediation Intent Overlay",
+      "trigger_terms": [
+        "review and fix",
+        "audit and fix",
+        "review and remediate",
+        "audit and remediate",
+        "fix findings",
+        "fix review findings",
+        "fix audit findings",
+        "address review findings",
+        "remediate findings"
+      ],
+      "trigger_mode": "anywhere",
+      "compatible_task_types": [
+        "Code Review",
+        "Documentation Review",
+        "Workflow System Review",
+        "Standards Alignment Review",
+        "Validation Harness Review",
+        "Performance Benchmarking",
+        "Repository Review",
+        "Adversarial Repository Review"
+      ],
+      "attached_route_task_types": [
+        "Review Remediation"
+      ],
+      "retain_dominant_compatible_route": true,
+      "minimum_route_score": 12,
+      "notes": "Keeps single-pass findings remediation paired with the strongest compatible review, benchmark, or repository-audit route instead of collapsing the request to one side only."
+    },
+    {
+      "overlay_id": "route.overlay_review_remediation_loop_intent",
+      "entry_status": "active",
+      "title": "Review Remediation Loop Intent Overlay",
+      "trigger_terms": [
+        "fix loop",
+        "review fix loop",
+        "review and fix loop",
+        "audit and fix loop",
+        "remediation loop",
+        "review remediation loop",
+        "audit remediation loop",
+        "fix the findings",
+        "rerun the same review",
+        "keep fixing until clean",
+        "iterate review and fix",
+        "findings fix loop",
+        "remediate and rerun",
+        "remediation and rerun",
+        "until clean"
+      ],
+      "trigger_mode": "anywhere",
+      "compatible_task_types": [
+        "Code Review",
+        "Documentation Review",
+        "Workflow System Review",
+        "Standards Alignment Review",
+        "Validation Harness Review",
+        "Performance Benchmarking",
+        "Repository Review",
+        "Adversarial Repository Review"
+      ],
+      "attached_route_task_types": [
+        "Review Remediation Loop"
+      ],
+      "retain_dominant_compatible_route": true,
+      "minimum_route_score": 12,
+      "notes": "Keeps looped remediation paired with the strongest compatible review, benchmark, or repository-audit route so rerun-until-clean requests preserve the originating scope."
+    }
+  ],
+  "notes": "Route overlays add compatible role workflows or companion routes without hardwiring every routed permutation into the routing table or route-preview implementation."
+}

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from watchtower_core.routing.engine import (
+    AssistedWorkflowSuggestion,
     RoutePreviewMatch,
     RoutePreviewResult,
     RoutingEngine,
@@ -11,6 +12,7 @@ from watchtower_core.routing.engine import (
 from watchtower_core.utils.module_exports import fail_closed_package_getattr
 
 __all__ = [
+    "AssistedWorkflowSuggestion",
     "RoutePreviewMatch",
     "RoutePreviewResult",
     "RoutingEngine",

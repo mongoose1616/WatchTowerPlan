@@ -47,3 +47,32 @@ def test_workflow_catalog_helper_fails_closed_on_unknown_workflows() -> None:
 
     with pytest.raises(KeyError):
         helper.metadata("workflow.missing")
+
+
+def test_workflow_catalog_helper_tracks_adversarial_overlay_pairings() -> None:
+    helper = _helper()
+
+    snapshot = helper.snapshot("workflow.adversarial_reviewer")
+
+    assert snapshot.metadata.task_family == "adversarial_lens"
+    assert {
+        entry.workflow_id for entry in snapshot.companion_workflows
+    } >= {
+        "workflow.code_implementation",
+        "workflow.code_review",
+        "workflow.documentation_review",
+        "workflow.performance_benchmarking",
+        "workflow.repository_review",
+        "workflow.review_remediation",
+        "workflow.review_remediation_loop",
+    }
+    assert {
+        entry.workflow_id for entry in snapshot.compatible_workflows
+    } >= {
+        "workflow.code_implementation",
+        "workflow.code_review",
+        "workflow.documentation_review",
+        "workflow.performance_benchmarking",
+        "workflow.repository_review",
+        "workflow.review_remediation_loop",
+    }

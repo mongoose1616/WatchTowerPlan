@@ -186,6 +186,34 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1",
+      "title": "Route Overlay Registry",
+      "description": "Schema for authored route-overlay registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "route_overlay_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/route_overlay_registry.schema.json",
+      "aliases": [
+        "route overlay registry schema",
+        "routing overlay registry schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:route-merge-policy-registry:v1",
+      "title": "Route Merge Policy Registry",
+      "description": "Schema for authored route-merge policy registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "route_merge_policy_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/route_merge_policy_registry.schema.json",
+      "aliases": [
+        "route merge policy schema",
+        "routing merge policy registry schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:standard-index:v1",
       "title": "Standard Index",
       "description": "Schema for machine-readable standard index artifacts.",
