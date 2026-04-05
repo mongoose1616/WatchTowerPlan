@@ -10,6 +10,12 @@ from watchtower_core.cli.common import (
     add_human_json_format_argument,
     examples,
 )
+from watchtower_core.cli.namespace_helpers import (
+    selected_subcommand as filter_subcommand,
+)
+from watchtower_core.cli.namespace_helpers import (
+    should_register_command,
+)
 
 IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/namespace.py"
 SUBCOMMAND_IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/handlers.py"
@@ -44,19 +50,6 @@ def _run_plan_approve(args: argparse.Namespace) -> int:
     return _delegate(args)
 
 
-def _selected_plan_subcommand(selected_subcommand: str | None) -> str | None:
-    if selected_subcommand in _PLAN_SUBCOMMANDS:
-        return selected_subcommand
-    return None
-
-
-def _should_register_plan_command(
-    selected_subcommand: str | None,
-    command_name: str,
-) -> bool:
-    return selected_subcommand is None or selected_subcommand == command_name
-
-
 def register_plan_namespace(
     subparsers: argparse._SubParsersAction,
     *,
@@ -66,7 +59,7 @@ def register_plan_namespace(
 
     from watchtower_core.cli.handler_common import _run_help
     from watchtower_plan.tasks import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
-    active_subcommand = _selected_plan_subcommand(selected_subcommand)
+    active_subcommand = filter_subcommand(selected_subcommand, _PLAN_SUBCOMMANDS)
 
     plan_parser = subparsers.add_parser(
         "plan",
@@ -99,16 +92,16 @@ def register_plan_namespace(
     )
     plan_parser.set_defaults(handler=_run_help, help_parser=plan_parser)
 
-    if _should_register_plan_command(active_subcommand, "query"):
+    if should_register_command(active_subcommand, "query"):
         from watchtower_plan.cli.query import register_plan_query_commands
 
         register_plan_query_commands(plan_subparsers)
-    if _should_register_plan_command(active_subcommand, "sync"):
+    if should_register_command(active_subcommand, "sync"):
         from watchtower_plan.cli.sync import register_plan_sync_commands
 
         register_plan_sync_commands(plan_subparsers)
 
-    if _should_register_plan_command(active_subcommand, "bootstrap"):
+    if should_register_command(active_subcommand, "bootstrap"):
         bootstrap_parser = plan_subparsers.add_parser(
             "bootstrap",
             help="Bootstrap one live initiative package and its initial bootstrap task.",
@@ -172,7 +165,10 @@ def register_plan_namespace(
         )
         bootstrap_parser.add_argument(
             "--task-id",
-            help="Optional explicit bootstrap task ID. Defaults to task.<trace_suffix>.bootstrap.001.",
+            help=(
+                "Optional explicit bootstrap task ID. Defaults to "
+                "task.<trace_suffix>.bootstrap.001."
+            ),
         )
         bootstrap_parser.add_argument(
             "--task-owner",
@@ -202,7 +198,7 @@ def register_plan_namespace(
         add_human_json_format_argument(bootstrap_parser)
         bootstrap_parser.set_defaults(handler=_run_plan_bootstrap)
 
-    if _should_register_plan_command(active_subcommand, "confirm-inputs"):
+    if should_register_command(active_subcommand, "confirm-inputs"):
         confirm_inputs_parser = plan_subparsers.add_parser(
             "confirm-inputs",
             help="Confirm authored initiative inputs into machine state.",
@@ -245,7 +241,7 @@ def register_plan_namespace(
         add_human_json_format_argument(confirm_inputs_parser)
         confirm_inputs_parser.set_defaults(handler=_run_plan_confirm_inputs)
 
-    if _should_register_plan_command(active_subcommand, "approve"):
+    if should_register_command(active_subcommand, "approve"):
         approve_parser = plan_subparsers.add_parser(
             "approve",
             help="Approve one live initiative package for execution.",
@@ -286,11 +282,11 @@ def register_plan_namespace(
         add_human_json_format_argument(approve_parser)
         approve_parser.set_defaults(handler=_run_plan_approve)
 
-    if _should_register_plan_command(active_subcommand, "closeout"):
+    if should_register_command(active_subcommand, "closeout"):
         from watchtower_plan.cli.closeout import register_plan_closeout_commands
 
         register_plan_closeout_commands(plan_subparsers)
-    if _should_register_plan_command(active_subcommand, "task"):
+    if should_register_command(active_subcommand, "task"):
         from watchtower_plan.cli.tasks import register_plan_task_commands
 
         register_plan_task_commands(plan_subparsers)

@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-import shutil
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.export.cleanup_helpers import clear_directory_contents, remove_if_exists
 from watchtower_core.pack_integration import (
     PackExportCleanupRequest,
     PackExportCleanupResult,
@@ -69,13 +69,15 @@ def scrub_plan_export(request: PackExportCleanupRequest) -> PackExportCleanupRes
     for relative_root in roots_to_scrub:
         if not relative_root:
             continue
-        scrubbed_paths.update(_clear_directory_contents(output_root, relative_root))
+        scrubbed_paths.update(clear_directory_contents(output_root, relative_root))
 
-    scrubbed_paths.update(_remove_if_exists(output_root, request.overview_path))
+    scrubbed_paths.update(remove_if_exists(output_root, request.overview_path))
 
     indexes_root = output_root / request.machine_root / "indexes"
     if request.export_scope != _REPOSITORY_EXPORT_SCOPE and indexes_root.exists():
-        scrubbed_paths.update(_clear_directory_contents(output_root, f"{request.machine_root}/indexes"))
+        scrubbed_paths.update(
+            clear_directory_contents(output_root, f"{request.machine_root}/indexes")
+        )
 
     if request.export_scope != _REPOSITORY_EXPORT_SCOPE:
         return PackExportCleanupResult(
@@ -99,30 +101,6 @@ def scrub_plan_export(request: PackExportCleanupRequest) -> PackExportCleanupRes
         changed_paths=tuple(sorted(changed_paths)),
     )
 
-
-def _clear_directory_contents(output_root: Path, relative_root: str) -> tuple[str, ...]:
-    root = output_root / relative_root
-    if not root.exists() or not root.is_dir():
-        return ()
-
-    scrubbed_paths: list[str] = []
-    for candidate in sorted(root.iterdir()):
-        if candidate.is_dir():
-            shutil.rmtree(candidate)
-        else:
-            candidate.unlink()
-        scrubbed_paths.append(candidate.relative_to(output_root).as_posix())
-    return tuple(scrubbed_paths)
-
-
-def _remove_if_exists(output_root: Path, relative_path: str) -> tuple[str, ...]:
-    candidate = output_root / relative_path
-    if not candidate.exists():
-        return ()
-    if candidate.is_dir():
-        return _clear_directory_contents(output_root, relative_path)
-    candidate.unlink()
-    return (candidate.relative_to(output_root).as_posix(),)
 
 
 __all__ = ["scrub_plan_export"]

@@ -10,25 +10,10 @@ from watchtower_core.sync.foundation_index import (
     FOUNDATION_INDEX_ARTIFACT_PATH,
     FoundationIndexSyncService,
 )
+from watchtower_core.sync.harness import SyncTargetMode, SyncTargetSpec
 from watchtower_core.sync.reference_index import (
     REFERENCE_INDEX_ARTIFACT_PATH,
     ReferenceIndexSyncService,
-)
-from watchtower_plan.sync.coordination_index import (
-    COORDINATION_INDEX_ARTIFACT_PATH,
-    CoordinationIndexSyncService,
-)
-from watchtower_plan.sync.coordination_tracking import (
-    COORDINATION_TRACKING_DOCUMENT_PATH,
-    CoordinationTrackingSyncService,
-)
-from watchtower_plan.sync.initiative_index import (
-    INITIATIVE_INDEX_ARTIFACT_PATH,
-    InitiativeIndexSyncService,
-)
-from watchtower_plan.sync.initiative_tracking import (
-    INITIATIVE_TRACKING_DOCUMENT_PATH,
-    InitiativeTrackingSyncService,
 )
 from watchtower_core.sync.repository_paths import (
     REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
@@ -46,6 +31,22 @@ from watchtower_core.sync.workflow_index import (
     WORKFLOW_INDEX_ARTIFACT_PATH,
     WorkflowIndexSyncService,
 )
+from watchtower_plan.sync.coordination_index import (
+    COORDINATION_INDEX_ARTIFACT_PATH,
+    CoordinationIndexSyncService,
+)
+from watchtower_plan.sync.coordination_tracking import (
+    COORDINATION_TRACKING_DOCUMENT_PATH,
+    CoordinationTrackingSyncService,
+)
+from watchtower_plan.sync.initiative_index import (
+    INITIATIVE_INDEX_ARTIFACT_PATH,
+    InitiativeIndexSyncService,
+)
+from watchtower_plan.sync.initiative_tracking import (
+    INITIATIVE_TRACKING_DOCUMENT_PATH,
+    InitiativeTrackingSyncService,
+)
 from watchtower_plan.sync.review_index import (
     REVIEW_INDEX_ARTIFACT_PATH,
     ReviewIndexSyncService,
@@ -62,7 +63,6 @@ from watchtower_plan.sync.traceability import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceabilityIndexSyncService,
 )
-from watchtower_core.sync.harness import SyncTargetMode, SyncTargetSpec
 
 SyncTargetGroup = Literal["coordination"]
 COORDINATION_SYNC_GROUP: SyncTargetGroup = "coordination"
@@ -197,7 +197,10 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
 
 def sync_target_specs_for_group(group: SyncTargetGroup) -> tuple[SyncTargetSpec, ...]:
     """Return sync targets that belong to one explicit orchestration group."""
-    return tuple(spec for spec in SYNC_TARGET_SPECS if group in spec.groups)
+
+    from watchtower_core.sync.harness import sync_target_specs_for_group as _filter
+
+    return _filter(group, SYNC_TARGET_SPECS)
 
 
 __all__ = [
