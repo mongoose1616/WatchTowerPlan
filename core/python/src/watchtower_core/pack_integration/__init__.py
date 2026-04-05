@@ -30,6 +30,10 @@ if TYPE_CHECKING:
         CorePythonWorkspaceRegistration,
         reconcile_core_python_workspace_pyproject,
     )
+    from watchtower_core.pack_integration.factory import (
+        PackIntegrationConfig,
+        PackValidationConfig,
+    )
     from watchtower_core.validation.models import ValidationIssue
     from watchtower_core.validation.suite import (
         DocumentSemanticsValidationService,
@@ -256,6 +260,18 @@ _EXPORTS: dict[str, tuple[str, str]] = {
         "watchtower_core.pack_integration.scaffold",
         "scaffold_hosted_pack",
     ),
+    "PackIntegrationConfig": (
+        "watchtower_core.pack_integration.factory",
+        "PackIntegrationConfig",
+    ),
+    "PackValidationConfig": (
+        "watchtower_core.pack_integration.factory",
+        "PackValidationConfig",
+    ),
+    "build_pack_integration": (
+        "watchtower_core.pack_integration.factory",
+        "build_pack_integration",
+    ),
 }
 
 
@@ -300,6 +316,9 @@ __all__ = [
     "reconcile_core_python_workspace_pyproject",
     "render_core_python_workspace_pyproject",
     "scaffold_hosted_pack",
+    "PackIntegrationConfig",
+    "PackValidationConfig",
+    "build_pack_integration",
 ]
 
 

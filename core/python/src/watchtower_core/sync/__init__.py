@@ -7,10 +7,17 @@ from watchtower_core.sync.harness import (
     SyncRecord,
     SyncResult,
     SyncTargetSpec,
+    sync_target_specs_for_group,
 )
 from watchtower_core.utils.module_exports import fail_closed_package_getattr
 
-__all__ = ["SyncHarness", "SyncRecord", "SyncResult", "SyncTargetSpec"]
+__all__ = [
+    "SyncHarness",
+    "SyncRecord",
+    "SyncResult",
+    "SyncTargetSpec",
+    "sync_target_specs_for_group",
+]
 
 __getattr__ = fail_closed_package_getattr(
     "watchtower_core.sync exports only the generic sync harness from the package root. "

@@ -1,8 +1,6 @@
-"""Shared helpers for focused control-plane artifact integration suites."""
+"""Reusable test infrastructure for watchtower_core and hosted-pack test suites."""
 
 from __future__ import annotations
-
-from pathlib import Path
 
 from watchtower_core.testing.fixtures import (
     FRONT_MATTER_PATTERN,
@@ -10,11 +8,8 @@ from watchtower_core.testing.fixtures import (
     load_json_object,
 )
 
-REPO_ROOT = Path(__file__).resolve().parents[4]
-
 __all__ = [
     "FRONT_MATTER_PATTERN",
-    "REPO_ROOT",
     "load_front_matter",
     "load_json_object",
 ]

@@ -40,6 +40,15 @@ class SyncTargetSpec:
     groups: tuple[str, ...] = ()
 
 
+def sync_target_specs_for_group(
+    group: str,
+    specs: tuple[SyncTargetSpec, ...],
+) -> tuple[SyncTargetSpec, ...]:
+    """Return specs whose *groups* tuple contains *group*."""
+
+    return tuple(spec for spec in specs if group in spec.groups)
+
+
 @dataclass(frozen=True, slots=True)
 class SyncRecord:
     """One sync target executed by a sync harness."""
