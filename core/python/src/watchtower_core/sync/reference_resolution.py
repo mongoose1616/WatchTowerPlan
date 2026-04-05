@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 
+from typing import cast
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.sync.cache import (
+    prepare_document_sync_cache,
+    validate_prepared_document_sync_cache,
+)
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 
 
@@ -26,5 +32,16 @@ def build_reference_urls_by_path(
 ) -> dict[str, tuple[str, ...]]:
     """Build a fresh reference-resolution map from the governed reference corpus."""
 
-    reference_document = ReferenceIndexSyncService(loader).build_document()
+    service = ReferenceIndexSyncService(loader)
+    prepared_cache = prepare_document_sync_cache(
+        loader,
+        service,
+        relative_output_path=service.OUTPUT_PATH,
+    )
+    validated_cache = validate_prepared_document_sync_cache(loader, prepared_cache)
+    if validated_cache is None:
+        raise RuntimeError("Reference-index cache preparation unexpectedly returned no state.")
+    reference_document = (
+        cast(dict[str, object], validated_cache.document) or service.build_document()
+    )
     return reference_urls_by_path_from_index_document(reference_document)

@@ -14,6 +14,7 @@ from watchtower_core.documentation.markdown_semantics import (
 from watchtower_core.sync.cache import (
     finalize_document_sync_cache,
     prepare_document_sync_cache,
+    validate_prepared_document_sync_cache,
 )
 from watchtower_core.sync.foundation_index import FoundationIndexSyncService
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
@@ -201,11 +202,17 @@ class CoreDocumentSemanticsValidationService:
             service,
             relative_output_path=relative_output_path,
         )
+        validated_cache = validate_prepared_document_sync_cache(
+            self._loader,
+            prepared_cache,
+        )
+        if validated_cache is None:
+            raise RuntimeError("Document-sync cache preparation unexpectedly returned no state.")
         document = (
-            prepared_cache.document if prepared_cache.document is not None else None
+            validated_cache.document if validated_cache.document is not None else None
         ) or service.build_document()
         self._loader.schema_store.validate_instance(document)
-        finalize_document_sync_cache(prepared_cache, document=document)
+        finalize_document_sync_cache(validated_cache, document=document)
         return document
 
     @staticmethod
