@@ -54,6 +54,7 @@
 - `./tools/setup_dev_env.sh` is the one-command bootstrap and repair path for humans and agents. It runs the standard workspace bootstrap flow and a `watchtower-core doctor` smoke check when the required tooling is available.
 - `./.venv/bin/python` is useful after the workspace has already been synced, but it does not replace `uv sync` when the shared workspace metadata changes.
 - Agent and automation rule: use the documented workspace entrypoint directly. Prefer `uv run ...`; when a direct interpreter or tool binary is required after the workspace has already been synced, use `./.venv/bin/python` or `./.venv/bin/<tool>` from `core/python/`.
+- Repo-bound CLI commands now fail closed on workspace discovery. Run `watchtower-core` from inside the target repository worktree, normally `core/python/`, instead of relying on an installed package checkout to guess the repo root.
 - Do not probe `python`, `python3`, `pip`, or bare tool names first, and do not treat their absence as an actionable issue once the documented workspace entrypoint is available.
 - In any repository, the shared workspace metadata may include one or more hosted packs. In a downstream repository that copies `core/`, the hosted-pack dependencies and local `tool.uv.sources` entries are repo-local configuration and should be updated to match the copied pack set instead of inheriting the donor repo's package list.
 - Keep the test split explicit: `core/python/tests/` is the shared pack-neutral suite, while pack-owned tests live under the owning pack root such as `<pack-root>/python/tests/`.

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 
 from tests.cli_command_helpers import run_json_command
@@ -100,6 +102,23 @@ def test_pack_describe_reports_import_error_type_in_json_payload(
     assert payload["command"] == "watchtower-core pack describe"
     assert payload["integration"]["importable"] is False
     assert payload["integration"]["error"] == "ModuleNotFoundError: missing pack runtime"
+
+
+def test_doctor_outside_repo_fails_closed_instead_of_using_package_checkout(
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    outside_directory = tmp_path / "outside_repo"
+    outside_directory.mkdir()
+    monkeypatch.chdir(outside_directory)
+
+    result, payload = run_json_command(capsys, ["doctor"])
+
+    assert result == 1
+    assert payload["command"] == "watchtower-core doctor"
+    assert payload["status"] == "error"
+    assert "Could not discover the repository root" in payload["message"]
 
 
 def test_specialized_selected_subcommand_registrar_passes_requested_subcommand() -> None:

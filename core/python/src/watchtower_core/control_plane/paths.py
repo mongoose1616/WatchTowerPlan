@@ -17,13 +17,26 @@ def _find_repo_root(candidate: Path) -> Path | None:
     return None
 
 
-def discover_repo_root(start: Path | None = None) -> Path:
-    """Discover the repository root from a starting path."""
-    candidates = (
-        (start.resolve(),)
-        if start is not None
-        else (Path.cwd().resolve(), Path(__file__).resolve())
-    )
+def discover_repo_root(
+    start: Path | None = None,
+    *,
+    allow_package_checkout_fallback: bool = False,
+) -> Path:
+    """Discover the repository root from a starting path.
+
+    By default the discovery must succeed from the caller's current worktree.
+    The package-checkout fallback is opt-in because it can silently bind a
+    long-lived process to the wrong repository checkout.
+    """
+    candidates: tuple[Path, ...]
+    if start is not None:
+        candidates = (start.resolve(),)
+    else:
+        candidates = (
+            (Path.cwd().resolve(), Path(__file__).resolve())
+            if allow_package_checkout_fallback
+            else (Path.cwd().resolve(),)
+        )
     for candidate in candidates:
         repo_root = _find_repo_root(candidate)
         if repo_root is not None:

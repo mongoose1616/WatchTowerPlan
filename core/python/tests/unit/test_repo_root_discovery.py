@@ -31,7 +31,19 @@ def test_discover_repo_root_falls_back_to_package_checkout(
     outside_directory.mkdir(parents=True)
     monkeypatch.chdir(outside_directory)
 
-    assert discover_repo_root() == REPO_ROOT
+    with pytest.raises(RepoRootNotFoundError):
+        discover_repo_root()
+
+
+def test_discover_repo_root_can_explicitly_fall_back_to_package_checkout(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    outside_directory = tmp_path / "outside"
+    outside_directory.mkdir(parents=True)
+    monkeypatch.chdir(outside_directory)
+
+    assert discover_repo_root(allow_package_checkout_fallback=True) == REPO_ROOT
 
 
 def test_discover_repo_root_rejects_explicit_non_repo_start(tmp_path: Path) -> None:

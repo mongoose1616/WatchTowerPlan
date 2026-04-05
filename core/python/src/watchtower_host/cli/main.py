@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import json
 import sys
 from collections.abc import Sequence
 
+from watchtower_core.control_plane.errors import RepoRootNotFoundError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.telemetry import create_telemetry_session
 from watchtower_host.cli.parser import build_parser
@@ -19,7 +21,10 @@ from watchtower_host.cli.registry import (
 def main(argv: Sequence[str] | None = None) -> int:
     """Run the CLI."""
     active_argv = list(argv) if argv is not None else sys.argv[1:]
-    loader = ControlPlaneLoader()
+    try:
+        loader = ControlPlaneLoader()
+    except RepoRootNotFoundError as exc:
+        return _emit_startup_repo_root_error(active_argv, str(exc))
     telemetry = create_telemetry_session(loader, active_argv)
     with telemetry.activate():
         try:
@@ -103,6 +108,37 @@ def _selected_core_command_group_spec(command_name: str) -> CommandGroupSpec | N
         if spec.name == command_name:
             return spec
     return None
+
+
+def _emit_startup_repo_root_error(argv: Sequence[str], message: str) -> int:
+    payload = {
+        "command": _startup_command_name(argv),
+        "status": "error",
+        "message": message,
+    }
+    if _requested_output_format(argv) == "json":
+        print(json.dumps(payload, sort_keys=True))
+        return 1
+    print(f"Workspace error: {message}")
+    return 1
+
+
+def _requested_output_format(argv: Sequence[str]) -> str:
+    for index, token in enumerate(argv):
+        if token == "--format" and index + 1 < len(argv):
+            return argv[index + 1]
+    return "human"
+
+
+def _startup_command_name(argv: Sequence[str]) -> str:
+    command_tokens = ["watchtower-core"]
+    for token in argv:
+        if token.startswith("-"):
+            break
+        command_tokens.append(token)
+        if len(command_tokens) == 3:
+            break
+    return " ".join(command_tokens)
 
 
 def _command_status(result: int, operation: object) -> str:
