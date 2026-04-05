@@ -73,7 +73,7 @@ Core standards define how shared machine-facing surfaces behave. If these rules 
 Future domain-pack standards should keep packs expressive for their domain without letting them drift away from the shared control model.
 
 - Keep packs portable and primarily declarative.
-- Keep the current internal pack on the same manifest-governed, pack-contract-validated path that later external packs must use.
+- Keep downstream hosted packs on the same manifest-governed, pack-contract-validated path that later external packs must use.
 - Maintain a clear boundary between user-editable surfaces and managed pack state.
 - Do not allow pack-local hidden state to become the operator-authored source of truth.
 - Require pack workflows, templates, knowledge assets, and tool guidance to follow shared structural contracts.

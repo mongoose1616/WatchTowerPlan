@@ -83,7 +83,7 @@
       "path": "core/",
       "kind": "directory",
       "surface_kind": "core_surface",
-      "summary": "Holds shared implementation assets and the authored control-plane tree.",
+      "summary": "Holds the local synchronized shared implementation assets and control-plane tree sourced from `WatchTowerCore/`.",
       "parent_path": ".",
       "maturity": "supporting",
       "priority": "medium",
@@ -592,16 +592,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/records/benchmarks/benchmark_core_cli_representative_v1_20260329_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Baseline retained benchmark record for the governed reusable-core CLI representative suite captured on `2026-03-30T18:32:25Z`.",
-      "parent_path": "core/control_plane/records/benchmarks/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/records/migrations/",
       "kind": "directory",
       "surface_kind": "control_plane_records",
@@ -622,146 +612,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/records/migrations/core_python_workspace_bootstrap.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the transition from a reserved Python scaffold to an active governed local workspace.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_artifact_role_registry_pilot.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the first bounded Phase 2 slice that publishes the additive artifact-role registry pilot.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the completed first bounded Phase 3 slice that reconciles command companion source surfaces and publishes the sync-time drift guard.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the Phase 3 entry outcome that approves the first bounded command companion source-surface normalization slice.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the closed first Phase 4 slice outcome review that opens the bounded closeout-coordination entry checkpoint.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the completed bounded Phase 4 closeout coordination sync-reuse slice.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the approved closeout-coordination entry review that opens the bounded post-traceability coordination-sync reuse slice.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the closed closeout coordination sync-reuse outcome review that opens the bounded closeout-tracking entry checkpoint.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the completed bounded Phase 4 closeout-tracking refresh-boundary slice.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the approved closeout-tracking entry review that opens the bounded private closeout-local tracker refresh boundary slice.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_planning_projection_snapshot.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the completed first bounded Phase 4 planning projection snapshot slice.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the approved Phase 4 entry review that opens the first bounded planning projection snapshot slice.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_shared_projection_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for the closed Phase 3 outcome review that opens the bounded Phase 4 shared-projection entry checkpoint.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/migrations/structural_rewrite_program_phase0_phase1_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Migration record for moving the structural rewrite from external prose into a traced Phase 0 and Phase 1 package with the Phase 2 review gate prepared.",
-      "parent_path": "core/control_plane/records/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/records/releases/",
       "kind": "directory",
       "surface_kind": "control_plane_records",
@@ -776,16 +626,6 @@
       "kind": "file",
       "surface_kind": "control_plane_record",
       "summary": "Describes the purpose of the release record directory and its current contents.",
-      "parent_path": "core/control_plane/records/releases/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/records/releases/core_python_foundation_release.json",
-      "kind": "file",
-      "surface_kind": "control_plane_record",
-      "summary": "Release record for the first governed core Python foundation release baseline.",
       "parent_path": "core/control_plane/records/releases/",
       "maturity": "supporting",
       "priority": "medium",

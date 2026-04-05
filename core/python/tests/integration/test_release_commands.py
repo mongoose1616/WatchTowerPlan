@@ -99,6 +99,38 @@ def test_release_check_blocks_dirty_git_worktree_without_allow_dirty(
     assert payload["export"] is None
 
 
+def test_release_check_rejects_invalid_explicit_pack_settings_path(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
+    output_root = tmp_path / "invalid_release"
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "release",
+            "check",
+            "--output-root",
+            str(output_root),
+            "--pack-settings-path",
+            "does/not/exist.json",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core release check"
+    assert payload["status"] == "error"
+    assert "does/not/exist.json" in payload["message"]
+
+
 def test_release_check_recipient_bootstrap_smoke_flow(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

@@ -23,7 +23,7 @@
 - Keep each document focused on one durable plan-domain guidance concern.
 - Keep promoted guidance self-contained and readable without turning it into a live tracker or execution log.
 - Use as many sections, bullets, tables, examples, and explanatory notes as the source material requires to remove ambiguity. Do not target fixed counts or compress distinct guidance items for symmetry.
-- Keep plan-owned foundations under `plan/docs/foundations/**` seeded from `core/docs/foundations/**` and refresh plan-specific wording in the same change when the authored source changes materially.
+- Keep plan-owned foundations under `plan/docs/foundations/**` seeded from the synchronized local shared copy in `core/docs/foundations/**` and refresh plan-specific wording in the same change when the upstream shared source changes materially.
 
 ## Do
 - Keep durable plan guidance scoped, current, and easy to scan.

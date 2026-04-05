@@ -23,10 +23,10 @@
 - Do not turn this file into a second routing table.
 
 ## Repository Map
-- `core/` is the shared implementation and authored machine-governed asset root.
-- `core/control_plane/` is the canonical authored machine-readable authority for schemas, registries, contracts, policies, examples, indexes, and retained records.
-- `core/docs/` is the shared and core-owned durable documentation root, including the authored foundations source under `core/docs/foundations/`.
-- `core/python/` is the canonical shared Python workspace for reusable package code, tests, tooling, and the local virtual environment.
+- `core/` is the local shared implementation workspace, synchronized from the upstream shared-core repository at `WatchTowerCore/core/`.
+- `core/control_plane/` is the local versioned copy of shared machine-readable authority, synchronized from `WatchTowerCore/core/control_plane/`.
+- `core/docs/` is the shared and core-owned durable documentation root in this repository, including the local synchronized shared foundations copy under `core/docs/foundations/`.
+- `core/python/` is the local shared Python workspace for reusable package code, tests, tooling, and the local virtual environment, synchronized from `WatchTowerCore/core/python/`.
 - `plan/` is the live plan-domain workspace.
 - `plan/.wt/` is the machine-state root for the live plan pack. Keep it machine-only.
 - `plan/docs/` is the durable plan-domain documentation root plus the required plan-owned foundations copy seeded from `core/docs/foundations/`.
@@ -34,7 +34,7 @@
 - `plan/tracking/` and `plan/plan_overview.md` are derived human planning surfaces, not manual authority.
 
 ## Local Rules
-- Treat the authored foundations under [core/docs/foundations/](/core/docs/foundations/), repository-wide standards under [core/docs/standards/](/core/docs/standards/), plan-domain standards under [plan/docs/standards/](/plan/docs/standards/), and authored machine-readable authority under [core/control_plane](/core/control_plane/README.md) plus `plan/.wt/**` as the current repository contract.
+- Treat the synchronized shared foundations under [core/docs/foundations/](/core/docs/foundations/), repository-wide standards under [core/docs/standards/](/core/docs/standards/), plan-domain standards under [plan/docs/standards/](/plan/docs/standards/), and the synchronized shared machine-readable authority under [core/control_plane](/core/control_plane/README.md) plus `plan/.wt/**` as the current repository contract.
 - When guidance disagrees, prefer this precedence order: current machine-readable authority for deterministic state and rules, then current foundations and standards, then supporting references and helper docs.
 - When the main question is which surface is canonical, use `watchtower-core query authority` first, then the narrow index-backed query command for the resolved family, then the exact canonical doc or registry, and only then raw repo search such as `rg` when no governed lookup surface exists or when verifying unindexed implementation detail.
 - Before drafting or materially restructuring a governed document, use `watchtower-core query templates` plus the relevant family standard or catalog entry instead of inventing document shape from scratch.
@@ -46,10 +46,11 @@
 - If work is happening under [plan](/plan), also apply [plan/AGENTS.md](/plan/AGENTS.md).
 - If work is happening under [core/python](/core/python), also apply [core/python/AGENTS.md](/core/python/AGENTS.md).
 - Use the nearest applicable [README.md](/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
-- Keep durable documentation only in `core/docs/` and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as the required plan-owned copied/adapted foundations view seeded from it.
+- Keep durable documentation only in `core/docs/` and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the local synchronized shared foundations copy sourced from `WatchTowerCore/core/docs/foundations/`, and `plan/docs/foundations/` as the required plan-owned copied/adapted foundations view seeded from that local copy.
 - Treat `plan/**` as the only live planning workspace. The old docs-backed planning corpus has been purged; do not recreate separate purge-history ledgers for removed traces.
-- Treat [core/control_plane](/core/control_plane/README.md) as the authored, versioned machine-readable authority. Treat `plan/.wt/**` as live machine state for the plan pack. Do not blur those roles.
+- Treat [core/control_plane](/core/control_plane/README.md) as the local, versioned shared machine-readable authority copy sourced from `WatchTowerCore/core/control_plane/`. Treat `plan/.wt/**` as live machine state for the plan pack. Do not blur those roles.
 - Treat `core/python/` as the canonical shared Python tooling, test, and local virtual-environment workspace. Use `plan/python/**` only for plan-specific code that should not live in reusable core.
+- If a task would modify shared `core/**`, land that change upstream in `WatchTowerCore/core/**` first and then sync it back into this repository instead of treating the local `core/` copy as the first landing zone.
 - Treat `watchtower-core pack export` as the canonical customer-release and customer-bootstrap handoff path. Do not treat a raw worktree or a manually cleaned working repository as a shippable artifact.
 - Keep human-readable and machine-readable companion surfaces aligned in the same change set when one depends on the other. Examples include planning docs plus tracking indexes, command docs plus command indexes, and schema changes plus examples, schema catalog, validator registry entries, and tests.
 - Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.

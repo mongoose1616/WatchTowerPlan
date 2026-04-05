@@ -544,6 +544,60 @@ def test_validate_acceptance_supports_json_output(capsys) -> None:
     assert payload["validator_id"] == "validator.trace.acceptance_reconciliation"
 
 
+def test_validate_front_matter_rejects_invalid_explicit_pack_settings_path(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    monkeypatch.chdir(REPO_ROOT / "core" / "python")
+
+    result = main(
+        [
+            "validate",
+            "front-matter",
+            "--path",
+            "core/docs/standards/metadata/front_matter_standard.md",
+            "--pack-settings-path",
+            "does/not/exist.json",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate front-matter"
+    assert payload["status"] == "error"
+    assert "does/not/exist.json" in payload["message"]
+
+
+def test_validate_suite_rejects_invalid_explicit_pack_settings_path(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    monkeypatch.chdir(REPO_ROOT / "core" / "python")
+
+    result = main(
+        [
+            "validate",
+            "suite",
+            "--suite-id",
+            "suite.offensivesecurity.validation_baseline",
+            "--pack-settings-path",
+            "does/not/exist.json",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate suite"
+    assert payload["status"] == "error"
+    assert "does/not/exist.json" in payload["message"]
+
+
 def test_validate_all_supports_json_output_when_acceptance_is_skipped(
     monkeypatch: pytest.MonkeyPatch,
     capsys,
@@ -686,6 +740,35 @@ def test_validate_all_reports_validator_coverage_gap_when_validator_is_removed(
         "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json"
         in issue_locations
     )
+
+
+def test_validate_all_rejects_invalid_explicit_pack_settings_path(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys,
+) -> None:
+    monkeypatch.chdir(REPO_ROOT / "core" / "python")
+
+    result = main(
+        [
+            "validate",
+            "all",
+            "--pack-settings-path",
+            "does/not/exist.json",
+            "--skip-front-matter",
+            "--skip-document-semantics",
+            "--skip-artifacts",
+            "--skip-acceptance",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate all"
+    assert payload["status"] == "error"
+    assert "does/not/exist.json" in payload["message"]
 
 
 def test_validate_portability_supports_json_output_for_clean_root(
@@ -1107,6 +1190,49 @@ def test_validate_portability_reports_release_exclusions(
         "workspace_pack_source_present",
     }
     assert "core/control_plane/records/benchmarks" in issue_locations
+
+
+def test_validate_portability_reports_python_install_metadata_directories(
+    tmp_path: Path,
+    capsys,
+) -> None:
+    (tmp_path / "core/python/watchtower_core-0.1.0.dist-info").mkdir(parents=True)
+    (
+        tmp_path / "core/python/watchtower_core-0.1.0.dist-info/METADATA"
+    ).write_text(
+        "Name: watchtower-core\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "core/python/watchtower_core.egg-info").mkdir(parents=True)
+    (tmp_path / "core/python/watchtower_core.egg-info/PKG-INFO").write_text(
+        "Name: watchtower-core\n",
+        encoding="utf-8",
+    )
+
+    result = main(
+        [
+            "validate",
+            "portability",
+            "--root",
+            str(tmp_path),
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    issue_codes = {issue["code"] for issue in payload["issues"]}
+    issue_locations = {issue["location"] for issue in payload["issues"]}
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate portability"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is False
+    assert payload["scope"] == "repository_bundle"
+    assert issue_codes == {"developer_residue_present"}
+    assert issue_locations == {
+        "core/python/watchtower_core-0.1.0.dist-info",
+        "core/python/watchtower_core.egg-info",
+    }
 
 
 def test_validate_portability_pack_only_reports_pack_bundle_exclusions(

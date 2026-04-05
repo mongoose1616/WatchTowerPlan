@@ -11,10 +11,13 @@ from watchtower_core.sync.cache import (
     SYNC_CACHE_FALLBACK_ROOT,
     SyncCacheInputSpec,
     finalize_document_sync_cache,
+    module_relative_path,
     prepare_document_sync_cache,
     resolve_sync_cache_root,
     validate_prepared_document_sync_cache,
 )
+
+REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
 class _FakeSchemaStore:
@@ -159,3 +162,17 @@ def test_validate_prepared_document_sync_cache_downgrades_invalid_hit_to_miss(
     assert validated is not None
     assert validated.cache_status == "miss"
     assert validated.document is None
+
+
+def test_module_relative_path_falls_back_to_repo_logical_suffix_for_copied_repo_root(
+    tmp_path: Path,
+) -> None:
+    copied_repo_root = tmp_path / "copied_repo"
+    copied_repo_root.mkdir()
+
+    result = module_relative_path(
+        copied_repo_root,
+        str(REPO_ROOT / "core/python/src/watchtower_core/sync/reference_index.py"),
+    )
+
+    assert result == "core/python/src/watchtower_core/sync/reference_index.py"

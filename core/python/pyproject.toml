@@ -18,8 +18,8 @@ dev = [
   "coverage[toml]>=7.10.0,<8",
   "mypy>=1.18.0,<2",
   "pip-audit>=2.9.0,<3",
-  "pytest>=8.4.0,<9",
   "pytest-cov>=7.0.0,<8",
+  "pytest>=8.4.0,<9",
   "ruff>=0.13.0,<1",
   "types-PyYAML>=6.0.12,<7",
   "watchtower-plan",
@@ -27,7 +27,6 @@ dev = [
 
 [tool.uv.sources]
 watchtower-plan = { path = "../../plan/python", editable = true }
-
 [project.scripts]
 watchtower-core = "watchtower_host.cli.main:main"
 

@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-04-04T21:20:00Z"
+updated_at: "2026-04-05T02:10:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -80,7 +80,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.
 - Keep `integration_module` under the pack’s declared `python_package`; jumping out into unrelated packages weakens copy-out portability.
 - Keep pack-settings surfaces pack-local unless they intentionally consume shared `core/control_plane/**` machine authority.
-- Treat shared-core docs, references, workflow guidance, and instructions as the authored source for reusable pack behavior. If a pack-local guidance fix would also apply to another hosted pack or copied-core repository, update the shared-core source first and then keep the pack-owned surface as the adapted overlay.
+- Treat shared-core docs, references, workflow guidance, and instructions as the upstream-authored source for reusable pack behavior in `WatchTowerCore/core/**`. If a pack-local guidance fix would also apply to another hosted pack or copied-core repository, update that upstream shared-core source first, refresh the synchronized local copy when needed, and then keep the pack-owned surface as the adapted overlay.
 - Treat effective pack activation as Phase 0 for any pack-aware runtime path. Host and reusable-core runtime helpers should resolve the effective pack settings path before reading runtime manifests, owned roots, or default-pack machine outputs.
 - Build the full typed `PackContext` only when the caller needs declared pack-governed surfaces such as schema catalogs, validator registries, validation suites, policy registries, or other declared governance helpers. Minimal runtime-only pack fixtures may intentionally stop short of that full surface set.
 - Keep pack-local validator registries limited to pack-owned validators. Do not copy shared core validator entries into a pack-local validator registry unless the entry is intentionally identical and temporary copied-core residue.
@@ -398,4 +398,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-04-04T21:20:00Z`
+- `2026-04-05T02:10:00Z`

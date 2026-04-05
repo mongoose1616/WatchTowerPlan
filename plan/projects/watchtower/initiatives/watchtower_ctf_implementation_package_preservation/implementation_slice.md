@@ -110,7 +110,7 @@ The bootstrap placeholder task created by `plan bootstrap` is no longer the exec
 
 - Dependencies:
   - all Step 1 source docs;
-  - current `WatchTowerPlan/core` standards, commands, registries, and pack-context code; and
+  - current shared-core standards, commands, registries, and pack-context code from `WatchTowerCore/core`, refreshed locally into `WatchTowerPlan/core`; and
   - reference pack manifests from `plan` and `oversight`.
 - Validation and acceptance:
   - all live-contract deltas are explicit;
@@ -640,7 +640,7 @@ After this hardening pass, the first ready engineer action is `task.watchtower_c
 
 The first target-repo mutation then occurs in `phase.1`, which should:
 
-1. export shared core from `/home/j/WatchTowerPlan/core`;
+1. export shared core from `/home/j/WatchTowerCore/core`;
 2. copy the staged export into `/home/j/WatchTower`;
 3. scaffold `offensive_security/` there with the current-compatible baseline identity;
 4. run `watchtower-core pack bootstrap --replace-hosted-packs --write` if donor pack wiring must be replaced;

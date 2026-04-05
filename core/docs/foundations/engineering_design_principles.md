@@ -18,9 +18,9 @@ applies_to:
   - "core/python/src/watchtower_core/pack_integration/"
   - "core/workflows/modules/"
   - "core/docs/standards/"
-  - "first_internal_pack_python"
   - "pack_owned_workflows"
   - "pack_owned_standards"
+  - "downstream_pack_repositories"
 aliases:
   - "design philosophy"
   - "repository design philosophy"
@@ -75,7 +75,7 @@ The repository only works when humans and machines can both find the right level
 Future domain packs are where the broader WatchTower product becomes useful to operators. They should remain future-state context for this repository unless and until a consuming product repo mounts them for real execution.
 
 - Make domain packs the primary future operator-facing workflow surface.
-- Keep the first internal pack aligned with the same reusable-core and host-composition contracts that later external packs must follow.
+- Keep downstream hosted packs aligned with the same reusable-core and host-composition contracts that later external packs must follow.
 - Keep prompt-first, LLM-guided interaction explicit.
 - Encode domain-specific language, domain goals, and domain artifact expectations so the operator works in native terms instead of generic system abstractions.
 - Project readable outputs such as notes, findings, reports, solutions, and recaps from governed state.

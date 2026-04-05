@@ -1,17 +1,9 @@
 from __future__ import annotations
 
 import os
+import shutil
 import subprocess
 from pathlib import Path
-
-
-def _discover_pack_slug(repo_root: Path) -> str:
-    for child in sorted(repo_root.iterdir()):
-        if not child.is_dir() or child.name.startswith(".") or child.name == "core":
-            continue
-        if (child / "python" / "src").is_dir() and (child / "python" / "tests").is_dir():
-            return child.name
-    raise AssertionError("Expected one hosted pack fixture for verify.sh coverage.")
 
 
 def test_verify_script_continues_to_pack_checks_after_validate_all_failure(
@@ -20,7 +12,10 @@ def test_verify_script_continues_to_pack_checks_after_validate_all_failure(
     workspace_root = Path(__file__).resolve().parents[2]
     repo_root = workspace_root.parents[1]
     script_path = workspace_root / "tools" / "verify.sh"
-    pack_slug = _discover_pack_slug(repo_root)
+    pack_slug = f"verify_fixture_{tmp_path.name.replace('-', '_')}"
+    pack_root = repo_root / pack_slug
+    (pack_root / "python" / "src").mkdir(parents=True)
+    (pack_root / "python" / "tests").mkdir(parents=True)
     fake_bin = tmp_path / "bin"
     fake_bin.mkdir()
     log_path = tmp_path / "verify.log"
@@ -45,14 +40,17 @@ def test_verify_script_continues_to_pack_checks_after_validate_all_failure(
     env["PATH"] = f"{fake_bin}:{env['PATH']}"
     env["WT_VERIFY_LOG"] = str(log_path)
 
-    result = subprocess.run(
-        ["bash", str(script_path), "all", "--pack", pack_slug],
-        cwd=workspace_root,
-        env=env,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    try:
+        result = subprocess.run(
+            ["bash", str(script_path), "all", "--pack", pack_slug],
+            cwd=workspace_root,
+            env=env,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    finally:
+        shutil.rmtree(pack_root, ignore_errors=True)
 
     assert result.returncode == 1
     assert "Verification failed in 1 step(s):" in result.stderr

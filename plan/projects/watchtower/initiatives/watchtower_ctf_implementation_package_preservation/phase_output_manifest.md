@@ -41,12 +41,12 @@ This support surface translates the preserved phase plan into bounded engineer o
 
 - Task: `task.watchtower_ctf_implementation_package_preservation.phase_1_recipient_scaffold_and_bootstrap`
 - Primary outputs:
-  - staged shared-core export prepared from the donor repo;
+  - staged shared-core export prepared from `WatchTowerCore`;
   - copied shared `core/` root in `/home/j/WatchTower`;
   - scaffolded `offensive_security/` root with starter docs, workflows, tracking, and python surfaces; and
   - shared registry and workspace wiring bootstrapped with starter workflow metadata replaced.
 - Current command anchors:
-  - `cd /home/j/WatchTowerPlan/core/python`
+  - `cd /home/j/WatchTowerCore/core/python`
   - `uv run watchtower-core pack export --output-root <staged_export> --overwrite --format json`
   - copy the staged export into `/home/j/WatchTower`
   - `cd /home/j/WatchTower/core/python`

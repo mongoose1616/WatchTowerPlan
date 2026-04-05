@@ -571,7 +571,7 @@ def _copy_git_tracked_tree(
     relative_path: str,
 ) -> bool:
     tracked_paths = _git_tracked_relative_paths(source_root, relative_path)
-    if tracked_paths is None:
+    if not tracked_paths:
         return False
 
     (destination_root / relative_path).mkdir(parents=True, exist_ok=True)

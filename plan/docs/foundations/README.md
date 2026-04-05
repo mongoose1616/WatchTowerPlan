@@ -1,7 +1,7 @@
 # `foundations`
 
 ## Description
-`This directory contains the plan-owned foundations corpus for the repository. core/docs/foundations/ is the authored shared source and plan/docs/foundations/ is the required copied/adapted plan view. Update the authored copy in core, refresh the copied files here, and adjust plan-specific wording in the same change set. If a downstream working repository edits the shared-core copy, reconcile those changes back into WatchTowerPlan/core/docs/foundations/ and then refresh WatchTowerPlan/plan/docs/foundations/ before treating the work as complete.`
+`This directory contains the plan-owned foundations corpus for the repository. WatchTowerCore/core/docs/foundations/ is the upstream authored shared source, core/docs/foundations/ is the synchronized local shared copy, and plan/docs/foundations/ is the required copied/adapted plan view. Land shared-core foundation edits upstream first, refresh the local core/docs copy here, and then adjust plan-specific wording in the same change set before treating the work as complete.`
 
 ## Audience Routes
 
@@ -37,9 +37,10 @@
 
 ## Copy Rule
 
-- `core/docs/foundations/` is the authored source.
-- `plan/docs/foundations/` must be refreshed from the authored source and then adapted for plan-local names, paths, and operating context as needed.
-- Downstream working copies of shared core must sync edited foundation files back into `WatchTowerPlan/core/docs/foundations/` and refresh the plan-owned foundations copy in `WatchTowerPlan/plan/docs/foundations/` in the same workstream.
+- `WatchTowerCore/core/docs/foundations/` is the upstream authored source.
+- `core/docs/foundations/` is the synchronized local shared copy used by this repository.
+- `plan/docs/foundations/` must be refreshed from the synchronized local shared copy and then adapted for plan-local names, paths, and operating context as needed.
+- Shared-core foundation edits must land upstream in `WatchTowerCore/core/docs/foundations/`, then refresh `core/docs/foundations/`, and then refresh `plan/docs/foundations/` in the same workstream.
 - `docs/foundations/` is retired and must not be recreated as a third foundations family.
 
 ## Paths

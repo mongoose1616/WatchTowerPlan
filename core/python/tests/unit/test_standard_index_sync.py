@@ -9,6 +9,7 @@ import pytest
 
 from tests.unit.control_plane_loader_test_support import (
     materialize_pack_validation_surfaces,
+    require_default_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.operationalization_paths import (
@@ -28,7 +29,7 @@ def _default_pack_docs_root(loader: ControlPlaneLoader) -> str:
 
 
 def _default_pack_namespace(loader: ControlPlaneLoader) -> str:
-    return loader.load_pack_registry().default_pack().command_namespace
+    return require_default_pack(loader).command_namespace
 
 
 def _first_pack_tracking_surface_path(loader: ControlPlaneLoader) -> str:

@@ -22,11 +22,12 @@ def test_pack_extract_core_stages_engineering_shared_core(
     monkeypatch: pytest.MonkeyPatch,
     capsys,
 ) -> None:
-    donor_pack = ControlPlaneLoader(REPO_ROOT).load_pack_registry().default_pack()
     repo_root = materialize_validation_repo_subset(
         tmp_path,
         include_shared_discovery_sources=True,
     )
+    materialize_pack_validation_suite(repo_root / "donor", default_repo_pack=True)
+    donor_pack = ControlPlaneLoader(repo_root).load_pack_registry().default_pack()
     output_root = tmp_path / "shared_core"
     monkeypatch.chdir(repo_root / "core" / "python")
 

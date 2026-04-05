@@ -129,8 +129,7 @@
       ],
       "tags": [
         "traceability"
-      ],
-      "notes": "Durable handoff-readiness evidence for the preserved WatchTower CTF implementation package."
+      ]
     }
   ]
 }

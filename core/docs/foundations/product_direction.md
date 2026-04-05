@@ -8,17 +8,15 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-30T04:15:48Z"
+updated_at: "2026-04-05T03:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/control_plane/"
   - "core/python/src/watchtower_host/"
   - "core/python/src/watchtower_core/pack_integration/"
-  - "first_internal_pack_python"
   - "core/workflows/modules/"
-  - "pack_owned_workflows"
-  - "live_pack_workspace"
+  - "downstream_pack_repositories"
 aliases:
   - "product"
   - "product shape"
@@ -27,7 +25,7 @@ aliases:
 
 # Product Direction
 
-This document defines the intended future WatchTower product shape. For current repository ownership and current implementation scope, [repository_scope.md](repository_scope.md) is authoritative. Read this document when the question is where the broader product is meant to go, not when the question is what the current core-authoring repository owns today.
+This document defines the intended future WatchTower product shape. For current repository ownership and current implementation scope, [repository_scope.md](repository_scope.md) is authoritative. Read this document when the question is where the broader product is meant to go, not when the question is what the upstream shared-core repository owns today.
 
 ## Audience
 
@@ -37,10 +35,10 @@ This document defines the intended future WatchTower product shape. For current 
 
 ## Current Repository Relationship
 
-- The current core-authoring repository owns the governed core substrate, host-composition layer, machine-readable control plane, workflow-routing model, and the currently hosted first-party pack set.
-- This repository does not yet own the first operator-facing domain-pack implementation.
-- The hosted-pack model is already partially proven here through the current internal pack, hosted-pack scaffolding, and second-pack portability work; future product work should extend that contract rather than re-invent it.
-- One supported downstream adoption mode is to copy the canonical shared `core/` tree from this repository and then carry whichever hosted packs the consuming repository actually needs. That may begin with `core/` alone during integration bring-up or with `core/` plus one or more hosted packs.
+- `WatchTowerCore` owns the governed core substrate, host-composition layer, authored machine-readable control plane, workflow-routing model, and shared foundations that downstream WatchTower repositories consume.
+- This repository does not own a hosted-pack workspace or the first operator-facing domain-pack implementation.
+- The hosted-pack model is proven through downstream consuming repositories and the shared portability or bootstrap contract; future product work should extend that contract rather than re-invent it.
+- One supported downstream adoption mode is to copy or export the canonical shared `core/` tree from `WatchTowerCore` and then carry whichever hosted packs the consuming repository actually needs. That may begin with `core/` alone during integration bring-up or with `core/` plus one or more hosted packs.
 - The future product model in this document is still relevant because it constrains how the shared core should evolve now.
 
 ## Core
@@ -70,7 +68,7 @@ The future product promise is not just "automation." It is a local-first environ
 
 ## Domain Packs
 
-Domain packs are the future domain-specific operator layer of the product. They are specialized for a domain so the operator experience feels seamless and domain-native instead of generic. In this repository the model is no longer purely theoretical: the current internal pack is the first consumer, hosted-pack portability has been exercised with a second-pack proof, and future external packs should extend that same contract.
+Domain packs are the future domain-specific operator layer of the product. They are specialized for a domain so the operator experience feels seamless and domain-native instead of generic. In the broader WatchTower repository family the model is no longer purely theoretical: downstream consuming repositories already exercise the hosted-pack contract, and future external packs should extend that same contract.
 
 - Make packs the main entry point for real operator jobs.
 - Use core to help a human achieve a real domain goal efficiently, repeatably, and with clean closeout.
@@ -80,16 +78,16 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Shape how the LLM or agent assists the human in that domain instead of forcing the user to translate generic system capabilities into domain process by hand.
 - Use shared core contracts instead of reimplementing routing, validation, rule enforcement, traceability, or recovery differently for each domain.
 - Support future expansion through the same pack model instead of letting the first domain become the accidental default for all later work.
-- Treat the current internal pack as the first internal consumer, treat the second-pack proof as evidence that the contract can travel, and require later external packs to follow the same load, validation, and governance model without importing mismatched domain vocabulary into core.
+- Treat downstream consuming repositories as the proving ground for the hosted-pack contract and require later external packs to follow the same load, validation, and governance model without importing mismatched domain vocabulary into core.
 
 ## Product Delivery Boundary
 
-- Future external operator-facing domain-pack implementation belongs in a later product phase and in a consuming product repository, even though the host-pack contract is already proven here.
-- That consuming repository may adopt the shared runtime by copying `core/` and then wiring the hosted pack set it actually owns; shared core must therefore stay donor-neutral even when this repository currently carries one internal proof pack.
+- Future external operator-facing domain-pack implementation belongs in a later product phase and in a consuming product repository, even though the host-pack contract is already proven through downstream consumers.
+- That consuming repository may adopt the shared runtime by copying or exporting `core/` and then wiring the hosted pack set it actually owns; shared core must therefore stay donor-neutral and free of one repository's pack topology assumptions.
 - Customer-safe bootstrap for that consuming repository should be a curated export of shared core plus the selected hosted pack set, not a raw donor repository snapshot.
 - This repository should prepare the reusable substrate and contracts that product work will consume.
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
-- If a downstream working repository edits `core/**` while implementing that reusable substrate, the authored shared-core change must be reconciled back into the canonical shared-core source before closeout.
+- If a downstream working repository edits `core/**` while implementing that reusable substrate, the shared-core change must be reconciled back into `WatchTowerCore/core/**` before closeout.
 
 ## References
 - [repository_scope.md](repository_scope.md)
@@ -98,4 +96,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](customer_story.md)
 
 ## Updated At
-- `2026-03-30T04:15:48Z`
+- `2026-04-05T03:05:00Z`

@@ -6,6 +6,7 @@ from shutil import copytree
 
 import pytest
 
+from tests.unit.control_plane_loader_test_support import require_default_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.validation import ArtifactValidationService, ValidationSelectionError
 
@@ -329,7 +330,7 @@ def test_artifact_validation_auto_selects_benchmark_record_validator_for_retaine
 def test_artifact_validation_prefers_more_specific_pack_owned_validator() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = ArtifactValidationService(loader)
-    pack = loader.load_pack_registry().default_pack()
+    pack = require_default_pack(loader)
     machine_root = loader.load_pack_settings().workspace_roots.machine_root
     work_item_root = loader.resolve_path(f"{machine_root}/work_items")
     artifact_candidates = sorted(work_item_root.glob("pack_work_item_note*.json"))

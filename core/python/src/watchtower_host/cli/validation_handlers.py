@@ -12,7 +12,7 @@ from watchtower_core.cli.handler_common import (
     _resolve_output_path,
     _run_value_error_operation,
 )
-from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
+from watchtower_core.control_plane.errors import ControlPlaneError, SchemaResolutionError
 from watchtower_core.control_plane.loader import (
     CORE_PACK_SETTINGS_PATH,
     PACK_SETTINGS_PATH,
@@ -122,23 +122,29 @@ def _run_validate_schema(args: argparse.Namespace) -> int:
 
 def _run_validate_suite(args: argparse.Namespace) -> int:
     pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
-    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
-    validation_runtime = load_pack_validation_runtime(
-        loader,
-        pack_settings_path=pack_settings_path,
-    )
-    service = ValidationSuiteService(
-        loader,
-        document_semantics_factory=validation_runtime.document_semantics_factory,
-        target_resolver=validation_runtime.suite_target_resolver,
-        pack_contract_issue_provider=validation_runtime.pack_contract_issue_provider,
-    )
     try:
+        loader = _default_validation_loader_factory(args)
+        validation_runtime = load_pack_validation_runtime(
+            loader,
+            pack_settings_path=pack_settings_path,
+        )
+        service = ValidationSuiteService(
+            loader,
+            document_semantics_factory=validation_runtime.document_semantics_factory,
+            target_resolver=validation_runtime.suite_target_resolver,
+            pack_contract_issue_provider=validation_runtime.pack_contract_issue_provider,
+        )
         result = service.run(
             args.suite_id,
             pack_settings_path=pack_settings_path,
         )
-    except (SchemaResolutionError, ValidationExecutionError, ValidationSelectionError) as exc:
+    except (
+        ControlPlaneError,
+        SchemaResolutionError,
+        ValidationExecutionError,
+        ValidationSelectionError,
+        ValueError,
+    ) as exc:
         return _emit_command_error(
             args,
             "watchtower-core validate suite",
@@ -178,15 +184,31 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
 
 
 def _run_validate_all(args: argparse.Namespace) -> int:
-    pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
-    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+    explicit_pack_settings_path = getattr(args, "pack_settings_path", None)
+    pack_settings_path = explicit_pack_settings_path or PACK_SETTINGS_PATH
+    try:
+        loader = _default_validation_loader_factory(args)
+    except ValidationExecutionError as exc:
+        return _emit_command_error(
+            args,
+            "watchtower-core validate all",
+            str(exc),
+            prefix="Validation error",
+        )
     try:
         validation_runtime = load_pack_validation_runtime(
             loader,
             pack_settings_path=pack_settings_path,
         )
         suite_id = loader.load_pack_settings(pack_settings_path).default_validation_suite_id
-    except (ArtifactLoadError, FileNotFoundError, ValueError):
+    except (ControlPlaneError, ValueError) as exc:
+        if explicit_pack_settings_path is not None:
+            return _emit_command_error(
+                args,
+                "watchtower-core validate all",
+                str(exc),
+                prefix="Validation error",
+            )
         validation_runtime = load_pack_validation_runtime(
             loader,
             pack_settings_path=CORE_PACK_SETTINGS_PATH,
@@ -476,7 +498,12 @@ def _run_validation_command(
 
 
 def _default_validation_loader_factory(args: argparse.Namespace) -> ControlPlaneLoader:
-    return ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+    try:
+        return ControlPlaneLoader(
+            active_pack_settings_path=getattr(args, "pack_settings_path", None)
+        )
+    except (ControlPlaneError, ValueError) as exc:
+        raise ValidationExecutionError(str(exc)) from exc
 
 
 def _default_validation_telemetry_attributes(

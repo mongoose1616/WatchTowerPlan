@@ -16,11 +16,11 @@ applies_to:
   - "core/python/"
   - "core/python/src/watchtower_host/"
   - "core/python/src/watchtower_core/pack_integration/"
-  - "first_internal_pack_python"
   - "core/control_plane/registries/pack_registry.json"
   - "hosted_pack_runtime_manifest"
   - "core/docs/standards/"
   - "pack_owned_standards"
+  - "downstream_pack_repositories"
 aliases:
   - "technology stack"
   - "stack direction"
@@ -29,7 +29,7 @@ aliases:
 
 # Engineering Stack Direction
 
-This repository is a governed docs-plus-runtime system that currently owns reusable core, host composition, and the first internal pack. The stack should be read as the current operating baseline for that architecture plus a small set of future candidates. The selection rule is straightforward: prefer local-first, inspectable, deterministic tools that improve LLM and agent effectiveness, support strong validation, and preserve clear source-of-truth boundaries.
+This repository is a governed docs-plus-runtime system that owns reusable core, host composition, and the canonical shared-core authoring surfaces consumed by downstream WatchTower repositories. The stack should be read as the current operating baseline for that architecture plus a small set of future candidates. The selection rule is straightforward: prefer local-first, inspectable, deterministic tools that improve LLM and agent effectiveness, support strong validation, and preserve clear source-of-truth boundaries.
 
 ## Audience
 
@@ -39,7 +39,7 @@ This repository is a governed docs-plus-runtime system that currently owns reusa
 
 ## Current Shape
 
-Today the repository has a substantial governed documentation corpus, reusable Python runtime, host-composition layer, hosted-pack integration contract, and hosted first-party pack orchestration layer. The docs, workflows, control plane, and Python workspace all matter; none of them should be described as incidental scaffolding anymore.
+Today the repository has a substantial governed documentation corpus, reusable Python runtime, host-composition layer, hosted-pack integration contract, and customer or downstream bootstrap surfaces. The docs, workflows, control plane, and Python workspace all matter; none of them should be described as incidental scaffolding anymore.
 
 | Technology | Current Use | Main Surfaces | Human-Relevant Notes |
 |---|---|---|---|
@@ -55,8 +55,8 @@ Today the repository has a substantial governed documentation corpus, reusable P
 - Durable documentation lives under `core/docs/` and the owning pack docs roots according to ownership.
 - Routed task behavior lives under the shared and pack-owned workflow roots.
 - Shared implementation assets live under `core/`.
-- `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` are the active Python runtime layers in the current architecture.
-- `core/control_plane/registries/pack_registry.json`, `<pack>/.wt/manifests/pack_runtime_manifest.json`, and pack-contract validation are part of the effective operating stack because they define and validate hosted-pack composition.
+- `watchtower_core`, `watchtower_host`, and downstream `watchtower_<pack>` packages are the active Python runtime layers in the broader architecture.
+- `core/control_plane/registries/pack_registry.json`, downstream `<pack>/.wt/manifests/pack_runtime_manifest.json`, and pack-contract validation are part of the effective operating stack because they define and validate hosted-pack composition across repository boundaries.
 
 ## Preferred Building Blocks
 

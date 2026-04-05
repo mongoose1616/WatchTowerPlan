@@ -5,7 +5,13 @@ from pathlib import Path
 import pytest
 
 from tests.cli_command_helpers import run_json_command
+from tests.pack_fixture_support import (
+    materialize_pack_validation_suite,
+    materialize_validation_repo_subset,
+)
+from tests.unit.control_plane_loader_test_support import require_pack_runtime_manifest
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_host.cli import git_handlers
 from watchtower_host.cli.main import _command_group_specs_for_argv
 from watchtower_host.cli.registry import (
     CORE_COMMAND_GROUP_SPECS,
@@ -48,7 +54,7 @@ def test_pack_command_group_spec_degrades_to_unavailable_namespace_when_tolerati
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     loader = ControlPlaneLoader()
-    command_namespace = loader.load_pack_runtime_manifest().command_namespace
+    command_namespace = require_pack_runtime_manifest(loader).command_namespace
 
     monkeypatch.setattr(
         "watchtower_core.pack_integration.runtime.load_active_pack_integration",
@@ -72,7 +78,7 @@ def test_pack_command_group_spec_propagates_pack_failure_without_tolerance(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     loader = ControlPlaneLoader()
-    command_namespace = loader.load_pack_runtime_manifest().command_namespace
+    command_namespace = require_pack_runtime_manifest(loader).command_namespace
 
     monkeypatch.setattr(
         "watchtower_core.pack_integration.runtime.load_active_pack_integration",
@@ -90,7 +96,12 @@ def test_pack_command_group_spec_propagates_pack_failure_without_tolerance(
 def test_pack_describe_reports_import_error_type_in_json_payload(
     capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
 ) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "fixture")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
     monkeypatch.setattr(
         "watchtower_host.cli.pack_handlers.import_pack_integration_module",
         lambda **kwargs: (_ for _ in ()).throw(ModuleNotFoundError("missing pack runtime")),
@@ -119,6 +130,50 @@ def test_doctor_outside_repo_fails_closed_instead_of_using_package_checkout(
     assert payload["command"] == "watchtower-core doctor"
     assert payload["status"] == "error"
     assert "Could not discover the repository root" in payload["message"]
+
+
+def test_git_hygiene_outside_repo_uses_repo_optional_startup_path(
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    outside_directory = tmp_path / "outside_repo"
+    outside_directory.mkdir()
+    monkeypatch.chdir(outside_directory)
+
+    class FakeService:
+        def run(self, request: object) -> object:
+            del request
+            return type(
+                "Result",
+                (),
+                {
+                    "repo_root": str(outside_directory),
+                    "git_root": str(outside_directory),
+                    "git_common_dir": str(outside_directory / ".git"),
+                    "base_ref": "main",
+                    "inactive_days": 14,
+                    "current_branch": "main",
+                    "current_worktree_path": str(outside_directory),
+                    "override_path": str(
+                        outside_directory / ".git/watchtower/git_hygiene_overrides.json"
+                    ),
+                    "overrides_found": False,
+                    "apply": False,
+                    "branches": (),
+                    "worktrees": (),
+                    "actions_applied": (),
+                },
+            )()
+
+    monkeypatch.setattr(git_handlers, "GitHygieneService", FakeService)
+
+    result, payload = run_json_command(capsys, ["git", "hygiene"])
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core git hygiene"
+    assert payload["status"] == "ok"
+    assert payload["repo_root"] == str(outside_directory)
 
 
 def test_specialized_selected_subcommand_registrar_passes_requested_subcommand() -> None:

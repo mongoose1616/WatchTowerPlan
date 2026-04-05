@@ -4,6 +4,11 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+import pytest
+
+from watchtower_core.control_plane.errors import ArtifactLoadError
+from watchtower_core.control_plane.loader import ControlPlaneLoader
+
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
@@ -25,6 +30,20 @@ def discover_repo_root(start: Path) -> Path:
         if (parent / "core/control_plane").is_dir() and (parent / "core/python").is_dir():
             return parent
     raise ValueError(f"Could not discover repo root for fixture destination: {start}")
+
+
+def require_default_pack(loader: ControlPlaneLoader):
+    try:
+        return loader.load_pack_registry().default_pack()
+    except (ArtifactLoadError, ValueError):
+        pytest.skip("Repository does not declare a default hosted pack.")
+
+
+def require_pack_runtime_manifest(loader: ControlPlaneLoader):
+    try:
+        return loader.load_pack_runtime_manifest()
+    except ArtifactLoadError:
+        pytest.skip("Repository does not publish a default pack runtime manifest.")
 
 
 def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:

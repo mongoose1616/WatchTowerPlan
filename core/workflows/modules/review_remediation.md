@@ -32,7 +32,9 @@ Use this workflow to turn an existing review findings set into owning-surface fi
    - Fix each issue in the owning surface rather than only in the first file the review cited.
    - Search analogous surfaces for the same pattern and decide whether the issue is local, reusable, or cross-boundary before editing.
    - Decide whether each item is a canonical shared-core fix, repo-local core drift that must be reconciled, a pack-owned fix, a cross-boundary interoperability fix, a missing standard/reference/template/harness that must be authored, or a blocked item that cannot be fixed safely yet.
-   - Reusable shared-core defects belong in the canonical shared-core root, even when discovered while reviewing another repository. Do not land a reusable shared-core fix only inside another repository's `core/`.
+   - Shared `core/` defects belong in the canonical shared-core root, even when discovered while reviewing another repository. Do not land a shared-core fix only inside another repository's `core/`.
+   - If the remediation is not being initiated from `WatchTowerCore` and the next repair slice would modify any shared `core/` surface, land that change upstream in `WatchTowerCore/core` first and then sync it back into the initiating repository through `shared_core_refresh.md`.
+   - Treat non-`WatchTowerCore` `core/` trees as synchronized consumers of the canonical shared core, not as the first landing zone for shared-core edits.
    - Pack-specific behavior, docs, workflows, tests, machine state, and runtime wiring belong under the pack root.
    - Cross-boundary issues may touch both shared core and the pack root, but keep the pieces explicit and interoperable rather than blending them into one ambiguous change.
    - Expand the same-change scope when companion docs, tests, schemas, validators, indexes, or command surfaces would otherwise become stale.
@@ -60,7 +62,8 @@ Use this workflow to turn an existing review findings set into owning-surface fi
    - Run the narrowest relevant checks after each issue family or logical slice, then run the broader applicable validation baseline for the touched surfaces.
    - Use the repository's documented sync/rebuild entrypoints after mutations that affect derived indexes, registries, manifests, or rendered views.
    - Run quality checks when the repository publishes them: `ruff check`, `ruff format --check`, `mypy`, `uv run pytest`, plus repo-native validation suites, schema checks, portability checks, export/bootstrap checks, or pack-specific validation commands relevant to the touched surfaces.
-   - When the originating review targets a different repository but reusable shared-core fixes must land first in the canonical shared-core root, validate those canonical slices as shared-core work. Do not treat unrelated pack-specific validation failures as blockers for repo-external shared-core remediation.
+   - When the remediated scope includes Python-bearing implementation or another repo-published unit/Python test harness, run that unit/Python test surface explicitly and report its result separately instead of relying only on a broader aggregate validation command.
+   - When the originating review targets a different repository and the remediation touches shared `core/`, validate those canonical slices first in `WatchTowerCore/core`. Do not treat unrelated consumer-pack validation failures as blockers for repo-external shared-core remediation.
    - When performance-sensitive code changes, run the available benchmark or comparative proof path. If no such harness exists, add a regression guard where practical and call out the remaining gap explicitly.
    - Separate confirmed passing proof from blocked checks, flaky results, environment limits, and still-unverified areas.
    - If a validation gap remains material, keep it open in the ledger instead of treating the remediation as fully closed.

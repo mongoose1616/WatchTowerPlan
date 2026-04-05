@@ -43,6 +43,10 @@ _DEV_FILE_SUFFIXES = (
     ".pyo",
     ".whl",
 )
+_INSTALL_METADATA_SUFFIXES = (
+    ".dist-info",
+    ".egg-info",
+)
 _ABSOLUTE_PATH_PATTERNS = (
     re.compile(r"(?<![A-Za-z0-9_])/(?:home|mnt|opt|private|srv|tmp|Users|var)/[^\s`\"')]+"),
     re.compile(r"(?<![A-Za-z0-9_])[A-Za-z]:\\\\[^\s`\"')]+"),
@@ -428,7 +432,28 @@ class PortabilityValidationService:
                         location=self._relative(current_path / dirname, root_path),
                     )
                 )
+            metadata_dirs = tuple(
+                dirname
+                for dirname in dirnames
+                if dirname.endswith(_INSTALL_METADATA_SUFFIXES)
+            )
+            for dirname in metadata_dirs:
+                issues.append(
+                    ValidationIssue(
+                        code="developer_residue_present",
+                        message=(
+                            "Customer-ready exports must exclude Python installation metadata "
+                            f"such as {self._relative(current_path / dirname, root_path)}."
+                        ),
+                        location=self._relative(current_path / dirname, root_path),
+                    )
+                )
             dirnames[:] = [dirname for dirname in dirnames if dirname not in _DEV_DIRECTORY_NAMES]
+            dirnames[:] = [
+                dirname
+                for dirname in dirnames
+                if not dirname.endswith(_INSTALL_METADATA_SUFFIXES)
+            ]
 
             for filename in sorted(filenames):
                 path = current_path / filename
@@ -444,12 +469,12 @@ class PortabilityValidationService:
                             location=relative_path,
                         )
                     )
-                elif filename.endswith(".egg-info"):
+                elif filename.endswith(_INSTALL_METADATA_SUFFIXES):
                     issues.append(
                         ValidationIssue(
                             code="developer_residue_present",
                             message=(
-                                "Customer-ready exports must exclude editable-install metadata "
+                                "Customer-ready exports must exclude Python installation metadata "
                                 f"such as {relative_path}."
                             ),
                             location=relative_path,

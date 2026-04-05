@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-30T00:45:00Z"
+updated_at: "2026-04-05T02:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -51,7 +51,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Pack-owned workflow roles must include explicit `Composes Modules` sections and keep those links aligned with the derived workflow index in the same change set.
 - Keep `.wt/` reserved for machine state, manifests, registries, policies, and indexes. Do not put Python source or hand-maintained prose there.
 - Build pack-native Python around features and domain flows, not mirrored copies of reusable-core package taxonomy.
-- Treat shared-core docs, references, workflow modules, and instructions as the authored source for reusable pack guidance. If a pack-local workaround would also apply to another hosted pack or copied-core repository, strengthen the shared-core guidance first and keep the pack-owned change limited to pack-local adaptation.
+- Treat shared-core docs, references, workflow modules, and instructions as the upstream-authored source for reusable pack guidance in `WatchTowerCore/core/**`. If a pack-local workaround would also apply to another hosted pack or copied-core repository, strengthen that upstream shared-core guidance first, refresh the synchronized local copy when needed, and keep the pack-owned change limited to pack-local adaptation.
 - Keep pack contract paths repository-relative and portable. Absolute paths and parent traversal in pack manifests or settings are invalid.
 - Publish a pack-owned `python/pyproject.toml` and `python/src/watchtower_<pack>/` package so copy-out portability does not depend on repository-root import tricks.
 - Publish typed query and sync runtimes through the pack integration descriptor rather than placeholder hooks or ad hoc tuples.
@@ -115,4 +115,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-30T00:45:00Z`
+- `2026-04-05T02:10:00Z`

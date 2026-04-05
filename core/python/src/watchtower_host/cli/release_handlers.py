@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.cli.handler_common import _emit_detail_result, _run_value_error_operation
+from watchtower_core.cli.handler_common import _emit_command_error, _emit_detail_result
+from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.pack_integration.release_check import (
     ReleaseCheckRequest,
@@ -16,14 +17,15 @@ from watchtower_core.telemetry import telemetry_operation
 
 def _run_release_check(args: argparse.Namespace) -> int:
     command_name = "watchtower-core release check"
-    result = _run_value_error_operation(
-        args,
-        command_name=command_name,
-        prefix="Release check error",
-        operation=lambda: _run_release_check_operation(args),
-    )
-    if result is None:
-        return 1
+    try:
+        result = _run_release_check_operation(args)
+    except (ControlPlaneError, ValueError) as exc:
+        return _emit_command_error(
+            args,
+            command_name,
+            str(exc),
+            prefix="Release check error",
+        )
 
     payload = _build_release_check_payload(command_name=command_name, result=result)
     if result.dirty_worktree_blocked:

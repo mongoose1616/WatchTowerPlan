@@ -21,6 +21,7 @@ from watchtower_core.pack_integration.roots import discover_pack_workspace_roots
 SYNC_CACHE_FALLBACK_ROOT = "core/python/.cache/watchtower/sync_cache"
 SYNC_CACHE_MANIFEST_VERSION = 1
 SyncCacheStatus = Literal["disabled", "hit", "miss"]
+_REPO_ROOT_SEGMENTS = frozenset({"core", "plan"})
 
 
 @dataclass(frozen=True, slots=True)
@@ -79,6 +80,10 @@ def module_relative_path(repo_root: Path, module_file: str) -> str:
             candidate = Path(*parts[index:])
             if (resolved_repo_root / candidate).exists():
                 return candidate.as_posix()
+        for index, part in enumerate(parts):
+            if part not in _REPO_ROOT_SEGMENTS:
+                continue
+            return Path(*parts[index:]).as_posix()
         raise
 
 

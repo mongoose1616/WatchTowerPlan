@@ -4,7 +4,11 @@ import json
 
 import pytest
 
-from tests.unit.control_plane_loader_test_support import REPO_ROOT, copy_validation_repo_subset
+from tests.unit.control_plane_loader_test_support import (
+    REPO_ROOT,
+    copy_validation_repo_subset,
+    require_default_pack,
+)
 from watchtower_core.control_plane.loader import CORE_PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     BenchmarkSuiteRegistry,
@@ -17,19 +21,19 @@ from watchtower_core.control_plane.models import (
 
 
 def _default_pack_slug(loader: ControlPlaneLoader) -> str:
-    return loader.load_pack_registry().default_pack().pack_slug
+    return require_default_pack(loader).pack_slug
 
 
 def _default_pack_namespace(loader: ControlPlaneLoader) -> str:
-    return loader.load_pack_registry().default_pack().command_namespace
+    return require_default_pack(loader).command_namespace
 
 
 def _default_pack_python_package(loader: ControlPlaneLoader) -> str:
-    return loader.load_pack_registry().default_pack().python_package
+    return require_default_pack(loader).python_package
 
 
 def _default_pack_settings_path(loader: ControlPlaneLoader) -> str:
-    return loader.load_pack_registry().default_pack().pack_settings_path
+    return require_default_pack(loader).pack_settings_path
 
 
 def _pack_command_id(loader: ControlPlaneLoader, *parts: str) -> str:
@@ -313,7 +317,7 @@ def test_control_plane_loader_reads_rendered_surface_registry() -> None:
 
     assert registry.artifact_id == "registry.rendered_surfaces"
     assert surface.output_path.startswith(f"{tracking_root}/")
-    assert surface.title.endswith("Tracking")
+    assert surface.title
     assert surface.sections[-1].kind == "updated_at"
 
 
@@ -864,4 +868,4 @@ def test_control_plane_loader_load_known_surface_materializes_rendered_surface_r
     )
 
     assert isinstance(surface, RenderedSurfaceRegistry)
-    assert _first_pack_rendered_surface(loader, surface).title.endswith("Tracking")
+    assert _first_pack_rendered_surface(loader, surface).title

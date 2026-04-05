@@ -1,7 +1,7 @@
 # `foundations`
 
 ## Description
-`This directory contains the shared foundations corpus for the repository. core/docs/foundations/ is the authored source. If the active hosted pack publishes a mirrored or promoted foundations view, keep that pack-owned surface aligned in the same change set. If a downstream working repository edits the shared-core copy, reconcile the same bytes back into the canonical shared-core source before treating the work as complete.`
+`This directory contains the authored shared foundations corpus for WatchTowerCore. Downstream WatchTower repositories consume these files as their synchronized shared-core foundations copy and must reconcile shared-core edits back here before treating that work as complete.`
 
 ## Audience Routes
 
@@ -10,14 +10,14 @@
 | Engineers and maintainers | `repository_scope.md` | `engineering_design_principles.md`, `engineering_stack_direction.md`, `repository_standards_posture.md` | Use this route when deciding what belongs in this repo and how the governed core should evolve. |
 | Product owners and engineering leads | `repository_scope.md` | `product_direction.md`, `customer_story.md`, `engineering_design_principles.md` | Use this route when future product direction matters, but current repository scope still needs to stay explicit. |
 | Designers and future product reviewers | `product_direction.md` | `customer_story.md`, `repository_scope.md` | Use this route when shaping future product experience while staying grounded in what this repo does and does not own yet. |
-| Repo reviewers and auditors | `repository_scope.md` | The active pack overview or coordination entrypoint, `repository_standards_posture.md` | Use this route when the main question is live repository coherence, authority, and the next active pack-owned action. |
+| Repo reviewers and auditors | `repository_scope.md` | `README.md`, `repository_standards_posture.md` | Use this route when the main question is live upstream shared-core coherence, authority, and downstream reuse boundaries. |
 
 ## Machine Routes
 
 | Need | Start Here | Why |
 |---|---|---|
 | Find the governing foundation document for one repo surface, citation path, or applied-reference path | `core/docs/commands/core_python/watchtower_core_query_foundations.md` | Uses the machine-readable foundation index for deterministic lookup instead of rescanning the full foundations corpus manually. |
-| Rebuild the machine-readable foundations corpus after a foundations-doc change | The owning pack `sync foundation-index` command doc | Keeps the published foundation index aligned with the human foundation documents in the same change set. |
+| Rebuild the machine-readable foundations corpus after a foundations-doc change | `watchtower-core sync foundation-index --write --format json` | Keeps the published foundation index aligned with the human foundation documents in the same change set. |
 
 ## Authoritative Backbone
 
@@ -38,7 +38,7 @@
 ## Mirror Rule
 
 - `core/docs/foundations/` is the authored source.
-- Any pack-owned foundations copy or projection must remain aligned with the authored source when the owning pack contract requires it.
+- Any downstream synchronized shared-core copy or pack-owned foundations projection must remain aligned with the authored source when the owning repository contract requires it.
 - Pack-owned foundations copies may adapt local names, paths, or operating context when the pack contract requires a pack-specific rendering of the same foundation topic.
 - Downstream working copies of shared core must sync edited foundation files back into the canonical shared-core source in the same workstream.
 - `docs/foundations/` is retired and must not be recreated as a third foundations family.

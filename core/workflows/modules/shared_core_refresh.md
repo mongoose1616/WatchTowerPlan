@@ -8,6 +8,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
 - A repository needs the current shared core plus donor-pack scrub so a recipient pack can be bootstrapped cleanly afterward.
 - A task is specifically about engineering repo-to-repo shared-core reuse rather than customer-safe release handoff.
 - The main risk is brittle manual copy, stale donor hosted-pack wiring, or leftover donor-only records and trace lineage after copy.
+- A non-`WatchTowerCore` fix loop or remediation pass discovered that shared `core/` needs to change and must bring the validated upstream `WatchTowerCore/core` repair back into the initiating repository.
 
 ## Inputs
 - Donor repository root and recipient repository root
@@ -26,7 +27,9 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
 ## Workflow
 1. Confirm donor and recipient roles.
    - Identify which repository is the shared-core donor and which repository is the recipient.
+   - When the initiating task started outside `WatchTowerCore` but needs any shared `core/` modification, treat `WatchTowerCore/core` as the canonical donor repair surface and the initiating repository as the downstream recipient for the refreshed sync-back step.
    - Confirm whether the request allows upstream donor fixes. If the donor shared core is the real source of brittleness, fix the donor shared core first instead of hard-coding recipient-side cleanup.
+   - Do not substitute a recipient-only `core/` patch for the donor repair plus refresh flow when the touched surface is shared reusable core.
 2. Normalize donor shared-core portability surfaces.
    - Check whether shared docs, shared acceptance examples, shared validation evidence, and shared traceability lineage are truly donor-neutral.
    - Treat shared `core/python/tests/**`, shared command docs, and shared workflow docs as part of the portable engineering contract. When they need pack-aware expectations, derive them from activated `pack_settings.json`, declared surfaces, and merged registries instead of hard-coding donor-pack IDs or donor-pack path names.
@@ -58,6 +61,7 @@ Use this workflow to refresh shared `core/` from one WatchTower-style repository
 7. Close the workflow surfaces in the same change.
    - Update command docs, workflow docs, standards, and governed indexes when the shared-core extract or bootstrap contract changed materially.
    - Record whether the fix belonged in the donor shared core, the recipient repository, or both.
+   - When this workflow is the downstream half of a fix loop, record the upstream `WatchTowerCore/core` remediation slice separately from the recipient refresh/apply/bootstrap proof.
 
 ## Data Structure
 - Donor and recipient role map

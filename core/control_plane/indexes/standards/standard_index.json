@@ -1101,8 +1101,6 @@
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/",
         "core/docs/commands/",
-        "plan/python/src/watchtower_plan/cli/",
-        "plan/docs/commands/",
         "core/python/src/watchtower_core/cli"
       ],
       "internal_reference_paths": [
@@ -1278,7 +1276,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-      "updated_at": "2026-03-30T00:45:00Z",
+      "updated_at": "2026-04-05T02:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1461,8 +1459,7 @@
       ],
       "related_paths": [
         "core/docs/standards/engineering/git_commit_standard.md",
-        "core/workflows/modules/commit_closeout.md",
-        "plan/docs/standards/governance/github_collaboration_standard.md"
+        "core/workflows/modules/commit_closeout.md"
       ],
       "internal_reference_paths": [
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
@@ -2362,9 +2359,7 @@
         "core/docs/",
         "core/workflows/",
         "core/control_plane/",
-        "core/python/",
-        "plan/docs/",
-        "plan/workflows/"
+        "core/python/"
       ],
       "internal_reference_paths": [
         "core/docs/foundations/repository_standards_posture.md",
@@ -2395,11 +2390,11 @@
       "standard_id": "std.operations.review_remediation_loop",
       "category": "operations",
       "title": "Review Remediation Loop Standard",
-      "summary": "This standard defines the operating contract for seeded or fresh review-remediation loops, including baseline capture, rerun discipline, stop conditions, and closeout proof.",
+      "summary": "This standard defines the operating contract for seeded or fresh review-remediation loops, including baseline capture, original-review reruns, required Python-test proof, stop conditions, and closeout proof.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/operations/review_remediation_loop_standard.md",
-      "updated_at": "2026-04-04T21:56:00Z",
+      "updated_at": "2026-04-05T02:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2435,6 +2430,7 @@
         "core/docs/standards/engineering/git_commit_standard.md",
         "core/workflows/modules/review_remediation.md",
         "core/workflows/modules/review_remediation_loop.md",
+        "core/workflows/modules/shared_core_refresh.md",
         "core/workflows/modules/commit_closeout.md"
       ],
       "applied_reference_paths": [
@@ -2444,6 +2440,7 @@
         "core/docs/standards/engineering/git_commit_standard.md",
         "core/workflows/modules/review_remediation.md",
         "core/workflows/modules/review_remediation_loop.md",
+        "core/workflows/modules/shared_core_refresh.md",
         "core/workflows/modules/commit_closeout.md"
       ],
       "tags": [
@@ -2460,7 +2457,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-04-04T20:55:00Z",
+      "updated_at": "2026-04-05T02:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2485,9 +2482,7 @@
         "core/python/",
         "core/control_plane/",
         "core/docs/",
-        "core/workflows/",
-        "plan/docs/",
-        "plan/workflows/"
+        "core/workflows/"
       ],
       "internal_reference_paths": [
         "core/docs/standards/documentation/documentation_semantics_standard.md",
@@ -3608,9 +3603,7 @@
         "plan/projects/",
         "core/control_plane/indexes/",
         "plan/python/src/watchtower_plan/",
-        "plan/python/src/watchtower_plan/cli/",
-        "core/control_plane/records/",
-        "core/python/src/watchtower_core/cli/"
+        "plan/python/src/watchtower_plan/cli/"
       ],
       "internal_reference_paths": [
         "plan/docs/standards/governance/traceability_standard.md",

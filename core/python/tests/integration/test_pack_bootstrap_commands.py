@@ -6,7 +6,6 @@ from pathlib import Path
 import pytest
 
 from tests.pack_fixture_support import (
-    REPO_ROOT,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -24,11 +23,12 @@ def test_pack_bootstrap_replace_hosted_packs_scrubs_donor_wiring_in_copied_core_
     monkeypatch: pytest.MonkeyPatch,
     capsys,
 ) -> None:
-    donor_pack = ControlPlaneLoader(REPO_ROOT).load_pack_registry().default_pack()
     repo_root = materialize_validation_repo_subset(
         tmp_path,
         include_shared_discovery_sources=True,
     )
+    materialize_pack_validation_suite(repo_root / "donor", default_repo_pack=True)
+    donor_pack = ControlPlaneLoader(repo_root).load_pack_registry().default_pack()
     surfaces = materialize_pack_validation_suite(
         repo_root / REHOSTED_PACK_SLUG,
         pack_id=f"pack.{REHOSTED_PACK_SLUG}",

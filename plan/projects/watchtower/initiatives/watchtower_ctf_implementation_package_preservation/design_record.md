@@ -97,7 +97,7 @@ The imported package does not override live repo authority when they disagree. T
 
 This initiative also preserves the donor/recipient split:
 
-- donor shared core and source contract: `/home/j/WatchTowerPlan/core`
+- donor shared core and source contract: `/home/j/WatchTowerCore/core`
 - donor working hosted-pack references: `/home/j/WatchTowerPlan/plan`, `/home/j/WatchTowerOversight/oversight`
 - recipient implementation repo: `/home/j/WatchTower`
 

@@ -6,7 +6,6 @@ from pathlib import Path
 import pytest
 
 from tests.pack_fixture_support import (
-    REPO_ROOT,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -40,11 +39,12 @@ def test_shared_core_refresh_round_trip_bootstraps_clean_recipient_repo(
     monkeypatch: pytest.MonkeyPatch,
     capsys,
 ) -> None:
-    donor_pack = ControlPlaneLoader(REPO_ROOT).load_pack_registry().default_pack()
     donor_repo_root = materialize_validation_repo_subset(
         tmp_path / "donor_fixture",
         include_shared_discovery_sources=True,
     )
+    materialize_pack_validation_suite(donor_repo_root / "donor", default_repo_pack=True)
+    donor_pack = ControlPlaneLoader(donor_repo_root).load_pack_registry().default_pack()
     recipient_root = materialize_validation_repo_subset(
         tmp_path / "recipient_repo",
         include_shared_discovery_sources=True,
