@@ -8,6 +8,7 @@ import logging
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
@@ -72,6 +73,21 @@ _DEV_FILE_SUFFIXES = (
     ".whl",
 )
 _LOGGER = logging.getLogger(__name__)
+_POST_APPLY_DISCOVERY_REBUILD_SCRIPT = """
+from pathlib import Path
+import sys
+
+from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.pack_integration.bootstrap import rebuild_shared_discovery_surfaces
+from watchtower_core.sync.foundation_index import FoundationIndexSyncService
+
+repo_root = Path(sys.argv[1]).resolve()
+rebuild_shared_discovery_surfaces(repo_root)
+loader = ControlPlaneLoader(repo_root)
+service = FoundationIndexSyncService(loader)
+document = service.build_document()
+service.write_document(document)
+"""
 _INTERNAL_REFERENCE_SUFFIXES = (
     "_assessment_closeout_reference.md",
     "_comparison_closeout_reference.md",
@@ -509,7 +525,7 @@ def _rehydrate_recipient_hosted_pack_state(
             rehydrated_paths.add(CORE_PYPROJECT_RELATIVE_PATH)
 
     if PACK_REGISTRY_PATH in changed_paths:
-        rebuild_shared_discovery_surfaces(repo_root)
+        _rebuild_rehydrated_shared_discovery_surfaces(repo_root)
         changed_paths.update(
             {
                 "core/control_plane/indexes/commands/command_index.json",
@@ -518,15 +534,56 @@ def _rehydrate_recipient_hosted_pack_state(
                 "core/control_plane/indexes/standards/standard_index.json",
                 "core/control_plane/indexes/workflows/workflow_index.json",
                 "core/control_plane/indexes/routes/route_index.json",
+                "core/control_plane/indexes/foundations/foundation_index.json",
             }
         )
-        _rebuild_foundation_index(repo_root)
-        changed_paths.add("core/control_plane/indexes/foundations/foundation_index.json")
 
     return _RecipientHostedPackRehydrationResult(
         changed_paths=tuple(sorted(changed_paths)),
         rehydrated_paths=tuple(sorted(rehydrated_paths)),
     )
+
+
+def _rebuild_rehydrated_shared_discovery_surfaces(repo_root: Path) -> None:
+    command = [
+        sys.executable,
+        "-c",
+        _POST_APPLY_DISCOVERY_REBUILD_SCRIPT,
+        str(repo_root),
+    ]
+    env = dict(os.environ)
+    env["WATCHTOWER_TELEMETRY"] = "off"
+    source_root = str((repo_root / "core" / "python" / "src").resolve())
+    existing_pythonpath = env.get("PYTHONPATH")
+    env["PYTHONPATH"] = (
+        source_root
+        if not existing_pythonpath
+        else f"{source_root}{os.pathsep}{existing_pythonpath}"
+    )
+    completed = subprocess.run(
+        command,
+        cwd=repo_root / "core" / "python",
+        check=False,
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    if completed.returncode == 0:
+        return
+    raise ValueError(
+        "Engineering core apply could not rebuild shared discovery surfaces after "
+        f"rehydration: {_subprocess_error_detail(completed)}"
+    )
+
+
+def _subprocess_error_detail(completed: subprocess.CompletedProcess[str]) -> str:
+    stdout = completed.stdout.strip()
+    stderr = completed.stderr.strip()
+    if stderr:
+        return stderr
+    if stdout:
+        return stdout
+    return "subprocess failed without output."
 
 
 def _restore_pack_registry_entries(

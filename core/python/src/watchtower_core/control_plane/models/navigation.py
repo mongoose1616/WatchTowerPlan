@@ -155,6 +155,7 @@ class RouteIndexEntry:
     trigger_keywords: tuple[str, ...]
     required_workflow_ids: tuple[str, ...]
     required_workflow_paths: tuple[str, ...]
+    route_families: tuple[str, ...] = ()
 
     @classmethod
     def from_document(cls, document: dict[str, Any]) -> RouteIndexEntry:
@@ -164,6 +165,7 @@ class RouteIndexEntry:
             trigger_keywords=tuple(document["trigger_keywords"]),
             required_workflow_ids=tuple(document["required_workflow_ids"]),
             required_workflow_paths=tuple(document["required_workflow_paths"]),
+            route_families=tuple(document.get("route_families", ())),
         )
 
 

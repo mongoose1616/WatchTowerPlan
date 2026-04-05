@@ -3,17 +3,5 @@
   "id": "registry.packs",
   "title": "Hosted Pack Registry",
   "status": "active",
-  "packs": [
-    {
-      "pack_id": "pack.plan",
-      "pack_slug": "plan",
-      "command_namespace": "plan",
-      "pack_settings_path": "plan/.wt/manifests/pack_settings.json",
-      "pack_runtime_manifest_path": "plan/.wt/manifests/pack_runtime_manifest.json",
-      "python_distribution": "watchtower-plan",
-      "python_package": "watchtower_plan",
-      "default_repo_pack": true,
-      "notes": "The plan pack is the current hosted default domain pack for this repository."
-    }
-  ]
+  "packs": []
 }

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -19,6 +22,23 @@ REHOSTED_PACK_SLUG = "rehosted"
 REHOSTED_PYTHON_DISTRIBUTION = "watchtower-rehosted-fixture"
 REHOSTED_PYTHON_PACKAGE = "watchtower_rehosted_fixture"
 REHOSTED_INTEGRATION_MODULE = "watchtower_rehosted_fixture.integration"
+_STALE_MODELS_APPLY_CORE_SCRIPT = """
+import sys
+
+import watchtower_core.control_plane.models as models
+from watchtower_host.cli.main import main
+
+for attr_name in (
+    "RouteMergePolicyDefinition",
+    "RouteMergePolicyRegistry",
+    "RouteOverlayDefinition",
+    "RouteOverlayRegistry",
+):
+    if hasattr(models, attr_name):
+        delattr(models, attr_name)
+
+raise SystemExit(main(sys.argv[1:]))
+"""
 _TRANSIENT_PATH_PARTS = {
     ".mypy_cache",
     ".nox",
@@ -134,6 +154,88 @@ def test_shared_core_refresh_round_trip_is_idempotent_across_repeated_cycles(
 
     assert first_snapshot != second_snapshot
     assert third_snapshot == second_snapshot
+
+
+def test_shared_core_refresh_round_trip_rebuilds_discovery_surfaces_from_fresh_code(
+    tmp_path: Path,
+) -> None:
+    donor_repo_root = materialize_validation_repo_subset(
+        tmp_path / "donor_fixture",
+        include_shared_discovery_sources=True,
+    )
+    materialize_pack_validation_suite(donor_repo_root / "donor", default_repo_pack=True)
+    recipient_root = materialize_validation_repo_subset(
+        tmp_path / "recipient_repo",
+        include_shared_discovery_sources=True,
+    )
+    recipient_surfaces = materialize_pack_validation_suite(
+        recipient_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
+
+    output_root = tmp_path / "shared_core"
+    extract_result, extract_payload = _run_repo_cli_json(
+        donor_repo_root,
+        [
+            "pack",
+            "extract-core",
+            "--output-root",
+            str(output_root),
+            "--overwrite",
+            "--format",
+            "json",
+        ],
+    )
+    assert extract_result == 0
+    assert extract_payload["passed"] is True
+
+    apply_result, apply_payload = _run_repo_cli_json(
+        recipient_root,
+        [
+            "pack",
+            "apply-core",
+            "--source-root",
+            str(output_root),
+            "--write",
+            "--format",
+            "json",
+        ],
+        preload_stale_models_exports=True,
+    )
+    assert apply_result == 0
+    assert apply_payload["wrote"] is True
+    assert "core/control_plane/indexes/routes/route_index.json" in apply_payload["changed_paths"]
+    assert (
+        "core/control_plane/indexes/foundations/foundation_index.json"
+        in apply_payload["changed_paths"]
+    )
+
+    bootstrap_result, bootstrap_payload = _run_repo_cli_json(
+        recipient_root,
+        [
+            "pack",
+            "bootstrap",
+            "--pack-settings-path",
+            recipient_surfaces["pack_settings_path"],
+            "--replace-hosted-packs",
+            "--write",
+            "--no-sync-workspace",
+            "--sync-extra",
+            "dev",
+            "--format",
+            "json",
+        ],
+    )
+    assert bootstrap_result == 0
+    assert bootstrap_payload["status"] == "ok"
+    assert bootstrap_payload["pack_slug"] == "oversight"
+    assert bootstrap_payload["replace_hosted_packs"] is True
 
 
 def _run_shared_core_refresh_cycle(
@@ -303,6 +405,42 @@ def _run_shared_core_refresh_cycle(
 def _run_cli_json(arguments: list[str], capsys) -> tuple[int, dict[str, object]]:
     result = main(arguments)
     return result, json.loads(capsys.readouterr().out)
+
+
+def _run_repo_cli_json(
+    repo_root: Path,
+    arguments: list[str],
+    *,
+    preload_stale_models_exports: bool = False,
+) -> tuple[int, dict[str, object]]:
+    env = dict(os.environ)
+    env["WATCHTOWER_TELEMETRY"] = "off"
+    source_root = str((repo_root / "core" / "python" / "src").resolve())
+    existing_pythonpath = env.get("PYTHONPATH")
+    env["PYTHONPATH"] = (
+        source_root
+        if not existing_pythonpath
+        else f"{source_root}{os.pathsep}{existing_pythonpath}"
+    )
+    command = (
+        [sys.executable, "-c", _STALE_MODELS_APPLY_CORE_SCRIPT, *arguments]
+        if preload_stale_models_exports
+        else [sys.executable, "-m", "watchtower_host.cli.main", *arguments]
+    )
+    completed = subprocess.run(
+        command,
+        cwd=repo_root / "core" / "python",
+        check=False,
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    stdout = completed.stdout.strip()
+    if not stdout:
+        raise AssertionError(
+            f"Command produced no stdout: {' '.join(arguments)}\nstderr={completed.stderr}"
+        )
+    return completed.returncode, json.loads(stdout)
 
 
 def _snapshot_refresh_state(repo_root: Path) -> dict[str, bytes]:

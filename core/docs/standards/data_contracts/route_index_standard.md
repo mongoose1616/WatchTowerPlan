@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable route indexes stored under `core/control_plane/indexes/routes/`.
 
 ## Purpose
-Provide a focused machine-readable rendered surface of the routing table so route-preview tooling can resolve task types and required workflow documents without reparsing the shared routing table and any pack-owned routing tables on every lookup. The route index captures base routes only; modifier overlays and route-suppression rules belong in the companion route overlay and route merge-policy registries.
+Provide a focused machine-readable rendered surface of the routing table so route-preview tooling can resolve task types and required workflow documents without reparsing the shared routing table and any pack-owned routing tables on every lookup. The route index publishes the routed task types and required workflow sets that route-preview may score directly or attach later as governed companion routes; modifier overlays and route-suppression rules still belong in the companion route overlay and route merge-policy registries.
 
 ## Scope
 - Applies to machine-readable route index artifacts stored under `core/control_plane/indexes/routes/`.
@@ -35,7 +35,7 @@ Provide a focused machine-readable rendered surface of the routing table so rout
 ## Related Standards and Sources
 - [routing_and_context_loading_standard.md](/core/docs/standards/workflows/routing_and_context_loading_standard.md): defines the higher-level routing semantics that the route index mirrors for machine use.
 - [workflow_index_standard.md](/core/docs/standards/data_contracts/workflow_index_standard.md): defines the companion workflow lookup surface referenced by route entries.
-- `core/control_plane/registries/route_overlay_registry.json`: publishes governed overlay behaviors that attach compatible workflow roles or companion routes during route preview.
+- `core/control_plane/registries/route_overlay_registry.json`: publishes governed route-intent behaviors that attach compatible workflow roles or companion routes during route preview.
 - `core/control_plane/registries/route_merge_policy_registry.json`: publishes governed route-suppression and merge rules applied after base-route scoring.
 - [format_selection_standard.md](/core/docs/standards/data_contracts/format_selection_standard.md): published route indexes use JSON as the governed machine-readable format.
 - [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md): shared authored routing source that the route index derives from.
@@ -51,7 +51,8 @@ Provide a focused machine-readable rendered surface of the routing table so rout
 - Carry stable `route_id` values derived from the routed task-type label.
 - Publish both required workflow identifiers and required workflow paths so loaders can validate integrity without reparsing Markdown.
 - Treat the route index as advisory lookup data for tools such as `watchtower-core route preview`; the routing table and workflow docs remain the human and procedural authority.
-- Route-preview consumers may synthesize overlay-attached companion routes from route-index entries when governed overlay intent matched deterministically, but they must not invent new base routes or mutate the published route index.
+- Route-preview consumers may synthesize overlay-attached companion routes from route-index entries when governed route intent matched deterministically, but they must not invent new base routes or mutate the published route index.
+- When a routed task type also acts as a governed companion route, route-preview consumers may exclude it from dominant base-route scoring for requests where the companion intent already matched and then attach it deterministically after selecting the strongest substantive routes.
 - Keep modifier overlays and route suppression behavior out of the route index itself; publish that behavior in the companion route overlay and route merge-policy registries instead of inventing synthetic combined task types.
 - Keep the route index aligned with the routing table in the same change set.
 

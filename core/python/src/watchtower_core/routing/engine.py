@@ -10,6 +10,7 @@ from watchtower_core.query.routes import (
     RoutePreviewMatch,
     RoutePreviewResult,
     RoutePreviewService,
+    ScoringConfig,
 )
 
 RoutingSelection = RoutePreviewResult
@@ -18,14 +19,24 @@ RoutingSelection = RoutePreviewResult
 class RoutingEngine:
     """Select governed routes through a stable reusable runtime API."""
 
-    def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._service = RoutePreviewService(loader)
+    def __init__(
+        self,
+        loader: ControlPlaneLoader,
+        *,
+        scoring_config: ScoringConfig | None = None,
+    ) -> None:
+        self._service = RoutePreviewService(loader, scoring_config=scoring_config)
 
     @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> RoutingEngine:
+    def from_repo_root(
+        cls,
+        repo_root: Path | None = None,
+        *,
+        scoring_config: ScoringConfig | None = None,
+    ) -> RoutingEngine:
         """Build one routing engine from a repository root."""
 
-        return cls(ControlPlaneLoader(repo_root))
+        return cls(ControlPlaneLoader(repo_root), scoring_config=scoring_config)
 
     def select(
         self,
@@ -54,4 +65,5 @@ __all__ = [
     "RoutePreviewResult",
     "RoutingEngine",
     "RoutingSelection",
+    "ScoringConfig",
 ]

@@ -45,7 +45,7 @@ uv run watchtower-core pack apply-core --source-root /tmp/shared_core --write --
 - Replaces governed shared-core files and removes destination-only governed `core/**` paths that are not present in the staged extract.
 - Preserves recipient-local developer residue under `core/**`, including `.venv`, cache directories, and similar machine-local scratch families, instead of deleting them during the apply step.
 - Rehydrates the recipient's live hosted-pack registry entries and `core/python/pyproject.toml` workspace registrations after the donor-neutral extract is applied, so local pack wiring survives the refresh even though donor pack wiring was scrubbed from the extract.
-- Rebuilds shared command, route, reference, standard, workflow, repository-path, and foundation indexes after rehydrating recipient-local hosted-pack registry entries so the refreshed `core/` immediately reflects the local pack set instead of the donor's scrubbed state.
+- Rebuilds shared command, route, reference, standard, workflow, repository-path, and foundation indexes only after the refreshed `core/` tree and recipient-local pack wiring are coherent, using a fresh interpreter so newly added shared-core imports and exports are resolved from the applied tree instead of a mixed old and new in-process module graph.
 - Ignores stale recipient pack registrations that no longer point at live local manifests or workspace roots instead of preserving dead donor-era residue.
 - If recipient validation after apply shows shared-core tests or docs still hard-coding donor-pack validators, workflows, rendered surfaces, or tracking files, treat that as donor shared-core portability drift. Fix the donor shared core, regenerate the staged extract, and re-run `apply-core` instead of patching the recipient only.
 - Reports changed, deleted, preserved, and rehydrated repository-relative paths in the result payload.
@@ -64,4 +64,4 @@ uv run watchtower-core pack apply-core --source-root /tmp/shared_core --write --
 - `core/python/src/watchtower_core/pack_integration/export.py`
 
 ## Updated At
-- `2026-04-04T22:10:00Z`
+- `2026-04-05T18:40:00Z`

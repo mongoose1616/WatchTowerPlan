@@ -260,6 +260,7 @@ def test_control_plane_models_export_route_overlay_and_merge_policy_registries()
                     "overlay_id": "route.overlay_example",
                     "entry_status": "active",
                     "title": "Example Overlay",
+                    "intent_kind": "workflow_modifier",
                     "trigger_terms": ["example"],
                     "trigger_mode": "modifier_before_anchor",
                     "anchor_terms": ["review"],
@@ -292,6 +293,7 @@ def test_control_plane_models_export_route_overlay_and_merge_policy_registries()
     )
 
     assert overlay_registry.get("route.overlay_example").trigger_mode == "modifier_before_anchor"
+    assert overlay_registry.get("route.overlay_example").intent_kind == "workflow_modifier"
     assert overlay_registry.get("route.overlay_example").attached_workflow_ids == (
         "workflow.example",
     )
@@ -299,6 +301,33 @@ def test_control_plane_models_export_route_overlay_and_merge_policy_registries()
     assert merge_policy_registry.get("route.merge_example").suppress_task_types == (
         "Commit Closeout",
     )
+
+
+def test_control_plane_models_infer_legacy_route_overlay_intent_defaults() -> None:
+    overlay = RouteOverlayRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1",
+            "id": "registry.route_overlays",
+            "title": "Legacy Overlay Registry",
+            "status": "active",
+            "entries": [
+                {
+                    "overlay_id": "route.overlay_legacy_companion",
+                    "entry_status": "active",
+                    "title": "Legacy Companion Overlay",
+                    "trigger_terms": ["fix loop"],
+                    "trigger_mode": "anywhere",
+                    "attached_route_task_types": ["Review Remediation Loop"],
+                        "retain_dominant_compatible_route": True,
+                }
+            ],
+        }
+    ).get("route.overlay_legacy_companion")
+
+    assert overlay.intent_kind == "companion_route"
+    assert overlay.dominant_route_retention_mode == "strongest_compatible"
+    assert overlay.exclude_attached_task_types_from_base_scoring is False
+    assert overlay.suppresses_intent_ids == ()
 
 
 def test_control_plane_models_export_human_surface_policy_registry_types() -> None:

@@ -76,6 +76,7 @@ def test_route_preview_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core route preview"
     assert payload["status"] == "ok"
     assert payload["selected_route_count"] == 1
+    assert payload["activated_intents"] == []
     assert payload["selected_routes"][0]["task_type"] == "Repository Review"
     assert any(
         workflow["workflow_id"] == "workflow.repository_review"
@@ -105,6 +106,12 @@ def test_route_preview_keeps_commit_closeout_as_companion_route(capsys) -> None:
         "workflow.code_implementation",
         "workflow.commit_closeout",
         "workflow.adversarial_reviewer",
+    }
+    assert {
+        entry["intent_id"] for entry in payload["activated_intents"]
+    } >= {
+        "route.overlay_adversarial_lens",
+        "route.overlay_commit_closeout_intent",
     }
 
 
@@ -246,6 +253,7 @@ def test_route_preview_matches_adversarial_repository_audits(capsys) -> None:
         "workflow.repository_review",
         "workflow.code_validation",
     }
+    assert payload["activated_intents"] == []
 
 
 def test_route_preview_merges_adversarial_review_with_fix_loops(capsys) -> None:
@@ -297,6 +305,26 @@ def test_route_preview_keeps_adversarial_mentions_out_of_documentation_reviews(c
     }
     assert "workflow.adversarial_reviewer" not in {
         entry["workflow_id"] for entry in payload["selected_workflows"]
+    }
+
+
+def test_route_preview_filters_non_applying_modifier_intents(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "run an adversarial commit",
+        ],
+    )
+
+    assert result == 0
+    assert {entry["task_type"] for entry in payload["selected_routes"]} == {
+        "Commit Closeout"
+    }
+    assert {entry["intent_id"] for entry in payload["activated_intents"]} == {
+        "route.overlay_commit_closeout_intent"
     }
 
 
@@ -599,6 +627,7 @@ def test_route_preview_returns_agent_assisted_module_suggestions_for_unmatched_r
 
     assert result == 0
     assert payload["selected_route_count"] == 0
+    assert payload["activated_intents"] == []
     suggestion_ids = {
         entry["workflow_id"] for entry in payload["assisted_module_suggestions"]
     }
@@ -624,4 +653,35 @@ def test_route_preview_keeps_generic_no_match_requests_empty(capsys) -> None:
 
     assert result == 0
     assert payload["selected_route_count"] == 0
+    assert payload["activated_intents"] == []
     assert payload["assisted_module_suggestions"] == []
+
+
+def test_route_preview_reports_explicit_activated_intents_for_mixed_requests(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "run an adversarial refactor, standard adherence, and fix loop",
+        ],
+    )
+
+    assert result == 0
+    assert {
+        entry["task_type"] for entry in payload["selected_routes"]
+    } >= {
+        "Code Implementation",
+        "Standards Alignment Review",
+        "Review Remediation Loop",
+    }
+    intents = {entry["intent_id"]: entry for entry in payload["activated_intents"]}
+    assert intents["route.overlay_adversarial_lens"]["intent_kind"] == "workflow_modifier"
+    assert intents["route.overlay_review_remediation_loop_intent"][
+        "intent_kind"
+    ] == "companion_route"
+    assert intents["route.overlay_review_remediation_loop_intent"][
+        "exclude_attached_task_types_from_base_scoring"
+    ] is True
+    assert "route.overlay_review_remediation_intent" not in intents

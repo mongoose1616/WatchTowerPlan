@@ -54,18 +54,14 @@
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/metadata/terminology_standard.md",
-        "core/workflows/modules/foundations_context_review.md",
-        "plan/docs/standards/governance/rewrite_execution_control_standard.md",
-        "plan/docs/standards/governance/rewrite_surface_classification_standard.md"
+        "core/workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/documentation/foundation_md_standard.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/metadata/terminology_standard.md",
-        "core/workflows/modules/foundations_context_review.md",
-        "plan/docs/standards/governance/rewrite_execution_control_standard.md",
-        "plan/docs/standards/governance/rewrite_surface_classification_standard.md"
+        "core/workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
         "design philosophy",
@@ -257,8 +253,7 @@
       "cited_by_paths": [
         "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/standards/engineering/repository_portability_standard.md",
-        "core/workflows/modules/foundations_context_review.md",
-        "plan/docs/references/core_swap_integration_assessment_closeout_reference.md"
+        "core/workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/engineering/repository_portability_standard.md",
@@ -299,24 +294,14 @@
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/operations/repository_maintenance_loop_standard.md",
         "core/docs/standards/workflows/workflow_design_standard.md",
-        "core/workflows/modules/foundations_context_review.md",
-        "plan/docs/standards/data_contracts/planning_index_family_standard.md",
-        "plan/docs/standards/data_contracts/status_tracking_standard.md",
-        "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-        "plan/docs/standards/governance/rewrite_surface_classification_standard.md",
-        "plan/workflows/modules/decision_capture.md"
+        "core/workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/data_contracts/format_selection_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/operations/repository_maintenance_loop_standard.md",
         "core/docs/standards/workflows/workflow_design_standard.md",
-        "core/workflows/modules/foundations_context_review.md",
-        "plan/docs/standards/data_contracts/planning_index_family_standard.md",
-        "plan/docs/standards/data_contracts/status_tracking_standard.md",
-        "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-        "plan/docs/standards/governance/rewrite_surface_classification_standard.md",
-        "plan/workflows/modules/decision_capture.md"
+        "core/workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
         "standards",

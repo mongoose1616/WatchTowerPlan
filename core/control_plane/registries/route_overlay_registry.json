@@ -8,6 +8,7 @@
       "overlay_id": "route.overlay_adversarial_lens",
       "entry_status": "active",
       "title": "Adversarial Lens Overlay",
+      "intent_kind": "workflow_modifier",
       "trigger_terms": [
         "adversarial",
         "contradiction-oriented",
@@ -47,15 +48,27 @@
         "Review Remediation Loop",
         "Repository Review"
       ],
+      "compatible_route_families": [
+        "review",
+        "implementation",
+        "remediation",
+        "benchmarking",
+        "repository"
+      ],
+      "excluded_task_types": [
+        "Adversarial Repository Review"
+      ],
       "attached_workflow_ids": [
         "workflow.adversarial_reviewer"
       ],
-      "notes": "Applies the contradiction-oriented role overlay to compatible review, remediation, benchmarking, and implementation routes without forcing the dedicated repository-audit permutation."
+      "dominant_route_retention_mode": "none",
+      "notes": "Applies the contradiction-oriented role overlay to compatible review, remediation, benchmarking, and implementation routes without forcing the dedicated repository-audit permutation. Routes matching compatible_route_families inherit compatibility automatically."
     },
     {
       "overlay_id": "route.overlay_commit_closeout_intent",
       "entry_status": "active",
       "title": "Commit Closeout Intent Overlay",
+      "intent_kind": "companion_route",
       "trigger_terms": [
         "git commit",
         "create commit",
@@ -75,6 +88,8 @@
       "attached_route_task_types": [
         "Commit Closeout"
       ],
+      "dominant_route_retention_mode": "strongest_compatible",
+      "exclude_attached_task_types_from_base_scoring": true,
       "retain_dominant_compatible_route": true,
       "minimum_route_score": 12,
       "notes": "Treats explicit commit intent as a retained closeout companion instead of allowing it to displace the dominant substantive route."
@@ -83,6 +98,7 @@
       "overlay_id": "route.overlay_review_remediation_intent",
       "entry_status": "active",
       "title": "Review Remediation Intent Overlay",
+      "intent_kind": "companion_route",
       "trigger_terms": [
         "review and fix",
         "audit and fix",
@@ -108,6 +124,8 @@
       "attached_route_task_types": [
         "Review Remediation"
       ],
+      "dominant_route_retention_mode": "all_compatible",
+      "exclude_attached_task_types_from_base_scoring": true,
       "retain_dominant_compatible_route": true,
       "minimum_route_score": 12,
       "notes": "Keeps single-pass findings remediation paired with the strongest compatible review, benchmark, or repository-audit route instead of collapsing the request to one side only."
@@ -116,6 +134,7 @@
       "overlay_id": "route.overlay_review_remediation_loop_intent",
       "entry_status": "active",
       "title": "Review Remediation Loop Intent Overlay",
+      "intent_kind": "companion_route",
       "trigger_terms": [
         "fix loop",
         "review fix loop",
@@ -147,10 +166,15 @@
       "attached_route_task_types": [
         "Review Remediation Loop"
       ],
+      "dominant_route_retention_mode": "all_compatible",
+      "exclude_attached_task_types_from_base_scoring": true,
+      "suppresses_intent_ids": [
+        "route.overlay_review_remediation_intent"
+      ],
       "retain_dominant_compatible_route": true,
       "minimum_route_score": 12,
       "notes": "Keeps looped remediation paired with the strongest compatible review, benchmark, or repository-audit route so rerun-until-clean requests preserve the originating scope."
     }
   ],
-  "notes": "Route overlays add compatible role workflows or companion routes without hardwiring every routed permutation into the routing table or route-preview implementation."
+  "notes": "Route overlays publish explicit intent metadata for compatible role modifiers and companion routes without hardwiring every routed permutation into the routing table or route-preview implementation."
 }

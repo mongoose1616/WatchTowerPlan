@@ -345,8 +345,14 @@ def test_control_plane_loader_reads_route_overlay_registry() -> None:
 
     assert isinstance(registry, RouteOverlayRegistry)
     assert registry.artifact_id == "registry.route_overlays"
+    assert entry.intent_kind == "workflow_modifier"
     assert "workflow.adversarial_reviewer" in entry.attached_workflow_ids
     assert "Repository Review" in entry.compatible_task_types
+    loop_intent = registry.get("route.overlay_review_remediation_loop_intent")
+    assert loop_intent.intent_kind == "companion_route"
+    assert loop_intent.dominant_route_retention_mode == "all_compatible"
+    assert loop_intent.exclude_attached_task_types_from_base_scoring is True
+    assert loop_intent.suppresses_intent_ids == ("route.overlay_review_remediation_intent",)
 
 
 def test_control_plane_loader_reads_route_merge_policy_registry() -> None:
@@ -567,6 +573,7 @@ def test_control_plane_loader_merges_pack_owned_route_overlay_registry(tmp_path)
     registry = loader.load_route_overlay_registry()
 
     assert registry.get("route.overlay_adversarial_lens").title == "Adversarial Lens Overlay"
+    assert registry.get("route.overlay_pack_example").intent_kind == "workflow_modifier"
     assert registry.get("route.overlay_pack_example").attached_workflow_ids == (
         "workflow.review_execution_baseline",
     )

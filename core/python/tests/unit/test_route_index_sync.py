@@ -130,6 +130,13 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
         and "workflow.code_validation" in entry["required_workflow_ids"]
         for entry in entries
     )
+    code_implementation = route_entries.get("route.code_implementation")
+    if code_implementation is not None:
+        assert "refactor" in code_implementation["trigger_keywords"]
+    standards_alignment = route_entries.get("route.standards_alignment_review")
+    if standards_alignment is not None:
+        assert "standard adherence" in standards_alignment["trigger_keywords"]
+        assert "standards adherence" in standards_alignment["trigger_keywords"]
 
 
 def test_route_index_sync_writes_temp_output(tmp_path: Path) -> None:
@@ -545,6 +552,30 @@ def test_route_preview_service_pairs_adversarial_role_with_review_and_fix_routes
                 "workflow.code_implementation",
             },
         },
+        "run an adversarial standards audit and fix loop": {
+            "routes": {
+                route_task_types["route.standards_alignment_review"],
+                route_task_types["route.review_remediation_loop"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.standards_alignment_review",
+                "workflow.review_remediation_loop",
+            },
+        },
+        "run an adversarial refactor, standard adherence, and fix loop": {
+            "routes": {
+                route_task_types["route.code_implementation"],
+                route_task_types["route.standards_alignment_review"],
+                route_task_types["route.review_remediation_loop"],
+            },
+            "workflows": {
+                "workflow.adversarial_reviewer",
+                "workflow.code_implementation",
+                "workflow.standards_alignment_review",
+                "workflow.review_remediation_loop",
+            },
+        },
         "do an adversarial stale test cleanup": {
             "routes": {
                 route_task_types["route.test_suite_optimization"],
@@ -614,6 +645,51 @@ def test_route_preview_service_pairs_fix_loops_with_documentation_and_repository
         assert expected_routes.issubset(
             {match.task_type for match in result.selected_routes}
         )
+
+
+def test_route_preview_service_reports_explicit_activated_intents() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = RoutePreviewService(loader)
+
+    result = service.preview(
+        request_text="run an adversarial refactor, standard adherence, and fix loop"
+    )
+
+    activated_intents = {intent.intent_id: intent for intent in result.activated_intents}
+    assert activated_intents["route.overlay_adversarial_lens"].intent_kind == (
+        "workflow_modifier"
+    )
+    remediation_loop_intent = activated_intents[
+        "route.overlay_review_remediation_loop_intent"
+    ]
+    assert remediation_loop_intent.intent_kind == "companion_route"
+    assert remediation_loop_intent.dominant_route_retention_mode == "all_compatible"
+    assert remediation_loop_intent.exclude_attached_task_types_from_base_scoring is True
+    assert (
+        "route.overlay_review_remediation_intent"
+        not in activated_intents
+    )
+
+
+def test_route_preview_service_filters_redundant_modifier_intents() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = RoutePreviewService(loader)
+
+    dedicated_result = service.preview(
+        request_text="run a full-spectrum adversarial audit of the repository"
+    )
+    assert {match.task_type for match in dedicated_result.selected_routes} == {
+        "Adversarial Repository Review"
+    }
+    assert dedicated_result.activated_intents == ()
+
+    commit_only_result = service.preview(request_text="run an adversarial commit")
+    assert {match.task_type for match in commit_only_result.selected_routes} == {
+        "Commit Closeout"
+    }
+    assert {intent.intent_id for intent in commit_only_result.activated_intents} == {
+        "route.overlay_commit_closeout_intent"
+    }
 
 
 def test_route_preview_service_keeps_fix_loops_specific_when_loop_route_is_selected() -> None:
@@ -759,7 +835,11 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
         )
     ] = {
         route_task_types["route.review_remediation_loop"],
-        route_task_types["route.task_lifecycle_management"],
+        *(
+            [route_task_types["route.task_lifecycle_management"]]
+            if "route.task_lifecycle_management" in route_task_types
+            else []
+        ),
     }
     traceability_expectations = {
         *(

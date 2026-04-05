@@ -134,6 +134,67 @@ def test_route_preview_supports_role_workflow_output(monkeypatch, capsys) -> Non
     assert "workflow.workflow_system_review" in captured.out
 
 
+def test_route_preview_prints_activated_intents(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def preview(self, *, request_text: str, task_type: str | None) -> SimpleNamespace:
+            return SimpleNamespace(
+                selected_routes=(
+                    SimpleNamespace(
+                        route_id="route.review_remediation_loop",
+                        task_type="Review Remediation Loop",
+                        score=15,
+                        matched_keywords=("fix loop",),
+                        required_workflow_ids=("workflow.review_remediation_loop",),
+                        required_workflow_paths=(
+                            "core/workflows/modules/review_remediation_loop.md",
+                        ),
+                    ),
+                ),
+                selected_workflows=(
+                    SimpleNamespace(
+                        workflow_id="workflow.review_remediation_loop",
+                        workflow_kind="module",
+                        title="Review Remediation Loop Workflow",
+                        doc_path="core/workflows/modules/review_remediation_loop.md",
+                        phase_type="execution",
+                        task_family="review_remediation",
+                        composes_module_paths=(),
+                    ),
+                ),
+                warnings=(),
+                activated_intents=(
+                    SimpleNamespace(
+                        intent_id="route.overlay_review_remediation_loop_intent",
+                        title="Review Remediation Loop Intent Overlay",
+                        intent_kind="companion_route",
+                        matched_trigger_terms=("fix loop",),
+                        attached_route_task_types=("Review Remediation Loop",),
+                        attached_workflow_ids=(),
+                        dominant_route_retention_mode="all_compatible",
+                        exclude_attached_task_types_from_base_scoring=True,
+                        suppresses_intent_ids=(
+                            "route.overlay_review_remediation_intent",
+                        ),
+                    ),
+                ),
+                assisted_module_suggestions=(),
+            )
+
+    monkeypatch.setattr(route_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(route_handlers, "RoutePreviewService", FakeService)
+
+    result = route_handlers._run_route_preview(route_args())
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Activated intents:" in captured.out
+    assert "route.overlay_review_remediation_loop_intent" in captured.out
+    assert "retain=all_compatible" in captured.out
+
+
 def test_route_preview_prints_agent_assisted_module_suggestions(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:

@@ -13,30 +13,58 @@ class RouteOverlayDefinition:
     overlay_id: str
     entry_status: str
     title: str
+    intent_kind: str
     trigger_terms: tuple[str, ...]
     trigger_mode: str
     anchor_terms: tuple[str, ...] = ()
     compatible_task_types: tuple[str, ...] = ()
     excluded_task_types: tuple[str, ...] = ()
+    compatible_route_families: tuple[str, ...] = ()
     attached_workflow_ids: tuple[str, ...] = ()
     attached_route_task_types: tuple[str, ...] = ()
+    dominant_route_retention_mode: str = "none"
+    exclude_attached_task_types_from_base_scoring: bool = False
+    suppresses_intent_ids: tuple[str, ...] = ()
     retain_dominant_compatible_route: bool = False
     minimum_route_score: int = 0
     notes: str | None = None
 
     @classmethod
     def from_document(cls, document: dict[str, Any]) -> RouteOverlayDefinition:
+        attached_route_task_types = tuple(document.get("attached_route_task_types", ()))
+        intent_kind = document.get("intent_kind")
+        if not isinstance(intent_kind, str) or not intent_kind:
+            intent_kind = (
+                "companion_route" if attached_route_task_types else "workflow_modifier"
+            )
+        dominant_route_retention_mode = document.get("dominant_route_retention_mode")
+        if not isinstance(dominant_route_retention_mode, str) or not dominant_route_retention_mode:
+            if document.get("retain_dominant_compatible_route", False):
+                dominant_route_retention_mode = (
+                    "all_compatible"
+                    if document.get("compatible_task_types")
+                    else "strongest_compatible"
+                )
+            else:
+                dominant_route_retention_mode = "none"
         return cls(
             overlay_id=document["overlay_id"],
             entry_status=document["entry_status"],
             title=document["title"],
+            intent_kind=intent_kind,
             trigger_terms=tuple(document["trigger_terms"]),
             trigger_mode=document["trigger_mode"],
             anchor_terms=tuple(document.get("anchor_terms", ())),
             compatible_task_types=tuple(document.get("compatible_task_types", ())),
             excluded_task_types=tuple(document.get("excluded_task_types", ())),
+            compatible_route_families=tuple(document.get("compatible_route_families", ())),
             attached_workflow_ids=tuple(document.get("attached_workflow_ids", ())),
-            attached_route_task_types=tuple(document.get("attached_route_task_types", ())),
+            attached_route_task_types=attached_route_task_types,
+            dominant_route_retention_mode=dominant_route_retention_mode,
+            exclude_attached_task_types_from_base_scoring=bool(
+                document.get("exclude_attached_task_types_from_base_scoring", False)
+            ),
+            suppresses_intent_ids=tuple(document.get("suppresses_intent_ids", ())),
             retain_dominant_compatible_route=bool(
                 document.get("retain_dominant_compatible_route", False)
             ),

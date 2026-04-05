@@ -15,6 +15,7 @@ def _run_route_preview(args: argparse.Namespace) -> int:
     assisted_module_suggestions = tuple(
         getattr(result, "assisted_module_suggestions", ())
     )
+    activated_intents = tuple(getattr(result, "activated_intents", ()))
     payload = {
         "command": "watchtower-core route preview",
         "status": "ok",
@@ -43,6 +44,22 @@ def _run_route_preview(args: argparse.Namespace) -> int:
                 "composes_module_paths": list(workflow.composes_module_paths),
             }
             for workflow in result.selected_workflows
+        ],
+        "activated_intents": [
+            {
+                "intent_id": intent.intent_id,
+                "title": intent.title,
+                "intent_kind": intent.intent_kind,
+                "matched_trigger_terms": list(intent.matched_trigger_terms),
+                "attached_route_task_types": list(intent.attached_route_task_types),
+                "attached_workflow_ids": list(intent.attached_workflow_ids),
+                "dominant_route_retention_mode": intent.dominant_route_retention_mode,
+                "exclude_attached_task_types_from_base_scoring": (
+                    intent.exclude_attached_task_types_from_base_scoring
+                ),
+                "suppresses_intent_ids": list(intent.suppresses_intent_ids),
+            }
+            for intent in activated_intents
         ],
         "assisted_module_suggestions": [
             {
@@ -91,6 +108,22 @@ def _run_route_preview(args: argparse.Namespace) -> int:
         for match in result.selected_routes:
             matched = ", ".join(match.matched_keywords) if match.matched_keywords else "explicit"
             print(f"- {match.task_type} [{match.route_id}] score={match.score} matched={matched}")
+
+        if activated_intents:
+            print("Activated intents:")
+            for intent in activated_intents:
+                matched = (
+                    ", ".join(intent.matched_trigger_terms)
+                    if intent.matched_trigger_terms
+                    else "governed"
+                )
+                attached_routes = ", ".join(intent.attached_route_task_types) or "none"
+                attached_workflows = ", ".join(intent.attached_workflow_ids) or "none"
+                print(
+                    f"- {intent.intent_id} "
+                    f"[{intent.intent_kind}, retain={intent.dominant_route_retention_mode}] "
+                    f"matched={matched} routes={attached_routes} workflows={attached_workflows}"
+                )
 
         print("Active workflows:")
         for workflow in result.selected_workflows:

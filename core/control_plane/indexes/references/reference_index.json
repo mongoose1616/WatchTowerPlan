@@ -17,12 +17,6 @@
       "canonical_upstream_urls": [
         "https://adr.github.io/"
       ],
-      "cited_by_paths": [
-        "plan/docs/standards/governance/decision_capture_standard.md"
-      ],
-      "applied_by_paths": [
-        "plan/docs/standards/governance/decision_capture_standard.md"
-      ],
       "related_paths": [
         "core/docs/foundations/engineering_design_principles.md",
         "core/docs/foundations/repository_standards_posture.md"
@@ -273,9 +267,6 @@
         "https://diataxis.fr/quality/",
         "https://diataxis.fr/compass/"
       ],
-      "cited_by_paths": [
-        "plan/docs/standards/governance/reference_distillation_standard.md"
-      ],
       "related_paths": [
         "core/docs/templates/documentation_template.md",
         "core/docs/templates/readme_template.md",
@@ -432,16 +423,6 @@
         "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields",
         "https://docs.github.com/en/rest/issues/issues",
         "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
-      ],
-      "cited_by_paths": [
-        "plan/docs/standards/governance/github_collaboration_standard.md",
-        "plan/docs/standards/governance/github_task_sync_standard.md",
-        "plan/workflows/modules/github_task_sync.md"
-      ],
-      "applied_by_paths": [
-        "plan/docs/standards/governance/github_collaboration_standard.md",
-        "plan/docs/standards/governance/github_task_sync_standard.md",
-        "plan/workflows/modules/github_task_sync.md"
       ],
       "related_paths": [
         ".github/README.md"
@@ -1703,93 +1684,6 @@
       "tags": [
         "reference",
         "yaml_1_2_2"
-      ]
-    },
-    {
-      "reference_id": "reference.core_swap_integration_assessment_closeout",
-      "title": "Core Swap Integration Assessment Closeout",
-      "summary": "Durable reference recording current WatchTowerPlan verification of the external oversight-host core-swap integration assessment and the resulting local applicability decisions.",
-      "status": "active",
-      "doc_path": "plan/docs/references/core_swap_integration_assessment_closeout_reference.md",
-      "updated_at": "2026-03-28T23:55:00Z",
-      "repository_status": "supporting_authority",
-      "uses_internal_references": true,
-      "uses_external_references": true,
-      "canonical_upstream_urls": [
-        "https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtowerplan_core_swap_integration_assessment.md"
-      ],
-      "related_paths": [
-        "core/control_plane/registries/pack_registry.json",
-        "core/python/pyproject.toml",
-        "plan/.wt/manifests/pack_settings.json",
-        "core/python/tests/unit/test_control_plane_loader_surfaces.py",
-        "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/unit/test_cli_validate_commands.py",
-        "core/python/tests/integration/test_validate_all_cli.py"
-      ],
-      "tags": [
-        "reference",
-        "assessment",
-        "closeout",
-        "pack_integration",
-        "portability"
-      ]
-    },
-    {
-      "reference_id": "reference.oversight_functionality_assessment_closeout",
-      "title": "Oversight Functionality Assessment Closeout",
-      "summary": "Durable reference recording current WatchTowerPlan verification of the external WatchTowerOversight functionality assessment and the resulting local applicability decisions.",
-      "status": "active",
-      "doc_path": "plan/docs/references/oversight_functionality_assessment_closeout_reference.md",
-      "updated_at": "2026-03-28T23:55:00Z",
-      "repository_status": "supporting_authority",
-      "uses_internal_references": true,
-      "uses_external_references": true,
-      "canonical_upstream_urls": [
-        "https://github.com/mongoose1616/WatchTowerOversight/blob/HEAD/oversight/assessments/watchtoweroversight_functionality_assessment.md"
-      ],
-      "related_paths": [
-        "core/control_plane/indexes/routes/route_index.json",
-        "core/control_plane/indexes/workflows/workflow_index.json",
-        "core/python/tests/integration/test_validate_all_cli.py",
-        "core/python/tests/unit/test_cli_validate_commands.py",
-        "core/python/tests/unit/test_cli_route_and_path_commands.py",
-        "core/python/tests/unit/test_workflow_execution_harness.py",
-        "plan/.wt/manifests/pack_settings.json"
-      ],
-      "tags": [
-        "reference",
-        "assessment",
-        "closeout",
-        "routing",
-        "validation"
-      ]
-    },
-    {
-      "reference_id": "reference.plan_guidance_promotion_helper_foundation_initiative_brief",
-      "title": "Guidance Promotion Reference",
-      "summary": "Durable reference for governed guidance promotion. Describes how initiative-local authored inputs become durable plan guidance while provenance lives in machine indexes rather than in source-package references.",
-      "status": "active",
-      "doc_path": "plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md",
-      "updated_at": "2026-03-28T23:55:00Z",
-      "repository_status": "supporting_authority",
-      "uses_internal_references": true,
-      "uses_external_references": true,
-      "canonical_upstream_urls": [
-        "https://github.com/mongoose1616/WatchTowerPlan/blob/HEAD/plan/python/src/watchtower_plan/promotion/service.py",
-        "https://github.com/mongoose1616/WatchTowerPlan/blob/HEAD/plan/.wt/registries/promotion_policy_registry.json"
-      ],
-      "related_paths": [
-        "plan/python/src/watchtower_plan/promotion/service.py",
-        "plan/.wt/registries/promotion_policy_registry.json",
-        "plan/.wt/indexes/guidance_index.json",
-        "plan/.wt/indexes/promotion_index.json"
-      ],
-      "tags": [
-        "promoted_guidance",
-        "reference",
-        "guidance_promotion",
-        "initiative_brief"
       ]
     }
   ]

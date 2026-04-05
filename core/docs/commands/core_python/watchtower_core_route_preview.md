@@ -133,12 +133,16 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - The command is read-only and does not mutate repository state.
 - Exactly one route selector is required: either `--request` or `--task-type`.
 - In `human` mode, the command prints the selected routed task types, matched trigger keywords, and the merged active workflow-document set.
-- In `json` mode, the command prints one JSON object with the command name, selected routes, selected workflows, any advisory `assisted_module_suggestions`, and any warnings.
+- In `json` mode, the command prints one JSON object with the command name, selected routes, selected workflows, any activated governed intents, any advisory `assisted_module_suggestions`, and any warnings.
 - Selected workflow-role records in the JSON payload include `composes_module_paths` so explicit role-to-module orchestration remains auditable alongside the routed workflow set.
 - Free-form request matching is deterministic and advisory. It scores exact phrases first, then falls back to canonicalized trigger-keyword coverage so realistic maintenance requests and adjacent-route prompts do not require verbatim routing-table phrasing.
 - When one route is materially stronger than the others, the preview keeps only the dominant route plus any materially strong secondary matches instead of leaking in low-signal single-word matches. Successor-task handoff prompts stay on `Task Phase Transition` even though that workflow later opens the lifecycle rules as supporting context.
 - Route preview now resolves base routes from the route index, then applies governed overlay intent rules from `route_overlay_registry.json` and governed suppression rules from `route_merge_policy_registry.json` so modifiers such as `adversarial` and `commit` stay flexible without exploding the routing table into hardcoded permutations.
+- The JSON and human outputs now include `activated_intents` so companion-route attachment and modifier overlays remain auditable instead of appearing as opaque scorer side effects. The payload only keeps intents that still apply after route selection and merge-policy cleanup, so dedicated routes do not report redundant modifier overlays that never actually attach.
+- When governed overlay intent explicitly asks for a companion route such as `fix loop` or `commit`, route preview now resolves dominant substantive routes first and attaches that companion route afterward instead of letting the companion route win the main score pass by itself.
 - Overlay-attached companion routes can now be synthesized directly from the governed route index when the overlay intent is explicit even if the base scorer did not independently hit that companion route, so prompts such as `validator audit and remediation loop` or `workflow audit and fix loop` keep both the origin review family and the remediation loop.
+- More specific governed intents can now suppress broader overlapping intents in the activated-intent set, so `fix loop` requests report the remediation-loop intent without also keeping the single-pass remediation intent active.
+- This also means mixed prompts such as `adversarial refactor, standard adherence, and fix loop` can keep implementation and standards-alignment scope while still attaching the remediation loop and adversarial lens.
 - Review-remediation prompts that focus on fixing findings or rerunning the same review until clean now route to dedicated remediation task types, and prompts such as `documentation and fix loop`, `benchmark review and fix loop`, or `project coherence and fix loop` can keep the paired review family in the same preview instead of collapsing to remediation alone.
 - Natural-language maintenance variants such as `docs audit and fix loop`, `review and fix`, `audit and fix`, and `stale test cleanup` now score strongly enough to keep the intended remediation or optimization route instead of falling through to a generic validation match.
 - Explicit commit intent now stays as a companion closeout route for substantive work such as reviews, fix loops, refactors, and benchmark remediation instead of displacing the main task family.
@@ -170,4 +174,4 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - `core/control_plane/registries/route_merge_policy_registry.json`
 
 ## Updated At
-- `2026-04-05T06:15:00Z`
+- `2026-04-05T09:05:00Z`

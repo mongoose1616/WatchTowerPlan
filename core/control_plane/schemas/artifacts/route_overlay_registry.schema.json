@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:registries:route-overlay-registry:v1",
   "title": "Route Overlay Registry",
-  "description": "Authored registry of route overlays that add compatible workflow roles or companion routes without enumerating every routed permutation.",
+  "description": "Authored registry of explicit route intents that add compatible workflow roles or companion routes without enumerating every routed permutation.",
   "type": "object",
   "required": [
     "$schema",
@@ -72,6 +72,21 @@
         "modifier_before_anchor"
       ]
     },
+    "routeIntentKind": {
+      "type": "string",
+      "enum": [
+        "workflow_modifier",
+        "companion_route"
+      ]
+    },
+    "dominantRouteRetentionMode": {
+      "type": "string",
+      "enum": [
+        "none",
+        "strongest_compatible",
+        "all_compatible"
+      ]
+    },
     "routeOverlayEntry": {
       "type": "object",
       "required": [
@@ -92,6 +107,9 @@
           "type": "string",
           "minLength": 1
         },
+        "intent_kind": {
+          "$ref": "#/$defs/routeIntentKind"
+        },
         "trigger_terms": {
           "$ref": "#/$defs/stringList"
         },
@@ -107,6 +125,9 @@
         "excluded_task_types": {
           "$ref": "#/$defs/stringList"
         },
+        "compatible_route_families": {
+          "$ref": "#/$defs/stringList"
+        },
         "attached_workflow_ids": {
           "type": "array",
           "minItems": 1,
@@ -117,6 +138,20 @@
         },
         "attached_route_task_types": {
           "$ref": "#/$defs/stringList"
+        },
+        "dominant_route_retention_mode": {
+          "$ref": "#/$defs/dominantRouteRetentionMode"
+        },
+        "exclude_attached_task_types_from_base_scoring": {
+          "type": "boolean"
+        },
+        "suppresses_intent_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/idPattern"
+          }
         },
         "retain_dominant_compatible_route": {
           "type": "boolean"
@@ -151,12 +186,32 @@
         {
           "if": {
             "properties": {
-              "retain_dominant_compatible_route": {
-                "const": true
+              "intent_kind": {
+                "const": "companion_route"
               }
             },
             "required": [
-              "retain_dominant_compatible_route"
+              "intent_kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "attached_route_task_types"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dominant_route_retention_mode": {
+                "enum": [
+                  "strongest_compatible",
+                  "all_compatible"
+                ]
+              }
+            },
+            "required": [
+              "dominant_route_retention_mode"
             ]
           },
           "then": {
