@@ -638,6 +638,20 @@
       ]
     },
     {
+      "id": "validator.plan.workflow_metadata_registry",
+      "title": "Plan Workflow Metadata Registry Validator",
+      "description": "Validates the plan-pack workflow metadata registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "workflow_metadata_registry",
+      "applies_to": [
+        "plan/.wt/registries/workflow_metadata_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1"
+      ]
+    },
+    {
       "id": "validator.plan.validation_bundle",
       "title": "Plan Validation Bundle Validator",
       "description": "Validates initiative-local evidence shells and validation bundles.",

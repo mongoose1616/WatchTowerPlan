@@ -17,6 +17,7 @@ def test_schema_catalog_records_match_loaded_schema_documents() -> None:
 
 def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
+    pack_settings = loader.load_pack_settings()
 
     catalog = loader.load_schema_catalog()
     validators = loader.load_validator_registry()
@@ -37,6 +38,10 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
 
     assert catalog.artifact_id == "registry.schema_catalog"
     assert validators.artifact_id == "registry.validators"
+    assert (
+        pack_settings.get("workflow_metadata_registry").path
+        == "plan/.wt/registries/workflow_metadata_registry.json"
+    )
     assert authority_map.artifact_id == "registry.authority_map"
     assert rendered_surface_registry.artifact_id == "registry.rendered_surfaces"
     assert workflow_metadata_registry.artifact_id == "registry.workflow_metadata"
@@ -97,7 +102,7 @@ def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> Non
     assert (
         "core/docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
     )
-    assert "owning pack `sync foundation-index` command doc" in foundations_readme
+    assert "watchtower-core sync foundation-index --write --format json" in foundations_readme
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in repository_scope
     assert "core/docs/foundations/README.md" in foundation_index_readme
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
@@ -154,8 +159,13 @@ def test_root_review_entrypoints_route_to_current_pack_surfaces() -> None:
     )
 
     assert "plan/plan_overview.md" in root_readme
-    assert "The active pack overview or coordination entrypoint" in foundations_readme
-    assert "`watchtower-core pack describe --format json`" in repository_scope
+    assert "live upstream shared-core coherence, authority, and downstream reuse boundaries" in (
+        foundations_readme
+    )
+    assert (
+        "watchtower-core validate portability --root <path> --engineering-core --format json"
+        in repository_scope
+    )
     assert "SUMMARY.md" not in root_readme
     assert "SUMMARY.md" not in foundations_readme
     assert "SUMMARY.md" not in repository_scope

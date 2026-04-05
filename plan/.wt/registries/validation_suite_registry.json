@@ -17,6 +17,16 @@
           "step_kind": "pack_contract"
         },
         {
+          "id": "step.plan.workflow_metadata_registry",
+          "title": "Validate plan workflow metadata registry",
+          "description": "Validate the pack-owned workflow metadata registry before workflow indexing and route preview rely on it.",
+          "step_kind": "artifact",
+          "paths": [
+            "plan/.wt/registries/workflow_metadata_registry.json"
+          ],
+          "validator_id": "validator.plan.workflow_metadata_registry"
+        },
+        {
           "id": "step.plan.front_matter",
           "title": "Validate governed front matter",
           "description": "Validate the governed Markdown front matter targets selected by the repo baseline target enumerator.",

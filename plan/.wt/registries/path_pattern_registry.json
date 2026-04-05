@@ -3,7 +3,7 @@
   "surface_name": "path_pattern_registry",
   "contract_version": "v1",
   "description": "Canonical path patterns for the plan pack plus reused shared-core surfaces.",
-  "updated_at": "2026-03-24T19:05:00Z",
+  "updated_at": "2026-04-05T03:37:57Z",
   "patterns": [
     {
       "family_name": "pack_settings",
@@ -126,6 +126,14 @@
       "family_name": "validation_suite_registry",
       "path_kind": "hidden_authoritative",
       "path_pattern": "plan/.wt/registries/validation_suite_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "workflow_metadata_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/workflow_metadata_registry.json",
       "entity_shape": "file",
       "visibility": "hidden",
       "authoritative": true

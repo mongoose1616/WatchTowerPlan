@@ -35,6 +35,7 @@
 - `plan/.wt/registries/documentation_family_registry.json` and `plan/.wt/registries/template_catalog.json` now govern authored documentation families, template-backed rendered surfaces, allowed roots, and template assets under `plan/.wt/templates/`.
 - `plan/.wt/registries/lifecycle_stage_registry.json`, `review_status_registry.json`, and `source_type_registry.json` now hold the live plan-pack vocabulary for lifecycle, approval, and provenance semantics that must stay consistent with initiative state, readiness views, and promotion/evidence surfaces.
 - `plan/.wt/registries/project_surface_policy_registry.json` is the project-root contract for which machine artifacts, rendered views, and optional project-local subroots may exist under `plan/projects/<project_slug>/`.
+- `plan/.wt/registries/workflow_metadata_registry.json` is the plan-pack workflow metadata surface for plan-owned routes, modules, and roles; shared workflow indexing and route preview merge it with the shared core workflow metadata registry.
 - `plan/.wt/indexes/promotion_index.json` and `plan/.wt/indexes/guidance_index.json` are the pack-level lookup surfaces for initiative-local promotion records and approved plan guidance.
 - `plan/.wt/indexes/artifact_index.json` is the pack-level cross-family lookup surface for live plan machine artifacts, pack work-item notes, and aggregate indexes.
 - Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.

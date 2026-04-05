@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Plan-pack settings load root for the active pack-driven workspace.",
-  "updated_at": "2026-03-21T21:05:00Z",
+  "updated_at": "2026-04-05T03:37:57Z",
   "pack_id": "pack.plan",
   "surfaces": [
     {
@@ -72,7 +72,7 @@
     {
       "surface_name": "workflow_metadata_registry",
       "surface_kind": "registry",
-      "path": "core/control_plane/registries/workflow_metadata_registry.json",
+      "path": "plan/.wt/registries/workflow_metadata_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
     },

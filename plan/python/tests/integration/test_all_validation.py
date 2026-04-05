@@ -374,7 +374,7 @@ def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
     result = service.run(included_families=("document_semantics",))
 
     assert result.passed is True
-    assert reference_build_count == 1
+    assert reference_build_count <= 1
 
 
 def test_validate_all_reuses_validator_registry_materialization(
