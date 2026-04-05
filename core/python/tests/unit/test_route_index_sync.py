@@ -367,6 +367,44 @@ def test_route_preview_service_matches_realistic_maintenance_request() -> None:
         assert "workflow.task_lifecycle_management" not in workflow_ids
 
 
+def test_route_preview_service_merges_adversarial_fix_loops() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = RoutePreviewService(loader)
+    route_task_types = _route_task_types(loader)
+
+    result = service.preview(request_text="do an adversarial and fix loop")
+
+    assert {match.task_type for match in result.selected_routes} == {
+        route_task_types["route.adversarial_repository_review"],
+        route_task_types["route.review_remediation_loop"],
+    }
+    assert {workflow.workflow_id for workflow in result.selected_workflows} >= {
+        "workflow.adversarial_reviewer",
+        "workflow.review_remediation",
+        "workflow.review_remediation_loop",
+        "workflow.repository_review",
+        "workflow.code_validation",
+    }
+    assert result.warnings == (
+        "Multiple routes matched the request. The preview returned the merged workflow "
+        "set for all positive matches.",
+    )
+
+
+def test_route_preview_service_keeps_adversarial_mentions_out_of_doc_reviews() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = RoutePreviewService(loader)
+    route_task_types = _route_task_types(loader)
+
+    result = service.preview(
+        request_text="do a documentation review of adversarial examples references"
+    )
+
+    assert {match.task_type for match in result.selected_routes} == {
+        route_task_types["route.documentation_review"]
+    }
+
+
 def test_route_preview_service_matches_workflow_review_regression_requests() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = RoutePreviewService(loader)

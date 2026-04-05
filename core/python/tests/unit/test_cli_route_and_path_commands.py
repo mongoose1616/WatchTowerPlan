@@ -161,6 +161,54 @@ def test_route_preview_matches_adversarial_repository_audits(capsys) -> None:
     }
 
 
+def test_route_preview_merges_adversarial_review_with_fix_loops(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "do an adversarial and fix loop",
+        ],
+    )
+
+    assert result == 0
+    assert {entry["task_type"] for entry in payload["selected_routes"]} == {
+        "Adversarial Repository Review",
+        "Review Remediation Loop",
+    }
+    assert {
+        entry["workflow_id"] for entry in payload["selected_workflows"]
+    } >= {
+        "workflow.adversarial_reviewer",
+        "workflow.review_remediation",
+        "workflow.review_remediation_loop",
+        "workflow.repository_review",
+        "workflow.code_validation",
+    }
+    assert payload["warnings"] == [
+        "Multiple routes matched the request. The preview returned the merged workflow "
+        "set for all positive matches."
+    ]
+
+
+def test_route_preview_keeps_adversarial_mentions_out_of_documentation_reviews(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "do a documentation review of adversarial examples references",
+        ],
+    )
+
+    assert result == 0
+    assert {entry["task_type"] for entry in payload["selected_routes"]} == {
+        "Documentation Review"
+    }
+
+
 def test_route_preview_matches_adjacent_boundary_prompts(capsys) -> None:
     result, payload = run_json_command(
         capsys,
